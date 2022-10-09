@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('eventables', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('event_id')->constrained();
-            $table->morphs("subscriber");
-            $table->timestamps();
+        Schema::create('child_lesson', function (Blueprint $table) {
+           $table->foreignId("child_id")->constrained();
+           $table->foreignId("lesson_id")->constrained();
         });
     }
 
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('eventables');
+        Schema::dropIfExists('child_lesson');
     }
 };

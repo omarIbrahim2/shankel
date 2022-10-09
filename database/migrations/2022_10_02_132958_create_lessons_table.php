@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
-            $table->string("url" , 255);
             $table->foreignId("teacher_id")->constrained();
-            $table->string("status" , 100);
+            $table->string("url" , 255);
+            $table->enum('type',['private','public']);
+            $table->boolean("status")->default(false);
             $table->timestamps();
         });
     }

@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cards__services_', function (Blueprint $table) {
-            $table->foreignId("card_id");
-            $table->foreignId("service_id");
+        Schema::create('grade_school', function (Blueprint $table) {
+            $table->foreignId('school_id')->constrained();
+            $table->foreignId('grade_id')->constrained();
         });
     }
 
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cards__services_');
+        Schema::dropIfExists('grade_school');
     }
 };

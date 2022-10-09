@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string("image" , 255)->nullable();
             $table->string("phone" , 50);
             $table->unsignedInteger("views" , false)->default(0);
-            $table->string("status" , 100)->default("deactive");
+            $table->boolean("status")->default(false);
             $table->timestamps();
         });
     }

@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -11,11 +12,13 @@ return new class extends Migration
      *
      * @return void
      */
+
+
     public function up()
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->string("unique_id" , 255);
+            $table->string("unique_id" , 255)->default(Str::random(50));
             $table->foreignId("service_id")->constrained();
             $table->morphs("user");
             $table->timestamps();

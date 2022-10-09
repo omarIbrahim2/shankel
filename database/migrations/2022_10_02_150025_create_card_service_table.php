@@ -13,10 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('lessons_rents', function (Blueprint $table) {
-           $table->foreignId("child_id")->constrained();
-           $table->foreignId("lesson_id")->constrained();
-
+        Schema::create('card_service', function (Blueprint $table) {
+            $table->foreignId("card_id");
+            $table->foreignId("service_id");
         });
     }
 
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lessons_rents');
+        Schema::dropIfExists('card_service');
     }
 };

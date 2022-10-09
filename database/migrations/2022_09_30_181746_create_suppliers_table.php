@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string("email" , 100 );
             $table->string("password" , 255);
             $table->string("image" , 255);
-            $table->string("status" , 100)->default("deactive");
+            $table->boolean("status")->default(false);
             $table->foreignId("area_id")->constrained();
             $table->timestamps();
         });

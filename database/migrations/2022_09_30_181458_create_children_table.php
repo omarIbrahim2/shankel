@@ -15,14 +15,14 @@ return new class extends Migration
     {
         Schema::create('children', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("parentt_id")->constrained();
+            $table->foreignId("school_id")->nullable()->constrained();
+            $table->foreignId("grade_id")->constrained();
             $table->string("name" , 255);
             $table->unsignedInteger("age" , false);
             $table->string("gender" , 50);
             $table->string("birth_date" , 100);
-            $table->foreignId("grade_id")->constrained();
             $table->string("image" , 255)->nullable();
-            $table->foreignId("parentt_id")->constrained();
-            $table->foreignId("school_id")->nullable()->constrained();
             $table->timestamps();
         });
     }

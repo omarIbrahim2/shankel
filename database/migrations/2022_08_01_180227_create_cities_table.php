@@ -18,6 +18,7 @@ return new class extends Migration
             $table->charset = "utf8";
             $table->collation = "utf8_unicode_ci";
             $table->string('name' , 255);
+            $table->timestamps();
 
         });
     }

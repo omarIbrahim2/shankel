@@ -23,8 +23,7 @@ return new class extends Migration
             $table->string("phone" , 50);
             $table->string("edu_system" , 100);
             $table->unsignedInteger("views" , false)->default(0);
-            $table->string("cv" , 255)->nullable();
-            $table->string("status" , 100)->default("deactive");
+            $table->boolean("status")->default(false);
             $table->unsignedInteger("free_seats" , false);
             $table->timestamps();
         });

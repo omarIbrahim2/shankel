@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Transaction;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+
+
+Route::get("/createTrans" , function(){
+   Transaction::create([
+    'service_id' => 1,
+    "user_type" => 'App\Models\Parentt',
+    'user_id' => 1,
+   ]);
 });

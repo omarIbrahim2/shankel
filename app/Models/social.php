@@ -5,7 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class social extends Model
+class Social extends Model
 {
     use HasFactory;
+    protected $guarded = ['id', 'created_at','updated_at'];
+
 }

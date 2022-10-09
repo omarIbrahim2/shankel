@@ -19,6 +19,7 @@ return new class extends Migration
             $table->collation = "utf8_unicode_ci";
             $table->string('name' , 255);
             $table->foreignId("area_id")->constrained();
+            $table->timestamps();
         });
     }
 

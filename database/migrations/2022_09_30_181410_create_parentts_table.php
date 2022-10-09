@@ -19,9 +19,10 @@ return new class extends Migration
             $table->string("email" , 100);
             $table->string("password" , 255);
             $table->foreignId("area_id")->constrained();
-            $table->string("image" , 255);
+            $table->string("image" , 255)->nullable();
             $table->string("phone" , 50);
-            $table->string("status" , 100)->default("deactive");
+            $table->boolean("status")->default(false);
+            $table->rememberToken();
             $table->timestamps();
         });
     }

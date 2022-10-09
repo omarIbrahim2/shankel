@@ -2,10 +2,46 @@
 
 namespace App\Models;
 
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
-class parentt extends Model
+class Parentt extends Authenticatable
 {
-    use HasFactory;
+    use HasApiTokens, HasFactory, Notifiable;
+
+    protected $guarded = ['id', 'created_at','updated_at'];
+
+
+    public function children()
+    {
+        return $this->hasMany(Child::class);
+    }
+
+    public function area()
+    {
+        return $this->belongsTo(Area::class);
+    }
+
+    public function notifications()
+    {
+        return $this->morphMany(Notification::class , 'noteable');
+    }
+
+    public function card()
+    {
+        return $this->morphOne(Card::class , 'cardable');
+    }
+
+    public function eventSubscriber()
+    {
+        return $this->morphToMany(Event::class, 'subscriber');
+    }
+
+    public function transactions()
+    {
+        return $this->morphMany(Transaction::class , 'transactionable');
+    }
 }
