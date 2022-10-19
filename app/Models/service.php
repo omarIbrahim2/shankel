@@ -19,4 +19,9 @@ class Service extends Model
     {
         return $this->belongsToMany(Card::class);
     }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }

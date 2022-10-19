@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
-            $table->string("info" , 255);
             $table->morphs("user");
+            $table->string("info" , 255);
             $table->timestamps();
         });
     }

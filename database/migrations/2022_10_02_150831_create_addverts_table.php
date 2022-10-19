@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('addverts', function (Blueprint $table) {
             $table->id();
+            $table->morphs("creator");
             $table->string("title" , 255);
             $table->text("desc");
             $table->string("image" , 255);
-            $table->morphs("creator");
             $table->timestamps();
         });
     }

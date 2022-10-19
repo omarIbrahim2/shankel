@@ -2,7 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Addvert;
+use App\Models\Event;
 use App\Models\Grade;
+use App\Models\Notification;
 use App\Models\School;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -16,14 +19,24 @@ class SchoolSeeder extends Seeder
      */
     public function run()
     {
-
-        School::factory()->count(20)->create()->each(function($school){
+      
+      School::factory()->count(20)->has(
+        Notification::factory()->count(2)
+      )->has(
+        Event::factory()->count(3) 
+      )->has(
+        Addvert::factory()->count(3)
+      )->create()->each(function($school){
             
 
-           $grades = Grade::all()->random(rand(1 , 4))->pluck('id');
+        $grades = Grade::all()->random(rand(1 , 4))->pluck('id');
 
-           $school->grades()->attach($grades);
+        $school->grades()->attach($grades);
 
-        });
-      }
+      });
+      
+
+      
+
+    }
 }

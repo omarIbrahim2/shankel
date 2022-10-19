@@ -15,4 +15,8 @@ class Transaction extends Model
         return $this->morphTo('user');
     }
 
+    public function service()
+    {
+        return $this->belongsTo(Service::class);
+    }
 }

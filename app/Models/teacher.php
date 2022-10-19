@@ -27,7 +27,7 @@ class Teacher extends Authenticatable
 
     public function notifications()
     {
-        return $this->morphMany(Notification::class , 'noteable');
+        return $this->morphMany(Notification::class , 'user');
     }
 
     public function card()
@@ -42,6 +42,6 @@ class Teacher extends Authenticatable
 
     public function transactions()
     {
-        return $this->morphMany(Transaction::class , 'transactionable');
+        return $this->morphMany(Transaction::class , 'user');
     }
 }

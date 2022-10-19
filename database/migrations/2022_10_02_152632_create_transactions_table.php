@@ -18,9 +18,9 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->string("unique_id" , 255)->default(Str::random(50));
-            $table->foreignId("service_id")->constrained();
             $table->morphs("user");
+            $table->foreignId("service_id")->constrained();
+            $table->string("barcode" , 255)->default(Str::random(50));
             $table->timestamps();
         });
     }
