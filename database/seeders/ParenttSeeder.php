@@ -1,6 +1,8 @@
 <?php
 
 namespace Database\Seeders;
+
+use App\Models\Card;
 use App\Models\Event;
 use App\Models\Notification;
 use App\Models\Child;
@@ -22,10 +24,16 @@ class ParenttSeeder extends Seeder
     public function run()
     {
         $school = School::factory()->create();
+        $services = Service::all()->pluck("id");
+       // dd($services);
         Parentt::factory()->has(
             Child::factory()->count(rand(1,3))
         )->has(
             Notification::factory()->count(2)
+
+        )->has(
+               Card::factory() , 'card'
+
         )->count(30)->create();
     }
 }

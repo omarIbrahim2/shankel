@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Card;
 use App\Models\Event;
 use App\Models\Lesson;
 use App\Models\Notification;
@@ -23,6 +24,11 @@ class TeacherSeeder extends Seeder
             Lesson::factory()->count(2)
         )->has(
             Notification::factory()->count(2)
+
+        )->has(
+
+            Card::factory() , "card"
+
         )->count(20)->create();
     }
 }

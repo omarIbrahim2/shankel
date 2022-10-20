@@ -42,7 +42,7 @@ class School extends Authenticatable
 
     public function card()
     {
-        return $this->morphOne(Card::class , 'cardable');
+        return $this->morphOne(Card::class , 'user');
     }
 
     public function eventSubscriber()
