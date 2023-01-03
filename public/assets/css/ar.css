@@ -1,0 +1,79 @@
+/* add another kids */
+
+.kids-container .kid-icon{
+    margin-right: 0;
+    margin-left: 16px;
+}
+
+/* add kids */
+.social-auth h3{
+    text-align: right;
+}
+
+/* cart */
+.tags a{
+    margin: 0 0 0 16px;
+}
+/* events */
+.event-data-icon{
+    margin-right: 0;
+    margin-left: 16px;
+}
+/* free videos */
+.free-title h3:first-of-type{
+    margin-right: 0;
+}
+/* index */
+.home-slider .slider-content,.social .section-title h2,.q-slider .question{
+    text-align: right;
+}
+.contact-item a{
+    margin-left: 0;
+    margin-right: 8px;
+}
+/* login */
+.login-form input{
+    padding-right: 24px;
+}
+.remember .checkbox input{
+    margin-right: 0;
+    margin-left: 16px;
+}
+/* provider details */
+.mission-vision h3{
+    margin-right: 0;
+    margin-left: 16px;
+}
+/* schools */
+.page-search span{
+    right: unset;
+    left: 16px;
+}
+/* service2 */
+.area-title h3{
+    text-align: right;
+}
+/* general */
+input{
+    text-align: right;
+    /* padding-right: 5px; */
+}
+ svg.fa-chevron-right, svg.fa-chevron-left{
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+}
+.file-input{
+    height: 44px!important;
+}
+.file-input span{
+    top: unset!important;
+}
+.btn-gray-custom{
+    bottom: unset;
+}
+.custom-out-btn{
+    padding: 8px 26px;
+}

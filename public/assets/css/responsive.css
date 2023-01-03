@@ -1,0 +1,130 @@
+/* guide */
+/* 
+    1-big screens
+*/
+
+/* 1-big screens */
+
+@media screen and (max-width: 992px) {
+  .navbar .auth-btn {
+    order: unset;
+    margin-inline-start: auto;
+    margin-inline-end: 8px;
+  }
+  .next-event{
+    align-items: flex-start;
+  }
+  .next-event-date{
+    width: 30%;
+    padding: 32px;
+  }
+  .next-event-data{
+    width: 70%;
+  }
+  .footer .footer-nav ul li {
+    font-size: 16px;
+  }
+  .right-side .main-sub-title {
+    padding: 16px 16px;
+  }
+  .service-item-data{
+    justify-content: flex-start;
+  }
+  .service-booking{
+    text-align: left;
+  }
+}
+@media screen and (max-width:768px){
+  .services-left{
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .about-welcome img{
+    margin-bottom: 32px;
+  }
+  .about-point{
+    padding: 0 8px;
+  }
+  footer{
+    text-align: center;
+  }
+  footer .logo{
+    margin-bottom: 16px;
+  }
+  footer .custom-logo{
+    margin-top: 16px;
+  }
+  .next-event-date{
+    width: 30%;
+    padding: 28px;
+    margin: 0 0 16px;
+  }
+  .next-event-data{
+    width: 100%;
+    padding: 0;
+  }
+  .auth-logo{
+    display: none;
+  }
+ 
+}
+@media screen and (max-width: 576px) {
+  .home-slider .slider-content h1 {
+    font-size: 36px;
+  }
+  .section-title p {
+    padding: 0 32px;
+  }
+  .service-title h3{
+    font-size: 20px;
+  }
+  .welcome h3,.subtitle h3{
+    font-size: 30px;
+  }
+  .q-slider .question h4{
+    text-align: center;
+  }
+  .footer .footer-nav ul li{
+    margin: 0 8px;
+  }
+  .footer .footer-nav li a{
+    font-size: 16px;
+  }
+  .navbar .icons{
+    font-size: 20px;
+    color: var(--main-color);
+    margin: 0 4px;
+    line-height: 26px;
+    vertical-align: middle;
+  }
+  .home-banner .filter-form{
+    flex-wrap: wrap;
+
+  }
+  .home-banner .filter-form .filter{
+    width: 50%;
+    margin-bottom: 16px;
+  }
+  .home-banner .filter-submit button{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+  .page-search{
+    width: 80%;
+  }
+  .event-left-side{
+    margin-bottom: 64px;
+  }
+  .provider{
+    margin-bottom: 64px;
+  }
+  .edit-teacher-profile .left-side{
+    border: none;
+  }
+  .teacher-left-side::after{
+    display: none;
+  }
+  .auth-logo{
+    display: none;
+  }
+}

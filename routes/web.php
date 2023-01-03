@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LangController;
+use App\Http\Controllers\LocationCcontroller;
+use App\Http\Controllers\ParentController;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Route;
 
@@ -13,17 +18,31 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::middleware('lang')->group(function(){
+    Route::get('/', [HomeController::class , "index"])->name('home');
 
-Route::get('/', function () {
-    return view('welcome');
+    Route::get('/select' , [HomeController::class ,'selectUserRegister'])->name("selectUserRegister");
+    Route::get('/select/login' , [HomeController::class ,'selectUserLogin'])->name("selectUserLogin");
+    
+    Route::get('register/parent' , [ParentController::class , 'showRegister'])->middleware("guest")->name('parent_register');
+    
+    Route::get('api/cities/{cityid}' , [LocationCcontroller::class , "Areas"])->name("areas");
+
+    Route::post('parent/register' , [AuthController::class , 'Parentregister'])->name('parent-register');
+
+    Route::middleware('parent')->group(function(){
+        Route::get('/parent' , [ParentController::class , 'parent'])->name('parent');
+        Route::get('add/child/{parentId}' , [ParentController::class , 'addChild'])->name('add-child');
+        Route::post('add/child' , [ParentController::class , 'createChild'])->name('create-child');
+        Route::post('parent/login' , [AuthController::class , 'parentLogin'])->name('parent-login');
+        Route::post('parent/logout' , [AuthController::class , 'parentLogout'])->name('parent-logout');
+    });
 });
 
 
+Route::get('set/lang/{lang}' , [LangController::class , 'set'])->name("lang");
 
-Route::get("/createTrans" , function(){
-   Transaction::create([
-    'service_id' => 1,
-    "user_type" => 'App\Models\Parentt',
-    'user_id' => 1,
-   ]);
-});
+
+
+
+
