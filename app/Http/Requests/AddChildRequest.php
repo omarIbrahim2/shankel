@@ -27,10 +27,10 @@ class AddChildRequest extends FormRequest
             'name' => 'required|string|min:3|max:50',
             'age' => 'required|numeric|min:3|max:20',
             'gender'=> 'required|string|in:male,female',
-            'grade_id' => 'required',
+            'grade_id' => 'required|exists:grades,id',
             'image' => 'nullable',
             'birth_date' => 'required|string',
-            'parentt_id' => 'required',
+            'parentt_id' => 'required|exists:parentts,id',
 
         ];
     }

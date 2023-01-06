@@ -28,7 +28,7 @@ class ParentRegisterReq extends FormRequest
             'email' => 'required|email',
             'phone' => 'required',
             'gender'=> 'required|string|in:male,female',
-            'area_id' => 'required',
+            'area_id' => 'required|exists:areas,id',
             'image' => 'image|mimes:jpg,png,jpeg|max:2048|',
             'password' => 'required|confirmed|min:6',
         ];

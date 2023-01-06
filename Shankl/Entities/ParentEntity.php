@@ -34,4 +34,9 @@ class ParentEntity extends UserEntity{
 
         $this->attributes['password'] = $password;
     }
+
+    public function setImage($imagePath){
+
+        $this->attributes['image'] = $imagePath;
+    }
 }

@@ -9,42 +9,61 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use GrahamCampbell\ResultType\Success;
 use App\Http\Requests\ParentRegisterReq;
+use Shankl\Adapters\FileServiceAdapter;
+use Shankl\Factories\EntitiesFactory;
 use Shankl\Repositories\ParentRepository;
+use Shankl\Services\FileService;
 
 class AuthController extends Controller
 {
 
     private AuthService  $authService;
-    public function __construct(AuthService $authService)
+
+    private FileServiceAdapter $fileser;
+    public function __construct(AuthService $authService , FileServiceAdapter $fileser)
     {
         $this->authService = $authService;
+
+        $this->fileser = $fileser;
 
     
     }
 
 
-    public function Parentregister(ParentRegisterReq $request){
+    public function Parentregister(ParentRegisterReq $request  , ParentRepository $parentRepo){
            
         $request->validated();
 
          
-        $parentObj = new ParentEntity($request->all());
-        $parentRepo = new ParentRepository();
-
+        $parentObj =  EntitiesFactory::createEntity($request->except('image') , 'parent');
+        
+       
         $hashPassword = Hash::make($request->password);
 
         $parentObj->setPassword($hashPassword);
 
         $parentObj->changeStatus();
 
+        if ($request->hasFile('image')) {
+            
+            
+
+            $filePath =  $this->fileser->upload($request->file('image') , "parents" );
+
+            $parentObj->setImage($filePath);
+            
+
+        }
+
         $authParent = $this->authService->RegisterUser($parentRepo , $parentObj);
 
         Auth::guard('parent')->login( $authParent);
+        
         $request->session()->regenerate();
 
-       // toastr()->error("dkslew");
-        $parent_id = $authParent->id;
-        return redirect()->route('add-child' , $parent_id);
+       
+        
+        return redirect()->route('add-child' , $authParent->id);
     }
 
     public function parentLogin()
@@ -56,7 +75,7 @@ class AuthController extends Controller
 
     public function parentLogout()
     {
-         Auth::guard('parent')->logout();
+         $this->authService->logoutUser('parent');
          return redirect()->route('home');
     }
 }

@@ -4,6 +4,7 @@
 namespace Shankl\Services;
 
 use Shankl\Entities\UserEntity;
+use Illuminate\Support\Facades\Auth;
 use Shankl\Interfaces\UserReboInterface;
 
 class AuthService{
@@ -17,6 +18,12 @@ class AuthService{
         return $createdUser;
 
 
+    }
+
+
+    public function logoutUser($guard){
+
+        Auth::guard($guard)->logout();
     }
 
 

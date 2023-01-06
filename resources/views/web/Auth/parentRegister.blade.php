@@ -18,7 +18,7 @@
                     <div class="col-lg-6 col-md-8 col-12">
                         <div class="left-side">
                             <div class="section-title">
-                                <h2 class="text-start">Sign Up Now</h2>
+                                <h2 class="text-start">{{trans('register.Sign Up')}}</h2>
                                 <p class="text-start p-0">
                                     login to your account <a href="#">Click Here</a>
                                 </p>
@@ -30,7 +30,7 @@
                                     <div class="input-item me-auto ms-0">
                                         
                                                                                 
-                                        <input type="text" name="name" placeholder="name" />
+                                        <input type="text" name="name" placeholder="{{trans('register.name')}}" />
                                         <span>
                                             <i class="fa-solid fa-user"></i>
                                         </span>
@@ -41,7 +41,7 @@
                                     <div class="input-item me-auto ms-0">
                                         
                                         
-                                        <input type="email" name="email" placeholder="email" />
+                                        <input type="email" name="email" placeholder="{{trans('register.email')}}" />
                                         <span>
                                             <i class="fa-regular fa-envelope"></i>
                                         </span>
@@ -51,7 +51,7 @@
                                     </div>
                                     <div class="input-item me-auto ms-0">
                                         
-                                        <input type="tel" name="phone" placeholder="phone" />
+                                        <input type="tel" name="phone" placeholder="{{trans('register.phone')}}" />
                                         <span>
                                             <i class="fa-solid fa-phone"></i>
                                         </span>
@@ -61,7 +61,7 @@
                                     </div>
                                     <div class="input-item me-auto ms-0">
                                         <select id="selectCity" class="form-select" aria-label="Default select example" required>
-                                            <option selected disabled>City</option>
+                                            <option selected disabled>{{trans('register.city')}}</option>
                                             @foreach ($cities as $city)
                                                <option value="{{$city->id}}">{{$city->name}}</option>
                                             @endforeach
@@ -75,7 +75,7 @@
                                     <div class="input-item me-auto ms-0">
                                         
                                         <select name="area_id" id="areaSelect" class="form-select" aria-label="Default select example" required>
-                                            <option selected disabled>Area</option>
+                                            <option selected disabled>{{trans('register.area')}}</option>
                                           </select>
                                         <span>
                                             <i class="fa-solid fa-location-dot"></i>
@@ -138,7 +138,7 @@
                                         <input
                                             type="password"
                                             name="password"
-                                            placeholder="password"
+                                            placeholder="{{trans('register.password')}}"
                                         />
                                         <span>
                                             <i class="fa-solid fa-lock"></i>
@@ -156,7 +156,7 @@
                                         <input
                                             type="password"
                                             name="password_confirmation"
-                                            placeholder="Confirm Password"
+                                            placeholder="{{trans('register.confirm_password')}}"
                                         />
                                         <span>
                                             <i class="fa-solid fa-lock"></i>
@@ -181,13 +181,13 @@
                                             <span class="icon"
                                                 ><i class="fa-brands fa-facebook-f"></i
                                             ></span>
-                                            <span>Facebook</span>
+                                            <span>{{trans('register.facebook')}}</span>
                                         </a>
                                         <a href="#" class="btn-custom gmail">
                                             <span class="icon"
                                                 ><i class="fa-regular fa-envelope"></i
                                             ></span>
-                                            <span>gmail</span>
+                                            <span>{{trans('register.gmail')}}</span>
                                         </a>
                                     </div>
                                 </div>
