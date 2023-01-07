@@ -32,7 +32,32 @@
 </head>
 
 <body>
+       <!-- img light box -->
+   <div class="lightbox">
+        <div class="inner">
+            <img src="" alt="">
+        </div>
+        <div class="close">
+            <span>&times;</span>
+        </div>
+    </div>
+<!-- ************* -->
+    <!-- header -->
+    <header>
+
+        @yield('nav')
+        
+        @yield('banner-slider')
+        
+    </header>
+<!-- ***************** -->
     @yield('main')
+
+    <!-- footer -->
+ <x-footer></x-footer>
+
+
+
     <!-- jquery 3.6 -->
     <script src="{{asset('assets')}}/js/jquery-3.6.0.min.js"></script>
     <!-- bootstrap 5 -->

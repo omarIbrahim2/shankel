@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -24,7 +26,13 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
+        Blade::if('custom_auth' , function ($guard){
+            return ! Auth::guard($guard)->check();
+        });
 
+        Blade::if('Notcustom_auth' , function ($guard){
+            return  Auth::guard($guard)->check();
+        });
         //
     }
 }

@@ -18,9 +18,9 @@ class ChildRequired
     public function handle(Request $request, Closure $next)
     {
         $authParent = Auth::guard("parent")->user();
-        if ($authParent->childs == null) {
-             
-            return redirect()->route("add-child");
+        
+        if (count($authParent->children) == 0) {
+            return redirect()->route("add-child" , $authParent->id);
  
          }
         return $next($request);   

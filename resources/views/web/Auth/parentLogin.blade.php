@@ -28,7 +28,10 @@ Shankl | Parent Login
                                 <p class="text-start p-0">Don,t have an account? <a href="#">sign up</a></p>
                             </div>
                             <div class="contact-form black-contact-form">
-                                <form>
+                                <form method="POST" action="{{route('login-parent')}}">
+                                    @csrf
+                                    
+                                    @include('web.inc.errors')
                                     <div class="input-item me-auto ms-0">
                                         
                                         <input type="email" name="email" placeholder="email">
@@ -54,7 +57,7 @@ Shankl | Parent Login
                                             </label>
                                         </div>
                                         <div class="auth">
-                                            <a href="#">Forgot Password</a>
+                                            <a href="{{route('password.request')}}">Forgot Password</a>
                                         </div>
                                     </div>
                                     <div class="input-item me-auto ms-0">

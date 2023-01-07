@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Shankl\Interfaces\FileServiceInterface;
 use Shankl\Interfaces\GradeRepoInterface;
@@ -33,6 +35,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+
     }
 }

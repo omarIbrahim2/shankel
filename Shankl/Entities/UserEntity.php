@@ -18,4 +18,14 @@ namespace Shankl\Entities;
       return $this->attributes;
   }
 
+  public function getEmail(){
+
+      return $this->attributes['email'];
+  }
+
+  public function getPassword()
+  {
+      return $this->attributes['password'];
+  }
+
 }
