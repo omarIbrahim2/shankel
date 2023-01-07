@@ -25,16 +25,15 @@ Route::middleware('lang')->group(function(){
     Route::get('/select/login' , [HomeController::class ,'selectUserLogin'])->name("selectUserLogin");
     
     Route::get('register/parent' , [ParentController::class , 'showRegister'])->middleware("guest")->name('parent_register');
-    
+    Route::get('login/parent' , [ParentController::class , 'showLogin'])->middleware('guest')->name('parent-login');
     Route::get('api/cities/{cityid}' , [LocationCcontroller::class , "Areas"])->name("areas");
 
     Route::post('parent/register' , [AuthController::class , 'Parentregister'])->name('parent-register');
 
     Route::middleware('parent')->group(function(){
-        Route::get('/parent' , [ParentController::class , 'parent'])->name('parent');
+        Route::get('/parent' , [ParentController::class , 'parent'])->name('parent')->middleware('child');
         Route::get('add/child/{parentId}' , [ParentController::class , 'addChild'])->name('add-child');
         Route::post('add/child' , [ParentController::class , 'createChild'])->name('create-child');
-        Route::post('parent/login' , [AuthController::class , 'parentLogin'])->name('parent-login');
         Route::post('parent/logout' , [AuthController::class , 'parentLogout'])->name('parent-logout');
     });
 });

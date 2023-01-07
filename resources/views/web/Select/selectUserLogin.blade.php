@@ -93,7 +93,7 @@
                     <h2>Select User</h2>
                 </div>
                 <div class="user-levels">
-                    <a href="{{route('parent_register')}}" class="user-level">
+                    <a href="{{route('parent-login')}}" class="user-level">
                         <div class="level-img">
                             <img src="{{asset("assets")}}/images/user/Group.png" alt="level">
                         </div>

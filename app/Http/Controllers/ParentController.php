@@ -48,4 +48,10 @@ class ParentController extends Controller
     {
       return view('web.Parents.profile');
     }
+
+
+    public function showLogin(){
+
+      return view('web.Auth.parentLogin');
+    }
 }
