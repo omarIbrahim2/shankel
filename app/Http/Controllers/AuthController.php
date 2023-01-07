@@ -47,8 +47,11 @@ class AuthController extends Controller
         if ($request->hasFile('image')) {
             
             
+            $this->fileser->setFile($request->file('image'));
 
-            $filePath =  $this->fileser->upload($request->file('image') , "parents" );
+            $this->fileser->setPath("parents");
+
+            $filePath =  $this->fileser->upload();
 
             $parentObj->setImage($filePath);
             

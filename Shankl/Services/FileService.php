@@ -6,10 +6,15 @@ use Illuminate\Support\Facades\Storage;
 use Shankl\Interfaces\FileServiceInterface;
 
 class FileService implements FileServiceInterface{
-   
-    public function uploadFile($file , $path)
+    
+    private $file;
+
+    private $path;
+    
+    public function uploadFile()
     {
-        $res = $file->store($path);
+        $fileObj = $this->getFile();
+        $res = $fileObj->store($this->getPath());
 
         return $res;
     }
@@ -17,6 +22,27 @@ class FileService implements FileServiceInterface{
 
     public function DeleteFile($file){
          Storage::delete($file);
+    }
+
+    public function setFile($file){
+       
+        $this->file = $file;
+
+    }
+
+    public function getFile(){
+
+        return $this->file;
+    }
+
+    public function setPath($path){
+
+        $this->path = $path;
+    }
+
+    public function getPath(){
+
+        return $this->path;
     }
 
 

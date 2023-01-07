@@ -30,7 +30,7 @@
                                     <div class="input-item me-auto ms-0">
                                         
                                                                                 
-                                        <input type="text" name="name" placeholder="{{trans('register.name')}}" />
+                                        <input value="{{@old('name')}}" type="text" name="name" placeholder="{{trans('register.name')}}" />
                                         <span>
                                             <i class="fa-solid fa-user"></i>
                                         </span>
@@ -41,7 +41,7 @@
                                     <div class="input-item me-auto ms-0">
                                         
                                         
-                                        <input type="email" name="email" placeholder="{{trans('register.email')}}" />
+                                        <input value="{{@old('email')}}" type="email" name="email" placeholder="{{trans('register.email')}}" />
                                         <span>
                                             <i class="fa-regular fa-envelope"></i>
                                         </span>
@@ -51,7 +51,7 @@
                                     </div>
                                     <div class="input-item me-auto ms-0">
                                         
-                                        <input type="tel" name="phone" placeholder="{{trans('register.phone')}}" />
+                                        <input value="{{@old('phone')}}" type="tel" name="phone" placeholder="{{trans('register.phone')}}" />
                                         <span>
                                             <i class="fa-solid fa-phone"></i>
                                         </span>
@@ -107,7 +107,7 @@
                                                 <label for="female">Female</label>
                                                 <input
                                                     type="radio"
-                                                    value="female"
+                                                    value="female "
                                                     name="gender"
                                                     class="not-hidden ms-2"
                                                     id="female"
@@ -125,6 +125,7 @@
                                             name="image"
                                             id="teacher-avatar"
                                             multiple
+                                            value="{{@old('image')}}"
                                         />
                                         <label class="btn-custom" for="teacher-avatar"
                                             >Upload New Photo</label
