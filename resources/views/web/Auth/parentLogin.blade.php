@@ -28,6 +28,11 @@ Shankl | Parent Login
                                 <p class="text-start p-0">Don,t have an account? <a href="#">sign up</a></p>
                             </div>
                             <div class="contact-form black-contact-form">
+                            @if (Session::has('status'))
+                                <div class="alert alert-success">
+                                    {{Session::get("status")}}
+                                </div>
+                              @endif
                                 <form method="POST" action="{{route('login-parent')}}">
                                     @csrf
                                     

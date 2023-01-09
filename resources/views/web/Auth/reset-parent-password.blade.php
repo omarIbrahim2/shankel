@@ -23,11 +23,11 @@
                                     <h2 class="text-start">Enter Your Email</h2>
                                 </div>
                                 <div class="contact-form black-contact-form">
-                                    <form method="POST" action="{{ route('password.update', 'parents') }}">
+                                    <form method="POST" action="{{ route('password.update', ['broker' => 'parents' , 'guard' => 'parent']) }}">
                                         @csrf
 
                                         @include('web.inc.errors')
-                                        <input type="hidden" name="token" value="{{Str::random(60)}}">
+                                        <input type="hidden" name="token" value="{{$token}}">
                                         <div class="input-item me-auto ms-0">
 
                                             <input type="email" name="email" placeholder="email">

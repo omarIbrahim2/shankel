@@ -31,7 +31,7 @@ Route::middleware('lang')->group(function(){
     Route::post('/forgot-password/{broker}', [AuthController::class , 'forgotPasswordPostRequest'])->middleware('guest')->name('password.email');
     //Reset Password
     Route::get('/reset-password/{token}', [AuthController::class , 'resetPassword'])->middleware('guest')->name('password.reset');
-    Route::post('/reset-password/{broker}', [AuthController::class , 'resetPasswordPostRequest'])->middleware('guest')->name('password.update');
+    Route::post('/reset-password/{broker}/{guard}', [AuthController::class , 'resetPasswordPostRequest'])->middleware('guest')->name('password.update');
 
 
     // Parent Routs

@@ -7,10 +7,13 @@ use Illuminate\Http\Request;
 use Shankl\Services\AuthService;
 use Shankl\Services\FileService;
 use Shankl\Entities\ParentEntity;
+use Shankl\Helpers\forgotPassword;
+use Shankl\Helpers\ResetPasswords;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Shankl\Factories\EntitiesFactory;
 use GrahamCampbell\ResultType\Success;
+use Illuminate\Support\Facades\Config;
 use App\Providers\RouteServiceProvider;
 use Shankl\Adapters\FileServiceAdapter;
 use App\Http\Requests\ParentRegisterReq;
@@ -90,23 +93,27 @@ class AuthController extends Controller
 
     public function forgotPassword()
     {
+    
         return view('web.Auth.forgot-parent-password');
     }
 
     public function forgotPasswordPostRequest(Request $request, $broker)
     {
         
-        $request->validate(['email' => 'required|email']);
-        dd(Password::RESET_LINK_SENT);
-        $status = Password::broker($broker)->sendResetLink(
-            $request->only('email')
-        );
+
+        $forgot = new forgotPassword();
+
+        $response = $forgot->sendResetLinkEmail($request , $broker);
+
+        if ($response == Password::RESET_LINK_SENT) {
+            return back()->with("status" , trans($response));
+        }
+
+        return back()
+                ->withInput($request->only('email'))
+                ->withErrors(['email' => trans($response)]);
 
         
-
-        return $status === Password::RESET_LINK_SENT
-            ? back()->with(['status' => __($status)])
-            : back()->withErrors(['email' => __($status)]);
     }
 
 
@@ -117,29 +124,24 @@ class AuthController extends Controller
         ]);
     }
 
-    public function resetPasswordPostRequest(Request $request, $broker)
+    public function resetPasswordPostRequest(Request $request, $broker , $guard)
     {
-        $request->validate([
-            'token' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|min:8|confirmed',
-        ]);
+       
+        $resetObj = new ResetPasswords();
 
-        $status = Password::broker($broker)->reset(
-            $request->only('email', 'password', 'password_confirmation', 'token'),
-            function ($user, $password) {
-                $user->forceFill([
-                    'password' => Hash::make($password)
-                ])->setRememberToken(Str::random(60));
+        $resetObj->setGuard($guard);
 
-                $user->save();
+       $response = $resetObj->reset($request , $broker);
+        
+       $url = $resetObj->getUserRedirect($broker);
+       if ($response == Password::PASSWORD_RESET) {
+             return redirect()
+              ->route($url)        
+              ->with('status', trans($response));
+       }
 
-                event(new PasswordReset($user));
-            }
-        );
-
-        return $status === Password::PASSWORD_RESET
-            ? redirect()->route('login')->with('status', __($status))
-            : back()->withErrors(['email' => [__($status)]]);
+            return back()
+              ->withInput($request->only('email'))
+              ->withErrors(['email' => trans($response)]);
     }
 }

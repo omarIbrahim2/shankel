@@ -23,6 +23,11 @@
                                     <h2 class="text-start">Enter Your Email</h2>
                                 </div>
                                 <div class="contact-form black-contact-form">
+                                    @if (Session::has('status'))
+                                        <div class="alert alert-success">
+                                            {{Session::get("status")}}
+                                        </div>
+                                    @endif
                                     <form method="POST" action="{{ route('password.email' , 'parents') }}">
                                         @csrf
 

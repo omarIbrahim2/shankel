@@ -1,5 +1,7 @@
 <?php
 
+use App\Providers\RouteServiceProvider;
+
 return [
 
     /*
@@ -125,6 +127,7 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
+            'url' => 'parent-login'
         ],
         'teachers' => [
             'provider' => 'teachers',
