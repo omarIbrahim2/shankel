@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class Parentt
+class Logout
 {
     /**
      * Handle an incoming request.
@@ -17,12 +17,23 @@ class Parentt
      */
     public function handle(Request $request, Closure $next)
     {
-        if (! Auth::guard("parent")->check()) {
+        if ( Auth::guard("teacher")->check()) {
              
-            return redirect()->route("parent-login");
+            return $next($request);
+ 
+         }elseif( Auth::guard("parent")->check()) {
+             
+            return $next($request);
+ 
+         }elseif( Auth::guard("school")->check()) {
+             
+            return $next($request);
+ 
+         }elseif( Auth::guard("supplier")->check()) {
+             
+            return $next($request);
  
          }
-
-        return $next($request);
+        return redirect()->route("home");
     }
 }

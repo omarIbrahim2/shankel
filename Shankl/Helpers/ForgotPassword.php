@@ -20,14 +20,6 @@ class forgotPassword{
       }
 
 
-
-
-   
-
-
-   
-      
-
       public function getBroker($broker){
 
          return Password::broker($broker);

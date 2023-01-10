@@ -34,21 +34,24 @@ class AuthService{
 
     public function LoginUser($guard , Request $request){
         $this->ensureIsNotRateLimited($request);
-       
-        if (! Auth::guard($guard)->attempt(['email'=> $request->email , 'password' => $request->password , 'status' => 1])) {
+
+       // dd(Auth::guard($guard));
+        // dd(Auth::guard("teacher")->attempt(['email'=> $request->email , 'password' => $request->password , 'status' => 1]));
+        if (! Auth::guard($guard)->attempt(['email'=> $request->email , 'password' => $request->password , 'status' => true])) {
                  
             RateLimiter::hit($this->throttleKey($request->email , $request->ip));
             
              throw ValidationException::withMessages([
                   "email" => trans('auth.failed'),
              ]);
-
-
-             RateLimiter::clear($this->throttleKey($request->email , $request->ip));
+  
         }
+
+        RateLimiter::clear($this->throttleKey($request->email , $request->ip));
 
 
     }
+
 
 
     public function throttleKey($email , $ip){

@@ -17,9 +17,14 @@ use Illuminate\Support\Facades\Config;
 use App\Providers\RouteServiceProvider;
 use Shankl\Adapters\FileServiceAdapter;
 use App\Http\Requests\ParentRegisterReq;
+use App\Http\Requests\SchoolRegisterReq;
+use App\Http\Requests\TeacherRegisterReq;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Routing\RoutingServiceProvider;
 use Shankl\Repositories\ParentRepository;
+use Shankl\Repositories\SchoolRepository;
+use Shankl\Repositories\TeacherRepository;
 
 class AuthController extends Controller
 {
@@ -35,6 +40,8 @@ class AuthController extends Controller
     }
 
 
+    //parent Authentecation
+
     public function Parentregister(ParentRegisterReq $request, ParentRepository $parentRepo)
     {
 
@@ -43,10 +50,7 @@ class AuthController extends Controller
 
         $parentObj =  EntitiesFactory::createEntity($request->except('image'), 'parent');
 
-
-        $hashPassword = Hash::make($request->password);
-
-        $parentObj->setPassword($hashPassword);
+        $parentObj->setPassword($request->password);
 
         $parentObj->changeStatus();
 
@@ -84,13 +88,106 @@ class AuthController extends Controller
     }
 
 
-    public function parentLogout($guard)
+
+
+    public function logout($guard)
     {
+        
         $this->authService->logoutUser($guard);
+
+        
         return redirect()->route('home');
     }
 
+    //Teacher Authentecation
 
+    public function teacherRegister(TeacherRegisterReq $request , TeacherRepository $teacherRepo)
+    {
+        $request->validated();
+
+        $teacherObj = EntitiesFactory::createEntity($request->except('image'), 'teacher');
+
+        $teacherObj->setPassword($request->Password);
+        $teacherObj->changeStatus();
+        if ($request->hasFile('image')) {
+
+
+            $this->fileser->setFile($request->file('image'));
+
+            $this->fileser->setPath("teachers");
+
+            $filePath =  $this->fileser->upload();
+
+            $teacherObj->setImage($filePath);
+        }
+
+        $authTeacher = $this->authService->RegisterUser($teacherRepo, $teacherObj);
+        
+        Auth::guard('teacher')->login($authTeacher);
+
+        $request->session()->regenerate();
+
+        return redirect()->route(RouteServiceProvider::TEACHER);
+    }
+
+    public function teacherLogin(Request $request)
+    {
+        $this->authService->LoginUser('teacher' , $request);
+
+        $request->session()->regenerate();
+
+        return redirect()->route(RouteServiceProvider::TEACHER);
+    }
+
+    //School Authentication
+
+    public function SchoolRegister(Request $request , SchoolRepository $schoolRepo){
+
+        //$request->validated();
+
+
+        $schoolObj = EntitiesFactory::createEntity($request->except(['image' , 'grade_id']) , 'school');
+
+        if ($request->hasFile('image')) {
+
+
+            $this->fileser->setFile($request->file('image'));
+
+            $this->fileser->setPath("schools");
+
+            $filePath =  $this->fileser->upload();
+
+            $schoolObj->setImage($filePath);
+        }
+
+        $schoolObj->setPassword($request->password);
+        
+        $schoolObj->changeStatus();
+   
+        $createdSchool = $this->authService->RegisterUser($schoolRepo , $schoolObj);
+
+        $schoolRepo->addGrades($request->grade_id , $createdSchool->id);
+
+        Auth::guard('school')->login($createdSchool);
+
+        $request->session()->regenerate();
+
+        return redirect()->route(RouteServiceProvider::SCHOOL); 
+    }
+
+
+    public function schoolLogin(Request $request)
+    {
+
+        $this->authService->LoginUser('school', $request);
+
+        $request->session()->regenerate();
+
+        return redirect()->route(RouteServiceProvider::SCHOOL);
+    }
+
+
+    //Forget & Reset Password
     public function forgotPassword()
     {
     

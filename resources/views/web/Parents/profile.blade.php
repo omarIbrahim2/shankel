@@ -21,7 +21,7 @@
                 Sign In
             </a>
             @endcustom_auth
-            <form id="outForm" action="{{route("parent-logout" , "parent")}}" method="post">
+            <form id="outForm" action="{{route("logout" , "parent")}}" method="post">
                 @csrf
             </form>
             <button form="outForm" class="custom-out-btn" type="submit">Sign Out</button>

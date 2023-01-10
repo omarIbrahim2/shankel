@@ -107,7 +107,7 @@
                             <h3>Supplier</h3>
                         </div>
                     </a>
-                    <a href="#" class="user-level">
+                    <a href="{{route('school_register')}}" class="user-level">
                         <div class="level-img">
                             <img src="assets/images/user/Vector2.png" alt="level">
                         </div>

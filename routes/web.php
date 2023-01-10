@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LangController;
 use App\Http\Controllers\ParentController;
+use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\LocationCcontroller;
 
@@ -41,13 +42,23 @@ Route::middleware('lang')->group(function(){
     // Parent Authentication
     Route::get('register/parent' , [ParentController::class , 'showRegister'])->middleware("guest")->name('parent_register');
     Route::get('login/parent' , [ParentController::class , 'showLogin'])->middleware('guest')->name('parent-login');
+    Route::post('teacher/login' , [AuthController::class , 'teacherLogin'])->name('login-teacher');
     Route::post('parent/login' , [AuthController::class , 'parentLogin'])->name('login-parent');
+    Route::post('school/login' , [AuthController::class , 'schoolLogin'])->name('login-school');
     Route::post('parent/register' , [AuthController::class , 'Parentregister'])->name('parent-register');
-      
+    
+    
     // Teacher Authentication
     Route::get('register/teacher' , [TeacherController::class , 'showRegister'])->middleware("guest")->name('teacher_register');
-    
     Route::get('login/teacher' , [TeacherController::class , 'showLogin'])->middleware('guest')->name('teacher-login');
+    Route::post('teacher/register' , [AuthController::class , 'TeacherRegister'])->name('teacher-register');
+ 
+    // School Authentication
+
+    Route::get('register/school' , [SchoolController::class , 'showRegister'])->middleware("guest")->name('school_register');
+    Route::get('login/school' , [SchoolController::class , 'showLogin'])->middleware('guest')->name('school-login');
+    Route::post('school/register' , [AuthController::class , 'SchoolRegister'])->name('school-register');
+ 
     
     //Parent Group
     Route::middleware('parent')->group(function(){
@@ -56,18 +67,21 @@ Route::middleware('lang')->group(function(){
         Route::post('add/child' , [ParentController::class , 'createChild'])->name('create-child');
     });
     
-    //Logout
-    Route::middleware(['parent','web'])->group(function(){
-        Route::post('logout/{guard}' , [AuthController::class , 'parentLogout'])->name('parent-logout');
+    //teacher Group
+    Route::middleware('teacher')->group(function(){
+        Route::get('/teacher' , [TeacherController::class , 'teacher'])->name('teacher');
     });
+    
+    //school Group
+    Route::middleware('school')->group(function(){
+        Route::get('/school' , [SchoolController::class , 'school'])->name('school');
+    });
+    
 
-
-
+    //Logout
+    
+    Route::middleware('logout')->group(function(){
+        Route::post('logout/{guard}' , [AuthController::class , 'logout'])->name('logout');
+    });
+    
 });
-
-
-
-
-
-
-

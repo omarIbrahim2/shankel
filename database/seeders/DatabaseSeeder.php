@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             CitySeeder::class,
             GradeSeeder::class,
             SupplierSeeder::class,
+            EduSystemSeeder::class,
             SchoolSeeder::class,
             ParenttSeeder::class,
             TeacherSeeder::class,

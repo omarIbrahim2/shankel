@@ -20,7 +20,7 @@
                             <div class="section-title">
                                 <h2 class="text-start">{{trans('register.Sign Up')}}</h2>
                                 <p class="text-start p-0">
-                                    login to your account <a href="#">Click Here</a>
+                                    login to your account <a href="{{route('login-parent')}}">Click Here</a>
                                 </p>
                             </div>
                             <div class="contact-form black-contact-form">

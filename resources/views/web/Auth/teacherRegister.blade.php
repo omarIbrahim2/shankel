@@ -27,7 +27,8 @@
                                 <p class="text-start p-0">login to your account <a href="#">Click Here</a></p>
                             </div>
                             <div class="contact-form black-contact-form">
-                                <form>
+                                <form method="POST" action="{{route('teacher-register')}}" enctype="multipart/form-data">
+                                    @csrf
                                     <div class="input-item me-auto ms-0">
                                         <input value="{{@old('name')}}" type="text" name="name" placeholder="{{trans('register.name')}}">
                                         <span>
@@ -91,6 +92,21 @@
                                         <p class="text-danger">{{$message}}</p>
                                         @enderror
                                     </div>
+                                    <div class="upload-avatar text-start">
+                                        <input
+                                            type="file"
+                                            name="image"
+                                            id="teacher-avatar"
+                                            multiple
+                                        />
+                                        <label class="btn-custom" for="teacher-avatar"
+                                            >Upload New Photo</label
+                                        >
+                                        <div class="files-names"></div>
+                                        @error('image')
+                                                <p class="text-danger">{{$message}}</p>
+                                        @enderror
+                                    </div>
                                     <div class="input-item me-auto ms-0">
                                        
                                         <input value="{{@old('password')}}" type="password" name="password" placeholder="{{trans('register.password')}}">
@@ -106,7 +122,7 @@
 
                                     </div>
                                     <div class="input-item me-auto ms-0">
-                                        <input value="{{@old('confirmPassword')}}" type="password" name="confirmPassword" placeholder="{{trans('register.confirm_password')}}">
+                                        <input value="{{@old('password_confirmation')}}" type="password" name="password_confirmation" placeholder="{{trans('register.confirm_password')}}">
                                         <span>
                                             <i class="fa-solid fa-lock"></i>
                                         </span>
@@ -115,6 +131,7 @@
                                         </span>
                                         
                                     </div>
+                                    
                                     
                                     <div class="input-item me-auto ms-0">
                                         <button type="submit" class="custom-out-btn">

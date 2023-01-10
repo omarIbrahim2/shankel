@@ -20,6 +20,11 @@ class TeacherController extends Controller
         return view('web.Auth.teacherLogin');
       }
 
+      public function teacher(){
+
+          return view("web.Teachers.profile");
+      }
+
 
 
 }

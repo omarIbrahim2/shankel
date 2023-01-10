@@ -25,9 +25,19 @@ class School extends Authenticatable
         return $this->belongsTo(Area::class);
     }
 
+    public function eduSystem()
+    {
+        return $this->belongsTo(EduSystem::class);
+    }
+
     public function children()
     {
         return $this->hasMany(Child::class);
+    }
+
+    public function images()
+    {
+        return $this->hasMany(Image::class);
     }
 
     public function notifications()

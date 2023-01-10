@@ -24,7 +24,7 @@
                         <div class="left-side">
                             <div class="section-title">
                                 <h2 class="text-start">login to your account</h2>
-                                <p class="text-start p-0">Don,t have an account? <a href="#">sign up</a></p>
+                                <p class="text-start p-0">Don,t have an account? <a href="{{Route('teacher_register')}}">sign up</a></p>
                             </div>
                             <div class="contact-form black-contact-form">
                             @if (Session::has('status'))
@@ -32,13 +32,13 @@
                                     {{Session::get("status")}}
                                 </div>
                               @endif
-                                <form method="POST" action="">
+                                <form method="POST" action="{{route('login-teacher')}}">
                                     @csrf
                                     
                                     @include('web.inc.errors')
                                     <div class="input-item me-auto ms-0">
                                         
-                                        <input type="email" name="email" placeholder="{{trans('register.name')}}">
+                                        <input type="email" name="email" placeholder="{{trans('register.email')}}">
                                         <span>
                                             <i class="fa-regular fa-envelope"></i>
                                         </span>

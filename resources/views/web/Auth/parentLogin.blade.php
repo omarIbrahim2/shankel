@@ -25,7 +25,7 @@ Shankl | Parent Login
                         <div class="left-side">
                             <div class="section-title">
                                 <h2 class="text-start">login to your account</h2>
-                                <p class="text-start p-0">Don,t have an account? <a href="#">sign up</a></p>
+                                <p class="text-start p-0">Don,t have an account? <a href="{{Route('parent_register')}}">sign up</a></p>
                             </div>
                             <div class="contact-form black-contact-form">
                             @if (Session::has('status'))

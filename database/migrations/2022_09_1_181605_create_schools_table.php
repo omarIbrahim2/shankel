@@ -19,9 +19,11 @@ return new class extends Migration
             $table->string("email" , 100);
             $table->string("password" , 255);
             $table->foreignId("area_id")->constrained();
-            $table->string("image" , 255);
+            $table->string("image" , 255)->nullable();
             $table->string("phone" , 50);
-            $table->string("edu_system" , 100);
+            $table->foreignId("edu_systems_id")->constrained();
+            $table->date("establish_date");
+            $table->enum('type' , ['Center' , 'School']);
             $table->unsignedInteger("views" , false)->default(0);
             $table->boolean("status")->default(false);
             $table->unsignedInteger("free_seats" , false);
