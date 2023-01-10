@@ -1,12 +1,13 @@
 <?php
 
+use App\Models\Transaction;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LangController;
-use App\Http\Controllers\LocationCcontroller;
 use App\Http\Controllers\ParentController;
-use App\Models\Transaction;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\LocationCcontroller;
 
 
 //Lang Route
@@ -42,6 +43,11 @@ Route::middleware('lang')->group(function(){
     Route::get('login/parent' , [ParentController::class , 'showLogin'])->middleware('guest')->name('parent-login');
     Route::post('parent/login' , [AuthController::class , 'parentLogin'])->name('login-parent');
     Route::post('parent/register' , [AuthController::class , 'Parentregister'])->name('parent-register');
+      
+    // Teacher Authentication
+    Route::get('register/teacher' , [TeacherController::class , 'showRegister'])->middleware("guest")->name('teacher_register');
+    
+    Route::get('login/teacher' , [TeacherController::class , 'showLogin'])->middleware('guest')->name('teacher-login');
     
     //Parent Group
     Route::middleware('parent')->group(function(){

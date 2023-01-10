@@ -1,17 +1,22 @@
 @extends('web.layout')
 
 
+@section('title')
+    Shankl | Teacher Register
+@endsection
+
+
 @section('main')
 
 <main class="colored-section">
     <nav class="sub-nav">
         <div class="container">
             <ul class="justify-content-center">
-                <li><img src="{{asset('assets')}}/images/logo/Shankal.png" alt="shankal" /></li>
+                <li><img src="{{asset('assets')}}/images/logo/Shankal.png" alt="shankal"></li>
             </ul>
         </div>
     </nav>
-    <section class="section">
+    <section class="section ">
         <div class="inner">
             <div class="container">
                 <div class="row">
@@ -19,29 +24,22 @@
                         <div class="left-side">
                             <div class="section-title">
                                 <h2 class="text-start">{{trans('register.Sign Up')}}</h2>
-                                <p class="text-start p-0">
-                                    login to your account <a href="#">Click Here</a>
-                                </p>
+                                <p class="text-start p-0">login to your account <a href="#">Click Here</a></p>
                             </div>
                             <div class="contact-form black-contact-form">
-                                <form method="POST" action="{{route('parent-register')}}" enctype="multipart/form-data">
-                                    @csrf
-
+                                <form>
                                     <div class="input-item me-auto ms-0">
-                                        
-                                                                                
-                                        <input value="{{@old('name')}}" type="text" name="name" placeholder="{{trans('register.name')}}" />
+                                        <input value="{{@old('name')}}" type="text" name="name" placeholder="{{trans('register.name')}}">
                                         <span>
                                             <i class="fa-solid fa-user"></i>
                                         </span>
                                         @error('name')
                                         <p class="text-danger">{{$message}}</p>
-                                        @enderror 
+                                        @enderror
                                     </div>
                                     <div class="input-item me-auto ms-0">
                                         
-                                        
-                                        <input value="{{@old('email')}}" type="email" name="email" placeholder="{{trans('register.email')}}" />
+                                        <input value="{{@old('email')}}" type="email" name="email" placeholder="{{trans('register.email')}}">
                                         <span>
                                             <i class="fa-regular fa-envelope"></i>
                                         </span>
@@ -50,8 +48,7 @@
                                         @enderror
                                     </div>
                                     <div class="input-item me-auto ms-0">
-                                        
-                                        <input value="{{@old('phone')}}" type="tel" name="phone" placeholder="{{trans('register.phone')}}" />
+                                        <input value="{{@old('phone')}}" type="tel" name="phone" placeholder="{{trans('register.phone')}}">
                                         <span>
                                             <i class="fa-solid fa-phone"></i>
                                         </span>
@@ -71,7 +68,7 @@
                                             <i class="fa-solid fa-location-dot"></i>
                                         </span>
                                     </div>
-                                    
+
                                     <div class="input-item me-auto ms-0">
                                         
                                         <select name="area_id" id="areaSelect" class="form-select" aria-label="Default select example" required>
@@ -84,119 +81,54 @@
                                         <p class="text-danger">{{$message}}</p>
                                         @enderror
                                     </div>
+                                     
                                     <div class="input-item me-auto ms-0">
-                                        <label>Gender</label>
-                                        <div
-                                            class="d-flex align-items-center justify-content-start"
-                                        >
-                                            <div
-                                                class="d-flex align-items-center justify-content-start"
-                                            >
-                                                <label for="male">Male</label>
-                                                <input
-                                                    type="radio"
-                                                    value="male"
-                                                    name="gender"
-                                                    class="not-hidden ms-2"
-                                                    id="male"
-                                                />
-                                            </div>
-                                            <div
-                                                class="d-flex align-items-center justify-content-start ms-2"
-                                            >
-                                                <label for="female">Female</label>
-                                                <input
-                                                    type="radio"
-                                                    value="female "
-                                                    name="gender"
-                                                    class="not-hidden ms-2"
-                                                    id="female"
-                                                />
-                                            </div>
-                                           
-                                        </div>
-                                        @error('gender')
+                                        <input value="{{@old('field')}}" type="text" name="field" placeholder="field">
+                                        <span>
+                                            <i class="fa-solid fa-book-open"></i>
+                                        </span>
+                                        @error('field')
                                         <p class="text-danger">{{$message}}</p>
                                         @enderror
                                     </div>
-                                    <div class="upload-avatar text-start">
-                                        <input
-                                            type="file"
-                                            name="image"
-                                            id="teacher-avatar"
-                                            multiple
-                                        />
-                                        <label class="btn-custom" for="teacher-avatar"
-                                            >Upload New Photo</label
-                                        >
-                                        <div class="files-names"></div>
-                                        @error('image')
-                                                <p class="text-danger">{{$message}}</p>
-                                        @enderror
-                                    </div>
                                     <div class="input-item me-auto ms-0">
-                                        <input
-                                            type="password"
-                                            name="password"
-                                            placeholder="{{trans('register.password')}}"
-                                        />
+                                       
+                                        <input value="{{@old('password')}}" type="password" name="password" placeholder="{{trans('register.password')}}">
                                         <span>
                                             <i class="fa-solid fa-lock"></i>
                                         </span>
                                         <span class="second show-passowrd">
-                                            <i
-                                                class="fa-regular fa-eye-slash fa-flip-horizontal"
-                                            ></i>
+                                            <i class="fa-regular fa-eye-slash fa-flip-horizontal"></i>
                                         </span>
                                         @error('password')
-                                                <p class="text-danger">{{$message}}</p>
+                                        <p class="text-danger">{{$message}}</p>
                                         @enderror
+
                                     </div>
                                     <div class="input-item me-auto ms-0">
-                                        <input
-                                            type="password"
-                                            name="password_confirmation"
-                                            placeholder="{{trans('register.confirm_password')}}"
-                                        />
+                                        <input value="{{@old('confirmPassword')}}" type="password" name="confirmPassword" placeholder="{{trans('register.confirm_password')}}">
                                         <span>
                                             <i class="fa-solid fa-lock"></i>
                                         </span>
                                         <span class="second show-passowrd">
-                                            <i
-                                                class="fa-regular fa-eye-slash fa-flip-horizontal"
-                                            ></i>
+                                            <i class="fa-regular fa-eye-slash fa-flip-horizontal"></i>
                                         </span>
+                                        
                                     </div>
-
+                                    
                                     <div class="input-item me-auto ms-0">
                                         <button type="submit" class="custom-out-btn">
                                             Sign Up
                                         </button>
                                     </div>
+                                    
                                 </form>
-                                <div class="social-auth">
-                                    <h3>Sign Up with social media</h3>
-                                    <div class="social-btns">
-                                        <a href="#" class="btn-custom facebook">
-                                            <span class="icon"
-                                                ><i class="fa-brands fa-facebook-f"></i
-                                            ></span>
-                                            <span>{{trans('register.facebook')}}</span>
-                                        </a>
-                                        <a href="#" class="btn-custom gmail">
-                                            <span class="icon"
-                                                ><i class="fa-regular fa-envelope"></i
-                                            ></span>
-                                            <span>{{trans('register.gmail')}}</span>
-                                        </a>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-4 col-12">
                         <div class="auth-logo">
-                            <img src="{{asset('assets')}}/images/logo/Shanklbig.png" alt="shankal" />
+                            <img src="{{asset('assets')}}/images/logo/Shanklbig.png" alt="shankal">
                         </div>
                     </div>
                 </div>
@@ -206,6 +138,7 @@
 </main>
     
 @endsection
+
 
 @section('scripts')
    

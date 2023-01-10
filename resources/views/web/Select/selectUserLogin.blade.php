@@ -101,14 +101,14 @@
                             <h3>Parent</h3>
                         </div>
                     </a>
-                    <a href="#" class="user-level">
+                    {{-- <a href="#" class="user-level">
                         <div class="level-img">
                             <img src="{{asset("assets")}}/images/user/Vector.png" alt="level">
                         </div>
                         <div class="level-name">
                             <h3>Supplier</h3>
                         </div>
-                    </a>
+                    </a> --}}
                     <a href="#" class="user-level">
                         <div class="level-img">
                             <img src="{{asset("assets")}}/images/user/Vector2.png" alt="level">
@@ -117,7 +117,7 @@
                             <h3>school</h3>
                         </div>
                     </a>
-                    <a href="#" class="user-level">
+                    <a href="{{route('teacher-login')}}" class="user-level">
                         <div class="level-img">
                             <img src="{{asset("assets")}}/images/user/teach.png" alt="level">
                         </div>

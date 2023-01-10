@@ -115,7 +115,7 @@
                             <h3>school</h3>
                         </div>
                     </a>
-                    <a href="#" class="user-level">
+                    <a href="{{route('teacher_register')}}" class="user-level">
                         <div class="level-img">
                             <img src="assets/images/user/teach.png" alt="level">
                         </div>

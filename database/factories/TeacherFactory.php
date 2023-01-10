@@ -22,6 +22,7 @@ class TeacherFactory extends Factory
             'name' => $this->faker->name(),
             'email' => $this->faker->safeEmail(),
             'password' => $this->faker->password(),
+            'field' => $this->faker->name(),
             'phone' => $this->faker->phoneNumber(),
             'area_id' => $areas[rand(0 , count($areas) - 1)],
         ];

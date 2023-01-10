@@ -19,9 +19,11 @@ return new class extends Migration
             $table->string("email" , 100);
             $table->string("password" , 255);
             $table->foreignId("area_id")->constrained();
+            $table->string("field" , 255);
             $table->string("image" , 255)->nullable();
+            $table->string('CV' , 255)->nullable();
             $table->string("phone" , 50);
-            $table->unsignedInteger("views" , false)->default(0);
+            $table->unsignedInteger("views" , false)->nullable()->default(0);
             $table->boolean("status")->default(false);
             $table->timestamps();
         });
