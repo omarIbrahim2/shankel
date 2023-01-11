@@ -19,6 +19,11 @@ class SchoolController extends Controller
     return view("web.Auth.schoolRegister")->with($data);
   }
 
+  public function showLogin(){
+     
+    return view("web.Auth.schoolLogin");
+  }
+
 
   public function school(){
 

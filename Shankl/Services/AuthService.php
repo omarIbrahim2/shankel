@@ -26,9 +26,13 @@ class AuthService{
     }
 
 
-    public function logoutUser($guard){
+    public function logoutUser(Request $request ,  $guard){
 
         Auth::guard($guard)->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        
+
     }
 
 
@@ -47,6 +51,7 @@ class AuthService{
   
         }
 
+
         RateLimiter::clear($this->throttleKey($request->email , $request->ip));
 
 
@@ -63,7 +68,8 @@ class AuthService{
     public function ensureIsNotRateLimited(Request $request){
 
         if ( ! RateLimiter::tooManyAttempts($this->throttleKey($request->email , $request->ip) , 5)) {
-             return;
+            
+            return;
         }
 
         event(new Lockout($request));

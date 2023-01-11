@@ -19,6 +19,7 @@ use Shankl\Adapters\FileServiceAdapter;
 use App\Http\Requests\ParentRegisterReq;
 use App\Http\Requests\SchoolRegisterReq;
 use App\Http\Requests\TeacherRegisterReq;
+use App\Models\Teacher;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Routing\RoutingServiceProvider;
@@ -84,16 +85,16 @@ class AuthController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->route(RouteServiceProvider::PARENT);
+        return redirect()->intended(RouteServiceProvider::PARENT);
     }
 
 
 
 
-    public function logout($guard)
+    public function logout(Request $request , $guard)
     {
         
-        $this->authService->logoutUser($guard);
+        $this->authService->logoutUser( $request, $guard);
 
         
         return redirect()->route('home');
@@ -132,7 +133,11 @@ class AuthController extends Controller
 
     public function teacherLogin(Request $request)
     {
-        $this->authService->LoginUser('teacher' , $request);
+       // $this->authService->LoginUser('teacher' , $request);
+       
+        dd(Auth::guard('teacher')->attempt($request->only('email' , 'password')));
+         
+        
 
         $request->session()->regenerate();
 
@@ -179,6 +184,7 @@ class AuthController extends Controller
     public function schoolLogin(Request $request)
     {
 
+      // dd(Auth::guard('school')->attempt($request->only('email' , 'password')));
         $this->authService->LoginUser('school', $request);
 
         $request->session()->regenerate();
