@@ -133,15 +133,14 @@ class AuthController extends Controller
 
     public function teacherLogin(Request $request)
     {
-       // $this->authService->LoginUser('teacher' , $request);
-       
-        dd(Auth::guard('teacher')->attempt($request->only('email' , 'password')));
-         
+
         
+        $this->authService->LoginUser('teacher', $request);
+     
 
         $request->session()->regenerate();
 
-        return redirect()->route(RouteServiceProvider::TEACHER);
+        return redirect()->intended(RouteServiceProvider::TEACHER);
     }
 
     //School Authentication
@@ -177,7 +176,7 @@ class AuthController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->route(RouteServiceProvider::SCHOOL); 
+        return redirect()->intended(RouteServiceProvider::SCHOOL); 
     }
 
 
@@ -189,7 +188,7 @@ class AuthController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->route(RouteServiceProvider::SCHOOL);
+        return redirect()->intended(RouteServiceProvider::SCHOOL);
     }
 
 

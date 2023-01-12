@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Shankl\Interfaces\LocationRepoInterface;
 
 class TeacherController extends Controller
@@ -21,7 +22,7 @@ class TeacherController extends Controller
       }
 
       public function teacher(){
-
+           
           return view("web.Teachers.profile");
       }
 

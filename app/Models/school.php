@@ -4,14 +4,16 @@ namespace App\Models;
 
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Illuminate\Auth\Authenticatable as AuthAuthenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class School extends Authenticatable
+class School extends Authenticatable 
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable , AuthAuthenticatable;
 
     protected $guarded = ['id', 'created_at','updated_at'];
 

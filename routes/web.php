@@ -51,8 +51,8 @@ Route::middleware('lang')->group(function(){
     // Teacher Authentication
     Route::get('register/teacher' , [TeacherController::class , 'showRegister'])->middleware("guest")->name('teacher_register');
     Route::get('login/teacher' , [TeacherController::class , 'showLogin'])->middleware('guest')->name('teacher-login');
-    Route::post('teacher/register' , [AuthController::class , 'TeacherRegister'])->middleware('guest')->name('teacher-register');
-    Route::post('teacher/login' , [AuthController::class , 'teacherLogin'])->middleware('guest')->name('login-teacher');
+    Route::post('teacher/register' , [AuthController::class , 'TeacherRegister'])->name('teacher-register');
+    Route::post('teacher/login' , [AuthController::class , 'teacherLogin'])->name('login-teacher');
  
     // School Authentication
     Route::get('register/school' , [SchoolController::class , 'showRegister'])->middleware("guest")->name('school_register');

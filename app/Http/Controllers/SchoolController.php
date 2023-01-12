@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Shankl\Interfaces\EduSystemRepoInterface;
 use Shankl\Interfaces\GradeRepoInterface;
 use Shankl\Interfaces\LocationRepoInterface;
@@ -26,7 +27,7 @@ class SchoolController extends Controller
 
 
   public function school(){
-
+    
     return view("web.Schools.profile");
   }
 }

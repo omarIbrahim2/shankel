@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Teacher;
+
 use App\Providers\RouteServiceProvider;
 
 return [
@@ -90,7 +90,7 @@ return [
 
         'teachers' => [
             'driver' => 'eloquent',
-             'model' => Teacher::class,
+             'model' => App\Models\Teacher::class,
         ],
 
         'schools' => [

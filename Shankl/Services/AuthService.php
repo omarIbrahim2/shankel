@@ -37,6 +37,11 @@ class AuthService{
 
 
     public function LoginUser($guard , Request $request){
+
+        $request->validate([
+           "email" => "required|email",
+           "password" => 'required',
+        ]);
         $this->ensureIsNotRateLimited($request);
 
        // dd(Auth::guard($guard));
