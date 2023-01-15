@@ -24,4 +24,12 @@ class ParentRepository implements UserReboInterface{
       return $currentParent;
     }
 
+    public function update($data){
+
+        $parent =  $this->find($data['id']);
+
+       return $parent->update($data);
+
+    }
+
 }

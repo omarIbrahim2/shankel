@@ -9,7 +9,7 @@
 <nav class="navbar navbar-expand-lg navbar-light ">
     <div class="container">
         
-        <a class="navbar-brand" href="{{route('home')}}">
+        <a class="navbar-brand" href="{{route('parent-profile')}}">
             <img src="assets/images/logo/logo.png" alt="shankal">
         </a>
 

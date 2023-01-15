@@ -54,4 +54,9 @@ class ParentController extends Controller
 
       return view('web.Auth.parentLogin');
     }
+
+    public function showProfile(){
+      
+      return view("web.Parents.editProfile");
+    }
 }

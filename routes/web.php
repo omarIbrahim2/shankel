@@ -68,6 +68,7 @@ Route::middleware('lang')->group(function(){
     Route::middleware('parent')->group(function(){
         Route::get('/parent' , [ParentController::class , 'parent'])->name('parent')->middleware('child');
         Route::get('add/child/{parentId}' , [ParentController::class , 'addChild'])->name('add-child');
+        Route::get('editProfile' , [ParentController::class , 'showProfile'])->name('parent-profile');
         Route::post('add/child' , [ParentController::class , 'createChild'])->name('create-child');
     });
     Route::get('/dashboard' , [AdminController::class , 'dashboard']);
