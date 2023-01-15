@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -9,7 +10,7 @@ use App\Http\Controllers\ParentController;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\LocationCcontroller;
-
+use Symfony\Component\Routing\Route as RoutingRoute;
 
 //Lang Route
 Route::get('set/lang/{lang}' , [LangController::class , 'set'])->name("lang");
@@ -60,11 +61,23 @@ Route::middleware('lang')->group(function(){
     Route::post('school/register' , [AuthController::class , 'SchoolRegister'])->name('school-register');
     Route::post('school/login' , [AuthController::class , 'schoolLogin'])->name('login-school');
     
+    // Amin Auth
+    Route::get('/login' , [AdminController::class , 'showLogin'])->name('admin-login');
+    Route::post('admin/login' , [AuthController::class , 'AdminLogin'])->name('login-admin');
     //Parent Group
     Route::middleware('parent')->group(function(){
         Route::get('/parent' , [ParentController::class , 'parent'])->name('parent')->middleware('child');
         Route::get('add/child/{parentId}' , [ParentController::class , 'addChild'])->name('add-child');
         Route::post('add/child' , [ParentController::class , 'createChild'])->name('create-child');
+    });
+    Route::get('/dashboard' , [AdminController::class , 'dashboard']);
+
+    Route::prefix('dashboard')->middleware('auth')->group(function(){ 
+        
+        
+            
+
+
     });
     
     //teacher Group

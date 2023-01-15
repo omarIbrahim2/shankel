@@ -29,7 +29,7 @@ class Logout
              
             return $next($request);
  
-         }elseif( Auth::guard("supplier")->check()) {
+         }elseif( Auth::guard("web")->check()) {
              
             return $next($request);
  

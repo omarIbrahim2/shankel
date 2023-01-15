@@ -2,12 +2,12 @@
 
 
 @section('title')
-    Shankl | Teacher Login
+    Shankl | Admin Login
 @endsection
 
 
 @section('main')
-
+    
 <main class="colored-section">
     <nav class="sub-nav">
         <div class="container">
@@ -23,8 +23,7 @@
                     <div class="col-lg-6 col-md-8 col-12">
                         <div class="left-side">
                             <div class="section-title">
-                                <h2 class="text-start">login to your account</h2>
-                                <p class="text-start p-0">Don,t have an account? <a href="{{Route('teacher_register')}}">sign up</a></p>
+                                <h2 class="text-start">login to Shankl</h2>
                             </div>
                             <div class="contact-form black-contact-form">
                             @if (Session::has('status'))
@@ -32,20 +31,20 @@
                                     {{Session::get("status")}}
                                 </div>
                               @endif
-                                <form method="POST" action="{{route('login-teacher')}}">
+                                <form method="POST" action="{{route('login-admin')}}">
                                     @csrf
                                     
                                     @include('web.inc.errors')
                                     <div class="input-item me-auto ms-0">
                                         
-                                        <input type="email" name="email" placeholder="{{trans('register.email')}}">
+                                        <input type="email" name="email" placeholder="email">
                                         <span>
                                             <i class="fa-regular fa-envelope"></i>
                                         </span>
                                     </div>
                                     
                                     <div class="input-item me-auto ms-0">
-                                        <input type="password" name="password" placeholder="{{trans('register.password')}}">
+                                        <input type="password" name="password" placeholder="password">
                                         <span>
                                             <i class="fa-solid fa-lock"></i>
                                         </span>
@@ -71,6 +70,7 @@
                                     </div>
                                     
                                 </form>
+                                
                             </div>
                         </div>
                     </div>
@@ -83,6 +83,5 @@
             </div>
         </div>
     </section>
-</main> 
-    
+</main>
 @endsection

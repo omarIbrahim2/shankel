@@ -27,7 +27,7 @@ class AuthService{
 
 
     public function logoutUser(Request $request ,  $guard){
-
+       
         Auth::guard($guard)->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
@@ -36,17 +36,17 @@ class AuthService{
     }
 
 
-    public function LoginUser($guard , Request $request){
+    public function LoginUser($guard , Request $request , $credentials){
 
         $request->validate([
            "email" => "required|email",
            "password" => 'required',
         ]);
         $this->ensureIsNotRateLimited($request);
-
+         //dd($credentials);
        // dd(Auth::guard($guard));
         // dd(Auth::guard("teacher")->attempt(['email'=> $request->email , 'password' => $request->password , 'status' => 1]));
-        if (! Auth::guard($guard)->attempt(['email'=> $request->email , 'password' => $request->password , 'status' => true])) {
+        if (!Auth::guard($guard)->attempt($credentials)) {
                  
             RateLimiter::hit($this->throttleKey($request->email , $request->ip));
             
@@ -60,6 +60,23 @@ class AuthService{
         RateLimiter::clear($this->throttleKey($request->email , $request->ip));
 
 
+    }
+
+
+    public function AdminCredentials(Request $request){
+
+        return [
+            'email' => $request->email,
+            'password' => $request->password
+        ];
+    }
+
+    public function Credentials(Request $request){
+        return [
+            'email' => $request->email,
+            'password' => $request->password,
+            'status' => true,
+        ];
     }
 
 

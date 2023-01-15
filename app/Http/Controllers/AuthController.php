@@ -80,8 +80,8 @@ class AuthController extends Controller
 
     public function parentLogin(Request $request)
     {
-
-        $this->authService->LoginUser('parent', $request);
+         $cred = $this->authService->Credentials($request);
+        $this->authService->LoginUser('parent', $request , $cred);
 
         $request->session()->regenerate();
 
@@ -108,7 +108,7 @@ class AuthController extends Controller
 
         $teacherObj = EntitiesFactory::createEntity($request->except('image'), 'teacher');
 
-        $teacherObj->setPassword($request->Password);
+        $teacherObj->setPassword($request->password);
         $teacherObj->changeStatus();
         if ($request->hasFile('image')) {
 
@@ -134,8 +134,8 @@ class AuthController extends Controller
     public function teacherLogin(Request $request)
     {
 
-        
-        $this->authService->LoginUser('teacher', $request);
+        $cred =$this->authService->Credentials($request);
+        $this->authService->LoginUser('teacher', $request , $cred);
      
 
         $request->session()->regenerate();
@@ -184,11 +184,27 @@ class AuthController extends Controller
     {
 
       // dd(Auth::guard('school')->attempt($request->only('email' , 'password')));
-        $this->authService->LoginUser('school', $request);
+        $cred = $this->authService->Credentials($request);
+        $this->authService->LoginUser('school', $request , $cred);
 
         $request->session()->regenerate();
 
         return redirect()->intended(RouteServiceProvider::SCHOOL);
+    }
+
+
+    //Admin Auth
+
+    public function AdminLogin(Request $request){
+        $cred = $this->authService->AdminCredentials($request);
+       
+        $this->authService->LoginUser('web' , $request , $cred);
+
+        $request->session()->regenerate();
+
+        return redirect()->intended(RouteServiceProvider::ADMIN);
+
+
     }
 
 

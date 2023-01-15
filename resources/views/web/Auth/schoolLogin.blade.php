@@ -71,19 +71,7 @@
                                     </div>
                                     
                                 </form>
-                                <div class="social-auth">
-                                    <h3>login with social media</h3>
-                                    <div class="social-btns">
-                                        <a href="#" class="btn-custom facebook">
-                                            <span class="icon"><i class="fa-brands fa-facebook-f"></i></span>
-                                            <span>Facebook</span>
-                                        </a>
-                                        <a href="#" class="btn-custom gmail">
-                                            <span class="icon"><i class="fa-regular fa-envelope"></i></span>
-                                            <span>gmail</span>
-                                        </a>
-                                    </div>
-                                </div>
+                              
                             </div>
                         </div>
                     </div>
