@@ -1,4 +1,10 @@
 // home slider
+// $(document).on("ready",function(){
+//   if(localStorage.getItem("parentPhoto")){
+//     document.querySelector(".files-names").textContent=localStorage.getItem("parentPhoto")
+//     console.log("ready")
+//   }
+// })
 
 var swiper = new Swiper(".home-slider .mySwiper", {
     loop:true,
@@ -206,8 +212,13 @@ $(".school-type input[type='radio']").on('change',function(){
 })
 
 
-$("input[type='file']").on('change',function(){
-  for(var i=0;i<$(this)[0].files.length;i++){
-    document.querySelector(".files-names").textContent+=`${$(this)[0].files[i].name} , `
-  }
-})
+// $("input[type='file']").on('change',function(){
+//   var photos=[]
+//   for(var i=0;i<$(this)[0].files.length;i++){
+//     photos.push($(this)[0].files[i].name)
+//     // document.querySelector(".files-names").textContent+=`${$(this)[0].files[i].name} , `
+//   }
+//   localStorage.setItem("parentPhoto",photos.join(""));
+//   document.querySelector(".files-names").textContent=localStorage.getItem("parentPhoto")
+// })
+

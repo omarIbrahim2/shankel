@@ -19,6 +19,7 @@
     12-partners
     13-contact us
     14-footer
+    15-school photo album
 */
 /* **************************** */
 
@@ -61,7 +62,8 @@ button {
   border: none;
 }
 
-input,.form-select {
+input,
+.form-select {
   outline: none;
   box-shadow: none;
   border: none;
@@ -72,10 +74,12 @@ input,.form-select {
   background-color: transparent;
   width: 100%;
 }
-option{
+
+option {
   color: var(--main-color);
 
 }
+
 input::placeholder {
   color: var(--main-color);
   text-transform: capitalize;
@@ -85,9 +89,11 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   background: none;
   opacity: 0;
 }
-input[type="file"]{
+
+input[type="file"] {
   position: absolute;
 }
+
 select {
   background: transparent;
   border: none;
@@ -175,17 +181,21 @@ input[type="file"] {
   font-size: 16px;
   margin: 0 4px;
 }
-.dropdown-menu li .dropdown-item{
+
+.dropdown-menu li .dropdown-item {
   color: #fff;
   border-bottom: 1px solid #fff;
 }
-.dropdown-menu li:last-of-type .dropdown-item{
+
+.dropdown-menu li:last-of-type .dropdown-item {
   border: none;
 }
-.dropdown-menu{
+
+.dropdown-menu {
   background-color: var(--main-color);
   padding: 0;
 }
+
 .custom-out-btn {
   color: var(--main-color);
   border-radius: 3px;
@@ -205,7 +215,8 @@ input[type="file"] {
   text-transform: capitalize;
   background-color: transparent;
 }
-.lang-btn{
+
+.lang-btn {
   margin-left: 16px;
   padding: 8px 8px;
   border-radius: 50%;
@@ -214,6 +225,7 @@ input[type="file"] {
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
 }
+
 .custom-out-btn:hover {
   color: #fff;
   background-color: var(--main-color);
@@ -329,11 +341,15 @@ input[type="file"] {
   height: 50px;
   cursor: zoom-out;
 }
-.input-item{
+
+.input-item {
   position: relative;
 }
+
 .black-contact-form input,
- .file-input ,.black-contact-form select,.black-contact-form option{
+.file-input,
+.black-contact-form select,
+.black-contact-form option {
   border-bottom: 1px solid var(--black-input-color);
   color: #000;
   width: 100%;
@@ -1776,10 +1792,12 @@ main {
 .upload-avatar {
   text-align: center;
   margin-bottom: 16px;
+
 }
 
 .upload-avatar label {
   width: auto;
+  cursor: pointer;
 }
 
 .avatar-btns .custom-out-btn,
@@ -1836,28 +1854,35 @@ main {
 .custom-save {
   max-width: unset;
 }
-.sub-btns{
+
+.sub-btns {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.sub-btns a,.sub-btns button{
+
+.sub-btns a,
+.sub-btns button {
   margin: 0 8px;
 }
-.provider-description{
+
+.provider-description {
   text-align: center;
   margin-top: 32px;
 }
-.provider-description h4{
+
+.provider-description h4 {
   font-size: 18px;
   color: var(--text-color);
 }
-.provider-description p{
+
+.provider-description p {
   font-size: 14px;
   color: var(--counter-color)
 }
+
 /* services booking */
-.service-item{
+.service-item {
   box-shadow: 0px 4px 4px 0px #00000040;
   border-radius: 10px;
   -webkit-border-radius: 10px;
@@ -1866,33 +1891,40 @@ main {
   -o-border-radius: 10px;
   margin-bottom: 64px;
 }
-.service-item-img img{
+
+.service-item-img img {
   max-width: 100%;
 }
-.service-item-data{
+
+.service-item-data {
   display: flex;
   align-items: flex-start;
   justify-content: center;
   flex-wrap: wrap;
-  padding: 16px ;
+  padding: 16px;
 }
-.service-item-data .service-booking{
+
+.service-item-data .service-booking {
   width: 30%;
   margin-top: 16px;
   text-align: center;
 }
-.service-item-data .service-text{
+
+.service-item-data .service-text {
   width: 70%;
 }
-.tags{
+
+.tags {
   margin-bottom: 16px;
 }
-.tags a{
+
+.tags a {
   margin: 0 16px 0 0;
   font-weight: 700;
   font-size: 18px;
 }
-.tags .price{
+
+.tags .price {
   color: var(--main-color);
   transition: var(--trans);
   -webkit-transition: var(--trans);
@@ -1900,36 +1932,42 @@ main {
   -ms-transition: var(--trans);
   -o-transition: var(--trans);
 }
-.tags .price:hover{
+
+.tags .price:hover {
   color: var(--active-color);
 }
 
-.service-item-title h3{
+.service-item-title h3 {
   font-size: 22px;
   color: var(--main-color);
 }
+
 /* ***************** */
 /* teacher-service */
-.avatar-img p{
+.avatar-img p {
   color: var(--main-color);
 }
-.avatar-container{
+
+.avatar-container {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.teacher-banner{
+
+.teacher-banner {
   background-image: url('../images/banner/teacher-banner.webp');
   background-position: center center;
   background-size: cover;
   height: 50vh;
 }
-.teacher-left-side{
+
+.teacher-left-side {
   position: relative;
   bottom: 100px;
-  border: 0!important;
+  border: 0 !important;
 }
-.teacher-left-side::after{
+
+.teacher-left-side::after {
   content: "";
   position: absolute;
   height: inherit;
@@ -1938,24 +1976,30 @@ main {
   right: 0;
   top: 100px;
 }
-.teacher-left-side .btn-custom{
+
+.teacher-left-side .btn-custom {
   width: 50%;
 }
-.teacher-left-side .teach-title h3{
+
+.teacher-left-side .teach-title h3 {
   color: var(--main-color);
   font-size: 26px;
 }
-.teacher-left-side .add-video{
+
+.teacher-left-side .add-video {
   text-align: center;
 }
-.teacher-left-side .add-video a{
+
+.teacher-left-side .add-video a {
   color: var(--counter-color);
 }
+
 .teach-socials {
   justify-content: center;
   margin-bottom: 32px;
 }
-.teach-socials div{
+
+.teach-socials div {
   border: 1px solid var(--counter-color);
   width: 40px;
   height: 40px;
@@ -1967,54 +2011,63 @@ main {
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
 }
-.teacher-service{
+
+.teacher-service {
   text-align: center;
   padding: 16px;
 }
-.teacher-service img{
+
+.teacher-service img {
   max-width: 100%;
 }
-.teacher-service h4{
+
+.teacher-service h4 {
   margin: 16px 0 8px;
   color: var(--text-color);
 }
-.teacher-service p{
+
+.teacher-service p {
   margin: 0 0 16px;
   color: var(--text-color);
 }
+
 /* ***************** */
 /* free videos */
-.free-title{
+.free-title {
   display: flex;
   align-items: center;
   justify-content: flex-start;
 }
-.free-title h3{
+
+.free-title h3 {
   margin: 0 16px 0 0;
 }
+
 /* ***************** */
 /* payment */
-.payment-button{
+.payment-button {
   width: 100%;
   background-color: #fff;
-  padding:16px;
+  padding: 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border:1px solid var(--main-color);
+  border: 1px solid var(--main-color);
   border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
 }
-.payment-button span{
+
+.payment-button span {
   position: static;
-  color: var(--main-color)!important;
+  color: var(--main-color) !important;
 }
+
 /* ****************** */
 /* teacher */
-.teacher-item{
+.teacher-item {
   padding: 32px;
   box-shadow: 0px 8px 8px 0px #00000040;
   background-color: #fff;
@@ -2026,26 +2079,32 @@ main {
   -o-border-radius: 10px;
   margin-bottom: 64px;
 }
-.teacher-item h3{
+
+.teacher-item h3 {
   color: var(--title-color);
   margin-top: 32px;
 }
-.teacher-item h4{
+
+.teacher-item h4 {
   color: var(--text-color);
   font-size: 18px;
   margin-bottom: 16px;
 }
-.teacher-item p{
+
+.teacher-item p {
   color: var(--text-color);
 }
-.teacher-item-social{
+
+.teacher-item-social {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.teacher-item-social img{
+
+.teacher-item-social img {
   width: 50px;
 }
+
 /**********************/
 /* ************* */
 /* animations */
@@ -2086,11 +2145,12 @@ main {
   text-transform: capitalize;
 }
 
-.form-select:focus{
+.form-select:focus {
   border: none;
   box-shadow: none;
 }
-.form-select{
+
+.form-select {
   border-radius: 0;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
@@ -2098,48 +2158,55 @@ main {
   -o-border-radius: 0;
 }
 
-.radio-checked{
+.radio-checked {
   background-color: var(--main-color);
   color: var(--section-color);
 }
 
-.counter{
+.counter {
   color: #fff;
 }
-.counter h4{
+
+.counter h4 {
   text-transform: capitalize;
   font-size: 26px;
 }
 
-.counter p{
+.counter p {
   font-size: 32px;
 }
+
 .marquee {
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
 }
-.marquee a{
+
+.marquee a {
   color: #fff;
 }
+
 .marquee:hover .marquee__item {
   -webkit-animation-play-state: paused;
-          animation-play-state: paused;
+  animation-play-state: paused;
 }
+
 .marquee__seperator {
   margin: 0 2rem;
 }
+
 .marquee__item {
   display: inline-block;
   will-change: transform;
   -webkit-animation: marquee 25s linear infinite;
-          animation: marquee 25s linear infinite;
+  animation: marquee 25s linear infinite;
 }
 
 @-webkit-keyframes marquee {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-100%);
   }
@@ -2149,74 +2216,113 @@ main {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-100%);
   }
 }
+
 .marquee {
   background-color: var(--main-color);
   padding: 1rem 0;
   color: #fff;
 }
-.ads .row{
-  margin: 32px 0!important;
+
+.ads .row {
+  margin: 32px 0 !important;
 }
-.ads .row:nth-of-type(even){
+
+.ads .row:nth-of-type(even) {
   flex-direction: row-reverse;
-  
+
 }
-.colored-ad{
+
+.colored-ad {
   background-color: var(--main-color);
 }
 
-.colored-ad .ads-item{
+.colored-ad .ads-item {
   padding: 64px;
   color: #fff;
 }
-.colored-ad .ads-item p{
+
+.colored-ad .ads-item p {
   margin-top: 32px;
 }
-.colored-ad .ads-item h4{
+
+.colored-ad .ads-item h4 {
   font-size: 36px;
 }
-.ads-item img{
+
+.ads-item img {
   width: 100%;
   object-fit: cover;
 }
 
-.revews{
+.revews {
   border: 1px solid var(--main-color);
   padding: 32px;
 }
-.revews .review-head{
+
+.revews .review-head {
   margin-bottom: 16px;
 }
-.revews .review-head h5{
+
+.revews .review-head h5 {
   color: var(--main-color);
   text-transform: capitalize;
   margin-bottom: 4px;
 }
-.revews .review-body{
+
+.revews .review-body {
   padding-inline-start: 16px;
 }
-.reviews-item{
+
+.reviews-item {
   border-bottom: 1px solid var(--main-color);
   margin-bottom: 16px;
   padding-bottom: 16px;
 }
-.add-review{
+
+.add-review {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   margin-bottom: 16px;
   margin-top: 64px;
 }
-.add-review input{
+
+.add-review input {
   width: 70%;
-  padding: 0!important;
+  padding: 0 !important;
 
 }
 
-.mt-32{
+.mt-32 {
   margin-top: 32px;
+}
+
+/* school photo album */
+.modal-dialog {
+  max-width: 80%;
+}
+
+.deletePhoto {
+  font-size: 28px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border-radius: 50%;
+  padding: 16px;
+  background-color: #fff;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.deletePhoto .fa-xmark{
+  color: var(--active-color)!important;
+
 }

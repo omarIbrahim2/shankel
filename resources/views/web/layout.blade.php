@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="{{asset('assets')}}/css/responsive.css">
     <link rel="stylesheet" href="{{asset('assets')}}/css/ar.css">
     <link rel="stylesheet" href="{{asset('assets')}}/css/toastr.min.css">
+    @livewireStyles
     @yield('styles')
 </head>
 
@@ -72,6 +73,7 @@
     <script src="{{asset('assets')}}/js/script.js"></script>
     <script src="{{asset('assets')}}/js/toastr.min.js"></script>
     <script src="{{asset('assets')}}/js/toastr.js.map"></script>
+    @livewireScripts
     @yield('scripts')
 </body>
 

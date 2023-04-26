@@ -21,7 +21,7 @@ class FileService implements FileServiceInterface{
 
 
     public function DeleteFile($file){
-         Storage::delete($file);
+        return Storage::delete($file);
     }
 
     public function setFile($file){

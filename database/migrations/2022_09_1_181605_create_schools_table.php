@@ -21,6 +21,13 @@ return new class extends Migration
             $table->foreignId("area_id")->constrained();
             $table->string("image" , 255)->nullable();
             $table->string("phone" , 50);
+            $table->text('desc')->nullable();
+            $table->text('mission')->nullable();
+            $table->text('vision')->nullable();
+            $table->string('facebook' , 255)->nullable();
+            $table->string('twitter' , 255)->nullable();
+            $table->string('linkedin' , 255)->nullable();
+            
             $table->foreignId("edu_systems_id")->constrained();
             $table->date("establish_date");
             $table->enum('type' , ['Center' , 'School']);

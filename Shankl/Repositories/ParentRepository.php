@@ -3,6 +3,7 @@
 namespace Shankl\Repositories;
 
 use App\Models\Parentt;
+use Illuminate\Support\Facades\Auth;
 use Shankl\Interfaces\UserReboInterface;
 
 class ParentRepository implements UserReboInterface{
@@ -30,6 +31,13 @@ class ParentRepository implements UserReboInterface{
 
        return $parent->update($data);
 
+    }
+
+    public function ParentChilds(){
+         
+       $parentUser =  Auth::guard('parent')->user();
+        
+       return $parentUser->children;
     }
 
 }

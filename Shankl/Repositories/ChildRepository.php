@@ -14,4 +14,13 @@ class ChildRepository implements ChildRepoInterface{
     {
        return child::findOrFail($childId);
     }
+
+    public function updateChild($childId , $data){
+ 
+        $child = $this->getChild($childId);
+          
+        
+        return $child->update($data);
+
+    }
 }

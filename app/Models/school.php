@@ -5,6 +5,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Auth\Authenticatable as AuthAuthenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -71,6 +72,25 @@ class School extends Authenticatable
     public function transactions()
     {
         return $this->morphMany(Transaction::class , 'transactionable');
+    }
+
+
+    public function image(): Attribute
+    {
+
+        return new Attribute(
+            get: function($value){
+        
+               if ($value == null) {
+                   
+                 return "assets/images/logo/user.png";
+
+                 
+               }
+        
+               return "uploads/".$value;
+            }
+        );
     }
 
 }

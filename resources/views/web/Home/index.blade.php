@@ -24,7 +24,7 @@
         
                      
             @Notcustom_auth("parent")
-            <form id="outForm" action="{{ route('parent-logout', 'parent') }}" method="post">
+            <form id="outForm" action="{{ route('logout', 'parent') }}" method="post">
                 @csrf
             </form>
             <button form="outForm" class="custom-out-btn" type="submit">Sign Out</button>
@@ -79,7 +79,9 @@
                     </div>
                 </a>
                 <a class="icons" href="{{route('parent')}} ">
-                    <img src="assets/images/logo/user.png" alt="user avatar">
+                    {{-- @Notcustom_auth("parent")
+                    <img src="{{asset('uploads/'. auth()->guard('parent')->user()->image)}}" style="width: 60px" alt="user avatar">
+                    @end --}}
                 </a>
             </div>
 

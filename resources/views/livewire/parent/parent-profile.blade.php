@@ -6,118 +6,120 @@
                 {{session('success')}}
                </div>
             @endif
-            <form wire:submit.prevent="save">
+            <form wire:submit.prevent="save" enctype="multipart/form-data">
+    
                 <div class="input-item me-auto ms-0">
-                    <input type="text" name="name" placeholder="name" wire:model="attributes.name">
+                   
+                    <input type="text"  placeholder="name" wire:model="name">
                     <span>
                         <i class="fa-solid fa-user"></i>
                     </span>
                     <span class="second">
                         <i class="fa-solid fa-pen"></i>
                     </span>
+                    @error('name') <p class="text-danger">{{$message}}</p> @enderror
                 </div>
                 <div class="input-item me-auto ms-0">
 
-                    <input type="email" name="email" placeholder="email"
-                    wire:model="attributes.email">
+                    <input type="email"  placeholder="email"
+                    wire:model="email">
                     <span>
                         <i class="fa-regular fa-envelope"></i>
                     </span>
                     <span class="second">
                         <i class="fa-solid fa-pen"></i>
                     </span>
+                    @error('email')
+                    <p class="text-danger">{{$message}}</p>
+                    @enderror
                 </div>
                 <div class="input-item me-auto m-0">
-                    <input type="tel" name="phone" placeholder="phone" wire:model="attributes.phone">
+                    <input type="tel"  placeholder="phone" wire:model="phone">
                     <span>
                         <i class="fa-solid fa-phone"></i>
                     </span>
                     <span class="second">
                         <i class="fa-solid fa-pen"></i>
                     </span>
+                    @error('phone')
+                    <p class="text-danger">{{$message}}</p>
+                    @enderror
                 </div>
-                {{-- <div class="input-item me-auto ms-0">
-                    <label>Gender</label>
-                    <div
-                        class="d-flex align-items-center justify-content-start"
-                    >
-                        <div
-                            class="d-flex align-items-center justify-content-start"
-                        >
-                            <label for="male">Male</label>
-                            <input
-                                type="radio"
-                                value="male"
-                                name="gender"
-                                class="not-hidden ms-2"
-                                id="male"
-                            />
-                        </div>
-                        <div
-                            class="d-flex align-items-center justify-content-start ms-2"
-                        >
-                            <label for="female">Female</label>
-                            <input
-                                type="radio"
-                                value="female"
-                                name="gender"
-                                class="not-hidden ms-2"
-                                id="female"
-                            />
-                        </div>
-                    </div>
-                </div>
+                
                 <div class="input-item me-auto ms-0">
-                    <input type="password" name="password" placeholder="password"
-                        value="123456">
+                   
+                    <select   wire:model="city" id="selectCity" class="form-select" aria-label="Default select example">
+                        <option selected>{{$authCity->name}}</option>
+                        @foreach ($cities as $city)
+                           <option   value="{{$city->id}}">{{$city->name}}</option>
+                        @endforeach
+                        
+                      </select>
+                    
                     <span>
-                        <i class="fa-solid fa-lock"></i>
+                        <i class="fa-solid fa-location-dot"></i>
                     </span>
-                    <span class="second show-passowrd">
-                        <i class="fa-regular fa-eye-slash fa-flip-horizontal"></i>
-                    </span>
+
+                    @error('city') {{$message}} @enderror
                 </div>
+                
                 <div class="input-item me-auto ms-0">
-                    <input type="password" name="confirmPassword" placeholder="Confirm Password"
-                        value="123456">
+                    
+                    <select wire:model="area_id"   id="areaSelect" class="form-select" aria-label="Default select example" >
+                        <option  value="{{$authArea->id}}" selected>{{$authArea->name}}</option>
+                          @if ($Areas)
+                    
+                            @foreach ($Areas as $Area)
+                            <option  value="{{$Area->id}}">{{$Area->name}}</option> 
+                            @endforeach
+                         @endif
+                      </select>
                     <span>
-                        <i class="fa-solid fa-lock"></i>
+                        <i class="fa-solid fa-location-dot"></i>
                     </span>
-                    <span class="second show-passowrd">
-                        <i class="fa-regular fa-eye-slash fa-flip-horizontal"></i>
-                    </span>
+                    @error('area_id')
+                    <p class="text-danger">{{$message}}</p>
+                    @enderror
                 </div>
-                <div class="input-item me-auto m-0">
-                    <input type="tel" name="phone" placeholder="phone" value="123456789">
-                    <span>
-                        <i class="fa-solid fa-phone"></i>
-                    </span>
-                    <span class="second">
-                        <i class="fa-solid fa-pen"></i>
-                    </span>
-                </div>
+                
                 <div class="input-item me-auto ms-0 mt-32">
-                    <input type="file" name="profile" id="parent-profile">
+                    <input type="file" wire:model = 'image' id="parent-profile">
 
                     <label class="file-input" for="parent-profile">
                         <span>
                             <i class="fa-regular fa-image"></i>
                         </span>
-                        <p class="upload-text">Upload Profile</p>
-                        <button class="btn-custom btn-gray-custom">
+                        
+                         @if ($image != null)
+                         <p class="upload-text files-names">{{$image->getClientOriginalName()}}</p>
+                         @else
+                         <p class="upload-text files-names">Upload Photo</p>
+                         @endif
+                        
+                        <div type="button" class="btn-custom btn-gray-custom">
                             choose
-                        </button>
+                        </div>
                     </label>
-                </div> --}}
+                    @error('image')
+                    <p class="text-danger">{{$message}}</p>
+                    @enderror
+                </div>
 
                 <div class="input-item me-auto ms-0">
                     <button type="submit" class="custom-out-btn btn-form" >
                         save
                     </button>
+ 
+                    <button type="buttom" class="custom-out-btn btn-form" >
+                        Reset Password
+                    </button>
+                    
                 </div>
 
             </form>
 
         </div>
     </div>
+   
 </div>
+

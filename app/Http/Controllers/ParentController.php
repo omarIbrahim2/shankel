@@ -10,6 +10,7 @@ use Shankl\Interfaces\ChildRepoInterface;
 use Shankl\Interfaces\GradeRepoInterface;
 use Shankl\Interfaces\LocationRepoInterface;
 use Shankl\Repositories\ParentRepository;
+use Shankl\Services\ParentService;
 
 class ParentController extends Controller
 {
@@ -55,8 +56,13 @@ class ParentController extends Controller
       return view('web.Auth.parentLogin');
     }
 
-    public function showProfile(){
+    public function showProfile(ParentRepository $parentRepository , GradeRepoInterface $gradeRepo){
       
-      return view("web.Parents.editProfile");
+       $chidren = $parentRepository->ParentChilds();
+       $grades = $gradeRepo->getGrades();
+      return view("web.Parents.editProfile")->with([
+        'children' => $chidren,
+        'grades' => $grades
+      ]);
     }
 }

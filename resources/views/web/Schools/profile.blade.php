@@ -56,7 +56,7 @@
                         </ul>
                     </div>
                 </a>
-                <a class="icons" href="#">
+                <a class="icons" href="{{route('school-profile')}}">
                     <img src="{{ asset('assets') }}/images/logo/user.png" alt="user avatar">
                 </a>
             </div>
@@ -280,7 +280,7 @@
                                 <div class="col-md-4 col-12">
                                     <div class="counter-item text-center">
                                         <h4>vists</h4>
-                                        <p>10</p>
+                                        <p>{{auth()->guard('school')->user()->views}}</p>
                                     </div>
                                 </div>
 

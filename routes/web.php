@@ -76,6 +76,7 @@ Route::middleware('lang')->group(function(){
     Route::prefix('dashboard')->middleware('auth')->group(function(){ 
         
         
+        
             
 
 
@@ -89,6 +90,7 @@ Route::middleware('lang')->group(function(){
     //school Group
     Route::middleware('school')->group(function(){
         Route::get('/school' , [SchoolController::class , 'school'])->name('school');
+        Route::get('/school-profile' , [SchoolController::class, 'schoolProfile'])->name('school-profile');
     });
     
 

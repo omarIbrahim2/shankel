@@ -1,8 +1,6 @@
 @extends('web.layout')
 
-@section('styles')
-    @livewireScripts
-@endsection
+
 
 @section('main')
 <main class="colored-section">
@@ -18,125 +16,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 col-12 mb-s-0 mb-3">
-                        <!-- <div class="from-container">
-                            <div class="contact-form black-contact-form">
-                                <form>
-                                    <div class="input-item me-auto ms-0">
-                                        <input type="text" name="name" placeholder="name" value="hussien mohamed">
-                                        <span>
-                                            <i class="fa-solid fa-user"></i>
-                                        </span>
-                                        <span class="second">
-                                            <i class="fa-solid fa-pen"></i>
-                                        </span>
-                                    </div>
-                                    <div class="input-item me-auto ms-0">
-
-                                        <input type="email" name="email" placeholder="email"
-                                            value="hussienmo385@gmail.com">
-                                        <span>
-                                            <i class="fa-regular fa-envelope"></i>
-                                        </span>
-                                        <span class="second">
-                                            <i class="fa-solid fa-pen"></i>
-                                        </span>
-                                    </div>
-                                    <div class="input-item me-auto m-0">
-                                        <input type="tel" name="phone" placeholder="phone" value="123456789">
-                                        <span>
-                                            <i class="fa-solid fa-phone"></i>
-                                        </span>
-                                        <span class="second">
-                                            <i class="fa-solid fa-pen"></i>
-                                        </span>
-                                    </div>
-                                    <div class="input-item me-auto ms-0">
-                                        <label>Gender</label>
-                                        <div
-                                            class="d-flex align-items-center justify-content-start"
-                                        >
-                                            <div
-                                                class="d-flex align-items-center justify-content-start"
-                                            >
-                                                <label for="male">Male</label>
-                                                <input
-                                                    type="radio"
-                                                    value="male"
-                                                    name="gender"
-                                                    class="not-hidden ms-2"
-                                                    id="male"
-                                                />
-                                            </div>
-                                            <div
-                                                class="d-flex align-items-center justify-content-start ms-2"
-                                            >
-                                                <label for="female">Female</label>
-                                                <input
-                                                    type="radio"
-                                                    value="female"
-                                                    name="gender"
-                                                    class="not-hidden ms-2"
-                                                    id="female"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="input-item me-auto ms-0">
-                                        <input type="password" name="password" placeholder="password"
-                                            value="123456">
-                                        <span>
-                                            <i class="fa-solid fa-lock"></i>
-                                        </span>
-                                        <span class="second show-passowrd">
-                                            <i class="fa-regular fa-eye-slash fa-flip-horizontal"></i>
-                                        </span>
-                                    </div>
-                                    <div class="input-item me-auto ms-0">
-                                        <input type="password" name="confirmPassword" placeholder="Confirm Password"
-                                            value="123456">
-                                        <span>
-                                            <i class="fa-solid fa-lock"></i>
-                                        </span>
-                                        <span class="second show-passowrd">
-                                            <i class="fa-regular fa-eye-slash fa-flip-horizontal"></i>
-                                        </span>
-                                    </div>
-                                    <div class="input-item me-auto m-0">
-                                        <input type="tel" name="phone" placeholder="phone" value="123456789">
-                                        <span>
-                                            <i class="fa-solid fa-phone"></i>
-                                        </span>
-                                        <span class="second">
-                                            <i class="fa-solid fa-pen"></i>
-                                        </span>
-                                    </div>
-                                    <div class="input-item me-auto ms-0 mt-32">
-                                        <input type="file" name="profile" id="parent-profile">
-
-                                        <label class="file-input" for="parent-profile">
-                                            <span>
-                                                <i class="fa-regular fa-image"></i>
-                                            </span>
-                                            <p class="upload-text">Upload Profile</p>
-                                            <button class="btn-custom btn-gray-custom">
-                                                choose
-                                            </button>
-                                        </label>
-                                    </div>
-
-                                    <div class="input-item me-auto ms-0">
-                                        <button type="button" class="custom-out-btn btn-form">
-                                            save
-                                        </button>
-                                    </div>
-
-                                </form>
-
-                            </div>
-                        </div> -->
                         @livewire('parent.parent-profile')
                     </div>
-                    <div class="col-md-4 col-12 mb-s-0 mb-3">
+                    {{-- <div class="col-md-4 col-12 mb-s-0 mb-3">
                         <div class="from-container">
                             <div class="contact-form black-contact-form">
                                 <form >
@@ -249,7 +131,10 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
+                   <div class="col-md-8 col-12 mb-s-0 mb-3">
+                    @livewire('parent.update-child-parent', ['children' => $children , 'grades' => $grades])
+                   </div>
                 </div>
             </div>
         </div>
@@ -257,6 +142,3 @@
 </main>
 @endsection
 
-@section('scripts')
-    @livewireScripts
-@endsection

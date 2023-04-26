@@ -81,9 +81,7 @@
                                         <span>
                                             <i class="fa-solid fa-graduation-cap"></i>
                                         </span>
-                                        @error('grade_id')
-                                        <p class="text-danger">{{$message}}</p>
-                                        @enderror
+                                      
                                     </div>
 
                                     
