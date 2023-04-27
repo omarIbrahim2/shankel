@@ -212,7 +212,7 @@ class AuthController extends Controller
     public function forgotPassword()
     {
     
-        return view('web.Auth.forgot-parent-password');
+        return view('web.Auth.Parent.forgot-parent-password');
     }
 
     public function forgotPasswordPostRequest(Request $request, $broker)

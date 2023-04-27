@@ -110,9 +110,9 @@
                         save
                     </button>
  
-                    <button type="buttom" class="custom-out-btn btn-form" >
+                    <a href="{{route("change_pass_parent")}}"  class="custom-out-btn btn-form" >
                         Reset Password
-                    </button>
+                    </a>
                     
                 </div>
 

@@ -12,13 +12,13 @@ class TeacherController extends Controller
        
         $data['cities'] =  $locationRepo->getCities();
  
-          return view("web.Auth.teacherRegister")->with($data);
+          return view("web.Auth.Teacher.teacherRegister")->with($data);
      }
 
 
      public function showLogin(){
 
-        return view('web.Auth.teacherLogin');
+        return view('web.Auth.Teacher.teacherLogin');
       }
 
       public function teacher(){

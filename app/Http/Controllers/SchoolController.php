@@ -17,12 +17,12 @@ class SchoolController extends Controller
     $data['grades'] = $gradeRepo->getGrades();
     $data['eSystems'] = $eduRepo->getEduSystems();
 
-    return view("web.Auth.schoolRegister")->with($data);
+    return view("web.Auth.School.schoolRegister")->with($data);
   }
 
   public function showLogin(){
      
-    return view("web.Auth.schoolLogin");
+    return view("web.Auth.School.schoolLogin");
   }
 
 
@@ -41,4 +41,12 @@ class SchoolController extends Controller
     
     return view("web.Schools.editProfile")->with($data);
   }
+
+   public function changePassView(){
+
+    return view('web.Auth.School.Change_Pass');
+   }
+
+
+  
 }

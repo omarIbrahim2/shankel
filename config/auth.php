@@ -38,10 +38,25 @@ return [
     |
     */
 
+    'custom' => [
+        'parent'=>[
+            'model' => App\Models\Parentt::class,
+            "url" => 'parent-profile',
+        ], 
+        
+        'school' => [
+           'model' => App\Models\School::class,
+           'url' => 'school-profile',
+        ],
+        'teacher' => [
+             'model' => App\Models\Teacher::class,
+        ],
+    ],
     'guards' => [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
+            
         ],
 
         'parent' => [

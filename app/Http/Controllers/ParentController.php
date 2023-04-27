@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AddChildRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 use Shankl\Entities\ChildEntity;
+use Shankl\Helpers\ChangePassword;
 use Shankl\Interfaces\ChildRepoInterface;
 use Shankl\Interfaces\GradeRepoInterface;
 use Shankl\Interfaces\LocationRepoInterface;
@@ -18,7 +20,7 @@ class ParentController extends Controller
        
        $data['cities'] =  $locationRepo->getCities();
 
-         return view("web.Auth.parentRegister")->with($data);
+         return view("web.Auth.Parent.parentRegister")->with($data);
     }
 
     public function addChild($parentId , ParentRepository $parentRepo , GradeRepoInterface $gradeRepo){
@@ -33,16 +35,13 @@ class ParentController extends Controller
 
     }
 
-    public function createChild(ChildRepoInterface $childRepo , AddChildRequest $request)
+    public function createChild( AddChildRequest $request , ParentService $parentService)
     {
     
-       $request->validated();
-
-       $childObj = new ChildEntity($request->all());
-         
-       $childRepo->create($childObj->getAttributes());
-
-       return redirect()->route('parent');
+      $parentService->addChild($request);
+       
+       toastr("child added successfully" , "success");
+       return redirect()->route('parent-profile');
     }
 
     public function parent()
@@ -53,7 +52,7 @@ class ParentController extends Controller
 
     public function showLogin(){
 
-      return view('web.Auth.parentLogin');
+      return view('web.Auth.Parent.parentLogin');
     }
 
     public function showProfile(ParentRepository $parentRepository , GradeRepoInterface $gradeRepo){
@@ -64,5 +63,19 @@ class ParentController extends Controller
         'children' => $chidren,
         'grades' => $grades
       ]);
+    }
+
+    public function changePassView(){
+
+        return view("web.Auth.Parent.Change_Pass");
+    }
+
+    public function changePass(Request $request , $guard){
+       
+         $changePass = new ChangePassword();
+
+          $changePass->changePass($request , $guard);
+         $url =  Config::get('auth.custom.' . $guard . ".url");
+          return redirect()->route($url);
     }
 }

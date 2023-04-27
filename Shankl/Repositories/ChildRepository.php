@@ -23,4 +23,11 @@ class ChildRepository implements ChildRepoInterface{
         return $child->update($data);
 
     }
+
+    public function delete($childId)
+    {
+        $child = $this->getChild($childId);
+
+        return $child->delete();
+    }
 }

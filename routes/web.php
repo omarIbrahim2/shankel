@@ -64,23 +64,32 @@ Route::middleware('lang')->group(function(){
     // Amin Auth
     Route::get('/login' , [AdminController::class , 'showLogin'])->name('admin-login');
     Route::post('admin/login' , [AuthController::class , 'AdminLogin'])->name('login-admin');
+
+
+
+    
     //Parent Group
     Route::middleware('parent')->group(function(){
         Route::get('/parent' , [ParentController::class , 'parent'])->name('parent')->middleware('child');
         Route::get('add/child/{parentId}' , [ParentController::class , 'addChild'])->name('add-child');
         Route::get('editProfile' , [ParentController::class , 'showProfile'])->name('parent-profile');
         Route::post('add/child' , [ParentController::class , 'createChild'])->name('create-child');
+        Route::get('changePass/parent' , [ParentController::class , "changePassView"] )->name("change_pass_parent");
+        Route::post('changePass/{user}', [ParentController::class, 'changePass'])->name("submit_change_pass");
+        
     });
-    Route::get('/dashboard' , [AdminController::class , 'dashboard']);
+    
+
+
+    //admin group
 
     Route::prefix('dashboard')->middleware('auth')->group(function(){ 
-        
-        
-        
-            
-
-
+        Route::get('/dashboard' , [AdminController::class , 'dashboard']);
     });
+
+    
+        
+   
     
     //teacher Group
     Route::middleware('teacher')->group(function(){
@@ -91,6 +100,8 @@ Route::middleware('lang')->group(function(){
     Route::middleware('school')->group(function(){
         Route::get('/school' , [SchoolController::class , 'school'])->name('school');
         Route::get('/school-profile' , [SchoolController::class, 'schoolProfile'])->name('school-profile');
+        Route::get('changePass/school' , [SchoolController::class , "changePassView"] )->name("change_pass_school");
+        Route::post('changePass/{user}', [ParentController::class, 'changePass'])->name("submit_change_pass");
     });
     
 

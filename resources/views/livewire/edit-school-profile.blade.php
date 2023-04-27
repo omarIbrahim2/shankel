@@ -67,6 +67,9 @@
                                 <div class="sub-btns">
     
                                     <button wire:click="save" type="buttom" class="btn-custom">Save</button>
+                                    <a href="{{route("change_pass_school")}}"  class="btn-custom" >
+                                        Reset Password
+                                    </a>
                                 </div>
                             </div>
                             <div class="contact-form ">

@@ -22,6 +22,8 @@ class UpdateChildParent extends Component
     public $child_id;
     public $gender;
    public $image;
+
+   public $imagePath;
   
    protected $fileService;
     public $attributes = array();
@@ -32,6 +34,10 @@ class UpdateChildParent extends Component
       'birth_date' => 'required',
       'grade_id' => 'required| exists:grades,id',
       'image' => "nullable|image|mimes:jpg,png,jpeg|max:2048"
+    ];
+
+    protected $listeners = [
+        "fresh" => '$refresh',
     ];
    
     public function render()
@@ -53,6 +59,7 @@ class UpdateChildParent extends Component
         $this->grade_id = $child['grade_id'];
         $this->child_id = $child['id'];
         $this->gender = $child['gender'];
+        $this->imagePath = $child['image'];
         
     }
 
@@ -69,7 +76,7 @@ class UpdateChildParent extends Component
     }
 
 
-    public function update(ParentService $parentService){
+    public function update(ParentService $parentService , FileService $fileService){
           
        $this->validate();
 
@@ -77,12 +84,36 @@ class UpdateChildParent extends Component
         
         $this->parentService = $parentService;
         
+        if ($this->image != null) {
+            
+             if ($this->imagePath != null) {
+                $deleted = substr($this->imagePath , 8);
+                 $fileService->DeleteFile($deleted);
+             }
+            
+            $fileService->setPath("childs");
 
+            $fileService->setFile($this->image);
+
+           $this->attributes['image'] =  $fileService->uploadFile();
+       }
 
        $this->parentService->updateChild($this->attributes ,  $this->child_id );      
-       
+       $this->emit("fresh");
+       $this->image = null;
        session()->flash("success" , "data updated successfully");
 
+    }
+
+    public function delete($childId , ParentService $parentService){
+         
+
+        $parentService->deleteChild($childId);
+
+        $this->emit("fresh");
+
+        toastr("child deleted successfully" , "error" , "Deleted");
+   
     }
 
 

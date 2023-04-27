@@ -20,6 +20,7 @@ class ChildRequired
         $authParent = Auth::guard("parent")->user();
         
         if (count($authParent->children) == 0) {
+            toastr("you must add atleast one child to access your home page" , "warning");
             return redirect()->route("add-child" , $authParent->id);
  
          }
