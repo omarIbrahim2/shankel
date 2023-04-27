@@ -7,10 +7,10 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class ResetPasswordNotification extends Notification
+class SchoolResetPasswordNotification extends Notification
 {
     use Queueable;
-
+     
     public $token;
     /**
      * Create a new notification instance.
@@ -42,10 +42,9 @@ class ResetPasswordNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line("hello from shankel")
-                    ->action("Reset Password" , route("password.reset" ,$this->token))
-                    ->line("thanks");
-                    
+        ->line("hello from shankel")
+        ->action("Reset Password" , route("password.reset.school" ,$this->token))
+        ->line("thanks");
     }
 
     /**

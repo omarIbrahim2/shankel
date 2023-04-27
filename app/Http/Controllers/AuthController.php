@@ -209,11 +209,15 @@ class AuthController extends Controller
 
 
     //Forget & Reset Password
-    public function forgotPassword()
+    public function ParentforgotPassword()
     {
     
-        return view('web.Auth.Parent.forgot-parent-password');
+        return view('web.Auth.forgot-parent-password');
     }
+
+     public function SchoolforgotPassword(){
+        return view('web.Auth.forgot-school-password');
+     }
 
     public function forgotPasswordPostRequest(Request $request, $broker)
     {
@@ -235,10 +239,17 @@ class AuthController extends Controller
     }
 
 
-    public function resetPassword($token)
+    public function ParentresetPassword($token)
     {
         return view('web.Auth.reset-parent-password')->with([
             'token' => $token
+        ]);
+    }
+
+    public function SchoolresetPassword($token){
+
+        return view("web.Auth.reset-school-password")->with([
+            "token" => $token
         ]);
     }
 
@@ -248,10 +259,12 @@ class AuthController extends Controller
         $resetObj = new ResetPasswords();
 
         $resetObj->setGuard($guard);
-
+          
+        
        $response = $resetObj->reset($request , $broker);
         
        $url = $resetObj->getUserRedirect($broker);
+    
        if ($response == Password::PASSWORD_RESET) {
              return redirect()
               ->route($url)        
@@ -262,4 +275,6 @@ class AuthController extends Controller
               ->withInput($request->only('email'))
               ->withErrors(['email' => trans($response)]);
     }
+
+    
 }

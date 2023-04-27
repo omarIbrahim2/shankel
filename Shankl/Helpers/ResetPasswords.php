@@ -9,17 +9,21 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Config;
+use App\Support\Authorization\AuthorizationUserTrait;
+
 
 class ResetPasswords{
        
+    
     private $guard;
     
 
      public function reset(Request $request , $broker){
         
         $request->validate($this->rules(), $this->validationErrorMessages());
-
-
+    
+        
+        
         $response = $this->getBroker($broker)->reset($this->credentials($request), function($user , $password){
 
               $this->resetPassword($user , $password , $this->getGuard());
@@ -60,8 +64,8 @@ class ResetPasswords{
     function resetPassword($user, $password , $guard)
     {
         $this->setUserPassword($user, $password);
-
-        $user->setRememberToken(Str::random(60));
+        
+       $user->setRememberToken(Str::random(64));
 
         $user->save();
 
@@ -76,9 +80,11 @@ class ResetPasswords{
         $user->password = Hash::make($password);
     }
 
+    
+
      public function getUserRedirect($broker){
         
-         return Config::get("auth.passwords.".$broker. ".url" );
+         return Config::get("auth.passwords.".$broker.".url" );
 
      }
 

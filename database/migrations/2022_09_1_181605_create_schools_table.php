@@ -27,13 +27,13 @@ return new class extends Migration
             $table->string('facebook' , 255)->nullable();
             $table->string('twitter' , 255)->nullable();
             $table->string('linkedin' , 255)->nullable();
-            
             $table->foreignId("edu_systems_id")->constrained();
             $table->date("establish_date");
             $table->enum('type' , ['Center' , 'School']);
             $table->unsignedInteger("views" , false)->default(0);
             $table->boolean("status")->default(false);
             $table->unsignedInteger("free_seats" , false);
+            $table->rememberToken();
             $table->timestamps();
         });
     }

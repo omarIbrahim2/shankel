@@ -30,12 +30,14 @@ Route::middleware('lang')->group(function(){
     Route::get('api/cities/{cityid}' , [LocationCcontroller::class , "Areas"])->name("areas");
 
     //Forget Password
-    Route::get('/forgot-password', [AuthController::class , 'forgotPassword'])->middleware('guest')->name('password.request');
+    Route::get('/forgot-password-parent', [AuthController::class , 'ParentforgotPassword'])->middleware('guest')->name('password.request.parent');
+    Route::get('/forgot-password-school', [AuthController::class , 'SchoolforgotPassword'])->middleware('guest')->name('password.request.school');
+
     Route::post('/forgot-password/{broker}', [AuthController::class , 'forgotPasswordPostRequest'])->middleware('guest')->name('password.email');
     //Reset Password
-    Route::get('/reset-password/{token}', [AuthController::class , 'resetPassword'])->middleware('guest')->name('password.reset');
-    Route::post('/reset-password/{broker}/{guard}', [AuthController::class , 'resetPasswordPostRequest'])->middleware('guest')->name('password.update');
-
+    Route::get('/reset-password-parent/{token}', [AuthController::class , 'ParentresetPassword'])->middleware('guest')->name('password.reset.parent');
+    Route::get('/reset-password-school/{token}', [AuthController::class , 'SchoolresetPassword'])->middleware('guest')->name('password.reset.school');
+    Route::post('/reset-password-parent/{broker}/{guard}', [AuthController::class , 'resetPasswordPostRequest'])->middleware('guest')->name('password.update');
 
     // Parent Routs
     //*-----------*

@@ -61,7 +61,7 @@
                                             </label>
                                         </div>
                                         <div class="auth">
-                                            <a href="">Forgot Password</a>
+                                            <a href="{{route('password.request.school')}}">Forgot Password</a>
                                         </div>
                                     </div>
                                     <div class="input-item me-auto ms-0">
