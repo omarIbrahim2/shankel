@@ -145,7 +145,7 @@
                 @endforeach
                
                 <div class="kid add-kid">
-                    <a href="{{route("add-child" , auth()->guard('parent')->user()->id)}}"><div class="kid-icon ">
+                    <a href="{{route("add-child-profile" , auth()->guard('parent')->user()->id)}}"><div class="kid-icon ">
                         <img src="assets/images/charcters/plus.png" alt="add kids">
                     </div></a>
                     <div class="kid-data">

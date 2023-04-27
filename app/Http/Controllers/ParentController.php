@@ -28,11 +28,23 @@ class ParentController extends Controller
        $currParent = $parentRepo->find($parentId);
        $grades = $gradeRepo->getGrades();
 
-       return view('web.parents.add-child')->with([
+       return view('web.Auth.Parent.add-child')->with([
          'parent_id' => $currParent->id,
          'grades' => $grades
        ]);
 
+    }
+
+    public function showAddChild($parentId , ParentRepository $parentRepo , GradeRepoInterface $gradeRepo){
+      $currParent = $parentRepo->find($parentId);
+      $grades = $gradeRepo->getGrades();
+
+      return view('web.Parents.add-child')->with([
+        'parent_id' => $currParent->id,
+        'grades' => $grades
+      ]);
+
+          
     }
 
     public function createChild( AddChildRequest $request , ParentService $parentService)
@@ -40,8 +52,17 @@ class ParentController extends Controller
     
       $parentService->addChild($request);
        
-       toastr("child added successfully" , "success");
-       return redirect()->route('parent-profile');
+      
+       return redirect()->route('parent');
+    }
+
+    
+    public function InsertChild(AddChildRequest $request , ParentService $parentService){
+     
+      $parentService->addChild($request);
+       
+      toastr("child added successfully" , "success");
+      return redirect()->route('parent-profile');
     }
 
     public function parent()

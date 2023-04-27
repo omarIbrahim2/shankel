@@ -1,6 +1,7 @@
 @extends('web.layout')
 @section('title')
     SHANKAL | Add Your Child
+    
 @endsection
 
 @section('main')
@@ -12,6 +13,7 @@
             </ul>
         </div>
     </nav>
+    
     <section class="section ">
         <div class="inner">
             <div class="container">
@@ -20,10 +22,10 @@
                         <div class="left-side">
                             <div class="section-title">
                                 <h2 class="text-start">Add Your Kids Now</h2>
-                                <p class="text-start p-0">You  Must Add Your Child</p>
+                                <p class="text-start p-0">You Must Add  Your Child</p>
                             </div>
                             <div class="contact-form black-contact-form">
-                                <form method="POST" action="{{url("editProfile/child")}}" enctype="multipart/form-data">
+                                <form method="POST" action="{{url("add/child")}}" enctype="multipart/form-data">
                                     @csrf
                                     <input value="{{$parent_id}}" type="hidden" name="parentt_id">
                                     <div class="input-item me-auto ms-0">
@@ -111,7 +113,7 @@
                                     </div>
                                     <div class="input-item me-auto ms-0">
                                         <button type="submit" class="custom-out-btn">
-                                            Add Child
+                                            Sign Up
                                         </button>
                                     </div>
                                 </form>
