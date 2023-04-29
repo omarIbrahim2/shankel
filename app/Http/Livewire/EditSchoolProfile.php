@@ -134,7 +134,7 @@ class EditSchoolProfile extends Component
 
         $this->area_id = $this->AuthUser->area_id;
 
-        $this->imagePath = $this->AuthUser->image == self::$defaultPath ? self::$defaultPath : substr($this->AuthUser->image , 8);
+        $this->imagePath  = $this->AuthUser->image;
     }
 
     public function setAttributes(){
@@ -153,7 +153,6 @@ class EditSchoolProfile extends Component
             "facebook" => $this->facebook,
             "linkedin" => $this->linkedin,
             "twitter" => $this->twitter,
-            "image" => $this->imagePath,
 
          ];
 
@@ -217,8 +216,8 @@ class EditSchoolProfile extends Component
           if ($this->image != null) {
             
                if ($this->imagePath != self::$defaultPath) {
-                
-                  $fileService->DeleteFile($this->imagePath);
+                  $deleted = substr($this->imagePath , 8);
+                  $fileService->DeleteFile($deleted);
                } 
                
                $fileService->setPath("schools");

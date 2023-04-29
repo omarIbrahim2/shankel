@@ -215,7 +215,7 @@
           <h1 class="modal-title fs-5" id="exampleModalLabel">School Photos</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
+        {{-- <div class="modal-body">
             <div class="card" style="width: 18rem;">
                 <img src="{{asset("assets/images/school/3.webp")}}" class="card-img-top" alt="...">
                 <p class="deletePhoto"><a href="#"><i class="fa-solid fa-xmark"></i></a></p>
@@ -227,7 +227,9 @@
           <div class="upload-avatar mb-0">
             <input type="file" name="School-profile-photos" id="School-profile-photos" multiple>
             <label class="btn-custom p-2" for="School-profile-photos" >Upload New Photos</label>
-        </div>
+        </div> --}}
+
+        @livewire('school-photos' , ["AuthUser" => $AuthUser])
         </div>
       </div>
     </div>
