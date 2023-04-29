@@ -65,4 +65,16 @@ class SchoolPhotos extends Component
 
         
     }
+
+    public function delete($imageid , FileService $fileService){
+
+       $image = Image::findOrFail($imageid);
+        
+    
+       $fileService->DeleteFile($image->name);
+
+       $image->delete();
+       $this->emit("imageUpload");
+       toastr("images deleted successfully" , "error" , "Delete");
+    }
 }

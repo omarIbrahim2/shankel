@@ -3,14 +3,18 @@
     <div class="modal-body">
 
         @if ($images)
-        <div class="card" style="width: 18rem;">
-            @foreach ($images as $image)
-            
-                <img src="uploads/{{$image->name}}" class="card-img-top" alt="...">
-                <p class="deletePhoto"><a href="#"><i class="fa-solid fa-xmark"></i></a></p>
-              
-            @endforeach
+
+        <div class="row">
+          @foreach ($images as $image)
+            <div class="col-md-3">
+                  <div class="card" style="width: 18rem;">
+                    <img src="uploads/{{$image->name}}" class="card-img-top" alt="...">
+                     <p class="deletePhoto" wire:click="delete({{$image->id}})"><button><i class="fa-solid fa-xmark"></i></button></p>
+                </div>
+            </div>
+         @endforeach
         </div>
+      
         @else
             <div class="card" style="width: 18rem;">
                  <p>No Images found !!</p>
