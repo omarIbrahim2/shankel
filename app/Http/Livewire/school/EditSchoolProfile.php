@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\school;
 
 use App\Models\Area;
 use App\Models\City;
@@ -89,7 +89,7 @@ class EditSchoolProfile extends Component
         $authCity =  $authArea->city;
        
        $this->Areas =  Area::where('city_id' , $this->city)->get();
-        return view('livewire.edit-school-profile' 
+        return view('livewire.school.edit-school-profile' 
         , [ 'cities' => $cities , 
         "Areas" => $this->Areas,
         "authArea" => $authArea,

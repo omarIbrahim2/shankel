@@ -53,8 +53,8 @@
                     </ul>
                 </div>
             </a>
-            <a class="icons" href="#">
-                <img src="assets/images/logo/user.png" alt="user avatar">
+            <a class="icons" href="{{route('teacher-profile')}}">
+                <img src="{{asset('assets')}}/images/logo/user.png" alt="user avatar">
             </a>
         </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"

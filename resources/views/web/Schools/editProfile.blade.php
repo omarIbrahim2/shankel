@@ -92,8 +92,7 @@
 <section class="section edit-teacher-profile">
     <div class="inner">
         <div class="container">
-           
-           @livewire('edit-school-profile' , [ 'grades' => $grades , 'eSystems' => $eSystems]);
+           @livewire('school.edit-school-profile' , [ 'grades' => $grades , 'eSystems' => $eSystems]);
         </div>
     </div>
 </section>

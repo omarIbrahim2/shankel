@@ -229,7 +229,7 @@
             <label class="btn-custom p-2" for="School-profile-photos" >Upload New Photos</label>
         </div> --}}
 
-        @livewire('school-photos' , ["AuthUser" => $AuthUser])
+        @livewire('school.school-photos' , ["AuthUser" => $AuthUser])
         </div>
       </div>
     </div>

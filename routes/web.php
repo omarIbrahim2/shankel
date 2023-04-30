@@ -98,6 +98,7 @@ Route::middleware('lang')->group(function(){
     //teacher Group
     Route::middleware('teacher')->group(function(){
         Route::get('/teacher' , [TeacherController::class , 'teacher'])->name('teacher');
+        Route::get('/teacher-profile' , [TeacherController::class , 'teacherProfile'])->name('teacher-profile');
     });
     
     //school Group

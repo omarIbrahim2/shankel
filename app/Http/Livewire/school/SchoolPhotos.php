@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\school;
 
 use App\Models\Image;
 use Livewire\Component;
@@ -22,7 +22,7 @@ class SchoolPhotos extends Component
     protected $rules =["photos.*" => 'image|mimes:jpg,png,jpeg|max:2048|nullable'];
     public function render()
     {
-        return view('livewire.school-photos')->with([
+        return view('livewire.school.school-photos')->with([
             "images" => $this->images,
         ]);
     }

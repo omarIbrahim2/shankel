@@ -26,6 +26,14 @@ class TeacherController extends Controller
           return view("web.Teachers.profile");
       }
 
+      public function teacherProfile(){
+         
+        $authUser = Auth::guard('teacher')->user();
+
+        return view('web.Teachers.editProfile')->with(["authUser" => $authUser]);
+
+      }
+
 
 
 }

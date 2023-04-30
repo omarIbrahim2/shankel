@@ -16,4 +16,11 @@ class TeacherRepository implements UserReboInterface{
         $teacher = Teacher::findOrFail($teacherId);
         return $teacher;
     }
+
+    public function update($data)
+    {
+        $teacher = $this->find($data['id']);
+
+         return $teacher->update($data);
+    }
 }

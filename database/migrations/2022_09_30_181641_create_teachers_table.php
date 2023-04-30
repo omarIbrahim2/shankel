@@ -23,6 +23,9 @@ return new class extends Migration
             $table->string("image" , 255)->nullable();
             $table->string('CV' , 255)->nullable();
             $table->string("phone" , 50);
+            $table->string('facebook' , 255)->nullable();
+            $table->string('twitter' , 255)->nullable();
+            $table->string('linkedin' , 255)->nullable();
             $table->unsignedInteger("views" , false)->nullable()->default(0);
             $table->boolean("status")->default(false);
             $table->timestamps();
