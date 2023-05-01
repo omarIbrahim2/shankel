@@ -1,31 +1,40 @@
-<div>
-    <form  class="form-inline my-2 my-lg-0 justify-content-center">
-        <div class="w-50">
-            <input type="text" class="w-100 form-control product-search br-30" id="input-search" placeholder="Search Attendees...">
-            <button class="btn btn-primary" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
-        </div>
-    </form>
-</div>
-</div>
-<div class="table-responsive">
 
-<table class="table table-bordered table-hover table-striped mb-4">
+
+ 
+
+  <div class="table-responsive">
+    <div>
+        <form  class="form-inline my-2 my-lg-0 justify-content-center">
+            <div class="w-50">
+                <input type="text" class="w-100 form-control product-search br-30" id="input-search" placeholder="Search Attendees...">
+                <button class="btn btn-primary" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
+            </div>
+        </form>
+       </div>
+
+       <a  class="btn btn-success">Add Event</a>
+
+       <table class="table table-bordered table-hover table-striped mb-4">
     <thead>
         <tr>
-            <th>Name</th>
-            <th>Date</th>
-            <th>Sale</th>
+            <th>image</th>
+            <th>title</th>
+            <th>start date</th>
+            <th>end date</th>
             <th class="text-center">Status</th>
             <th class="text-center">Actions</th>
-            <th></th>
+            
         </tr>
     </thead>
     <tbody>
-
-        <tr>
-            <td> Alma Clarke</td>
-            <td>11/08/2020</td>
-            <td>420</td>
+        
+         @foreach ($events as $event)
+         <tr>
+            
+            <td><img src="{{$event->image}}" alt=""></td>
+            <td>{{$event['title']}}</td>
+            <td>{{$event["start_at"]}}</td>
+            <td>{{$event["end_at"]}}</td>
             <td class="text-center"><span class="text-secondary">Pending</span></td>
              <td class="text-center">
             <ul class="table-controls">
@@ -34,8 +43,18 @@
             </ul>
           </td>
         </tr>
+         @endforeach  
+       
         
     </tbody>
-</table>
-</div>  
-</div>
+       </table>
+        <div class="d-flex">
+          <div class="justify-content-center">
+        @if ($events->links("livewire.admin-pagination"))
+            {{$events->links("livewire.admin-pagination")}}
+         
+        @endif
+        </div>
+     </div>
+  </div>  
+

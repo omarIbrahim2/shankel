@@ -32,7 +32,7 @@
     </style>
        @yield('styles')
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
-
+     @livewireStyles
 </head>
 <body class="sidebar-noneoverflow">
     <form id="logout-form" method="POST" action="{{route("logout" , "web")}}">
@@ -261,3 +261,7 @@
         });
     </script>
     <script src="{{asset('admin')}}/js/custom.js"></script>
+   @livewireScripts
+    
+  </body>  
+ 

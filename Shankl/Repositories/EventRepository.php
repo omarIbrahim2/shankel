@@ -9,7 +9,7 @@ class EventRepository implements EventRepoInterface{
 
    public function getEvents(){
        
-       return Event::paginate(10);
+       return Event::paginate(6);
 
    }
 }

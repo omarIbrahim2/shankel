@@ -18,6 +18,7 @@ return new class extends Migration
             $table->morphs("eventable");
             $table->string("title" , 255);
             $table->text("desc");
+            $table->string('image');
             $table->foreignId("area_id")->constrained();
             $table->dateTime("start_at");
             $table->dateTime("end_at");

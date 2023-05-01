@@ -4,26 +4,36 @@ namespace App\Http\Livewire\Admin;
 
 use App\Models\Event;
 use Livewire\Component;
+use Livewire\WithPagination;
 use Shankl\Services\AdminService;
 
 class Events extends Component
 {
-    public $events;
-
+    
+    // public $Events;
+    // public $PaginEvents;
+    use WithPagination;
     protected $adminService;
-    public function render()
+    public function render(AdminService $adminService)
     {
-        return view('livewire.admin.events');
+       
+        $Events =  $adminService->getEvents();
+        
+
+        return view('livewire.admin.events')->with(['events' => $Events]);
     }
 
     public function mount(AdminService $adminService){
          
         $this->adminService = $adminService;
-
-       $this->events = $this->getEvents();
-
+         
+      
+    
+        // $this->Events =$this->getEvents();  
        
-
+        // $this->PaginEvents = $this->Events;
+        // $this->Events = collect($this->Events->items());
+        
     }
 
     public function getEvents(){
@@ -31,4 +41,10 @@ class Events extends Component
        return  $this->adminService->getEvents();
 
     }
+
+    public function paginationView()
+    {
+        return 'livewire.admin-pagination';
+    }
+
 }

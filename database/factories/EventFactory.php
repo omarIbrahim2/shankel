@@ -21,6 +21,7 @@ class EventFactory extends Factory
         return [
             'title' => $this->faker->sentence(),
             'desc' =>$this->faker->text(),
+            'image' => "event.jpg",
             'area_id' => $areas[rand(0 , count($areas) - 1)],
             "start_at" => $this->faker->dateTimeBetween('now' , '+ 5 years'),
             "end_at" => $this->faker->dateTimeBetween('+ 5 years' , '+ 10 years'),
