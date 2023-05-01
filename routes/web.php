@@ -88,7 +88,8 @@ Route::middleware('lang')->group(function(){
     //admin group
 
     Route::prefix('dashboard')->middleware('auth')->group(function(){ 
-        Route::get('/dashboard' , [AdminController::class , 'dashboard']);
+        Route::get('/' , [AdminController::class , 'dashboard'])->name('dashboard');
+        Route::get('events' , [AdminController::class , 'Events'])->name('admin-events');
     });
 
     

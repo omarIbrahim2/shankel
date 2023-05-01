@@ -59,6 +59,8 @@ class User extends Authenticatable
         return $this->morphMany(Event::class , 'eventable');
     }
 
+    
+
     public function addverts()
     {
         return $this->morphToMany(Addvert::class, 'addverttable');

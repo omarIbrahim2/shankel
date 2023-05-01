@@ -52,7 +52,7 @@ class School extends Authenticatable
 
     public function events()
     {
-        return $this->morphMany(Event::class , 'creator');
+        return $this->morphMany(Event::class , 'eventable');
     }
 
     public function card()
@@ -62,7 +62,7 @@ class School extends Authenticatable
 
     public function eventSubscriber()
     {
-        return $this->morphToMany(Event::class, 'subscriber');
+        return $this->morphToMany(Event::class, 'eventable');
     }
 
     public function addverts()

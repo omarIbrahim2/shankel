@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('eventables', function (Blueprint $table) {
             $table->id();
             $table->foreignId('event_id')->constrained();
-            $table->morphs("subscriber");
+            $table->morphs("eventable");
             $table->timestamps();
         });
     }

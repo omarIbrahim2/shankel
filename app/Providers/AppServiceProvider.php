@@ -2,18 +2,20 @@
 
 namespace App\Providers;
 
+use Shankl\Services\FileService;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use Shankl\Interfaces\EduSystemRepoInterface;
-use Shankl\Interfaces\FileServiceInterface;
-use Shankl\Interfaces\GradeRepoInterface;
-use Shankl\Interfaces\LocationRepoInterface;
-use Shankl\Repositories\EduSystemRepository;
+use Shankl\Interfaces\EventRepoInerface;
+use Shankl\Repositories\EventRepository;
 use Shankl\Repositories\GradeRepository;
+use Shankl\Interfaces\EventRepoInterface;
+use Shankl\Interfaces\GradeRepoInterface;
+use Shankl\Interfaces\FileServiceInterface;
 use Shankl\Repositories\LocationRepository;
-use Shankl\Services\FileService;
+use Shankl\Repositories\EduSystemRepository;
+use Shankl\Interfaces\EduSystemRepoInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -28,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
         app()->bind(GradeRepoInterface::class , GradeRepository::class);
         app()->bind(EduSystemRepoInterface::class , EduSystemRepository::class);
         app()->bind(FileServiceInterface::class , FileService::class);
+        app()->bind(EventRepoInterface::class , EventRepository::class);
         
     }
 

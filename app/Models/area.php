@@ -30,6 +30,11 @@ class Area extends Model
         return $this->hasMany(Teacher::class);
     }
 
+    public function events(){
+
+        return $this->hasMany(Event::class);
+    }
+
     public function suppliers()
     {
         return $this->hasMany(Supplier::class);

@@ -41,7 +41,7 @@ class Parentt extends Authenticatable
 
     public function eventSubscriber()
     {
-        return $this->morphToMany(Event::class, 'subscriber');
+        return $this->morphToMany(Event::class, 'eventable');
     }
 
     public function transactions()

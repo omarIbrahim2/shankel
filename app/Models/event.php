@@ -12,17 +12,21 @@ class Event extends Model
 
     public function eventable()
     {
-        return $this->morphTo('creator');
+        return $this->morphTo();
     }
-
+    
+    public function area()
+    {
+        return $this->belongsTo(Area::class);
+    }
     public function Parentts()
     {
-        return $this->morphedByMany(Parentt::class, 'subscriber');
+        return $this->morphedByMany(Parentt::class, 'eventable');
     }
 
     public function schools()
     {
-        return $this->morphedByMany(School::class, 'subscriber');
+        return $this->morphedByMany(School::class, 'eventable');
     }
 
     public function teacher()
