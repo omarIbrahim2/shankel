@@ -12,4 +12,9 @@ class EventRepository implements EventRepoInterface{
        return Event::paginate(6);
 
    }
+
+   public function addEvent($data)
+   {
+      return Event::create($data);
+   }
 }

@@ -19,4 +19,12 @@ class AdminService{
           return $events;
 
     }
+
+    public function addEvent($data){
+
+       return  $this->eventRebo->addEvent($data);
+          
+
+
+    }
 }

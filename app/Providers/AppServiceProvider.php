@@ -14,6 +14,7 @@ use Shankl\Interfaces\EventRepoInterface;
 use Shankl\Interfaces\GradeRepoInterface;
 use Shankl\Interfaces\FileServiceInterface;
 use Shankl\Repositories\LocationRepository;
+use Shankl\Interfaces\LocationRepoInterface;
 use Shankl\Repositories\EduSystemRepository;
 use Shankl\Interfaces\EduSystemRepoInterface;
 

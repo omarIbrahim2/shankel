@@ -90,6 +90,8 @@ Route::middleware('lang')->group(function(){
     Route::prefix('dashboard')->middleware('auth')->group(function(){ 
         Route::get('/' , [AdminController::class , 'dashboard'])->name('dashboard');
         Route::get('events' , [AdminController::class , 'Events'])->name('admin-events');
+        Route::get('event/create' , [AdminController::class , "createEventView"])->name('create-events-view');
+        Route::post("event/store" , [AdminController::class , "storeEvent"])->name("create-events");
     });
 
     

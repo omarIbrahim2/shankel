@@ -262,6 +262,6 @@
     </script>
     <script src="{{asset('admin')}}/js/custom.js"></script>
    @livewireScripts
-    
+    @yield('scripts')    
   </body>  
  
