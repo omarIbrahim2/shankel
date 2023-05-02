@@ -24,7 +24,18 @@ class AdminService{
 
        return  $this->eventRebo->addEvent($data);
           
-
-
     }
+
+    public function getEvent($eventId){
+
+      return $this->eventRebo->find($eventId);
+    }
+
+    public function updateEvent($data){
+       
+      return $this->eventRebo->updateEvent($data);
+
+    } 
+
+    
 }

@@ -1,9 +1,13 @@
 
 
-@props(['actionRoute'=> "create-events" , "Event" => null , "cities"])
+@props(['actionRoute'=> "create-event" , "Event" => null , "cities" , "update" => false])
 
 <form action="{{route($actionRoute)}}"  method="POST" enctype="multipart/form-data">
     @csrf
+
+    @if ($update == true)
+        <input name="id" hidden type="text" value="{{$Event->id}}">
+    @endif
     <div class="form-group mb-4">
         <input name="title" value="{{$Event == null ? "":$Event->title}}" type="text" class="form-control"  placeholder="title">
         @error('title')
@@ -12,7 +16,7 @@
     
     </div>
     <div class="form-group mb-4">
-        <textarea name="desc" value="{{$Event == null ? "":$Event->desc}}" id="" cols="30" placeholder="description" rows="10"></textarea>
+        <textarea name="desc"  id="" cols="30" placeholder="description" rows="10">{{$Event == null ? "":$Event->desc}}</textarea>
         @error('desc')
         <p class="text-danger">{{$message}}</p>
         @enderror
@@ -44,10 +48,11 @@
         <p class="text-danger">{{$message}}</p>
         @enderror
      </div>
-
+     
      <div class="form-group">
-        <select id="selectCity" class="form-select" aria-label="Default select example" >
-            <option selected disabled>{{$Event == null ? "city":$Event->city->name}}</option>
+        <select  id="selectCity" class="form-select" aria-label="Default select example" >
+
+            <option selected disabled>{{$Event == null ? "city":$Event->area->city->name}}</option>
             @foreach ($cities as $city)
                <option value="{{$city->id}}">{{$city->name}}</option>
             @endforeach
@@ -57,7 +62,7 @@
 
      <div class="form-group">
         <select name="area_id" id="areaSelect" class="form-select" aria-label="Default select example" >
-            <option selected disabled>{{$Event == null ? "Area":$Event->area_id}}</option>
+            <option value="{{$Event == null ? "Area":$Event->area_id}}" selected >{{$Event == null ? "Area":$Event->area->name}}</option>
           </select>
 
           @error('area_id')

@@ -91,7 +91,10 @@ Route::middleware('lang')->group(function(){
         Route::get('/' , [AdminController::class , 'dashboard'])->name('dashboard');
         Route::get('events' , [AdminController::class , 'Events'])->name('admin-events');
         Route::get('event/create' , [AdminController::class , "createEventView"])->name('create-events-view');
+        Route::get('event/update/{eventid}' , [AdminController::class , "updateEventView"])->name("update-events-view");
         Route::post("event/store" , [AdminController::class , "storeEvent"])->name("create-events");
+        Route::post('event/update' , [AdminController::class , "updateEvent"])->name("update-event");
+        
     });
 
     

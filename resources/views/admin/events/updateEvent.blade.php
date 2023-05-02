@@ -4,9 +4,9 @@
 @section('content')
 
  <div class="container mt-5">
-    <h1>Add Event</h1>
+    <h1>update Event</h1>
   
-    <x-event-form actionRoute="update-events" :Event="$Event"  :cities="$cities"></x-event-form>
+    <x-event-form actionRoute="update-event" :Event="$Event"  :cities="$cities" update=true></x-event-form>
  </div>
 
 
