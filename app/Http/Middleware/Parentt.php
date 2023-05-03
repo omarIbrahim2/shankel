@@ -22,7 +22,7 @@ class Parentt
             return redirect()->route("parent-login");
  
          }
-
+    
         return $next($request);
     }
 }

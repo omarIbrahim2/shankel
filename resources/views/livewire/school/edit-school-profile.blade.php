@@ -37,7 +37,7 @@
                             <h4>
                                 <span><i class="fa-solid fa-file-pen"></i></span>
                                 <span>Description</span>
-                                @error('desc') {{$message}} @enderror
+                                @error('desc') <p class="text-danger">{{$message}}</p> @enderror
                             </h4>
                             <textarea wire:model.defer="desc"> {{$desc?$desc:'No data'}}</textarea>
                         </div>
@@ -45,7 +45,7 @@
                             <h4>
                                 <span><i class="fa-solid fa-file-pen"></i></span>
                                 <span>Mission</span>
-                                @error('mission') {{$message}} @enderror
+                                @error('mission') <p class="text-danger">{{$message}}</p> @enderror
                             </h4>
                             <textarea wire:model.defer="mission">{{$mission}}</textarea>                        
                         </div>
@@ -53,7 +53,7 @@
                             <h4>
                                 <span><i class="fa-solid fa-file-pen"></i></span>
                                 <span>vision</span>
-                                @error('vision') {{$message}} @enderror
+                                @error('vision') <p class="text-danger">{{$message}}</p> @enderror
                             </h4>
                             <textarea wire:model.defer="vision"> {{$vision}}</textarea>
                         </div>
@@ -78,7 +78,7 @@
                                         <span>
                                             <i class="fa-solid fa-user"></i>
                                         </span>
-                                        @error('name') {{$message}} @enderror
+                                        @error('name') <p class="text-danger">{{$message}}</p> @enderror
                                     </div>
                                     
                                     <div class="input-item">
@@ -86,14 +86,14 @@
                                         <span>
                                             <i class="fa-regular fa-envelope"></i>
                                         </span>
-                                        @error('email') {{$message}} @enderror
+                                        @error('email') <p class="text-danger">{{$message}}</p> @enderror
                                     </div>
                                     <div class="input-item">
                                         <input type="tel" wire:model="phone" placeholder="phone" required>
                                         <span>
                                             <i class="fa-solid fa-phone"></i>
                                         </span>
-                                        @error('phone') {{$message}} @enderror
+                                        @error('phone') <p class="text-danger">{{$message}}</p> @enderror
                                     </div>
                                     <div class="input-item">
                                         
@@ -101,7 +101,7 @@
                                         <span>
                                             <i class="fa-regular fa-calendar-days"></i>
                                         </span>
-                                        @error('establish_date') {{$message}} @enderror
+                                        @error('establish_date') <p class="text-danger">{{$message}}</p> @enderror
                                     </div>
                                     <div class="input-item ">
                                         <select wire:model="city" class="form-select" aria-label="Default select example" >
@@ -127,7 +127,7 @@
                                         <span>
                                             <i class="fa-solid fa-location-dot"></i>
                                         </span>
-                                        @error('area_id') {{$message}} @enderror
+                                        @error('area_id') <p class="text-danger">{{$message}}</p> @enderror
                                     </div>
                                     <div class="input-item edit-field">
                                         <h4>
@@ -162,7 +162,7 @@
                                             <span>
                                                 <i class="fa-solid fa-location-dot"></i>
                                             </span>
-                                            @error('edu_systems_id') {{$message}} @enderror
+                                            @error('edu_systems_id') <p class="text-danger">{{$message}}</p> @enderror
                                         </div>
                                         
                                     </div>
@@ -180,7 +180,7 @@
                                         <span>
                                             <i class="fa-brands fa-facebook-f"></i>
                                         </span>
-                                        @error('facebook') {{$message}} @enderror
+                                        @error('facebook') <p class="text-danger">{{$message}}</p> @enderror
                                     </div>
                                     
                                     <div class="input-item">
@@ -188,7 +188,7 @@
                                         <span>
                                             <i class="fa-brands fa-twitter"></i>
                                         </span>
-                                        @error('twitter') {{$message}} @enderror
+                                        @error('twitter') <p class="text-danger">{{$message}}</p> @enderror
                                     </div>
                                    
                                     <div class="input-item ">
@@ -196,7 +196,7 @@
                                         <span>
                                             <i class="fa-brands fa-linkedin-in"></i>
                                         </span>
-                                        @error('linkedin') {{$message}} @enderror
+                                        @error('linkedin') <p class="text-danger">{{$message}}</p> @enderror
                                     </div>
                                     
                                

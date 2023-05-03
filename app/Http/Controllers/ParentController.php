@@ -87,16 +87,21 @@ class ParentController extends Controller
     }
 
     public function changePassView(){
-
+       
         return view("web.Auth.Parent.Change_Pass");
     }
 
-    public function changePass(Request $request , $guard){
-       
+    public function changePass(Request $request  , $guard){
+         
          $changePass = new ChangePassword();
-
+        
           $changePass->changePass($request , $guard);
          $url =  Config::get('auth.custom.' . $guard . ".url");
+        
           return redirect()->route($url);
     }
+
+
+
+  
 }

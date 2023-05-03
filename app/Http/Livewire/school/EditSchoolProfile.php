@@ -64,9 +64,9 @@ class EditSchoolProfile extends Component
     protected $rules = [
        "name" => "required|min:3|string",
        "email" => 'email|required',
-       "phone" => "required",
+       "phone" => "required|min:6",
        'area_id' => 'required|exists:areas,id',
-       "establish_date" => "required",
+       "establish_date" => "required|date",
        "desc" => 'string|nullable',
        "mission" => "string|nullable",
        "vision" => 'string|nullable',

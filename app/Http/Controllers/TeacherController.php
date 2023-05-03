@@ -35,5 +35,11 @@ class TeacherController extends Controller
       }
 
 
+      public function changePassView(){
+
+          return view();
+      }
+
+
 
 }

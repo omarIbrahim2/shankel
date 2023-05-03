@@ -79,11 +79,9 @@ Route::middleware('lang')->group(function(){
         Route::post('add/child' , [ParentController::class , 'createChild'])->name('create-child');
         Route::post('editProfile/child' , [ParentController::class , 'InsertChild'])->name('InsertChild');
         Route::get('changePass/parent' , [ParentController::class , "changePassView"] )->name("change_pass_parent");
-        Route::post('changePass/{user}', [ParentController::class, 'changePass'])->name("submit_change_pass");
-        
+        Route::post("changePass/parent/{user}" , [ParentController::class , "changePass"])->name("submit-change-pass-parent");
     });
     
-
 
     //admin group
 
@@ -112,7 +110,7 @@ Route::middleware('lang')->group(function(){
         Route::get('/school' , [SchoolController::class , 'school'])->name('school');
         Route::get('/school-profile' , [SchoolController::class, 'schoolProfile'])->name('school-profile');
         Route::get('changePass/school' , [SchoolController::class , "changePassView"] )->name("change_pass_school");
-        Route::post('changePass/{user}', [ParentController::class, 'changePass'])->name("submit_change_pass");
+        Route::post('changePass/school/{user}', [ParentController::class, 'changePass'])->name("submit_change_pass_school");
     });
     
 

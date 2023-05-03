@@ -5,6 +5,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
@@ -43,5 +44,22 @@ class Teacher extends Authenticatable
     public function transactions()
     {
         return $this->morphMany(Transaction::class , 'user');
+    }
+    public function image(): Attribute
+    {
+
+        return new Attribute(
+            get: function($value){
+        
+               if ($value == null) {
+                   
+                 return "assets/images/logo/user.png";
+
+                 
+               }
+        
+               return "uploads/".$value;
+            }
+        );
     }
 }
