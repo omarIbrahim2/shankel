@@ -30,7 +30,7 @@
                                     <form method="POST" action="{{route('school-register')}}" enctype="multipart/form-data">
                                         @csrf
                                         <div class="input-item me-auto ms-0">
-                                            <input type="text" name="name" placeholder="{{ trans('register.name') }}"
+                                            <input type="text" name="name" value="{{old('name')}}" placeholder="{{ trans('register.name') }}"
                                                 >
                                             <span>
                                                 <i class="fa-solid fa-user"></i>
@@ -41,7 +41,7 @@
                                         </div>
                                         <div class="input-item me-auto ms-0">
 
-                                            <input type="email" name="email" placeholder="{{ trans('register.email') }}"
+                                            <input type="email" name="email" value="{{old('email')}}" placeholder="{{ trans('register.email') }}"
                                                 >
                                             <span>
                                                 <i class="fa-regular fa-envelope"></i>
@@ -51,7 +51,7 @@
                                             @enderror
                                         </div>
                                         <div class="input-item me-auto ms-0">
-                                            <input type="tel" name="phone" placeholder="{{ trans('register.phone') }}"
+                                            <input type="tel" name="phone" value="{{old('phone')}}" placeholder="{{ trans('register.phone') }}"
                                                 >
                                             <span>
                                                 <i class="fa-solid fa-phone"></i>
@@ -129,7 +129,7 @@
                                             @enderror
                                         </div>
                                         <div class="upload-avatar text-start">
-                                            <input type="file" name="image" id="teacher-avatar" multiple>
+                                            <input type="file" name="image"  id="teacher-avatar" multiple>
                                             <label class="btn-custom" for="teacher-avatar">Upload New Photo</label>
                                             <div class="files-names">
 

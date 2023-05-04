@@ -26,7 +26,7 @@ class ParentRegisterReq extends FormRequest
         return [
             'name' => 'required|string|min:3|max:50',
             'email' => 'required|email|unique:parentts,email',
-            'phone' => 'required',
+            'phone' => 'required|numeric|size:7',
             'gender'=> 'required|string|in:male,female',
             'area_id' => 'required|exists:areas,id',
             'image' => 'image|mimes:jpg,png,jpeg|max:2048|',

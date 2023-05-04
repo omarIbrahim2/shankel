@@ -25,6 +25,11 @@ class School extends Authenticatable
         return $this->belongsToMany(Grade::class);
     }
 
+    public function parentts(){
+
+        return $this->belongsToMany(Parentt::class);
+    }
+
     public function area()
     {
         return $this->belongsTo(Area::class);

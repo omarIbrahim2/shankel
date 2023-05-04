@@ -18,7 +18,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6 col-md-8 col-12">
-                            <div class="left-side">
+                            {{-- <div class="left-side">
                                 @if (session()->has("error"))
                                 <div class="alert alert-success">
                                     {{session('error')}}
@@ -28,7 +28,7 @@
                                     <h2 class="text-start">Change Password </h2>
                                 </div>
                                 <div class="contact-form black-contact-form">
-                                    <form method="POST" action="{{route('submit_change_pass' , "school")}}">
+                                    <form method="POST" action="{{route('submit_change_pass_school' , "school")}}">
                                         @csrf
 
                                         @include('web.inc.errors')
@@ -64,7 +64,10 @@
                                     </form>
 
                                 </div>
-                            </div>
+                            </div> --}}
+
+
+                            <x-change-pass actionRoute="submit_change_pass_school" guard="school" />
                         </div>
                         <div class="col-lg-6 col-md-4 col-12">
                             <div class="auth-logo">

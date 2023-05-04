@@ -24,6 +24,11 @@ class Parentt extends Authenticatable
         return $this->hasMany(Child::class);
     }
 
+    public function schools(){
+
+        return $this->belongsToMany(School::class);
+    }
+
     public function area()
     {
         return $this->belongsTo(Area::class);

@@ -16,6 +16,12 @@ use Shankl\Services\ParentService;
 
 class ParentController extends Controller
 {
+  private $changePassObj;
+  public function __construct(ChangePassword $changePass)
+  {
+    $this->changePassObj = $changePass;
+    
+  }
     public function showRegister(LocationRepoInterface $locationRepo){
        
        $data['cities'] =  $locationRepo->getCities();
@@ -93,9 +99,13 @@ class ParentController extends Controller
 
     public function changePass(Request $request  , $guard){
          
-         $changePass = new ChangePassword();
+         
         
-          $changePass->changePass($request , $guard);
+          $result = $this->changePassObj->changePass($request , $guard);
+
+          if ($result == false) {
+            return back()->with('error' , "old password doesn't match");
+          }
          $url =  Config::get('auth.custom.' . $guard . ".url");
         
           return redirect()->route($url);

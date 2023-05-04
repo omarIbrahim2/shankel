@@ -50,6 +50,7 @@ return [
         ],
         'teacher' => [
              'model' => App\Models\Teacher::class,
+             'url' => 'teacher-profile',
         ],
     ],
     'guards' => [

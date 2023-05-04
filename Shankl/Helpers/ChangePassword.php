@@ -21,13 +21,14 @@ class ChangePassword{
 
         if(! Hash::check($request->old_password , $AuthUser->password)){
                 
-            return back()->with('error' , "old password doesn't match");
+            return false;
+            //return back()->with('error' , "old password doesn't match");
         }
 
          $AuthUser->update(['password' => Hash::make($validated['password'])]);
             
-        toastr("paswword changed successfully" , 'success');
-
+        //toastr("paswword changed successfully" , 'success');
+         return true;
 
     }
 

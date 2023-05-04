@@ -103,6 +103,8 @@ Route::middleware('lang')->group(function(){
     Route::middleware('teacher')->group(function(){
         Route::get('/teacher' , [TeacherController::class , 'teacher'])->name('teacher');
         Route::get('/teacher-profile' , [TeacherController::class , 'teacherProfile'])->name('teacher-profile');
+        Route::get('changePass/teacher' , [TeacherController::class , 'changePassView'])->name('change_pass_teacher');
+        Route::post('changePass/teacher/{user}' , [TeacherController::class , 'changePass'])->name('submit_change_pass_teacher');
     });
     
     //school Group
@@ -110,7 +112,7 @@ Route::middleware('lang')->group(function(){
         Route::get('/school' , [SchoolController::class , 'school'])->name('school');
         Route::get('/school-profile' , [SchoolController::class, 'schoolProfile'])->name('school-profile');
         Route::get('changePass/school' , [SchoolController::class , "changePassView"] )->name("change_pass_school");
-        Route::post('changePass/school/{user}', [ParentController::class, 'changePass'])->name("submit_change_pass_school");
+        Route::post('changePass/school/{user}', [SchoolController::class, 'changePass'])->name("submit_change_pass_school");
     });
     
 

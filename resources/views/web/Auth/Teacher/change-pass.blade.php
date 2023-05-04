@@ -25,10 +25,10 @@
                                    </div>
                                 @endif
                                 <div class="section-title">
-                                    <h2 class="text-start">Change Password parent </h2>
+                                    <h2 class="text-start">Change Password </h2>
                                 </div>
                                 <div class="contact-form black-contact-form">
-                                    <form method="POST" action="{{route('submit-change-pass-parent' , 'parent')}}">
+                                    <form method="POST" action="{{route('submit_change_pass_school' , "school")}}">
                                         @csrf
 
                                         @include('web.inc.errors')
@@ -66,7 +66,8 @@
                                 </div>
                             </div> --}}
 
-                            <x-change-pass actionRoute="submit-change-pass-parent" guard="parent" />
+
+                            <x-change-pass actionRoute="submit_change_pass_teacher" guard="teacher" />
                         </div>
                         <div class="col-lg-6 col-md-4 col-12">
                             <div class="auth-logo">

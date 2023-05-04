@@ -145,12 +145,15 @@ class AuthController extends Controller
 
     //School Authentication
 
-    public function SchoolRegister(Request $request , SchoolRepository $schoolRepo){
+    public function SchoolRegister(SchoolRegisterReq $request , SchoolRepository $schoolRepo){
 
-        //$request->validated();
-
-
-        $schoolObj = EntitiesFactory::createEntity($request->except(['image' , 'grade_id']) , 'school');
+        $validatedReq = $request->validated();
+         
+        if ($validatedReq->fails()) {
+            dd("dks");
+        }
+         
+        $schoolObj = EntitiesFactory::createEntity($validatedReq->except(['image' , 'grade_id']) , 'school');
 
         if ($request->hasFile('image')) {
 
@@ -164,7 +167,7 @@ class AuthController extends Controller
             $schoolObj->setImage($filePath);
         }
 
-        $schoolObj->setPassword($request->password);
+        $schoolObj->setPassword($validatedReq->password);
         
         $schoolObj->changeStatus();
    

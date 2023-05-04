@@ -58,7 +58,7 @@
                                     <button type="button" wire:click="update" class="btn-custom">Save</button>
                                 </div>
                     
-                                <a href=""  class="btn-custom" >
+                                <a href="{{route('change_pass_teacher')}}"  class="btn-custom" >
                                     Reset Password
                                 </a>
                             </div>
