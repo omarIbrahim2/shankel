@@ -88,6 +88,8 @@ class EditTeacher extends Component
 
        $imagePath = $teacherService->handleUploadProfilePic($this->image , $this->profilePic);
 
+       $cvPath = $teacherService->handleUploadcv($this->cv);
+
        if ($imagePath != null) {
           $this->attributes['image'] = $imagePath;
        }

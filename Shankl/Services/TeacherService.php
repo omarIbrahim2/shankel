@@ -42,4 +42,16 @@ class TeacherService{
           $this->fileservice->setPath("teachers");
           return $this->fileservice->uploadFile();
     }
+
+    public function handleUploadcv($uploadedFile){
+         
+        if ($uploadedFile  == null){
+            
+            return null;
+        }
+
+          $this->fileservice->setFile($uploadedFile);
+          $this->fileservice->setPath("teachers/cv");
+          return $this->fileservice->uploadFile();
+    }
 }

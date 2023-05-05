@@ -26,13 +26,21 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-        Blade::if('custom_auth' , function ($guard){
-            return ! Auth::guard($guard)->check();
+        Blade::if('custom_auth' , function (){
+            if (Auth::guard('web')->check() == true) {
+                return true;
+            }elseif(Auth::guard('parent')->check() == true){
+                return true;
+            }elseif(Auth::guard('school')->check() == true){
+                return true;
+            }elseif(Auth::guard('teacher')->check() == true){
+                return true;
+            }
+
+            return false;
         });
 
-        Blade::if('Notcustom_auth' , function ($guard){
-            return  Auth::guard($guard)->check();
-        });
+       
         //
     }
 }
