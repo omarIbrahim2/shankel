@@ -4,6 +4,10 @@
     
 @endsection
 
+@section('nav')
+<x-nav-auth></x-nav-auth>
+@endsection
+
 @section('main')
 <main class="colored-section">
     <nav class="sub-nav">

@@ -2,10 +2,13 @@
 
 namespace App\View\Components;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Component;
 
-class nav-guest extends Component
+class navGuest extends Component
 {
+
+    
     /**
      * Create a new component instance.
      *
@@ -13,9 +16,10 @@ class nav-guest extends Component
      */
     public function __construct()
     {
-        //
+       
     }
 
+  
     /**
      * Get the view / contents that represent the component.
      *

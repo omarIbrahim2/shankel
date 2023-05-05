@@ -1,5 +1,8 @@
 @extends('web.layout')
 
+@section('nav')
+<x-nav-guest/>
+@endsection
 
 @section('main')
 

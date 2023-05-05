@@ -29,7 +29,7 @@ class AddChildRequest extends FormRequest
             'gender'=> 'required|string|in:male,female',
             'grade_id' => 'required|exists:grades,id',
             'image' => 'image|mimes:jpg,png,jpeg|nullable',
-            'birth_date' => 'required|date',
+            'birth_date' => 'required',
             'parentt_id' => 'required|exists:parentts,id',
 
         ];
