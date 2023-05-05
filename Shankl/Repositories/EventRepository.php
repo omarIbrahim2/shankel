@@ -7,9 +7,9 @@ use Shankl\Interfaces\EventRepoInterface;
 
 class EventRepository implements EventRepoInterface{
 
-   public function getEvents(){
+   public function getEvents($pages){
        
-       return Event::paginate(6);
+       return Event::with('area.city')->paginate($pages);
 
    }
 

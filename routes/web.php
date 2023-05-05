@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EventsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LangController;
 use App\Http\Controllers\ParentController;
@@ -38,6 +39,11 @@ Route::middleware('lang')->group(function(){
     Route::get('/reset-password-parent/{token}', [AuthController::class , 'ParentresetPassword'])->middleware('guest')->name('password.reset.parent');
     Route::get('/reset-password-school/{token}', [AuthController::class , 'SchoolresetPassword'])->middleware('guest')->name('password.reset.school');
     Route::post('/reset-password-parent/{broker}/{guard}', [AuthController::class , 'resetPasswordPostRequest'])->middleware('guest')->name('password.update');
+    
+   //web Routes 
+   //*-------*//
+
+   Route::get('/events' , [EventsController::class , 'index'])->name('web-events');
 
     // Parent Routs
     //*-----------*
