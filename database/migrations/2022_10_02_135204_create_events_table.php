@@ -20,8 +20,9 @@ return new class extends Migration
             $table->text("desc");
             $table->string('image');
             $table->foreignId("area_id")->constrained();
-            $table->dateTime("start_at");
-            $table->dateTime("end_at");
+            $table->date("start");
+            $table->time('start_at');
+            $table->time('end_at');
             $table->timestamps();
         });
     }

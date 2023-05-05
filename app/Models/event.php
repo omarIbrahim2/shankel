@@ -56,4 +56,13 @@ class Event extends Model
 
     }
 
+    public function diffD(){
+
+         $endat = Carbon::createFromFormat('Y-m-d H:i:s' , $this->attributes['end_at']);
+          $startat = Carbon::createFromFormat('Y-m-d H:i:s' , $this->attributes['start_at']);
+
+          return $endat->diffInDays($startat);
+
+    }
+
 }
