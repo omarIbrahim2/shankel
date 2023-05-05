@@ -3,15 +3,15 @@
 
 <nav class="navbar navbar-expand-lg navbar-light ">
     <div class="container">
-        <a class="navbar-brand" href="{{route('/')}}">
+        <a class="navbar-brand" href="{{route('home')}}">
             <img src="{{asset("assets")}}/images/logo/logo.png" alt="shankal">
         </a>
         <div class="auth-btn">
             <a href="{{ route('selectUserRegister') }}" class="custom-out-btn">
-                Sign Up
+                {{trans("auth.Sign up")}}
             </a>
             <a href="{{ route('selectUserLogin') }}" class="custom-out-btn">
-                Sign in
+                {{trans("auth.Sign in")}}
             </a>
              <x-lang/> 
         </div>
@@ -24,16 +24,16 @@
               
                 
                 <li class="nav-item">
-                    <a class="nav-link" href="#about">Services</a>
+                    <a class="nav-link" href="#about">{{trans("nav.Services")}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#faq">Events</a>
+                    <a class="nav-link" href="#faq">{{trans("nav.Events")}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#gallery">Schools</a>
+                    <a class="nav-link" href="#gallery">{{trans("nav.Schools")}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#contact">Teachers</a>
+                    <a class="nav-link" href="#contact">{{trans("nav.Teachers")}}</a>
                 </li>
                 
             </ul>

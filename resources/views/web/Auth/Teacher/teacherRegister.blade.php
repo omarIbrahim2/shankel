@@ -5,7 +5,9 @@
     Shankl | Teacher Register
 @endsection
 
-
+@section('nav')
+<x-nav-guest/>
+@endsection
 @section('main')
 
 <main class="colored-section">

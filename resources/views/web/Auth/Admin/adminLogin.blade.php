@@ -5,6 +5,9 @@
     Shankl | Admin Login
 @endsection
 
+@section('nav')
+    <x-nav-guest/>
+@endsection
 
 @section('main')
     

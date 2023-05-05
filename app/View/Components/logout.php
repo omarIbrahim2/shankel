@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class nav-auth extends Component
+class logout extends Component
 {
     /**
      * Create a new component instance.
@@ -23,6 +23,6 @@ class nav-auth extends Component
      */
     public function render()
     {
-        return view('components.nav-auth');
+        return view('components.logout');
     }
 }

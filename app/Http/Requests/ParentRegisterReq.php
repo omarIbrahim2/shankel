@@ -23,14 +23,17 @@ class ParentRegisterReq extends FormRequest
      */
     public function rules()
     {
+        
         return [
             'name' => 'required|string|min:3|max:50',
             'email' => 'required|email|unique:parentts,email',
-            'phone' => 'required|numeric|size:7',
+            'phone' => 'required|size:7',
             'gender'=> 'required|string|in:male,female',
             'area_id' => 'required|exists:areas,id',
             'image' => 'image|mimes:jpg,png,jpeg|max:2048|',
             'password' => 'required|confirmed|min:6',
         ];
     }
+
+    
 }
