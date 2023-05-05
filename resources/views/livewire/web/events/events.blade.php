@@ -15,15 +15,15 @@
                 <div class="event-meta-data">
                     <div class="event-meta">
                         <span class="meta-icon"><i class="fa-regular fa-calendar-days"></i></span>
-                        <span class="meta-desc">8 December 2018</span>
+                        <span class="meta-desc">{{$event->formatedDate($event->start_at)}}</span>
                     </div>
                     <div class="event-meta">
                         <span class="meta-icon"><i class="fa-regular fa-clock"></i></span>
-                        <span class="meta-desc">10:00 AM - 3:00 PM</span>
+                        <span class="meta-desc">{{$event->startAt()}} -  {{$event->endAt()}}</span>
                     </div>
                     <div class="event-meta">
                         <span class="meta-icon"><i class="fa-solid fa-location-dot"></i></span>
-                        <span class="meta-desc">Amman,Jordan</span>
+                        <span class="meta-desc">{{$event->area->city->name}},{{$event->area->name}}</span>
                     </div>
                 </div>
                 <div class="event-img">
@@ -57,9 +57,11 @@
                             <p>Secs</p>
                         </div>
                     </div>
+                    @custom_auth
                     <div>
                         <a href="#" class="white-btn">Book Your Seat</a>
                     </div>
+                    @endcustom_auth
                 </div>
                 <div class="loc-data">
                     <div class="event-data-item">
@@ -68,7 +70,7 @@
                         </div>
                         <div class="event-data-text">
                             <h5>Start Time</h5>
-                            <span>{{$event->start_at}}</span>
+                            <span>{{$event->startAt()}}</span>
                         </div>
                     </div>
                     <div class="event-data-item">
@@ -77,7 +79,7 @@
                         </div>
                         <div class="event-data-text">
                             <h5>Finish Time</h5>
-                            <span>{{$event->end_at}}</span>
+                            <span>{{$event->endAt()}}</span>
                         </div>
                     </div>
                     <div class="event-data-item">
@@ -86,7 +88,7 @@
                         </div>
                         <div class="event-data-text">
                             <h5>Address</h5>
-                            <span>Amman,Jordan</span>
+                            <span>{{$event->area->city->name}},{{$event->area->name}}</span>
                         </div>
                     </div>
                 </div>

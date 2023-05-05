@@ -9,7 +9,7 @@ class EventRepository implements EventRepoInterface{
 
    public function getEvents($pages){
        
-       return Event::paginate($pages);
+       return Event::with('area.city')->paginate($pages);
 
    }
 
