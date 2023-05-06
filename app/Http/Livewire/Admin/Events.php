@@ -17,7 +17,7 @@ class Events extends Component
     public function render(AdminService $adminService)
     {
        
-        $Events =  $adminService->getEvents();
+        $Events =  $adminService->getEvents(10);
         
 
         return view('livewire.admin.events')->with(['events' => $Events]);
@@ -38,7 +38,7 @@ class Events extends Component
 
     public function getEvents(){
            
-       return  $this->adminService->getEvents();
+       return  $this->adminService->getEvents(10);
 
     }
 
