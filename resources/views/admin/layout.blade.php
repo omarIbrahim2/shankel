@@ -13,6 +13,7 @@
     <link href="{{asset('admin')}}/css/plugins.css" rel="stylesheet" type="text/css" />
     <link href="{{asset('admin')}}/plugins/perfect-scrollbar/perfect-scrollbar.css " rel="stylesheet"  />
     <link href="{{asset('admin')}}/plugins/highlight/styles/monokai-sublime.css"  rel="stylesheet"  />
+    <link href="{{asset('admin')}}/plugins/flatpickr/flatpickr.css" rel="stylesheet"  />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
     <link rel="stylesheet" href="{{asset("admin")}}/css/structure.css">
     <!-- END GLOBAL MANDATORY STYLES -->
@@ -37,7 +38,7 @@
 <body class="sidebar-noneoverflow">
     <form id="logout-form" method="POST" action="{{route("logout" , "web")}}">
         @csrf
-    </form>   
+    </form>
     <!--  BEGIN NAVBAR  -->
     <div class="header-container fixed-top">
         <header class="header navbar navbar-expand-sm">
@@ -67,8 +68,8 @@
                             <div class="media mx-auto">
                                 <img src="{{asset("assets")}}/images/logo/logo.png" class="img-fluid mr-2" alt="avatar">
                                 <div class="media-body">
-                                    <h5>Sonia Shaw</h5>
-                                    <p>Project Leader</p>
+                                    <h5>Admin</h5>
+                                    <p>Super Admin</p>
                                 </div>
                             </div>
                         </div>
@@ -82,18 +83,18 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-inbox"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"></path></svg> <span>My Inbox</span>
                             </a>
                         </div>
-                        <div class="dropdown-item">
+                        <!-- <div class="dropdown-item">
                             <a href="auth_lockscreen.html">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg> <span>Lock Screen</span>
                             </a>
-                        </div>
+                        </div> -->
                         <div class="dropdown-item">
 
-                        
-                            <button form="logout-form" type="submit">
+
+                            <button form="logout-form" type="submit" class="btn ">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg> <span>Log Out</span>
                             </button>
-                        
+
                         </div>
                     </div>
                 </li>
@@ -158,7 +159,7 @@
                         </a>
                     </li>
 
-                   
+
 
                     <li class="menu">
                         <a href="#submenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
@@ -224,7 +225,7 @@
         <!--  BEGIN CONTENT AREA  -->
         <div id="content" class="main-content">
             <div class="layout-px-spacing">
-             
+
 
                 <div class="container">
                 <!-- CONTENT AREA -->
@@ -252,6 +253,7 @@
     <script src="{{asset('admin')}}/js/libs/jquery-3.1.1.min.js"></script>
     <script src="{{asset('admin')}}/bootstrap/js/popper.min.js"></script>
     <script src="{{asset('admin')}}/bootstrap/js/bootstrap.min.js"></script>
+    <script src="{{asset('admin')}}/plugins/flatpickr/flatpickr.js"></script>
     <link rel="stylesheet" href="{{asset('assets')}}/css/all.min.css">
     <script src="{{asset('admin')}}/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="{{asset('admin')}}/js/app.js"></script>
@@ -262,6 +264,6 @@
     </script>
     <script src="{{asset('admin')}}/js/custom.js"></script>
    @livewireScripts
-    @yield('scripts')    
-  </body>  
- 
+    @yield('scripts')
+  </body>
+

@@ -1810,13 +1810,13 @@ table .badge-success, table .badge-primary, table .badge-warning, table .badge-d
   padding: 16px 12px;
   color: #fff; }
 
-/*  
+/*
     ==========================
-        Background Colors  
+        Background Colors
     ==========================
 */
-/*  
-    Default  
+/*
+    Default
 */
 .bg-primary {
   background-color: #4361ee !important;
@@ -1853,8 +1853,8 @@ table .badge-success, table .badge-primary, table .badge-warning, table .badge-d
   border-color: #3b3f5c;
   color: #fff; }
 
-/*  
-    Light Background  
+/*
+    Light Background
 */
 .bg-light-primary {
   background-color: #eaf1ff !important;
@@ -1891,7 +1891,7 @@ table .badge-success, table .badge-primary, table .badge-warning, table .badge-d
   border-color: #e3e4eb;
   color: #fff; }
 
-/*  
+/*
     Progress Bar
 */
 .progress {
@@ -2152,3 +2152,6 @@ table .badge-success, table .badge-primary, table .badge-warning, table .badge-d
 
 .position-relative {
   position: relative; }
+.event-times>div:first-of-type{
+    margin-inline-end: 10px;
+}
