@@ -11,12 +11,13 @@ use App\Http\Controllers\ParentController;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\LocationCcontroller;
+use App\Http\Controllers\reader;
 use Symfony\Component\Routing\Route as RoutingRoute;
 
 //Lang Route
 Route::get('set/lang/{lang}' , [LangController::class , 'set'])->name("lang");
 
-
+Route::get('/excel' , [reader::class , 'index']);
 Route::middleware('lang')->group(function(){
 
 
@@ -44,6 +45,8 @@ Route::middleware('lang')->group(function(){
    //*-------*//
 
    Route::get('/events' , [EventsController::class , 'index'])->name('web-events');
+
+   Route::get('/schools' , [SchoolController::class , 'index'])->name('web-schools');
 
     // Parent Routs
     //*-----------*

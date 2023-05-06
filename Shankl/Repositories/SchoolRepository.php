@@ -8,6 +8,10 @@ use Shankl\Interfaces\UserReboInterface;
 
 class SchoolRepository implements UserReboInterface
 {
+    public function getSchools($pages)
+    {
+        return  School::paginate($pages);
+    }
 
     public function create($data)
     {

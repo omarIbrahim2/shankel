@@ -15,11 +15,11 @@
                 <div class="event-meta-data">
                     <div class="event-meta">
                         <span class="meta-icon"><i class="fa-regular fa-calendar-days"></i></span>
-                        <span class="meta-desc">{{$event->formatedDate($event->start_at)}}</span>
+                        <span class="meta-desc">{{$event->formatedDate($event->start)}}</span>
                     </div>
                     <div class="event-meta">
                         <span class="meta-icon"><i class="fa-regular fa-clock"></i></span>
-                        <span class="meta-desc">{{$event->startAt()}} -  {{$event->endAt()}}</span>
+                        <span class="meta-desc"></span>
                     </div>
                     <div class="event-meta">
                         <span class="meta-icon"><i class="fa-solid fa-location-dot"></i></span>
@@ -41,7 +41,7 @@
                 <div class="counter">
                     <div class="counter-body">
                         <div class="counter-item">
-                            <span  >{{$event->diffD()}}</span>
+                            <span  ></span>
                             <p>Days</p>
                         </div>
                         <div class="counter-item">
@@ -70,7 +70,7 @@
                         </div>
                         <div class="event-data-text">
                             <h5>Start Time</h5>
-                            <span>{{$event->startAt()}}</span>
+                            <span></span>
                         </div>
                     </div>
                     <div class="event-data-item">
@@ -79,7 +79,7 @@
                         </div>
                         <div class="event-data-text">
                             <h5>Finish Time</h5>
-                            <span>{{$event->endAt()}}</span>
+                            <span></span>
                         </div>
                     </div>
                     <div class="event-data-item">

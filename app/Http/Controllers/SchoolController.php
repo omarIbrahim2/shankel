@@ -17,6 +17,11 @@ class SchoolController extends Controller
   {
     $this->changePassObj = $changepass;
   }
+
+  public function index(){
+   
+     return view('web.Schools.schools');    
+  }
   public function showRegister(LocationRepoInterface $locationRepo, GradeRepoInterface $gradeRepo , EduSystemRepoInterface $eduRepo )
   {
 

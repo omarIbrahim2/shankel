@@ -12,7 +12,13 @@ class SchoolService{
   {
        $this->schoolRepo = $schoolRepo;    
   }
-
+   
+   
+  public function getAllSchools($pages){
+      
+     return $this->schoolRepo->getSchools($pages);
+     
+  }
 
   public function updateProfile($data){
         
