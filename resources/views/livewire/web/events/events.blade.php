@@ -31,7 +31,7 @@
                 </div>
                 <div class="event-description">
                     <p>
-                        {{$event->desc}}
+                        {{Str::limit($event->desc , 100)}}  <a href="">see more...</a>
                     </p>
                 </div>
             </div>
@@ -41,7 +41,7 @@
                 <div class="counter">
                     <div class="counter-body">
                         <div class="counter-item">
-                            <span class="days"></span>
+                            <span  >{{$event->diffD()}}</span>
                             <p>Days</p>
                         </div>
                         <div class="counter-item">
