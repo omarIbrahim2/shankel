@@ -12,9 +12,9 @@ class AdminService{
      {
         $this->eventRebo = $eventRebo;
      }
-    public function getEvents(){
+    public function getEvents($pages){
  
-          $events = $this->eventRebo->getEvents();
+          $events = $this->eventRebo->getEvents($pages);
           
           return $events;
 
