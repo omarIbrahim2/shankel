@@ -2,20 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use Illuminate\Support\Arr;
+use Illuminate\Http\Request;
+use Shankl\Services\FileService;
+use Shankl\Services\AdminService;
+use Shankl\Services\SupplierService;
+use App\Http\Requests\SupplierUpdateReq;
+use Shankl\Interfaces\LocationRepoInterface;
 use App\Http\Requests\EventValidationRequest;
 use App\Http\Requests\EventValidationUpdateReq;
-use App\Models\User;
-use Illuminate\Http\Request;
-use Shankl\Interfaces\LocationRepoInterface;
-use Shankl\Services\AdminService;
-use Shankl\Services\FileService;
+use App\Http\Requests\ServiceAddReq;
+use App\Http\Requests\ServiceUpdateReq;
 
 class AdminController extends Controller
 {
     private $AdminService;
-    public function __construct(AdminService $AdminService)
+    private $supplierService;
+    public function __construct(AdminService $AdminService , SupplierService $supplierService)
     {
         $this->AdminService = $AdminService;
+        $this->supplierService = $supplierService;
         
     }
     public function showLogin(){
@@ -108,6 +115,80 @@ class AdminController extends Controller
         return view("admin.events.createEvent")->with($data);
     }
 
+    public function createSupplierView(LocationRepoInterface $locationRepo){
+
+        $data['cities'] = $locationRepo->getCities();
+
+        return view('admin.suppliers.create')->with($data);
+    }
+
+    public function updateSupplierView(LocationRepoInterface $locationRepo ,$Supplier_id){
+          
+        $cities= $locationRepo->getCities();
+
+        $supplier = $this->supplierService->getSupplier($Supplier_id);
+
+        if(! $supplier){
+
+            return redirect()->back();
+        }
+
+        return view('admin.suppliers.update')->with(['Supplier' => $supplier , 'cities' => $cities]);
+
+
+    }
+
+
+    public function updateSupplier(SupplierUpdateReq $request , SupplierService $supplierService){
+
+
+         $validatedreq = $request->validated();
+         
+         $data = Arr::except($validatedreq , ['image']);
+ 
+         $supplierCurrentImage = $supplierService->getSupplier($data['id'])->image;
+         
+           
+        $image = $supplierService->handleUploadProfilepic($request->image , $supplierCurrentImage);
+        
+        if ($image != null) {
+            $data['image'] = $image;
+        }
+
+        $action = $supplierService->updateProfile($data);
+
+
+        if ($action) {
+            toastr("data updated successfully" , "info" , "update");
+
+            
+        }else{
+            toastr("problem in updating" , "error");
+        }
+
+        
+
+        return redirect()->route("admin-suppliers" , "unactive");
+        
+    }
+
+    public function deleteSupplier($Supplier_id , SupplierService $supplierService){
+        
+        try {
+            $supplierService->deleteSupplier($Supplier_id);
+             
+            toastr("data deleted successfully" , "error" , "Delete");
+            return back();
+
+        } catch (\Throwable $th) {
+             
+            toastr("error in deletion , supplier might have services" , "error" , "Delete");
+            return back();
+        }
+
+         
+    }
+
     public function updateEventView(LocationRepoInterface $locationRepo ,$Eventid){
         $cities= $locationRepo->getCities();
         $event = $this->AdminService->getEvent($Eventid);
@@ -128,12 +209,15 @@ class AdminController extends Controller
 
        $validatedData["eventable_id"] =  auth()->guard("web")->user()->id;
         
+      if ($request->has('image')) {
+        
+        $fileService->setPath('events');
 
-       $fileService->setPath('events');
-
-       $fileService->setFile($request->image);
-
-       $validatedData['image'] = $fileService->uploadFile();
+        $fileService->setFile($request->image);
+ 
+        $validatedData['image'] = $fileService->uploadFile();
+      }
+     
 
 
          $event =$this->AdminService->addEvent($validatedData);
@@ -181,5 +265,106 @@ class AdminController extends Controller
 
         toastr("something wrong happened" , "error" , "Event update");
         return redirect()->back();
+    }
+
+    public function Services($supplierId){
+         
+        return view("admin.services.services")->with(["supplierId" => $supplierId]);     
+    }
+
+    public function deleteService($serviceId){
+
+         $action = $this->supplierService->deleteService($serviceId);
+
+         if ($action) {
+             
+            toastr("Deleted successfully" , "error" , "Deleting");
+
+            return back();
+         }
+
+         toastr("error in deleting" , "error");
+
+         return back();
+
+    }
+
+    public function serviceCreateView($supplierId){
+
+        return view("admin.services.create")->with(["supplierId" => $supplierId]);
+    }
+
+    public function serviceUpdateView($serviceId){
+         $Service = $this->supplierService->getService($serviceId);
+         
+        return view("admin.services.update")->with(['Service' => $Service]);
+    }
+
+    public function CreateService(ServiceAddReq $request , FileService $fileService){
+
+        $validatedreq =  $request->validated();
+
+        $data = $this->credientials($validatedreq , ['image']);
+
+
+        if ($request->has('image')) {
+        
+            $fileService->setPath('services');
+    
+            $fileService->setFile($request->image);
+            
+             
+            $data['image'] = $fileService->uploadFile();
+          }
+
+          $service = $this->supplierService->CreateService($data);
+
+          if ($service) {
+             toastr("service created successfully" , "success");
+
+             return redirect()->route("Services" , $data['supplier_id']);
+          }
+
+          toastr("error in creating" , "error");
+
+          return redirect()->route("Services" , $data['supplier_id']);
+
+        
+    }
+
+    public function UpdateService(ServiceUpdateReq $request , SupplierService $supplierService){
+            
+          $validatedReq = $request->validated();
+
+          $data = $this->credientials($validatedReq , ['image']);
+
+          $serviceCurrentImage = $supplierService->getService($data['id'])->image;
+
+          $image = $supplierService->uploadServiceImage($request->image ,$serviceCurrentImage );
+          
+            if($image != null){
+
+                $data['image'] = $image;
+            }
+
+
+            $action = $supplierService->updateService($data);
+           
+            if ($action) {
+            
+                toastr("service updated successfully" , "info" , "Service update");
+    
+                return redirect()->route('dashboard');
+            }
+    
+            toastr("something wrong happened" , "error" , "Service update");
+            return redirect()->back();
+            
+          
+    }
+
+    private function credientials($validatedReq , $vals){
+
+        return Arr::except($validatedReq ,$vals);
     }
 }

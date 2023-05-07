@@ -14,4 +14,6 @@ interface UserReboInterface{
 
     public function update($data);
 
+
+
 }

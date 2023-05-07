@@ -12,6 +12,7 @@ use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\LocationCcontroller;
 use App\Http\Controllers\reader;
+use Shankl\Entities\AdminEntity;
 use Symfony\Component\Routing\Route as RoutingRoute;
 
 //Lang Route
@@ -73,7 +74,7 @@ Route::middleware('lang')->group(function(){
     Route::post('school/login' , [AuthController::class , 'schoolLogin'])->name('login-school');
     
     // Amin Auth
-    Route::get('/login' , [AdminController::class , 'showLogin'])->name('admin-login');
+    Route::get('/login' , [AdminController::class , 'showLogin'])->middleware('guest')->name('admin-login');
     Route::post('admin/login' , [AuthController::class , 'AdminLogin'])->name('login-admin');
 
 
@@ -105,6 +106,18 @@ Route::middleware('lang')->group(function(){
         Route::get("schools/{status}" , [AdminController::class , 'Schools'])->name('admin-schools');
         Route::get("teachers/{status}" , [AdminController::class , 'Teachers'])->name('admin-teachers');
         Route::get("suppliers/{status}" , [AdminController::class , 'Suppliers'])->name('admin-suppliers');
+        Route::get('supplier/store' , [AdminController::class , 'createSupplierView'])->name("create-supplier");
+        Route::get('supplier/update/{supplier_id}' , [AdminController::class , "updateSupplierView"])->name("update-supplier");
+        Route::post('supplier/register' , [AuthController::class , "SupplierRegister"])->name("supplier-register");
+        Route::post('supplier/update' , [AdminController::class , "updateSupplier"])->name("supplier-update");
+        Route::get("delete/Supplier/{id}" , [AdminController::class , "deleteSupplier"])->name("supplier-delete");
+        Route::get("services/{supplier_id}" , [AdminController::class , "Services"])->name("Services");
+        Route::get("service/delete/{id}" , [AdminController::class , "deleteService"])->name("service-delete");
+        Route::get("service/create/{supplier_id}" , [AdminController::class , "serviceCreateView"])->name('service-create-form');
+        Route::get("service/update/{serviceId}", [AdminController::class ,"serviceUpdateView"])->name("service-update-form");
+        Route::post('service/create' , [AdminController::class , "CreateService"])->name("service-create");
+        Route::post('service/update' , [AdminController::class , "UpdateService"])->name('service-update');
+
         
     });
 

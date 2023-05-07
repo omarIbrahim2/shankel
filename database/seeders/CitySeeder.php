@@ -25,9 +25,7 @@ class CitySeeder extends Seeder
         //       ]);
         // }
         City::factory()->has(
-            Area::factory()->has(
-                Province::factory()->count(5)
-            )->count(3)
+            Area::factory()->count(3)
         )->count(5)->create();
     }
 }

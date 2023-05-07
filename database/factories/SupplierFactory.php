@@ -22,7 +22,9 @@ class SupplierFactory extends Factory
             'name' => $this->faker->name(),
             'email' => $this->faker->safeEmail(),
             'password' => $this->faker->password(),
-            'image' => 'supplier/img.jpg',
+            'image' => null,
+            'type' => $this->faker->name(),
+            'orgName' => $this->faker->company(),
             'area_id' => $areas[rand(0 , count($areas) - 1)],
         ];
     }

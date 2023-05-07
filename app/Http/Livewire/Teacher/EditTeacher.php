@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Teacher;
 
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use App\Rules\PhoneValidationRule;
 use Shankl\Services\TeacherService;
 
 class EditTeacher extends Component
@@ -24,18 +25,7 @@ class EditTeacher extends Component
     public $attributes = array();
     protected $teacherService;
 
-    protected  $rules = [
-        "name" => "required|min:3|string",
-       "email" => 'email|required',
-       "phone" => "required|min:6",
-       'field' => 'required|min:3|string',
-       "facebook" => "nullable|url",
-       "twitter" => "nullable|url",
-       "linkedin" => "nullable|url",
-       "image" => "image|mimes:jpg,png,jpeg|max:2048|nullable" ,
-       'cv' => 'file|mimes:pdf,docx|nullable',
-
-    ];
+   
     protected $listeners = [
         "fresh" => '$refresh',
     ];
@@ -82,7 +72,17 @@ class EditTeacher extends Component
 
     public function update(TeacherService $teacherService){
 
-        $this->validate();
+        $this->validate([
+            "name" => "required|min:3|string",
+            "email" => 'required|email|unique:teachers,email,$this->id,id',
+            "phone" => ['required', new PhoneValidationRule()],
+            'field' => 'required|min:3|string',
+            "facebook" => "nullable|url",
+            "twitter" => "nullable|url",
+            "linkedin" => "nullable|url",
+            "image" => "image|mimes:jpg,png,jpeg|max:2048|nullable" ,
+            'cv' => 'file|mimes:pdf,docx|nullable',
+        ]);
 
         $this->setAttributes();
 

@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Parent;
 
 use App\Models\Area;
 use App\Models\City;
+use App\Rules\PhoneValidationRule;
 use Livewire\Component;
 use Illuminate\Http\Request;
 use Livewire\WithFileUploads;
@@ -31,13 +32,7 @@ class ParentProfile extends Component
 
     public $city;
 
-    protected $rules = [
-        'name' => 'required|min:3',
-        'email' => 'required|email',
-        'phone' => 'required',
-        'area_id' => 'exists:areas,id',
-        'image' => 'image|mimes:jpg,png,jpeg|max:2048|nullable',
-    ];
+    
 
     
     public function render()
@@ -102,7 +97,13 @@ class ParentProfile extends Component
     public function save(ParentService $parentService, FileService $fileService){
          
         
-         $this->validate();
+         $this->validate([
+            'name' => 'required|min:3',
+            'email' => 'required|email|unique:unique:parentts,email,$this->id,id',
+            'phone' => ['required' , new PhoneValidationRule()],
+            'area_id' => 'exists:areas,id',
+            'image' => 'image|mimes:jpg,png,jpeg|max:2048|nullable',
+         ]);
         $this->parentService = $parentService;
        
           $this->setAttributes();

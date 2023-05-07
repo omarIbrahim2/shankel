@@ -1,6 +1,7 @@
 <?php
 namespace Shankl\Repositories;
 
+use App\Models\Service;
 use App\Models\Supplier;
 use Shankl\Interfaces\UserReboInterface;
 
@@ -35,11 +36,19 @@ class SupplierRepository implements UserReboInterface{
 
     }
 
-    public function SupplierServices($supplierId){
+    public function delete($supplierId){
+
+        $supplier = $this->find($supplierId);
+
+        return $supplier->delete();
+    }
+
+    public function SupplierServices($supplierId , $pages){
 
       
-        return Supplier::with("services")->findOrFail($supplierId);
-    
+        $services =Supplier::with("services")->findOrFail($supplierId)->services;
+          
+          return Service::paginate($services , $pages);
 
     }
 

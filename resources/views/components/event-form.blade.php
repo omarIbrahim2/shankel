@@ -34,8 +34,8 @@
         </div>
         <div class="form-group">
         <label for="">Event Day</label>
-         <input type="text" value="" name="event_day" id="" placeholder="Select Event Day"  class="form-control eventDayPicker">
-         @error('event_day')
+         <input type="text" value="{{$Event == null ? "":$Event->start}}" name="start" id="" placeholder="Select Event Day"  class="form-control eventDayPicker">
+         @error('start')
          <p class="text-danger">{{$message}}</p>
          @enderror
       </div>

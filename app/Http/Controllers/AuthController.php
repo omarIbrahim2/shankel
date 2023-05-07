@@ -20,6 +20,7 @@ use App\Providers\RouteServiceProvider;
 use Shankl\Adapters\FileServiceAdapter;
 use App\Http\Requests\ParentRegisterReq;
 use App\Http\Requests\SchoolRegisterReq;
+use App\Http\Requests\SupplierAddReq;
 use Illuminate\Support\Facades\Password;
 use App\Http\Requests\TeacherRegisterReq;
 use Illuminate\Auth\Events\PasswordReset;
@@ -27,6 +28,7 @@ use Shankl\Repositories\ParentRepository;
 use Shankl\Repositories\SchoolRepository;
 use Shankl\Repositories\TeacherRepository;
 use Illuminate\Routing\RoutingServiceProvider;
+use Shankl\Repositories\SupplierRepository;
 
 class AuthController extends Controller
 {
@@ -80,9 +82,40 @@ class AuthController extends Controller
         return redirect()->route('add-child', $authParent->id);
     }
 
-    public function SupplierRegister(){
+    public function SupplierRegister(SupplierAddReq $request , SupplierRepository $supplierRepo){
+              
+        $validatedReq = $request->validated();
+
+        $supplierObj =  EntitiesFactory::createEntity( Arr::except($validatedReq , ['image']) , 'supplier');
+           
+        $supplierObj->setPassword($validatedReq['password']);
+
+        if ($request->hasFile('image')) {
 
 
+            $this->fileser->setFile($request->file('image'));
+
+            $this->fileser->setPath("suppliers");
+
+            $filePath =  $this->fileser->upload();
+
+            $supplierObj->setImage($filePath);
+        }
+
+         $supplier = $this->authService->RegisterUser($supplierRepo , $supplierObj);
+
+         if ($supplier) {
+             
+            toastr("Supplier Created successfully" , 'success');
+         }else{
+
+              toastr("problem in creating" , "error");
+         }
+
+
+         return redirect()->route("admin-suppliers" , "unactive");
+
+       
     }
 
     public function parentLogin(Request $request)
@@ -134,6 +167,8 @@ class AuthController extends Controller
 
         
     }
+
+
 
     public function teacherLogin(Request $request)
     {
