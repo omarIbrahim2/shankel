@@ -101,6 +101,10 @@ Route::middleware('lang')->group(function(){
         Route::get('event/update/{eventid}' , [AdminController::class , "updateEventView"])->name("update-events-view");
         Route::post("event/store" , [AdminController::class , "storeEvent"])->name("create-events");
         Route::post('event/update' , [AdminController::class , "updateEvent"])->name("update-event");
+        Route::get("parents/{status}" , [AdminController::class , "Parentts"])->name('admin-parents');
+        Route::get("schools/{status}" , [AdminController::class , 'Schools'])->name('admin-schools');
+        Route::get("teachers/{status}" , [AdminController::class , 'Teachers'])->name('admin-teachers');
+        Route::get("suppliers/{status}" , [AdminController::class , 'Suppliers'])->name('admin-suppliers');
         
     });
 

@@ -1,6 +1,6 @@
 
 
-
+{{$guard}}
 <nav class="navbar navbar-expand-lg navbar-light ">
     <div class="container">
         <a class="navbar-brand" href="#">
@@ -69,7 +69,7 @@
                     <a class="nav-link" href="#about">{{trans("nav.Services")}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{web-events}}">{{trans("nav.Events")}}</a>
+                    <a class="nav-link" href="{{"web-events"}}">{{trans("nav.Events")}}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('web-schools')}}">{{trans("nav.Schools")}}</a>

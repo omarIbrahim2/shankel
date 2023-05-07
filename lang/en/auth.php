@@ -18,6 +18,6 @@ return [
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
     "Sign in" => "Sign in",
     "Sign up" => "Sign up",
-    "Sign out" => "Sign out"
-
+    "Sign out" => "Sign out",
+    "resgisterMsg" => "An activation email will be sent to you within few days , please follow up with your email"
 ];

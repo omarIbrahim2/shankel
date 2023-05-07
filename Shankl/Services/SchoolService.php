@@ -4,7 +4,7 @@ namespace Shankl\Services;
 
 use Shankl\Repositories\SchoolRepository;
 
-class SchoolService{
+class SchoolService extends Service{
 
   protected $schoolRepo;
 
@@ -14,10 +14,15 @@ class SchoolService{
   }
    
    
-  public function getAllSchools($pages){
+  public function getActiveSchools($pages){
       
-     return $this->schoolRepo->getSchools($pages);
+     return $this->schoolRepo->getActiveUsers($pages);
      
+  }
+
+  public function getUnActiveSchools($pages){
+
+       return $this->schoolRepo->getUnActiveUsers($pages);
   }
 
   public function updateProfile($data){
@@ -29,6 +34,12 @@ class SchoolService{
   public function updatedGrades(array $grades , $schooId){
 
         $this->schoolRepo->updateGrades($grades , $schooId);
+  }
+
+
+  public function getSchool($schoolId){
+
+      return $this->schoolRepo->find($schoolId);
   }
 
 }

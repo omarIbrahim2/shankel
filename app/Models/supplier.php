@@ -4,10 +4,11 @@ namespace App\Models;
 
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class Supplier extends Authenticatable
 {
@@ -32,7 +33,26 @@ class Supplier extends Authenticatable
 
     public function eventSubscriber()
     {
-        return $this->morphToMany(Event::class, 'subscriber');
+        return $this->morphToMany(Event::class, 'eventable');
+    }
+
+
+    public function image(): Attribute
+    {
+
+        return new Attribute(
+            get: function($value){
+        
+               if ($value == null) {
+                   
+                 return "assets/images/logo/user.png";
+
+                 
+               }
+        
+               return "uploads/".$value;
+            }
+        );
     }
 
 }

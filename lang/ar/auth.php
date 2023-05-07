@@ -18,6 +18,7 @@ return [
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
     "Sign in" => "تسجيل الدخول",
     "Sign up" => "انشاء حساب",
-    "Sign out" => "تسجيل الخروج"
+    "Sign out" => "تسجيل الخروج",
+    "resgisterMsg" => "سيتم ارسال ايميل اليكم لتفعيل الحساب و تسجيل الدخول خلال ايام , يرجي متابعة الايميل الخاص بحضراتكم"
 
 ];

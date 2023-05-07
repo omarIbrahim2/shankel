@@ -16,6 +16,8 @@ class navAuth extends Component
     public function __construct()
     {
         $this->guard = $this->getGuard();
+
+        
     }
 
     public function getGuard(){

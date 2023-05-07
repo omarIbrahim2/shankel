@@ -6,7 +6,8 @@ namespace Shankl\Interfaces;
 
 interface UserReboInterface{
 
-    public function getSchools($pages);
+    public function getActiveUsers($pages);
+    public function getUnActiveUsers($pages);
     public function create($data);
 
     public function find($userId);

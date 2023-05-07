@@ -34,6 +34,72 @@ class AdminController extends Controller
         return view('admin.events.events');
     }
 
+    public function Parentts($status){
+        
+        $possibleStates = ['active'=> 'active' , 'unactive' => 'unactive'];
+
+        if (! array_key_exists($status , $possibleStates)) {
+             
+            return back();
+        }
+
+        $value = $status == "active"?true :false;
+
+        return view("admin.parents.parents")->with([
+            "active" => $value,
+        ]);
+
+    }
+
+
+    public function Schools($status){
+
+        $possibleStates = ['active'=> 'active' , 'unactive' => 'unactive'];
+
+        if (! array_key_exists($status , $possibleStates)) {
+             
+            return back();
+        }
+
+        $value = $status == "active"?true :false;
+
+        return view("admin.schools.schools")->with([
+            "active" => $value,
+        ]);
+    }
+
+    public function Teachers($status){
+        $possibleStates = ['active'=> 'active' , 'unactive' => 'unactive'];
+
+        if (! array_key_exists($status , $possibleStates)) {
+             
+            return back();
+        }
+
+        $value = $status == "active"?true :false;
+
+        return view("admin.teachers.teachers")->with([
+            "active" => $value,
+        ]);
+
+    }
+
+    public function Suppliers($status){
+        $possibleStates = ['active'=> 'active' , 'unactive' => 'unactive'];
+
+        if (! array_key_exists($status , $possibleStates)) {
+             
+            return back();
+        }
+
+        $value = $status == "active"?true :false;
+
+        return view("admin.suppliers.suppliers")->with([
+            "active" => $value,
+        ]);
+
+    }
+
     public function createEventView(LocationRepoInterface $locationRepo)
     {
 
