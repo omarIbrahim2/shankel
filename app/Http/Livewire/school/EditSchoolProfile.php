@@ -7,6 +7,7 @@ use App\Models\City;
 use Livewire\Component;
 use Illuminate\Support\Arr;
 use Livewire\WithFileUploads;
+use Illuminate\Validation\Rule;
 use Shankl\Services\FileService;
 use App\Rules\PhoneValidationRule;
 use Shankl\Services\SchoolService;
@@ -194,7 +195,7 @@ class EditSchoolProfile extends Component
     
          $this->validate([
             "name" => "required|min:3|string",
-            "email" => 'email|required|unique:schools,email,$this->id,id',
+            "email" => ['required','email' ,Rule::unique("schools")->ignore($this->id) ],
             "phone" => ['required', new PhoneValidationRule()],
             'area_id' => 'required|exists:areas,id',
             "establish_date" => "required|date|before:today",

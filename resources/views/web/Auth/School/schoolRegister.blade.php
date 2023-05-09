@@ -107,7 +107,7 @@
                                         </div>
                                         <div class="input-item me-auto ms-0">
                                             <select id="selectEduSystem" class="form-select" aria-label="Default select example" name="edu_systems_id" >
-                                                <option v" selected disabled>Education System </option>
+                                                <option  selected disabled>Education System </option>
                                                 @foreach ($eSystems as $system)
                                                    <option value="{{$system->id}}">{{$system->name}}</option>
                                                 @endforeach

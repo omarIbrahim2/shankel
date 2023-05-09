@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Area;
 use App\Models\EduSystem;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\School>
@@ -23,8 +24,8 @@ class SchoolFactory extends Factory
         return [
             'name' => $this->faker->catchPhrase(),
             'email' => $this->faker->safeEmail(),
-            'password' => $this->faker->password(),
-            'image' => 'school/img.jpg',
+            'password' => Hash::make('123456'),
+            'image' => null,
             'phone' => $this->faker->phoneNumber(),
             'area_id' => $areas[rand(0 , count($areas) - 1)],
             'establish_date' => $this->faker->date(),

@@ -11,7 +11,9 @@ class Schools extends Component
     use WithPagination;
     public function render(SchoolService $schoolService)
     {
-        $Schools = $schoolService->getAllSchools(5);
+        $Schools = $schoolService->getActiveSchools(5);
+       
+   
         
         
         

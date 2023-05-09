@@ -30,7 +30,7 @@ class SchoolRepository implements UserReboInterface
     public function find($schoolId)
     {
 
-        return School::findOrFail($schoolId);
+        return School::with('images')->findOrFail($schoolId);
     }
 
     public function addGrades(array $grades, $schoolId)

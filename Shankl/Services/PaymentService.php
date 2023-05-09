@@ -13,5 +13,13 @@ class PaymentService{
         $this->paymentGateway = $paymentGateway;
     }
 
+    
+    public function submitPayment($data){
+        
+        
+
+    }
+
+
 
 }

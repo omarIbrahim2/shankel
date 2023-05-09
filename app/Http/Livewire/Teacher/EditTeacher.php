@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Teacher;
 
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Illuminate\Validation\Rule;
 use App\Rules\PhoneValidationRule;
 use Shankl\Services\TeacherService;
 
@@ -74,7 +75,7 @@ class EditTeacher extends Component
 
         $this->validate([
             "name" => "required|min:3|string",
-            "email" => 'required|email|unique:teachers,email,$this->id,id',
+            "email" => ['required','email' ,Rule::unique("teachers")->ignore($this->id) ],
             "phone" => ['required', new PhoneValidationRule()],
             'field' => 'required|min:3|string',
             "facebook" => "nullable|url",

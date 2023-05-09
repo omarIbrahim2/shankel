@@ -49,6 +49,10 @@ Route::middleware('lang')->group(function(){
 
    Route::get('/schools' , [SchoolController::class , 'index'])->name('web-schools');
 
+   Route::get("school/{id}" , [SchoolController::class , "getSchool"])->name('school-by-id');
+
+  
+
     // Parent Routs
     //*-----------*
 
@@ -60,7 +64,7 @@ Route::middleware('lang')->group(function(){
     Route::post('school/login' , [AuthController::class , 'schoolLogin'])->name('login-school');
     Route::post('parent/register' , [AuthController::class , 'Parentregister'])->name('parent-register');
     
-    
+   
     // Teacher Authentication
     Route::get('register/teacher' , [TeacherController::class , 'showRegister'])->middleware("guest")->name('teacher_register');
     Route::get('login/teacher' , [TeacherController::class , 'showLogin'])->middleware('guest')->name('teacher-login');
@@ -90,6 +94,8 @@ Route::middleware('lang')->group(function(){
         Route::post('editProfile/child' , [ParentController::class , 'InsertChild'])->name('InsertChild');
         Route::get('changePass/parent' , [ParentController::class , "changePassView"] )->name("change_pass_parent");
         Route::post("changePass/parent/{user}" , [ParentController::class , "changePass"])->name("submit-change-pass-parent");
+        Route::get('register/school/payment' , [ParentController::class , "showRegisterForm"])->name("register-form-school");
+        
     });
     
 
@@ -131,6 +137,7 @@ Route::middleware('lang')->group(function(){
         Route::get('/teacher-profile' , [TeacherController::class , 'teacherProfile'])->name('teacher-profile');
         Route::get('changePass/teacher' , [TeacherController::class , 'changePassView'])->name('change_pass_teacher');
         Route::post('changePass/teacher/{user}' , [TeacherController::class , 'changePass'])->name('submit_change_pass_teacher');
+        
     });
     
     //school Group

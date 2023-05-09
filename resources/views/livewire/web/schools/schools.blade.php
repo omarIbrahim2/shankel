@@ -13,10 +13,10 @@
                             
                         
                         <div class="col-md-4 col-12 search-resault">
-                            <a href="#">
+                            <a href="{{route("school-by-id" , $school->id)}}">
                                 <div class="area-school school-card">
                                     <div class="area-school-img">
-                                        <img src="{{$school->image == null ? asset("assets/images/school/1.webp") : asset($school->image)}}" alt="school">
+                                        <img src="{{$school->image == null ? asset("assets/images/school/1.webp") : asset($school->image)}}" @style('width:150px') alt="school">
                                     </div>
                                     <div class="area-school-name search-label">
                                         <h4>{{$school->name}}</h4>

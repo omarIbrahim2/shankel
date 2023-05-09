@@ -4,13 +4,14 @@ namespace App\Http\Livewire\Parent;
 
 use App\Models\Area;
 use App\Models\City;
-use App\Rules\PhoneValidationRule;
 use Livewire\Component;
 use Illuminate\Http\Request;
 use Livewire\WithFileUploads;
+use Illuminate\Validation\Rule;
+use Shankl\Services\FileService;
+use App\Rules\PhoneValidationRule;
 use Shankl\Services\ParentService;
 use Illuminate\Support\Facades\Auth;
-use Shankl\Services\FileService;
 
 class ParentProfile extends Component
 {
@@ -99,7 +100,7 @@ class ParentProfile extends Component
         
          $this->validate([
             'name' => 'required|min:3',
-            'email' => 'required|email|unique:unique:parentts,email,$this->id,id',
+            'email' => ['required','email' ,Rule::unique("parentts")->ignore($this->id) ],
             'phone' => ['required' , new PhoneValidationRule()],
             'area_id' => 'exists:areas,id',
             'image' => 'image|mimes:jpg,png,jpeg|max:2048|nullable',
