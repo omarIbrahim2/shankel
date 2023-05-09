@@ -7,9 +7,11 @@ use App\Models\City;
 use Livewire\Component;
 use Illuminate\Support\Arr;
 use Livewire\WithFileUploads;
+use Illuminate\Validation\Rule;
+use Shankl\Services\FileService;
+use App\Rules\PhoneValidationRule;
 use Shankl\Services\SchoolService;
 use Illuminate\Support\Facades\Auth;
-use Shankl\Services\FileService;
 
 class EditSchoolProfile extends Component
 {
@@ -61,22 +63,7 @@ class EditSchoolProfile extends Component
     protected $listeners = [
         "fresh" => '$refresh',
     ];
-    protected $rules = [
-       "name" => "required|min:3|string",
-       "email" => 'email|required',
-       "phone" => "required|min:6",
-       'area_id' => 'required|exists:areas,id',
-       "establish_date" => "required|date",
-       "desc" => 'string|nullable',
-       "mission" => "string|nullable",
-       "vision" => 'string|nullable',
-       "edu_systems_id" => 'required|exists:edu_systems,id',
-       "facebook" => "nullable|url",
-       "twitter" => "nullable|url",
-       "linkedin" => "nullable|url",
-       "image" => "image|mimes:jpg,png,jpeg|max:2048|nullable" 
-
-    ];
+   
 
     public function render()
     {
@@ -206,7 +193,21 @@ class EditSchoolProfile extends Component
     public function save(SchoolService $schoolService , FileService $fileService){
           
     
-         $this->validate();
+         $this->validate([
+            "name" => "required|min:3|string",
+            "email" => ['required','email' ,Rule::unique("schools")->ignore($this->id) ],
+            "phone" => ['required', new PhoneValidationRule()],
+            'area_id' => 'required|exists:areas,id',
+            "establish_date" => "required|date|before:today",
+            "desc" => 'string|nullable',
+            "mission" => "string|nullable",
+            "vision" => 'string|nullable',
+            "edu_systems_id" => 'required|exists:edu_systems,id',
+            "facebook" => "nullable|url",
+            "twitter" => "nullable|url",
+            "linkedin" => "nullable|url",
+            "image" => "image|mimes:jpg,png,jpeg|max:2048|nullable" 
+         ]);
 
          $this->setAttributes();
    

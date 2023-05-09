@@ -9,13 +9,21 @@ use Illuminate\Support\Facades\Config;
 use Shankl\Interfaces\GradeRepoInterface;
 use Shankl\Interfaces\LocationRepoInterface;
 use Shankl\Interfaces\EduSystemRepoInterface;
+use Shankl\Services\SchoolService;
 
 class SchoolController extends Controller
 {
   private $changePassObj;
-  public function __construct(ChangePassword $changepass)
+  private $schoolService;
+  public function __construct(ChangePassword $changepass , SchoolService $schoolService)
   {
     $this->changePassObj = $changepass;
+    $this->schoolService = $schoolService;
+  }
+
+  public function index(){
+   
+     return view('web.Schools.schools');    
   }
   public function showRegister(LocationRepoInterface $locationRepo, GradeRepoInterface $gradeRepo , EduSystemRepoInterface $eduRepo )
   {
@@ -64,6 +72,20 @@ class SchoolController extends Controller
    $url =  Config::get('auth.custom.' . $guard . ".url");
   
     return redirect()->route($url);
+  }
+
+
+  public function getSchool($shoolId){
+       
+      
+     $school  = $this->schoolService->getSchool($shoolId);
+
+     if (! $school) {
+        return back();
+     }
+    
+     return view("web.Schools.schoolPage")->with(['School' => $school]);
+
   }
   
 }

@@ -29,6 +29,14 @@
                                             href="{{ route('login-school') }}">Click Here</a></p>
                                 </div>
                                 <div class="contact-form black-contact-form">
+                                      @if (session()->has('status'))
+                                          
+                                      
+                                       <div class="alert alert-warning">
+                                            <p>{{session()->get('status')}}</p>
+                                       </div>
+                                       @endif
+                                
                                     <form method="POST" action="{{route('school-register')}}" enctype="multipart/form-data">
                                         @csrf
                                         <div class="input-item me-auto ms-0">
@@ -64,7 +72,7 @@
                                         </div>
                                         <div class="input-item me-auto ms-0">
                                             <select id="selectCity" class="form-select" aria-label="Default select example" >
-                                                <option selected disabled>{{trans('register.city')}}</option>
+                                                <option selected  disabled>{{trans('register.city')}}</option>
                                                 @foreach ($cities as $city)
                                                    <option value="{{$city->id}}">{{$city->name}}</option>
                                                 @endforeach
@@ -78,7 +86,7 @@
                                         <div class="input-item me-auto ms-0">
                                             
                                             <select name="area_id" id="areaSelect" class="form-select" aria-label="Default select example" >
-                                                <option selected disabled>{{trans('register.area')}}</option>
+                                                <option value="{{old("area_id")}}" selected disabled>{{trans('register.area')}}</option>
                                               </select>
                                             <span>
                                                 <i class="fa-solid fa-location-dot"></i>
@@ -88,7 +96,7 @@
                                             @enderror
                                         </div>
                                         <div class="input-item me-auto ms-0">
-                                            <input placeholder="Date Of establishment" class="textbox-n" type="text"
+                                            <input placeholder="Date Of establishment" value="{{old('establish_date')}}" class="textbox-n" type="text"
                                                 name="establish_date" id="date" />
                                             <span>
                                                 <i class="fa-regular fa-calendar-days"></i>
@@ -99,7 +107,7 @@
                                         </div>
                                         <div class="input-item me-auto ms-0">
                                             <select id="selectEduSystem" class="form-select" aria-label="Default select example" name="edu_systems_id" >
-                                                <option selected disabled>Education System </option>
+                                                <option  selected disabled>Education System </option>
                                                 @foreach ($eSystems as $system)
                                                    <option value="{{$system->id}}">{{$system->name}}</option>
                                                 @endforeach
@@ -108,6 +116,9 @@
                                             <span>
                                                 <i class="fa-solid fa-location-dot"></i>
                                             </span>
+                                            @error("edu_systems_id")
+                                            <p class="text-danger">{{$message}}</p>
+                                            @enderror
                                         </div>
                                         <div class="input-item me-auto ms-0 ">
                                             <h4>

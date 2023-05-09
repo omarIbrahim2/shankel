@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('school_reg_orders', function (Blueprint $table) {
             $table->id();
+            $table->string('order_code');
+            $table->foreignId('school_id')->constrained();
+            $table->foreignId("parentt_id")->constrained();
             $table->timestamps();
         });
     }

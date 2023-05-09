@@ -11,12 +11,14 @@ use App\Http\Controllers\ParentController;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\LocationCcontroller;
+use App\Http\Controllers\reader;
+use Shankl\Entities\AdminEntity;
 use Symfony\Component\Routing\Route as RoutingRoute;
 
 //Lang Route
 Route::get('set/lang/{lang}' , [LangController::class , 'set'])->name("lang");
 
-
+Route::get('/excel' , [reader::class , 'index']);
 Route::middleware('lang')->group(function(){
 
 
@@ -45,6 +47,12 @@ Route::middleware('lang')->group(function(){
 
    Route::get('/events' , [EventsController::class , 'index'])->name('web-events');
 
+   Route::get('/schools' , [SchoolController::class , 'index'])->name('web-schools');
+
+   Route::get("school/{id}" , [SchoolController::class , "getSchool"])->name('school-by-id');
+
+  
+
     // Parent Routs
     //*-----------*
 
@@ -56,7 +64,7 @@ Route::middleware('lang')->group(function(){
     Route::post('school/login' , [AuthController::class , 'schoolLogin'])->name('login-school');
     Route::post('parent/register' , [AuthController::class , 'Parentregister'])->name('parent-register');
     
-    
+   
     // Teacher Authentication
     Route::get('register/teacher' , [TeacherController::class , 'showRegister'])->middleware("guest")->name('teacher_register');
     Route::get('login/teacher' , [TeacherController::class , 'showLogin'])->middleware('guest')->name('teacher-login');
@@ -70,7 +78,7 @@ Route::middleware('lang')->group(function(){
     Route::post('school/login' , [AuthController::class , 'schoolLogin'])->name('login-school');
     
     // Amin Auth
-    Route::get('/login' , [AdminController::class , 'showLogin'])->name('admin-login');
+    Route::get('/login' , [AdminController::class , 'showLogin'])->middleware('guest')->name('admin-login');
     Route::post('admin/login' , [AuthController::class , 'AdminLogin'])->name('login-admin');
 
 
@@ -86,6 +94,8 @@ Route::middleware('lang')->group(function(){
         Route::post('editProfile/child' , [ParentController::class , 'InsertChild'])->name('InsertChild');
         Route::get('changePass/parent' , [ParentController::class , "changePassView"] )->name("change_pass_parent");
         Route::post("changePass/parent/{user}" , [ParentController::class , "changePass"])->name("submit-change-pass-parent");
+        Route::get('register/school/payment' , [ParentController::class , "showRegisterForm"])->name("register-form-school");
+        
     });
     
 
@@ -98,6 +108,22 @@ Route::middleware('lang')->group(function(){
         Route::get('event/update/{eventid}' , [AdminController::class , "updateEventView"])->name("update-events-view");
         Route::post("event/store" , [AdminController::class , "storeEvent"])->name("create-events");
         Route::post('event/update' , [AdminController::class , "updateEvent"])->name("update-event");
+        Route::get("parents/{status}" , [AdminController::class , "Parentts"])->name('admin-parents');
+        Route::get("schools/{status}" , [AdminController::class , 'Schools'])->name('admin-schools');
+        Route::get("teachers/{status}" , [AdminController::class , 'Teachers'])->name('admin-teachers');
+        Route::get("suppliers/{status}" , [AdminController::class , 'Suppliers'])->name('admin-suppliers');
+        Route::get('supplier/store' , [AdminController::class , 'createSupplierView'])->name("create-supplier");
+        Route::get('supplier/update/{supplier_id}' , [AdminController::class , "updateSupplierView"])->name("update-supplier");
+        Route::post('supplier/register' , [AuthController::class , "SupplierRegister"])->name("supplier-register");
+        Route::post('supplier/update' , [AdminController::class , "updateSupplier"])->name("supplier-update");
+        Route::get("delete/Supplier/{id}" , [AdminController::class , "deleteSupplier"])->name("supplier-delete");
+        Route::get("services/{supplier_id}" , [AdminController::class , "Services"])->name("Services");
+        Route::get("service/delete/{id}" , [AdminController::class , "deleteService"])->name("service-delete");
+        Route::get("service/create/{supplier_id}" , [AdminController::class , "serviceCreateView"])->name('service-create-form');
+        Route::get("service/update/{serviceId}", [AdminController::class ,"serviceUpdateView"])->name("service-update-form");
+        Route::post('service/create' , [AdminController::class , "CreateService"])->name("service-create");
+        Route::post('service/update' , [AdminController::class , "UpdateService"])->name('service-update');
+
         
     });
 
@@ -111,6 +137,7 @@ Route::middleware('lang')->group(function(){
         Route::get('/teacher-profile' , [TeacherController::class , 'teacherProfile'])->name('teacher-profile');
         Route::get('changePass/teacher' , [TeacherController::class , 'changePassView'])->name('change_pass_teacher');
         Route::post('changePass/teacher/{user}' , [TeacherController::class , 'changePass'])->name('submit_change_pass_teacher');
+        
     });
     
     //school Group

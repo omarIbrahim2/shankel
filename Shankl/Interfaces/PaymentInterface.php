@@ -6,11 +6,13 @@ use Illuminate\Http\Request;
 
 interface PaymentInterface{
 
-      public function Payment(Request $request);
 
-      public function submitPayment(Request $request);
+        
+      public function submitPayment();
 
-      public function cancelPayment(Request $request);
+      public function successPayment($request);
+
+      public function cancelPayment();
 
 
       

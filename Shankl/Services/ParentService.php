@@ -17,6 +17,15 @@ class ParentService{
     }
 
 
+    public function getActiveParent($pages){
+         return $this->parentRepo->getActiveUsers($pages);
+
+    }
+
+    public function getUnActiveParents($pages){
+
+         return $this->parentRepo->getUnActiveUsers($pages);
+    }
     public function upadateProfile($data){
       
         $action = $this->parentRepo->update($data);

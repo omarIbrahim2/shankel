@@ -8,6 +8,16 @@ use Shankl\Interfaces\UserReboInterface;
 
 class SchoolRepository implements UserReboInterface
 {
+    public function getActiveUsers($pages)
+    {
+        return  School::where('status' , true)->paginate($pages);
+    }
+
+    public function getUnActiveUsers($pages)
+    {
+        return  School::where('status' , false)->paginate($pages);
+    }
+
 
     public function create($data)
     {
@@ -20,7 +30,7 @@ class SchoolRepository implements UserReboInterface
     public function find($schoolId)
     {
 
-        return School::findOrFail($schoolId);
+        return School::with('images')->findOrFail($schoolId);
     }
 
     public function addGrades(array $grades, $schoolId)

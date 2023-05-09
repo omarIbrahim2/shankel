@@ -11,7 +11,7 @@ return [
 
     'required' => '   هذا الحقل :attribute مطلوب',
 
-
+   "CPone" => 'رقم الهاتف غير صحيح'
 
 
 

@@ -20,4 +20,9 @@ class EventsController extends Controller
 
         return view("web.events.events");
     }
+
+    public function oo(){
+
+
+    }
 }

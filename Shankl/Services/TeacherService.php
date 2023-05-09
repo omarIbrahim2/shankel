@@ -2,9 +2,10 @@
 
 namespace Shankl\Services;
 
+use App\Models\Teacher;
 use Shankl\Repositories\TeacherRepository;
 
-class TeacherService{
+class TeacherService extends Service{
 
     private $teacherRebo;
 
@@ -18,10 +19,25 @@ class TeacherService{
         $this->fileservice = $fileService;
     }
 
+    public function getActiveTeachers($pages){
+
+         return $this->teacherRebo->getActiveUsers($pages);
+    }
+
+    public function getUnActiveTeachers($pages){
+
+        return $this->teacherRebo->getUnActiveUsers($pages);
+    }
+
 
     public function updateProfile($data){
     
      return  $this->teacherRebo->update($data);
+    }
+
+    public function getTeacher($teacherId){
+
+        return $this->teacherRebo->find($teacherId);
     }
 
     public function handleUploadProfilePic($uploadedFile , $UsercurrentFile){

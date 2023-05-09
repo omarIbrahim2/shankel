@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Teacher;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Shankl\Services\AuthService;
@@ -18,14 +20,15 @@ use App\Providers\RouteServiceProvider;
 use Shankl\Adapters\FileServiceAdapter;
 use App\Http\Requests\ParentRegisterReq;
 use App\Http\Requests\SchoolRegisterReq;
-use App\Http\Requests\TeacherRegisterReq;
-use App\Models\Teacher;
+use App\Http\Requests\SupplierAddReq;
 use Illuminate\Support\Facades\Password;
+use App\Http\Requests\TeacherRegisterReq;
 use Illuminate\Auth\Events\PasswordReset;
-use Illuminate\Routing\RoutingServiceProvider;
 use Shankl\Repositories\ParentRepository;
 use Shankl\Repositories\SchoolRepository;
 use Shankl\Repositories\TeacherRepository;
+use Illuminate\Routing\RoutingServiceProvider;
+use Shankl\Repositories\SupplierRepository;
 
 class AuthController extends Controller
 {
@@ -46,12 +49,12 @@ class AuthController extends Controller
     public function Parentregister(ParentRegisterReq $request, ParentRepository $parentRepo)
     {
 
-        $request->validated();
+        $validatedReq = $request->validated();
 
 
-        $parentObj =  EntitiesFactory::createEntity($request->except('image'), 'parent');
+        $parentObj =  EntitiesFactory::createEntity( Arr::except($validatedReq , ['image']) , 'parent');
 
-        $parentObj->setPassword($request->password);
+        $parentObj->setPassword($validatedReq['password']);
 
         $parentObj->changeStatus();
 
@@ -74,8 +77,45 @@ class AuthController extends Controller
         $request->session()->regenerate();
 
 
+        
 
         return redirect()->route('add-child', $authParent->id);
+    }
+
+    public function SupplierRegister(SupplierAddReq $request , SupplierRepository $supplierRepo){
+              
+        $validatedReq = $request->validated();
+
+        $supplierObj =  EntitiesFactory::createEntity( Arr::except($validatedReq , ['image']) , 'supplier');
+           
+        $supplierObj->setPassword($validatedReq['password']);
+
+        if ($request->hasFile('image')) {
+
+
+            $this->fileser->setFile($request->file('image'));
+
+            $this->fileser->setPath("suppliers");
+
+            $filePath =  $this->fileser->upload();
+
+            $supplierObj->setImage($filePath);
+        }
+
+         $supplier = $this->authService->RegisterUser($supplierRepo , $supplierObj);
+
+         if ($supplier) {
+             
+            toastr("Supplier Created successfully" , 'success');
+         }else{
+
+              toastr("problem in creating" , "error");
+         }
+
+
+         return redirect()->route("admin-suppliers" , "unactive");
+
+       
     }
 
     public function parentLogin(Request $request)
@@ -104,12 +144,11 @@ class AuthController extends Controller
 
     public function teacherRegister(TeacherRegisterReq $request , TeacherRepository $teacherRepo)
     {
-        $request->validated();
+        $validatedReq = $request->validated();
 
-        $teacherObj = EntitiesFactory::createEntity($request->except('image'), 'teacher');
+        $teacherObj = EntitiesFactory::createEntity(Arr::except($validatedReq , ['image']) , 'teacher');
 
-        $teacherObj->setPassword($request->password);
-        $teacherObj->changeStatus();
+        $teacherObj->setPassword($validatedReq['password']);
         if ($request->hasFile('image')) {
 
 
@@ -123,13 +162,13 @@ class AuthController extends Controller
         }
 
         $authTeacher = $this->authService->RegisterUser($teacherRepo, $teacherObj);
+
+        return back()->with(["status" => trans("auth.resgisterMsg")]);
+
         
-        Auth::guard('teacher')->login($authTeacher);
-
-        $request->session()->regenerate();
-
-        return redirect()->route(RouteServiceProvider::TEACHER);
     }
+
+
 
     public function teacherLogin(Request $request)
     {
@@ -146,15 +185,13 @@ class AuthController extends Controller
     //School Authentication
 
     public function SchoolRegister(SchoolRegisterReq $request , SchoolRepository $schoolRepo){
-
+         
         $validatedReq = $request->validated();
          
-        if ($validatedReq->fails()) {
-            dd("dks");
-        }
-         
-        $schoolObj = EntitiesFactory::createEntity($validatedReq->except(['image' , 'grade_id']) , 'school');
-
+        
+        
+        $schoolObj = EntitiesFactory::createEntity(Arr::except($validatedReq , ['image' , 'grade_id']) , 'school');
+        
         if ($request->hasFile('image')) {
 
 
@@ -167,19 +204,19 @@ class AuthController extends Controller
             $schoolObj->setImage($filePath);
         }
 
-        $schoolObj->setPassword($validatedReq->password);
+        $schoolObj->setPassword($validatedReq['password']);
         
-        $schoolObj->changeStatus();
+       
    
         $createdSchool = $this->authService->RegisterUser($schoolRepo , $schoolObj);
 
         $schoolRepo->addGrades($request->grade_id , $createdSchool->id);
 
-        Auth::guard('school')->login($createdSchool);
+    
+    
+        return back()->with(["status" => trans("auth.resgisterMsg")]);        
 
-        $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::SCHOOL); 
     }
 
 

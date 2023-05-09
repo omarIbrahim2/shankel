@@ -52,7 +52,7 @@ class Event extends Model
 
     public function formatedDate($attribute){
 
-        return Carbon::createFromFormat('Y-m-d H:i:s' , $attribute)->format("d F Y");
+        return Carbon::createFromFormat('Y-m-d' , $attribute)->format("d F Y");
 
     }
 

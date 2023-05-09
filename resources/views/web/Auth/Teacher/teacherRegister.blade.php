@@ -29,6 +29,13 @@
                                 <p class="text-start p-0">login to your account <a href="#">Click Here</a></p>
                             </div>
                             <div class="contact-form black-contact-form">
+                                @if (session()->has('status'))
+                                          
+                                      
+                                <div class="alert alert-warning">
+                                     <p>{{session()->get('status')}}</p>
+                                </div>
+                                @endif
                                 <form method="POST" action="{{route('teacher-register')}}" enctype="multipart/form-data">
                                     @csrf
                                     <div class="input-item me-auto ms-0">

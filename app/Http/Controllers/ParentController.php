@@ -112,6 +112,13 @@ class ParentController extends Controller
     }
 
 
+    public function showRegisterForm(){
+
+
+      return view('web.Schools.schoolRegister');
+    }
+
+
 
   
 }

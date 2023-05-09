@@ -8,6 +8,15 @@ use Shankl\Interfaces\UserReboInterface;
 
 class ParentRepository implements UserReboInterface{
 
+   public function getActiveUsers($pages){
+
+      return Parentt::where('status' , true)->paginate($pages);
+   }
+
+   public function getUnActiveUsers($pages){
+
+      return Parentt::where('status' , false)->paginate($pages);
+   }
    
      public function create($data)
     {

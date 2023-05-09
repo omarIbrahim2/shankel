@@ -7,9 +7,11 @@ use App\Models\City;
 use Livewire\Component;
 use Illuminate\Http\Request;
 use Livewire\WithFileUploads;
+use Illuminate\Validation\Rule;
+use Shankl\Services\FileService;
+use App\Rules\PhoneValidationRule;
 use Shankl\Services\ParentService;
 use Illuminate\Support\Facades\Auth;
-use Shankl\Services\FileService;
 
 class ParentProfile extends Component
 {
@@ -31,13 +33,7 @@ class ParentProfile extends Component
 
     public $city;
 
-    protected $rules = [
-        'name' => 'required|min:3',
-        'email' => 'required|email',
-        'phone' => 'required',
-        'area_id' => 'exists:areas,id',
-        'image' => 'image|mimes:jpg,png,jpeg|max:2048|nullable',
-    ];
+    
 
     
     public function render()
@@ -102,7 +98,13 @@ class ParentProfile extends Component
     public function save(ParentService $parentService, FileService $fileService){
          
         
-         $this->validate();
+         $this->validate([
+            'name' => 'required|min:3',
+            'email' => ['required','email' ,Rule::unique("parentts")->ignore($this->id) ],
+            'phone' => ['required' , new PhoneValidationRule()],
+            'area_id' => 'exists:areas,id',
+            'image' => 'image|mimes:jpg,png,jpeg|max:2048|nullable',
+         ]);
         $this->parentService = $parentService;
        
           $this->setAttributes();
