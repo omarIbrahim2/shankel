@@ -43,10 +43,11 @@ class AuthService{
            "password" => 'required',
         ]);
         $this->ensureIsNotRateLimited($request);
-         //dd($credentials);
-       // dd(Auth::guard($guard));
-        // dd(Auth::guard("teacher")->attempt(['email'=> $request->email , 'password' => $request->password , 'status' => 1]));
-        if (!Auth::guard($guard)->attempt($credentials)) {
+        
+        $remember_me = $request->has('remember_me') ? true : false;
+
+
+        if (!Auth::guard($guard)->attempt($credentials , $remember_me)) {
                  
             RateLimiter::hit($this->throttleKey($request->email , $request->ip));
             

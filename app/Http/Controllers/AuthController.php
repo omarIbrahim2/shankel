@@ -259,6 +259,15 @@ class AuthController extends Controller
         return view('web.Auth.forgot-school-password');
      }
 
+     public function TeacherforgotPassword(){
+
+        return view("web.Auth.forgot-teacher-password");
+     }
+
+     public function AdminForgotPassword(){
+        return view('web.Auth.forgot-admin-password');
+     }
+
     public function forgotPasswordPostRequest(Request $request, $broker)
     {
         
@@ -291,6 +300,16 @@ class AuthController extends Controller
         return view("web.Auth.reset-school-password")->with([
             "token" => $token
         ]);
+    }
+
+    public function TeacherResetPassword($token){
+
+         return view("web.Auth.reset-teacher-password")->with(['token' => $token]);
+    }
+
+    public function AdminResetPassword($token){
+
+        return view("web.Auth.reset-admin-password")->with(['token' => $token]);
     }
 
     public function resetPasswordPostRequest(Request $request, $broker , $guard)

@@ -34,6 +34,7 @@ return new class extends Migration
             $table->boolean("status")->default(false);
             $table->unsignedInteger("free_seats" , false);
             $table->rememberToken();
+            $table->index(['name' , 'email' , 'status']);
             $table->timestamps();
         });
     }

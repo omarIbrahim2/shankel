@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-
+use App\Notifications\TeacherResetPasswordNotification;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -61,5 +61,12 @@ class Teacher extends Authenticatable
                return "uploads/".$value;
             }
         );
+    }
+
+
+    public function sendPasswordResetNotification($token){
+
+
+        $this->notify(new TeacherResetPasswordNotification($token));
     }
 }
