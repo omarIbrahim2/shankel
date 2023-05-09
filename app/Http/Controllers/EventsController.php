@@ -21,8 +21,11 @@ class EventsController extends Controller
         return view("web.events.events");
     }
 
-    public function oo(){
+    public function showEvent($eventId){
+                
+        $event = $this->eventRepo->find($eventId);
 
+        
 
     }
 }

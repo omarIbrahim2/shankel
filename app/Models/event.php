@@ -32,22 +32,22 @@ class Event extends Model
 
     public function teacher()
     {
-        return $this->morphedByMany(Teacher::class, 'subscriber');
+        return $this->morphedByMany(Teacher::class, 'eventable');
     }
 
     public function suppliers()
     {
-        return $this->morphedByMany(Supplier::class, 'subscriber');
+        return $this->morphedByMany(Supplier::class, 'eventable');
     }
 
     public function startAt(){
 
-        return Carbon::createFromFormat('Y-m-d H:i:s' , $this->attributes['start_at'])->format('H:i A');
+        return Carbon::createFromFormat('H:i:s' , $this->attributes['start_at'])->format('g:i A');
     }
 
     public function endAt(){
 
-        return Carbon::createFromFormat('Y-m-d H:i:s' , $this->attributes['end_at'])->format('H:i A');
+        return Carbon::createFromFormat('H:i:s' , $this->attributes['end_at'])->format('g:i A');
     }
 
     public function formatedDate($attribute){

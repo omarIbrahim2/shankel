@@ -52,6 +52,10 @@ return [
              'model' => App\Models\Teacher::class,
              'url' => 'teacher-profile',
         ],
+        'web' => [
+            'model' => App\Models\User::class,
+             'url'  => 'dashboard',
+          ],
     ],
     'guards' => [
         'web' => [
@@ -138,6 +142,7 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
+            'url' =>'admin-login'
         ],
         'parents' => [
             'provider' => 'parentts',
@@ -151,6 +156,7 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
+            'url'=>'teacher-login',
         ],
         'schools' => [
             'provider' => 'schools',

@@ -58,7 +58,7 @@ Shankl | Parent Login
                                     </div>
                                     <div class="remember">
                                         <div class="checkbox">
-                                            <input type="checkbox" value="remeber">
+                                            <input type="checkbox" value="remember_me" id="remember_me" name="remember_me">
                                             <label>
                                                 remember me
                                             </label>

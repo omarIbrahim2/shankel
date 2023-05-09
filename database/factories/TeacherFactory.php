@@ -3,6 +3,7 @@
 namespace Database\Factories;
 use App\Models\Area;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Teacher>
@@ -21,7 +22,7 @@ class TeacherFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'email' => $this->faker->safeEmail(),
-            'password' => $this->faker->password(),
+            'password' => Hash::make("123456"),
             'field' => $this->faker->name(),
             'phone' => $this->faker->phoneNumber(),
             'area_id' => $areas[rand(0 , count($areas) - 1)],
