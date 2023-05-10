@@ -1,12 +1,12 @@
 @extends('web.layout')
 
 @section('nav')
-    
+
 @custom_auth
 
 <x-nav-auth></x-nav-auth>
 @endcustom_auth
- 
+
 
 @custom_guest
 <x-nav-guest/>
@@ -15,7 +15,7 @@
 
 
 @section('main')
-    
+
 <section class="section">
     <div class="inner">
         <div class="container">
@@ -229,5 +229,5 @@
 <!-- ***************** -->
 <!-- footer -->
 
-  
+
 @endsection
