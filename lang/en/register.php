@@ -19,9 +19,12 @@ return [
    'area' => "Area",
 
 
-   'facebook' => "facebook",
+   "title" => "Title",
+     
+   "price" => "Price",
 
-   'gmail' => "gmail",
+   "subject" => 'Subject',
+   "Add Child" => "Add Child",
 
 
 
