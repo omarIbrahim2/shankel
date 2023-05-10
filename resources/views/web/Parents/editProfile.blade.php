@@ -1,6 +1,8 @@
 @extends('web.layout')
 
-
+@section('nav')
+    <x-nav-auth></x-nav-auth>
+@endsection
 
 @section('main')
 <main class="colored-section">
@@ -133,7 +135,13 @@
                         </div>
                     </div> --}}
                    <div class="col-md-8 col-12 mb-s-0 mb-3">
-                    @livewire('parent.update-child-parent', ['children' => $children , 'grades' => $grades])
+
+                      {{-- @if ( Empty($children))
+                      @livewire('parent.update-child-parent', ['grades' => $grades])
+                      @else
+                      @livewire('parent.update-child-parent', ['children' => $children , 'grades' => $grades])
+                      @endif --}}
+                      @livewire('parent.update-child-parent', ['children' => $children , 'grades' => $grades])
                    </div>
                 </div>
             </div>

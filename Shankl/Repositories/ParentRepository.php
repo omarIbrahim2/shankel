@@ -44,9 +44,11 @@ class ParentRepository implements UserReboInterface{
 
     public function ParentChilds(){
          
-       $parentUser =  Auth::guard('parent')->user();
+       $parentUserId =  Auth::guard('parent')->user()->id;
+
+        $AuthParent = Parentt::with('children')->findOrFail($parentUserId);
         
-       return $parentUser->children;
+       return $AuthParent;
     }
 
    

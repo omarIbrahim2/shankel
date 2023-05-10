@@ -65,4 +65,11 @@ class SchoolRepository implements UserReboInterface
        
        return  $school->update($data);
     }
+
+    public function SchoolGrades($schoolId){
+             
+        return School::with(['grades'])->findOrFail($schoolId);
+    }
+
+  
 }

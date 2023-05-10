@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('order_code');
             $table->foreignId('school_id')->constrained();
             $table->foreignId("parentt_id")->constrained();
+            $table->foreignId('child_id');
+            $table->foreignId('grade_id');
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }

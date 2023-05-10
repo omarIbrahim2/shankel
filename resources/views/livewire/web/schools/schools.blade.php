@@ -1,4 +1,10 @@
 <div>
+    <div class="service-banner school-banner">
+        <div class="page-search">
+            <input wire:model="searchSchool" type="text" class="search-input" placeholder="Search by Name Or Email">
+            <span><i class="fa-solid fa-magnifying-glass"></i></span>
+        </div>
+    </div>
     <div class="section-content section">
         <div class="container">
             <div class="area-container ">

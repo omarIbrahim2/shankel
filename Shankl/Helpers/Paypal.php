@@ -14,20 +14,15 @@ class Paypal implements PaymentInterface{
     private $data;
 
     
-    public function __construct($data)
-    {
-         $this->data = $data; 
-         
-         
-    }
+   
+  public function setData($data){
 
+     $this->data = $data;
+  }
 
     public function submitPayment()
     {
         
-       
-
-       
 
         $provder =  new PayPalClient;
 
@@ -84,16 +79,16 @@ class Paypal implements PaymentInterface{
         $response = $provder->capturePaymentOrder($request['token']);
 
         if (isset($response["status"]) && $response["status"] == "COMPLETED") {
-            return redirect()->route("register-form-school")->with(['success' => "You have booked successfully"]);
+            return redirect()->route("parent")->with(['success' => "You have booked successfully"]);
         }else{
                
-            return redirect()->route("register-form-school")->with(['error' => $response['message'] ?? "something wrong happened"]);
+            return redirect()->route("parent")->with(['error' => $response['message'] ?? "something wrong happened"]);
 
         }
     }
 
     public function cancelPayment()
     {
-        return redirect()->route("register-form-school")->with(['error' => $response['message'] ?? "something wrong happened"]);   
+        return redirect()->route("parent")->with(['error' => $response['message'] ?? "cancelled"]);   
     }
 }

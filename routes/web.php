@@ -11,8 +11,11 @@ use App\Http\Controllers\ParentController;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\LocationCcontroller;
+use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\reader;
+use App\Http\Controllers\ServiceController;
 use Shankl\Entities\AdminEntity;
+use Shankl\Helpers\Paypal;
 use Symfony\Component\Routing\Route as RoutingRoute;
 
 //Lang Route
@@ -61,6 +64,8 @@ Route::middleware('lang')->group(function(){
 
    Route::get("school/{id}" , [SchoolController::class , "getSchool"])->name('school-by-id');
 
+   Route::get('/services' , [ServiceController::class , 'index'])->name('web-services');
+
   
 
     // Parent Routs
@@ -104,8 +109,10 @@ Route::middleware('lang')->group(function(){
         Route::post('editProfile/child' , [ParentController::class , 'InsertChild'])->name('InsertChild');
         Route::get('changePass/parent' , [ParentController::class , "changePassView"] )->name("change_pass_parent");
         Route::post("changePass/parent/{user}" , [ParentController::class , "changePass"])->name("submit-change-pass-parent");
-        Route::get('register/school/payment' , [ParentController::class , "showRegisterForm"])->name("register-form-school");
-        
+        Route::get('register/school/payment/{schoolId}' , [ParentController::class , "showRegisterForm"])->middleware('child')->name("register-form-school");
+        Route::post("paypal/payment" , [PaypalController::class , "payment"])->name("paypal-payment")->middleware('child'); 
+        Route::get("paypal/success" , [PaypalController::class , 'success'])->name('paypal-success')->middleware('child');
+        Route::get("paypal/cancel" , [PaypalController::class , 'cancel'])->name('paypal-cancel')->middleware('child');
     });
     
 

@@ -132,6 +132,7 @@
     <div class="col-md-6 col-12 mb-s-0 mb-3">
         <div class="from-container">
             <div class="kids-container">
+                
                 @foreach ($children as $ch)
                 <div wire:key="ch-{{$ch->id}}" style="cursor: pointer" class="kid" wire:click="fillInputs({{$ch}})">
                     <div class="kid-icon icon-animate">
@@ -143,6 +144,8 @@
                     </div>
                 </div>
                 @endforeach
+            
+               
                
                 <div class="kid add-kid">
                     <a href="{{route("add-child-profile" , auth()->guard('parent')->user()->id)}}"><div class="kid-icon ">

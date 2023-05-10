@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\SchoolViews;
 use Illuminate\Http\Request;
 use Shankl\Helpers\ChangePassword;
 use Illuminate\Support\Facades\Auth;
@@ -83,6 +84,8 @@ class SchoolController extends Controller
      if (! $school) {
         return back();
      }
+
+     event(new SchoolViews($school));
     
      return view("web.Schools.schoolPage")->with(['School' => $school]);
 

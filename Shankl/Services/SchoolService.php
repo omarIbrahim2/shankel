@@ -14,7 +14,7 @@ class SchoolService extends Service{
   public function __construct(SchoolRepository $schoolRepo , EventRepoInterface $EventRepo)
   {
        $this->schoolRepo = $schoolRepo;
-       $this->$EventRepo = $EventRepo;    
+       $this->EventRepo = $EventRepo;    
   }
    
    
@@ -44,6 +44,12 @@ class SchoolService extends Service{
   public function getSchool($schoolId){
 
       return $this->schoolRepo->find($schoolId);
+  }
+
+
+  public function getSchoolGrades($schoolId){
+
+     return $this->schoolRepo->SchoolGrades($schoolId);
   }
 
   public function BookASeat($eventId , $User){

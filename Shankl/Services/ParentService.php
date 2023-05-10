@@ -33,6 +33,8 @@ class ParentService{
       
         $action = $this->parentRepo->update($data);
 
+        return $action;
+
 
     }
 
@@ -56,6 +58,11 @@ class ParentService{
     public function deleteChild($childId){
 
         return $this->childRepo->delete($childId);
+    }
+
+    public function Children(){
+
+        return $this->parentRepo->ParentChilds();
     }
 
     public function BookASeat($eventId , $User){

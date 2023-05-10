@@ -22,7 +22,7 @@
         <div class="inner">
             <div class="container">
                @auth("parent")
-                  <a class="btn btn-primary" href="{{route("register-form-school")}}">Book a seat</a>
+                  <a class="btn btn-primary" href="{{route("register-form-school" , $School->id)}}">Book a seat</a>
                @endauth            
                 <div class="section-title">
                     <h2 class="image-content">{{$School->name}}</h2>

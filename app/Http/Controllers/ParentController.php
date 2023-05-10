@@ -13,6 +13,7 @@ use Shankl\Interfaces\GradeRepoInterface;
 use Shankl\Interfaces\LocationRepoInterface;
 use Shankl\Repositories\ParentRepository;
 use Shankl\Services\ParentService;
+use Shankl\Services\SchoolService;
 
 class ParentController extends Controller
 {
@@ -84,10 +85,12 @@ class ParentController extends Controller
 
     public function showProfile(ParentRepository $parentRepository , GradeRepoInterface $gradeRepo){
       
-       $chidren = $parentRepository->ParentChilds();
+       $parent = $parentRepository->ParentChilds();
        $grades = $gradeRepo->getGrades();
+
+      $children =$parent->children;
       return view("web.Parents.editProfile")->with([
-        'children' => $chidren,
+        'children' => $children,
         'grades' => $grades
       ]);
     }
@@ -112,10 +115,22 @@ class ParentController extends Controller
     }
 
 
-    public function showRegisterForm(){
+    public function showRegisterForm($schoolid , SchoolService $schoolService , ParentService $parentService){
+         
+      $School = $schoolService->getSchoolGrades($schoolid);
 
+      if (! $School) {
+          return back();
+      }
 
-      return view('web.Schools.schoolRegister');
+       $Parent = $parentService->Children();
+
+       if (! $Parent) {
+          return back();
+       }
+       
+
+      return view('web.Schools.schoolRegister')->with(['School' => $School , 'Parent' => $Parent]);
     }
 
 

@@ -20,35 +20,41 @@
                             <h2 class="text-center">Book a seat</h2>
                         </div>
                         <div class="contact-form black-contact-form">
-                            <form>
+                            <form action="{{route("paypal-payment")}}" method="POST">
+                                @csrf
                                 <div class="input-item me-auto ms-0">
-                                    <select placeholder="Choose Your Child">
+                                    <select name="child_id" placeholder="Choose Your Child">
                                         <option selected disabled aria-hidden="true">Choose Your Child</option>
-                                        <option name="child1" value="child1">child1</option>
-                                        <option name="child2" value="child2">child2</option>
+                                        @foreach ($Parent->children as $child )
+                                           <option  value="{{$child->id}}">{{$child->name}}</option>
+                                        @endforeach
+                                        
+                                        
                                         
                                       </select>
                                       
                                     <span>
                                         <i class="fa-regular fa-calendar-days"></i>
                                     </span>
-                                    
+                                     @error('child_id')
+                                        <p class="text-danger">{{$message}}</p>
+                                     @enderror
                                 </div>
                                
                                 <div class="input-item me-auto ms-0">
-                                    <select id="selectEduSystem" class="form-select" aria-label="Default select example" name="edu_systems_id" >
+                                    <input value="{{$School->id}}" type="hidden" name="school_id">
+                                    <select name="grade_id" id="selectEduSystem" class="form-select" aria-label="Default select example" >
                                         <option  selected disabled>Choose Grade </option>
-                                        
-                                           <option value="">grade1</option>
-                                      
-                                        
+                                        @foreach ($School->grades as $grade)
+                                             <option value="{{$grade->id}}">{{$grade->name}}</option>
+                                        @endforeach  
                                       </select>
                                     <span>
                                         <i class="fa-solid fa-location-dot"></i>
                                     </span>
-                                    {{-- @error("edu_systems_id")
-                                    <p class="text-danger">{{$message}}</p>
-                                    @enderror --}}
+                                    @error('grade_id')
+                                        <p class="text-danger">{{$message}}</p>
+                                     @enderror
                                 </div>
                            
                                 
