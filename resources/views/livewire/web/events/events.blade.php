@@ -19,7 +19,7 @@
                     </div>
                     <div class="event-meta">
                         <span class="meta-icon"><i class="fa-regular fa-clock"></i></span>
-                        <span class="meta-desc"></span>
+                        <span class="meta-desc">{{$event->startAt()}} - {{$event->endAt()}}</span>
                     </div>
                     <div class="event-meta">
                         <span class="meta-icon"><i class="fa-solid fa-location-dot"></i></span>
@@ -27,11 +27,12 @@
                     </div>
                 </div>
                 <div class="event-img">
-                    <img src="assets/images/events/event1.webp" alt="event">
+                    <img src="uploads/{{asset($event->image)}}" alt="event">
                 </div>
+                {{-- assets/images/events/event1.webp --}}
                 <div class="event-description">
                     <p>
-                        {{Str::limit($event->desc , 100)}}  <a href="">see more...</a>
+                        {{$event->desc}} 
                     </p>
                 </div>
             </div>
@@ -59,7 +60,7 @@
                     </div>
                     @custom_auth
                     <div>
-                        <a href="#" class="white-btn">Book Your Seat</a>
+                        <button wire:click="BookAseat({{$event}})"  class="white-btn">Book Your Seat</button>
                     </div>
                     @endcustom_auth
                 </div>
@@ -70,7 +71,7 @@
                         </div>
                         <div class="event-data-text">
                             <h5>Start Time</h5>
-                            <span></span>
+                            <span>{{$event->startAt()}}</span>
                         </div>
                     </div>
                     <div class="event-data-item">
@@ -79,7 +80,7 @@
                         </div>
                         <div class="event-data-text">
                             <h5>Finish Time</h5>
-                            <span></span>
+                            <span>{{$event->endAt()}}</span>
                         </div>
                     </div>
                     <div class="event-data-item">

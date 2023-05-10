@@ -57,13 +57,13 @@
                                     </div>
                                     <div class="remember">
                                         <div class="checkbox">
-                                            <input type="checkbox" value="remeber">
+                                            <input type="checkbox" value="remember_me" id="remember_me"  name="remember_me">
                                             <label>
                                                 remember me
                                             </label>
                                         </div>
                                         <div class="auth">
-                                            <a href="">Forgot Password</a>
+                                            <a href="{{route('password.request.admin')}}">Forgot Password</a>
                                         </div>
                                     </div>
                                     <div class="input-item me-auto ms-0">

@@ -2,15 +2,19 @@
 
 namespace Shankl\Services;
 
+use Shankl\Interfaces\EventRepoInterface;
 use Shankl\Repositories\SchoolRepository;
 
 class SchoolService extends Service{
 
   protected $schoolRepo;
 
-  public function __construct(SchoolRepository $schoolRepo)
+  private $EventRepo;
+
+  public function __construct(SchoolRepository $schoolRepo , EventRepoInterface $EventRepo)
   {
-       $this->schoolRepo = $schoolRepo;    
+       $this->schoolRepo = $schoolRepo;
+       $this->$EventRepo = $EventRepo;    
   }
    
    
@@ -41,5 +45,13 @@ class SchoolService extends Service{
 
       return $this->schoolRepo->find($schoolId);
   }
+
+  public function BookASeat($eventId , $User){
+         
+    $action = $this->EventRepo->subscribeUser($eventId , $User);
+
+    return $action;
+
+}
 
 }

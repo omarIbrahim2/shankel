@@ -20,34 +20,31 @@ class Event extends Model
     {
         return $this->belongsTo(Area::class);
     }
-    public function Parentts()
+    public function ParenttsinEvent()
     {
         return $this->morphedByMany(Parentt::class, 'eventable');
     }
 
-    public function schools()
+    public function schoolsinEvent()
     {
         return $this->morphedByMany(School::class, 'eventable');
     }
 
-    public function teacher()
+    public function teachersinEvent()
     {
-        return $this->morphedByMany(Teacher::class, 'subscriber');
+        return $this->morphedByMany(Teacher::class, 'eventable');
     }
 
-    public function suppliers()
-    {
-        return $this->morphedByMany(Supplier::class, 'subscriber');
-    }
+  
 
     public function startAt(){
 
-        return Carbon::createFromFormat('Y-m-d H:i:s' , $this->attributes['start_at'])->format('H:i A');
+        return Carbon::createFromFormat('H:i:s' , $this->attributes['start_at'])->format('g:i A');
     }
 
     public function endAt(){
 
-        return Carbon::createFromFormat('Y-m-d H:i:s' , $this->attributes['end_at'])->format('H:i A');
+        return Carbon::createFromFormat('H:i:s' , $this->attributes['end_at'])->format('g:i A');
     }
 
     public function formatedDate($attribute){

@@ -33,12 +33,22 @@ Route::middleware('lang')->group(function(){
     Route::get('api/cities/{cityid}' , [LocationCcontroller::class , "Areas"])->name("areas");
 
     //Forget Password
-    Route::get('/forgot-password-parent', [AuthController::class , 'ParentforgotPassword'])->middleware('guest')->name('password.request.parent');
-    Route::get('/forgot-password-school', [AuthController::class , 'SchoolforgotPassword'])->middleware('guest')->name('password.request.school');
 
+    //parent
+    Route::get('/forgot-password-parent', [AuthController::class , 'ParentforgotPassword'])->middleware('guest')->name('password.request.parent');
+    //school
+    Route::get('/forgot-password-school', [AuthController::class , 'SchoolforgotPassword'])->middleware('guest')->name('password.request.school');
     Route::post('/forgot-password/{broker}', [AuthController::class , 'forgotPasswordPostRequest'])->middleware('guest')->name('password.email');
-    //Reset Password
+
+    Route::get("/forgot-password-teacher" , [AuthController::class , "TeacherforgotPassword"])->middleware('guest')->name("password.request.teacher");
+    
+    Route::get("/forgot-password-admin" , [AuthController::class , "AdminforgotPassword"])->middleware('guest')->name("password.request.admin");
+
     Route::get('/reset-password-parent/{token}', [AuthController::class , 'ParentresetPassword'])->middleware('guest')->name('password.reset.parent');
+    Route::get('/reset-password-teacher/{token}', [AuthController::class , 'TeacherResetPassword'])->middleware('guest')->name('password.reset.teacher');
+
+    Route::get('/reset-password-admin/{token}', [AuthController::class , 'AdminResetPassword'])->middleware('guest')->name('password.reset.admin');
+    
     Route::get('/reset-password-school/{token}', [AuthController::class , 'SchoolresetPassword'])->middleware('guest')->name('password.reset.school');
     Route::post('/reset-password-parent/{broker}/{guard}', [AuthController::class , 'resetPasswordPostRequest'])->middleware('guest')->name('password.update');
     

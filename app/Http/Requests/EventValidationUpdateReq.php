@@ -27,8 +27,9 @@ class EventValidationUpdateReq extends FormRequest
             'id' => 'required|exists:events,id',
             'title' => 'required|string|min:5|max:255',
             "desc" => 'required|string',
-            'start_at' => 'required|date|after:now',
-            'end_at' => 'required|date|after-or-equal:start_at',
+            'start' => 'required|date|after:today',
+            "start_at" => 'required|regex:/(\d+\:\d+)/',
+            'end_at' => 'required|regex:/(\d+\:\d+)/|after:start_at',   
             'image' => 'image|mimes:jpeg,jpg,png|max:1024|nullable',
             'area_id' => 'required|exists:areas,id',
         ];

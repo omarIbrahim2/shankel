@@ -15,7 +15,11 @@
         "yoeunes/toastr": "^2.1"
     },
     "require-dev": {
+<<<<<<< HEAD
         "barryvdh/laravel-debugbar":"^3.8",
+=======
+        "barryvdh/laravel-debugbar": "^3.8",
+>>>>>>> 6729f77c2e57cb171eaa50aa226011dd45b1b9fe
         "fakerphp/faker": "^1.9.1",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.0.1",
@@ -23,7 +27,6 @@
         "nunomaduro/collision": "^6.1",
         "phpunit/phpunit": "^9.5.10",
         "spatie/laravel-ignition": "^1.0"
-
     },
     "autoload": {
         "psr-4": {

@@ -3,6 +3,7 @@
 namespace Shankl\Services;
 
 use App\Models\Teacher;
+use Shankl\Interfaces\EventRepoInterface;
 use Shankl\Repositories\TeacherRepository;
 
 class TeacherService extends Service{
@@ -13,10 +14,13 @@ class TeacherService extends Service{
 
     private static $defaultProfilePath = "assets/images/logo/user.png";
 
-    public function __construct(TeacherRepository $teacherRebo , FileService $fileService)
+    private $EventRepo;
+
+    public function __construct(TeacherRepository $teacherRebo , FileService $fileService , EventRepoInterface $EventRepo)
     {
         $this->teacherRebo = $teacherRebo;
         $this->fileservice = $fileService;
+        $this->EventRepo = $EventRepo;
     }
 
     public function getActiveTeachers($pages){
@@ -69,5 +73,13 @@ class TeacherService extends Service{
           $this->fileservice->setFile($uploadedFile);
           $this->fileservice->setPath("teachers/cv");
           return $this->fileservice->uploadFile();
+    }
+
+    public function BookASeat($eventId , $User){
+         
+        $action = $this->EventRepo->subscribeUser($eventId , $User);
+
+        return $action;
+
     }
 }

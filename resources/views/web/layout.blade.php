@@ -26,7 +26,10 @@
     <link rel="stylesheet" href="{{asset('assets')}}/css/main.css">
     <!-- custom responsive -->
     <link rel="stylesheet" href="{{asset('assets')}}/css/responsive.css">
-    <link rel="stylesheet" href="{{asset('assets')}}/css/ar.css">
+    @if (APP::getLocale() == 'ar')
+      <link rel="stylesheet" href="{{asset('assets')}}/css/ar.css"> 
+    @endif
+    
     <link rel="stylesheet" href="{{asset('assets')}}/css/toastr.min.css">
     @livewireStyles
     @yield('styles')

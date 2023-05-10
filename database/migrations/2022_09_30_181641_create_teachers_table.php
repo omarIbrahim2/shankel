@@ -27,6 +27,8 @@ return new class extends Migration
             $table->string('twitter' , 255)->nullable();
             $table->string('linkedin' , 255)->nullable();
             $table->unsignedInteger("views" , false)->nullable()->default(0);
+            $table->rememberToken();
+            $table->index(['name' , 'email' , 'status']);
             $table->boolean("status")->default(false);
             $table->timestamps();
         });

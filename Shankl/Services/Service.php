@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Notification;
 
 abstract class Service{
 
+    
+
     public function ActivateUserAccount($user , $loginRoute){
        
 
@@ -43,5 +45,7 @@ abstract class Service{
          }
 
     }
+
+       
     
 }
