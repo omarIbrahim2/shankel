@@ -177,23 +177,6 @@
                                         </button>
                                     </div>
                                 </form>
-                                <div class="social-auth">
-                                    <h3>Sign Up with social media</h3>
-                                    <div class="social-btns">
-                                        <a href="#" class="btn-custom facebook">
-                                            <span class="icon"
-                                                ><i class="fa-brands fa-facebook-f"></i
-                                            ></span>
-                                            <span>{{trans('register.facebook')}}</span>
-                                        </a>
-                                        <a href="#" class="btn-custom gmail">
-                                            <span class="icon"
-                                                ><i class="fa-regular fa-envelope"></i
-                                            ></span>
-                                            <span>{{trans('register.gmail')}}</span>
-                                        </a>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>

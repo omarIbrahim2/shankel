@@ -25,6 +25,7 @@ return [
 
    "subject" => 'Subject',
    "Add Child" => "Add Child",
+   "changepass" => "password changed successfully"
 
 
 

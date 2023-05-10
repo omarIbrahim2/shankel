@@ -195,7 +195,7 @@ class EditSchoolProfile extends Component
     
          $this->validate([
             "name" => "required|min:3|string",
-            "email" => ['required','email' ,Rule::unique("schools")->ignore($this->id) ],
+            "email" => ['required','email' ],
             "phone" => ['required', new PhoneValidationRule()],
             'area_id' => 'required|numeric|exists:areas,id',
             "establish_date" => "required|date|before:today",

@@ -41,7 +41,7 @@ class Teachers extends Component
 
         $teacherService->ActivateUserAccount($teacher , "teacher-login");
 
-
+         
         toastr("User Activated successfully" , "success" , "Activation");
 
 

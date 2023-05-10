@@ -43,7 +43,7 @@
                                         @foreach ($School->images as $image)
                                         <div class="swiper-slide">
                                             <img
-                                                src="uploads/{{asset($image->name)}}"
+                                                src="{{asset('uploads/'.$image->name)}}"
                                                 alt="nurs"
                                             />
                                         </div>
@@ -55,7 +55,7 @@
                                     @foreach ($School->images as $image)
                                     <div class="swiper-slide">
                                         <img
-                                            src="uploads/{{asset($image->name)}}"
+                                            src="{{asset("uploads/".$image->name)}}"
                                             alt="nurs"
                                         />
                                     </div>
@@ -155,7 +155,7 @@
                                     <span>
                                         <i class="fa-regular fa-pen-to-square"></i>
                                     </span>
-                                    <span> Education System Fulltime </span>
+                                    <span> {{$Es->name}} </span>
                                 </div>
                                 
                             </div>

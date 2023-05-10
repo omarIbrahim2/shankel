@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\SchoolViews;
+use App\Models\EduSystem;
 use Illuminate\Http\Request;
 use Shankl\Helpers\ChangePassword;
 use Illuminate\Support\Facades\Auth;
@@ -71,7 +72,7 @@ class SchoolController extends Controller
       return back()->with('error' , "old password doesn't match");
     }
    $url =  Config::get('auth.custom.' . $guard . ".url");
-  
+     toastr(trans("register.changepass") , "success");
     return redirect()->route($url);
   }
 
@@ -86,8 +87,9 @@ class SchoolController extends Controller
      }
 
      event(new SchoolViews($school));
-    
-     return view("web.Schools.schoolPage")->with(['School' => $school]);
+      $EduId = $school->edu_systems_id;
+      $Es =  EduSystem::findOrfail($EduId);    
+     return view("web.Schools.schoolPage")->with(['School' => $school , "Es" => $Es]);
 
   }
   

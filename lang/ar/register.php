@@ -24,6 +24,8 @@ return [
 
     "subject" => 'المادة',
     "Add Child" => "اضافة طفل",
+
+    "changepass" => "تم تغيير الباسورد بنجاح"
     
    
 

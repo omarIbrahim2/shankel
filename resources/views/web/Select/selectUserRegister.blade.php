@@ -21,14 +21,7 @@
                             <h3>Parent</h3>
                         </div>
                     </a>
-                    <a href="#" class="user-level">
-                        <div class="level-img">
-                            <img src="assets/images/user/Vector.png" alt="level">
-                        </div>
-                        <div class="level-name">
-                            <h3>Supplier</h3>
-                        </div>
-                    </a>
+                   
                     <a href="{{route('school_register')}}" class="user-level">
                         <div class="level-img">
                             <img src="assets/images/user/Vector2.png" alt="level">

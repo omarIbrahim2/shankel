@@ -75,7 +75,7 @@ class EditTeacher extends Component
 
         $this->validate([
             "name" => "required|min:3|string",
-            "email" => ['required','email' ,Rule::unique("teachers")->ignore($this->id) ],
+            "email" => ['required','email' ],
             "phone" => ['required', new PhoneValidationRule()],
             'field' => 'required|min:3|string',
             "facebook" => "nullable|url",

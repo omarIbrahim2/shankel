@@ -100,7 +100,7 @@ class ParentProfile extends Component
         
          $this->validate([
             'name' => 'required|string|min:3',
-            'email' => ['required','email' ,Rule::unique("parentts")->ignore($this->id) ],
+            'email' => ['required','email'],
             'phone' => ['required' , new PhoneValidationRule()],
             'area_id' => 'exists:areas,id',
             'image' => 'image|mimes:jpg,png,jpeg|max:2048|nullable',

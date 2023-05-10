@@ -34,20 +34,29 @@
                                             <span>
                                                 <i class="fa-regular fa-envelope"></i>
                                             </span>
+                                            @error("email")
+                                              <p class="text-danger">{{$message}}</p>
+                                            @enderror
                                         </div>
                                         <div class="input-item me-auto ms-0">
 
                                             <input type="password" name="password" placeholder="password">
-                                            <span>
-                                                <i class="fa-regular fa-envelope"></i>
+                                            <span class="second show-passowrd">
+                                                <i class="fa-regular fa-eye-slash fa-flip-horizontal"></i>
                                             </span>
+                                            @error("password")
+                                            <p class="text-danger">{{$message}}</p>
+                                          @enderror
                                         </div>
                                         <div class="input-item me-auto ms-0">
 
                                             <input type="password" name="password_confirmation" placeholder="password_confirmation">
-                                            <span>
-                                                <i class="fa-regular fa-envelope"></i>
+                                            <span class="second show-passowrd">
+                                                <i class="fa-regular fa-eye-slash fa-flip-horizontal"></i>
                                             </span>
+                                            @error("password_confirmation")
+                                            <p class="text-danger">{{$message}}</p>
+                                          @enderror
                                         </div>
 
                                         <div class="input-item me-auto ms-0">
