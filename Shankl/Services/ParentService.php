@@ -5,15 +5,18 @@ namespace Shankl\Services;
 use Shankl\Entities\ChildEntity;
 use App\Http\Requests\AddChildRequest;
 use Shankl\Interfaces\ChildRepoInterface;
+use Shankl\Interfaces\EventRepoInterface;
 use Shankl\Repositories\ParentRepository;
 
 class ParentService{
     private $parentRepo;
     private $childRepo;
-    public function __construct(ParentRepository $parentRepo , ChildRepoInterface $childRepo)
+    private $EventRepo;
+    public function __construct(ParentRepository $parentRepo , ChildRepoInterface $childRepo , EventRepoInterface $EventRepo)
     {
         $this->parentRepo = $parentRepo;
         $this->childRepo = $childRepo;
+        $this->EventRepo = $EventRepo;
     }
 
 
@@ -53,5 +56,13 @@ class ParentService{
     public function deleteChild($childId){
 
         return $this->childRepo->delete($childId);
+    }
+
+    public function BookASeat($eventId , $User){
+         
+        $action = $this->EventRepo->subscribeUser($eventId , $User);
+
+        return $action;
+
     }
 }

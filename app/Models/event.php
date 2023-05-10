@@ -20,25 +20,22 @@ class Event extends Model
     {
         return $this->belongsTo(Area::class);
     }
-    public function Parentts()
+    public function ParenttsinEvent()
     {
         return $this->morphedByMany(Parentt::class, 'eventable');
     }
 
-    public function schools()
+    public function schoolsinEvent()
     {
         return $this->morphedByMany(School::class, 'eventable');
     }
 
-    public function teacher()
+    public function teachersinEvent()
     {
         return $this->morphedByMany(Teacher::class, 'eventable');
     }
 
-    public function suppliers()
-    {
-        return $this->morphedByMany(Supplier::class, 'eventable');
-    }
+  
 
     public function startAt(){
 

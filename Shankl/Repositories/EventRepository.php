@@ -30,4 +30,19 @@ class EventRepository implements EventRepoInterface{
 
      return $event->update($data);
    }
+
+   public function subscribeUser($eventId , $User){
+            
+      $event =  $this->find($eventId);
+
+      if(! $event){
+
+         return false;
+      }
+
+      $User->eventSubscribers()->attach([$event->id]);
+
+      return true;
+
+   }
 }

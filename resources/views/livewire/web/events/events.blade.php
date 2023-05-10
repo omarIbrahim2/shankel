@@ -60,7 +60,7 @@
                     </div>
                     @custom_auth
                     <div>
-                        <a href="#" class="white-btn">Book Your Seat</a>
+                        <button wire:click="BookAseat({{$event}})"  class="white-btn">Book Your Seat</button>
                     </div>
                     @endcustom_auth
                 </div>

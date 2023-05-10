@@ -65,7 +65,7 @@ class School extends Authenticatable
         return $this->morphOne(Card::class , 'user');
     }
 
-    public function eventSubscriber()
+    public function eventSubscribers()
     {
         return $this->morphToMany(Event::class, 'eventable');
     }
