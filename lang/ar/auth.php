@@ -14,8 +14,8 @@ return [
     */
 
     'failed' => 'البيانات المدخله قد تكون خطأ ..!!',
-    'password' => 'The provided password is incorrect.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'password' => 'كلمة المرور المقدمة غير صحيحة.',
+    'throttle' => 'محاولات تسجيل دخول كثيرة جدًا. يرجى المحاولة مرة أخرى بعد قليل',
     "Sign in" => "تسجيل الدخول",
     "Sign up" => "انشاء حساب",
     "Sign out" => "تسجيل الخروج",

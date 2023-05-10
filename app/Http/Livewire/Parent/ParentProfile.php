@@ -99,7 +99,7 @@ class ParentProfile extends Component
          
         
          $this->validate([
-            'name' => 'required|min:3',
+            'name' => 'required|string|min:3',
             'email' => ['required','email' ,Rule::unique("parentts")->ignore($this->id) ],
             'phone' => ['required' , new PhoneValidationRule()],
             'area_id' => 'exists:areas,id',

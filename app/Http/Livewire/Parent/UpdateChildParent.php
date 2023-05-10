@@ -29,10 +29,10 @@ class UpdateChildParent extends Component
     public $attributes = array();
 
     protected $rules =[
-      'name' => 'required|min:3',
-      'age' => 'required',
+      'name' => 'required|string|min:3',
+      'age' => 'required|numeric',
       'birth_date' => 'required',
-      'grade_id' => 'required| exists:grades,id',
+      'grade_id' => 'required|numeric| exists:grades,id',
       'image' => "nullable|image|mimes:jpg,png,jpeg|max:2048"
     ];
 
