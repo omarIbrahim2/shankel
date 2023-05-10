@@ -46,22 +46,43 @@
 
               <x-lang/>  
             
-            <a class="icons" href="{{route($guard."-profile")}}">
+             @if ($guard == 'web')
+             <a class="icons" href="{{route("dashboard")}}">
                 <img src="{{asset("assets")}}/images/logo/user.png" alt="user avatar">
-            </a>
+             </a> 
+             @else
+             <a class="icons" href="{{route($guard."-profile")}}">
+                <img src="{{asset("assets")}}/images/logo/user.png" alt="user avatar">
+             </a>       
+             @endif 
+          
         </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav m-auto">
+                @if ($guard == 'web')
                 <li class="nav-item">
+                    <a class="nav-link active" aria-current="{{route('dashboard')}}" href="">{{trans("nav.Home")}}</a>
+                </li>
+                @else
+                  <li class="nav-item">
                     <a class="nav-link active" aria-current="{{route($guard)}}" href="">{{trans("nav.Home")}}</a>
-                </li>
-                <li class="nav-item">
+                  </li>
+                @endif
+               
+                @if ($guard == 'web')
+                 <li class="nav-item">
                    
+                    <a class="nav-link" href="{{route('dashboard')}}">{{trans("nav.Profile")}}</a>
+                  </li>
+                @else
+                  <li class="nav-item">
                     <a class="nav-link" href="{{route($guard."-profile")}}">{{trans("nav.Profile")}}</a>
-                </li>
+                  </li>
+                @endif
+                
                
                 <li class="nav-item">
                     <a class="nav-link" href="{{route("web-services")}}">{{trans("nav.Services")}}</a>

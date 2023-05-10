@@ -136,7 +136,7 @@
                 @foreach ($children as $ch)
                 <div wire:key="ch-{{$ch->id}}" style="cursor: pointer" class="kid" wire:click="fillInputs({{$ch}})">
                     <div class="kid-icon icon-animate">
-                        <img src="{{$ch->image}}" class="rounded-circle" style="width: 120px" style="height: 10px"  alt="shankal">
+                        <img src="{{$ch->image}}" class="rounded-circle" style="width: 100px" style="height: 5px"  alt="shankal">
                     </div>
                     <div class="kid-data">
                         <p class="kid-name">{{$ch->name}}</p>

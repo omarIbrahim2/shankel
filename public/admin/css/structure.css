@@ -809,6 +809,7 @@ code {
   border-right: 1px solid #e0e6ed; }
 
 .sidebar-theme {
+  overflow: auto;
   background: #fff; }
 
 #sidebar .theme-brand .toggle-sidebar {

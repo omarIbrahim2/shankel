@@ -1,16 +1,25 @@
 
 
-@props(['actionRoute'=> "create-event" ,"supplierId" => 0 , "Service" => null  , "update" => false])
+@props(['actionRoute'=> "create-event" , "Service" => null  , "update" =>false])
 
 <form action="{{route($actionRoute)}}"  method="POST" enctype="multipart/form-data">
+
+
     @csrf
-
-    @if ($update == true)
-        <input name="id" hidden type="text" value="{{$Service->id}}">
-    @endif
-
+  
     @if ($update == false)
-        <input type="hidden" name="supplier_id" type="text" value="{{$supplierId}}">
+        <input name="id" hidden type="text" value="{{$Service->id}}">
+        @error("id")
+           <p>{{$message}}</p>
+        @enderror
+    @endif
+   
+    @if ($update == true)
+        <input type="hidden" name="supplier_id" type="text" value="{{$Supplier->id}}">
+        @error('supplier_id')
+             <p>{{$message}}</p>
+            
+        @enderror
     @endif
     <div class="form-group mb-4">
     <label for="event-title">Name</label>
@@ -45,7 +54,7 @@
         
             </div>
     
-            @if ($update == false)
+            @if ($update == true)
             <button type="submit" class="btn btn-primary mt-4">Add</button>
             @else
             <button type="submit" class="btn btn-primary mt-4">update</button>

@@ -54,7 +54,7 @@ class UpdateChildParent extends Component
     public function fillInputs($child){
 
         $this->name = $child['name'];
-        $this->age = $child['age'] . " years";
+        $this->age = $child['age'] ;
         $this->birth_date = $child['birth_date'];
         $this->grade_id = $child['grade_id'];
         $this->child_id = $child['id'];
