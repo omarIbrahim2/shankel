@@ -84,6 +84,11 @@
             </div>
         </div>
      </div>
-
-    <button type="submit" class="btn btn-primary mt-4">Submit</button>
+      
+     @if ($update == true)
+     <button type="submit" class="btn btn-primary mt-4">Update</button>
+     @else
+     <button type="submit" class="btn btn-primary mt-4">Add</button>
+     @endif
+   
 </form>

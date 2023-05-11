@@ -294,10 +294,10 @@ class AdminController extends Controller
         return view("admin.services.create")->with(["supplierId" => $supplierId]);
     }
 
-    public function serviceUpdateView($serviceId){
+    public function serviceUpdateView($serviceId ,$supplierId){
          $Service = $this->supplierService->getService($serviceId);
          
-        return view("admin.services.update")->with(['Service' => $Service]);
+        return view("admin.services.update")->with(['Service' => $Service , "supplierId" => $supplierId]);
     }
 
     public function CreateService(ServiceAddReq $request , FileService $fileService){

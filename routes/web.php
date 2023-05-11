@@ -137,7 +137,7 @@ Route::middleware('lang')->group(function(){
         Route::get("services/{supplier_id}" , [AdminController::class , "Services"])->name("Services");
         Route::get("service/delete/{id}" , [AdminController::class , "deleteService"])->name("service-delete");
         Route::get("service/create/{supplier_id}" , [AdminController::class , "serviceCreateView"])->name('service-create-form');
-        Route::get("service/update/{serviceId}", [AdminController::class ,"serviceUpdateView"])->name("service-update-form");
+        Route::get("service/update/{serviceId}/{supplierid}", [AdminController::class ,"serviceUpdateView"])->name("service-update-form");
         Route::post('service/create' , [AdminController::class , "CreateService"])->name("service-create");
         Route::post('service/update' , [AdminController::class , "UpdateService"])->name('service-update');
 
