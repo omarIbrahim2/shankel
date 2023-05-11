@@ -272,99 +272,10 @@ class AdminController extends Controller
         return view("admin.services.services")->with(["supplierId" => $supplierId]);     
     }
 
-    public function deleteService($serviceId){
+    public function Orders(){
 
-         $action = $this->supplierService->deleteService($serviceId);
-
-         if ($action) {
-             
-            toastr("Deleted successfully" , "error" , "Deleting");
-
-            return back();
-         }
-
-         toastr("error in deleting" , "error");
-
-         return back();
-
+        return view("admin.orders.orders");
     }
 
-    public function serviceCreateView($supplierId){
 
-        return view("admin.services.create")->with(["supplierId" => $supplierId]);
-    }
-
-    public function serviceUpdateView($serviceId ,$supplierId){
-         $Service = $this->supplierService->getService($serviceId);
-         
-        return view("admin.services.update")->with(['Service' => $Service , "supplierId" => $supplierId]);
-    }
-
-    public function CreateService(ServiceAddReq $request , FileService $fileService){
-
-        $validatedreq =  $request->validated();
-
-        $data = $this->credientials($validatedreq , ['image']);
-
-
-        if ($request->has('image')) {
-        
-            $fileService->setPath('services');
-    
-            $fileService->setFile($request->image);
-            
-             
-            $data['image'] = $fileService->uploadFile();
-          }
-
-          $service = $this->supplierService->CreateService($data);
-
-          if ($service) {
-             toastr("service created successfully" , "success");
-
-             return redirect()->route("Services" , $data['supplier_id']);
-          }
-
-          toastr("error in creating" , "error");
-
-          return redirect()->route("Services" , $data['supplier_id']);
-
-        
-    }
-
-    public function UpdateService(ServiceUpdateReq $request , SupplierService $supplierService){
-            
-          $validatedReq = $request->validated();
-
-          $data = $this->credientials($validatedReq , ['image']);
-
-          $serviceCurrentImage = $supplierService->getService($data['id'])->image;
-
-          $image = $supplierService->uploadServiceImage($request->image ,$serviceCurrentImage );
-          
-            if($image != null){
-
-                $data['image'] = $image;
-            }
-
-
-            $action = $supplierService->updateService($data);
-           
-            if ($action) {
-            
-                toastr("service updated successfully" , "info" , "Service update");
-    
-                return redirect()->route('dashboard');
-            }
-    
-            toastr("something wrong happened" , "error" , "Service update");
-            return redirect()->back();
-            
-          
-    }
-
-    private function credientials($validatedReq , $vals){
-
-        return Arr::except($validatedReq ,$vals);
-    }
 }

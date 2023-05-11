@@ -25,7 +25,16 @@ return [
 
    "subject" => 'Subject',
    "Add Child" => "Add Child",
-   "changepass" => "password changed successfully"
+   "changepass" => "password changed successfully",
+
+   "selectUser" => "Select User",
+
+   "Parent" => 'Parent',
+
+   "Teacher" => "Teacher",
+
+   "School" => "School",
+    
 
 
 

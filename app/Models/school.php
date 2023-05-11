@@ -35,6 +35,11 @@ class School extends Authenticatable
         return $this->belongsTo(Area::class);
     }
 
+    public function bookOrders(){
+
+        return $this->hasMany(SchoolRegOrder::class);
+    }
+
     public function eduSystem()
     {
         return $this->belongsTo(EduSystem::class);
@@ -79,6 +84,11 @@ class School extends Authenticatable
     public function transactions()
     {
         return $this->morphMany(Transaction::class , 'transactionable');
+    }
+
+    public function comments(){
+
+        return $this->morphMany(comment::class, 'commentable');
     }
 
 

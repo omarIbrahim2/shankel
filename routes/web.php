@@ -135,12 +135,12 @@ Route::middleware('lang')->group(function(){
         Route::post('supplier/update' , [AdminController::class , "updateSupplier"])->name("supplier-update");
         Route::get("delete/Supplier/{id}" , [AdminController::class , "deleteSupplier"])->name("supplier-delete");
         Route::get("services/{supplier_id}" , [AdminController::class , "Services"])->name("Services");
-        Route::get("service/delete/{id}" , [AdminController::class , "deleteService"])->name("service-delete");
-        Route::get("service/create/{supplier_id}" , [AdminController::class , "serviceCreateView"])->name('service-create-form');
-        Route::get("service/update/{serviceId}/{supplierid}", [AdminController::class ,"serviceUpdateView"])->name("service-update-form");
-        Route::post('service/create' , [AdminController::class , "CreateService"])->name("service-create");
-        Route::post('service/update' , [AdminController::class , "UpdateService"])->name('service-update');
-
+        Route::get("service/delete/{id}" , [ServiceController::class , "deleteService"])->name("service-delete");
+        Route::get("service/create/{supplier_id}" , [ServiceController::class , "serviceCreateView"])->name('service-create-form');
+        Route::get("service/update/{serviceId}/{supplierid}", [ServiceController::class ,"serviceUpdateView"])->name("service-update-form");
+        Route::post('service/create' , [ServiceController::class , "CreateService"])->name("service-create");
+        Route::post('service/update' , [ServiceController::class , "UpdateService"])->name('service-update');
+        Route::get('orders' , [AdminController::class , "Orders"])->name("Orders");
         
     });
 

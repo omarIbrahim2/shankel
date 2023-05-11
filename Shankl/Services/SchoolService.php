@@ -3,6 +3,7 @@
 namespace Shankl\Services;
 
 use Shankl\Interfaces\EventRepoInterface;
+use Shankl\Repositories\CommentRepo;
 use Shankl\Repositories\SchoolRepository;
 
 class SchoolService extends Service{
@@ -11,10 +12,13 @@ class SchoolService extends Service{
 
   private $EventRepo;
 
-  public function __construct(SchoolRepository $schoolRepo , EventRepoInterface $EventRepo)
+  private $commentRepo;
+
+  public function __construct(SchoolRepository $schoolRepo , EventRepoInterface $EventRepo , CommentRepo $commentRepo)
   {
        $this->schoolRepo = $schoolRepo;
-       $this->EventRepo = $EventRepo;    
+       $this->EventRepo = $EventRepo;   
+       $this->commentRepo = $commentRepo; 
   }
    
    
@@ -59,5 +63,18 @@ class SchoolService extends Service{
     return $action;
 
 }
+
+public function addComment($user , $comment , $schooId){
+   
+    return $this->commentRepo->createComment($user , $comment , $schooId);
+
+}
+
+public function getComments($schooId){
+
+    return $this->commentRepo->getComments($schooId);
+}
+
+
 
 }

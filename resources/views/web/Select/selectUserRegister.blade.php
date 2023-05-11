@@ -10,7 +10,7 @@
         <div class="inner">
             <div class="container">
                 <div class="section-title">
-                    <h2>Select User</h2>
+                    <h2>{{trans('register.selectUser')}}</h2>
                 </div>
                 <div class="user-levels">
                     <a href="{{route('parent_register')}}" class="user-level">
@@ -18,7 +18,7 @@
                             <img src="assets/images/user/Group.png" alt="level">
                         </div>
                         <div class="level-name">
-                            <h3>Parent</h3>
+                            <h3>{{trans('register.Parent')}}</h3>
                         </div>
                     </a>
                    
@@ -27,7 +27,7 @@
                             <img src="assets/images/user/Vector2.png" alt="level">
                         </div>
                         <div class="level-name">
-                            <h3>school</h3>
+                            <h3>{{trans('register.School')}}</h3>
                         </div>
                     </a>
                     <a href="{{route('teacher_register')}}" class="user-level">
@@ -35,7 +35,7 @@
                             <img src="assets/images/user/teach.png" alt="level">
                         </div>
                         <div class="level-name">
-                            <h3>Teacher</h3>
+                            <h3>{{trans('register.Teacher')}}</h3>
                         </div>
                     </a>
                 </div>

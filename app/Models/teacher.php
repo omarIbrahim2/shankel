@@ -41,6 +41,11 @@ class Teacher extends Authenticatable
         return $this->morphToMany(Event::class, 'eventable');
     }
 
+    public function comments(){
+
+        return $this->morphMany(comment::class, 'commentable');
+    }
+
     public function transactions()
     {
         return $this->morphMany(Transaction::class , 'user');

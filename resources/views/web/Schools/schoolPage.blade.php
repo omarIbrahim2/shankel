@@ -25,7 +25,9 @@
                   <a class="btn btn-primary" href="{{route("register-form-school" , $School->id)}}">Book a seat</a>
                @endauth            
                 <div class="section-title">
-                    <h2 class="image-content">{{$School->name}}</h2>
+                    <h2 class="image-content">{{$School->name}}
+                    </h2>
+                   
                 </div>
                 <div class="section-content">
                     <div class="row">
@@ -67,62 +69,20 @@
                              @custom_auth
                                 <div class="revews">
 
-                                    <div class="reviews-item">
+                                     @livewire('web.comments.comments' , ["school_id" => $School->id])
+                                    {{-- <div class="reviews-item">
                                         <div class="review-head">
                                             <h5>hussien</h5>
-                                            <div class="review-stars">
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                            </div>
                                         </div>
                                         <div class="review-body">
                                             Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                                         </div>
                                     </div>
-                                    <div class="reviews-item">
-                                        <div class="review-head">
-                                            <h5>hussien</h5>
-                                            <div class="review-stars">
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="review-body">
-                                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                                        </div>
-                                    </div>
-                                    <div class="reviews-item">
-                                        <div class="review-head">
-                                            <h5>hussien</h5>
-                                            <div class="review-stars">
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                                <i class="fa-solid fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="review-body">
-                                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                                        </div>
-                                    </div>
+                                 
                                     <div class="add-review">
-                                        <input type="text" placeholder="leave comment" name="review">
-                                        <div class="review-stars">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                        </div>												
+                                        <input type="text" placeholder="leave comment" name="review">												
                                     </div>
-                                    <button class="btn btn-primary">comment</button>
+                                    <button class="btn btn-primary">comment</button> --}}
 
                                 </div>
                                @endcustom_auth 

@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Models\comment;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use App\Notifications\ResetPasswordNotification;
@@ -34,6 +35,11 @@ class Parentt extends Authenticatable
         return $this->belongsTo(Area::class);
     }
 
+    public function bookOrders(){
+
+        return $this->hasMany(SchoolRegOrder::class);
+    }
+
     public function notifications()
     {
         return $this->morphMany(Notification::class , 'user');
@@ -59,5 +65,10 @@ class Parentt extends Authenticatable
           
         $this->notify(new ParentResetPasswordNotification($token));
 
+    }
+
+    public function comments(){
+
+        return $this->morphMany(comment::class, 'commentable');
     }
 }
