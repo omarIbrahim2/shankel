@@ -45,6 +45,7 @@
             <p class="text-danger">{{$message}}</p>
             @enderror
         </div>
+    </div> 
         <div class="form-group mb-4">
             <label for="event-title">price</label>
                 <input name="price" id="event-title" value="{{$Service == null ? "":$Service->price}}" type="number" class="form-control"  placeholder="price">
@@ -52,7 +53,7 @@
                 <p class="text-danger">{{$message}}</p>
                 @enderror
         
-            </div>
+        </div>
     
             @if ($update == false)
             <button type="submit" class="btn btn-primary mt-4">Add</button>

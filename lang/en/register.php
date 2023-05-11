@@ -35,7 +35,8 @@ return [
 
    "School" => "School",
     
-
+   "LoginToShankl" => "Login to Shankl",
+   "ClickHere" => "Click Here",
 
 
 ];

@@ -23,7 +23,7 @@
                             <div class="section-title">
                                 <h2 class="text-start">{{trans('register.Sign Up')}}</h2>
                                 <p class="text-start p-0">
-                                    login to your account <a href="{{route('login-parent')}}">Click Here</a>
+                                    {{trans("auth.LoginToYourAccount")}} <a href="{{route('parent-login')}}">{{trans("register.ClickHere")}}</a>
                                 </p>
                             </div>
                             <div class="contact-form black-contact-form">
@@ -108,8 +108,7 @@
                                                 class="d-flex align-items-center justify-content-start ms-2"
                                             >
                                                 <label for="female">Female</label>
-                                                <input
-                                                    type="radio"
+                                                <input type="radio"
                                                     value="female "
                                                     name="gender"
                                                     class="not-hidden ms-2"
@@ -122,16 +121,10 @@
                                         <p class="text-danger">{{$message}}</p>
                                         @enderror
                                     </div>
+                                    <p id="imgName"></p>
                                     <div class="upload-avatar text-start">
-                                        <input
-                                            type="file"
-                                            name="image"
-                                            id="teacher-avatar"
-                                            multiple
-                                        />
-                                        <label class="btn-custom" for="teacher-avatar"
-                                            >Upload New Photo</label
-                                        >
+                                        <input type="file" name="image" id="teacher-avatar" multiple/>
+                                        <label class="btn-custom" for="teacher-avatar">{{trans('auth.Upload New Photo')}}</label>
                                         <div class="files-names"></div>
                                         @error('image')
                                                 <p class="text-danger">{{$message}}</p>
@@ -173,7 +166,7 @@
 
                                     <div class="input-item me-auto ms-0">
                                         <button type="submit" class="custom-out-btn">
-                                            Sign Up
+                                            {{trans('register.Sign Up')}}
                                         </button>
                                     </div>
                                 </form>
@@ -234,6 +227,14 @@
   })
 
 
+ </script>
+
+ <script>
+    $('#teacher-avatar').change(function() {
+  
+  var file = $('#teacher-avatar')[0].files[0].name;
+  $("#imgName").text(file);
+   });
  </script>
 
 

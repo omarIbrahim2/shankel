@@ -26,7 +26,7 @@
                     <div class="col-lg-6 col-md-8 col-12">
                         <div class="left-side">
                             <div class="section-title">
-                                <h2 class="text-start">login to Shankl</h2>
+                                <h2 class="text-start">{{trans("register.LoginToShankl")}}</h2>
                             </div>
                             <div class="contact-form black-contact-form">
                             @if (Session::has('status'))
@@ -40,14 +40,14 @@
                                     @include('web.inc.errors')
                                     <div class="input-item me-auto ms-0">
                                         
-                                        <input type="email" name="email" placeholder="email">
+                                        <input type="email" name="email" placeholder="{{trans("register.email")}}">
                                         <span>
                                             <i class="fa-regular fa-envelope"></i>
                                         </span>
                                     </div>
                                     
                                     <div class="input-item me-auto ms-0">
-                                        <input type="password" name="password" placeholder="password">
+                                        <input type="password" name="password" placeholder="{{trans('register.password')}}">
                                         <span>
                                             <i class="fa-solid fa-lock"></i>
                                         </span>
@@ -59,16 +59,16 @@
                                         <div class="checkbox">
                                             <input type="checkbox" value="remember_me" id="remember_me"  name="remember_me">
                                             <label>
-                                                remember me
+                                                 {{trans('auth.RememberMe')}}
                                             </label>
                                         </div>
                                         <div class="auth">
-                                            <a href="{{route('password.request.admin')}}">Forgot Password</a>
+                                            <a href="{{route('password.request.admin')}}">{{trans("auth.ForgotPassword")}}</a>
                                         </div>
                                     </div>
                                     <div class="input-item me-auto ms-0">
                                         <button type="submit" class="custom-out-btn">
-                                            login
+                                            {{trans("auth.Login")}}
                                         </button>
                                     </div>
                                     

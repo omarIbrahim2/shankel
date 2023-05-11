@@ -26,7 +26,7 @@
                         <div class="left-side">
                             <div class="section-title">
                                 <h2 class="text-start">{{trans('register.Sign Up')}}</h2>
-                                <p class="text-start p-0">login to your account <a href="#">Click Here</a></p>
+                                <p class="text-start p-0">{{trans("auth.LoginToYourAccount")}} <a href="{{route("teacher-login")}}">{{trans("register.ClickHere")}}</a></p>
                             </div>
                             <div class="contact-form black-contact-form">
                                 @if (session()->has('status'))
@@ -109,7 +109,7 @@
                                             multiple
                                         />
                                         <label class="btn-custom" for="teacher-avatar"
-                                            >Upload New Photo</label
+                                            >{{trans('auth.Upload New Photo')}}</label
                                         >
                                         <div class="files-names"></div>
                                         @error('image')
@@ -144,7 +144,7 @@
                                     
                                     <div class="input-item me-auto ms-0">
                                         <button type="submit" class="custom-out-btn">
-                                            Sign Up
+                                            {{trans("register.Sign Up")}}
                                         </button>
                                     </div>
                                     

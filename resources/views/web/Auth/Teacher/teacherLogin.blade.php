@@ -25,8 +25,8 @@
                     <div class="col-lg-6 col-md-8 col-12">
                         <div class="left-side">
                             <div class="section-title">
-                                <h2 class="text-start">login to your account</h2>
-                                <p class="text-start p-0">Don,t have an account? <a href="{{Route('teacher_register')}}">sign up</a></p>
+                                <h2 class="text-start">{{trans('auth.LoginToYourAccount')}}</h2>
+                                <p class="text-start p-0">{{trans('auth.DoYouHaveAnAccount')}} <a href="{{Route('teacher_register')}}">{{trans('register.Sign Up')}}</a></p>
                             </div>
                             <div class="contact-form black-contact-form">
                             @if (Session::has('status'))
@@ -59,16 +59,16 @@
                                         <div class="checkbox">
                                             <input type="checkbox" value="remember_me" id="remember_me" name="remember_me">
                                             <label>
-                                                remember me
+                                                {{trans("auth.RememberMe")}}
                                             </label>
                                         </div>
                                         <div class="auth">
-                                            <a href="{{route('password.request.teacher')}}">Forgot Password</a>
+                                            <a href="{{route('password.request.teacher')}}">{{trans("auth.ForgotPassword")}}</a>
                                         </div>
                                     </div>
                                     <div class="input-item me-auto ms-0">
                                         <button type="submit" class="custom-out-btn">
-                                            login
+                                            {{trans('auth.Login')}}
                                         </button>
                                     </div>
                                     

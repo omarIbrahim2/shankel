@@ -19,5 +19,11 @@ return [
     "Sign in" => "Sign in",
     "Sign up" => "Sign up",
     "Sign out" => "Sign out",
-    "resgisterMsg" => "An activation email will be sent to you within few days , please follow up with your email"
+    "resgisterMsg" => "An activation email will be sent to you within few days , please follow up with your email",
+    "LoginToYourAccount" => "Login to your account",
+    "DoYouHaveAnAccount" => "Do you have an account",
+    "ForgotPassword" => "Forgot Password",
+    "Login" => "Login",
+    "RememberMe" => 'Remember me',
+    "Upload New Photo" => "Upload New Photo"
 ];

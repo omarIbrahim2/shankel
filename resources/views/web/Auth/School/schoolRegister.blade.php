@@ -25,8 +25,8 @@
                             <div class="left-side">
                                 <div class="section-title">
                                     <h2 class="text-start">{{ trans('register.Sign Up') }}</h2>
-                                    <p class="text-start p-0">login to your account <a
-                                            href="{{ route('login-school') }}">Click Here</a></p>
+                                    <p class="text-start p-0">{{trans("auth.LoginToYourAccount")}} <a
+                                            href="{{ route('school-login') }}">{{trans("register.ClickHere")}}</a></p>
                                 </div>
                                 <div class="contact-form black-contact-form">
                                       @if (session()->has('status'))

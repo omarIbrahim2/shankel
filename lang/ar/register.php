@@ -34,7 +34,10 @@ return [
 
     "Teacher" => "معلم",
  
+    "LoginToShankl" => "تسجيل الدخول الي شنكل",
     "School" => "مدرسة",
+
+    "ClickHere" => "اضغط هنا",
     
    
 

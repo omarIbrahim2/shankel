@@ -76,7 +76,6 @@ Route::middleware('lang')->group(function(){
     Route::get('login/parent' , [ParentController::class , 'showLogin'])->middleware('guest')->name('parent-login');
   
     Route::post('parent/login' , [AuthController::class , 'parentLogin'])->name('login-parent');
-    Route::post('school/login' , [AuthController::class , 'schoolLogin'])->name('login-school');
     Route::post('parent/register' , [AuthController::class , 'Parentregister'])->name('parent-register');
     
    

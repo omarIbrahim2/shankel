@@ -40,7 +40,7 @@
                 <p class="text-danger">{{$message}}</p>
                 @enderror
         
-            </div>
+         </div>
             
             <div class="form-group mb-4">
                 <label for="event-title">Organization Name</label>
