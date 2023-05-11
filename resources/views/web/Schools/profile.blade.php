@@ -186,13 +186,13 @@
                                 <div class="col-md-4 col-12">
                                     <div class="counter-item text-center">
                                         <h4>Parents</h4>
-                                        <p>10</p>
+                                        <p>0</p>
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-12">
                                     <div class="counter-item text-center">
                                         <h4>Childs</h4>
-                                        <p>10</p>
+                                        <p>0</p>
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-12">

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Events\SchoolViews;
+use App\Listeners\increaseViews;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -19,6 +21,10 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+
+        SchoolViews::class => [
+            increaseViews::class,
+        ]
 
         
     ];

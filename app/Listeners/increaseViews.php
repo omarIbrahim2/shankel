@@ -32,7 +32,7 @@ class increaseViews
     public function updateViews($school){
 
         $school->views = $school->views + 1;
-
+       
         $school->save();
     }
 }

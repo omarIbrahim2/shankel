@@ -20,12 +20,12 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             CitySeeder::class,
             GradeSeeder::class,
-            SupplierSeeder::class,
+           // SupplierSeeder::class,
             EduSystemSeeder::class,
-            SchoolSeeder::class,
-            ParenttSeeder::class,
-            TeacherSeeder::class,
-            CardServiceSeeder::class,
+           // SchoolSeeder::class,
+           // ParenttSeeder::class,
+           // TeacherSeeder::class,
+            //CardServiceSeeder::class,
 
         ]);
     }

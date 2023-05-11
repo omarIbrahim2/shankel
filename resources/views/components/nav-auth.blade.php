@@ -1,4 +1,3 @@
-
 <nav class="navbar navbar-expand-lg navbar-light ">
     <div class="container">
         <a class="navbar-brand" href="#">
@@ -48,11 +47,11 @@
             
              @if ($guard == 'web')
              <a class="icons" href="{{route("dashboard")}}">
-                <img src="{{asset("assets")}}/images/logo/user.png" alt="user avatar">
+                <img src="{{asset("assets")}}/images/logo/Shanklbig.png" style="width: 70px" alt="user avatar">
              </a> 
              @else
              <a class="icons" href="{{route($guard."-profile")}}">
-                <img src="{{asset("assets")}}/images/logo/user.png" alt="user avatar">
+                <img src="{{asset(auth()->guard($guard)->user()->image)}}" style="width: 70px" style=" border-radius: 50%" alt="user avatar">
              </a>       
              @endif 
           
@@ -68,7 +67,7 @@
                 </li>
                 @else
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="{{route($guard)}}" href="">{{trans("nav.Home")}}</a>
+                    <a class="nav-link active" aria-current="" href="{{route($guard)}}">{{trans("nav.Home")}}</a>
                   </li>
                 @endif
                

@@ -22,22 +22,22 @@
             <div class="input-item me-auto ms-0">
 
                 <input type="password" name="old_password" placeholder="Old Password">
-                <span>
-                    <i class="fa-regular fa-envelope"></i>
+                <span class="second show-passowrd">
+                    <i class="fa-regular fa-eye-slash fa-flip-horizontal"></i>
                 </span>
             </div>
             <div class="input-item me-auto ms-0">
 
                 <input type="password" name="password" placeholder="New Password">
-                <span>
-                    <i class="fa-regular fa-envelope"></i>
+                <span class="second show-passowrd">
+                    <i class="fa-regular fa-eye-slash fa-flip-horizontal"></i>
                 </span>
             </div>
             <div class="input-item me-auto ms-0">
 
                 <input type="password" name="password_confirmation" placeholder="password confirmation">
-                <span>
-                    <i class="fa-regular fa-envelope"></i>
+                <span class="second show-passowrd">
+                    <i class="fa-regular fa-eye-slash fa-flip-horizontal"></i>
                 </span>
             </div>
 

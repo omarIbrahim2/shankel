@@ -110,6 +110,8 @@ class ParentController extends Controller
             return back()->with('error' , "old password doesn't match");
           }
          $url =  Config::get('auth.custom.' . $guard . ".url");
+
+         toastr("password changed sucessfully" , "success");
         
           return redirect()->route($url);
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\SchoolViews;
 use App\Models\EduSystem;
+use App\Models\School;
 use Illuminate\Http\Request;
 use Shankl\Helpers\ChangePassword;
 use Illuminate\Support\Facades\Auth;
@@ -45,6 +46,9 @@ class SchoolController extends Controller
 
   public function school(){
     
+    
+    
+
     return view("web.Schools.profile");
   }
 

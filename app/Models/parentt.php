@@ -8,6 +8,7 @@ use App\Models\comment;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use App\Notifications\ResetPasswordNotification;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use App\Notifications\ParentResetPasswordNotification;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -70,5 +71,23 @@ class Parentt extends Authenticatable
     public function comments(){
 
         return $this->morphMany(comment::class, 'commentable');
+    }
+
+    public function image(): Attribute
+    {
+
+        return new Attribute(
+            get: function($value){
+        
+               if ($value == null) {
+                   
+                 return "assets/images/logo/user.png";
+
+                 
+               }
+        
+               return "uploads/".$value;
+            }
+        );
     }
 }
