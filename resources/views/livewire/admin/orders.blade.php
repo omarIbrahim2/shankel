@@ -32,8 +32,8 @@
   
          <tr>
             
-            <<td>{{$order->id}}</td>
-            <td>{{$order->school->name}}</td>
+            <td>{{$order->id}}</td>
+            <td><a href="#">{{$order->school->name}} </a> </td>
             <td>{{$order->parentt->name}}</td>
             @if ($order->status == true)
               <td class="text-center"><span class="text-secondary">Compeleted</span></td>

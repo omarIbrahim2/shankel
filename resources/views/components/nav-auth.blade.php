@@ -50,7 +50,7 @@
                 <img src="{{asset("assets")}}/images/logo/Shanklbig.png" style="width: 70px" alt="user avatar">
              </a> 
              @else
-             <a class="icons" href="{{route($guard."-profile")}}">
+             <a class="icons profile_photo" href="{{route($guard."-profile")}}">
                 <img src="{{asset(auth()->guard($guard)->user()->image)}}" style="width: 70px" style=" border-radius: 50%" alt="user avatar">
              </a>       
              @endif 

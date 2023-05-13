@@ -1,4 +1,4 @@
-<div>
+<div class="wire_con_div">
     <div class="from-container">
         <div class="contact-form black-contact-form">
             @if (session()->has("success"))
@@ -105,7 +105,7 @@
                     @enderror
                 </div>
 
-                <div class="input-item me-auto ms-0">
+                <div class="reset_cstm_ptns input-item me-auto ms-0">
                     <button type="submit" class="custom-out-btn btn-form" >
                         save
                     </button>

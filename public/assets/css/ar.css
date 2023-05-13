@@ -75,5 +75,10 @@ input{
     bottom: unset;
 }
 .custom-out-btn{
-    padding: 8px 26px;
+    padding: 8px 4px;
+    font-size: 14px;
+}
+.navbar .auth-btn {
+    display: flex;
+    align-items: center;
 }
