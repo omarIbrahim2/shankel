@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AddChildRequest;
+use App\Models\School;
 use App\Providers\RouteServiceProvider;
+use App\Traits\Searchable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Shankl\Entities\ChildEntity;
 use Shankl\Helpers\ChangePassword;
 use Shankl\Interfaces\ChildRepoInterface;
+use Shankl\Interfaces\EduSystemRepoInterface;
 use Shankl\Interfaces\GradeRepoInterface;
 use Shankl\Interfaces\LocationRepoInterface;
 use Shankl\Repositories\ParentRepository;
@@ -17,6 +20,7 @@ use Shankl\Services\SchoolService;
 
 class ParentController extends Controller
 {
+  use Searchable;
   private $changePassObj;
   public function __construct(ChangePassword $changePass)
   {
@@ -72,9 +76,16 @@ class ParentController extends Controller
       return redirect()->route('parent-profile');
     }
 
-    public function parent()
+    public function parent(LocationRepoInterface $locationRepo , GradeRepoInterface $gradeRepo , EduSystemRepoInterface $eduSystems )
     {
-      return view('web.Parents.profile');
+
+      $data['Areas'] = $locationRepo->getAreas();
+
+      $data['Grades'] = $gradeRepo->getGrades();
+
+      $data['Esystems'] = $eduSystems->getEduSystems();
+
+      return view('web.Parents.profile')->with($data);
     }
 
 
@@ -134,6 +145,17 @@ class ParentController extends Controller
 
       return view('web.Schools.schoolRegister')->with(['School' => $School , 'Parent' => $Parent]);
     }
+
+    public function FilterSchools(Request $request){
+      
+       $query = School::query();
+        $Schools =  $this->search($request->query() , $query );
+        
+        return view("web.Schools.filteredSchools")->with(['Schools' => $Schools]);
+    }
+
+
+  
 
 
 

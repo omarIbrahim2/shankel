@@ -112,6 +112,8 @@ Route::middleware('lang')->group(function(){
         Route::post("paypal/payment" , [PaypalController::class , "payment"])->name("paypal-payment")->middleware('child'); 
         Route::get("paypal/success" , [PaypalController::class , 'success'])->name('paypal-success')->middleware('child');
         Route::get("paypal/cancel" , [PaypalController::class , 'cancel'])->name('paypal-cancel')->middleware('child');
+        Route::get("filters/view" , [ParentController::class , 'FilterSchoolView'])->name('filter-view');
+        Route::get('schools/filter' , [ParentController::class , 'FilterSchools'])->name('filter-schools');
     });
     
 

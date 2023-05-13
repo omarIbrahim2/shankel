@@ -28,33 +28,29 @@
                     </div>
                     <div class="col-12">
                         <div class="banner-filter">
-                            <form class="filter-form">
+                            <form  action="{{route("filter-schools")}}" class="filter-form">
                                 <div class="filter">
-                                    <select name="area">
+                                    <select name="area_id">
                                         <option selected disabled>area</option>
-                                        <option value="giza">Giza</option>
-                                        <option value="cairo">Cairo</option>
-                                        <option value="qaliubia">Qaliubia</option>
+                                          @foreach ($Areas as $area)
+                                           <option value="{{$area->id}}">{{$area->name}}</option>
+                                          @endforeach
                                     </select>
                                 </div>
                                 <div class="filter">
-                                    <select name="grade">
+                                    <select name="grade_id">
                                         <option selected disabled>grade</option>
-                                        <option value="kg">kg</option>
-                                        <option value="primary">primary</option>
-                                        <option value="secondary">secondary</option>
+                                            @foreach ($Grades as $grade)
+                                             <option value="{{$grade->id}}">{{$grade->name}}</option>     
+                                           @endforeach
                                     </select>
                                 </div>
                                 <div class="filter">
-                                    <input type="text" placeholder="Suggested Installments" name="installment">
-                                </div>
-                                <div class="filter">
-                                    <select name="area">
+                                    <select name="edu_systems_id">
                                         <option selected disabled>Education System</option>
-                                        <option value="national">National Program</option>
-                                        <option value="international">international</option>
-                                        <option value="IG">IG</option>
-                                        <option value="sat">sat</option>
+                                            @foreach ($Esystems as $Esystem)
+                                              <option value="{{$Esystem->id}}">{{$Esystem->name}}</option>     
+                                            @endforeach
                                     </select>
                                 </div>
                                 <div class="filter-submit">

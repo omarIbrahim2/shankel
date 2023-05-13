@@ -2,6 +2,7 @@
 
 namespace Shankl\Repositories;
 
+use App\Models\Area;
 use App\Models\City;
 use Shankl\Interfaces\LocationRepoInterface;
 
@@ -23,6 +24,11 @@ class LocationRepository implements LocationRepoInterface{
     return $city->areas;
      
 
+  }
+
+  public function getAreas()
+  {
+       return  Area::select('name' , 'id')->get();
   }
     
 
