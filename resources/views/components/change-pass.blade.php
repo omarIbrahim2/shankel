@@ -10,7 +10,7 @@
        </div>
     @endif
     <div class="section-title">
-        <h2 class="text-start">Change Password  </h2>
+        <h2 class="text-start"> {{ trans('auth.changePass') }} </h2>
     </div>
     <div class="contact-form black-contact-form">
     
@@ -43,7 +43,7 @@
 
             <div class="input-item me-auto ms-0">
                 <button type="submit" class="custom-out-btn">
-                    submit
+                    {{ trans("auth.submit") }}
                 </button>
             </div>
 

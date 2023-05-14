@@ -25,7 +25,9 @@ return [
     "ForgotPassword" => "نسيت كلمة السر",
     "Login" => "سجل دخول",
     "RememberMe" => 'تذكرني',
-    "Upload New Photo" => "ارفع صورة جديدة"
+    "Upload New Photo" => "ارفع صورة جديدة",
+    "changePass" => "تغيير كلمة السر",
+    "submit" => "تفعيل"
 
 
 ];

@@ -11,7 +11,7 @@
                        </div>
                     @endif
                     <div class="input-item me-auto ms-0">
-                        <input type="text" wire:model.defer = "name" placeholder="name">
+                        <input type="text" wire:model.defer = "name" placeholder="{{ trans('parent.name') }}">
                         <span>
                             <i class="fa-solid fa-user"></i>
                         </span>
@@ -52,7 +52,7 @@
                         @enderror
                     </div>
                     <div class="input-item me-auto ms-0">
-                        <input type="text" wire:model.defer='age' placeholder="age" >
+                        <input type="text" wire:model.defer='age' placeholder="{{ trans('parent.age') }}" >
                         <span>
                             <i class="fa-regular fa-calendar-days"></i>
                         </span>
@@ -66,14 +66,14 @@
                       
             
                     <div class="input-item me-auto ms-0">
-                        <label>Gender</label>
+                        <label>{{ trans('parent.gender') }}</label>
                         <div class="d-flex align-items-center justify-content-start">
                             <div class="d-flex align-items-center justify-content-start">
-                                <label for="male">Male</label>
+                                <label for="male">{{ trans('parent.male') }}</label>
                                 <input type="radio" value="male" wire:model.defer="gender" class="not-hidden ms-2" id="male">
                             </div>
                             <div class="d-flex align-items-center justify-content-start ms-2">
-                                <label for="female">Female</label>
+                                <label for="female">{{ trans('parent.female') }}</label>
                                 <input type="radio" value="female" wire:model.defer="gender" class="not-hidden ms-2" id="female">
                             </div>
                         </div>
@@ -88,11 +88,11 @@
                             @if ($image != null)
                             <p class="upload-text files-names">{{$image->getClientOriginalName()}}</p>
                             @else
-                            <p class="upload-text files-names">Upload Photo</p>
+                            <p class="upload-text files-names">{{ trans('parent.upload') }}</p>
                             @endif
                         
                             <button type="button" class="btn-custom btn-gray-custom">
-                                choose
+                                {{ trans('parent.choose') }}
                             </button>
                         </label>
                         @error('image')
@@ -103,7 +103,7 @@
                       
                     <div class="input-item me-auto ms-0">
                         <select  wire:model.defer="grade_id" class="form-select" aria-label="Default select example" required>
-                            <option selected>Grade</option>
+                            <option selected>{{ trans('parent.grade') }}</option>
                             @foreach ($grades as $grade)
                                <option value="{{$grade->id}}">{{$grade->name}}</option>
                             @endforeach
@@ -120,7 +120,7 @@
                    
                     <div class="input-item me-auto ms-0">
                         <button type="submit" class="custom-out-btn btn-form">
-                            save
+                            {{ trans('parent.save') }}
                         </button>
                     </div>
                    
@@ -152,7 +152,7 @@
                         <img src="assets/images/charcters/plus.png" alt="add kids">
                     </div></a>
                     <div class="kid-data">
-                        <p class="kid-name">Add a Child</p>
+                        <p class="kid-name">{{ trans('parent.addChild') }}</p>
                     </div>
                 </div>
             </div>

@@ -9,16 +9,16 @@
         <input name="id" hidden type="text" value="{{$Supplier->id}}">
     @endif
     <div class="form-group mb-4">
-    <label for="event-title">Name</label>
-        <input name="name" id="event-title" value="{{$Supplier == null ? "":$Supplier->name}}" type="text" class="form-control"  placeholder="Name">
+    <label for="event-title">{{ trans('supplier.name') }}</label>
+        <input name="name" id="event-title" value="{{$Supplier == null ? "":$Supplier->name}}" type="text" class="form-control"  placeholder="{{ trans('supplier.name') }}">
         @error('name')
         <p class="text-danger">{{$message}}</p>
         @enderror
 
     </div>
     <div class="form-group mb-4">
-        <label for="event-title">Email</label>
-            <input name="email" id="event-title" value="{{$Supplier == null ? "":$Supplier->email}}" type="text" class="form-control"  placeholder="Email">
+        <label for="event-title">{{ trans('supplier.email') }}</label>
+            <input name="email" id="event-title" value="{{$Supplier == null ? "":$Supplier->email}}" type="text" class="form-control"  placeholder="{{ trans('supplier.email') }}">
             @error('email')
             <p class="text-danger">{{$message}}</p>
             @enderror
@@ -26,7 +26,7 @@
         </div>   
     <div class="form-group">
         <div class="custom-file-container my-3" data-upload-id="myFirstImage">
-            <label for="eventImage" class="form-label">Upload Image </label>
+            <label for="eventImage" class="form-label">{{ trans('supplier.upload') }} </label>
                 <input name="image" class="form-control py-2" id="eventImage" type="file"  accept="image/*">
 
             @error('image')
@@ -34,8 +34,8 @@
             @enderror
         </div>
         <div class="form-group mb-4">
-            <label for="event-title">Type</label>
-                <input name="type" id="event-title" value="{{$Supplier == null ? "":$Supplier->type}}" type="text" class="form-control"  placeholder="type">
+            <label for="event-title">{{ trans('supplier.type') }}</label>
+                <input name="type" id="event-title" value="{{$Supplier == null ? "":$Supplier->type}}" type="text" class="form-control"  placeholder="{{ trans('supplier.type') }}">
                 @error('type')
                 <p class="text-danger">{{$message}}</p>
                 @enderror
@@ -43,8 +43,8 @@
          </div>
             
             <div class="form-group mb-4">
-                <label for="event-title">Organization Name</label>
-                    <input name="orgName" id="event-title" value="{{$Supplier == null ? "":$Supplier->orgName}}" type="text" class="form-control"  placeholder="Organization Name">
+                <label for="event-title">{{ trans('supplier.orgName') }}</label>
+                    <input name="orgName" id="event-title" value="{{$Supplier == null ? "":$Supplier->orgName}}" type="text" class="form-control"  placeholder="{{ trans('supplier.orgName') }}">
                     @error('orgName')
                     <p class="text-danger">{{$message}}</p>
                     @enderror
@@ -54,7 +54,7 @@
 
 
      <div class="form-group">
-     <label for="">Address</label>
+     <label for="">{{ trans('supplier.address') }}</label>
         <div class="d-flex justify-content-between align-items-center event-times">
             <div class="w-md-100 w-50">
                 <select name="city_id"  id="selectCity" class="form-select form-control" aria-label="Default select example" >
@@ -81,8 +81,8 @@
 
      @if ($update == false)
      <div class="form-group mb-4">
-         <label for="event-title">Password</label>
-             <input name="password"  type="password" class="form-control"  placeholder="password">
+         <label for="event-title">{{ trans('supplier.password') }}</label>
+             <input name="password"  type="password" class="form-control"  placeholder="{{ trans('supplier.password') }}">
              @error('password')
              <p class="text-danger">{{$message}}</p>
              @enderror
@@ -90,13 +90,13 @@
          </div>
 
          <div class="form-group mb-4">
-             <label for="event-title">Confirm Password</label>
-                 <input name="password_confirmation"  type="password" class="form-control"  placeholder="password">
+             <label for="event-title">{{ trans('supplier.confirm_password') }}</label>
+                 <input name="password_confirmation"  type="password" class="form-control"  placeholder="{{ trans('supplier.confirm_password') }}">
                  @error('password_confirmation')
                  <p class="text-danger">{{$message}}</p>
                  @enderror
              </div>
      @endif
 
-    <button type="submit" class="btn btn-primary mt-4">{{$update==null ? "Add" : "Update"}}</button>
+    <button type="submit" class="btn btn-primary mt-4">{{$update==null ? trans('supplier.add') : trans('service.update')}}</button>
 </form>
