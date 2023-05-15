@@ -13,6 +13,21 @@ class EventRepository implements EventRepoInterface{
 
    }
 
+   public function getEventsWeb($userId = null){
+       
+      if ($userId == null) {
+         return;
+      }
+      return Event::with(['ParenttsinEvent'  , 'area.city'] , function($query) use($userId){
+
+               $query->where('id'  , $userId);
+      })->get()->map(function($event){
+
+         return   $event->setAttribute("booked" , $event->ParenttsinEvent->isNotEmpty());
+      });
+
+   }
+
    public function addEvent($data)
    {
       return Event::create($data);

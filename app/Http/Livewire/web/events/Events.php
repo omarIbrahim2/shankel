@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Web\Events;
 
+use App\Models\Event;
 use App\Notifications\EventSeatBooked;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -18,7 +19,9 @@ class Events extends Component
 
     public function render(EventRepoInterface $eventRepo)
     {
-        $Events = $eventRepo->getEvents(5);
+         $userid  =AuthUserFactory::getAuthUser()->id;
+        $FilteredEvents = $eventRepo->getEventsWeb($userid);
+          $Events = Event::paginate($FilteredEvents , 5);
         return view('livewire.web.events.events')->with(['Events' => $Events]);
     }
 
