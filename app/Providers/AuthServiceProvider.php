@@ -3,9 +3,13 @@
 namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
+
+use App\Models\comment;
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -53,6 +57,9 @@ class AuthServiceProvider extends ServiceProvider
 
             return true;
         });
+
+
+     
        
         
     }

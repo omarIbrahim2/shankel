@@ -9,6 +9,9 @@
         </div>
         <div class="review-body">
             {{$comment->comment}}
+
+            <span><button class="btn btn-danger" >Delete</button></span>
+            <span><button class="btn btn-warning" >Update</button></span>
         </div>
     </div>
     @endforeach
