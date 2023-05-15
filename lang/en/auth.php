@@ -25,5 +25,8 @@ return [
     "ForgotPassword" => "Forgot Password",
     "Login" => "Login",
     "RememberMe" => 'Remember me',
-    "Upload New Photo" => "Upload New Photo"
+    "Upload New Photo" => "Upload New Photo",
+    "changePass" => "Change Password",
+    "submit" => "Submit"
+
 ];

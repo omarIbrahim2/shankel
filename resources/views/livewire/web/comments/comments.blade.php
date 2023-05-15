@@ -19,5 +19,5 @@
     <div class="add-review">
         <input wire:model.defer="commented" type="text" placeholder="leave comment">												
     </div>
-    <button wire:click="createComment"  class="btn btn-primary">comment</button>
+    <button wire:click="createComment"  class="btn btn-primary">{{ trans('contact.comment') }}</button>
 </div>

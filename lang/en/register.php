@@ -6,7 +6,7 @@ return [
 
    "name" => "Name",
 
-   "email" => "email",
+   "email" => "Email",
 
    "password" => "Password",
 

@@ -8,7 +8,7 @@
                             <div class="contact-item">
                                 <i class="fa-solid fa-location-dot"></i>
                                 <a href="https://goo.gl/maps/629oZPALLVBQkjya7">
-                                    Amman - Wasfi Al-Tal Street - Al-Waha Roundabout
+                                    {{ trans("contact.shanklAdd") }}
                                 </a>
                             </div>
                             <div class="contact-item">
@@ -26,7 +26,7 @@
                         </div>
                         <div class="social">
                             <div class="section-title">
-                                <h2>Follow Us</h2>
+                                <h2>{{ trans('contact.follow') }}</h2>
                             </div>
                             <div class="social-icons">
                                 <div class="social-item">
@@ -48,38 +48,38 @@
                 <div class="col-lg-8 col-md-7 col-12">
                     <div class="section contact-form-container">
                         <div class="section-title ">
-                            <h2 class="text-start">contact us</h2>
+                            <h2 class="text-start">{{ trans("contact.contact") }}</h2>
                         </div>
                         <div class="contact-form ">
                             <form>
                                 <div class="input-item">
-                                    <input type="text" name="name" placeholder="name">
+                                    <input type="text" name="name" placeholder="{{ trans('contact.name') }}">
                                     <span>
                                         <i class="fa-solid fa-user"></i>
                                     </span>
                                 </div>
 
                                 <div class="input-item">
-                                    <input type="email" name="email" placeholder="email">
+                                    <input type="email" name="email" placeholder="{{ trans('contact.email') }}">
                                     <span>
                                         <i class="fa-regular fa-envelope"></i>
                                     </span>
                                 </div>
                                 <div class="input-item">
-                                    <input type="text" name="subject" placeholder="subject">
+                                    <input type="text" name="subject" placeholder="{{ trans('contact.sub') }}">
                                     <span>
                                         <i class="fa-solid fa-book"></i>
                                     </span>
                                 </div>
                                 <div class="input-item">
-                                    <input type="text" name="message" placeholder="message">
+                                    <input type="text" name="message" placeholder="{{ trans('contact.mess') }}">
                                     <span>
                                         <i class="fa-regular fa-pen-to-square"></i>
                                     </span>
                                 </div>
                                 <div class="input-item">
                                     <button type="submit" class="btn-custom">
-                                        send a message
+                                        {{ trans('contact.send') }}
                                     </button>
                                 </div>
                             </form>

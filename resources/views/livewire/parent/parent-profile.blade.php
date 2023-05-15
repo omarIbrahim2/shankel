@@ -10,7 +10,7 @@
     
                 <div class="input-item me-auto ms-0">
                    
-                    <input type="text"  placeholder="name" wire:model="name">
+                    <input type="text"  placeholder="{{ trans('parent.name') }}" wire:model="name">
                     <span>
                         <i class="fa-solid fa-user"></i>
                     </span>
@@ -21,7 +21,7 @@
                 </div>
                 <div class="input-item me-auto ms-0">
 
-                    <input type="email"  placeholder="email"
+                    <input type="email"  placeholder="{{ trans('parent.email') }}"
                     wire:model="email">
                     <span>
                         <i class="fa-regular fa-envelope"></i>
@@ -34,7 +34,7 @@
                     @enderror
                 </div>
                 <div class="input-item me-auto m-0">
-                    <input type="tel"  placeholder="phone" wire:model="phone">
+                    <input type="tel"  placeholder="{{ trans('parent.phone') }}" wire:model="phone">
                     <span>
                         <i class="fa-solid fa-phone"></i>
                     </span>
@@ -93,11 +93,11 @@
                          @if ($image != null)
                          <p class="upload-text files-names">{{$image->getClientOriginalName()}}</p>
                          @else
-                         <p class="upload-text files-names">Upload Photo</p>
+                         <p class="upload-text files-names">{{ trans('parent.upload') }}</p>
                          @endif
                         
                         <div type="button" class="btn-custom btn-gray-custom">
-                            choose
+                            {{ trans('parent.choose') }}
                         </div>
                     </label>
                     @error('image')
@@ -107,11 +107,11 @@
 
                 <div class="reset_cstm_ptns input-item me-auto ms-0">
                     <button type="submit" class="custom-out-btn btn-form" >
-                        save
+                        {{ trans('parent.save') }}
                     </button>
  
                     <a href="{{route("change_pass_parent")}}"  class="custom-out-btn btn-form" >
-                        Reset Password
+                        {{ trans('parent.reset') }}
                     </a>
                     
                 </div>

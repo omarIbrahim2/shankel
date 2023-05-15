@@ -10,12 +10,22 @@
                     </div>
                     <div class="col-md-8">
                         <div class="footer-nav">
-                            <ul>
-                                <li><a href="{{route('home')}}">Home</a></li>
-                                <li><a href="#about">About Us</a></li>
-                                <li><a href="#faq">FAQ</a></li>
-                                <li><a href="#gallery">Gallery</a></li>
-                                <li><a href="#contact">Contact Us</a></li>
+                            <ul class="navbar-nav m-auto">
+              
+                
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route("web-services")}}">{{trans("nav.Services")}}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('web-events')}}">{{trans("nav.Events")}}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('web-schools')}}">{{trans("nav.Schools")}}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#contact">{{trans("nav.Teachers")}}</a>
+                                </li>
+                                
                             </ul>
                         </div>
                     </div>
