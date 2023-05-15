@@ -8,5 +8,6 @@ return[
     "email" => "Email",
     "sub" => "Subject",
     "mess" => "Message",
-    "send" => "Send Message"
+    "send" => "Send Message",
+    "comment" => "Comment"
 ];

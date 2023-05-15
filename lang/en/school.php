@@ -26,4 +26,6 @@ return[
     "cls" => "Close",
     "saveChange" => "Save changes",
 
+    "search" => "Search by Name Or Email",
+
 ];

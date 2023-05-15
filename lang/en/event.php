@@ -11,4 +11,12 @@ return[
     "address" => "Address",
     "update" => "Update",
     "add" => "Add",
+
+    "days" => "Days",
+    "hours" => "Hours",
+    "mins" => "Mins",
+    "secs" => "Secs",
+    "book" => "Book Your Seat",
+    "startT" => "Start Time",
+    "finT" => "Finish Time",
 ];

@@ -43,24 +43,24 @@
                     <div class="counter-body">
                         <div class="counter-item">
                             <span  ></span>
-                            <p>Days</p>
+                            <p>{{ trans('event.days') }}</p>
                         </div>
                         <div class="counter-item">
                             <span class="hours"></span>
-                            <p>Hours</p>
+                            <p>{{ trans('event.hours') }}</p>
                         </div>
                         <div class="counter-item">
                             <span class="mins"></span>
-                            <p>Mins</p>
+                            <p>{{ trans('event.mins') }}</p>
                         </div>
                         <div class="counter-item">
                             <span class="secs"></span>
-                            <p>Secs</p>
+                            <p>{{ trans('event.secs') }}</p>
                         </div>
                     </div>
                     @custom_auth
                     <div>
-                        <button wire:click="BookAseat({{$event}})"  class="white-btn">Book Your Seat</button>
+                        <button wire:click="BookAseat({{$event}})"  class="white-btn">{{ trans('event.book') }}</button>
                     </div>
                     @endcustom_auth
                 </div>
@@ -70,7 +70,7 @@
                             <i class="fa-regular fa-clock"></i>
                         </div>
                         <div class="event-data-text">
-                            <h5>Start Time</h5>
+                            <h5>{{ trans('event.startT') }}</h5>
                             <span>{{$event->startAt()}}</span>
                         </div>
                     </div>
@@ -79,7 +79,7 @@
                             <i class="fa-solid fa-volume-xmark"></i>
                         </div>
                         <div class="event-data-text">
-                            <h5>Finish Time</h5>
+                            <h5>{{ trans('event.finT') }}</h5>
                             <span>{{$event->endAt()}}</span>
                         </div>
                     </div>
@@ -88,7 +88,7 @@
                             <i class="fa-solid fa-earth-americas"></i>
                         </div>
                         <div class="event-data-text">
-                            <h5>Address</h5>
+                            <h5>{{ trans('event.address') }}</h5>
                             <span>{{$event->area->city->name}},{{$event->area->name}}</span>
                         </div>
                     </div>

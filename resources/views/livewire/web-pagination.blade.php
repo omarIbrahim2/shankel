@@ -4,11 +4,11 @@
         @if ($paginator->hasPages())
             
         @if ($paginator->onFirstPage())
-        <li>previous</li>
+        <li>{{ trans('pagination.previous') }}</li>
         @else
           
         <li style="cursor: pointer"  wire:click="previousPage">
-            Prev
+            {{ trans('pagination.previous') }}
         </li>
         
         @endif
@@ -29,11 +29,11 @@
 
        @if ($paginator->hasMorePages())
        <li style="cursor: pointer"  wire:click="nextPage ">
-         next
+        {{ trans('pagination.next') }}
        </li>
        @else
        <li>
-           next
+        {{ trans('pagination.next') }}
        </li>
        @endif
 

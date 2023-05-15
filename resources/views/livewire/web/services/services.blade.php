@@ -26,7 +26,7 @@
                                          </div>
                                     </div>
                                     <div class="service-booking">
-                                        <a href="#" class="btn-custom">Book Now</a>
+                                        <a href="#" class="btn-custom">{{ trans('service.book') }}</a>
                                     </div>
                                 </div>
                                
