@@ -13,18 +13,42 @@ class EventRepository implements EventRepoInterface{
 
    }
 
-   public function getEventsWeb($userId = null){
+   public function getEventsWeb($userId = null , $guard){
        
-      if ($userId == null) {
-         return;
+      if ($userId == null && $guard == 'guest') {
+         
+         return null;
       }
-      return Event::with(['ParenttsinEvent'  , 'area.city'] , function($query) use($userId){
 
-               $query->where('id'  , $userId);
-      })->get()->map(function($event){
+      if ($guard == 'parent') {
+         return Event::with(['ParenttsinEvent'  , 'area.city'] , function($query) use($userId){
 
-         return   $event->setAttribute("booked" , $event->ParenttsinEvent->isNotEmpty());
-      });
+            $query->where('id'  , $userId);
+         })->get()->map(function($event){
+
+               return   $event->setAttribute("booked" , $event->ParenttsinEvent->isNotEmpty());
+          });
+      }else if($guard == 'school'){
+         return Event::with(['schoolsinEvent'  , 'area.city'] , function($query) use($userId){
+
+            $query->where('id'  , $userId);
+         })->get()->map(function($event){
+
+               return   $event->setAttribute("booked" , $event->schoolsinEvent->isNotEmpty());
+          });
+              
+      }elseif ($guard == 'teacher') {
+            
+
+         return Event::with(['teachersinEvent'  , 'area.city'] , function($query) use($userId){
+
+            $query->where('id'  , $userId);
+         })->get()->map(function($event){
+
+               return   $event->setAttribute("booked" , $event->teachersinEvent->isNotEmpty());
+          });
+      }
+     
 
    }
 

@@ -59,9 +59,19 @@
                         </div>
                     </div>
                     @custom_auth
+
+                    @if ($event->booked == true)
+                        <div>
+                        <button class="btn btn-success" disabled>Booked</button>
+                        <button class="btn btn-danger">cancel Booking</button>
+                      </div>
+
+                    @else
                     <div>
                         <button wire:click="BookAseat({{$event}})"  class="white-btn">{{ trans('event.book') }}</button>
                     </div>
+                    @endif
+                    
                     @endcustom_auth
                 </div>
                 <div class="loc-data">

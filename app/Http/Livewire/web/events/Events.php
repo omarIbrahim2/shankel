@@ -16,12 +16,23 @@ class Events extends Component
     
     use WithPagination;
 
-
+    protected $listener = [
+        'fresh' => '$refresh',
+    ];
     public function render(EventRepoInterface $eventRepo)
     {
-         $userid  =AuthUserFactory::getAuthUser()->id;
-        $FilteredEvents = $eventRepo->getEventsWeb($userid);
-          $Events = Event::paginate($FilteredEvents , 5);
+         $userid  =AuthUserFactory::getAuthUserId();
+         $guard = AuthUserFactory::geGuard();
+
+
+        $FilteredEvents = $eventRepo->getEventsWeb($userid , $guard);
+
+        if ($FilteredEvents == null) {
+          $Events = $eventRepo->getEvents(5);
+        }else{
+            $Events = Event::paginate($FilteredEvents , 5);
+        }
+         
         return view('livewire.web.events.events')->with(['Events' => $Events]);
     }
 
@@ -47,6 +58,8 @@ class Events extends Component
             toastr("Booked successfully" , "success");
 
             Notification::send($User , new EventSeatBooked($User , $event));
+
+            $this->emit('fresh');
 
         }else{
 
