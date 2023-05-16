@@ -28,4 +28,9 @@ return[
 
     "search" => "Search by Name Or Email",
 
+    "freeSeats" => "Free Seats",
+
+    "enterEmail" => "Enter Your Email",
+    "send" => "Send",
+
 ];

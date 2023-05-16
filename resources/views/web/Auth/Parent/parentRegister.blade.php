@@ -88,14 +88,14 @@
                                         @enderror
                                     </div>
                                     <div class="input-item me-auto ms-0">
-                                        <label>Gender</label>
+                                        <label>{{ trans('parent.gender') }}</label>
                                         <div
                                             class="d-flex align-items-center justify-content-start"
                                         >
                                             <div
                                                 class="d-flex align-items-center justify-content-start"
                                             >
-                                                <label for="male">Male</label>
+                                                <label for="male">{{ trans('parent.male') }}</label>
                                                 <input
                                                     type="radio"
                                                     value="male"
@@ -107,7 +107,7 @@
                                             <div
                                                 class="d-flex align-items-center justify-content-start ms-2"
                                             >
-                                                <label for="female">Female</label>
+                                                <label for="female">{{ trans('parent.female') }}</label>
                                                 <input type="radio"
                                                     value="female "
                                                     name="gender"

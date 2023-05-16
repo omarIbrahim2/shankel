@@ -13,4 +13,11 @@ return[
     "female" => "Female",
     "grade" => "Grade",
     "addChild" => "Add a Child",
+
+    "addkids" => "Add Your Kids Now",
+    "mustAddC" => "You Must Add  Your Child",
+
+    "enterEmail" => "Enter Your Email",
+    "send" => "Send",
+    
 ];

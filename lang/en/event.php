@@ -19,4 +19,7 @@ return[
     "book" => "Book Your Seat",
     "startT" => "Start Time",
     "finT" => "Finish Time",
+
+    "booked" => "Booked",
+    "clsBook" => "cancel Booking",
 ];

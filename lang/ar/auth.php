@@ -27,7 +27,11 @@ return [
     "RememberMe" => 'تذكرني',
     "Upload New Photo" => "ارفع صورة جديدة",
     "changePass" => "تغيير كلمة السر",
-    "submit" => "تفعيل"
+    "submit" => "تفعيل",
+
+    "oldPass" => "كلمة السر الحاليه",
+    "newPass" => "كلمة المرور الجديدة",
+    "passConfirm" => "تأكيد كلمة المرور",
 
 
 ];

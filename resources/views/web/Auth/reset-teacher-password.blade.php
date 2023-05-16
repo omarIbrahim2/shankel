@@ -20,7 +20,7 @@
                         <div class="col-lg-6 col-md-8 col-12">
                             <div class="left-side">
                                 <div class="section-title">
-                                    <h2 class="text-start">Enter Your Email</h2>
+                                    <h2 class="text-start">{{ trans('teacher.enterEmail') }}</h2>
                                 </div>
                                 <div class="contact-form black-contact-form">
                                     <form method="POST" action="{{ route('password.update', ['broker' => 'teachers' , 'guard' => 'teachers']) }}">
@@ -30,21 +30,21 @@
                                         <input type="hidden" name="token" value="{{$token}}">
                                         <div class="input-item me-auto ms-0">
 
-                                            <input type="email" name="email" placeholder="email">
+                                            <input type="email" name="email" placeholder="{{ trans('teacher.email') }}">
                                             <span>
                                                 <i class="fa-regular fa-envelope"></i>
                                             </span>
                                         </div>
                                         <div class="input-item me-auto ms-0">
 
-                                            <input type="password" name="password" placeholder="password">
+                                            <input type="password" name="password" placeholder="{{ trans('auth.password') }}">
                                             <span>
                                                 <i class="fa-regular fa-envelope"></i>
                                             </span>
                                         </div>
                                         <div class="input-item me-auto ms-0">
 
-                                            <input type="password" name="password_confirmation" placeholder="password_confirmation">
+                                            <input type="password" name="password_confirmation" placeholder="{{ trans('auth.passConfirm') }}">
                                             <span>
                                                 <i class="fa-regular fa-envelope"></i>
                                             </span>
@@ -52,7 +52,7 @@
 
                                         <div class="input-item me-auto ms-0">
                                             <button type="submit" class="custom-out-btn">
-                                                Send
+                                                {{ trans('school.send') }}
                                             </button>
                                         </div>
 

@@ -20,7 +20,7 @@
                         <div class="col-lg-6 col-md-8 col-12">
                             <div class="left-side">
                                 <div class="section-title">
-                                    <h2 class="text-start">Enter Your Email</h2>
+                                    <h2 class="text-start">{{ trans('parent.enterEmail') }}</h2>
                                 </div>
                                 <div class="contact-form black-contact-form">
                                     @if (Session::has('status'))
@@ -34,7 +34,7 @@
                                         @include('web.inc.errors')
                                         <div class="input-item me-auto ms-0">
 
-                                            <input type="email" name="email" placeholder="email">
+                                            <input type="email" name="email" placeholder="{{ trans('parent.email') }}">
                                             <span>
                                                 <i class="fa-regular fa-envelope"></i>
                                             </span>
@@ -42,7 +42,7 @@
 
                                         <div class="input-item me-auto ms-0">
                                             <button type="submit" class="custom-out-btn">
-                                                Send
+                                                {{ trans('parent.send') }}
                                             </button>
                                         </div>
 

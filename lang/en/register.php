@@ -34,9 +34,14 @@ return [
    "Teacher" => "Teacher",
 
    "School" => "School",
+
+   "center" => "Center",
+
+   "nursery" => "nursery",
+
     
    "LoginToShankl" => "Login to Shankl",
    "ClickHere" => "Click Here",
 
-
+   "signUpAs" => "Sign Up As",
 ];

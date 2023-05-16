@@ -9,5 +9,8 @@ return[
     "sub" => "Subject",
     "mess" => "Message",
     "send" => "Send Message",
-    "comment" => "Comment"
+    "comment" => "Comment",
+    "leaveCom" => "Leave Comment",
+    "delete" => "Delete",
+    "update" => "Update",
 ];

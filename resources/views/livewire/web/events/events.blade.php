@@ -62,8 +62,8 @@
 
                     @if ($event->booked == true)
                         <div>
-                        <button class="btn btn-success" disabled>Booked</button>
-                        <button class="btn btn-danger">cancel Booking</button>
+                        <button class="btn btn-success" disabled>{{ trans('event.booked') }}</button>
+                        <button class="btn btn-danger">{{ trans('event.clsBook') }}</button>
                       </div>
 
                     @else

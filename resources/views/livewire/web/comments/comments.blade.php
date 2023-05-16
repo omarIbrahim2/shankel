@@ -10,14 +10,14 @@
         <div class="review-body">
             {{$comment->comment}}
 
-            <span><button class="btn btn-danger" >Delete</button></span>
-            <span><button class="btn btn-warning" >Update</button></span>
+            <span><button class="btn btn-danger" >{{ trans('contact.delete') }}</button></span>
+            <span><button class="btn btn-warning" >{{ trans('contact.update') }}</button></span>
         </div>
     </div>
     @endforeach
  
     <div class="add-review">
-        <input wire:model.defer="commented" type="text" placeholder="leave comment">												
+        <input wire:model.defer="commented" type="text" placeholder="{{ trans('contact.leaveCom') }}">												
     </div>
     <button wire:click="createComment"  class="btn btn-primary">{{ trans('contact.comment') }}</button>
 </div>

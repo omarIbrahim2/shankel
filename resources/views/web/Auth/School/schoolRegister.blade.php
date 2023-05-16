@@ -107,7 +107,7 @@
                                         </div>
                                         <div class="input-item me-auto ms-0">
                                             <select id="selectEduSystem" class="form-select" aria-label="Default select example" name="edu_systems_id" >
-                                                <option  selected disabled>Education System </option>
+                                                <option  selected disabled>{{ trans('school.eduSystem') }} </option>
                                                 @foreach ($eSystems as $system)
                                                    <option value="{{$system->id}}">{{$system->name}}</option>
                                                 @endforeach
@@ -122,7 +122,7 @@
                                         </div>
                                         <div class="input-item me-auto ms-0 ">
                                             <h4>
-                                                School Grades
+                                                {{ trans('school.schoolGrades') }}
                                             </h4>
                                             <div class="select-cont">
                                                 @foreach ($grades as $grade)
@@ -143,7 +143,7 @@
                                         </div>
                                         <div class="upload-avatar text-start">
                                             <input type="file" name="image"  id="teacher-avatar" multiple>
-                                            <label class="btn-custom" for="teacher-avatar">Upload New Photo</label>
+                                            <label class="btn-custom" for="teacher-avatar">{{ trans('school.uploadNew') }}</label>
                                             <div class="files-names">
 
                                             </div>
@@ -152,7 +152,7 @@
                                             @enderror
                                         </div>
                                         <div class="input-item me-auto ms-0">
-                                            <input type="password" name="password" placeholder="password" >
+                                            <input type="password" name="password" placeholder="{{ trans('auth.password') }}" >
                                             <span>
                                                 <i class="fa-solid fa-lock"></i>
                                             </span>
@@ -164,7 +164,7 @@
                                             @enderror
                                         </div>
                                         <div class="input-item me-auto ms-0">
-                                            <input type="password" name="password_confirmation" placeholder="Confirm Password"
+                                            <input type="password" name="password_confirmation" placeholder="{{ trans('auth.passConfirm') }}"
                                                 >
                                             <span>
                                                 <i class="fa-solid fa-lock"></i>
@@ -178,20 +178,20 @@
                                         </div>
 
                                         <div class="auth text-start">
-                                            <p class="text-start p-0">Sign Up As</p>
+                                            <p class="text-start p-0">{{ trans('register.signUpAs') }}</p>
                                         </div>
                                         <div class="input-item me-auto ms-0 radios school-type">
 
                                             <div class="radio">
                                                 <input type="radio" name="type" value="School"
                                                     id="school">
-                                                <label class="custom-out-btn" for="school">School</label>
+                                                <label class="custom-out-btn" for="school">{{ trans('register.School') }}</label>
                                             </div>
                                             
                                             <div class="radio">
                                                 <input type="radio" name="type" value="Center"
                                                     id="center">
-                                                <label class="custom-out-btn" for="center">Center</label>
+                                                <label class="custom-out-btn" for="center">{{ trans('register.center') }}</label>
                                             </div>
                                             @error('type')
                                             <p class="text-danger">{{$message}}</p>
@@ -200,7 +200,7 @@
                                         </div>
 
                                         <div class="input-item me-auto ms-0">
-                                            <input type="number" name="free_seats" placeholder="free seats"
+                                            <input type="number" name="free_seats" placeholder="{{ trans('school.freeSeats') }}"
                                                 >
                                             <span>
                                                 <i class="fa-solid fa-user"></i>
@@ -211,7 +211,7 @@
                                         </div>
                                         <div class="input-item me-auto ms-0">
                                             <button type="submit" class="custom-out-btn">
-                                                Sign Up
+                                                {{ trans('register.Sign Up') }}
                                             </button>
                                         </div>
 

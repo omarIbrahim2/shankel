@@ -19,4 +19,8 @@ return[
     "facebook" => "Facebook URL",
     'twitter' => "Twitter URL",
     "linked" => "Linkedin URL",
+    "field" => "Field",
+
+    "enterEmail" => "Enter Your Email",
+    "send" => "Send",
 ];

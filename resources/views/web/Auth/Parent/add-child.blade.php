@@ -25,15 +25,15 @@
                     <div class="col-lg-6 col-md-8 col-12">
                         <div class="left-side">
                             <div class="section-title">
-                                <h2 class="text-start">Add Your Kids Now</h2>
-                                <p class="text-start p-0">You Must Add  Your Child</p>
+                                <h2 class="text-start">{{ trans('parent.addkids') }}</h2>
+                                <p class="text-start p-0">{{ trans('parent.mustAddC') }}</p>
                             </div>
                             <div class="contact-form black-contact-form">
                                 <form method="POST" action="{{url("add/child")}}" enctype="multipart/form-data">
                                     @csrf
                                     <input value="{{$parent_id}}" type="hidden" name="parentt_id">
                                     <div class="input-item me-auto ms-0">
-                                        <input type="text" name="name" placeholder="name">
+                                        <input type="text" name="name" placeholder="{{ trans('parent.name') }}">
                                         <span>
                                             <i class="fa-solid fa-user"></i>
                                         </span>
@@ -43,7 +43,7 @@
                                     </div>
                                     <div class="input-item me-auto ms-0">
                                         
-                                        <input type="number" name="age" placeholder="age">
+                                        <input type="number" name="age" placeholder="{{ trans('parent.age') }}">
                                         <span>
                                             <i class="fa-regular fa-hourglass"></i>
                                         </span>
@@ -78,7 +78,7 @@
                                     </div>
                                     <div class="input-item me-auto ms-0">
                                         <select  name="grade_id" class="form-select" aria-label="Default select example" required>
-                                            <option selected disabled>Grade</option>
+                                            <option selected disabled>{{ trans('parent.grade') }}</option>
                                             @foreach ($grades as $grade)
                                                <option value="{{$grade->id}}">{{$grade->name}}</option>
                                             @endforeach
@@ -117,7 +117,7 @@
                                     </div>
                                     <div class="input-item me-auto ms-0">
                                         <button type="submit" class="custom-out-btn">
-                                            Sign Up
+                                            {{ trans('parent.addChild') }}
                                         </button>
                                     </div>
                                 </form>

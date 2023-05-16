@@ -93,7 +93,7 @@
                                     </div>
                                      
                                     <div class="input-item me-auto ms-0">
-                                        <input value="{{@old('field')}}" type="text" name="field" placeholder="field">
+                                        <input value="{{@old('field')}}" type="text" name="field" placeholder="{{ trans('teacher.field') }}">
                                         <span>
                                             <i class="fa-solid fa-book-open"></i>
                                         </span>
