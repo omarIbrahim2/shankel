@@ -10,8 +10,19 @@
         <div class="review-body">
             {{$comment->comment}}
 
-            <span><button class="btn btn-danger" >{{ trans('contact.delete') }}</button></span>
-            <span><button class="btn btn-warning" >{{ trans('contact.update') }}</button></span>
+
+
+            @if ( Gate::forUser($AuthUser)->allows("delete-comment" , [$comment , $type]))
+            <span><button wire:click="deletecomment({{$comment->id}})" class="btn btn-danger" >{{ trans('contact.delete') }}</button></span> 
+            @endif
+             
+                  
+        
+                 
+            @if (Gate::forUser($AuthUser)->allows("update-comment" , [$comment , $type]))
+            <span><button class="btn btn-warning" >{{ trans('contact.update') }}</button></span>    
+            @endif
+            
         </div>
     </div>
     @endforeach

@@ -2,6 +2,7 @@
 
 namespace Shankl\Factories;
 
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -22,6 +23,8 @@ class AuthUserFactory{
              $provider = $vals['provider'];
 
              $userId = Auth::guard($guard)->user()->id; 
+
+             break;
               
            }
           
@@ -63,23 +66,28 @@ class AuthUserFactory{
   self::$guards = config('auth.guards');
   $provider = "";
   $userId = 0;
- foreach(self::$guards as $guard=> $vals){
+
     
+ foreach(self::$guards as $guard=> $vals){
+      
        if(Auth::guard($guard)->check()){
-          
+        
          $provider = $vals['provider'];
+      
 
          $userId = Auth::guard($guard)->user()->id; 
+
+         break;
           
-       }
-      
-     
+       }  
  }
-   
   if ($provider == null && $userId == null) {
+
     return null;
   }
 
+ 
+  
      $model = config("auth.providers.". $provider)['model'] ;
 
      $user = $model::findOrFail($userId);

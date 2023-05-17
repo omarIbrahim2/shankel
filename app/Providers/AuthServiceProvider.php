@@ -58,6 +58,34 @@ class AuthServiceProvider extends ServiceProvider
             return true;
         });
 
+        Gate::define('delete-comment' , function($user , comment $comment , string $type){
+             
+            if ($type == "App\Models\User") {
+            
+                 return true;
+            }
+
+              if ($user->id == $comment->commentable_id && $type == $comment->commentable_type){
+                    
+                return true;
+              }
+        
+              return false;
+
+        });
+
+
+        Gate::define("update-comment" , function($user , comment $comment , string $type){
+
+
+            if ($user->id == $comment->commentable_id && $type == $comment->commentable_type){
+                    
+                return true;
+              }
+
+             return false; 
+        });
+
 
      
        
