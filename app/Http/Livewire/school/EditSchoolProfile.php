@@ -192,13 +192,13 @@ class EditSchoolProfile extends Component
 
     public function save(SchoolService $schoolService , FileService $fileService){
           
-    
+       
          $this->validate([
             "name" => "required|min:3|string",
             "email" => ['required','email', 'unique:schools,email,' .$this->AuthUser->id ],
             "phone" => ['required', new PhoneValidationRule()],
             'area_id' => 'required|numeric|exists:areas,id',
-            "establish_date" => "required|date",
+            "establish_date" => "required|date_format:Y-m-d|before:today",
             "desc" => 'string|nullable',
             "mission" => "string|nullable",
             "vision" => 'string|nullable',
@@ -210,6 +210,8 @@ class EditSchoolProfile extends Component
          ]);
 
          $this->setAttributes();
+
+        
    
   
           $choosenGrades = $this->getChoosenGrades();  
@@ -230,7 +232,7 @@ class EditSchoolProfile extends Component
 
         
           $schoolService->updatedGrades($choosenGrades , $this->AuthUser->id);
-
+            dd($this->attributes);
           $schoolService->updateProfile($this->attributes);
           $this->emit("fresh");
           $this->image=null;

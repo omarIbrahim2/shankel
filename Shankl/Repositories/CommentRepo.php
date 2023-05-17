@@ -35,4 +35,15 @@ class CommentRepo{
 
          return $comments;
     }
+
+    public function deleteComment($commentId){
+
+        $comment = comment::findOFail($commentId);
+
+        if ($comment) {
+          return  $comment->delete();
+        }
+
+        return null;
+    }
 }
