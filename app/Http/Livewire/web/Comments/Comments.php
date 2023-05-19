@@ -16,6 +16,8 @@ class Comments extends Component
     public $AuthUser;
     public $type;
 
+  
+
     protected $listeners = [
         "fresh" => '$refresh',
     ];
@@ -85,6 +87,8 @@ class Comments extends Component
          toastr("Error happened .. !" ,"error" );
             
     }
+
+ 
 
     public function updateComment($commentId){
         $comment = comment::findOrFail($commentId);

@@ -96,7 +96,7 @@ Route::middleware('lang')->group(function(){
     Route::post('admin/login' , [AuthController::class , 'AdminLogin'])->name('login-admin');
 
 
-
+ 
     
     //Parent Group
     Route::middleware('parent')->group(function(){
@@ -166,7 +166,11 @@ Route::middleware('lang')->group(function(){
         Route::post('changePass/school/{user}', [SchoolController::class, 'changePass'])->name("submit_change_pass_school");
     });
     
-
+ 
+       
+        Route::post('update/comment' , [SchoolController::class , "updateComment"])->name('update-comment');
+    
+     
     //Logout
     
     Route::middleware('logout')->group(function(){

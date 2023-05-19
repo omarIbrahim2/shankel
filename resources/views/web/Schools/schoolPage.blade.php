@@ -173,3 +173,19 @@
 </main>
  
 @endsection
+
+@section('scripts')
+    <script>
+        $(".comment").on("click",function(){
+
+            let comment = $(this).attr("data-comment");
+
+            let commentId = $(this).attr("data-commentId");
+
+
+             $("#editcomment").val(comment)
+
+             $("#editcommentId").val(commentId)
+        })
+    </script>
+@endsection

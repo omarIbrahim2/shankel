@@ -75,6 +75,11 @@ public function getComments($schooId){
     return $this->commentRepo->getComments($schooId);
 }
 
+public function updateComment($newComment , $commentId){
+
+    return $this->commentRepo->updateComment($newComment , $commentId);
+}
+
 
 
 }

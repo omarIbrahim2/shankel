@@ -97,7 +97,7 @@
                                     </div>
                                     <div class="input-item">
                                         
-                                        <input placeholder="{{$establish_date? $establish_date : trans('school.establishDate')}}" class="textbox-n" type="text" wire-model="establish_date"  id="date" />
+                                        <input placeholder="{{trans('school.establishDate')}}" wire:model="establish_date" class="textbox-n" id="date"  type="text"  />
                                         <span>
                                             <i class="fa-regular fa-calendar-days"></i>
                                         </span>
@@ -208,7 +208,7 @@
             </div>
             {{-- school photos album --}}
             <!-- Modal -->
-<div class="modal fade" id="schoolAlbum" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="schoolAlbum" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -234,5 +234,5 @@
       </div>
     </div>
   </div>
-        </div>
+ </div>
 </div>

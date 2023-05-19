@@ -12,9 +12,6 @@ class CommentRepo{
 
     public function createComment($user , $comment , $schoolId){
 
-
-     
-
      return $user->comments()->create([
        'comment' => $comment,
         'school_id' => $schoolId,
@@ -45,5 +42,20 @@ class CommentRepo{
         }
 
         return null;
+    }
+
+    public function updateComment($newComment , $commentId){
+      
+      $comment = comment::findOrFail($commentId);
+        
+      if ($comment) {
+        return  $comment->update([
+          'comment' => $newComment,
+         ]);
+      }
+
+
+      return null;
+ 
     }
 }

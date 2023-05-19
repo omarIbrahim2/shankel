@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\SchoolViews;
+use App\Http\Requests\CommentUpdateRequest;
 use App\Models\EduSystem;
 use App\Models\School;
 use Illuminate\Http\Request;
@@ -95,6 +96,23 @@ class SchoolController extends Controller
       $Es =  EduSystem::findOrfail($EduId);    
      return view("web.Schools.schoolPage")->with(['School' => $school , "Es" => $Es]);
 
+  }
+
+
+  public function updateComment(CommentUpdateRequest $request){
+       
+   $validatedReq =  $request->validated();
+       
+    $action = $this->schoolService->updateComment($validatedReq['comment'] , $validatedReq['id']);
+    
+    if ($action) {
+        toastr("updated successfully" , "success" , "update comment");
+
+        return back();
+    }
+    
+    toastr("error happened in updating" , "error" , "update comment");
+    return back();
   }
   
 }

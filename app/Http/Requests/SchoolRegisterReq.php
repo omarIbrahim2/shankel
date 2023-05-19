@@ -38,7 +38,7 @@ class SchoolRegisterReq extends FormRequest
              "type" => 'required|in:Center,School',
              "free_seats" => 'required|numeric|min:0',
              "edu_systems_id" => 'required|exists:edu_systems,id',
-             "establish_date" => 'required|date',
+             "establish_date" => 'required|date|before:today',
         
         ];
     }
