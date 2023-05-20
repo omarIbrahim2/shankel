@@ -7,9 +7,11 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class EventSeatBooked extends Notification
+class EventSeatBooked extends Notification implements ShouldQueue
 {
     use Queueable;
+    
+   
     
     public $user;
     public $event;
@@ -20,6 +22,7 @@ class EventSeatBooked extends Notification
      */
     public function __construct($user , $event)
     {
+        $this->connection = 'database';
         $this->user = $user;
         $this->event = $event;
     }
@@ -61,4 +64,13 @@ class EventSeatBooked extends Notification
             //
         ];
     }
+
+    public function viaQueues() : array
+    {
+
+        return [
+          "mail" => "EventMailingQueue"
+        ];
+    }
+
 }
