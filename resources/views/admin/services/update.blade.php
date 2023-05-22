@@ -8,13 +8,6 @@
     
     <x-service-form actionRoute="service-update"  :supplierId="$supplierId" :Service="$Service"  update=true></x-service-form>
 
-    
-
-
-
-=
-
-   
  </div>
 
 

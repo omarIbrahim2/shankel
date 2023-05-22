@@ -35,9 +35,11 @@
                                 <div class="social-item">
                                     <a href="#"><i class="fa-brands fa-twitter"></i></a>
                                 </div>
+                               
                                 <div class="social-item">
-                                    <a href="#"><i class="fa-solid fa-m"></i></a>
+                                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
                                 </div>
+
                                 <div class="social-item">
                                     <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
                                 </div>
@@ -50,40 +52,7 @@
                         <div class="section-title ">
                             <h2 class="text-start">{{ trans("contact.contact") }}</h2>
                         </div>
-                        <div class="contact-form ">
-                            <form>
-                                <div class="input-item">
-                                    <input type="text" name="name" placeholder="{{ trans('contact.name') }}">
-                                    <span>
-                                        <i class="fa-solid fa-user"></i>
-                                    </span>
-                                </div>
-
-                                <div class="input-item">
-                                    <input type="email" name="email" placeholder="{{ trans('contact.email') }}">
-                                    <span>
-                                        <i class="fa-regular fa-envelope"></i>
-                                    </span>
-                                </div>
-                                <div class="input-item">
-                                    <input type="text" name="subject" placeholder="{{ trans('contact.sub') }}">
-                                    <span>
-                                        <i class="fa-solid fa-book"></i>
-                                    </span>
-                                </div>
-                                <div class="input-item">
-                                    <input type="text" name="message" placeholder="{{ trans('contact.mess') }}">
-                                    <span>
-                                        <i class="fa-regular fa-pen-to-square"></i>
-                                    </span>
-                                </div>
-                                <div class="input-item">
-                                    <button type="submit" class="btn-custom">
-                                        {{ trans('contact.send') }}
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
+                        @livewire('web.contact-us')
                     </div>
                 </div>
             </div>

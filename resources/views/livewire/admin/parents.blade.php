@@ -36,7 +36,7 @@
         @foreach ($Users as $user)
         <tr>
            
-           <td><img src="{{asset('uploads')}}/{{$user->image}}" alt="" style="width: 50px"></td>
+           <td><img src="{{asset($user->image)}}" alt="" style="width: 50px"></td>
            <td>{{$user['name']}}</td>
            <td>{{$user["email"]}}</td>
            @if ($active == true)

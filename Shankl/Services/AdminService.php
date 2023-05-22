@@ -2,15 +2,19 @@
 
 namespace Shankl\Services;
 
-
+use PhpParser\Node\Stmt\Return_;
 use Shankl\Interfaces\EventRepoInterface;
+use Shankl\Repositories\SocialsRepository;
 
 class AdminService{
        
     private $eventRebo;
-     public function __construct(EventRepoInterface $eventRebo)
+
+    private $socialRebo;
+     public function __construct(EventRepoInterface $eventRebo , SocialsRepository $socialRebo)
      {
         $this->eventRebo = $eventRebo;
+        $this->socialRebo = $socialRebo;
      }
     public function getEvents($pages){
  
@@ -36,6 +40,27 @@ class AdminService{
       return $this->eventRebo->updateEvent($data);
 
     } 
+
+    public function getSocials(){
+
+      return $this->socialRebo->getSocials();
+    }
+
+    public function getSocial($socialId){
+         
+      return $this->socialRebo->getSocial($socialId);
+
+    }
+
+    public function AddSocial($data)
+    {
+      return $this->socialRebo->create($data);
+    }
+
+    public function UpdateSocial($data , $socialId){
+
+      return $this->socialRebo->update($data , $socialId);
+    }
 
     
 }

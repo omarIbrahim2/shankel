@@ -19,8 +19,9 @@ return new class extends Migration
             $table->string("Linkedin" , 100)->nullable();
             $table->string("instagram" , 100)->nullable();
             $table->string("twitter" , 100)->nullable();
-            $table->string("email" , 100);
-            $table->string("phone" , 100);
+            $table->string("email" , 100)->nullable();
+            $table->string("phone" , 100)->nullable();
+            $table->text("address")->nullable();
             $table->timestamps();
         });
     }

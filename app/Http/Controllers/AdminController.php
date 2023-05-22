@@ -14,6 +14,8 @@ use App\Http\Requests\EventValidationRequest;
 use App\Http\Requests\EventValidationUpdateReq;
 use App\Http\Requests\ServiceAddReq;
 use App\Http\Requests\ServiceUpdateReq;
+use App\Http\Requests\SocialsAddReq;
+use App\Http\Requests\SocialUpdateReq;
 
 class AdminController extends Controller
 {
@@ -275,6 +277,53 @@ class AdminController extends Controller
     public function Orders(){
 
         return view("admin.orders.orders");
+    }
+
+    public function Socials(){
+        return view("admin.socials.socials");
+    }
+
+    public function socialsAddView(){
+
+        return view("admin.socials.create");
+    }
+
+    public function socialUpdateView($socialId){
+         
+       
+       $social = $this->AdminService->getSocial($socialId);     
+        return view('admin.socials.update')->with([
+            'Social' => $social,
+        ]);
+    }
+
+    public function socialCreate(SocialsAddReq $request){
+
+       $validatedData =  $request->validated();
+
+       $social = $this->AdminService->AddSocial($validatedData);
+
+       if ($social) {
+          toastr("social created successfully" , 'success');
+          return redirect()->route("Socials");
+       }
+
+       toastr("error in creating" , "error");
+    }
+
+    public function SocialUpdate(SocialUpdateReq $request){
+          
+       $validatedData =  $request->validated();
+
+       $action = $this->AdminService->UpdateSocial($validatedData , $validatedData['id']);
+         
+       if ($action) {
+          
+           toastr("social updated successfully" , "success" ,"update socials");
+           return redirect()->route("Socials");
+       }
+
+       toastr("error in updating" , "error");
     }
 
 

@@ -13,4 +13,6 @@ return[
     "leaveCom" => "Leave Comment",
     "delete" => "Delete",
     "update" => "Update",
+    "messSucc" => "Message Sent Successfully",
+    "messfail" => "Failed In Sending Message, Please Try Again",
 ];

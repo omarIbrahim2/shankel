@@ -142,7 +142,11 @@ Route::middleware('lang')->group(function(){
         Route::post('service/create' , [ServiceController::class , "CreateService"])->name("service-create");
         Route::post('service/update' , [ServiceController::class , "UpdateService"])->name('service-update');
         Route::get('orders' , [AdminController::class , "Orders"])->name("Orders");
-        
+        Route::get("socials" , [AdminController::class , "Socials"])->name("Socials");
+        Route::get("socials/create" , [AdminController::class , "socialsAddView"])->name("social-add-view");
+        Route::get('socials/update/{socialId}' , [AdminController::class ,  "socialUpdateView"])->name("social-update-view");
+        Route::post('social/add' , [AdminController::class , 'socialCreate'])->name('social-create');
+        Route::post('social/update' , [AdminController::class , "SocialUpdate"])->name('social-update');
     });
 
     
