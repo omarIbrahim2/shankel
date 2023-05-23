@@ -7,7 +7,7 @@ class SocialsRepository{
 
     public function getSocials(){
 
-        return Social::select('facebook' , 'email' , 'phone' , 'twitter' , 'Linkedin' , 'instagram' , 'address' , 'id')->get();
+        return Social::select('facebook' , 'email' , 'phone' , 'twitter' , 'Linkedin' , 'instagram' , 'address' , 'id')->first();
     }
 
     public function create($data){

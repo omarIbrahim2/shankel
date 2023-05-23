@@ -3,17 +3,19 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
+use Shankl\Services\AdminService;
 
 class ContactUs extends Component
 {
+    public $adminService;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(AdminService $adminService)
     {
-        //
+        $this->adminService = $adminService;
     }
 
     /**
@@ -23,6 +25,10 @@ class ContactUs extends Component
      */
     public function render()
     {
-        return view('components.contact-us');
+        $Social = $this->adminService->getSocials();
+         
+        return view('components.contact-us')->with([
+            'Social' => $Social,
+        ]);
     }
 }

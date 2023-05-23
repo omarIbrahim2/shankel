@@ -25,10 +25,10 @@ class SocialsAddReq extends FormRequest
     public function rules()
     {
         return [
-            'facebook' => 'string|url',
-            'twitter' => 'string|url',
-            'instagram' => 'string|url',
-            'Linkedin' => 'string|url',
+            'facebook' => 'nullable|url',
+            'twitter' => 'nullable|url',
+            'instagram' => 'nullable|url',
+            'Linkedin' => 'nullable|url',
             'email' => 'email',
             'phone' => new PhoneValidationRule(),
             'address' => 'string',

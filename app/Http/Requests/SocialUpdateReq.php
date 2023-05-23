@@ -26,10 +26,10 @@ class SocialUpdateReq extends FormRequest
     {
         return [
             'id' => 'required|exists:socials,id',
-            'facebook' => 'string|url',
-            'twitter' => 'string|url',
-            'instagram' => 'string|url',
-            'Linkedin' => 'string|url',
+            'facebook' => 'url|nullable',
+            'twitter' => 'url|nullable',
+            'instagram' => 'url|nullable',
+            'Linkedin' => 'url|nullable',
             'email' => 'email',
             'phone' => new PhoneValidationRule(),
             'address' => 'string',

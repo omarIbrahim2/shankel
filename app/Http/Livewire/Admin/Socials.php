@@ -9,9 +9,9 @@ class Socials extends Component
 {
     public function render(AdminService $adminService)
     {
-        $Socials = $adminService->getSocials();
+        $Social = $adminService->getSocials();
         return view('livewire.admin.socials')->with([
-            "Socials" => $Socials,
+            "Social" => $Social,
         ]);
     }
 }

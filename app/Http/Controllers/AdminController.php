@@ -16,6 +16,7 @@ use App\Http\Requests\ServiceAddReq;
 use App\Http\Requests\ServiceUpdateReq;
 use App\Http\Requests\SocialsAddReq;
 use App\Http\Requests\SocialUpdateReq;
+use App\Models\Message;
 
 class AdminController extends Controller
 {
@@ -324,6 +325,56 @@ class AdminController extends Controller
        }
 
        toastr("error in updating" , "error");
+    }
+
+    public function SocialDelete($socialId){
+
+        $action = $this->AdminService->deleteSocial($socialId);
+
+        if ($action) {
+            toastr("social deleted successfully" , "error" ,"delete socials");
+            return redirect()->route("Socials");
+        }
+
+        toastr("error in deleting" , "error");
+    }
+
+    public function Messages(){
+         
+          return view("admin.messages.messages");
+    }
+
+    public function deleteMessage($messageId){
+
+      $message =  Message::findOrFail($messageId);
+
+      if ($message) {
+        $action = $message->delete();
+
+        if ($action) {
+            toastr("message deleted successfully" , "error" ,"delete messages");
+
+            return back();
+            toastr("error in deleting" , "error");
+        }
+
+
+      }else{
+
+        return back();
+      }
+    }
+
+    public function showMessage($messageId){
+        $message =  Message::findOrFail($messageId);
+ 
+        if ($message) {
+            return view('admin.messages.messageDetail')->with(['Message' => $message]);
+        }
+
+        return back();
+       
+
     }
 
 

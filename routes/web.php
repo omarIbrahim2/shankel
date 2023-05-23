@@ -147,6 +147,10 @@ Route::middleware('lang')->group(function(){
         Route::get('socials/update/{socialId}' , [AdminController::class ,  "socialUpdateView"])->name("social-update-view");
         Route::post('social/add' , [AdminController::class , 'socialCreate'])->name('social-create');
         Route::post('social/update' , [AdminController::class , "SocialUpdate"])->name('social-update');
+        Route::get('social/delete/{socialId}' , [AdminController::class , "SocialDelete"])->name("social-delete");
+        Route::get('messages' , [AdminController::class , 'Messages'])->name('Messsages');
+        Route::get('message/delete/{messageId}' , [AdminController::class , 'deleteMessage'])->name('message-delete');
+        Route::get('message/show/{messageId}' , [AdminController::class , "showMessage"])->name('message-show');
     });
 
     

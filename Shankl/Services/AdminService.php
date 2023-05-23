@@ -62,5 +62,10 @@ class AdminService{
       return $this->socialRebo->update($data , $socialId);
     }
 
+    public function deleteSocial($socialId){
+
+      return $this->socialRebo->delete($socialId);
+    }
+
     
 }
