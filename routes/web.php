@@ -1,21 +1,21 @@
 <?php
 
-use App\Http\Controllers\AdminController;
+use Shankl\Helpers\Paypal;
 use App\Models\Transaction;
+use App\Http\Controllers\reader;
+use Shankl\Entities\AdminEntity;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\EventsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LangController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\EventsController;
 use App\Http\Controllers\ParentController;
+use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\SchoolController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\LocationCcontroller;
-use App\Http\Controllers\PaypalController;
-use App\Http\Controllers\reader;
-use App\Http\Controllers\ServiceController;
-use Shankl\Entities\AdminEntity;
-use Shankl\Helpers\Paypal;
 use Symfony\Component\Routing\Route as RoutingRoute;
 
 //Lang Route
@@ -122,10 +122,10 @@ Route::middleware('lang')->group(function(){
     Route::prefix('dashboard')->middleware('auth')->group(function(){ 
         Route::get('/' , [AdminController::class , 'dashboard'])->name('dashboard');
         Route::get('events' , [AdminController::class , 'Events'])->name('admin-events');
-        Route::get('event/create' , [AdminController::class , "createEventView"])->name('create-events-view');
-        Route::get('event/update/{eventid}' , [AdminController::class , "updateEventView"])->name("update-events-view");
-        Route::post("event/store" , [AdminController::class , "storeEvent"])->name("create-events");
-        Route::post('event/update' , [AdminController::class , "updateEvent"])->name("update-event");
+        Route::get('event/create' , [EventsController::class , "createEventView"])->name('create-events-view');
+        Route::get('event/update/{eventid}' , [EventsController::class , "updateEventView"])->name("update-events-view");
+        Route::post("event/store" , [EventsController::class , "storeEvent"])->name("create-events");
+        Route::post('event/update' , [EventsController::class , "updateEvent"])->name("update-event");
         Route::get("parents/{status}" , [AdminController::class , "Parentts"])->name('admin-parents');
         Route::get("schools/{status}" , [AdminController::class , 'Schools'])->name('admin-schools');
         Route::get("teachers/{status}" , [AdminController::class , 'Teachers'])->name('admin-teachers');
@@ -142,12 +142,14 @@ Route::middleware('lang')->group(function(){
         Route::post('service/create' , [ServiceController::class , "CreateService"])->name("service-create");
         Route::post('service/update' , [ServiceController::class , "UpdateService"])->name('service-update');
         Route::get('orders' , [AdminController::class , "Orders"])->name("Orders");
+       
         Route::get("socials" , [AdminController::class , "Socials"])->name("Socials");
         Route::get("socials/create" , [AdminController::class , "socialsAddView"])->name("social-add-view");
         Route::get('socials/update/{socialId}' , [AdminController::class ,  "socialUpdateView"])->name("social-update-view");
         Route::post('social/add' , [AdminController::class , 'socialCreate'])->name('social-create');
         Route::post('social/update' , [AdminController::class , "SocialUpdate"])->name('social-update');
         Route::get('social/delete/{socialId}' , [AdminController::class , "SocialDelete"])->name("social-delete");
+       
         Route::get('messages' , [AdminController::class , 'Messages'])->name('Messsages');
         Route::get('message/delete/{messageId}' , [AdminController::class , 'deleteMessage'])->name('message-delete');
         Route::get('message/show/{messageId}' , [AdminController::class , "showMessage"])->name('message-show');

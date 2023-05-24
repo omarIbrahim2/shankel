@@ -4,18 +4,22 @@ namespace Shankl\Services;
 
 use PhpParser\Node\Stmt\Return_;
 use Shankl\Interfaces\EventRepoInterface;
+use Shankl\Repositories\SliderRepo;
 use Shankl\Repositories\SocialsRepository;
 
 class AdminService{
        
     private $eventRebo;
-
+    private $sliderRebo;
     private $socialRebo;
-     public function __construct(EventRepoInterface $eventRebo , SocialsRepository $socialRebo)
+     public function __construct(EventRepoInterface $eventRebo , SocialsRepository $socialRebo , SliderRepo $sliderRebo)
      {
         $this->eventRebo = $eventRebo;
         $this->socialRebo = $socialRebo;
+        $this->sliderRebo = $sliderRebo;
      }
+
+    //Events 
     public function getEvents($pages){
  
           $events = $this->eventRebo->getEvents($pages);
@@ -40,6 +44,36 @@ class AdminService{
       return $this->eventRebo->updateEvent($data);
 
     } 
+
+    //Sliders
+
+    public function getSliders(){
+
+      return $this->sliderRebo->getSliders();
+    }
+
+    public function getSlider($sliderId){
+         
+      return $this->sliderRebo->getSlider($sliderId);
+
+    }
+
+    public function addSlider($data)
+    {
+      return $this->sliderRebo->createSlider($data);
+    }
+
+    public function updateSlider($data , $sliderId){
+
+      return $this->sliderRebo->updateSlider($data , $sliderId);
+    }
+
+    public function deleteSlider($sliderId){
+
+      return $this->sliderRebo->deleteSlider($sliderId);
+    }
+
+    //Socials
 
     public function getSocials(){
 
