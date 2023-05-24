@@ -16,6 +16,7 @@ use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\LocationCcontroller;
+use App\Http\Controllers\SliderController;
 use Symfony\Component\Routing\Route as RoutingRoute;
 
 //Lang Route
@@ -126,21 +127,25 @@ Route::middleware('lang')->group(function(){
         Route::get('event/update/{eventid}' , [EventsController::class , "updateEventView"])->name("update-events-view");
         Route::post("event/store" , [EventsController::class , "storeEvent"])->name("create-events");
         Route::post('event/update' , [EventsController::class , "updateEvent"])->name("update-event");
+
         Route::get("parents/{status}" , [AdminController::class , "Parentts"])->name('admin-parents');
         Route::get("schools/{status}" , [AdminController::class , 'Schools'])->name('admin-schools');
         Route::get("teachers/{status}" , [AdminController::class , 'Teachers'])->name('admin-teachers');
+
         Route::get("suppliers/{status}" , [AdminController::class , 'Suppliers'])->name('admin-suppliers');
         Route::get('supplier/store' , [AdminController::class , 'createSupplierView'])->name("create-supplier");
         Route::get('supplier/update/{supplier_id}' , [AdminController::class , "updateSupplierView"])->name("update-supplier");
         Route::post('supplier/register' , [AuthController::class , "SupplierRegister"])->name("supplier-register");
         Route::post('supplier/update' , [AdminController::class , "updateSupplier"])->name("supplier-update");
         Route::get("delete/Supplier/{id}" , [AdminController::class , "deleteSupplier"])->name("supplier-delete");
+
         Route::get("services/{supplier_id}" , [AdminController::class , "Services"])->name("Services");
         Route::get("service/delete/{id}" , [ServiceController::class , "deleteService"])->name("service-delete");
         Route::get("service/create/{supplier_id}" , [ServiceController::class , "serviceCreateView"])->name('service-create-form');
         Route::get("service/update/{serviceId}/{supplierid}", [ServiceController::class ,"serviceUpdateView"])->name("service-update-form");
         Route::post('service/create' , [ServiceController::class , "CreateService"])->name("service-create");
         Route::post('service/update' , [ServiceController::class , "UpdateService"])->name('service-update');
+
         Route::get('orders' , [AdminController::class , "Orders"])->name("Orders");
        
         Route::get("socials" , [AdminController::class , "Socials"])->name("Socials");
@@ -153,6 +158,13 @@ Route::middleware('lang')->group(function(){
         Route::get('messages' , [AdminController::class , 'Messages'])->name('Messsages');
         Route::get('message/delete/{messageId}' , [AdminController::class , 'deleteMessage'])->name('message-delete');
         Route::get('message/show/{messageId}' , [AdminController::class , "showMessage"])->name('message-show');
+
+        Route::get('sliders' , [SliderController::class , 'Sliders'])->name('Sliders');
+        Route::get("sliders/create" , [SliderController::class , "create"])->name("slider-create-form");
+        Route::get('sliders/edit/{sliderId}' , [SliderController::class , 'edit'])->name("slider-update-form");
+        Route::get('slider/delete/{sliderId}' , [SliderController::class , "delete"])->name('slider-delete');
+        Route::post("sliders/store" , [SliderController::class , 'store'])->name("slider-create");
+        Route::post('slider/update' , [SliderController::class , "update"])->name('slider-update');
     });
 
     

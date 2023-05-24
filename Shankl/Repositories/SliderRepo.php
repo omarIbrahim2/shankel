@@ -8,7 +8,7 @@ class SliderRepo{
     public function getSliders($pages=null){
 
         if ($pages != null) {
-            return Slider::select("id" , 'image' , 'title' , 'info')->paginate($pages);
+            return Slider::select("id" , 'image' , 'title')->paginate($pages);
         }
         return Slider::select("id" , 'image' , 'title' , 'info')->get();
     }
@@ -23,7 +23,7 @@ class SliderRepo{
         return Slider::findOrFail($sliderId);
     }
 
-    public function updateSlider($sliderId , $data)
+    public function updateSlider($data , $sliderId)
     {
         $slider =$this->getSlider($sliderId);
         return $slider->update($data);

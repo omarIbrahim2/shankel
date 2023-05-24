@@ -185,6 +185,7 @@ return [
         /*
          * Package Service Providers...
          */
+        Spatie\Translatable\TranslatableServiceProvider::class,
 
         /*
          * Application Service Providers...
