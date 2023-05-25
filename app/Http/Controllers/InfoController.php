@@ -44,7 +44,7 @@ class InfoController extends Controller
         $data = $this->evaluateData($validatedReq);
          
 
-        $data['image'] =  $this->handleUpload($request , $fileService);
+        $data['image'] =  $this->handleUpload($request , $fileService ,null,"info");
          
         $Info = Information::create($data);
 
@@ -69,7 +69,7 @@ class InfoController extends Controller
         
         $Info = Information::findOrFail($data['id']);
 
-        $data['image'] = $this->handleUpload($request , $fileService , $Info);
+        $data['image'] = $this->handleUpload($request , $fileService , $Info , "info");
 
          
          $action = $Info->update($data);

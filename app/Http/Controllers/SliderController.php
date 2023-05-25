@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SliderAddReq;
 use App\Http\Requests\SliderUpdateReq;
+use App\Traits\HandleUpload;
 use Illuminate\Http\Request;
 use Shankl\Services\AdminService;
 use Shankl\Services\FileService;
 
 class SliderController extends Controller
 {
+    use HandleUpload;
     private $adminService;
     private $fileService;
     public function __construct(AdminService $adminService , FileService $fileService)
@@ -40,12 +42,8 @@ class SliderController extends Controller
       
         $data = $this->evaluateData($validatedReq);
 
-        $this->fileService->setPath('sliders');
-        $this->fileService->setFile($validatedReq['image']);
-
-         $data['image'] =  $this->fileService->uploadFile();
-
-         
+        $data['image'] =$this->handleUpload($request , $this->fileService , null , 'sliders' );
+      
 
         $slider =  $this->adminService->addSlider($data);
 
@@ -70,20 +68,8 @@ class SliderController extends Controller
         
         $slider =  $this->adminService->getSlider($data['id']);
 
-        
+        $data['image'] =  $this->handleUpload($request , $this->fileService , $slider , "sliders");       
 
-        if ($request->has('image')) {
-             
-            $this->fileService->DeleteFile($slider->image);
-
-            $this->fileService->setPath('sliders');
-
-            $this->fileService->setFile($validatedReq['image']);
-
-           $data['image'] = $this->fileService->uploadFile();
-
-           
-        }
 
        $action =  $this->adminService->updateSlider($data , $validatedReq['id']);
 

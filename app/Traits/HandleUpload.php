@@ -5,7 +5,7 @@ namespace App\Traits;
 
 trait HandleUpload{
 
-  public function handleUpload($request , $fileService , $model = null){
+  public function handleUpload($request , $fileService , $model = null , $path){
       
        if (! $request->has('image')) {
            
@@ -19,7 +19,7 @@ trait HandleUpload{
 
 
          
-       $fileService->setPath('info');
+       $fileService->setPath($path);
        $fileService->setFile($request['image']);
 
        return $fileService->uploadFile();
