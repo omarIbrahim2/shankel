@@ -116,6 +116,19 @@ class SliderController extends Controller
 
     }
 
+    public function show($sliderId){
+       
+        $Slider = $this->adminService->getSlider($sliderId);
+
+        if ($Slider) {
+            return view('admin.sliders.slidersDetails')->with(['Slider' => $Slider]);
+        }
+
+        return back();
+
+
+    }
+
     private function evaluateData($request){
          $data = array();
         if (array_key_exists('id' , $request)) {

@@ -48,7 +48,6 @@ class AdminService{
     //Sliders
 
     public function getSliders(){
-
       return $this->sliderRebo->getSliders();
     }
 

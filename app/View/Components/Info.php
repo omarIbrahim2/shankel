@@ -6,7 +6,7 @@ namespace App\View\Components;
 use Illuminate\View\Component;
 
 
-class lang extends Component
+class Info extends Component
 {
 
     /**
@@ -29,7 +29,7 @@ class lang extends Component
 
      public function render()
      {
-        return view('components.lang');
+        return view('components.info');
      }
 
 }

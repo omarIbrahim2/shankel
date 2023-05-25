@@ -25,62 +25,21 @@
     <div class="home-slider" id="header">
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide" style="background-image:url('assets/images/banner/banner.webp')">
+                @foreach ($Sliders as $slider)
+                <div class="swiper-slide" style="background-image:url({{ asset($slider->image) }})">
                     <div class="container">
                         <div claas="row">
                             <div class="col-lg-6 col-md-8 col-12">
                                 <div class="slider-content">
-                                    <h1>SHANKAL</h1>
-                                    <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio possimus
-                                        maxime eaque laudantium at, soluta sunt omnis aspernatur et blanditiis sequi
-                                        ea culpa. Aliquid mollitia reiciendis totam minima dolores illo.</P>
+                                    <h1>{{ $slider->title(App::getLocale()) }}</h1>
+                                    <P>{{ $slider->info(App::getLocale()) }}</P>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide" style="background-image:url('assets/images/banner/banner.webp')">
-                    <div class="container">
-                        <div claas="row">
-                            <div class="col-lg-6 col-md-8 col-12">
-                                <div class="slider-content">
-                                    <h1>SHANKAL</h1>
-                                    <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio possimus
-                                        maxime eaque laudantium at, soluta sunt omnis aspernatur et blanditiis sequi
-                                        ea culpa. Aliquid mollitia reiciendis totam minima dolores illo.</P>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide" style="background-image:url('assets/images/banner/banner.webp')">
-                    <div class="container">
-                        <div claas="row">
-                            <div class="col-lg-6 col-md-8 col-12">
-                                <div class="slider-content">
-                                    <h1>SHANKAL</h1>
-                                    <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio possimus
-                                        maxime eaque laudantium at, soluta sunt omnis aspernatur et blanditiis sequi
-                                        ea culpa. Aliquid mollitia reiciendis totam minima dolores illo.</P>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide" style="background-image:url('assets/images/banner/banner.webp')">
-                    <div class="container">
-                        <div claas="row">
-                            <div class="col-lg-6 col-md-8 col-12">
-                                <div class="slider-content">
-                                    <h1>SHANKAL</h1>
-                                    <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio possimus
-                                        maxime eaque laudantium at, soluta sunt omnis aspernatur et blanditiis sequi
-                                        ea culpa. Aliquid mollitia reiciendis totam minima dolores illo.</P>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+              
             </div>
             <div class="swiper-pagination"></div>
         </div>
@@ -216,30 +175,21 @@
         <div class="inner">
             <div class="container">
                 <div class="section-title">
-                    <h2>About Us</h2>
+                    <h2>{{ trans("home.AboutUs") }}</h2>
                 </div>
                 <div class="section-content">
                     <div class="about-welcome">
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="welcome">
-                                    <h3>Welcome To Shankal</h3>
+                                    <h3>{{ $Infos->title(App::getLocale()) }}</h3>
                                 </div>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus nihil labore esse
-                                    ex
-                                    cupiditate numquam est velit minima molestiae! Est a illo eius sapiente labore
-                                    consectetur, eaque modi blanditiis molestiae velit debitis ab laborum quos.</p>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident pariatur
-                                    cupiditate ullam voluptates beatae rerum, enim sequi quae laudantium nam dolore
-                                    alias iure, quo aut et quos blanditiis facere, obcaecati illo possimus laborum.
-                                    Assumenda, illo quasi blanditiis repellat temporibus nemo eligendi reprehenderit
-                                    maxime exercitationem magnam id perferendis, corrupti impedit eveniet.</p>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt officia
-                                    exercitationem nemo voluptates sit ipsa similique voluptatibus libero maxime facere?
+                                <p>
+                                    {{ $Infos->aboutUs(App::getLocale()) }}
                                 </p>
                             </div>
                             <div class="col-lg-6 order-lg-0 order-first">
-                                <img src="assets/images/about/pexels-artem-podrez-6941450 1.webp" alt="about us">
+                                <img src="{{ asset($Infos->image) }}" alt="about us">
                             </div>
                         </div>
                     </div>
@@ -248,45 +198,30 @@
                             <div class="col-md-4">
                                 <div class="about-point">
                                     <h4>
-                                        why choose us
+                                       {{ trans("home.WhyChooseUs") }}
                                     </h4>
                                     <p>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit magni neque iure
-                                        assumenda iste nulla ratione deleniti. Doloremque maiores fugit saepe modi
-                                        officia
-                                        odio voluptate pariatur, explicabo unde enim. Recusandae perferendis optio
-                                        delectus
-                                        quaerat nobis!
+                                        {{ $Infos->choose(App::getLocale()) }}
                                     </p>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="about-point">
                                     <h4>
-                                        our missions
+                                        {{ trans("home.OurMission") }}
                                     </h4>
                                     <p>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit magni neque iure
-                                        assumenda iste nulla ratione deleniti. Doloremque maiores fugit saepe modi
-                                        officia
-                                        odio voluptate pariatur, explicabo unde enim. Recusandae perferendis optio
-                                        delectus
-                                        quaerat nobis!
+                                        {{ $Infos->mission(App::getLocale()) }}
                                     </p>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="about-point">
                                     <h4>
-                                        our vission
+                                        {{ trans("home.OurVision") }}
                                     </h4>
                                     <p>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit magni neque iure
-                                        assumenda iste nulla ratione deleniti. Doloremque maiores fugit saepe modi
-                                        officia
-                                        odio voluptate pariatur, explicabo unde enim. Recusandae perferendis optio
-                                        delectus
-                                        quaerat nobis!
+                                        {{ $Infos->vision(App::getLocale()) }}
                                     </p>
                                 </div>
                             </div>

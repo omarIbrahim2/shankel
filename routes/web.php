@@ -10,6 +10,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LangController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EventsController;
+use App\Http\Controllers\InfoController;
 use App\Http\Controllers\ParentController;
 use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\SchoolController;
@@ -165,6 +166,17 @@ Route::middleware('lang')->group(function(){
         Route::get('slider/delete/{sliderId}' , [SliderController::class , "delete"])->name('slider-delete');
         Route::post("sliders/store" , [SliderController::class , 'store'])->name("slider-create");
         Route::post('slider/update' , [SliderController::class , "update"])->name('slider-update');
+        Route::get('slider/{sliderId}' , [SliderController::class , 'show'])->name('slider-show');
+
+        //infos
+
+        Route::get('infos' , [InfoController::class , 'index'])->name('Infos');
+        Route::get('infos/create' , [InfoController::class , 'create'])->name('infos-create-form');
+        Route::get('infos/edit/{infoId}' , [InfoController::class , 'update'])->name('infos-update-form');
+        Route::get("info/{infoId}" , [InfoController::class , 'show'])->name('info-show');
+        Route::get('info/delete/{infoId}' , [InfoController::class , 'delete'])->name('info-delete');
+        Route::post('infos/store' , [InfoController::class , 'store'])->name('info-create');
+        Route::post('infos/update' , [InfoController::class , 'edit'])->name('info-update');
     });
 
     
