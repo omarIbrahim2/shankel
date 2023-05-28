@@ -3,34 +3,106 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Message;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Shankl\Services\FileService;
 use Shankl\Services\AdminService;
+use Shankl\Helpers\ChangePassword;
+use App\Http\Requests\ServiceAddReq;
+use App\Http\Requests\SocialsAddReq;
 use Shankl\Services\SupplierService;
+use Shankl\Factories\AuthUserFactory;
+use App\Http\Requests\SocialUpdateReq;
+use Illuminate\Support\Facades\Config;
+use App\Http\Requests\ServiceUpdateReq;
+
 use App\Http\Requests\SupplierUpdateReq;
 use Shankl\Interfaces\LocationRepoInterface;
 use App\Http\Requests\EventValidationRequest;
 use App\Http\Requests\EventValidationUpdateReq;
-use App\Http\Requests\ServiceAddReq;
-use App\Http\Requests\ServiceUpdateReq;
-use App\Http\Requests\SocialsAddReq;
-use App\Http\Requests\SocialUpdateReq;
-use App\Models\Message;
+use Illuminate\Support\Facades\Gate;
 
 class AdminController extends Controller
 {
     private $AdminService;
     private $supplierService;
-    public function __construct(AdminService $AdminService , SupplierService $supplierService)
+    private $changePassObj;
+    public function __construct(AdminService $AdminService , SupplierService $supplierService , ChangePassword $changePass)
     {
         $this->AdminService = $AdminService;
         $this->supplierService = $supplierService;
+        $this->changePassObj = $changePass;
         
     }
     public function showLogin(){
 
         return view("web.Auth.Admin.adminLogin");
+    }
+
+    public function Profile(){
+           
+        if (Gate::allows("superAdminProfile")) {
+            $AuthUser = AuthUserFactory::getAuthUser();
+
+       
+            return view('admin.profile.profile')->with(['AuthUser' => $AuthUser]);
+        }else{
+
+            toastr("you are not allowed to access" , 'error' , 'permission');
+            return back();
+        }
+        
+    
+    }
+
+    public function updateProfile(Request $request){
+        
+        if (Gate::allows("superAdminProfile")) {
+            $validatedData = $request->validate([
+                'id' => 'required|exists:users,id',
+               'email' => ["required","email" , Rule::unique("users")->ignore($request->id) ],
+           ]);
+     
+            
+   
+           $action= $this->AdminService->updateProfile($validatedData);
+   
+           if ($action) {
+           
+               toastr("data updated successfully" , "success");
+               return back();
+           };
+           toastr("error in updating" , "error");
+           return back();
+        }else{
+
+            toastr("you are not allowed to access" , 'error' , 'permission');
+            return back();
+        }
+    
+
+
+    }
+
+    public function changePassView(){
+
+        return view('admin.profile.changePass');
+    }
+
+    public function changePass(Request $request , $guard){
+
+        $result = $this->changePassObj->changePass($request , $guard);
+
+        if ($result == false) {
+          return back()->with('error' , "old password doesn't match");
+        }
+       $url =  Config::get('auth.custom.' . $guard . ".url");
+
+       toastr("password changed sucessfully" , "success");
+      
+        return redirect()->route($url);
     }
 
 

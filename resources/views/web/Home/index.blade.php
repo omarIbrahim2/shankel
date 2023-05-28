@@ -505,36 +505,14 @@
                 </div>
                 <div class="gallery-images">
                     <div class="row">
+                        @foreach ($images as $img)
                         <div class="col-md-4 col-12">
                             <div class="gallery-img">
-                                <img src="assets/images/gallery/1.png" alt="gallery img">
+                                <img src="{{ asset($img->image) }}" alt="{{ $img->title }}">
                             </div>
                         </div>
-                        <div class="col-md-4 col-12">
-                            <div class="gallery-img">
-                                <img src="assets/images/gallery/2.png" alt="gallery img">
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-12">
-                            <div class="gallery-img">
-                                <img src="assets/images/gallery/3.png" alt="gallery img">
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-12">
-                            <div class="gallery-img">
-                                <img src="assets/images/gallery/1.png" alt="gallery img">
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-12">
-                            <div class="gallery-img">
-                                <img src="assets/images/gallery/2.png" alt="gallery img">
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-12">
-                            <div class="gallery-img">
-                                <img src="assets/images/gallery/3.png" alt="gallery img">
-                            </div>
-                        </div>
+                        @endforeach
+                        
                     </div>
                 </div>
             </div>

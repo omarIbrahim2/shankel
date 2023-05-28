@@ -2,8 +2,11 @@
 
 namespace Shankl\Services;
 
+use Illuminate\Support\Facades\Auth;
 use PhpParser\Node\Stmt\Return_;
+use Shankl\Factories\AuthUserFactory;
 use Shankl\Interfaces\EventRepoInterface;
+use Shankl\Repositories\GalleryRepository;
 use Shankl\Repositories\SliderRepo;
 use Shankl\Repositories\SocialsRepository;
 
@@ -12,11 +15,24 @@ class AdminService{
     private $eventRebo;
     private $sliderRebo;
     private $socialRebo;
-     public function __construct(EventRepoInterface $eventRebo , SocialsRepository $socialRebo , SliderRepo $sliderRebo)
+    private $galleryRebo;
+     public function __construct(EventRepoInterface $eventRebo ,GalleryRepository $galleryRebo, SocialsRepository $socialRebo , SliderRepo $sliderRebo)
      {
         $this->eventRebo = $eventRebo;
         $this->socialRebo = $socialRebo;
         $this->sliderRebo = $sliderRebo;
+        $this->galleryRebo = $galleryRebo;
+     }
+
+     public function updateProfile($data){
+         
+        $Admin = AuthUserFactory::getAuthUser();
+
+        return  $Admin->update($data);
+
+
+    
+
      }
 
     //Events 
@@ -70,6 +86,30 @@ class AdminService{
     public function deleteSlider($sliderId){
 
       return $this->sliderRebo->deleteSlider($sliderId);
+    }
+
+    //Gallery
+   
+
+    public function getImage($galleryId){
+         
+      return $this->galleryRebo->getImage($galleryId);
+
+    }
+
+    public function addImage($data)
+    {
+      return $this->galleryRebo->createImage($data);
+    }
+
+    public function updateImage($data , $galleryId){
+
+      return $this->galleryRebo->updateImage($data , $galleryId);
+    }
+
+    public function deleteImage($galleryId){
+
+      return $this->galleryRebo->deleteImage($galleryId);
     }
 
     //Socials

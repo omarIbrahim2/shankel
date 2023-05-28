@@ -5,6 +5,7 @@ namespace App\Providers;
 // use Illuminate\Support\Facades\Gate;
 
 use App\Models\comment;
+use App\Models\User;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Blade;
@@ -56,6 +57,14 @@ class AuthServiceProvider extends ServiceProvider
             }
 
             return true;
+        });
+        Gate::define('superAdminProfile' , function(User $user){
+           if ($user->role_id == 1) {
+               
+               return true;
+           }
+
+           return false;
         });
 
         Gate::define('delete-comment' , function($user , comment $comment , string $type){

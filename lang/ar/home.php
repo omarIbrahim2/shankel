@@ -1,7 +1,7 @@
 <?php
 
 return [
-  "AboutUs" => "ماذا عننا",
+  "AboutUs" => "عن شنكل",
   "OurVision" => "رؤيتنا",
   "OurMission" => 'هدفنا',
   "WhyChooseUs" => "لماذا تختارنا",

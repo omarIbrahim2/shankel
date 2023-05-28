@@ -10,6 +10,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LangController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EventsController;
+use App\Http\Controllers\GalleryConroller;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\ParentController;
 use App\Http\Controllers\PaypalController;
@@ -128,6 +129,10 @@ Route::middleware('lang')->group(function(){
         Route::get('event/update/{eventid}' , [EventsController::class , "updateEventView"])->name("update-events-view");
         Route::post("event/store" , [EventsController::class , "storeEvent"])->name("create-events");
         Route::post('event/update' , [EventsController::class , "updateEvent"])->name("update-event");
+        Route::get('profile' , [AdminController::class , 'Profile'])->name('admin-profile');
+        Route::post('update/profile' , [AdminController::class , "updateProfile"])->name('updateProfile');
+        Route::get('changePass/admin' , [AdminController::class , "changePassView"])->name('changePass-admin');
+        Route::post("changePass/admin/{user}" , [AdminController::class , "changePass"])->name("submit-change-pass-admin");
 
         Route::get("parents/{status}" , [AdminController::class , "Parentts"])->name('admin-parents');
         Route::get("schools/{status}" , [AdminController::class , 'Schools'])->name('admin-schools');
@@ -177,6 +182,17 @@ Route::middleware('lang')->group(function(){
         Route::get('info/delete/{infoId}' , [InfoController::class , 'delete'])->name('info-delete');
         Route::post('infos/store' , [InfoController::class , 'store'])->name('info-create');
         Route::post('infos/update' , [InfoController::class , 'edit'])->name('info-update');
+
+        //Gallery
+
+        
+        Route::get('gallery' , [GalleryConroller::class , 'index'])->name('gallery');
+        Route::get('gallery/create' , [GalleryConroller::class , 'create'])->name('gallery-create-form');
+        Route::get('gallery/edit/{galleryId}' , [GalleryConroller::class , 'update'])->name('gallery-update-form');
+        Route::get("gallery/{galleryId}" , [GalleryConroller::class , 'show'])->name('gallery-show');
+        Route::get('gallery/delete/{galleryId}' , [GalleryConroller::class , 'delete'])->name('gallery-delete');
+        Route::post('gallery/store' , [GalleryConroller::class , 'store'])->name('gallery-create');
+        Route::post('gallery/update' , [GalleryConroller::class , 'edit'])->name('gallery-update');
     });
 
     

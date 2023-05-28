@@ -4,8 +4,8 @@
 @section('content')
 
  <div class="container mt-5">
-    <h1>Add Information</h1>
-      <x-info actionRoute="info-create"></x-info>
+    <h1>Add Image</h1>
+      <x-gallery actionRoute="gallery-create"></x-gallery>
  </div>
 
 
