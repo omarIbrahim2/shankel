@@ -118,4 +118,19 @@ class EventsController extends Controller
         toastr("something wrong happened" , "error" , "Event update");
         return redirect()->back();
     }
+
+    public function cancelEvent(Request $request){
+          
+      $validatedData =  $request->validate([
+            'id' => 'required|exists:events,id',
+      ]);
+
+        dd($this->eventRepo->eventSubscribers($request->id)->ParenttsinEvent);
+
+
+
+
+
+
+    }
 }

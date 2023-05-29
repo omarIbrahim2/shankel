@@ -30,7 +30,9 @@ class Events extends Component
         if ($FilteredEvents == null) {
           $Events = $eventRepo->getEvents(5);
         }else{
+          
             $Events = Event::paginate($FilteredEvents , 5);
+           
         }
          
         return view('livewire.web.events.events')->with(['Events' => $Events]);
@@ -65,6 +67,26 @@ class Events extends Component
 
             toastr("Error happened ..!" , "error");
         }
+      
         
+    }
+
+    public function cancelBooking($event , EventRepoInterface $eventRepo){
+        $User =  AuthUserFactory::getAuthUser();
+
+          $action = $eventRepo->cancelSubscribeUser($event['id'] , $User);
+
+          if ($action) {
+             
+            toastr("Booking cancelled successfully" , "success");
+
+            $this->emit('fresh');
+
+        }else{
+
+            toastr("Error happened ..!" , "error");
+        }
+
+          
     }
 }

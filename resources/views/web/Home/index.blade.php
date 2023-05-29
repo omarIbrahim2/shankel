@@ -179,9 +179,11 @@
                 </div>
                 <div class="section-content">
                     <div class="about-welcome">
+                        @if ($Infos)
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="welcome">
+                                    
                                     <h3>{{ $Infos->title(App::getLocale()) }}</h3>
                                 </div>
                                 <p>
@@ -192,7 +194,10 @@
                                 <img src="{{ asset($Infos->image) }}" alt="about us">
                             </div>
                         </div>
+                        @endif
+                       
                     </div>
+                    @if ($Infos)
                     <div class="about-points">
                         <div class="row">
                             <div class="col-md-4">
@@ -227,6 +232,8 @@
                             </div>
                         </div>
                     </div>
+                    @endif
+                    
                 </div>
             </div>
         </div>

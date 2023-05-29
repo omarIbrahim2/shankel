@@ -1,8 +1,12 @@
 <?php
 namespace Shankl\Repositories;
 
-use App\Models\Event;
+use App\Http\Livewire\Admin\Parents;
 
+use App\Models\Event;
+use App\Models\Parentt;
+use App\Models\School;
+use App\Models\Teacher;
 use Shankl\Interfaces\EventRepoInterface;
 
 class EventRepository implements EventRepoInterface{
@@ -21,9 +25,10 @@ class EventRepository implements EventRepoInterface{
       }
 
       if ($guard == 'parent') {
-         return Event::with(['ParenttsinEvent'  , 'area.city'] , function($query) use($userId){
+         return Event::with(['ParenttsinEvent:name'  , 'area.city'] , function($query) use($userId){
 
             $query->where('id'  , $userId);
+         
          })->get()->map(function($event){
 
                return   $event->setAttribute("booked" , $event->ParenttsinEvent->isNotEmpty());
@@ -49,6 +54,13 @@ class EventRepository implements EventRepoInterface{
           });
       }
      
+
+   }
+
+   public function eventSubscribers($eventId){
+      
+       return Event::with(['ParenttsinEvent'])->where('id' , $eventId)->first();
+           
 
    }
 
@@ -83,5 +95,20 @@ class EventRepository implements EventRepoInterface{
 
       return true;
 
+   }
+
+   public function cancelSubscribeUser($eventId , $User){
+         
+      $event =  $this->find($eventId);
+
+      if(! $event){
+
+         return false;
+      }
+
+      $User->eventSubscribers()->detach([$event->id]);
+
+      return true;
+       
    }
 }

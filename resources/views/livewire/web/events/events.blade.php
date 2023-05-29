@@ -23,6 +23,7 @@
                     </div>
                     <div class="event-meta">
                         <span class="meta-icon"><i class="fa-solid fa-location-dot"></i></span>
+                     
                         <span class="meta-desc">{{$event->area->city->name}},{{$event->area->name}}</span>
                     </div>
                 </div>
@@ -33,6 +34,7 @@
                 <div class="event-description">
                     <p>
                         {{$event->desc}} 
+                        
                     </p>
                 </div>
             </div>
@@ -63,7 +65,7 @@
                     @if ($event->booked == true)
                         <div>
                         <button class="btn btn-success" disabled>{{ trans('event.booked') }}</button>
-                        <button class="btn btn-danger">{{ trans('event.clsBook') }}</button>
+                        <button wire:click="cancelBooking({{$event}})" class="btn btn-danger">{{ trans('event.clsBook') }}</button>
                       </div>
 
                     @else

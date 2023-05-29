@@ -134,7 +134,7 @@ Route::middleware('lang')->group(function(){
         Route::get('event/update/{eventid}' , [EventsController::class , "updateEventView"])->name("update-events-view");
         Route::post("event/store" , [EventsController::class , "storeEvent"])->name("create-events");
         Route::post('event/update' , [EventsController::class , "updateEvent"])->name("update-event");
-
+        Route::post('cancelEvent' , [EventsController::class , 'cancelEvent'])->name('cancel-event');  
         //addvertisments
         
         Route::get('addverts' , [AdvertController::class , 'index'])->name('admin-addverts');

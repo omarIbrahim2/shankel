@@ -13,6 +13,9 @@ interface EventRepoInterface{
  public function updateEvent($data);
 
  public function subscribeUser($eventId , $User);
+ public function cancelSubscribeUser($eventId , $User);
+
+ public function eventSubscribers($eventId);
 
  public function  getEventsWeb($userId = null , $guard);
 
