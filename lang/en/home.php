@@ -5,4 +5,5 @@ return [
   "OurVision" => "Our Vision",
   "OurMission" => 'Our Mission',
   "WhyChooseUs" => "Why Choose Us",
+  "gallery" => "Gallery"
 ];

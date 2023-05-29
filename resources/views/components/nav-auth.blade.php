@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light ">
     <div class="container">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="{{ route('home') }}">
             <img src="{{asset("assets")}}/images/logo/logo.png" alt="shankal">
         </a>
         <div class="auth-btn">
@@ -88,6 +88,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route("web-events")}}">{{trans("nav.Events")}}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route("web-addverts")}}">{{trans("nav.Addverts")}}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('web-schools')}}">{{trans("nav.Schools")}}</a>

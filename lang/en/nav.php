@@ -8,5 +8,5 @@ return [
 "Teachers" => "Teachers",
 "Services" => "Services",
 "Events" => "Events",
-
+"Addverts" => "Addvertisments",
 ];

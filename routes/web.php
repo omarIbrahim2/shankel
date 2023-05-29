@@ -7,18 +7,19 @@ use Shankl\Entities\AdminEntity;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InfoController;
 use App\Http\Controllers\LangController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdvertController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\GalleryConroller;
-use App\Http\Controllers\InfoController;
 use App\Http\Controllers\ParentController;
 use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\SchoolController;
+use App\Http\Controllers\SliderController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\LocationCcontroller;
-use App\Http\Controllers\SliderController;
 use Symfony\Component\Routing\Route as RoutingRoute;
 
 //Lang Route
@@ -63,6 +64,8 @@ Route::middleware('lang')->group(function(){
 
    Route::get('/events' , [EventsController::class , 'index'])->name('web-events');
 
+   Route::get('/addverts' , [AdvertController::class , 'index'])->name('web-addverts');
+
    Route::get('/schools' , [SchoolController::class , 'index'])->name('web-schools');
 
    Route::get("school/{id}" , [SchoolController::class , "getSchool"])->name('school-by-id');
@@ -94,7 +97,7 @@ Route::middleware('lang')->group(function(){
     Route::post('school/register' , [AuthController::class , 'SchoolRegister'])->name('school-register');
     Route::post('school/login' , [AuthController::class , 'schoolLogin'])->name('login-school');
     
-    // Amin Auth
+    // Admin Auth
     Route::get('/login' , [AdminController::class , 'showLogin'])->middleware('guest')->name('admin-login');
     Route::post('admin/login' , [AuthController::class , 'AdminLogin'])->name('login-admin');
 
@@ -124,20 +127,36 @@ Route::middleware('lang')->group(function(){
 
     Route::prefix('dashboard')->middleware('auth')->group(function(){ 
         Route::get('/' , [AdminController::class , 'dashboard'])->name('dashboard');
+
+        //events
         Route::get('events' , [AdminController::class , 'Events'])->name('admin-events');
         Route::get('event/create' , [EventsController::class , "createEventView"])->name('create-events-view');
         Route::get('event/update/{eventid}' , [EventsController::class , "updateEventView"])->name("update-events-view");
         Route::post("event/store" , [EventsController::class , "storeEvent"])->name("create-events");
         Route::post('event/update' , [EventsController::class , "updateEvent"])->name("update-event");
+
+        //addvertisments
+        
+        Route::get('addverts' , [AdvertController::class , 'index'])->name('admin-addverts');
+        Route::get('addvert/{addvertId}' , [AdvertController::class , 'show'])->name('addvert-show');
+        Route::get('addvert/create' , [AdvertController::class , "createAddvertView"])->name('create-addverts-view');
+        Route::get('addvert/update/{addvertid}' , [AdvertController::class , "updateAddvertView"])->name("update-addverts-view");
+        Route::post("addvert/store" , [AdvertController::class , "storeAddvert"])->name("create-addverts");
+        Route::post('addvert/update' , [AdvertController::class , "updateAddvert"])->name("update-addvert");
+        Route::get('addvert/delete/{addvertId}' , [AdvertController::class , 'delete'])->name('addvert-delete');
+
+        //profile
         Route::get('profile' , [AdminController::class , 'Profile'])->name('admin-profile');
         Route::post('update/profile' , [AdminController::class , "updateProfile"])->name('updateProfile');
         Route::get('changePass/admin' , [AdminController::class , "changePassView"])->name('changePass-admin');
         Route::post("changePass/admin/{user}" , [AdminController::class , "changePass"])->name("submit-change-pass-admin");
 
+        //users
         Route::get("parents/{status}" , [AdminController::class , "Parentts"])->name('admin-parents');
         Route::get("schools/{status}" , [AdminController::class , 'Schools'])->name('admin-schools');
         Route::get("teachers/{status}" , [AdminController::class , 'Teachers'])->name('admin-teachers');
 
+        //supplier
         Route::get("suppliers/{status}" , [AdminController::class , 'Suppliers'])->name('admin-suppliers');
         Route::get('supplier/store' , [AdminController::class , 'createSupplierView'])->name("create-supplier");
         Route::get('supplier/update/{supplier_id}' , [AdminController::class , "updateSupplierView"])->name("update-supplier");
@@ -145,6 +164,7 @@ Route::middleware('lang')->group(function(){
         Route::post('supplier/update' , [AdminController::class , "updateSupplier"])->name("supplier-update");
         Route::get("delete/Supplier/{id}" , [AdminController::class , "deleteSupplier"])->name("supplier-delete");
 
+        //service
         Route::get("services/{supplier_id}" , [AdminController::class , "Services"])->name("Services");
         Route::get("service/delete/{id}" , [ServiceController::class , "deleteService"])->name("service-delete");
         Route::get("service/create/{supplier_id}" , [ServiceController::class , "serviceCreateView"])->name('service-create-form');
@@ -152,8 +172,10 @@ Route::middleware('lang')->group(function(){
         Route::post('service/create' , [ServiceController::class , "CreateService"])->name("service-create");
         Route::post('service/update' , [ServiceController::class , "UpdateService"])->name('service-update');
 
+        //orders
         Route::get('orders' , [AdminController::class , "Orders"])->name("Orders");
        
+        //socials
         Route::get("socials" , [AdminController::class , "Socials"])->name("Socials");
         Route::get("socials/create" , [AdminController::class , "socialsAddView"])->name("social-add-view");
         Route::get('socials/update/{socialId}' , [AdminController::class ,  "socialUpdateView"])->name("social-update-view");
@@ -161,10 +183,12 @@ Route::middleware('lang')->group(function(){
         Route::post('social/update' , [AdminController::class , "SocialUpdate"])->name('social-update');
         Route::get('social/delete/{socialId}' , [AdminController::class , "SocialDelete"])->name("social-delete");
        
+        //messages
         Route::get('messages' , [AdminController::class , 'Messages'])->name('Messsages');
         Route::get('message/delete/{messageId}' , [AdminController::class , 'deleteMessage'])->name('message-delete');
         Route::get('message/show/{messageId}' , [AdminController::class , "showMessage"])->name('message-show');
 
+        //sliders
         Route::get('sliders' , [SliderController::class , 'Sliders'])->name('Sliders');
         Route::get("sliders/create" , [SliderController::class , "create"])->name("slider-create-form");
         Route::get('sliders/edit/{sliderId}' , [SliderController::class , 'edit'])->name("slider-update-form");

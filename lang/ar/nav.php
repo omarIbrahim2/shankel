@@ -8,5 +8,6 @@ return [
 "Teachers" => "المعلمين",
 "Services" => "الخدمات",
 "Events" => "الفاعليات",
+"Addverts" => "الإعلانات",
 
 ];

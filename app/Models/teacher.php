@@ -26,6 +26,12 @@ class Teacher extends Authenticatable
         return $this->hasMany(Lesson::class);
     }
 
+    public function addverts()
+    {
+        return $this->morphMany(Addvert::class, 'advertable');
+
+    }
+    
     public function notifications()
     {
         return $this->morphMany(Notification::class , 'user');

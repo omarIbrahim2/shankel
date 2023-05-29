@@ -14,6 +14,6 @@ interface EventRepoInterface{
 
  public function subscribeUser($eventId , $User);
 
- public function  getEventsWeb($userId = null , $guarf);
+ public function  getEventsWeb($userId = null , $guard);
 
 }

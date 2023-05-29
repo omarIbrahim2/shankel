@@ -5,4 +5,6 @@ return [
   "OurVision" => "رؤيتنا",
   "OurMission" => 'هدفنا',
   "WhyChooseUs" => "لماذا تختارنا",
+  "gallery" => "المعرض"
+
 ];

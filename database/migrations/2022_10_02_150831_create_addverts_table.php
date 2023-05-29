@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('addverts', function (Blueprint $table) {
             $table->id();
-            $table->morphs("creator");
+            $table->morphs('addvertable');
             $table->string("title" , 255);
             $table->text("desc");
             $table->string("image" , 255);

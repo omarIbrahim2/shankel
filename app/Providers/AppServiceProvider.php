@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Shankl\Interfaces\AddvertRepoInterface;
 use Shankl\Interfaces\EventRepoInerface;
 use Shankl\Repositories\EventRepository;
 use Shankl\Repositories\GradeRepository;
@@ -18,6 +19,7 @@ use Shankl\Interfaces\LocationRepoInterface;
 use Shankl\Repositories\EduSystemRepository;
 use Shankl\Interfaces\EduSystemRepoInterface;
 use Shankl\Interfaces\ServiceRepoInterface;
+use Shankl\Repositories\AddvertRepository;
 use Shankl\Repositories\ServiceRepository;
 
 class AppServiceProvider extends ServiceProvider
@@ -35,6 +37,7 @@ class AppServiceProvider extends ServiceProvider
         app()->bind(FileServiceInterface::class , FileService::class);
         app()->bind(EventRepoInterface::class , EventRepository::class);
         app()->bind(ServiceRepoInterface::class , ServiceRepository::class);
+        app()->bind(AddvertRepoInterface::class , AddvertRepository::class);
         
     }
 

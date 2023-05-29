@@ -27,6 +27,9 @@
                     <a class="nav-link" href="{{route('web-events')}}">{{trans("nav.Events")}}</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{route("web-addverts")}}">{{trans("nav.Addverts")}}</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{route('web-schools')}}">{{trans("nav.Schools")}}</a>
                 </li>
                 <li class="nav-item">

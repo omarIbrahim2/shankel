@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use PhpParser\Node\Stmt\Return_;
 use Shankl\Factories\AuthUserFactory;
 use Shankl\Interfaces\EventRepoInterface;
+use Shankl\Repositories\AddvertRepository;
 use Shankl\Repositories\GalleryRepository;
 use Shankl\Repositories\SliderRepo;
 use Shankl\Repositories\SocialsRepository;
@@ -16,12 +17,14 @@ class AdminService{
     private $sliderRebo;
     private $socialRebo;
     private $galleryRebo;
-     public function __construct(EventRepoInterface $eventRebo ,GalleryRepository $galleryRebo, SocialsRepository $socialRebo , SliderRepo $sliderRebo)
+    private $addvertRebo;
+     public function __construct(EventRepoInterface $eventRebo ,AddvertRepository $addvertRebo,GalleryRepository $galleryRebo, SocialsRepository $socialRebo , SliderRepo $sliderRebo)
      {
         $this->eventRebo = $eventRebo;
         $this->socialRebo = $socialRebo;
         $this->sliderRebo = $sliderRebo;
         $this->galleryRebo = $galleryRebo;
+        $this->addvertRebo = $addvertRebo;
      }
 
      public function updateProfile($data){
@@ -60,6 +63,39 @@ class AdminService{
       return $this->eventRebo->updateEvent($data);
 
     } 
+
+    //Addvertisment
+
+    public function getAddverts($pages){
+ 
+      $addverts = $this->addvertRebo->getAddverts($pages);
+      
+      return $addverts;
+
+    }
+
+    public function addAddvert($data){
+
+      return  $this->addvertRebo->addAddvert($data);
+          
+    }
+
+    public function getAddvert($addvertId){
+
+      return $this->addvertRebo->find($addvertId);
+    }
+
+    public function updateAddvert($data){
+      
+      return $this->addvertRebo->updateAddvert($data);
+
+    } 
+
+    public function deleteAddvert($addvertId){
+
+      return $this->addvertRebo->deleteAddvert($addvertId);
+    }
+
 
     //Sliders
 

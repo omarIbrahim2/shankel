@@ -77,7 +77,7 @@ class School extends Authenticatable
 
     public function addverts()
     {
-        return $this->morphMany(Addvert::class, 'creator');
+        return $this->morphMany(Addvert::class, 'advertable');
 
     }
 

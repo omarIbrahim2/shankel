@@ -26,6 +26,12 @@ class Supplier extends Authenticatable
         return $this->hasMany(Service::class);
     }
 
+    public function addverts()
+    {
+        return $this->morphMany(Addvert::class, 'advertable');
+
+    }
+
     public function notifications()
     {
         return $this->morphMany(Notification::class , 'user');
