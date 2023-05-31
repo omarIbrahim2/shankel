@@ -59,7 +59,7 @@ class EventRepository implements EventRepoInterface{
 
    public function eventSubscribers($eventId){
       
-       return Event::with(['ParenttsinEvent'])->where('id' , $eventId)->first();
+       return Event::with(['ParenttsinEvent' , 'schoolsinEvent' , 'teachersinEvent'])->where('id' , $eventId)->first();
            
 
    }

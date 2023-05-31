@@ -13,15 +13,15 @@ class cancelSubscriptionMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $User;
+    public $email;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($User)
+    public function __construct($email)
     {
-        $this->User = $User;
+        $this->email = $email;
     }
 
     /**
@@ -31,9 +31,10 @@ class cancelSubscriptionMail extends Mailable
      */
     public function envelope()
     {
+        
         return new Envelope( 
             subject: 'Cancel Subscription Mail',
-            to: [ $this->User->email],
+            to: [$this->email],
             
         );
     }
@@ -46,7 +47,8 @@ class cancelSubscriptionMail extends Mailable
     public function content()
     {
         return new Content(
-            text:"Hello Mr / MRS". " ". $this->User->name . "the event is cancelled",
+            view:"Mails.cancelEvent",
+            
         );
     }
 

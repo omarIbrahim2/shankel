@@ -3,6 +3,12 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+
+
+
+use App\Models\Parentt;
+use App\Models\School;
+use App\Models\Teacher;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;

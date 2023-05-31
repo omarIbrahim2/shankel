@@ -23,6 +23,7 @@ class CancelSubscribtion implements ShouldQueue
      */
     public function __construct($Users)
     {
+        
         $this->Users = $Users;
     }
 
@@ -32,9 +33,11 @@ class CancelSubscribtion implements ShouldQueue
      * @return void
      */
     public function handle()
-    {
+    { 
+    
         foreach($this->Users as $user){
-            Mail::send(new cancelSubscriptionMail($user));
+            
+            Mail::send(new cancelSubscriptionMail($user['email']));
         }
          
  

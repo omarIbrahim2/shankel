@@ -9,6 +9,7 @@ use Shankl\Interfaces\EventRepoInterface;
 use Shankl\Interfaces\LocationRepoInterface;
 use App\Http\Requests\EventValidationRequest;
 use App\Http\Requests\EventValidationUpdateReq;
+use App\Jobs\CancelSubscribtion;
 
 class EventsController extends Controller
 {
@@ -124,8 +125,22 @@ class EventsController extends Controller
       $validatedData =  $request->validate([
             'id' => 'required|exists:events,id',
       ]);
+       
+    
+   
 
-        dd($this->eventRepo->eventSubscribers($request->id)->ParenttsinEvent);
+   $Parents = $this->eventRepo->eventSubscribers($validatedData['id'])->ParenttsinEvent->toArray();
+
+    $Schools =  $this->eventRepo->eventSubscribers($validatedData['id'])->schoolsinEvent->toArray();
+
+     $Teachers = $this->eventRepo->eventSubscribers($validatedData['id'])->teachersinEvent->toArray();
+
+     $subscribers = array_merge($Parents , $Schools , $Teachers);
+    
+      CancelSubscribtion::dispatch($subscribers)->onQueue('EventMailingQueue');
+      toastr("event cancelled successfully" , "success");
+      return back();
+      
 
 
 
