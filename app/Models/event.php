@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use App\Models\Parentt;
 use App\Models\School;
 use App\Models\Teacher;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
@@ -93,12 +94,39 @@ class Event extends Model
     }
 
 
+    public function status():Attribute
+    {
+
+       return new Attribute(
+           get:function(){
+            if ($this->diffD() <= 0 && $this->attributes['status'] != 'Cancelled') {
+                $currentTime =  Carbon::now()->format('H:i:s');
+                     
+
+                
+                $endTime = Carbon::createFromFormat("H:i:s" , $this->attributes['end_time']);
+                 
+                if ($currentTime > $endTime) {
+                   return 'Finished';
+                }
+
+                
+            }
+
+            return "In Progress";
+
+           }
+       );
+    }
+
+
     public static function  paginate($items, $perPage , $page = null, $options = []){
         $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
         $items = $items instanceof Collection ? $items : Collection::make($items);
         return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
     }
 
+    
 
 
 }
