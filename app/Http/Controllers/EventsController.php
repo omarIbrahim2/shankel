@@ -87,9 +87,8 @@ class EventsController extends Controller
 
     }
 
+
     public function updateEvent( EventValidationUpdateReq $request , FileService $fileService){
-
-
         $validatedData = $request->validated();
            
         if ($request->hasFile('image')) {
@@ -120,32 +119,42 @@ class EventsController extends Controller
         return redirect()->back();
     }
 
+
+    private function getSubscribers($validatedData){
+          
+        $Parents = $this->eventRepo->eventSubscribers($validatedData['id'])->ParenttsinEvent->toArray();
+        $Schools =  $this->eventRepo->eventSubscribers($validatedData['id'])->schoolsinEvent->toArray();
+        $Teachers = $this->eventRepo->eventSubscribers($validatedData['id'])->teachersinEvent->toArray();
+        $subscribers = array_merge($Parents , $Schools , $Teachers);
+
+        return $subscribers;
+          
+    }
+
+    
+
+
     public function cancelEvent(Request $request){
           
       $validatedData =  $request->validate([
             'id' => 'required|exists:events,id',
       ]);
+
+         $this->eventRepo->updateEvent([
+            'id' => $validatedData['id'],
+             'status' => 'Cancelled',
+         ]);
+
+         $subscribers = $this->getSubscribers($validatedData);
+
+         if (count($subscribers) > 0) {
+            CancelSubscribtion::dispatch($subscribers)->onQueue('EventMailingQueue');
+         } 
        
-    
-   
-
-   $Parents = $this->eventRepo->eventSubscribers($validatedData['id'])->ParenttsinEvent->toArray();
-
-    $Schools =  $this->eventRepo->eventSubscribers($validatedData['id'])->schoolsinEvent->toArray();
-
-     $Teachers = $this->eventRepo->eventSubscribers($validatedData['id'])->teachersinEvent->toArray();
-
-     $subscribers = array_merge($Parents , $Schools , $Teachers);
-    
-      CancelSubscribtion::dispatch($subscribers)->onQueue('EventMailingQueue');
       toastr("event cancelled successfully" , "success");
       return back();
       
-
-
-
-
-
-
     }
+
+   
 }

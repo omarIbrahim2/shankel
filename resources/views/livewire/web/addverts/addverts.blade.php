@@ -1,4 +1,4 @@
-{{-- <div>
+<div>
 
     <div class="events-section">
      
@@ -45,5 +45,5 @@
             @endif
         </div>
    </div>
-</div> --}}
+</div>
 

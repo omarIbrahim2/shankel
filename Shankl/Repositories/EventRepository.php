@@ -13,9 +13,15 @@ class EventRepository implements EventRepoInterface{
 
    public function getEvents($pages){
        
-       return Event::with('area.city')->paginate($pages);
+       return Event::with('area.city')->orderBy('start_date','DESC')->paginate($pages);
 
    }
+
+   public function getEventsguest($pages){
+       
+      return Event::with('area.city')->where('status' ,'in Progress')->orderBy('start_date','DESC')->paginate($pages);
+
+  }
 
    public function getEventsWeb($userId = null , $guard){
        
@@ -29,7 +35,7 @@ class EventRepository implements EventRepoInterface{
 
             $query->where('id'  , $userId);
          
-         })->get()->map(function($event){
+         })->where('status' ,'in Progress')->orderBy('start_date','DESC')->get()->map(function($event){
 
                return   $event->setAttribute("booked" , $event->ParenttsinEvent->isNotEmpty());
           });
@@ -37,7 +43,7 @@ class EventRepository implements EventRepoInterface{
          return Event::with(['schoolsinEvent'  , 'area.city'] , function($query) use($userId){
 
             $query->where('id'  , $userId);
-         })->get()->map(function($event){
+         })->where('status' ,'in Progress')->orderBy('start_date','DESC')->get()->map(function($event){
 
                return   $event->setAttribute("booked" , $event->schoolsinEvent->isNotEmpty());
           });
@@ -48,7 +54,7 @@ class EventRepository implements EventRepoInterface{
          return Event::with(['teachersinEvent'  , 'area.city'] , function($query) use($userId){
 
             $query->where('id'  , $userId);
-         })->get()->map(function($event){
+         })->where('status' ,'in Progress')->orderBy('start_date','DESC')->get()->map(function($event){
 
                return   $event->setAttribute("booked" , $event->teachersinEvent->isNotEmpty());
           });

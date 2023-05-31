@@ -32,26 +32,34 @@
             <p class="text-danger">{{$message}}</p>
             @enderror
         </div>
-        <div class="form-group">
+    <div class="form-group">
         <label for="">{{ trans('event.day') }} </label>
-         <input type="text" value="{{$Event == null ? old('start'):$Event->start}}" name="start" id="" placeholder="{{ trans('event.select') }}"  class="form-control eventDayPicker">
-         @error('start')
+         <input type="text" value="{{$Event == null ? old('start_date'):$Event->start_date}}" name="start_date" id="" placeholder="{{ trans('event.select') }}"  class="form-control eventDayPicker">
+         @error('start_date')
          <p class="text-danger">{{$message}}</p>
          @enderror
-      </div>
+     </div>
+
+     <div class="form-group">
+        <label for="">{{ trans('event.day') }} </label>
+         <input type="text" value="{{$Event == null ? old('end_date'):$Event->end_date}}" name="end_date" id="" placeholder="{{ trans('event.select') }}"  class="form-control eventDayPicker">
+         @error('end_date')
+         <p class="text-danger">{{$message}}</p>
+         @enderror
+     </div>
       <div class="form-group ">
             <label for="">{{ trans('event.time') }}</label>
             <!-- this div to but two inputs -->
             <div class="d-flex justify-content-between align-items-center event-times">
                 <div class="w-md-100 w-50">
-                <input type="text" value="{{$Event == null ? old('start_at'):$Event->start_at}}" name="start_at" id="" placeholder="{{ trans('event.start') }}"  class="form-control eventTimePicker ">
-                @error('start_at')
+                <input type="text" value="{{$Event == null ? old('start_time'):$Event->start_time}}" name="start_time" id="" placeholder="{{ trans('event.start') }}"  class="form-control eventTimePicker ">
+                @error('start_time')
                 <p class="text-danger">{{$message}}</p>
                 @enderror
                 </div>
                 <div class="w-md-100 w-50">
-                <input type="text" value="{{$Event == null ? old('end_at'):$Event->end_at}}" name="end_at" id="" placeholder="{{ trans('event.end') }}" class="form-control eventTimePicker ">
-                @error('end_at')
+                <input type="text" value="{{$Event == null ? old('end_time'):$Event->end_time}}" name="end_time" id="" placeholder="{{ trans('event.end') }}" class="form-control eventTimePicker ">
+                @error('end_time')
                 <p class="text-danger">{{$message}}</p>
                 @enderror
                 </div>

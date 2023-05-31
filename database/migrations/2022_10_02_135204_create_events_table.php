@@ -21,9 +21,10 @@ return new class extends Migration
             $table->string('image');
             $table->foreignId("area_id")->constrained();
             $table->enum('status' , ['in Progress' , 'Cancelled' , 'Finished'])->default('in Progress');
-            $table->date("start");
-            $table->time('start_at');
-            $table->time('end_at');
+            $table->date("start_date");
+            $table->date('end_date');
+            $table->time('start_time');
+            $table->time('end_time');
             $table->timestamps();
         });
     }

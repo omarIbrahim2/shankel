@@ -5,6 +5,7 @@ namespace Shankl\Interfaces;
 interface EventRepoInterface{
 
  public function getEvents($pages);
+  public function getEventsguest($pages);
 
  public function addEvent($data);
 

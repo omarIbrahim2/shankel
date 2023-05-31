@@ -64,7 +64,7 @@ Route::middleware('lang')->group(function(){
 
    Route::get('/events' , [EventsController::class , 'index'])->name('web-events');
 
-   Route::get('/addverts' , [AdvertController::class , 'index'])->name('web-addverts');
+   Route::get('/addverts' , [AdvertController::class , 'indexWeb'])->name('web-addverts');
 
    Route::get('/schools' , [SchoolController::class , 'index'])->name('web-schools');
 

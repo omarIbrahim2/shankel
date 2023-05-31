@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\StartEndTimeRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class EventValidationUpdateReq extends FormRequest
@@ -27,9 +28,10 @@ class EventValidationUpdateReq extends FormRequest
             'id' => 'required|exists:events,id',
             'title' => 'required|string|min:5|max:255',
             "desc" => 'required|string',
-            'start' => 'required|date|after:today',
-            "start_at" => 'required|regex:/(\d+\:\d+)/',
-            'end_at' => 'required|regex:/(\d+\:\d+)/|after:start_at',   
+            'start_date' => 'required|date|after:today',
+            'end_date' => 'required|date|after:start_date',
+            "start_time" => 'required|regex:/(\d+\:\d+)/',
+            'end_time' => ["required","regex:/(\d+\:\d+)/", new StartEndTimeRule],  
             'image' => 'image|mimes:jpeg,jpg,png|max:1024|nullable',
             'area_id' => 'required|exists:areas,id',
         ];

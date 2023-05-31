@@ -23,6 +23,7 @@ class GalleryConroller extends Controller
         
     }
 
+
     public function index()
     {
         return view('admin.galleries.index');

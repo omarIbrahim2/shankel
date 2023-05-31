@@ -7,7 +7,6 @@
         <form  class="form-inline my-2 my-lg-0 justify-content-center">
             <div class="w-50">
                 <input wire:model="searchEvent" type="text" class="w-100 form-control product-search br-30" id="input-search" placeholder="Search by Title">
-                {{-- <button class="btn btn-primary" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button> --}}
             </div>
         </form>
        </div>
@@ -21,6 +20,8 @@
             <th>title</th>
             <th>start date</th>
             <th>end date</th>
+            <th>start time</th>
+            <th>end time</th>
             <th class="text-center">Status</th>
             <th class="text-center">Actions</th>
             
@@ -33,8 +34,10 @@
             
             <td><img src="{{asset('uploads')}}/{{$event->image}}" alt="" style="width: 50px"></td>
             <td>{{$event['title']}}</td>
-            <td>{{$event["start_at"]}}</td>
-            <td>{{$event["end_at"]}}</td>
+            <td>{{$event["start_date"]}}</td>
+            <td>{{$event["end_date"]}}</td>
+            <td>{{$event["start_time"]}}</td>
+            <td>{{$event["end_time"]}}</td>
             <td class="text-center"><span class="text-secondary">{{ $event->status }}</span></td>
              <td class="text-center">
             <ul class="table-controls">

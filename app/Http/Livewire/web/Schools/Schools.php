@@ -27,7 +27,7 @@ class Schools extends Component
             $Schools = $schoolService->getActiveSchools(5);
         } 
         
-        return view('livewire.web.schools.schools')->with(['Schools' => $Schools]);
+        return view('livewire.Web.schools.schools')->with(['Schools' => $Schools]);
     }
 
 

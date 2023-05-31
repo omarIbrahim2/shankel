@@ -5,7 +5,7 @@ namespace Shankl\Helpers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 
-class forgotPassword{
+class ForgotPassword{
      
       public function sendResetLinkEmail(Request $request , $broker){
           $this->ValidateRequest($request);

@@ -142,6 +142,8 @@ return [
     'uuid' => 'The :attribute must be a valid UUID.',
     'CPone' => "not a valid phone number",
 
+    'startEndTime' => 'end time must be after start time',
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines

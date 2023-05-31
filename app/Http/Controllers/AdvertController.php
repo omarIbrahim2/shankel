@@ -21,6 +21,10 @@ class AdvertController extends Controller
         $this->AdminService = $AdminService;
     }
     
+    public function indexWeb(){
+        $addverts = $this->addvertRebo->getAddverts(10);
+        return view("web.addverts.addverts")->with(['addverts' => $addverts]);
+    }
     public function index(){
         return view("admin.addverts.addverts");
     }

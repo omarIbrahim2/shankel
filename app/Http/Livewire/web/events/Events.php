@@ -29,7 +29,7 @@ class Events extends Component
         
            
         if ($FilteredEvents == null) {
-          $Events = $eventRepo->getEvents(5);
+          $Events = $eventRepo->getEventsguest(5);
         }else{
           
             $Events = Event::paginate($FilteredEvents , 5);

@@ -15,10 +15,7 @@ class Area extends Model
         return $this->hasMany(Parentt::class);
     }
 
-    public function provinces()
-    {
-        return $this->hasMany(Province::class);
-    }
+  
 
     public function schools()
     {

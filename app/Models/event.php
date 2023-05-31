@@ -48,26 +48,48 @@ class Event extends Model
 
     public function startAt(){
 
-        return Carbon::createFromFormat('H:i:s' , $this->attributes['start_at'])->format('g:i A');
+        return Carbon::createFromFormat('H:i:s' , $this->attributes['start_time'])->format('g:i A');
     }
 
     public function endAt(){
 
-        return Carbon::createFromFormat('H:i:s' , $this->attributes['end_at'])->format('g:i A');
+        return Carbon::createFromFormat('H:i:s' , $this->attributes['end_time'])->format('g:i A');
     }
 
     public function formatedDate($attribute){
-
+        
         return Carbon::createFromFormat('Y-m-d' , $attribute)->format("d F Y");
 
     }
 
     public function diffD(){
 
-         $endat = Carbon::createFromFormat('Y-m-d H:i:s' , $this->attributes['end_at']);
-          $startat = Carbon::createFromFormat('Y-m-d H:i:s' , $this->attributes['start_at']);
+         $endat = Carbon::createFromFormat('Y-m-d' , $this->attributes['end_date']);
 
-          return $endat->diffInDays($startat);
+          return $endat->diffInDays(Carbon::now());
+    }
+
+    public function diffSeconds(){
+        $endat = Carbon::createFromFormat('Y-m-d' , $this->attributes['end_date']);
+
+
+        return $endat->diffInSeconds(Carbon::now());
+
+    }
+
+
+    public function diffHours(){
+        $endat = Carbon::createFromFormat('Y-m-d' , $this->attributes['end_date']);
+
+        return $endat->diffInHours(Carbon::now());
+
+    }
+
+    public function diffMinutes(){
+        $endat = Carbon::createFromFormat('Y-m-d' , $this->attributes['end_date']);
+
+        return $endat->diffInMinutes(Carbon::now());
+
     }
 
 

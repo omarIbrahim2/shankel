@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Shankl\Services\AuthService;
 use Shankl\Services\FileService;
 use Shankl\Entities\ParentEntity;
-use Shankl\Helpers\forgotPassword;
+use Shankl\Helpers\ForgotPassword;
 use Shankl\Helpers\ResetPasswords;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -272,7 +272,7 @@ class AuthController extends Controller
     {
         
 
-        $forgot = new forgotPassword();
+        $forgot = new ForgotPassword();
 
         $response = $forgot->sendResetLinkEmail($request , $broker);
 
