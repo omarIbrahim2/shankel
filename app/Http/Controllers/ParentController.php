@@ -58,6 +58,12 @@ class ParentController extends Controller
           
     }
 
+    public function getParentAdmin($id){
+      
+      return view("admin.parents.details")->with(['id' => $id]);
+  
+    }
+
     public function createChild( AddChildRequest $request , ParentService $parentService)
     {
     

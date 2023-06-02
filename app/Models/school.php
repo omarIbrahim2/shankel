@@ -5,14 +5,15 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Models\EduSystem;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use App\Support\Authorization\AuthorizationUserTrait;
 use App\Notifications\SchoolResetPasswordNotification;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Auth\Authenticatable as AuthAuthenticatable;
-use App\Support\Authorization\AuthorizationUserTrait;
 
 class School extends Authenticatable 
 {
@@ -42,7 +43,7 @@ class School extends Authenticatable
 
     public function eduSystem()
     {
-        return $this->belongsTo(EduSystem::class);
+        return $this->belongsTo(EduSystem::class , 'edu_systems_id');
     }
 
     public function children()

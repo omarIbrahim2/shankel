@@ -22,9 +22,9 @@
             <th>name</th>
             <th>email</th>
             <th class="text-center">Status</th>
-            @if ($guard == "supplier")
+            
              <th class="text-center">Actions</th>    
-            @endif
+            
             
             
         </tr>
@@ -55,7 +55,9 @@
                    <li><a href="">Services</a></li>
                </ul>
              </td>     
-           @endif
+             @else
+             <td class="text-center"><a href="{{ route('school-details' , $user['id']) }}" class="btn btn-eye"><i class="fa-solid fa-eye"></i></a></td>
+             @endif
           
        </tr>
         @endforeach  

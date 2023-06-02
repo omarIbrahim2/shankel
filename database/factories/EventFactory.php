@@ -23,10 +23,11 @@ class EventFactory extends Factory
             'title' => $this->faker->sentence(),
             'desc' =>$this->faker->text(),
             'image' => "event.jpg",
-            'start' => $this->faker->date('Y-m-d'),
+            'start_date' => $this->faker->date('Y-m-d'),
+            'end_date' => $this->faker->date('Y-m-d'),
             'area_id' => $areas[rand(0 , count($areas) - 1)],
-            "start_at" => $this->faker->time('H:i:s' , 'now'),
-            "end_at" =>$this->faker->time('H:i:s' , 'now'),
+            "start_time" => $this->faker->time('H:i:s' , 'now'),
+            "end_time" =>$this->faker->time('H:i:s' , 'now'),
         ];
     }
 }

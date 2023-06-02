@@ -23,7 +23,7 @@ class ParenttFactory extends Factory
             'name' => $this->faker->name(),
             'email' => $this->faker->safeEmail(),
             'password' => $this->faker->password(),
-            'image' => 'parent/img.jpg',
+            'image' => null,
             'phone' => $this->faker->phoneNumber(),
             'area_id' => $areas[rand(0 , count($areas) - 1)],
         ];

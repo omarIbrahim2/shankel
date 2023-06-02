@@ -63,7 +63,7 @@
             <ul class="navbar-nav m-auto">
                 @if ($guard == 'web')
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="{{route('dashboard')}}" href="">{{trans("nav.Home")}}</a>
+                    <a class="nav-link active" aria-current="" href="{{route('home')}}">{{trans("nav.Home")}}</a>
                 </li>
                 @else
                   <li class="nav-item">
@@ -74,7 +74,7 @@
                 @if ($guard == 'web')
                  <li class="nav-item">
                    
-                    <a class="nav-link" href="{{route('dashboard')}}">{{trans("nav.Profile")}}</a>
+                    <a class="nav-link" href="{{route('dashboard')}}">{{trans("nav.dash")}}</a>
                   </li>
                 @else
                   <li class="nav-item">

@@ -9,4 +9,5 @@ return [
 "Services" => "Services",
 "Events" => "Events",
 "Addverts" => "Addvertisments",
+'dash' => "Dashboard",
 ];

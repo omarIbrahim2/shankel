@@ -23,7 +23,7 @@
                 <h2>Addvertisments</h2>
             </div>
 
-            @livewire('web.addverts.addverts');
+            @livewire('web.addverts.addverts')
         </div>
     </div>
 </section>

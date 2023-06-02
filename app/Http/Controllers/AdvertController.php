@@ -22,8 +22,8 @@ class AdvertController extends Controller
     }
     
     public function indexWeb(){
-        $addverts = $this->addvertRebo->getAddverts(10);
-        return view("web.addverts.addverts")->with(['addverts' => $addverts]);
+       
+        return view("web.addverts.addverts");
     }
     public function index(){
         return view("admin.addverts.addverts");
@@ -31,11 +31,13 @@ class AdvertController extends Controller
 
     public function createAddvertView()
     {
-        return view("admin.addverts.createAddvert");
+        
+         return view("admin.addverts.createAddvert");
     }
 
 
     public function updateAddvertView($addvertId){
+    
         $addvert = $this->AdminService->getaddvert($addvertId);
         if (! $addvert) {
             
@@ -48,12 +50,7 @@ class AdvertController extends Controller
     public function storeAddvert(AddvertValidationRequest $request , FileService $fileService){
        
         $validatedData = $request->validated();
-       
-        $validatedData["addvertable_type"] = User::class;
- 
-        $validatedData["addvertable_id"] =  auth()->guard("web")->user()->id;
-         
-     
+
         $validatedData['image'] =  $this->handleUpload($request , $fileService , null , 'addverts');
 
           $addvert =$this->AdminService->addAddvert($validatedData);
@@ -81,8 +78,7 @@ class AdvertController extends Controller
         $validatedData = $request->validated();
         $addvert = $this->AdminService->getAddvert($request->id);
         $validatedData['image'] = $this->handleUpload($request , $fileService , $addvert , 'addverts');
-        $validatedData["addvertable_type"] = User::class;
-        $validatedData["addvertable_id"] =  auth()->guard("web")->user()->id;
+
         
         $action = $this->AdminService->updateAddvert($validatedData);
 

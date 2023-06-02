@@ -52,6 +52,9 @@ return [
              'model' => App\Models\Teacher::class,
              'url' => 'teacher-profile',
         ],
+        'supplier'=>[
+            'model' => App\Models\Supplier::class,
+        ],
         'web' => [
             'model' => App\Models\User::class,
              'url'  => 'dashboard',
@@ -78,6 +81,11 @@ return [
             'driver' => 'session',
             'provider' => 'schools',
         ],
+
+        'supplier' =>[
+            'driver' => 'session',
+            'provider' => 'suppliers',
+        ]
     ],
 
     /*

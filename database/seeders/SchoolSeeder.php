@@ -26,9 +26,6 @@ class SchoolSeeder extends Seeder
       )->has(
         Event::factory()->count(3)
       )->has(
-        Addvert::factory()->count(3)
-
-      )->has(
 
           Card::factory() , 'card'
       )->create()->each(function($school){

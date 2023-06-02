@@ -5,7 +5,6 @@
         <form  class="form-inline my-2 my-lg-0 justify-content-center">
             <div class="w-50">
                 <input type="text" wire:model ="NameOrEmail" class="w-100 form-control product-search br-30" id="input-search" placeholder="Search by Name or Email">
-                {{-- <button class="btn btn-primary" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button> --}}
             </div>
         </form>
        </div>
@@ -22,9 +21,8 @@
             <th>name</th>
             <th>email</th>
             <th class="text-center">Status</th>
-            @if ($guard == "supplier")
-             <th class="text-center">Actions</th>    
-            @endif
+            <th class="text-center">Actions</th>    
+            
             
             
         </tr>
@@ -41,10 +39,12 @@
            <td>{{$user["email"]}}</td>
            @if ($active == true)
         
-               <td class="text-center"><button class="btn btn-danger">Deactivate</button></td>
+                <td class="text-center"><button class="btn btn-danger">Deactivate</button></td>
+
            @else
               
               <td class="text-center"><button class="btn btn-primary">Activate</button></td>
+
            @endif
            @if ($guard == "suppliers")
            <td class="text-center">
@@ -55,7 +55,10 @@
                    <li><a href="">Services</a></li>
                </ul>
              </td>     
-           @endif
+           @else
+            <td class="text-center"><a href="{{ route("parent-details" , $user['id']) }}" class="btn btn-eye"><i class="fa-solid fa-eye"></i></a></td>
+            @endif
+
           
        </tr>
         @endforeach  

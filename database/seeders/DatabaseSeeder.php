@@ -16,16 +16,16 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
 
-            RoleSeeder::class,
-            UserSeeder::class,
-            CitySeeder::class,
-            GradeSeeder::class,
-           // SupplierSeeder::class,
+             RoleSeeder::class,
+             UserSeeder::class,
+             CitySeeder::class,
+             GradeSeeder::class,
+            SupplierSeeder::class,
             EduSystemSeeder::class,
-           // SchoolSeeder::class,
-           // ParenttSeeder::class,
-           // TeacherSeeder::class,
-            //CardServiceSeeder::class,
+            SchoolSeeder::class,
+            ParenttSeeder::class,
+            TeacherSeeder::class,
+            CardServiceSeeder::class,
 
         ]);
     }

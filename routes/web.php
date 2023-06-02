@@ -20,6 +20,8 @@ use App\Http\Controllers\SliderController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\LocationCcontroller;
+use App\Http\Controllers\SupplierController;
+use App\Models\Role;
 use Symfony\Component\Routing\Route as RoutingRoute;
 
 //Lang Route
@@ -139,7 +141,7 @@ Route::middleware('lang')->group(function(){
         
         Route::get('addverts' , [AdvertController::class , 'index'])->name('admin-addverts');
         Route::get('addvert/{addvertId}' , [AdvertController::class , 'show'])->name('addvert-show');
-        Route::get('addvert/create' , [AdvertController::class , "createAddvertView"])->name('create-addverts-view');
+        Route::get('create' , [AdvertController::class , "createAddvertView"])->name('create-addverts-view');
         Route::get('addvert/update/{addvertid}' , [AdvertController::class , "updateAddvertView"])->name("update-addverts-view");
         Route::post("addvert/store" , [AdvertController::class , "storeAddvert"])->name("create-addverts");
         Route::post('addvert/update' , [AdvertController::class , "updateAddvert"])->name("update-addvert");
@@ -155,6 +157,11 @@ Route::middleware('lang')->group(function(){
         Route::get("parents/{status}" , [AdminController::class , "Parentts"])->name('admin-parents');
         Route::get("schools/{status}" , [AdminController::class , 'Schools'])->name('admin-schools');
         Route::get("teachers/{status}" , [AdminController::class , 'Teachers'])->name('admin-teachers');
+         
+        Route::get("school/details/{id}" , [SchoolController::class , "getSchoolAdmin"])->name('school-details');
+        Route::get("teacher/details/{id}" , [TeacherController::class , "getTeacherAdmin"])->name('teacher-details');
+        Route::get('parent/details/{id}' , [ParentController::class , 'getParentAdmin'])->name("parent-details");
+        Route::get('supplier/details/{id}' , [ SupplierController::class, 'getSupplierAdmin'])->name("supplier-details");
 
         //supplier
         Route::get("suppliers/{status}" , [AdminController::class , 'Suppliers'])->name('admin-suppliers');

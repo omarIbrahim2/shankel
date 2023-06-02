@@ -44,6 +44,12 @@ class TeacherController extends Controller
 
       }
 
+      public function getTeacherAdmin($id){
+      
+        return view("admin.teachers.details")->with(['id' => $id]);
+    
+      }
+
 
       public function changePassView(){
 

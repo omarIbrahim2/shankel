@@ -98,6 +98,12 @@ class SchoolController extends Controller
 
   }
 
+  public function getSchoolAdmin($id){
+      
+    return view("admin.schools.details")->with(['id' => $id]);
+
+  }
+
 
   public function updateComment(CommentUpdateRequest $request){
        
