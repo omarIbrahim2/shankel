@@ -2,21 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AddChildRequest;
 use App\Models\School;
-use App\Providers\RouteServiceProvider;
+use App\Models\Supplier;
 use App\Traits\Searchable;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Config;
 use Shankl\Entities\ChildEntity;
 use Shankl\Helpers\ChangePassword;
-use Shankl\Interfaces\ChildRepoInterface;
-use Shankl\Interfaces\EduSystemRepoInterface;
-use Shankl\Interfaces\GradeRepoInterface;
-use Shankl\Interfaces\LocationRepoInterface;
-use Shankl\Repositories\ParentRepository;
 use Shankl\Services\ParentService;
 use Shankl\Services\SchoolService;
+use App\Http\Requests\AddChildRequest;
+use Illuminate\Support\Facades\Config;
+use App\Providers\RouteServiceProvider;
+use Shankl\Interfaces\ChildRepoInterface;
+use Shankl\Interfaces\GradeRepoInterface;
+use Shankl\Repositories\ParentRepository;
+use Shankl\Interfaces\LocationRepoInterface;
+use Shankl\Interfaces\EduSystemRepoInterface;
 
 class ParentController extends Controller
 {
@@ -162,7 +163,13 @@ class ParentController extends Controller
 
 
   
-
+    public function FilterSuppliers(Request $request){
+      
+      $query = Supplier::query();
+       $Suppliers =  $this->search($request->query() , $query );
+       
+       return view("web.Suppliers.filteredSuppliers")->with(['Suppliers' => $Suppliers]);
+   }
 
 
   

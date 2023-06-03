@@ -4,9 +4,10 @@ namespace Shankl\Repositories;
 
 use App\Models\School;
 use Illuminate\Support\Facades\Auth;
+use Shankl\Interfaces\CardInterface;
 use Shankl\Interfaces\UserReboInterface;
 
-class SchoolRepository implements UserReboInterface
+class SchoolRepository implements UserReboInterface , CardInterface
 {
     public function getActiveUsers($pages)
     {
@@ -32,6 +33,25 @@ class SchoolRepository implements UserReboInterface
 
         return School::with('images')->findOrFail($schoolId);
     }
+
+
+    public function addToCard($school , $serviceId){
+
+        $schoolCard =   $school->card;
+
+        if ($schoolCard == null) {
+              
+          $createdCard =   $school->card()->create([
+                 "user_id" => $school->id,
+             ]);
+
+           return $createdCard->attach([$serviceId]);  
+        }else{
+
+          return  $schoolCard->attach([$serviceId]);
+        }
+
+   }
 
     public function addGrades(array $grades, $schoolId)
     {

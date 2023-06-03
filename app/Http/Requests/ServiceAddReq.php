@@ -26,6 +26,7 @@ class ServiceAddReq extends FormRequest
         return [
             "name" => "required|string|max:255",
             "supplier_id" => 'required|exists:suppliers,id',
+            'quantity' => 'required|numeric|integer|min:1',
             "price" => "required|numeric|min:1",
             "desc" => "required|string",
             'image' => "image|mimes:jpeg,jpg,png|max:1024|nullable",

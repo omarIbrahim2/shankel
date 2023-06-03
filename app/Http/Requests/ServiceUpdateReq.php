@@ -27,6 +27,7 @@ class ServiceUpdateReq extends FormRequest
             'id' => 'required|exists:services,id',
             "name" => "required|string|max:255",
             "supplier_id" => 'exists:suppliers,id',
+            'quantity' => 'required|numeric|integer|min:1',
             "price" => "required|numeric|min:1",
             "desc" => "required|string",
             'image' => "image|mimes:jpeg,jpg,png|max:1024|nullable",

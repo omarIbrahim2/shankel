@@ -34,6 +34,9 @@ class navAuth extends Component
         }elseif(Auth::guard('web')->check()){
                
             return 'web';
+        }elseif(Auth::guard('supplier')->check()){
+             
+             return 'supplier';
         }
          
     }

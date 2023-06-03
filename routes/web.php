@@ -1,11 +1,13 @@
 <?php
 
+use App\Models\Role;
 use Shankl\Helpers\Paypal;
 use App\Models\Transaction;
 use App\Http\Controllers\reader;
 use Shankl\Entities\AdminEntity;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\LangController;
@@ -19,9 +21,8 @@ use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TeacherController;
-use App\Http\Controllers\LocationCcontroller;
 use App\Http\Controllers\SupplierController;
-use App\Models\Role;
+use App\Http\Controllers\LocationCcontroller;
 use Symfony\Component\Routing\Route as RoutingRoute;
 
 //Lang Route
@@ -43,22 +44,31 @@ Route::middleware('lang')->group(function(){
 
     //Forget Password
 
-    //parent
+    //parent Forget Password
     Route::get('/forgot-password-parent', [AuthController::class , 'ParentforgotPassword'])->middleware('guest')->name('password.request.parent');
-    //school
+    //school Forget Password
     Route::get('/forgot-password-school', [AuthController::class , 'SchoolforgotPassword'])->middleware('guest')->name('password.request.school');
-    Route::post('/forgot-password/{broker}', [AuthController::class , 'forgotPasswordPostRequest'])->middleware('guest')->name('password.email');
-
+    //supplier Forget Password
+    Route::get('/forgot-password-supplier', [AuthController::class , 'SupplierforgotPassword'])->middleware('guest')->name('password.request.supplier');
+    //teacher Forget Password
     Route::get("/forgot-password-teacher" , [AuthController::class , "TeacherforgotPassword"])->middleware('guest')->name("password.request.teacher");
-    
+    //admin Forget Password
     Route::get("/forgot-password-admin" , [AuthController::class , "AdminforgotPassword"])->middleware('guest')->name("password.request.admin");
-
-    Route::get('/reset-password-parent/{token}', [AuthController::class , 'ParentresetPassword'])->middleware('guest')->name('password.reset.parent');
-    Route::get('/reset-password-teacher/{token}', [AuthController::class , 'TeacherResetPassword'])->middleware('guest')->name('password.reset.teacher');
-
-    Route::get('/reset-password-admin/{token}', [AuthController::class , 'AdminResetPassword'])->middleware('guest')->name('password.reset.admin');
     
+    Route::post('/forgot-password/{broker}', [AuthController::class , 'forgotPasswordPostRequest'])->middleware('guest')->name('password.email');
+    //Reset Password
+
+    //Parent Reset Password
+    Route::get('/reset-password-parent/{token}', [AuthController::class , 'ParentresetPassword'])->middleware('guest')->name('password.reset.parent');
+    //Teacher Reset Password
+    Route::get('/reset-password-teacher/{token}', [AuthController::class , 'TeacherResetPassword'])->middleware('guest')->name('password.reset.teacher');
+    //Admin Reset Password
+    Route::get('/reset-password-admin/{token}', [AuthController::class , 'AdminResetPassword'])->middleware('guest')->name('password.reset.admin');
+    //School Reset Password
     Route::get('/reset-password-school/{token}', [AuthController::class , 'SchoolresetPassword'])->middleware('guest')->name('password.reset.school');
+    //Supplier Reset Password
+    Route::get('/reset-password-supplier/{token}', [AuthController::class , 'SupplierresetPassword'])->middleware('guest')->name('password.reset.supplier');
+
     Route::post('/reset-password-parent/{broker}/{guard}', [AuthController::class , 'resetPasswordPostRequest'])->middleware('guest')->name('password.update');
     
    //web Routes 
@@ -72,11 +82,15 @@ Route::middleware('lang')->group(function(){
 
    Route::get("school/{id}" , [SchoolController::class , "getSchool"])->name('school-by-id');
 
+   Route::get('/suppliers' , [SupplierController::class , 'index'])->name('web-suppliers');
+
+   Route::get("supplier/{id}" , [SupplierController::class , "getSupplier"])->name('supplier-by-id');
+
    Route::get('/services' , [ServiceController::class , 'index'])->name('web-services');
 
   
 
-    // Parent Routs
+    // Authentication Routs
     //*-----------*
 
     // Parent Authentication
@@ -99,12 +113,18 @@ Route::middleware('lang')->group(function(){
     Route::post('school/register' , [AuthController::class , 'SchoolRegister'])->name('school-register');
     Route::post('school/login' , [AuthController::class , 'schoolLogin'])->name('login-school');
     
+    // Supplier Authentication
+    Route::get('register/supplier' , [SupplierController::class , 'showRegister'])->middleware("guest")->name('supplier_register');
+    Route::get('login/supplier' , [SupplierController::class , 'showLogin'])->middleware('guest')->name('supplier-login');
+    Route::post('supplier/register' , [AuthController::class , 'SupplierRegister'])->name('supplier-register');
+    Route::post('supplier/login' , [AuthController::class , 'supplierLogin'])->name('login-supplier');
+
     // Admin Auth
     Route::get('/login' , [AdminController::class , 'showLogin'])->middleware('guest')->name('admin-login');
     Route::post('admin/login' , [AuthController::class , 'AdminLogin'])->name('login-admin');
 
-
- 
+  Route::post("add/card" , [CardController::class , 'AddToCard'])->name('add-to-card');
+   Route::get('card/services' , [CardController::class , "Card"])->name('Card');
     
     //Parent Group
     Route::middleware('parent')->group(function(){
@@ -122,8 +142,10 @@ Route::middleware('lang')->group(function(){
         Route::get("paypal/cancel" , [PaypalController::class , 'cancel'])->name('paypal-cancel')->middleware('child');
         Route::get("filters/view" , [ParentController::class , 'FilterSchoolView'])->name('filter-view');
         Route::get('schools/filter' , [ParentController::class , 'FilterSchools'])->name('filter-schools');
+        Route::get("filters/view" , [ParentController::class , 'FilterSupplierView'])->name('filter-view');
     });
     
+    Route::get('suppliers/filter' , [ParentController::class , 'FilterSuppliers'])->name('filter-suppliers');
 
     //admin group
 
@@ -236,6 +258,7 @@ Route::middleware('lang')->group(function(){
         Route::get('/teacher-profile' , [TeacherController::class , 'teacherProfile'])->name('teacher-profile');
         Route::get('changePass/teacher' , [TeacherController::class , 'changePassView'])->name('change_pass_teacher');
         Route::post('changePass/teacher/{user}' , [TeacherController::class , 'changePass'])->name('submit_change_pass_teacher');
+        Route::get('suppliers/filter' , [TeacherController::class , 'FilterSuppliers'])->name('filter-suppliers');
         
     });
     
@@ -245,11 +268,21 @@ Route::middleware('lang')->group(function(){
         Route::get('/school-profile' , [SchoolController::class, 'schoolProfile'])->name('school-profile');
         Route::get('changePass/school' , [SchoolController::class , "changePassView"] )->name("change_pass_school");
         Route::post('changePass/school/{user}', [SchoolController::class, 'changePass'])->name("submit_change_pass_school");
+        Route::get('suppliers/filter' , [SchoolController::class , 'FilterSuppliers'])->name('filter-suppliers');
     });
     
+    Route::post('update/comment' , [SchoolController::class , "updateComment"])->name('update-comment');
+
+    //supplier Group
+    Route::middleware('supplier')->group(function(){
+        Route::get('/supplier' , [SupplierController::class , 'supplier'])->name('supplier');
+        Route::get('/supplier-profile' , [SupplierController::class, 'supplierProfile'])->name('supplier-profile');
+        Route::get('changePass/supplier' , [SupplierController::class , "changePassView"] )->name("change_pass_supplier");
+        Route::post('changePass/supplier/{user}', [SupplierController::class, 'changePass'])->name("submit_change_pass_supplier");
+    });
  
+    Route::post('update/comment' , [SupplierController::class , "updateComment"])->name('update-comment');
        
-        Route::post('update/comment' , [SchoolController::class , "updateComment"])->name('update-comment');
     
      
     //Logout

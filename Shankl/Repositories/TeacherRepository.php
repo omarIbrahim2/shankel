@@ -2,9 +2,10 @@
 namespace Shankl\Repositories;
 
 use App\Models\Teacher;
+use Shankl\Interfaces\CardInterface;
 use Shankl\Interfaces\UserReboInterface;
 
-class TeacherRepository implements UserReboInterface{
+class TeacherRepository implements UserReboInterface , CardInterface{
 
     public function getActiveUsers($pages)
     {
@@ -26,6 +27,24 @@ class TeacherRepository implements UserReboInterface{
         $teacher = Teacher::findOrFail($teacherId);
         return $teacher;
     }
+
+    public function addToCard($teacher , $serviceId){
+
+        $teacherCard =   $teacher->card;
+
+        if ($teacherCard == null) {
+              
+          $createdCard =   $teacher->card()->create([
+                 "user_id" => $teacher->id,
+             ]);
+
+           return $createdCard->attach([$serviceId]);  
+        }else{
+
+          return  $teacherCard->attach([$serviceId]);
+        }
+
+   }
 
     public function update($data)
     {

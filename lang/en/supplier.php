@@ -10,4 +10,7 @@ return[
     "confirm_password" => "Confirm Password",
     "type" => "Type",
     "orgName" => "Organization Name",
+    "search" => "Search by Name Or Email",
+    "enterEmail" => "Enter Your Email",
+    "send" => "Send",
 ];

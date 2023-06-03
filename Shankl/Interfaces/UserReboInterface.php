@@ -12,6 +12,8 @@ interface UserReboInterface{
 
     public function find($userId);
 
+   
+
     public function update($data);
 
 

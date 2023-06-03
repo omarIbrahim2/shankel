@@ -35,6 +35,7 @@ return [
 
    "School" => "School",
 
+   "Supplier" => "Supplier",
    "center" => "Center",
 
    "nursery" => "nursery",

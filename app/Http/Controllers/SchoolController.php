@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\SchoolViews;
-use App\Http\Requests\CommentUpdateRequest;
-use App\Models\EduSystem;
 use App\Models\School;
+use App\Models\Supplier;
+use App\Models\EduSystem;
+use App\Events\SchoolViews;
 use Illuminate\Http\Request;
 use Shankl\Helpers\ChangePassword;
+use Shankl\Services\SchoolService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Shankl\Interfaces\GradeRepoInterface;
+use App\Http\Requests\CommentUpdateRequest;
 use Shankl\Interfaces\LocationRepoInterface;
 use Shankl\Interfaces\EduSystemRepoInterface;
-use Shankl\Services\SchoolService;
 
 class SchoolController extends Controller
 {
@@ -46,9 +47,6 @@ class SchoolController extends Controller
 
 
   public function school(){
-    
-    
-    
 
     return view("web.Schools.profile");
   }
@@ -58,9 +56,6 @@ class SchoolController extends Controller
     
     $data['grades'] = $gradeRepo->getGrades();
     $data['eSystems'] = $eduRepo->getEduSystems(); 
-
-    
-    
     return view("web.Schools.editProfile")->with($data);
   }
 
@@ -120,5 +115,13 @@ class SchoolController extends Controller
     toastr("error happened in updating" , "error" , "update comment");
     return back();
   }
+
+  public function FilterSuppliers(Request $request){
+      
+    $query = Supplier::query();
+     $Suppliers =  $this->search($request->query() , $query );
+     
+     return view("web.Suppliers.filteredSuppliers")->with(['Suppliers' => $Suppliers]);
+ }
   
 }

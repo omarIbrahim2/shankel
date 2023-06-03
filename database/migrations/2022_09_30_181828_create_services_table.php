@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string("name" , 255);
             $table->unsignedFloat("price" );
+            $table->unsignedInteger("quantity");
             $table->text("desc");
             $table->string("image" , 100)->nullable();
             $table->foreignId("supplier_id")->constrained();

@@ -25,9 +25,17 @@
                                             {{$service->desc}}
                                          </div>
                                     </div>
+                                    @custom_auth
                                     <div class="service-booking">
-                                        <a href="#" class="btn-custom">{{ trans('service.book') }}</a>
+                                        <form action="{{ route('add-to-card') }}" method="post">
+                                             @csrf  
+                                            <input type="hidden" name="service_id" value="{{ $service->id }}">
+
+                                            <button type="submit" class="btn-custom">{{ trans('service.book') }}</button>
+                                        </form>
+                                        
                                     </div>
+                                   @endcustom_auth 
                                 </div>
                                
                             </div>

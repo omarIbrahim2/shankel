@@ -38,6 +38,14 @@
                             <h3>{{trans('register.Teacher')}}</h3>
                         </div>
                     </a>
+                    <a href="{{route('supplier_register')}}" class="user-level">
+                        <div class="level-img">
+                            <img src="assets/images/user/Vector.png" alt="level">
+                        </div>
+                        <div class="level-name">
+                            <h3>{{trans('register.Supplier')}}</h3>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>

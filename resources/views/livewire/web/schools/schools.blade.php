@@ -40,19 +40,6 @@
             </div>
         </div>
     </div>
-    <!-- <div class="pagination">
-        <ul>
-            <li><a href="#">previous</a></li>
-            <li><a class="active" href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">6</a></li>
-            <li><a href="#">7</a></li>
-            <li><a href="#">next</a></li>
-        </ul>
-    </div> -->
 
     <div class="pagination">
         @if ($Schools == null)

@@ -2,13 +2,14 @@
 
 namespace Shankl\Services;
 
+use Shankl\Repositories\CommentRepo;
 use Shankl\Interfaces\ServiceRepoInterface;
 use Shankl\Repositories\SupplierRepository;
 
 class SupplierService{
 
-    private $supplierRebo;
-    private $fileService;
+    private $supplierRebo , $commentRepo , $fileService;
+    
 
     private static $defaultProfilePath = "assets/images/logo/user.png";
 
@@ -16,11 +17,12 @@ class SupplierService{
     
     private $ServiceRebo;
 
-    public function __construct(SupplierRepository $supplierRebo , FileService $fileService , ServiceRepoInterface $ServiceRebo)
+    public function __construct(SupplierRepository $supplierRebo , FileService $fileService , ServiceRepoInterface $ServiceRebo, CommentRepo $commentRepo)
     {
         $this->supplierRebo = $supplierRebo;
         $this->fileService = $fileService;
         $this->ServiceRebo = $ServiceRebo;
+        $this->commentRepo = $commentRepo; 
     }
      
     public function getSupplier($supplierId){
@@ -110,5 +112,22 @@ class SupplierService{
     public function getService($serviceId){
 
         return $this->ServiceRebo->find($serviceId);
+    }
+
+
+    public function addComment($user , $comment , $supplierId){
+   
+        return $this->commentRepo->createComment($user , $comment , $supplierId);
+    
+    }
+    
+    public function getComments($supplierId){
+    
+        return $this->commentRepo->getComments($supplierId);
+    }
+    
+    public function updateComment($newComment , $commentId){
+    
+        return $this->commentRepo->updateComment($newComment , $commentId);
     }
 }

@@ -4,6 +4,8 @@ namespace App\Models;
 
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Notifications\SupplierResetPasswordNotification;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -59,6 +61,13 @@ class Supplier extends Authenticatable
                return "uploads/".$value;
             }
         );
+    }
+
+
+    public function sendPasswordResetNotification($token){
+          
+        $this->notify(new SupplierResetPasswordNotification($token));
+
     }
 
 }

@@ -6,5 +6,5 @@ return[
     "price" => "Price" ,
     "update" => "Update",
     "add" => "Add",
-    "book" => "Book Now",
+    "book" => "Add to card",
 ];

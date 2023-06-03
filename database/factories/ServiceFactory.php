@@ -20,6 +20,7 @@ class ServiceFactory extends Factory
         return [
             'name' => $this->faker->bs(),
             'price' => $this->faker->randomFloat(2,50,5000),
+            'quantity'=> $this->faker->randomNumber(3),
             'desc' => $this->faker->text(),
         ];
     }

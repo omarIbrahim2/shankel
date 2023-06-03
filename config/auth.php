@@ -54,6 +54,7 @@ return [
         ],
         'supplier'=>[
             'model' => App\Models\Supplier::class,
+            'url' => 'supplier-profile',
         ],
         'web' => [
             'model' => App\Models\User::class,
@@ -126,6 +127,11 @@ return [
              'model' => App\Models\School::class,
         ],
 
+        'suppliers' => [
+            'driver'=> 'eloquent',
+            'model' => App\Models\Supplier::class,
+        ]
+
 
     ],
 
@@ -173,6 +179,15 @@ return [
             'throttle' => 60,
             'url' => 'school-login'
         ],
+
+        'suppliers' => [
+            'provider' => 'suppliers',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+            'url' => 'supplier-login'
+
+        ]
     ],
 
     /*

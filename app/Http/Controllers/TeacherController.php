@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Supplier;
 use Illuminate\Http\Request;
 use Shankl\Helpers\ChangePassword;
 use Illuminate\Support\Facades\Auth;
@@ -74,5 +75,12 @@ class TeacherController extends Controller
       }
 
 
+      public function FilterSuppliers(Request $request){
+      
+        $query = Supplier::query();
+         $Suppliers =  $this->search($request->query() , $query );
+         
+         return view("web.Suppliers.filteredSuppliers")->with(['Suppliers' => $Suppliers]);
+     }
 
 }

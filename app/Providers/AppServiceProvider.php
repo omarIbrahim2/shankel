@@ -49,24 +49,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //  Validator::extend("start_end_time" , function($attribute , $value , $parameters , $validator){
-                    
-        //        $start_date = $validator->getData()['start_date'];
 
-        //        $end_date = $validator->getData()['end_date'];
-
-        //        $start_time =  $validator->getData()['start_time'];
-
-        //        $end_time =  $validator->getData()['end_time'];
-
-        //        if ($start_date == $end_date && $end_time < $start_time) {
-        //            return false;
-        //        }
-
-        //        return true;
-
-
-
-        //  });
     }
 }

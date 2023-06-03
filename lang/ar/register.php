@@ -17,27 +17,30 @@ return [
    "city" => "المدينة",
 
    'area' => "المنطقة",
-    
-    "title" => "العنوان",
-     
-    "price" => "السعر",
 
-    "subject" => 'المادة',
-    
-    "Add Child" => "اضافة طفل",
+   "title" => "العنوان",
 
-    "changepass" => "تم تغيير الباسورد بنجاح",
+   "price" => "السعر",
 
-    "selectUser" => "اختار مستخدم",
+   "subject" => 'المادة',
 
-    "Parent" => 'ولي أمر',
+   "Add Child" => "اضافة طفل",
 
-    "Teacher" => "معلم",
- 
-    "LoginToShankl" => "تسجيل الدخول الي شنكل",
-    "School" => "مدرسة",
+   "changepass" => "تم تغيير الباسورد بنجاح",
 
-    "ClickHere" => "اضغط هنا",
+   "selectUser" => "اختار مستخدم",
+
+   "Parent" => 'ولي أمر',
+
+   "Teacher" => "معلم",
+
+   "Supplier" => "مورد",
+
+
+   "LoginToShankl" => "تسجيل الدخول الي شنكل",
+   "School" => "مدرسة",
+
+   "ClickHere" => "اضغط هنا",
 
    "center" => "مركز تعليمى",
 
@@ -47,8 +50,8 @@ return [
 
 
 
-    
-   
+
+
 
 
 

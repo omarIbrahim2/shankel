@@ -13,6 +13,7 @@ use Shankl\Helpers\ForgotPassword;
 use Shankl\Helpers\ResetPasswords;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\SupplierAddReq;
 use Shankl\Factories\EntitiesFactory;
 use GrahamCampbell\ResultType\Success;
 use Illuminate\Support\Facades\Config;
@@ -20,15 +21,15 @@ use App\Providers\RouteServiceProvider;
 use Shankl\Adapters\FileServiceAdapter;
 use App\Http\Requests\ParentRegisterReq;
 use App\Http\Requests\SchoolRegisterReq;
-use App\Http\Requests\SupplierAddReq;
 use Illuminate\Support\Facades\Password;
 use App\Http\Requests\TeacherRegisterReq;
 use Illuminate\Auth\Events\PasswordReset;
 use Shankl\Repositories\ParentRepository;
 use Shankl\Repositories\SchoolRepository;
+use App\Http\Requests\SupplierRegisterReq;
 use Shankl\Repositories\TeacherRepository;
-use Illuminate\Routing\RoutingServiceProvider;
 use Shankl\Repositories\SupplierRepository;
+use Illuminate\Routing\RoutingServiceProvider;
 
 class AuthController extends Controller
 {
@@ -82,41 +83,7 @@ class AuthController extends Controller
         return redirect()->route('add-child', $authParent->id);
     }
 
-    public function SupplierRegister(SupplierAddReq $request , SupplierRepository $supplierRepo){
-              
-        $validatedReq = $request->validated();
 
-        $supplierObj =  EntitiesFactory::createEntity( Arr::except($validatedReq , ['image']) , 'supplier');
-           
-        $supplierObj->setPassword($validatedReq['password']);
-
-        if ($request->hasFile('image')) {
-
-
-            $this->fileser->setFile($request->file('image'));
-
-            $this->fileser->setPath("suppliers");
-
-            $filePath =  $this->fileser->upload();
-
-            $supplierObj->setImage($filePath);
-        }
-
-         $supplier = $this->authService->RegisterUser($supplierRepo , $supplierObj);
-
-         if ($supplier) {
-             
-            toastr("Supplier Created successfully" , 'success');
-         }else{
-
-              toastr("problem in creating" , "error");
-         }
-
-
-         return redirect()->route("admin-suppliers" , "unactive");
-
-       
-    }
 
     public function parentLogin(Request $request)
     {
@@ -223,7 +190,6 @@ class AuthController extends Controller
     public function schoolLogin(Request $request)
     {
 
-      // dd(Auth::guard('school')->attempt($request->only('email' , 'password')));
         $cred = $this->authService->Credentials($request);
         $this->authService->LoginUser('school', $request , $cred);
 
@@ -231,6 +197,57 @@ class AuthController extends Controller
 
         return redirect()->intended(RouteServiceProvider::SCHOOL);
     }
+
+
+        //Supplier Authentication
+
+        public function SupplierRegister(SupplierAddReq $request , SupplierRepository $supplierRepo){
+              
+            $validatedReq = $request->validated();
+    
+            $supplierObj =  EntitiesFactory::createEntity( Arr::except($validatedReq , ['image']) , 'supplier');
+               
+            $supplierObj->setPassword($validatedReq['password']);
+    
+            if ($request->hasFile('image')) {
+    
+    
+                $this->fileser->setFile($request->file('image'));
+    
+                $this->fileser->setPath("suppliers");
+    
+                $filePath =  $this->fileser->upload();
+    
+                $supplierObj->setImage($filePath);
+            }
+    
+             $supplier = $this->authService->RegisterUser($supplierRepo , $supplierObj);
+    
+             if ($supplier) {
+                 
+                toastr("Supplier Created successfully" , 'success');
+             }else{
+    
+                  toastr("problem in creating" , "error");
+             }
+    
+    
+             return redirect()->route("admin-suppliers" , "unactive");
+    
+           
+        }
+    
+    
+        public function supplierLogin(Request $request)
+        {
+    
+            $cred = $this->authService->Credentials($request);
+            $this->authService->LoginUser('supplier', $request , $cred);
+    
+            $request->session()->regenerate();
+    
+            return redirect()->intended(RouteServiceProvider::Supplier);
+        }
 
 
     //Admin Auth
@@ -257,6 +274,10 @@ class AuthController extends Controller
 
      public function SchoolforgotPassword(){
         return view('web.Auth.forgot-school-password');
+     }
+
+     public function SupplierforgotPassword(){
+        return view('web.Auth.forgot-supplier-password');
      }
 
      public function TeacherforgotPassword(){
@@ -298,6 +319,13 @@ class AuthController extends Controller
     public function SchoolresetPassword($token){
 
         return view("web.Auth.reset-school-password")->with([
+            "token" => $token
+        ]);
+    }
+
+    public function SupplierresetPassword($token){
+
+        return view("web.Auth.reset-supplier-password")->with([
             "token" => $token
         ]);
     }
