@@ -53,6 +53,11 @@ class SchoolRepository implements UserReboInterface , CardInterface
 
    }
 
+   public function getCardWithServices()
+   {
+    
+   }
+
     public function addGrades(array $grades, $schoolId)
     {
 

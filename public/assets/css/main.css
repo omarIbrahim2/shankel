@@ -1917,10 +1917,11 @@ main {
 
 .service-item-data .service-booking {
   width: 30%;
-  margin-top: 16px;
-  text-align: center;
+  text-align: start;
 }
-
+.service-item-data .service-booking label{
+  margin-bottom: 16px;
+}
 .service-item-data .service-text {
   width: 70%;
 }
@@ -2057,7 +2058,6 @@ main {
 /* ***************** */
 /* payment */
 .payment-button {
-  width: 100%;
   background-color: #fff;
   padding: 16px;
   display: flex;
@@ -2070,7 +2070,9 @@ main {
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
 }
-
+.payment-button img{
+  margin-right: 16px;
+}
 .payment-button span {
   position: static;
   color: var(--main-color) !important;

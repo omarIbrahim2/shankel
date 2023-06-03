@@ -222,3 +222,14 @@ $(".school-type input[type='radio']").on('change',function(){
 //   document.querySelector(".files-names").textContent=localStorage.getItem("parentPhoto")
 // })
 
+// validation for cart number
+
+function number_validate(){
+  
+  $(".num_cart_item").on("change",function(){
+    if($(this).val() > $(this).attr("max")){
+      $(this).val($(this).attr("max"))
+    }
+  })
+}
+number_validate()

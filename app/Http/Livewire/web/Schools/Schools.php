@@ -25,6 +25,8 @@ class Schools extends Component
         }else{
 
             $Schools = $schoolService->getActiveSchools(5);
+
+            
         } 
         
         return view('livewire.Web.schools.schools')->with(['Schools' => $Schools]);
