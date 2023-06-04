@@ -56,7 +56,7 @@ class ParentRepository implements UserReboInterface , CardInterface{
            $createdCard =   $parent->card()->create([
                   "user_id" => $parent->id,
               ]);
-              dd($createdCard);
+              
             return $createdCard->attach([$serviceId]);  
          }else{
             
@@ -65,14 +65,34 @@ class ParentRepository implements UserReboInterface , CardInterface{
 
     }
 
+    public function RemoveFromCard($parent , $serviceId){
+       
+       $parentCard = $parent->card;
+
+
+       return $parentCard->services()->detach([$serviceId]);
+        
+    }
+
     public function getCardWithServices()
     {
          $AuthUser = AuthUserFactory::getAuthUser();
 
          $card = $AuthUser->card;
+         
+          if ($card) {
+            return Card::with(['services'])->where('id' , $card->id)->get();
+          } 
+
+          $AuthUser = AuthUserFactory::getAuthUser();
+
+           $createdCard = $AuthUser->card()->create([
+                "user_id" => $AuthUser->id,
+           ]);
 
 
-         return Card::with(['services'])->where('id' , $card->id)->get();
+           return Card::with(['services'])->where('id' , $createdCard->id)->get();
+      
     }
 
     public function ParentChilds(){

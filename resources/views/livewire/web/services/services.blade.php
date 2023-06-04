@@ -19,6 +19,7 @@
                                             <a href="#" class="price">{{$service->price}} JOD</a>
                                         </div>
                                         <div class="service-item-title">
+                                            
                                             <h3>{{$service->supplier->name}}</h3>
                                         </div>
                                         <div class="service-item-description">
@@ -26,6 +27,16 @@
                                          </div>
                                     </div>
                                     @custom_auth
+
+                                    @if ($service->added == true)
+                                    <div class="service-booking">
+                                        
+                                            <a href="{{ route('remove-from-card' , $service->id) }}"  class="btn-custom-danger">{{ trans('service.remove') }}</a>
+                                        
+                                    </div>
+                                        
+                                    @else
+                                        
                                     <div class="service-booking">
                                         <form action="{{ route('add-to-card') }}" method="post">
                                              @csrf  
@@ -35,6 +46,9 @@
                                         </form>
                                         
                                     </div>
+
+                                    @endif
+                                    
                                    @endcustom_auth 
                                 </div>
                                

@@ -45,10 +45,16 @@
                                 <div class="service-booking">
                                     {{-- <a href="#" class="btn-custom">Order Now</a> --}}
                                     <label for="">Quantity</label>
-                                    <input id="" class="num_cart_item form-control" placeholder="0" type="number" min="0" max={{ $service->quantity }}>
+                                    <input id="" class="num_cart_item form-control mb-3" placeholder="0" type="number" min="0" max={{ $service->quantity }}>
+                                    <a href="{{ route('remove-from-card' , $service->id) }}"  class="btn-custom-danger">{{ trans('service.remove') }}</a>
                                 </div>
+
+                                
+                                      
+                                
+                                
                             </div>
-                           
+                            
                         </div>
                     </div>
                 </div>
@@ -60,6 +66,4 @@
         </div>
     </div>
 </section>
-
-<x-footer></x-footer>
 @endsection

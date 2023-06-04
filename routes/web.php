@@ -122,9 +122,13 @@ Route::middleware('lang')->group(function(){
     // Admin Auth
     Route::get('/login' , [AdminController::class , 'showLogin'])->middleware('guest')->name('admin-login');
     Route::post('admin/login' , [AuthController::class , 'AdminLogin'])->name('login-admin');
-
-  Route::post("add/card" , [CardController::class , 'AddToCard'])->name('add-to-card');
-   Route::get('card/services' , [CardController::class , "Card"])->name('Card');
+  
+    Route::middleware('card')->group(function(){
+        Route::post("add/card" , [CardController::class , 'AddToCard'])->name('add-to-card');
+        Route::get('card/services' , [CardController::class , "Card"])->name('Card');
+        Route::get('remove/card/{serviceId}' , [CardController::class , "remove"])->name('remove-from-card');
+    });
+ 
     
     //Parent Group
     Route::middleware('parent')->group(function(){

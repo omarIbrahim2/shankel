@@ -31,7 +31,7 @@ class CardController extends Controller
             
             toastr("added to card" , "success");
             return back();
-         } catch (\Throwable $th) {
+         } catch (\Exception $th) {
             toastr("error happened" , "error");
              return back();
          }
@@ -47,11 +47,33 @@ class CardController extends Controller
         $card = $this->cardService->getCardWithServices($UserRepo);
 
         $services =$card[0]->services;
-
-
+         
         return view('web.Card.Card')->with(['Services' => $services]);
             
+    }
+
+
+    public function remove($serviceId){
             
-       
+      $guard = AuthUserFactory::geGuard();
+      $AuthUser = AuthUserFactory::getAuthUser();
+     $UserRepo =  RepositoryFactory::getUserRebo($guard);
+
+
+     try {
+         $this->cardService->RemoveFromCard($UserRepo , $AuthUser , $serviceId);
+
+         toastr("Removed successfully from cart" , 'success');
+
+         return back();
+     } catch (\Exception $th) {
+         dd($th->getMessage());
+         toastr('error happened' , 'error');
+
+         return back();
+      
+     }
+
+
     }
 }

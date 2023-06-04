@@ -31,8 +31,8 @@ class ParenttSeeder extends Seeder
         )->has(
             Notification::factory()->count(2)
 
-        )->has(
-               Card::factory() , 'card'
+        // )->has(
+        //        Card::factory() , 'card'
 
         )->count(30)->create();
     }

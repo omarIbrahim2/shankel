@@ -53,6 +53,11 @@ class SchoolRepository implements UserReboInterface , CardInterface
 
    }
 
+   public function RemoveFromCard( $parent,$serviceId){
+
+
+   }
+
    public function getCardWithServices()
    {
     

@@ -25,9 +25,9 @@ class TeacherSeeder extends Seeder
         )->has(
             Notification::factory()->count(2)
 
-        )->has(
+        // )->has(
 
-            Card::factory() , "card"
+        //     Card::factory() , "card"
 
         )->count(20)->create();
     }

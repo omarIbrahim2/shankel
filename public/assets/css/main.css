@@ -446,6 +446,27 @@ input[type="file"] {
   -o-transition: var(--trans);
 }
 
+.btn-custom-danger {
+  background-color: red;
+  color: #fff;
+  width: 100%;
+  padding: 8px 16px;
+  text-transform: capitalize;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border: 1px solid var(--main-color);
+  transition: var(--trans);
+  -webkit-transition: var(--trans);
+  -moz-transition: var(--trans);
+  -ms-transition: var(--trans);
+  -o-transition: var(--trans);
+}
 .btn-gray-custom {
   background-color: #C4C4C4;
   color: var(--text-color);
@@ -459,6 +480,11 @@ input[type="file"] {
 .btn-custom:hover {
   background-color: transparent;
   color: var(--main-color);
+}
+
+.btn-custom-danger:hover {
+  background-color: transparent;
+  color: red;
 }
 
 .btn-gray-custom:hover {

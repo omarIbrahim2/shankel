@@ -46,6 +46,18 @@ class TeacherRepository implements UserReboInterface , CardInterface{
 
    }
 
+   public function RemoveFromCard($parent,$serviceId){
+
+   }
+
+
+   public function getCardWithServices()
+   {
+    
+   }
+
+
+
     public function update($data)
     {
         $teacher = $this->find($data['id']);

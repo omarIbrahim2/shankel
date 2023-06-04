@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
             SchoolSeeder::class,
             ParenttSeeder::class,
             TeacherSeeder::class,
-            CardServiceSeeder::class,
+          //  CardServiceSeeder::class,
 
         ]);
     }
