@@ -23,4 +23,6 @@ return[
 
     "enterEmail" => "Enter Your Email",
     "send" => "Send",
+    'videos' => "Teacher Videos",
+    "noVideo" => 'no videos found',
 ];

@@ -1,6 +1,7 @@
 <?php
 namespace Shankl\Repositories;
 
+use App\Models\Lesson;
 use App\Models\Teacher;
 use Shankl\Interfaces\CardInterface;
 use Shankl\Interfaces\UserReboInterface;
@@ -54,6 +55,17 @@ class TeacherRepository implements UserReboInterface , CardInterface{
    public function getCardWithServices()
    {
     
+   }
+
+
+   public function AddLesson($data){
+
+      return Lesson::create($data);
+   }
+
+   public function getLessons($teacherId){
+
+      return Lesson::select('id' , 'url')->where('teacher_id', $teacherId)->get();
    }
 
 

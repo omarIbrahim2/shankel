@@ -82,4 +82,14 @@ class TeacherService extends Service{
         return $action;
 
     }
+
+    public function AddLesson($data){
+
+        return $this->teacherRebo->AddLesson($data);
+    }
+
+    public function getLessons($teacherId){
+
+        return $this->teacherRebo->getLessons($teacherId);
+    }
 }

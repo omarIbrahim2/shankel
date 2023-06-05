@@ -31,19 +31,8 @@
                             </div>
                             <div class="avatar-btns">
                                 <div class="upload-avatar">
-                                    <input type="file" name="teacher-avatar" id="teacher-avatar">
-                                    <label class="btn-custom" for="teacher-avatar">{{ trans('teacher.addNewV') }}</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="add-video">
-                            <div class="sub-title sec-sub-title">
-                                <h3>{{ trans('teacher.addFreeC') }}</h3>
-                            </div>
-                            <div class="avatar-btns">
-                                <div class="upload-avatar">
-                                    <input type="file" name="teacher-avatar" id="teacher-avatar">
-                                    <label class="btn-custom" for="teacher-avatar">{{ trans('teacher.addNewV') }}</label>
+                                    <button type="button" class="btn-custom" name="teacher-avatar"  data-bs-toggle="modal" data-bs-target="#teacherVideos">{{ trans('teacher.addNewV') }}</button>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -160,4 +149,16 @@
             </div>
         </div>
     </form>
+    <div class="modal fade" id="teacherVideos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">{{ trans('teacher.videos') }}</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+                 @livewire('teacher.teache-videos')
+            </div>
+          </div>
+        </div>
+      </div>
 </div>

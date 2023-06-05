@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Lesson extends Model
 {
@@ -18,5 +20,23 @@ class Lesson extends Model
     public function children()
     {
         return $this->belongsToMany(Child::class);
+    }
+
+    public function url():Attribute{
+
+        return new Attribute(
+            set: function($value){
+                 
+                if (strpos($value , "embed/") != false) {
+                     
+                    return $value;
+
+                }else{
+
+                    return str_replace("watch?v=" , "embed/" , $value );
+                }
+                 
+            }
+        );
     }
 }
