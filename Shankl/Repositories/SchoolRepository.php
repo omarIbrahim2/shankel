@@ -11,12 +11,12 @@ class SchoolRepository implements UserReboInterface , CardInterface
 {
     public function getActiveUsers($pages)
     {
-        return  School::where('status' , true)->paginate($pages);
+        return  School::where('status' , true)->orderBy('id' , 'DESC')->paginate($pages);
     }
 
     public function getUnActiveUsers($pages)
     {
-        return  School::where('status' , false)->paginate($pages);
+        return  School::where('status' , false)->orderBy('id' , 'DESC')->paginate($pages);
     }
 
 

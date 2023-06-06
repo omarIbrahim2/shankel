@@ -36,7 +36,7 @@ class SupplierController extends Controller
 
     public function supplierProfile(){
 
-
+         return view('web.Suppliers.editProfile');
     } 
      public function showRegister(LocationRepoInterface $locationRepo )
      {

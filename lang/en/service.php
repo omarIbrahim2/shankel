@@ -8,4 +8,5 @@ return[
     "add" => "Add",
     "book" => "Add to cart",
     'remove' => 'remove from cart',
+    'quantity' => 'Quantity',
 ];

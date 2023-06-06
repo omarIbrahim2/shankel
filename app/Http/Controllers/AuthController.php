@@ -27,13 +27,16 @@ use Illuminate\Auth\Events\PasswordReset;
 use Shankl\Repositories\ParentRepository;
 use Shankl\Repositories\SchoolRepository;
 use App\Http\Requests\SupplierRegisterReq;
+use App\Traits\HandleResponseSupplier;
 use Shankl\Repositories\TeacherRepository;
 use Shankl\Repositories\SupplierRepository;
 use Illuminate\Routing\RoutingServiceProvider;
+use Illuminate\Support\Facades\Route;
 
 class AuthController extends Controller
 {
-
+    use HandleResponseSupplier;
+       
     private AuthService  $authService;
 
     private FileServiceAdapter $fileser;
@@ -191,6 +194,7 @@ class AuthController extends Controller
     {
 
         $cred = $this->authService->Credentials($request);
+        
         $this->authService->LoginUser('school', $request , $cred);
 
         $request->session()->regenerate();
@@ -203,6 +207,7 @@ class AuthController extends Controller
 
         public function SupplierRegister(SupplierAddReq $request , SupplierRepository $supplierRepo){
               
+    
             $validatedReq = $request->validated();
     
             $supplierObj =  EntitiesFactory::createEntity( Arr::except($validatedReq , ['image']) , 'supplier');
@@ -223,19 +228,15 @@ class AuthController extends Controller
     
              $supplier = $this->authService->RegisterUser($supplierRepo , $supplierObj);
     
-             if ($supplier) {
-                 
-                toastr("Supplier Created successfully" , 'success');
-             }else{
-    
-                  toastr("problem in creating" , "error");
-             }
-    
-    
-             return redirect()->route("admin-suppliers" , "unactive");
-    
+            if (Route::currentRouteName() == 'supplier-register') {
+                return $this->response("Supplier Created successfully" , "admin-suppliers" ,  $supplier , $request);
+            }
+
+            return $this->response( null, RouteServiceProvider::Supplier ,  $supplier , $request);
+        
            
         }
+
     
     
         public function supplierLogin(Request $request)

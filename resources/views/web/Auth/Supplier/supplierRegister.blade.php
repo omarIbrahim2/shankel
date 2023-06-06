@@ -37,7 +37,7 @@
                                        </div>
                                        @endif
                                 
-                                    <form method="POST" action="{{route('supplier-register')}}" enctype="multipart/form-data">
+                                    <form method="POST" action="{{route('supplier-registeration')}}" enctype="multipart/form-data">
                                         @csrf
                                         <div class="input-item me-auto ms-0">
                                             <input type="text" name="name" value="{{old('name')}}" placeholder="{{ trans('register.name') }}"
@@ -117,7 +117,7 @@
 
                                         <div class="upload-avatar text-start">
                                             <input type="file" name="image"  id="teacher-avatar" multiple>
-                                            <label class="btn-custom" for="teacher-avatar">{{ trans('supplier.uploadNew') }}</label>
+                                            <label class="btn-custom" for="teacher-avatar">{{ trans('supplier.upload') }}</label>
                                             <div class="files-names">
 
                                             </div>

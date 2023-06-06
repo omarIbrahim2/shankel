@@ -175,17 +175,22 @@
                                 </ul>
                             </li>
                         </ul>
-                         <ul class="collapse submenu list-unstyled" id="submenu2" data-parent="#accordionExample">
-                            <li class="menu">
-                                <a href="{{route("admin-suppliers" , "active")}}" aria-expanded="false" class="dropdown-toggle">
-                                    <div class="">
-                            
-                                        <span>Suppliers</span>
-                                    </div>
-                                </a>
+
+                        <ul class="collapse submenu list-unstyled" id="submenu2" data-parent="#accordionExample">
+                            <li>
+                                <a href="#sm2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> Suppliers <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg> </a>
+                                <ul class="collapse list-unstyled sub-submenu" id="sm2" data-parent="#submenu2">
+                                    <li>
+                                        <a href="{{route("admin-suppliers" , "active")}}" aria-expanded="false" class="dropdown-toggle">  avtive </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route("admin-suppliers" , "unactive")}}" aria-expanded="false" class="dropdown-toggle"> un avtive </a>
+                                    </li>
+                                    
+                                </ul>
                             </li>
-                        </li>
-                        </ul> 
+                        </ul>
+            
 
                       
 
@@ -297,7 +302,7 @@
         <!--  END SIDEBAR  -->
 
         <!--  BEGIN CONTENT AREA  -->
-        <div id="content" class="main-content">
+        <div id="content" class="main-content ">
             <div class="layout-px-spacing">
 
 

@@ -39,7 +39,7 @@
                                 <span>{{ trans('school.desc') }}</span>
                                 @error('desc') <p class="text-danger">{{$message}}</p> @enderror
                             </h4>
-                            <textarea wire:model.defer="desc"> {{$desc?$desc:'No data'}}</textarea>
+                            <textarea class="form-control" wire:model.defer="desc"> {{$desc?$desc:'No data'}}</textarea>
                         </div>
                         <div class="provider-description">
                             <h4>
@@ -47,7 +47,7 @@
                                 <span>{{ trans('school.mission') }}</span>
                                 @error('mission') <p class="text-danger">{{$message}}</p> @enderror
                             </h4>
-                            <textarea wire:model.defer="mission">{{$mission}}</textarea>                        
+                            <textarea class="form-control" wire:model.defer="mission">{{$mission}}</textarea>                        
                         </div>
                         <div class="provider-description">
                             <h4>
@@ -55,7 +55,7 @@
                                 <span>{{ trans('school.vision') }}</span>
                                 @error('vision') <p class="text-danger">{{$message}}</p> @enderror
                             </h4>
-                            <textarea wire:model.defer="vision"> {{$vision}}</textarea>
+                            <textarea class="form-control" wire:model.defer="vision"> {{$vision}}</textarea>
                         </div>
                     </div>
                 </div>

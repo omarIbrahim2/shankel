@@ -116,7 +116,7 @@ Route::middleware('lang')->group(function(){
     // Supplier Authentication
     Route::get('register/supplier' , [SupplierController::class , 'showRegister'])->middleware("guest")->name('supplier_register');
     Route::get('login/supplier' , [SupplierController::class , 'showLogin'])->middleware('guest')->name('supplier-login');
-    Route::post('supplier/register' , [AuthController::class , 'SupplierRegister'])->name('supplier-register');
+    Route::post('supplier/register' , [AuthController::class , 'SupplierRegister'])->name('supplier-registeration');
     Route::post('supplier/login' , [AuthController::class , 'supplierLogin'])->name('login-supplier');
 
     // Admin Auth
