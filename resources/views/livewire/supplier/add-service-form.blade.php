@@ -1,4 +1,4 @@
-<div class="container p-5">
+<div class="container p-2">
 
 <form wire:submit.prevent="save">
 

@@ -25,7 +25,7 @@ return[
     "noImg" => "No Images found !!",
     "cls" => "Close",
     "saveChange" => "Save changes",
-
+    "addEvent" => "Add Event",
     "search" => "Search by Name Or Email",
 
     "freeSeats" => "Free Seats",

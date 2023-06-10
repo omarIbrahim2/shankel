@@ -31,7 +31,7 @@ class EventValidationRequest extends FormRequest
             'end_date' => 'required|date|after_or_equal:start_date',
             "start_time" => 'required|regex:/(\d+\:\d+)/',
             'end_time' => ["required","regex:/(\d+\:\d+)/", new StartEndTimeRule($this->start_date , $this->end_date , $this->start_time , $this->end_time)],
-            'image' => 'required|image|mimes:jpeg,jpg,png|max:1024',
+            'image' => 'required|image|mimes:jpeg,jpg,png,webp|max:1024',
             'area_id' => 'required|exists:areas,id',
         ];
     }
