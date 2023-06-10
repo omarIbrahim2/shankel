@@ -79,7 +79,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> <span>My Profile</span>
                             </a>
                             @endif
-                           
+
                         </div>
                         <div class="dropdown-item">
                             <a href="{{ route('home') }}">
@@ -126,7 +126,7 @@
                     <li class="menu">
                         <a href="#submenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-anchor"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
                                 <span> Users</span>
                             </div>
                             <div>
@@ -135,15 +135,15 @@
                         </a>
                         <ul class="collapse submenu list-unstyled" id="submenu2" data-parent="#accordionExample">
                             <li>
-                                <a href="#sm2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> Parents <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg> </a>
-                                <ul class="collapse list-unstyled sub-submenu" id="sm2" data-parent="#submenu2">
+                                <a href="#sm1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> Parents <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg> </a>
+                                <ul class="collapse list-unstyled sub-submenu" id="sm1" data-parent="#submenu2">
                                     <li>
                                         <a href="{{route("admin-parents" , "active")}}"> avtive </a>
                                     </li>
                                     <li>
                                         <a href="{{route("admin-parents" , "unactive")}}"> un active </a>
                                     </li>
-                                    
+
                                 </ul>
                             </li>
                         </ul>
@@ -157,42 +157,42 @@
                                     <li>
                                         <a href="{{route('admin-schools' , "unactive")}}"> un active </a>
                                     </li>
-                                    
+
                                 </ul>
                             </li>
                         </ul>
                         <ul class="collapse submenu list-unstyled" id="submenu2" data-parent="#accordionExample">
                             <li>
-                                <a href="#sm2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> Teachers <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg> </a>
-                                <ul class="collapse list-unstyled sub-submenu" id="sm2" data-parent="#submenu2">
+                                <a href="#sm3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> Teachers <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg> </a>
+                                <ul class="collapse list-unstyled sub-submenu" id="sm3" data-parent="#submenu2">
                                     <li>
                                         <a href="{{route('admin-teachers' , 'active')}}"> avtive </a>
                                     </li>
                                     <li>
                                         <a href="{{route('admin-teachers' , 'unactive')}}"> un active </a>
                                     </li>
-                                    
+
                                 </ul>
                             </li>
                         </ul>
 
                         <ul class="collapse submenu list-unstyled" id="submenu2" data-parent="#accordionExample">
                             <li>
-                                <a href="#sm2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> Suppliers <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg> </a>
-                                <ul class="collapse list-unstyled sub-submenu" id="sm2" data-parent="#submenu2">
+                                <a href="#sm4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> Suppliers <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg> </a>
+                                <ul class="collapse list-unstyled sub-submenu" id="sm4" data-parent="#submenu2">
                                     <li>
                                         <a href="{{route("admin-suppliers" , "active")}}" aria-expanded="false" class="dropdown-toggle">  avtive </a>
                                     </li>
                                     <li>
                                         <a href="{{route("admin-suppliers" , "unactive")}}" aria-expanded="false" class="dropdown-toggle"> un avtive </a>
                                     </li>
-                                    
+
                                 </ul>
                             </li>
                         </ul>
-            
 
-                      
+
+
 
                     <li class="menu">
                         <a href="{{route("admin-events")}}" aria-expanded="false" class="dropdown-toggle">
@@ -220,8 +220,8 @@
                             </div>
                         </a>
                     </li>
-                   
-                    
+
+
 
                     <li class="menu">
                         <a href="{{ route("Sliders") }}" aria-expanded="false" class="dropdown-toggle">
@@ -269,7 +269,7 @@
                         </a>
                     </li>
 
-                   
+
 
                     {{-- <li class="menu active">
                         <a href="#starter-kit" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">

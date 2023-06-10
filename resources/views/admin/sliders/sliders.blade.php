@@ -4,12 +4,12 @@
 
 @section('content')
 
-<div class="row mt-5">
-    <div class="col-lg-8 col-md-8 col-sm-9 filtered-list-search mx-auto">
-    
-        <h1>Sliders</h1>
-       
-        
+<div class="row pt-3">
+    <div class="col-12 filtered-list-search mx-auto">
+
+        <h1 class="grid_title">Sliders</h1>
+
+
          @livewire('admin.sliders')
 
 

@@ -3,12 +3,12 @@
 
 @section('content')
 
-<h1>Profile</h1>
+<h1 class="grid_title">Profile</h1>
 
 <form action="{{ route("updateProfile") }}"  method="POST" enctype="multipart/form-data">
     @csrf
     <div class="form-group mb-4">
-     <input type="hidden" name="id" value="{{ $AuthUser->id }}">   
+     <input type="hidden" name="id" value="{{ $AuthUser->id }}">
     <label for="event-title">email</label>
         <input name="email" id="event-title" value="{{ $AuthUser->email}}" type="text" class="form-control"  placeholder="title">
         @error('email')
@@ -23,7 +23,7 @@
 </form>
 
 
- 
+
   </div>
 
 @endsection

@@ -34,7 +34,7 @@ var App = (function () {
     var categoryScroll = {
         scrollCat: function () {
             var sidebarWrapper = document.querySelectorAll(
-                '.sidebar-wrapper [aria-expanded="true"]'
+                '.sidebar-wrapper'
             )[0];
             var sidebarWrapperTop = sidebarWrapper.offsetTop - 20;
             setTimeout(function () {
@@ -51,11 +51,8 @@ var App = (function () {
             $(".sidebarCollapse").on("click", function (sidebar) {
                 sidebar.preventDefault();
                 getSidebar = $(".sidebar-wrapper");
-                console.log("drill 1");
                 if ($recentSubmenu === true) {
-                    console.log("drill 2");
                     if ($(".collapse.submenu").hasClass("show")) {
-                        console.log("drill 3");
                         $(".submenu.show").addClass("mini-recent-submenu");
                         getSidebar
                             .find(".collapse.submenu")
@@ -68,11 +65,9 @@ var App = (function () {
                             .find(".dropdown-toggle")
                             .attr("aria-expanded", "false");
                     } else {
-                        console.log("drill 4");
                         if (
                             $(Selector.mainContainer).hasClass("sidebar-closed")
                         ) {
-                            console.log("drill 5");
                             if (
                                 $(".collapse.submenu").hasClass(
                                     "recent-submenu"
@@ -88,7 +83,6 @@ var App = (function () {
                                 $(".submenu").removeClass(
                                     "mini-recent-submenu"
                                 );
-                                console.log("drill 6");
                             } else {
                                 $("li.active .submenu").addClass(
                                     "recent-submenu"
@@ -103,13 +97,10 @@ var App = (function () {
                                 $(".submenu").removeClass(
                                     "mini-recent-submenu"
                                 );
-                                console.log("drill 7");
                             }
                         }
                     }
-                    console.log("drill 2 end");
                 }
-                console.log("end drill");
                 $(Selector.mainContainer).toggleClass("sidebar-closed");
                 $(Selector.mainHeader).toggleClass("expand-header");
                 $(Selector.mainContainer).toggleClass("sbar-open");
@@ -284,7 +275,6 @@ var App = (function () {
         onRefresh: function () {
             var windowWidth = window.innerWidth;
             if (windowWidth <= MediaSize.md) {
-                categoryScroll.scrollCat();
                 toggleFunction.sidebar();
             }
         },
@@ -304,7 +294,6 @@ var App = (function () {
         onRefresh: function () {
             var windowWidth = window.innerWidth;
             if (windowWidth > MediaSize.md) {
-                categoryScroll.scrollCat();
                 toggleFunction.sidebar(true);
                 toggleFunction.onToggleSidebarSubmenu();
             }
@@ -412,3 +401,6 @@ $(".eventDayPicker").flatpickr({
     enableTime: true,
     dateFormat: "Y-m-d H:i",
 });
+if($(".elpsis").lenght>0){
+    $(".elpsis").html($(".elpsis").html().substring(0,50) + "...")
+}

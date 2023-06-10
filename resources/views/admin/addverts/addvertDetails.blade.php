@@ -4,14 +4,14 @@
 
 @section('content')
 
-<div class="row mt-5">
-    <div class="col-lg-8 col-md-8 col-sm-9 filtered-list-search mx-auto">
-    
-        <h1>Addvertisments</h1>
+<div class="row pt-3">
+    <div class="col-12 filtered-list-search mx-auto">
+
+        <h1 class="grid_title">Addvertisments</h1>
 
 
         <div class="container mt-5">
-          
+
             <div class="mt-4">
               Image:  <img src="{{asset($Addvert->image)}}" style="width: 50px" alt="slider Image">
             </div>
@@ -24,8 +24,8 @@
                 Description:  <p>{{$Addvert->desc}}</p>
              </div>
         </div>
-       
-         
+
+
 
 
 @endsection

@@ -1,27 +1,31 @@
-<div class="row mt-5">
-    <div class="col-lg-8 col-md-8 col-sm-9 filtered-list-search mx-auto">
+<div class="row mt-5 not-row">
+    <div class="col-lg-12 col-md-12 col-sm-12 filtered-list-search mx-auto">
 
-        <h1>{{ $guard }}</h1>
+        <h1 class="grid_title">{{ $guard }}</h1>
 
 
         <div class="container mt-5">
 
 
-            <div class="row">
+            <div class="row not-row">
                 @foreach ($attrs as $attr => $val)
-                    <div class="col-md-4 m-3">
-                        @if ($attr == 'image')
-                            <h5>{{ $attr }} :</h5> <img src="{{ asset($val) }}" alt="" style="width: 70px">
+                @if ($attr == 'image')
+                            <div class="col-12 text-center mb-3"> <img src="{{ asset($val) }}" class="img-fluid profile_img" alt="" style="width: 200px"></div>
                         @else
-                            <h5>{{ $attr }} :</h5> <p class=" text-primary">{{ $val }}</p>
+                        <div class="col-md-4 my-3">
+                        
+                            <div class="text-center card">
+                            <h5>{{ $attr }}</h5> <p class=" text-primary">{{ $val }}</p>
+</div>
+</div>
                         @endif
 
-                    </div>
+                    
                 @endforeach
-
+</div>
             </div>
 
 
-
+</div>
 
         </div>

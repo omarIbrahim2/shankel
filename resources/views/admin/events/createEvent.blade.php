@@ -3,9 +3,9 @@
 
 @section('content')
 
- <div class="container mt-5">
-    <h1>Add Event</h1>
-  
+ <div class="container mt-3">
+    <h1 class="grid_title">Add Event</h1>
+
     <x-event-form actionRoute="create-events"  :cities="$cities"></x-event-form>
  </div>
 
@@ -48,5 +48,5 @@
 
         })
     </script>
-   
+
 @endsection

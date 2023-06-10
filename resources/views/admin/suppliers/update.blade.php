@@ -3,9 +3,9 @@
 
 @section('content')
 
- <div class="container mt-5">
-    <h1>update Supplier</h1>
-  
+ <div class="container mt-3">
+    <h1 class="grid_title">update Supplier</h1>
+
 
      <x-supplier-form actionRoute="supplier-update" :Supplier="$Supplier" :cities="$cities" update=true></x-supplier-form>
  </div>
@@ -49,5 +49,5 @@
 
         })
     </script>
-   
+
 @endsection

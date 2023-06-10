@@ -3,9 +3,9 @@
 
 @section('content')
 
- <div class="container mt-5">
-    <h1>update Event</h1>
-  
+ <div class="container mt-3">
+    <h1 class="grid_title">update Event</h1>
+
     <x-event-form actionRoute="update-event" :Event="$Event"  :cities="$cities" update=true></x-event-form>
  </div>
 
@@ -48,5 +48,5 @@
 
         })
     </script>
-   
+
 @endsection
