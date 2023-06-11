@@ -16,16 +16,18 @@
 
 @section('main')
 
-<section class="section">
+<section class="section colored-section">
     <div class="inner">
         <div class="container">
             <div class="section-title">
-                <h2>Addvertisments</h2>
+                <h2>Addvertisements</h2>
             </div>
-
             @livewire('web.addverts.addverts')
+          
         </div>
     </div>
+</div>
+</div>
 </section>
 <!-- ***************** -->
 

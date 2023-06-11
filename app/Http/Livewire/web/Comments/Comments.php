@@ -11,7 +11,7 @@ use Shankl\Factories\AuthUserFactory;
 class Comments extends Component
 {
     public $school_id;
-    public $commented;
+    public $comment;
 
     public $AuthUser;
     public $type;
@@ -20,6 +20,10 @@ class Comments extends Component
 
     protected $listeners = [
         "fresh" => '$refresh',
+    ];
+
+    protected $rules = [
+        'comment' => 'required|min:2|string',
     ];
     public function render(SchoolService $schoolService)
     {
@@ -53,17 +57,16 @@ class Comments extends Component
 
     public function createComment(SchoolService $schoolService){
          
+       $this->validate(); 
       $user = AuthUserFactory::getAuthUser(); 
       
-      if ($this->commented == null) {
-         return;
-      }
+     
     
-        $schoolService->addComment($user , $this->commented , $this->school_id);
+        $schoolService->addComment($user , $this->comment, $this->school_id);
 
         $this->emit("fresh");
 
-        $this->commented = null;
+        $this->comment = null;
 
     }
 

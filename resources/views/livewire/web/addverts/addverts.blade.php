@@ -1,41 +1,32 @@
 <div>
 
-    <div class="events-section">
-     
-@foreach ($addverts as $addvert)
-           
-       
-<div class="event">
-    <div class="row">
-        <div class="col-md-4">
-                <div class="event-img">
-                    <img src="{{asset($addvert->image)}}" style="width: 500px" alt="{{$addvert->title}}">
-                </div>
-                <div class="event-title">
-                    <h3>{{$addvert->title}}</h3>
-                </div>
-                <div class="event-description">
-                    <p>
-                        {{$addvert->desc}} 
-                    </p>
-                </div>
-        </div>
-        {{-- <div class="col-lg-5 col-md-6 col-12 ">
-            <div class="event-right-side">
-                <div class="counter">
-                    <div class="counter-body">
-                        <div class="event-description">
-                            <p>
-                                {{$addvert->desc}} 
-                            </p>
-                        </div>
-                    </div>
+ 
+<div class="section-content">
+    <div class="container">
+        <div class="ads">
+ @foreach ($addverts as $addvert)
+    <div class="row m-0 ">
+        <div class="col-md-6 col-12 m-0 p-0">
+            <div class="ads-item">
+                <div class="ads-image">
+                    <img src="{{ $addvert->image }}"  alt="provider">
                 </div>
             </div>
-        </div> --}}
+        </div>
+        <div class="col-md-6 colored-ad col-12 m-0 p-0">
+            <div class="ads-item">
+                <div class="ads-info">
+                    <h4>{{ $addvert->title }}</h4>
+                    <p>{{ $addvert->desc }}</p>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
 @endforeach 
+     
+        
+        
+   
 
 <div class="pagination">
     <div class="d-flex">
@@ -46,5 +37,7 @@
             @endif
         </div>
    </div>
+</div>
+
 </div>
 

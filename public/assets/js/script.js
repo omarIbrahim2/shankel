@@ -233,3 +233,8 @@ function number_validate(){
   })
 }
 number_validate()
+
+$("#addEventButton").on("shown.bs.modal" ,function(){
+
+  $("#addEvent").modal('show')
+});

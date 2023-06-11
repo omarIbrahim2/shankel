@@ -54,11 +54,19 @@
         </div>
     </div>
     @endforeach
- 
-    <div class="add-review">
-        <input wire:model.defer="commented" type="text" placeholder="{{ trans('contact.leaveCom') }}">												
+    
+    <form wire:submit.prevent="createComment">
+      <div class="add-review">
+        <input wire:model.defer="comment" type="text" placeholder="{{ trans('contact.leaveCom') }}">	
+     									
     </div>
-    <button wire:click="createComment"  class="btn btn-primary">{{ trans('contact.comment') }}</button>
+    @error('comment')
+
+    <p class="text-danger">{{ $message }}</p>  
+  @enderror		
+    <button  type="submit"  class="btn btn-primary">{{ trans('contact.comment') }}</button>
+    </form>
+ 
 
 
 </div>
