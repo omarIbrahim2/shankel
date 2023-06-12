@@ -103,7 +103,7 @@ class ParentProfile extends Component
             'email' => ['required','email','unique:parentts,email,'.$this->parent_id],
             'phone' => ['required' , new PhoneValidationRule()],
             'area_id' => 'exists:areas,id',
-            'image' => 'image|mimes:jpg,png,jpeg|max:2048|nullable',
+            'image' => 'image|mimes:jpg,png,jpeg,webp|max:2048|nullable',
          ]);
         $this->parentService = $parentService;
        

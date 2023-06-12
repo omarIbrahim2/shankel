@@ -29,7 +29,7 @@ class TeacherRegisterReq extends FormRequest
             'email' => 'required|email|unique:teachers,email',
             'phone' => ['required' , new PhoneValidationRule()],
             'area_id' => 'required|exists:areas,id',
-            'image' => 'image|mimes:jpg,png,jpeg|max:2048|',
+            'image' => 'image|mimes:jpg,png,jpeg,webp|max:2048|',
             'password' => 'required|confirmed|min:6',
             'cv' => 'file|mims:pdf|max:2048',
             'field' => 'required|string|min:4|max:50'

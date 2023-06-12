@@ -27,7 +27,7 @@ class AddvertValidationUpdateReq extends FormRequest
             'id' => 'required|exists:addverts,id',
             'title' => 'required|string|min:5|max:255',
             "desc" => 'required|string',
-            'image' => 'required|image|mimes:jpeg,jpg,png|max:1024',
+            'image' => 'required|image|mimes:jpeg,jpg,png,webp|max:1024',
         ];
     }
 }

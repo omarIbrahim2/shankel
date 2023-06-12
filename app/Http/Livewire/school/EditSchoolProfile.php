@@ -208,7 +208,7 @@ class EditSchoolProfile extends Component
             "facebook" => "nullable|url",
             "twitter" => "nullable|url",
             "linkedin" => "nullable|url",
-            "image" => "image|mimes:jpg,png,jpeg|max:2048|nullable" 
+            "image" => "image|mimes:jpg,png,jpeg,webp|max:2048|nullable" 
          ]);
 
          $this->setAttributes();

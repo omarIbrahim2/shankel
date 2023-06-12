@@ -33,7 +33,7 @@ class UpdateChildParent extends Component
       'age' => 'required|numeric',
       'birth_date' => 'required',
       'grade_id' => 'required|numeric| exists:grades,id',
-      'image' => "nullable|image|mimes:jpg,png,jpeg|max:2048"
+      'image' => "nullable|image|mimes:jpg,png,jpeg,webp|max:2048"
     ];
 
     protected $listeners = [

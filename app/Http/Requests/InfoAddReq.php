@@ -34,7 +34,7 @@ class InfoAddReq extends FormRequest
              'vision_ar' =>  'required|string',
              'choose_en' => 'required|string',
              'choose_ar' =>  'required|string',
-             'image' => 'required|image|mimes:png,jpg,webp,jpeg|max:1024',
+             'image' => 'required|image|mimes:png,jpg,webp,jpeg|max:2024',
         ];
     }
 }

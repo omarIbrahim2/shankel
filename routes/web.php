@@ -79,15 +79,15 @@ Route::middleware('lang')->group(function(){
    Route::get('/addverts' , [AdvertController::class , 'indexWeb'])->name('web-addverts');
 
    Route::get('/schools' , [SchoolController::class , 'index'])->name('web-schools');
-
    Route::get("school/{id}" , [SchoolController::class , "getSchool"])->name('school-by-id');
 
    Route::get('/suppliers' , [SupplierController::class , 'index'])->name('web-suppliers');
-
    Route::get("supplier/{id}" , [SupplierController::class , "getSupplier"])->name('supplier-by-id');
 
    Route::get('/services' , [ServiceController::class , 'index'])->name('web-services');
 
+   Route::get('/teachers' , [TeacherController::class , 'getAllTeachers'])->name('web-teachers');
+   Route::get('/teacher/{id}' , [TeacherController::class , 'getOneTeacher'])->name('teacher-by-id');
   
 
     // Authentication Routs

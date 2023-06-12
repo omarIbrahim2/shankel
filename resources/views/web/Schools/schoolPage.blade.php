@@ -16,18 +16,16 @@
 
 @section('main')
     
-<main data-color="#AF62A6" >
+<main data-color="#AF62A6" data-image="{{ asset("assets/images/logo/nurs.png") }}">
     <!-- provider info -->
     <section class="section">
         <div class="inner">
             <div class="container">
-               @auth("parent")
-                  <a class="btn btn-primary" href="{{route("register-form-school" , $School->id)}}">Book a seat</a>
-               @endauth            
+                @auth("parent")
+                  <a class="btn btn-primary" href="{{route("register-form-school" , $School->id)}}">{{ trans('school.bookSeat') }}</a>
+                @endauth 
                 <div class="section-title">
-                    <h2 class="image-content">{{$School->name}}
-                    </h2>
-                   
+                    <h2 class="image-content">{{$School->name}}</h2>
                 </div>
                 <div class="section-content">
                     <div class="row">
@@ -40,56 +38,39 @@
                                     "
                                     class="swiper mySwiper2"
                                 >
-                                
                                     <div class="swiper-wrapper">
                                         @foreach ($School->images as $image)
                                         <div class="swiper-slide">
                                             <img
                                                 src="{{asset('uploads/'.$image->name)}}"
-                                                alt="nurs"
+                                                alt="School Photo"
                                             />
                                         </div>
                                         @endforeach
-                                     
                                     </div>
                                 </div>
                                 <div thumbsSlider="" class="swiper mySwiper">
-                                    @foreach ($School->images as $image)
-                                    <div class="swiper-slide">
-                                        <img
-                                            src="{{asset("uploads/".$image->name)}}"
-                                            alt="nurs"
-                                        />
+                                    <div class="swiper-wrapper">
+                                        @foreach ($School->images as $image)
+                                        <div class="swiper-slide">
+                                            <img
+                                                src="{{asset('uploads/'.$image->name)}}"
+                                                alt="School Photo"
+                                            />
+                                        </div>
+                                        @endforeach
                                     </div>
-                                    @endforeach
                                 </div>
-
-
-
-                             @custom_auth
+                                @custom_auth
                                 <div class="revews">
 
                                      @livewire('web.comments.comments' , ["school_id" => $School->id])
-                                    {{-- <div class="reviews-item">
-                                        <div class="review-head">
-                                            <h5>hussien</h5>
-                                        </div>
-                                        <div class="review-body">
-                                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                                        </div>
-                                    </div>
-                                 
-                                    <div class="add-review">
-                                        <input type="text" placeholder="leave comment" name="review">												
-                                    </div>
-                                    <button class="btn btn-primary">comment</button> --}}
 
                                 </div>
-                               @endcustom_auth 
+                                @endcustom_auth 
                             </div>
                         </div>
                         <div class="col-lg-5 col-md-6 col-12">
-                            
                             <div class="detials-title">
                                 <h3>{{$School->name}}</h3>
                             </div>
@@ -103,7 +84,7 @@
                                     <span>
                                         <i class="fa-regular fa-calendar-days"></i>
                                     </span>
-                                    <span> {{\Carbon\Carbon::createFromFormat('Y-m-d' , $School->establish_date)->format("d F Y")}} </span>
+                                    <span> {{ trans('school.openAt') }} {{\Carbon\Carbon::createFromFormat('Y-m-d' , $School->establish_date)->format("d F Y")}} </span>
                                 </div>
                                 <div class="detials-item">
                                     <span>
@@ -136,7 +117,6 @@
                                 <a href="{{$school->linkedin}}"><i class="fa-brands fa-linkedin-in"></i></a>
                                </div>
                                @endif
-                               
                             </div>
                         </div>
                     </div>
@@ -150,17 +130,17 @@
         <div class="inner">
             <div class="container">
                 <div class="section-title">
-                    <h2 class="image-content">Mission And vision</h2>
+                    <h2 class="image-content">{{ trans('school.missAndVis') }}</h2>
                 </div>
                 <div class="section-content">
                     <div class="mission-vision">
-                        <h3>Mission:</h3>
+                        <h3>{{ trans('school.mission') }}:</h3>
                         <p>
-                           {{$School->mission == null ? "" : $School->mission}}
+                            {{$School->mission == null ? "" : $School->mission}}
                         </p>
                     </div>
                     <div class="mission-vision">
-                        <h3>Vision:</h3>
+                        <h3>{{ trans('school.vision') }}:</h3>
                         <p>
                             {{$School->vision == null ? "" : $School->vision}}
                         </p>
@@ -169,7 +149,7 @@
             </div>
         </div>
     </section>
-  
+
 </main>
  
 @endsection

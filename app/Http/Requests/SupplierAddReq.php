@@ -28,7 +28,7 @@ class SupplierAddReq extends FormRequest
             'email' => 'required|email|unique:suppliers,email',
             'password' => 'required|min:5|confirmed',
             'area_id' => "required|exists:areas,id",
-            "image" => 'image|mimes:png,jpeg,jpg|max:1024|nullable',
+            "image" => 'image|mimes:png,jpeg,jpg,webp|max:1024|nullable',
             'type' => 'required|string|max:255',
             'orgName' => 'required|string|max:255',
         ];

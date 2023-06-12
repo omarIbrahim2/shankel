@@ -29,7 +29,7 @@ class SupplierUpdateReq extends FormRequest
             'id' => 'required|exists:suppliers,id',
             'name' => "required|string|max:255",
             'email' => ['required','email' ,Rule::unique("suppliers")->ignore($this->id) ],
-            "image" => 'image|mimes:png,jpeg,jpg|max:1024|nullable',
+            "image" => 'image|mimes:png,jpeg,jpg,webp|max:2024|nullable',
             'type' => 'required|string|max:255',
             'orgName' => 'required|string|max:255',
         ];

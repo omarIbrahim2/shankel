@@ -96,7 +96,7 @@
                     <a class="nav-link" href="{{route('web-schools')}}">{{trans("nav.Schools")}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#contact">{{trans("nav.Teachers")}}</a>
+                    <a class="nav-link" href="{{ route('web-teachers') }}">{{trans("nav.Teachers")}}</a>
                 </li>
                 
             </ul>

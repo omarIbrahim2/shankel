@@ -54,7 +54,7 @@ class AddServiceForm extends Component
             'quantity' => 'required|numeric|integer|min:1',
             "price" => "required|numeric|min:1",
             "desc" => "required|string",
-            'image' => "image|mimes:jpeg,jpg,png|max:1024|nullable",
+            'image' => "image|mimes:jpeg,jpg,png,webp|max:2048|nullable",
         ]);
 
         $this->setAttributes();

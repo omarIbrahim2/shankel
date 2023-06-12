@@ -8,6 +8,7 @@ use Shankl\Helpers\ChangePassword;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Shankl\Interfaces\LocationRepoInterface;
+use Shankl\Services\TeacherService;
 
 class TeacherController extends Controller
 {
@@ -35,6 +36,11 @@ class TeacherController extends Controller
       public function teacher(){
            
           return view("web.Teachers.profile");
+      }
+
+      function getAllTeachers(TeacherService $teacherService) {
+        $teachers =$teacherService->getActiveTeachers(10);
+        return view("web.Teachers.allTeachers")->with(['teachers' => $teachers]);
       }
 
       public function teacherProfile(){

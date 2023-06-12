@@ -84,7 +84,7 @@ class EditProfile extends Component
             "name" => "required|min:3|string|max:50",
             "email" => ['required', 'email', 'unique:suppliers,email,' . $this->AuthUser->id],
             'area_id' => 'required|numeric|exists:areas,id',
-            "image" => "image|mimes:jpg,png,jpeg|max:2048|nullable",
+            "image" => "image|mimes:jpg,png,jpeg,webp|max:2048|nullable",
             "type" =>"required|min:3|string|max:50" ,
             "orgName" => "required|min:3|string|max:255",
         ]);

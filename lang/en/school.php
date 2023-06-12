@@ -27,10 +27,10 @@ return[
     "saveChange" => "Save changes",
     "addEvent" => "Add Event",
     "search" => "Search by Name Or Email",
-
+    "missAndVis" => "Mission And Vision",
     "freeSeats" => "Free Seats",
-
+    "openAt" => "Open At",
     "enterEmail" => "Enter Your Email",
     "send" => "Send",
-
+    "bookSeat" => "Book A Seat",
 ];
