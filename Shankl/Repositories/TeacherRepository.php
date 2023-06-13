@@ -6,11 +6,11 @@ use App\Models\Teacher;
 use Shankl\Interfaces\CardInterface;
 use Shankl\Interfaces\UserReboInterface;
 
-class TeacherRepository implements UserReboInterface , CardInterface{
+class TeacherRepository extends AbstractUserRepo implements UserReboInterface , CardInterface{
 
     public function getActiveUsers($pages)
     {
-       return Teacher::where('status' , true)->paginate($pages); 
+       return Teacher::with('area')->where('status' , true)->paginate($pages); 
     }
 
     public function getUnActiveUsers($pages)
@@ -28,35 +28,6 @@ class TeacherRepository implements UserReboInterface , CardInterface{
         $teacher = Teacher::findOrFail($teacherId);
         return $teacher;
     }
-
-    public function addToCard($teacher , $serviceId){
-
-        $teacherCard =   $teacher->card;
-
-        if ($teacherCard == null) {
-              
-          $createdCard =   $teacher->card()->create([
-                 "user_id" => $teacher->id,
-             ]);
-
-           return $createdCard->attach([$serviceId]);  
-        }else{
-
-          return  $teacherCard->attach([$serviceId]);
-        }
-
-   }
-
-   public function RemoveFromCard($parent,$serviceId){
-
-   }
-
-
-   public function getCardWithServices()
-   {
-    
-   }
-
 
    public function AddLesson($data){
 

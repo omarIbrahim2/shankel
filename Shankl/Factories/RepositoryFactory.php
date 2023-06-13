@@ -20,6 +20,9 @@ class RepositoryFactory{
         }elseif($guard == 'teacher'){
             
              return new TeacherRepository();
+        }else{
+
+            return null;
         }
 
     }

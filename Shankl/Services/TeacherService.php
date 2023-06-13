@@ -24,7 +24,7 @@ class TeacherService extends Service{
     }
 
     public function getActiveTeachers($pages){
-
+           
          return $this->teacherRebo->getActiveUsers($pages);
     }
 

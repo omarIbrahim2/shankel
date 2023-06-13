@@ -18,10 +18,13 @@ class SupplierSeeder extends Seeder
      */
     public function run()
     {
-        Supplier::factory()->count(10)->has(
+        Supplier::factory()->count(1000)->has(
             Service::factory()->count(5)
-        )->has(
-            Notification::factory()->count(2)
-          )->create();
+        )->create()->each(function($supplier){
+    
+            $events  = Event::all()->random(rand(1 , 4))->pluck('id');
+            $supplier->eventSubscribers()->attach($events);
+    
+          });
     }
 }

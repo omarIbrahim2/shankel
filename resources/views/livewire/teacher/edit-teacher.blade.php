@@ -156,7 +156,7 @@
               <h1 class="modal-title fs-5" id="exampleModalLabel">{{ trans('teacher.videos') }}</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-                 @livewire('teacher.teache-videos')
+                 @livewire('teacher.teacher-lessons')
             </div>
           </div>
         </div>

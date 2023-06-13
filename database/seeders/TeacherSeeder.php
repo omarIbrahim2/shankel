@@ -21,7 +21,7 @@ class TeacherSeeder extends Seeder
     public function run()
     {
         Teacher::factory()->has(
-            Lesson::factory()->count(2)
+            Lesson::factory()->count(10)
         )->has(
             Notification::factory()->count(2)
 
@@ -29,6 +29,11 @@ class TeacherSeeder extends Seeder
 
         //     Card::factory() , "card"
 
-        )->count(20)->create();
+        )->count(2000)->create()->each(function($teachers){
+    
+            $events= Event::all()->random(rand(1 , 4))->pluck('id');   
+            $teachers->eventSubscribers()->attach($events);
+    
+          });
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Shankl\Interfaces\CardInterface;
 use Shankl\Interfaces\UserReboInterface;
 
-class SchoolRepository implements UserReboInterface , CardInterface
+class SchoolRepository extends AbstractUserRepo implements UserReboInterface , CardInterface
 {
     public function getActiveUsers($pages)
     {
@@ -35,33 +35,10 @@ class SchoolRepository implements UserReboInterface , CardInterface
     }
 
 
-    public function addToCard($school , $serviceId){
 
-        $schoolCard =   $school->card;
+  
 
-        if ($schoolCard == null) {
-              
-          $createdCard =   $school->card()->create([
-                 "user_id" => $school->id,
-             ]);
-
-           return $createdCard->attach([$serviceId]);  
-        }else{
-
-          return  $schoolCard->attach([$serviceId]);
-        }
-
-   }
-
-   public function RemoveFromCard( $parent,$serviceId){
-
-
-   }
-
-   public function getCardWithServices()
-   {
-    
-   }
+  
 
     public function addGrades(array $grades, $schoolId)
     {

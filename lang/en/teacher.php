@@ -15,14 +15,17 @@ return[
     "sub" => "Subject",
     "about" => "About Me",
     "cv" => "Upload CV",
+    "theCv" => "CV",
     "externalLink" => "External Links",
     "facebook" => "Facebook URL",
     'twitter' => "Twitter URL",
     "linked" => "Linkedin URL",
     "field" => "Field",
-
+    "seeMore" => "See More",
     "enterEmail" => "Enter Your Email",
     "send" => "Send",
     'videos' => "Teacher Videos",
     "noVideo" => 'no videos found',
+    "noSocial" => 'There are no accounts on social media platforms',
+    "watchNow" => "Watch Now",
 ];

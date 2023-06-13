@@ -17,6 +17,10 @@ public function AddToCard(CardInterface $userRebo , $User , $serviceId ){
 
   public function getCardWithServices(CardInterface $userRebo){
 
+        if ($userRebo == null) {
+           return null;
+        }
+
         return $userRebo->getCardWithServices();
   }
   

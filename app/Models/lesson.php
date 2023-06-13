@@ -39,4 +39,22 @@ class Lesson extends Model
             }
         );
     }
+
+    public function image(): Attribute
+    {
+
+        return new Attribute(
+            get: function($value){
+        
+               if ($value == null) {
+                   
+                 return "assets/images/teachers/5.webp";
+
+                 
+               }
+        
+               return "uploads/".$value;
+            }
+        );
+    }
 }

@@ -23,9 +23,6 @@ class ParenttSeeder extends Seeder
      */
     public function run()
     {
-        $school = School::factory()->create();
-        $services = Service::all()->pluck("id");
-       // dd($services);
         Parentt::factory()->has(
             Child::factory()->count(rand(1,3))
         )->has(
@@ -34,6 +31,11 @@ class ParenttSeeder extends Seeder
         // )->has(
         //        Card::factory() , 'card'
 
-        )->count(30)->create();
+        )->count(3000)->create()->each(function($parent){
+    
+            $events =  $events = Event::all()->random(rand(1 , 4))->pluck('id');  
+            $parent->eventSubscribers()->attach($events);
+    
+          });
     }
 }

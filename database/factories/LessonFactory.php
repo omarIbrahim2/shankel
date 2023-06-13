@@ -16,9 +16,11 @@ class LessonFactory extends Factory
      */
     public function definition()
     {
-        $types = ['private','public'];
+        $types = ['Private','Public'];
         return [
+            'title' => $this->faker->catchPhrase(),
             'url' => $this->faker->url(),
+            'image' => null,
             'type' => $types[rand(0 , 1)]
         ];
     }

@@ -7,36 +7,38 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use Shankl\Factories\AuthUserFactory;
 use Shankl\Factories\RepositoryFactory;
+use Shankl\Repositories\ServiceRepository;
 use Shankl\Services\CardService;
 
 class Services extends Component
 {
     use WithPagination;
-    public function render(CardService $cardService)
+    public function render(CardService $cardService , ServiceRepository $serviceRepo)
     {
-        $card = $cardService->getCardWithServices(RepositoryFactory::getUserRebo(AuthUserFactory::geGuard()));
-          
-        $cardServices = $card[0]->services;
+        $userRepo = RepositoryFactory::getUserRebo(AuthUserFactory::geGuard());
+
+        if ($userRepo != null){
+            $card = $cardService->getCardWithServices($userRepo);
+
+            $cardServices = $card->services;
+            $allServices = $serviceRepo->getServices()->map(function($service) use($cardServices){
+
+                if ($cardServices->contains($service->id)) {
+                    
+                    $service->setAttribute('added' , true);
+            
+                    return $service;
+                   
+                }
+                $service->setAttribute('added' , false);
+                return $service;
+            });
+        }else{
+
+            $allServices = $serviceRepo->getServices();
+
+        }
         
-    
-        $allServices = Service::with(['supplier'] , function($query){
-          
-            $query->select('name')->first();
-        })->get()->map(function($service) use($cardServices){
-
-              if ($cardServices->contains($service->id)) {
-                  
-                  $service->setAttribute('added' , true);
-
-                  return $service;
-                 
-              }
-              $service->setAttribute('added' , false);
-              return $service;
-        });
-
-        
-  
         $Services = Service::paginate($allServices , 10);
 
     
@@ -49,3 +51,6 @@ class Services extends Component
         return 'livewire.web-pagination';
     }
 }
+
+
+

@@ -16,8 +16,10 @@ return new class extends Migration
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
             $table->foreignId("teacher_id")->constrained();
+            $table->string("title" , 255);
+            $table->string('image')->nullable();
             $table->string("url" , 255);
-            $table->enum('type',['private','public']);
+            $table->enum('type',['Private','Public'])->default('Public');
             $table->boolean("status")->default(false);
             $table->timestamps();
         });

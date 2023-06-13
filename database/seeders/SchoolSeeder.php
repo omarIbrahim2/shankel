@@ -21,7 +21,7 @@ class SchoolSeeder extends Seeder
     public function run()
     {
 
-      School::factory()->count(20)->has(
+      School::factory()->count(2000)->has(
         Notification::factory()->count(2)
       )->has(
         Event::factory()->count(3)
@@ -33,7 +33,11 @@ class SchoolSeeder extends Seeder
 
         $grades = Grade::all()->random(rand(1 , 4))->pluck('id');
 
+        $events = Event::all()->random(rand(1 , 4))->pluck('id');
+
         $school->grades()->attach($grades);
+
+        $school->eventSubscribers()->attach($events);
 
       });
 

@@ -39,7 +39,7 @@ class Supplier extends Authenticatable
         return $this->morphMany(Notification::class , 'user');
     }
 
-    public function eventSubscriber()
+    public function eventSubscribers()
     {
         return $this->morphToMany(Event::class, 'eventable');
     }

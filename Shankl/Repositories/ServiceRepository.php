@@ -29,6 +29,15 @@ class ServiceRepository implements ServiceRepoInterface{
         
      }
 
+     public function getServices(){
+           
+      return  Service::with(['supplier'] , function($query){
+          
+        $query->select('name')->first();
+       })->get();
+
+     }
+
      public function find($serviceId){
 
         return  Service::findOrFail($serviceId);

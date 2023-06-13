@@ -51,7 +51,7 @@
                                         <p>{{ trans('event.hours') }}</p>
                                     </div>
                                     <div class="counter-item">
-                                        <span >{{ $event->diffMinutes() }}</span>
+                                        <span>{{ $event->diffMinutes() }}</span>
                                         <p>{{ trans('event.mins') }}</p>
                                     </div>
                                     <div class="counter-item">
@@ -133,9 +133,9 @@
         <div class="pagination">
             @if ($Events->links('livewire.web-pagination'))
                 {{ $Events->links('livewire.web-pagination') }}
+            @endif
         </div>
     </div>
-    @endif
 
 
 </div>

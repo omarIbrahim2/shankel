@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
-use App\Notifications\TeacherResetPasswordNotification;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Notifications\TeacherResetPasswordNotification;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 
 class Teacher extends Authenticatable 
@@ -80,4 +83,6 @@ class Teacher extends Authenticatable
 
         $this->notify(new TeacherResetPasswordNotification($token));
     }
+
+
 }

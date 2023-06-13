@@ -2,10 +2,11 @@
 
 namespace Shankl\Services;
 
-use App\Notifications\ConfirmUserNotify;
-use Illuminate\Support\Facades\Notification;
 use Shankl\Interfaces\CardInterface;
+use Shankl\Factories\AuthUserFactory;
+use App\Notifications\ConfirmUserNotify;
 use Shankl\Interfaces\UserReboInterface;
+use Illuminate\Support\Facades\Notification;
 
 abstract class Service{
 
@@ -48,7 +49,7 @@ abstract class Service{
 
     }
 
-
+  
 
   
 

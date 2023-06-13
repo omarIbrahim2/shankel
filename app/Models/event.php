@@ -45,7 +45,10 @@ class Event extends Model
         return $this->morphedByMany(Teacher::class, 'eventable');
     }
 
-  
+    public function suppliersinEvent()
+    {
+        return $this->morphedByMany(Supplier::class, 'eventable');
+    }
 
     public function startAt(){
 

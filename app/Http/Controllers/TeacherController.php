@@ -13,12 +13,13 @@ use Shankl\Services\TeacherService;
 class TeacherController extends Controller
 {
    private $changePassObj;
+   public $teacherService;
 
-    public function __construct(ChangePassword $changePass)
+    public function __construct(ChangePassword $changePass , TeacherService $teacherService)
     {  
 
       $this->changePassObj = $changePass;
-      
+      $this->teacherService = $teacherService;
     }
     public function showRegister(LocationRepoInterface $locationRepo){
        
@@ -38,9 +39,18 @@ class TeacherController extends Controller
           return view("web.Teachers.profile");
       }
 
-      function getAllTeachers(TeacherService $teacherService) {
-        $teachers =$teacherService->getActiveTeachers(10);
-        return view("web.Teachers.allTeachers")->with(['teachers' => $teachers]);
+      function getAllTeachers() {
+        
+        return view("web.Teachers.allTeachers");
+      }
+
+      function getOneTeacher($teacherId){
+        $teacher = $this->teacherService->getTeacher($teacherId);
+        $lessons = $this->teacherService->getLessons($teacherId);
+        return view("web.Teachers.teacherPage")->with([
+          'teacher' => $teacher,
+          'lessons' => $lessons,
+        ]);
       }
 
       public function teacherProfile(){

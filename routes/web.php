@@ -87,7 +87,7 @@ Route::middleware('lang')->group(function(){
    Route::get('/services' , [ServiceController::class , 'index'])->name('web-services');
 
    Route::get('/teachers' , [TeacherController::class , 'getAllTeachers'])->name('web-teachers');
-   Route::get('/teacher/{id}' , [TeacherController::class , 'getOneTeacher'])->name('teacher-by-id');
+   Route::get('/teacher/{id}' , [TeacherController::class , 'getOneTeacher'])->middleware('teacherDetails')->name('teacher-by-id');
   
 
     // Authentication Routs

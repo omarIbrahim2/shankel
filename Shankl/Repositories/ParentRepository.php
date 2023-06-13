@@ -9,7 +9,7 @@ use Shankl\Factories\AuthUserFactory;
 use Shankl\Interfaces\CardInterface;
 use Shankl\Interfaces\UserReboInterface;
 
-class ParentRepository implements UserReboInterface , CardInterface{
+class ParentRepository extends AbstractUserRepo implements UserReboInterface , CardInterface{
 
    public function getActiveUsers($pages){
 
@@ -45,55 +45,11 @@ class ParentRepository implements UserReboInterface , CardInterface{
 
     }
 
-   public function addToCard($parent , $serviceId){
+ 
 
-         $parentCard =   $parent->card;
+ 
 
-         
-
-         if ($parentCard == null) {
-               
-           $createdCard =   $parent->card()->create([
-                  "user_id" => $parent->id,
-              ]);
-              
-            return $createdCard->attach([$serviceId]);  
-         }else{
-            
-           return  $parentCard->services()->attach([$serviceId]);
-         }
-
-    }
-
-    public function RemoveFromCard($parent , $serviceId){
-       
-       $parentCard = $parent->card;
-
-
-       return $parentCard->services()->detach([$serviceId]);
-        
-    }
-
-    public function getCardWithServices()
-    {
-         $AuthUser = AuthUserFactory::getAuthUser();
-
-         $card = $AuthUser->card;
-         
-          if ($card) {
-            return Card::with(['services'])->where('id' , $card->id)->get();
-          } 
-
-          $AuthUser = AuthUserFactory::getAuthUser();
-
-           $createdCard = $AuthUser->card()->create([
-                "user_id" => $AuthUser->id,
-           ]);
-
-
-           return Card::with(['services'])->where('id' , $createdCard->id)->get();
-      
-    }
+  
 
     public function ParentChilds(){
          
