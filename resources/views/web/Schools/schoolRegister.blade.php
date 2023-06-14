@@ -19,6 +19,9 @@
                         <div class="section-title">
                             <h2 class="text-center">Book a seat</h2>
                         </div>
+                        @if (session()->has('error'))
+                            <p class="text-danger">{{ session()->get('error') }}</p>
+                        @endif
                         <div class="contact-form black-contact-form">
                             <form action="{{route("paypal-payment")}}" method="POST">
                                 @csrf

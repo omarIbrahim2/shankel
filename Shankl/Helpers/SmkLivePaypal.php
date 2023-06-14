@@ -9,7 +9,7 @@ use Srmklive\PayPal\Services\PayPal as PayPalClient;
 
 use Srmklive\PayPal\Services\ExpressCheckout;
 
-class Paypal implements PaymentInterface{
+class SmkLivePaypal implements PaymentInterface{
     
     private $data;
 
@@ -29,7 +29,7 @@ class Paypal implements PaymentInterface{
         $provder->setApiCredentials(config('paypal'));
 
         $payPalToken = $provder->getAccessToken();
-
+       
         $response = $provder->createOrder([
               "intent" => "CAPTURE",
               "application_context" => [
@@ -40,6 +40,8 @@ class Paypal implements PaymentInterface{
               "purchase_units" => [
                 0=>[
                     "amount" => [
+                        'child Name' => $this->data['child_name'],
+                        'school' => $this->data['school_name'],
                         "currency_code" => "USD",
                         "value" => 20,
                     ],

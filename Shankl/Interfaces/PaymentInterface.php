@@ -14,6 +14,8 @@ interface PaymentInterface{
 
       public function cancelPayment();
 
+      public function setData($data);
+
 
       
 

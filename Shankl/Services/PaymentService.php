@@ -3,22 +3,26 @@
 
 namespace Shankl\Services;
 
-use Shankl\Interfaces\PaymentInterface;
+use Shankl\Adapters\PaymentAdapter;
+use Shankl\Helpers\SmkLivePaypal;
 
 class PaymentService{
     
-    private $paymentGateway;
-    public function __construct(PaymentInterface $paymentGateway)
+    private $paymentAdapter;
+    public function __construct()
     {
-        $this->paymentGateway = $paymentGateway;
+        $this->paymentAdapter = new PaymentAdapter(new SmkLivePaypal());
+    }
+
+
+    public function submit(){
+
+
+        
     }
 
     
-    public function submitPayment($data){
-        
-        
 
-    }
 
 
 
