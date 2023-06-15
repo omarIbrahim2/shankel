@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Service;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CardAddReq extends FormRequest
@@ -23,8 +24,10 @@ class CardAddReq extends FormRequest
      */
     public function rules()
     {
+        $service = Service::select('quantity')->findOrFail($this->service_id);
         return [
             "service_id" => 'required|exists:services,id',
+            'quantity' => "required|min:1|max:$service->quantity",
         ];
     }
 }

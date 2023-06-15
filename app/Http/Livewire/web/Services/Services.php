@@ -19,7 +19,7 @@ class Services extends Component
 
         if ($userRepo != null){
             $card = $cardService->getCardWithServices($userRepo);
-
+        
             $cardServices = $card->services;
             $allServices = $serviceRepo->getServices()->map(function($service) use($cardServices){
 

@@ -15,6 +15,8 @@ class CardController extends Controller
    {
       $this->cardService = $cardService;
    }
+
+   
     public function AddToCard(CardAddReq $request){
        
        $validatedReq = $request->validated();
@@ -23,11 +25,11 @@ class CardController extends Controller
         $AuthUser = AuthUserFactory::getAuthUser();
        $UserRepo =  RepositoryFactory::getUserRebo($guard);
 
-       
+
 
          try {
 
-          $this->cardService->AddToCard($UserRepo , $AuthUser , $validatedReq['service_id']); 
+          $this->cardService->AddToCard($UserRepo , $AuthUser , $validatedReq['service_id'] , $validatedReq['quantity']); 
             
             toastr("added to card" , "success");
             return back();
@@ -45,11 +47,13 @@ class CardController extends Controller
       $UserRepo =  RepositoryFactory::getUserRebo($guard);
        
         $card = $this->cardService->getCardWithServices($UserRepo);
+        $services = $card->services;
 
-        $services =$card[0]->services;
-         
-        return view('web.Card.Card')->with(['Services' => $services]);
-            
+        //calculate Price
+
+       $totalPrice = $this->cardService->calculateTotalPrice($services);
+        
+        return view('web.Card.Card')->with(['Services' => $services  , 'totalPrice' => $totalPrice]);
     }
 
 

@@ -41,6 +41,14 @@
                                         <form action="{{ route('add-to-card') }}" method="post">
                                              @csrf  
                                             <input type="hidden" name="service_id" value="{{ $service->id }}">
+                                            <div class="service-booking">
+                                                {{-- <a href="#" class="btn-custom">Order Now</a> --}}
+                                                <label for="">Quantity</label>
+                                                @error('quantity')
+                                                    <p class="text-danger">{{ $message }}</p>
+                                                @enderror
+                                                <input id="" name="quantity" class="num_cart_item form-control mb-3" placeholder="0" type="number" min="0" max={{ $service->quantity }}>
+                                            </div>
 
                                             <button type="submit" class="btn-custom">{{ trans('service.book') }}</button>
                                         </form>

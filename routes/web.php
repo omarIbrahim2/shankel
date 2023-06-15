@@ -23,6 +23,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\LocationCcontroller;
+use App\Http\Controllers\TransactionController;
 use Symfony\Component\Routing\Route as RoutingRoute;
 
 //Lang Route
@@ -149,6 +150,7 @@ Route::middleware('lang')->group(function(){
         Route::get("filters/view" , [ParentController::class , 'FilterSupplierView'])->name('filter-view');
     });
     
+    Route::post('paypal/services/payment' , [TransactionController::class , 'payment'])->name('payment-services');
     Route::get('suppliers/filter' , [ParentController::class , 'FilterSuppliers'])->name('filter-suppliers');
 
     //admin group

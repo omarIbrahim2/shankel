@@ -21,7 +21,7 @@ class Service extends Model
 
     public function cards()
     {
-        return $this->belongsToMany(Card::class);
+        return $this->belongsToMany(Card::class)->withPivot('quantity');
     }
 
     public function transactions()

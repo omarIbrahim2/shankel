@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('card_service', function (Blueprint $table) {
             $table->foreignId("card_id");
             $table->foreignId("service_id");
+            $table->unsignedInteger("quantity");
         });
     }
 

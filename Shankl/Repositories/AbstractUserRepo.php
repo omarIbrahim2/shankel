@@ -9,6 +9,7 @@ use Shankl\Interfaces\CardInterface;
 abstract class AbstractUserRepo implements CardInterface
 {
 
+  
 
   public function getCardWithServices()
   {
@@ -30,7 +31,7 @@ abstract class AbstractUserRepo implements CardInterface
   }
 
 
-  public function addToCard($user, $serviceId)
+  public function addToCard($user, $serviceId , $quantity)
   {
 
     $userCard =   $user->card;
@@ -41,10 +42,10 @@ abstract class AbstractUserRepo implements CardInterface
         "user_id" => $user->id,
       ]);
 
-      return $createdCard->attach([$serviceId]);
+      return $createdCard->services()->attach([$serviceId] , ['quantity' => $quantity]);
     } else {
 
-      return  $userCard->attach([$serviceId]);
+      return  $userCard->services()->attach([$serviceId] , ['quantity' => $quantity]);
     }
   }
 

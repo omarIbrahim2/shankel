@@ -9,9 +9,9 @@ use Shankl\Interfaces\CardInterface;
 class CardService{
 
 
-public function AddToCard(CardInterface $userRebo , $User , $serviceId ){
+public function AddToCard(CardInterface $userRebo , $User , $serviceId , $quantity ){
          
-        return $userRebo->addToCard($User , $serviceId);
+        return $userRebo->addToCard($User , $serviceId , $quantity);
    }
 
 
@@ -28,4 +28,23 @@ public function AddToCard(CardInterface $userRebo , $User , $serviceId ){
          
       return $userRebo->RemoveFromCard($User , $serviceId);
   }
+
+  public function calculateTotalPrice($Services){
+
+
+    $sum = 0;
+    foreach ($Services as $service) {
+      $servicePrice = $service->price;
+      $quantity = $service->pivot->quantity;
+      $sum += $servicePrice * $quantity;
+    }
+
+    return $sum;
+  }
+
+  
+ 
+
+
+
 }
