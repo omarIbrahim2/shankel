@@ -37,23 +37,15 @@ class Schools extends Component
 
     public function Activate( SchoolService $schoolService , $userId){
            
-          $school =  $schoolService->getSchool($userId);
-
-
-          $schoolService->ActivateUserAccount($school , "school-login");
-
-
-          toastr("User Activated successfully" , "success" , "Activation");
-
-
+        $school =  $schoolService->getSchool($userId);
+        $schoolService->ActivateUserAccount($school , "school-login");
+        toastr("User Activated successfully" , "success" , "Activation");
     }
 
 
     public function Deactivate(SchoolService $schoolService , $userId){
-
-          $school =    $school =  $schoolService->getSchool($userId);
-
-           $schoolService->DeactivateUserAcount($school);
+        $school =  $schoolService->getSchool($userId);
+        $schoolService->DeactivateUserAcount($school);
     }
 
 

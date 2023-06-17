@@ -6,7 +6,7 @@ use Shankl\Repositories\CommentRepo;
 use Shankl\Interfaces\ServiceRepoInterface;
 use Shankl\Repositories\SupplierRepository;
 
-class SupplierService{
+class SupplierService extends Service{
 
     private $supplierRebo , $commentRepo , $fileService;
     

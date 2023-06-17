@@ -36,6 +36,27 @@ class Parents extends Component
         return view('livewire.admin.parents')->with(['Users' => $Users]);
     }
 
+    public function Activate( parentService $parentService , $userId){
+           
+        $parent =  $parentService->getparent($userId);
+
+
+        $parentService->ActivateUserAccount($parent , "parent-login");
+
+
+        toastr("User Activated successfully" , "success" , "Activation");
+
+
+  }
+
+
+  public function Deactivate(parentService $parentService , $userId){
+
+        $parent =  $parentService->getparent($userId);
+
+         $parentService->DeactivateUserAcount($parent);
+  }
+
 
 
     public function paginationView()

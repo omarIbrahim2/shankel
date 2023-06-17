@@ -1,139 +1,92 @@
 @extends('web.layout')
 
 @section('nav')
-    
- @custom_auth
-   <x-nav-auth></x-nav-auth>
- @endcustom_auth
 
- @custom_guest
-   <x-nav-guest/>
- @endcustom_guest
+    @custom_auth
+        <x-nav-auth></x-nav-auth>
+    @endcustom_auth
+
+    @custom_guest
+        <x-nav-guest />
+    @endcustom_guest
 
 @endsection
 
-
-
 @section('main')
-    
-<main data-color="#AF62A6" >
-    <!-- Supplier info -->
-    <section class="section">
+    <!-- profie -->
+    <section class="section edit-teacher-profile">
         <div class="inner">
             <div class="container">
-               
-                <a class="btn btn-primary" href="{{route("Services" , $Supplier->id)}}">All Services</a>
-                          
-                <div class="section-title">
-                    <h2 class="image-content">{{$Supplier->name}}
-                    </h2>
-                   
-                </div>
-                <div class="section-content">
-                    <div class="row">
-                        <div class="col-lg-7 col-md-6 col-12">
-                            <div class="provider">
-                                <div
-                                    style="
-                                        --swiper-navigation-color: #fff;
-                                        --swiper-pagination-color: #fff;
-                                    "
-                                    class="swiper mySwiper2"
-                                >
-                                
-                                    <div class="swiper-wrapper">
-                                        @foreach ($Supplier->images as $image)
-                                        <div class="swiper-slide">
-                                            <img
-                                                src="{{asset('uploads/'.$image->name)}}"
-                                                alt="nurs"
-                                            />
+                <form>
+                    <div class="section-content">
+                        <div class="row">
+                            <div class=" col-md-5 col-12">
+                                <div class="left-side teacher-left-side">
+
+                                    <div class="teacher-avatar">
+                                        <div class="avatar-container">
+                                            <div class="avatar-img">
+                                                <img width="100px" src="{{ asset($Supplier->image) }}" alt="avatar">
+                                                <p><i class="fa-solid fa-location-dot"></i> {{ $Supplier->area->name }}</p>
+                                            </div>
+                                            <div class="avatar-data">
+                                                <h4>
+                                                    <a href="#">{{ $Supplier->name }}</a>
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="add-video">
+                                        <div class="sub-title sec-sub-title teach-title">
+                                            <h3>{{ trans('supplier.email') }}</h3>
+                                        </div>
+                                        <a href="mailto:elmassar@gmail.com">{{ $Supplier->email }}</a>
+                                    </div>
+
+                                    <div class="add-video">
+                                        <div class="sub-title sec-sub-title teach-title">
+                                            <h3>{{ trans('supplier.type') }}</h3>
+                                        </div>
+                                        <p >{{ $Supplier->type }}</p>
+                                    </div>
+
+                                    <div class="add-video">
+                                        <div class="sub-title sec-sub-title teach-title">
+                                            <h3>{{ trans('supplier.orgName') }}</h3>
+                                        </div>
+                                        <a >{{ $Supplier->orgName }}</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-7  col-12">
+                                <div class="right-side">
+                                    <div class="row">
+                                        <div class="avatar-data text-center">
+                                            <h4 class="text-primary">
+                                                {{ $Supplier->name }} {{ trans('supplier.services') }}
+                                            </h4>
+                                        </div>
+                                        @foreach ($Supplier->services as $service)
+                                        <div class=" col-md-6 col-12">
+                                            <div class="teacher-service">
+                                                <img src="{{ asset($service->image) }}" alt="service">
+                                                <h4 class="text-primary">{{ trans('service.name') }}</h4>
+                                                <p>{{ $service->name }}</p>
+                                                <h4 class="text-primary">{{ trans('service.price') }}</h4>
+                                                <p>{{ $service->price }}</p>
+                                            </div>
                                         </div>
                                         @endforeach
-                                     
+                                        <a href="{{ route('web-services') }}" class="btn-custom text-center ">{{ trans('supplier.watchNow') }}</a>
                                     </div>
                                 </div>
-                                <div thumbsSlider="" class="swiper mySwiper">
-                                    @foreach ($Supplier->images as $image)
-                                    <div class="swiper-slide">
-                                        <img
-                                            src="{{asset("uploads/".$image->name)}}"
-                                            alt="nurs"
-                                        />
-                                    </div>
-                                    @endforeach
-                                </div>
-
-
-
-                             @custom_auth
-                                <div class="revews">
-
-                                     @livewire('web.comments.comments' , ["supplier_id" => $Supplier->id])
-                                    {{-- <div class="reviews-item">
-                                        <div class="review-head">
-                                            <h5>hussien</h5>
-                                        </div>
-                                        <div class="review-body">
-                                            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                                        </div>
-                                    </div>
-                                 
-                                    <div class="add-review">
-                                        <input type="text" placeholder="leave comment" name="review">												
-                                    </div>
-                                    <button class="btn btn-primary">comment</button> --}}
-
-                                </div>
-                               @endcustom_auth 
                             </div>
-                        </div>
-                        <div class="col-lg-5 col-md-6 col-12">
-                            
-                            <div class="detials-title">
-                                <h3>{{$Supplier->name}}</h3>
-                            </div>
-                            <div class="detials-descriton">
-                                <p>
-                                    {{$Supplier->orgName}}
-                                </p>
-                            </div>
-                            <div class="detials-items">
-                                
-                                <div class="detials-item">
-                                    <span>
-                                        <i class="fa-solid fa-phone-volume"></i>
-                                    </span>
-                                    <span> +96579{{$Supplier->phone}} </span>
-                                </div>
-                                
-                                
-                            </div>
-
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </section>
-    <!-- *************** -->
-
-</main>
- 
-@endsection
-
-@section('scripts')
-    <script>
-        $(".comment").on("click",function(){
-
-            let comment = $(this).attr("data-comment");
-
-            let commentId = $(this).attr("data-commentId");
-
-
-             $("#editcomment").val(comment)
-
-             $("#editcommentId").val(commentId)
-        })
-    </script>
+    <!-- ***************** -->
 @endsection

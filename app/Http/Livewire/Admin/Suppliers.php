@@ -31,6 +31,27 @@ class Suppliers extends Component
         return view('livewire.admin.suppliers')->with(['Users' => $Users]);
     }
 
+    public function Activate( SupplierService $supplierService , $userId){
+           
+        $supplier =  $supplierService->getSupplier($userId);
+
+
+        $supplierService->ActivateUserAccount($supplier , "supplier-login");
+
+
+        toastr("User Activated successfully" , "success" , "Activation");
+
+
+  }
+
+
+  public function Deactivate(SupplierService $supplierService , $userId){
+
+        $supplier =  $supplierService->getSupplier($userId);
+
+        $supplierService->DeactivateUserAcount($supplier);
+  }
+
 
 
     public function paginationView()

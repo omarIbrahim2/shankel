@@ -3,12 +3,16 @@
 namespace App\Providers;
 
 use App\Events\SchoolViews;
+use App\Events\AddToCardEvent;
+use App\Events\RemoveFromCardEvent;
+use App\Listeners\AddToCardListener;
 use App\Listeners\increaseViews;
+use App\Listeners\RemoveFromCardListener;
 use Illuminate\Auth\Events\Lockout;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Event;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -24,7 +28,15 @@ class EventServiceProvider extends ServiceProvider
 
         SchoolViews::class => [
             increaseViews::class,
-        ]
+        ],
+
+        AddToCardEvent::class =>[
+              AddToCardListener::class,
+        ],
+
+        RemoveFromCardEvent::class => [
+             RemoveFromCardListener::class,
+        ],
 
         
     ];

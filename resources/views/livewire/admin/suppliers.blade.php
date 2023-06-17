@@ -42,10 +42,10 @@
            <td>{{$user["email"]}}</td>
            @if ($active == true)
 
-               <td class="text-center"><button class="btn btn-danger">Deactivate</button></td>
+               <td class="text-center"><button wire:click="Deactivate({{$user['id']}})" class="btn btn-danger">Deactivate</button></td>
            @else
 
-              <td class="text-center"><button class="btn btn-primary">Activate</button></td>
+              <td class="text-center"><button wire:click="Activate({{$user['id']}})" class="btn btn-primary">Activate</button></td>
            @endif
            @if ($guard == "supplier")
            <td class="text-center elpsis_controls">

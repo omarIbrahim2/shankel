@@ -8,7 +8,7 @@ use Shankl\Interfaces\ChildRepoInterface;
 use Shankl\Interfaces\EventRepoInterface;
 use Shankl\Repositories\ParentRepository;
 
-class ParentService{
+class ParentService extends Service{
     private $parentRepo;
     private $childRepo;
     private $EventRepo;
@@ -29,6 +29,12 @@ class ParentService{
 
          return $this->parentRepo->getUnActiveUsers($pages);
     }
+
+    public function getParent($parentId){
+
+        return $this->parentRepo->find($parentId);
+    }
+
     public function upadateProfile($data){
       
         $action = $this->parentRepo->update($data);

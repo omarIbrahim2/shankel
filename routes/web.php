@@ -127,7 +127,7 @@ Route::middleware('lang')->group(function(){
     Route::middleware('card')->group(function(){
         Route::post("add/card" , [CardController::class , 'AddToCard'])->name('add-to-card');
         Route::get('card/services' , [CardController::class , "Card"])->name('Card');
-        Route::get('remove/card/{serviceId}' , [CardController::class , "remove"])->name('remove-from-card');
+        Route::delete('remove/card/' , [CardController::class , "remove"])->name('remove-from-card');
     });
  
     

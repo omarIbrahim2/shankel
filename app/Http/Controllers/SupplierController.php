@@ -27,6 +27,9 @@ class SupplierController extends Controller
 
 
     //Web
+    public function index(){
+      return view("web.Suppliers.allSuppliers");
+    }
 
     public function supplier(){
    
@@ -72,6 +75,7 @@ class SupplierController extends Controller
        
       
         $supplier  = $this->supplierService->getSupplier($supplierId);
+        
    
         if (! $supplier) {
            return back();

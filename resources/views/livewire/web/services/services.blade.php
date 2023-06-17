@@ -30,9 +30,12 @@
 
                                     @if ($service->added == true)
                                     <div class="service-booking">
-                                        
-                                            <a href="{{ route('remove-from-card' , $service->id) }}"  class="btn-custom-danger">{{ trans('service.remove') }}</a>
-                                        
+                                        <form action="{{ route('remove-from-card') }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                         <input type="hidden" value="{{ $service->id }}" name="service_id">
+                                         <button type="submit"  class="btn-custom-danger">{{ trans('service.remove') }}</button>
+                                        </form>                                        
                                     </div>
                                         
                                     @else
@@ -43,7 +46,7 @@
                                             <input type="hidden" name="service_id" value="{{ $service->id }}">
                                             <div class="service-booking">
                                                 {{-- <a href="#" class="btn-custom">Order Now</a> --}}
-                                                <label for="">Quantity</label>
+                                                <label for="">{{ trans('service.quantity') }}</label>
                                                 @error('quantity')
                                                     <p class="text-danger">{{ $message }}</p>
                                                 @enderror

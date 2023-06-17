@@ -6,6 +6,7 @@ return [
 "Profile" => "Profile",
 "Schools" => "Schools",
 "Teachers" => "Teachers",
+"Suppliers" => "Suppliers",
 "Services" => "Services",
 "Events" => "Events",
 "Addverts" => "Addvertisments",

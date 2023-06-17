@@ -35,7 +35,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('web-teachers') }}">{{trans("nav.Teachers")}}</a>
                 </li>
-                
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('web-suppliers') }}">{{ trans('nav.Suppliers') }}</a>
+                </li>
             </ul>
         </div>
 

@@ -14,5 +14,5 @@
 
 
 @section('main')
-     @livewire('web.services.services')
+  @livewire('web.services.services')
 @endsection

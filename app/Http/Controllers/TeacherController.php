@@ -40,7 +40,6 @@ class TeacherController extends Controller
       }
 
       function getAllTeachers() {
-        
         return view("web.Teachers.allTeachers");
       }
 

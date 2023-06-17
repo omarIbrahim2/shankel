@@ -27,4 +27,6 @@ return[
     "noImg" => "No Images found !!",
     "cls" => "Close",
     "saveChange" => "Save changes",
+    "watchNow" => "Watch Now All Services",
+    "services" => "Services",
 ];

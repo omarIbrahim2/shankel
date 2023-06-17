@@ -54,14 +54,7 @@ class SchoolRepository extends AbstractUserRepo implements UserReboInterface , C
     public function updateGrades(array $grades , $schoolId){
               
         $school =  $this->find($schoolId);
-    
-
         $school->grades()->sync($grades);
-        // foreach($grades as $grade){
-             
-        //     $school->grades()->sync($grade);
-        // }
-
     }
 
     public function update($data)
