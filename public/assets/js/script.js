@@ -53,7 +53,7 @@ var swiper = new Swiper(".home-slider .mySwiper", {
         slidesPerView: 3,
         spaceBetween: 30,
       },
-     
+
     },
   });
 
@@ -115,10 +115,10 @@ if($('.search-resault').length){
       }
       else{
         $(this).parents(".search-resault").css('display','block')
-  
+
       }
     })
-    
+
   })
 }
 
@@ -169,7 +169,7 @@ var swiper = new Swiper(".provider .mySwiper", {
 var swiper2 = new Swiper(".provider .mySwiper2", {
   loop: true,
   spaceBetween: 10,
- 
+
   thumbs: {
     swiper: swiper,
   },
@@ -225,7 +225,7 @@ $(".school-type input[type='radio']").on('change',function(){
 // validation for cart number
 
 function number_validate(){
-  
+
   $(".num_cart_item").on("change",function(){
     if($(this).val() > $(this).attr("max")){
       $(this).val($(this).attr("max"))
@@ -238,3 +238,5 @@ $("#addEventButton").on("shown.bs.modal" ,function(){
 
   $("#addEvent").modal('show')
 });
+
+$(".print_button").print();

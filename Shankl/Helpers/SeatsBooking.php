@@ -9,11 +9,12 @@ use App\Notifications\SchoolSeatBooked;
 use App\Exceptions\SeatBookingException;
 use Illuminate\Support\Facades\Notification;
 use Shankl\Repositories\SchoolRegOrdersRepo;
+use Shankl\Interfaces\AbstractOrder;
 
-class SeatsBooking{
+class SeatsBooking extends AbstractOrder{
 
     private $schoolRegOrdersRepo , $schoolService;
-    
+
     public function __construct(SchoolRegOrdersRepo $schoolRegOrdersRepo , SchoolService $schoolService)
     {
         $this->schoolRegOrdersRepo = $schoolRegOrdersRepo;
@@ -21,25 +22,21 @@ class SeatsBooking{
 
     }
 
-    private function generateOrderCode(){
-        $str = rand();
-       $hashed = md5($str);
-       return $hashed;
-    }
-    
+
+
    public function PrepareBooking($request){
         $request['order_code'] = $this->generateOrderCode();
 
         $school = $this->schoolService->getSchool($request['school_id']);
         $child =  Child::findOrFail($request['child_id']);
-        
+
         if ($school->free_seats <= 0) {
-            
+
             throw new SeatBookingException();
         }
 
        $order = $this->schoolRegOrdersRepo->create($request);
-       
+
        session()->put("school" , $school);
        session()->put("child_id" , $child);
        session()->put("order" , $order);
@@ -54,7 +51,7 @@ class SeatsBooking{
     }
 
     public function handleBooking(){
-        $parent = AuthUserFactory::getAuthUser();    
+        $parent = AuthUserFactory::getAuthUser();
         $school = session()->get("school");
         $child = session()->get("child");
         $order = session()->get("order");
@@ -74,7 +71,7 @@ class SeatsBooking{
 
     }
 
-    
+
 
 
 }
