@@ -31,6 +31,8 @@ class SchoolFactory extends Factory
             'establish_date' => $this->faker->date(),
             'edu_systems_id' => $system[rand(0 , count($system) - 1)],
             'free_seats' => $this->faker->randomDigit(),
+            'mission' => $this->faker->paragraph(3),
+            'vision' => $this->faker->paragraph(4),
         ];
     }
 }

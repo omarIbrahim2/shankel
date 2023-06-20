@@ -26,7 +26,7 @@ class Service extends Model
 
     public function transactions()
     {
-        return $this->hasMany(Transaction::class);
+        return $this->belongsToMany(Transaction::class  , 'transactions_services')->withTimestamps();
     }
 
     public function image(): Attribute

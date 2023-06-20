@@ -23,6 +23,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\LocationCcontroller;
+use App\Http\Controllers\ServiceOrderController;
 use App\Http\Controllers\TransactionController;
 use Symfony\Component\Routing\Route as RoutingRoute;
 
@@ -289,7 +290,11 @@ Route::middleware('lang')->group(function(){
  
     Route::post('update/comment' , [SupplierController::class , "updateComment"])->name('update-comment');
        
-    
+    //service Payment
+    Route::post("paypal/service/payment" , [ServiceOrderController::class , "payment"])->name("paypal-service-payment");; 
+    Route::get("paypal/service/success" , [ServiceOrderController::class , 'success'])->name('paypal-service-success');
+    Route::get("paypal/service/cancel" , [ServiceOrderController::class , 'cancel'])->name('paypal-service-cancel');
+     
      
     //Logout
     

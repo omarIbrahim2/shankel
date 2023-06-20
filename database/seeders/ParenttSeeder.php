@@ -31,7 +31,7 @@ class ParenttSeeder extends Seeder
         // )->has(
         //        Card::factory() , 'card'
 
-        )->count(3000)->create()->each(function($parent){
+        )->count(30)->create()->each(function($parent){
     
             $events =  $events = Event::all()->random(rand(1 , 4))->pluck('id');  
             $parent->eventSubscribers()->attach($events);

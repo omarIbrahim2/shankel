@@ -15,8 +15,8 @@ class Transaction extends Model
         return $this->morphTo('user');
     }
 
-    public function service()
+    public function services()
     {
-        return $this->belongsTo(Service::class);
+        return $this->belongsToMany(Service::class , 'transactions_services')->withTimestamps();
     }
 }

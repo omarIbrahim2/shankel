@@ -15,7 +15,7 @@
         <div class="container">
             <div class="services-container">
 
-                <form action="{{ route('payment-services') }}" method="POST">
+                <form action="{{ route('paypal-service-payment') }}" method="POST">
                     @csrf
                     <button type="submit" class="payment-button">
                         <img src="{{asset("assets")}}/images/payments/pay.png" alt="payment">
@@ -49,9 +49,8 @@
                                     </div>
                                 </div>
                                 <div class="service-booking">
-                                    {{-- <a href="#" class="btn-custom">Order Now</a> --}}
                                     <label for="">Quantity</label>
-                                    <p id=""  class="num_cart_item form-control mb-3">{{ $service->pivot->quantity }}</p>
+                                    <p name="quantity"  class="num_cart_item form-control mb-3">{{ $service->pivot->quantity }}</p>
                                     <form action="{{ route('remove-from-card') }}" method="POST">
                                         @csrf
                                         @method('DELETE')

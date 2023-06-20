@@ -7,19 +7,20 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class ConfirmUserNotify extends Notification implements ShouldQueue
+class OrderNotification extends Notification implements ShouldQueue
 {
     use Queueable;
-    
-    public $data;
+    public $order , $services , $user;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($data)
+    public function __construct($order , $services , $user)
     {
-        $this->data = $data;
+        $this->order = $order;
+        $this->services = $services;
+        $this->user = $user;
     }
 
     /**
@@ -42,11 +43,7 @@ class ConfirmUserNotify extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->greeting("Hello". $this->data['userName'] . "from Shankel")
-                    ->line('We are pleasure to join shankel , thank you for registration , your account has been activated ,
-                      you can login from the link below.')
-                    ->action('Login Ling', route($this->data['route']))
-                    ->line('Thank you ');
+        ->view('invoices.Ordering' , ['order' => $this->order , 'services' =>$this->services , 'user' => $this->user]);
     }
 
     /**
@@ -59,6 +56,14 @@ class ConfirmUserNotify extends Notification implements ShouldQueue
     {
         return [
             //
+        ];
+    }
+
+    public function viaQueues() : array
+    {
+
+        return [
+          "mail" => "EventMailingQueue"
         ];
     }
 }

@@ -46,4 +46,7 @@ abstract class AbstractUserRepo implements CardInterface
     event(new RemoveFromCardEvent($parentCard,  $SubstractedTotal ));
     return $parentCard->services()->detach([$serviceId]);
   }
+
+
+  
 }

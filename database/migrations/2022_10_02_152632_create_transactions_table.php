@@ -19,8 +19,9 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->morphs("user");
-            $table->foreignId("service_id")->constrained();
             $table->string("barcode" , 255)->default(Str::random(50));
+            $table->unsignedFloat("total_price")->default(0.00);
+            $table->enum("status" , ["Completed","Cancelled","Pending"])->nullable();
             $table->timestamps();
         });
     }

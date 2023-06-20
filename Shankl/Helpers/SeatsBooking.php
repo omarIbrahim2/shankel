@@ -63,7 +63,7 @@ class SeatsBooking extends AbstractOrder{
 
         $order->update(['status' => true]);
 
-        Notification::send($parent , new SchoolSeatBooked($school , $order , $child));
+        Notification::send($parent , new SchoolSeatBooked($school , $order , $child ,$parent));
 
         session()->pull('school');
         session()->pull('child');

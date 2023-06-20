@@ -46,7 +46,7 @@ class PaypalController extends Controller
           return back()->with('error' , trans('payment.wrong'));
        }
    
-
+       $data['amount'] = 20; 
        $data['success'] = url(route('paypal-success' , $request->school_id));
        $data['cancel'] = url(route('paypal-cancel'));
          
@@ -56,19 +56,11 @@ class PaypalController extends Controller
 
 
    public function success(Request $request , SchoolService $schoolService){
-          
-   
-      $this->seatBooking->handleBooking();
-          
+      $this->seatBooking->handleBooking(); 
       return $this->paypal->success($request);
-
-
-
-        
    }
 
    public function cancel(){
-
      return $this->paypal->cancel();
    }
 

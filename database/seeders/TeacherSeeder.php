@@ -29,7 +29,7 @@ class TeacherSeeder extends Seeder
 
         //     Card::factory() , "card"
 
-        )->count(2000)->create()->each(function($teachers){
+        )->count(20)->create()->each(function($teachers){
     
             $events= Event::all()->random(rand(1 , 4))->pluck('id');   
             $teachers->eventSubscribers()->attach($events);

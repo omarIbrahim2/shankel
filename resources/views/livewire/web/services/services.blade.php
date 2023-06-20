@@ -45,7 +45,6 @@
                                              @csrf  
                                             <input type="hidden" name="service_id" value="{{ $service->id }}">
                                             <div class="service-booking">
-                                                {{-- <a href="#" class="btn-custom">Order Now</a> --}}
                                                 <label for="">{{ trans('service.quantity') }}</label>
                                                 @error('quantity')
                                                     <p class="text-danger">{{ $message }}</p>

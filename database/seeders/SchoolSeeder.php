@@ -21,7 +21,7 @@ class SchoolSeeder extends Seeder
     public function run()
     {
 
-      School::factory()->count(2000)->has(
+      School::factory()->count(20)->has(
         Notification::factory()->count(2)
       )->has(
         Event::factory()->count(3)

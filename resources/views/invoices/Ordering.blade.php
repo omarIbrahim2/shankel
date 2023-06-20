@@ -5,7 +5,7 @@
 
 <header class="top-bar align-center">
   <div class="top-bar-title">
-    <h1>Reserve a seat in a  <small>{{ $school->name }}</small> school</h1>
+    <h1>Your Order Invoice</h1>
   </div>
 </header>
 <div class="row expanded">
@@ -23,27 +23,53 @@
               <img src="{{asset("assets")}}/images/logo/logo.png" alt="Shankl" />
             </td>
             <td class="align-right">
-              <h2>Reserve Information</h2>
+              <h2>Invoice</h2>
             </td>
           </tr>
           <tr class="intro">
             <td class="">
-              Hello, {{ $parent->name }}.<br>
-              We would like to inform you of the success of the request to reserve a seat at {{ $school->name }} School, and we wish {{ $child->name }} an enjoyable and happy study followed by success and excellence.
+              Hello, {{ $user->name }}.<br>
+              Thank you for your order.
             </td>
             <td class="text-right">
-              <span class="num">Reserve {{ $order->order_code }}</span><br>
+              <span class="num">Order {{ $order->barcode }}</span><br>
               {{ $order->created_at }}
             </td>
           </tr>
+          <tr class="details">
+            <td colspan="2">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="desc">Service Name</th>
+                    <th class="desc">Service Description</th>
+                    <th class="qty">Quantity</th>
+                    <th class="amt">Price</th>
+                  </tr>
+                </thead>
+                <tbody>
 
+                  @foreach ($services as $service)
+                      
+                  <tr class="item">
+                    <td class="desc">{{ $service->name }}</td>
+                    <td class="desc">{{ $service->desc }}</td>
+                    <td class="qty">{{ $service->pivot->quantity }}</td>
+                    <td class="amt">{{ $service->price }} JOD</td>
+                  </tr>
+                  @endforeach
+                </tbody>
+              </table>
+            </td>
+          </tr>
           <tr class="totals">
             <td></td>
             <td>
               <table>
+                
                 <tr class="total">
                   <td>Total</td>
-                  <td>$107.00</td>
+                  <td>{{ $order->total_price }} JOD</td>
                 </tr>
               </table>
             </td>
@@ -53,10 +79,10 @@
         <section class="additional-info">
         <div class="row">
           <div class="columns">
-            <h5>Reserve Information</h5>
-            <p>{{ $parent->name }}<br>
-              {{ $parent->area->name }}.<br>
-              {{ $parent->area->city->name }}<br>
+            <h5>Billing Information</h5>
+            <p>{{ $user->name }}<br>
+              {{ $user->area->name }}<br>
+              {{ $user->area->city->name }}<br>
               Jordan</p>
           </div>
           <div class="columns">
