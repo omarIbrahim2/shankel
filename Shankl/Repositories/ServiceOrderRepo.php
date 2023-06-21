@@ -2,9 +2,13 @@
 
 namespace Shankl\Repositories;
 
-use App\Events\RemoveFromCardEvent;
 use App\Models\Card;
+use App\Models\School;
+use App\Models\Parentt;
+use App\Models\Teacher;
 use App\Models\Transaction;
+use App\Events\RemoveFromCardEvent;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class ServiceOrderRepo{
 
@@ -41,16 +45,30 @@ class ServiceOrderRepo{
          return $order->update($data);
       }
 
-      public function getAll($pages){
-
-        return  Transaction::with(['services', 'transactionable'])->paginate($pages);
+      public function getAll($pages , ...$attrs){
+        
+        return  Transaction::select(...$attrs)->with('transactionable' , function (MorphTo $morphTo){
+         
+          $morphTo->morphWith([
+            Parentt::class,
+            School::class,
+            Teacher::class,
+          ]);
+          
+        })->paginate($pages);
  
          
       }
  
       public function findById($transactionId , $pages){
            
-       return Transaction::where('id' , $transactionId)->paginate($pages);
+       return Transaction::with('transactionable' 
+
+       )->where('id' , $transactionId)->paginate($pages);
  
+      }
+
+      public function transactionService($transactionId){
+        return Transaction::with(['services:name,desc,price'])->findOrFail($transactionId);
       }
 }

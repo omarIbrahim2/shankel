@@ -39,4 +39,12 @@ class ServiceOrderController extends Controller
     {
         return $this->paypal->cancel();
     }
+
+    public function OrdersServ(){
+        return view("admin.orders.ServiceOrders");
+    }
+
+    public function orderDetails($transactionId){
+        return view("admin.orders.ordersDetails")->with(['transactionId' => $transactionId]);
+    }
 }

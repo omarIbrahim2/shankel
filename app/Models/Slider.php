@@ -23,6 +23,9 @@ class Slider extends Model
   
           return new Attribute(
               get: function($value){
+                if ($value == null) {
+                    return "assets/images/banner/sup-banner.png";
+                }
                  return "uploads/".$value;
               }
           );

@@ -18,14 +18,17 @@ use Shankl\Interfaces\GradeRepoInterface;
 use Shankl\Repositories\ParentRepository;
 use Shankl\Interfaces\LocationRepoInterface;
 use Shankl\Interfaces\EduSystemRepoInterface;
+use Shankl\Services\AdminService;
 
 class ParentController extends Controller
 {
   use Searchable;
-  private $changePassObj;
-  public function __construct(ChangePassword $changePass)
+  private $changePassObj , $adminService;
+  
+  public function __construct(ChangePassword $changePass , AdminService $adminService)
   {
     $this->changePassObj = $changePass;
+    $this->adminService = $adminService;
     
   }
     public function showRegister(LocationRepoInterface $locationRepo){
@@ -92,6 +95,15 @@ class ParentController extends Controller
 
       $data['Esystems'] = $eduSystems->getEduSystems();
 
+      $sliders = $this->adminService->getSliders();
+       
+      if (count($sliders) == 0) {
+        $data['slider'] = collect()->pop();
+      }else{
+
+        $data['slider'] = $sliders->random();
+      }
+       
       return view('web.Parents.profile')->with($data);
     }
 
@@ -156,6 +168,7 @@ class ParentController extends Controller
     public function FilterSchools(Request $request){
       
        $query = School::query();
+      
         $Schools =  $this->search($request->query() , $query );
         
         return view("web.Schools.filteredSchools")->with(['Schools' => $Schools]);

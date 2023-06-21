@@ -14,16 +14,17 @@
 
     <!-- banner slider -->
     <div class="home-slider" id="header">
-        <div class="home-banner">
+         
+        <div class="home-banner" style="background-image: url({{ asset($slider == null ? 'assets/images/banner/sup-banner.png' : $slider->image) }})">
             <div class="container">
                 <div claas="row">
                     <div class="col-lg-6 col-md-8 col-12">
                         <div class="slider-content">
-                            <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio possimus
-                                maxime eaque laudantium at, soluta sunt omnis aspernatur et blanditiis sequi
-                                ea culpa. Aliquid mollitia reiciendis totam minima dolores illo.</P>
-                            <a href="#" class="btn-custom">Read more</a>
-
+                            @if ($slider)
+                            <P>{{ $slider->title(App::getLocale()) }}</P>
+                            <p>{{ $slider->info(App::getLocale())  }}</p>       
+                            @endif
+                         
                         </div>
                     </div>
                     <div class="col-12">

@@ -270,6 +270,8 @@ class AdminController extends Controller
         return view("admin.orders.orders");
     }
 
+    
+
     public function Socials(){
         return view("admin.socials.socials");
     }

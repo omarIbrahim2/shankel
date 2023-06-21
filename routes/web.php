@@ -129,6 +129,10 @@ Route::middleware('lang')->group(function(){
         Route::post("add/card" , [CardController::class , 'AddToCard'])->name('add-to-card');
         Route::get('card/services' , [CardController::class , "Card"])->name('Card');
         Route::delete('remove/card/' , [CardController::class , "remove"])->name('remove-from-card');
+           //service Payment
+        Route::post("paypal/service/payment" , [ServiceOrderController::class , "payment"])->name("paypal-service-payment");; 
+        Route::get("paypal/service/success" , [ServiceOrderController::class , 'success'])->name('paypal-service-success');
+        Route::get("paypal/service/cancel" , [ServiceOrderController::class , 'cancel'])->name('paypal-service-cancel');
     });
  
     
@@ -208,9 +212,13 @@ Route::middleware('lang')->group(function(){
         Route::post('service/create' , [ServiceController::class , "CreateService"])->name("service-create");
         Route::post('service/update' , [ServiceController::class , "UpdateService"])->name('service-update');
 
-        //orders
+        //School booking orders
         Route::get('orders' , [AdminController::class , "Orders"])->name("Orders");
-       
+
+        //service orders
+        Route::get('orders/services' , [ServiceOrderController::class , "OrdersServ"])->name("service-orders");
+        Route::get('orders/details/{id}' , [ServiceOrderController::class , "orderDetails"])->name("orders-details");
+
         //socials
         Route::get("socials" , [AdminController::class , "Socials"])->name("Socials");
         Route::get("socials/create" , [AdminController::class , "socialsAddView"])->name("social-add-view");
@@ -290,10 +298,7 @@ Route::middleware('lang')->group(function(){
  
     Route::post('update/comment' , [SupplierController::class , "updateComment"])->name('update-comment');
        
-    //service Payment
-    Route::post("paypal/service/payment" , [ServiceOrderController::class , "payment"])->name("paypal-service-payment");; 
-    Route::get("paypal/service/success" , [ServiceOrderController::class , 'success'])->name('paypal-service-success');
-    Route::get("paypal/service/cancel" , [ServiceOrderController::class , 'cancel'])->name('paypal-service-cancel');
+ 
      
      
     //Logout
