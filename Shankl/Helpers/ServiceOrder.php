@@ -2,10 +2,12 @@
 
 namespace Shankl\Helpers;
 
-use App\Notifications\OrderNotification;
+use App\Exceptions\ServiceOrderException;
+use Illuminate\Support\Facades\DB;
 use Shankl\Interfaces\AbstractOrder;
 use Shankl\Factories\AuthUserFactory;
 use Shankl\Factories\RepositoryFactory;
+use App\Notifications\OrderNotification;
 use Shankl\Repositories\ServiceOrderRepo;
 use Illuminate\Support\Facades\Notification;
 
@@ -30,7 +32,9 @@ class ServiceOrder extends AbstractOrder
           $orderCode = $this->generateOrderCode();
           $AuthUser = AuthUserFactory::getAuthUser();
           $totalPrice = $AuthUser->card->totalPrice;
-          
+          if ($totalPrice <= 0) {
+               return back();
+          }
           $transaction = $this->serviceOrderRepo->create($AuthUser, $orderCode , $totalPrice);
 
           session()->put("transaction", $transaction);
@@ -41,20 +45,28 @@ class ServiceOrder extends AbstractOrder
      {
 
           $AuthUser = AuthUserFactory::getAuthUser();
-
           $card = $AuthUser->card;
           $transaction = session()->get('transaction');
-
           $services = $this->serviceOrderRepo->getCardServices($card);
 
-          $servicesIds = $services->pluck("id")->toArray();
+          if (count($services) == 0) {
+     
+               throw new ServiceOrderException();
+          }
 
-          $this->serviceOrderRepo->createServices($transaction, $servicesIds);
-
-          $this->serviceOrderRepo->clearCard($card, $servicesIds);
-
+     
+          DB::transaction(function () use($card , $transaction , $services) {
+               $servicesIds = $services->pluck("id")->toArray();
+     
+               $this->serviceOrderRepo->createServices($transaction, $servicesIds);
+     
+               $this->serviceOrderRepo->clearCard($card, $servicesIds);
+     
+               $this->serviceOrderRepo->update(['id' => $transaction->id, 'status' => 'Completed']);
+               $this->serviceOrderRepo->updateQuatityInservice($services);
+          });
+         
           Notification::send($AuthUser , new OrderNotification($transaction ,$services , $AuthUser ));
-          return $this->serviceOrderRepo->update(['id' => $transaction->id, 'status' => 'Completed']);
      }
 
      public function __destruct()

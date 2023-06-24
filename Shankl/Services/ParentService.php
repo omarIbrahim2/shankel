@@ -9,9 +9,8 @@ use Shankl\Interfaces\EventRepoInterface;
 use Shankl\Repositories\ParentRepository;
 
 class ParentService extends Service{
-    private $parentRepo;
-    private $childRepo;
-    private $EventRepo;
+    private $parentRepo , $childRepo ,$EventRepo;
+
     public function __construct(ParentRepository $parentRepo , ChildRepoInterface $childRepo , EventRepoInterface $EventRepo)
     {
         $this->parentRepo = $parentRepo;
@@ -77,5 +76,13 @@ class ParentService extends Service{
 
         return $action;
 
+    }
+
+    public function areaSchools($pages) {
+        return $this->parentRepo->getAreaSchools($pages);
+    }
+
+    public function reservedSchools($pages) {
+        return $this->parentRepo->getReservedSchools($pages);
     }
 }

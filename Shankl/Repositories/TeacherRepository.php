@@ -34,11 +34,18 @@ class TeacherRepository extends AbstractUserRepo implements UserReboInterface , 
       return Lesson::create($data);
    }
 
-   public function getLessons($teacherId){
+   public function getLessons($teacherId , $pages){
 
-      return Lesson::select('id' , 'url')->where('teacher_id', $teacherId)->get();
+      return Lesson::with(['teacher'] , function($query){
+        $query->select('field')->first();
+      })->select('id' , 'url','type' ,'title' ,'image' ,'teacher_id')->where('teacher_id', $teacherId )->where('type' , 'Public')->paginate($pages);
    }
 
+
+   public function deleteLesson($lesson){
+   
+      return $lesson->delete();
+   }
 
 
     public function update($data)

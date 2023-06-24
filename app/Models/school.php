@@ -101,7 +101,7 @@ class School extends Authenticatable
         
                if ($value == null) {
                    
-                 return "assets/images/logo/user.png";
+                 return "assets/images/school/2.webp";
 
                  
                }

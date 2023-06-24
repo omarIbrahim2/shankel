@@ -23,167 +23,167 @@ use Shankl\Services\AdminService;
 class ParentController extends Controller
 {
   use Searchable;
-  private $changePassObj , $adminService;
-  
-  public function __construct(ChangePassword $changePass , AdminService $adminService)
+  private $changePassObj, $adminService;
+
+  public function __construct(ChangePassword $changePass, AdminService $adminService)
   {
     $this->changePassObj = $changePass;
     $this->adminService = $adminService;
-    
   }
-    public function showRegister(LocationRepoInterface $locationRepo){
-       
-       $data['cities'] =  $locationRepo->getCities();
+  public function showRegister(LocationRepoInterface $locationRepo)
+  {
 
-         return view("web.Auth.Parent.parentRegister")->with($data);
+    $data['cities'] =  $locationRepo->getCities();
+
+    return view("web.Auth.Parent.parentRegister")->with($data);
+  }
+
+  public function addChild($parentId, ParentRepository $parentRepo, GradeRepoInterface $gradeRepo)
+  {
+
+    $currParent = $parentRepo->find($parentId);
+    $grades = $gradeRepo->getGrades();
+
+    return view('web.Auth.Parent.add-child')->with([
+      'parent_id' => $currParent->id,
+      'grades' => $grades
+    ]);
+  }
+
+  public function showAddChild($parentId, ParentRepository $parentRepo, GradeRepoInterface $gradeRepo)
+  {
+    $currParent = $parentRepo->find($parentId);
+    $grades = $gradeRepo->getGrades();
+
+    return view('web.Parents.add-child')->with([
+      'parent_id' => $currParent->id,
+      'grades' => $grades
+    ]);
+  }
+
+  public function getParentAdmin($id)
+  {
+
+    return view("admin.parents.details")->with(['id' => $id]);
+  }
+
+  public function createChild(AddChildRequest $request, ParentService $parentService)
+  {
+
+    $parentService->addChild($request);
+
+
+    return redirect()->route('parent');
+  }
+
+
+  public function InsertChild(AddChildRequest $request, ParentService $parentService)
+  {
+
+    $parentService->addChild($request);
+
+    toastr("child added successfully", "success");
+    return redirect()->route('parent-profile');
+  }
+
+  public function parent(LocationRepoInterface $locationRepo, GradeRepoInterface $gradeRepo, EduSystemRepoInterface $eduSystems)
+  {
+    $data['Areas'] = $locationRepo->getAreas();
+    $data['Grades'] = $gradeRepo->getGrades();
+    $data['Esystems'] = $eduSystems->getEduSystems();
+    $sliders = $this->adminService->getSliders();
+    if (count($sliders) == 0) {
+      $data['slider'] = collect()->pop();
+    } else {
+      $data['slider'] = $sliders->random();
+    }
+    return view('web.Parents.profile')->with($data);
+  }
+
+
+  public function showLogin()
+  {
+    return view('web.Auth.Parent.parentLogin');
+  }
+
+  public function showProfile(ParentRepository $parentRepository, GradeRepoInterface $gradeRepo)
+  {
+    $parent = $parentRepository->ParentChilds();
+    $grades = $gradeRepo->getGrades();
+    $children = $parent->children;
+    return view("web.Parents.editProfile")->with([
+      'children' => $children,
+      'grades' => $grades
+    ]);
+  }
+
+  public function changePassView()
+  {
+    return view("web.Auth.Parent.Change_Pass");
+  }
+
+  public function changePass(Request $request, $guard)
+  {
+    $result = $this->changePassObj->changePass($request, $guard);
+
+    if ($result == false) {
+      return back()->with('error', "old password doesn't match");
+    }
+    $url =  Config::get('auth.custom.' . $guard . ".url");
+
+    toastr("password changed sucessfully", "success");
+
+    return redirect()->route($url);
+  }
+
+
+  public function showRegisterForm($schoolid, SchoolService $schoolService, ParentService $parentService)
+  {
+    $School = $schoolService->getSchoolGrades($schoolid);
+
+    if (!$School) {
+      return back();
     }
 
-    public function addChild($parentId , ParentRepository $parentRepo , GradeRepoInterface $gradeRepo){
+    $Parent = $parentService->Children();
 
-       $currParent = $parentRepo->find($parentId);
-       $grades = $gradeRepo->getGrades();
-
-       return view('web.Auth.Parent.add-child')->with([
-         'parent_id' => $currParent->id,
-         'grades' => $grades
-       ]);
-
+    if (!$Parent) {
+      return back();
     }
 
-    public function showAddChild($parentId , ParentRepository $parentRepo , GradeRepoInterface $gradeRepo){
-      $currParent = $parentRepo->find($parentId);
-      $grades = $gradeRepo->getGrades();
+    return view('web.Schools.schoolRegister')->with(['School' => $School, 'Parent' => $Parent]);
+  }
 
-      return view('web.Parents.add-child')->with([
-        'parent_id' => $currParent->id,
-        'grades' => $grades
-      ]);
+  public function FilterSchools(Request $request)
+  {
+    $query = School::query();
+    $Schools =  $this->search($request->query(), $query);
 
-          
-    }
-
-    public function getParentAdmin($id){
-      
-      return view("admin.parents.details")->with(['id' => $id]);
-  
-    }
-
-    public function createChild( AddChildRequest $request , ParentService $parentService)
-    {
-    
-      $parentService->addChild($request);
-       
-      
-       return redirect()->route('parent');
-    }
-
-    
-    public function InsertChild(AddChildRequest $request , ParentService $parentService){
-     
-      $parentService->addChild($request);
-       
-      toastr("child added successfully" , "success");
-      return redirect()->route('parent-profile');
-    }
-
-    public function parent(LocationRepoInterface $locationRepo , GradeRepoInterface $gradeRepo , EduSystemRepoInterface $eduSystems )
-    {
-
-      $data['Areas'] = $locationRepo->getAreas();
-
-      $data['Grades'] = $gradeRepo->getGrades();
-
-      $data['Esystems'] = $eduSystems->getEduSystems();
-
-      $sliders = $this->adminService->getSliders();
-       
-      if (count($sliders) == 0) {
-        $data['slider'] = collect()->pop();
-      }else{
-
-        $data['slider'] = $sliders->random();
-      }
-       
-      return view('web.Parents.profile')->with($data);
-    }
+    return view("web.Schools.filteredSchools")->with(['Schools' => $Schools]);
+  }
 
 
-    public function showLogin(){
+  public function FilterSuppliers(Request $request)
+  {
+    $query = Supplier::query();
+    $Suppliers =  $this->search($request->query(), $query);
 
-      return view('web.Auth.Parent.parentLogin');
-    }
+    return view("web.Suppliers.filteredSuppliers")->with(['Suppliers' => $Suppliers]);
+  }
 
-    public function showProfile(ParentRepository $parentRepository , GradeRepoInterface $gradeRepo){
-      
-       $parent = $parentRepository->ParentChilds();
-       $grades = $gradeRepo->getGrades();
+  public function areaSchools(){
+    return view("web.Parents.areaSchools");
+  }
 
-      $children =$parent->children;
-      return view("web.Parents.editProfile")->with([
-        'children' => $children,
-        'grades' => $grades
-      ]);
-    }
+  public function reservedEvents(){
+    return view("web.Parents.reservedEvents");
+  }
 
-    public function changePassView(){
-       
-        return view("web.Auth.Parent.Change_Pass");
-    }
+  public function reservedSchools(){
+    return view("web.Parents.reservedSchools");
+  }
 
-    public function changePass(Request $request  , $guard){
-         
-         
-        
-          $result = $this->changePassObj->changePass($request , $guard);
-
-          if ($result == false) {
-            return back()->with('error' , "old password doesn't match");
-          }
-         $url =  Config::get('auth.custom.' . $guard . ".url");
-
-         toastr("password changed sucessfully" , "success");
-        
-          return redirect()->route($url);
-    }
-
-
-    public function showRegisterForm($schoolid , SchoolService $schoolService , ParentService $parentService){
-         
-      $School = $schoolService->getSchoolGrades($schoolid);
-
-      if (! $School) {
-          return back();
-      }
-
-       $Parent = $parentService->Children();
-
-       if (! $Parent) {
-          return back();
-       }
-       
-
-      return view('web.Schools.schoolRegister')->with(['School' => $School , 'Parent' => $Parent]);
-    }
-
-    public function FilterSchools(Request $request){
-      
-       $query = School::query();
-      
-        $Schools =  $this->search($request->query() , $query );
-        
-        return view("web.Schools.filteredSchools")->with(['Schools' => $Schools]);
-    }
-
-
-  
-    public function FilterSuppliers(Request $request){
-      
-      $query = Supplier::query();
-       $Suppliers =  $this->search($request->query() , $query );
-       
-       return view("web.Suppliers.filteredSuppliers")->with(['Suppliers' => $Suppliers]);
-   }
-
-
-  
+  public function reservedTeachers(){
+    return view("web.Parents.reservedTeachers");
+  }
 }

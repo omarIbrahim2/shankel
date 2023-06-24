@@ -73,8 +73,8 @@
         <div class="inner">
             <div class="container">
                 <div class="section-title">
-                    <h2>Our Services</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+                    <h2>{{ trans('parent.choices') }}</h2>
+                    <p>{{ trans('parent.choicesInfo') }}</p>
                 </div>
                 <div class="section-content">
                     <div class="parent-services">
@@ -86,10 +86,10 @@
                                         <i class="fa-solid fa-location-dot"></i>
                                     </div>
                                     <div class="service-name">
-                                        <h3>My Area</h3>
+                                        <h3>{{ trans('parent.schArea') }}</h3>
                                     </div>
-                                    <a href="#" class="custom-out-btn">
-                                        More
+                                    <a href="{{ route('area-schools') }}" class="custom-out-btn">
+                                        {{ trans('parent.more') }}
                                     </a>
                                 </div>
                             </div>
@@ -99,10 +99,10 @@
                                         <i class="fa-regular fa-calendar-days"></i>
                                     </div>
                                     <div class="service-name">
-                                        <h3>Events</h3>
+                                        <h3>{{ trans('parent.events') }}</h3>
                                     </div>
-                                    <a href="#" class="custom-out-btn">
-                                        More
+                                    <a href="{{ route('reserved-events') }}" class="custom-out-btn">
+                                        {{ trans('parent.more') }}
                                     </a>
                                 </div>
                             </div>
@@ -112,26 +112,26 @@
                                         <i class="fa-solid fa-building-columns"></i>
                                     </div>
                                     <div class="service-name">
-                                        <h3>School</h3>
+                                        <h3>{{ trans('parent.schools') }}</h3>
                                     </div>
-                                    <a href="#" class="custom-out-btn">
-                                        More
+                                    <a href="{{ route('reserved-schools') }}" class="custom-out-btn">
+                                        {{ trans('parent.more') }}
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-6 col-12">
+                            {{-- <div class="col-lg-4 col-md-6 col-12">
                                 <div class="service" style="--clr:#00A0DC">
                                     <div class="service-icon">
                                         <i class="fa-solid fa-pen-ruler"></i>
                                     </div>
                                     <div class="service-name">
-                                        <h3>Teacher</h3>
+                                        <h3>{{ trans('parent.teachers') }}</h3>
                                     </div>
-                                    <a href="#" class="custom-out-btn">
-                                        More
+                                    <a  href="{{ route('reserved-teachers') }}" class="custom-out-btn">
+                                        {{ trans('parent.more') }}
                                     </a>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -141,40 +141,7 @@
     <!-- **************** -->
     <!-- about us -->
     <section class="section" id="about">
-        <div class="inner">
-            <div class="container">
-                <div class="section-title">
-                    <h2>About Us</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
-                </div>
-                <div class="section-content">
-                    <div class="about-welcome">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="welcome">
-                                    <h3>Welcome To Shankal</h3>
-                                </div>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus nihil labore esse
-                                    ex
-                                    cupiditate numquam est velit minima molestiae! Est a illo eius sapiente labore
-                                    consectetur, eaque modi blanditiis molestiae velit debitis ab laborum quos.</p>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident pariatur
-                                    cupiditate ullam voluptates beatae rerum, enim sequi quae laudantium nam dolore
-                                    alias iure, quo aut et quos blanditiis facere, obcaecati illo possimus laborum.
-                                    Assumenda, illo quasi blanditiis repellat temporibus nemo eligendi reprehenderit
-                                    maxime exercitationem magnam id perferendis, corrupti impedit eveniet.</p>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt officia
-                                    exercitationem nemo voluptates sit ipsa similique voluptatibus libero maxime facere?
-                                </p>
-                            </div>
-                            <div class="col-lg-6 order-lg-0 order-first">
-                                <img src="assets/images/logo/Shanklbig.png" alt="about us">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <x-about-us-section></x-about-us-section>
     </section>
     <!-- ****************** -->
 

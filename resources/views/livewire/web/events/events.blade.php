@@ -27,9 +27,8 @@
                                 </div>
                             </div>
                             <div class="event-img">
-                                <img src="{{ asset('uploads/' . $event->image) }}" style="width: 500px" alt="event">
+                                <img src="{{ asset( $event->image ? 'assets/images/events/event1.webp' : 'uploads/' . $event->image) }}" style="width: 500px" alt="event">
                             </div>
-                            {{-- assets/images/events/event1.webp --}}
                             <div class="event-description">
                                 <p>
                                     {{ $event->desc }}

@@ -25,6 +25,7 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\LocationCcontroller;
 use App\Http\Controllers\ServiceOrderController;
 use App\Http\Controllers\TransactionController;
+use App\Models\Teacher;
 use Symfony\Component\Routing\Route as RoutingRoute;
 
 //Lang Route
@@ -153,12 +154,52 @@ Route::middleware('lang')->group(function(){
         Route::get("filters/view" , [ParentController::class , 'FilterSchoolView'])->name('filter-view');
         Route::get('schools/filter' , [ParentController::class , 'FilterSchools'])->name('filter-schools');
         Route::get("filters/view" , [ParentController::class , 'FilterSupplierView'])->name('filter-view');
+
+        Route::get("areaSchools" , [ParentController::class , 'areaSchools'])->name('area-schools');
+        Route::get("reserved/Events" , [ParentController::class , 'reservedEvents'])->name('reserved-events');
+        Route::get("reserved/Schools" , [ParentController::class , 'reservedSchools'])->name('reserved-schools');
+        Route::get("reserved/Teachers" , [ParentController::class , 'reservedTeachers'])->name('reserved-teachers');
     });
     
     Route::post('paypal/services/payment' , [TransactionController::class , 'payment'])->name('payment-services');
     Route::get('suppliers/filter' , [ParentController::class , 'FilterSuppliers'])->name('filter-suppliers');
 
-    //admin group
+    
+    //teacher Group
+    Route::middleware('teacher')->group(function(){
+        Route::get('/teacher' , [TeacherController::class , 'teacher'])->name('teacher');
+        Route::get('/teacher-profile' , [TeacherController::class , 'teacherProfile'])->name('teacher-profile');
+        Route::get('changePass/teacher' , [TeacherController::class , 'changePassView'])->name('change_pass_teacher');
+        Route::post('changePass/teacher/{user}' , [TeacherController::class , 'changePass'])->name('submit_change_pass_teacher');
+        Route::get('suppliers/filter' , [TeacherController::class , 'FilterSuppliers'])->name('filter-suppliers');
+        Route::get("teacher/reserved/Events" , [TeacherController::class , 'reservedEvents'])->name('teacher-reserved-events');
+        Route::get("teacher/public/lessons" , [TeacherController::class , 'publicLessons'])->name('teacher-public-lessons');
+        Route::delete("lesson-delete/{id}",[TeacherController::class , 'deleteLesson'])->name('delete-lesson');
+    });
+    
+    //school Group
+    Route::middleware('school')->group(function(){
+        Route::get('/school' , [SchoolController::class , 'school'])->name('school');
+        Route::get('/school-profile' , [SchoolController::class, 'schoolProfile'])->name('school-profile');
+        Route::get('changePass/school' , [SchoolController::class , "changePassView"] )->name("change_pass_school");
+        Route::post('changePass/school/{user}', [SchoolController::class, 'changePass'])->name("submit_change_pass_school");
+        Route::get('suppliers/filter' , [SchoolController::class , 'FilterSuppliers'])->name('filter-suppliers');
+    });
+    
+    Route::post('update/comment' , [SchoolController::class , "updateComment"])->name('update-comment');
+
+    //supplier Group
+    Route::middleware('supplier')->group(function(){
+        Route::get('/supplier' , [SupplierController::class , 'supplier'])->name('supplier');
+        Route::get('/supplier-profile' , [SupplierController::class, 'supplierProfile'])->name('supplier-profile');
+        Route::get('changePass/supplier' , [SupplierController::class , "changePassView"] )->name("change_pass_supplier");
+        Route::post('changePass/supplier/{user}', [SupplierController::class, 'changePass'])->name("submit_change_pass_supplier");
+    });
+ 
+    Route::post('update/comment' , [SupplierController::class , "updateComment"])->name('update-comment');
+       
+ 
+     //admin group
 
     Route::prefix('dashboard')->middleware('auth')->group(function(){ 
         Route::get('/' , [AdminController::class , 'dashboard'])->name('dashboard');
@@ -262,44 +303,6 @@ Route::middleware('lang')->group(function(){
         Route::post('gallery/store' , [GalleryConroller::class , 'store'])->name('gallery-create');
         Route::post('gallery/update' , [GalleryConroller::class , 'edit'])->name('gallery-update');
     });
-
-    
-        
-   
-    
-    //teacher Group
-    Route::middleware('teacher')->group(function(){
-        Route::get('/teacher' , [TeacherController::class , 'teacher'])->name('teacher');
-        Route::get('/teacher-profile' , [TeacherController::class , 'teacherProfile'])->name('teacher-profile');
-        Route::get('changePass/teacher' , [TeacherController::class , 'changePassView'])->name('change_pass_teacher');
-        Route::post('changePass/teacher/{user}' , [TeacherController::class , 'changePass'])->name('submit_change_pass_teacher');
-        Route::get('suppliers/filter' , [TeacherController::class , 'FilterSuppliers'])->name('filter-suppliers');
-        
-    });
-    
-    //school Group
-    Route::middleware('school')->group(function(){
-        Route::get('/school' , [SchoolController::class , 'school'])->name('school');
-        Route::get('/school-profile' , [SchoolController::class, 'schoolProfile'])->name('school-profile');
-        Route::get('changePass/school' , [SchoolController::class , "changePassView"] )->name("change_pass_school");
-        Route::post('changePass/school/{user}', [SchoolController::class, 'changePass'])->name("submit_change_pass_school");
-        Route::get('suppliers/filter' , [SchoolController::class , 'FilterSuppliers'])->name('filter-suppliers');
-    });
-    
-    Route::post('update/comment' , [SchoolController::class , "updateComment"])->name('update-comment');
-
-    //supplier Group
-    Route::middleware('supplier')->group(function(){
-        Route::get('/supplier' , [SupplierController::class , 'supplier'])->name('supplier');
-        Route::get('/supplier-profile' , [SupplierController::class, 'supplierProfile'])->name('supplier-profile');
-        Route::get('changePass/supplier' , [SupplierController::class , "changePassView"] )->name("change_pass_supplier");
-        Route::post('changePass/supplier/{user}', [SupplierController::class, 'changePass'])->name("submit_change_pass_supplier");
-    });
- 
-    Route::post('update/comment' , [SupplierController::class , "updateComment"])->name('update-comment');
-       
- 
-     
      
     //Logout
     

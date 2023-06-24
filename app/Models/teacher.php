@@ -67,7 +67,7 @@ class Teacher extends Authenticatable
         
                if ($value == null) {
                    
-                 return "assets/images/logo/user.png";
+                 return "assets/images/teachers/6.webp";
 
                  
                }

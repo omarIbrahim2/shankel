@@ -81,7 +81,7 @@ class Parentt extends Authenticatable
         
                if ($value == null) {
                    
-                 return "assets/images/logo/user.png";
+                 return "assets/images/user/Ellipse.webp";
 
                  
                }

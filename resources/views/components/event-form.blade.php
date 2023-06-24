@@ -41,7 +41,7 @@
      </div>
 
      <div class="form-group">
-        <label for="">{{ trans('event.day') }} </label>
+        <label for="">Event End Date </label>
          <input type="text" value="{{$Event == null ? old('end_date'):$Event->end_date}}" name="end_date" id="" placeholder="{{ trans('event.select') }}"  class="form-control eventDayPicker">
          @error('end_date')
          <p class="text-danger">{{$message}}</p>

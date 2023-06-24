@@ -51,6 +51,8 @@ class SmkLivePaypal implements PaymentInterface{
             ],
         ]);
 
+        
+
         if (isset($response['id'] )  && $response['id'] != null) {
 
             foreach($response['links'] as $links){
@@ -62,9 +64,9 @@ class SmkLivePaypal implements PaymentInterface{
 
             return redirect()->route("register-form-school")->with(['error' => "something wrong happened"]);
         }else{
-
-
-            return redirect()->route("register-form-school")->with(['error' => $response['message'] ?? "something wrong happened"]);
+            
+            toastr(trans('payment.amount') , 'error');
+            return redirect()->route("home");
         }
 
 

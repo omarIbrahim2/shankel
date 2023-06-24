@@ -14,27 +14,27 @@ class HomeController extends Controller
     private $galleryRepo;
     public function __construct(AdminService $adminService, GalleryRepository $galleryRepo)
     {
-       $this->adminService = $adminService;
+        $this->adminService = $adminService;
         $this->galleryRepo = $galleryRepo;
     }
-    public function index(){
-          
-       $Sliders =  $this->adminService->getSliders();
-       $Infos = Information::select( 'image' , 'mission' , 'vision' , 'title' , 'aboutUs' , 'choose')->first();
+    public function index()
+    {
+        $Sliders =  $this->adminService->getSliders();
         $gallery = $this->galleryRepo->getImages();
         return view("web.Home.index")->with([
-            'Sliders' => $Sliders ,
-             'Infos' => $Infos,
-             'images' => $gallery,
+            'Sliders' => $Sliders,
+            'images' => $gallery,
         ]);
     }
 
-    public function selectUserRegister(){
+    public function selectUserRegister()
+    {
 
         return view('web.Select.selectUserRegister');
     }
 
-    public function selectUserLogin(){
+    public function selectUserLogin()
+    {
 
         return view('web.Select.selectUserLogin');
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Shankl\Adapters\PaymentAdapter;
 use Shankl\Helpers\ServiceOrder;
 use Shankl\Helpers\SmkLivePaypal;
@@ -23,16 +24,23 @@ class ServiceOrderController extends Controller
         $data['cancel'] = url(route('paypal-service-cancel'));
         $data['amount'] = $this->serviceOrder->getTotalPrice();
         
-        $this->serviceOrder->prepareOrder();
         $this->paypal->setdata($data);
+        $this->serviceOrder->prepareOrder();
 
         return $this->paypal->submit();
     }
 
     public function success(Request $request)
     {
-        $this->serviceOrder->handleOrder();
-        return $this->paypal->success($request);
+        try {
+            $this->serviceOrder->handleOrder();
+            return $this->paypal->success($request);
+        } catch (\Throwable $th) {
+            toastr(trans('payment.error') , 'error');
+            Log::error($th->getMessage());
+            return redirect()->route('home');
+        }
+     
     }
 
     public function cancel()

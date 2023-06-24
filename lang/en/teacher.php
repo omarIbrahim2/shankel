@@ -28,4 +28,11 @@ return[
     "noVideo" => 'no videos found',
     "noSocial" => 'There are no accounts on social media platforms',
     "watchNow" => "Watch Now",
+    "choices" => "Your choices",
+    "choicesInfo" => "Below you will see all your choices through Shankl for easy viewing at any time",
+    "more" => "More",
+    "privateLec" => "Private Lectures",
+    "publicLec" => "Public Lecture",
+    "events" => "Events" ,
+    "delete" => "Delete",
 ];

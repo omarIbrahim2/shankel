@@ -13,11 +13,16 @@ return[
     "female" => "Female",
     "grade" => "Grade",
     "addChild" => "Add a Child",
-
     "addkids" => "Add Your Kids Now",
     "mustAddC" => "You Must Add  Your Child",
-
     "enterEmail" => "Enter Your Email",
     "send" => "Send",
-    
+    "choices" => "Your choices",
+    "choicesInfo" => "Below you will see all your choices through Shankl for easy viewing at any time",
+    "more" => "More",
+    "schArea" => "Schools in Your Area",
+    "events" => "Events" ,
+    "schools" => "Your kids Schools",
+    "teachers" => "Your kids Teachers",
+    "lookSchools" => "Click here and get a look to schools in your area and take a seat to your child now",
 ];

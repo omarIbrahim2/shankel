@@ -9,10 +9,7 @@ use Shankl\Repositories\SchoolRepository;
 class SchoolService extends Service{
 
   protected $schoolRepo;
-
-  private $EventRepo;
-
-  private $commentRepo;
+  private $EventRepo , $commentRepo;
 
   public function __construct(SchoolRepository $schoolRepo , EventRepoInterface $EventRepo , CommentRepo $commentRepo)
   {

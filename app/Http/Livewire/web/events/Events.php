@@ -13,7 +13,7 @@ use Shankl\Interfaces\EventRepoInterface;
 
 class Events extends Component
 {
-    
+
     use WithPagination;
 
     protected $listener = [
@@ -21,28 +21,21 @@ class Events extends Component
     ];
     public function render(EventRepoInterface $eventRepo)
     {
-         $userid  =AuthUserFactory::getAuthUserId();
-         $guard = AuthUserFactory::geGuard();
+        $userid  = AuthUserFactory::getAuthUserId();
+        $guard = AuthUserFactory::geGuard();
+        $FilteredEvents = $eventRepo->getEventsWeb($userid, $guard);
 
-
-        $FilteredEvents = $eventRepo->getEventsWeb($userid , $guard);
-        
-           
         if ($FilteredEvents == null) {
-          $Events = $eventRepo->getEventsguest(5);
-        }else{
-          
-            $Events = Event::paginate($FilteredEvents , 5);
-            
+            $Events = $eventRepo->getEventsguest(5);
+        } else {
+            $Events = Event::paginate($FilteredEvents, 5);
         }
-         
+
         return view('livewire.web.events.events')->with(['Events' => $Events]);
     }
 
     public function mount()
     {
-       
-      
     }
 
 
@@ -51,43 +44,39 @@ class Events extends Component
         return 'livewire.web-pagination';
     }
 
-    public function BookAseat($event , EventRepoInterface $eventRepo){
-         
-       $User =  AuthUserFactory::getAuthUser();
-      $action =  $eventRepo->subscribeUser($event['id'] , $User);
+    public function BookAseat($event, EventRepoInterface $eventRepo)
+    {
+
+        $User =  AuthUserFactory::getAuthUser();
+        $action =  $eventRepo->subscribeUser($event['id'], $User);
 
         if ($action) {
-             
-            toastr("Booked successfully" , "success");
 
-            Notification::send($User , new EventSeatBooked($User , $event));
+            toastr("Booked successfully", "success");
+
+            Notification::send($User, new EventSeatBooked($User, $event));
 
             $this->emit('fresh');
+        } else {
 
-        }else{
-
-            toastr("Error happened ..!" , "error");
+            toastr("Error happened ..!", "error");
         }
-      
-        
     }
 
-    public function cancelBooking($event , EventRepoInterface $eventRepo){
+    public function cancelBooking($event, EventRepoInterface $eventRepo)
+    {
         $User =  AuthUserFactory::getAuthUser();
 
-          $action = $eventRepo->cancelSubscribeUser($event['id'] , $User);
+        $action = $eventRepo->cancelSubscribeUser($event['id'], $User);
 
-          if ($action) {
-             
-            toastr("Booking cancelled successfully" , "success");
+        if ($action) {
+
+            toastr("Booking cancelled successfully", "success");
 
             $this->emit('fresh');
+        } else {
 
-        }else{
-
-            toastr("Error happened ..!" , "error");
+            toastr("Error happened ..!", "error");
         }
-
-          
     }
 }

@@ -9,6 +9,7 @@ use App\Models\Teacher;
 use App\Models\Transaction;
 use App\Events\RemoveFromCardEvent;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Support\Facades\DB;
 
 class ServiceOrderRepo{
 
@@ -32,6 +33,22 @@ class ServiceOrderRepo{
       
     }
 
+    public function updateQuatityInservice($services){
+         
+       foreach($services as $service){
+          
+          $quatityInCard = $service->pivot->quantity;
+
+          $newQuantity = $service->quantity - $quatityInCard;
+
+          $service->update(['quantity' => $newQuantity]);
+
+
+       }
+
+
+    }
+
     public function createServices($transaction ,  $services){
 
     
@@ -40,9 +57,11 @@ class ServiceOrderRepo{
 
 
    public function update($data ){
-
-        $order =Transaction::findOrFail($data['id']);
-         return $order->update($data);
+      
+          $order =Transaction::findOrFail($data['id']);
+           $order->update($data);
+    
+      
       }
 
       public function getAll($pages , ...$attrs){

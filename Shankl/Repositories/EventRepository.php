@@ -1,4 +1,5 @@
 <?php
+
 namespace Shankl\Repositories;
 
 use App\Http\Livewire\Admin\Parents;
@@ -9,65 +10,66 @@ use App\Models\School;
 use App\Models\Teacher;
 use Shankl\Interfaces\EventRepoInterface;
 
-class EventRepository implements EventRepoInterface{
+class EventRepository implements EventRepoInterface
+{
 
-   public function getEvents($pages){
-       
-       return Event::with('area.city')->orderBy('start_date','DESC')->paginate($pages);
-
+   public function getEvents($pages)
+   {
+      return Event::with('area.city')->orderBy('start_date', 'DESC')->paginate($pages);
    }
 
-   public function getEventsguest($pages){
-       
-      return Event::with('area.city')->where('status' ,'in Progress')->orderBy('start_date','DESC')->paginate($pages);
+   public function getEventsguest($pages)
+   {
+      return Event::with('area.city')->where('status', 'in Progress')->orderBy('start_date', 'DESC')->paginate($pages);
+   }
 
-  }
+   public function getEventsWeb($userId = null, $guard)
+   {
 
-   public function getEventsWeb($userId = null , $guard){
-       
       if ($userId == null && $guard == 'guest') {
-         
+
          return null;
       }
 
       if ($guard == 'parent') {
-         return Event::with(['ParenttsinEvent:name'  , 'area.city'] , function($query) use($userId){
+         return Event::with(['ParenttsinEvent:name', 'area.city'], function ($query) use ($userId) {
 
-            $query->where('id'  , $userId);
-         
-         })->where('status' ,'in Progress')->orderBy('start_date','DESC')->get()->map(function($event){
+            $query->where('id', $userId);
+         })->where('status', 'in Progress')->orderBy('start_date', 'DESC')->get()->map(function ($event) {
 
-               return   $event->setAttribute("booked" , $event->ParenttsinEvent->isNotEmpty());
-          });
-      }else if($guard == 'school'){
-         return Event::with(['schoolsinEvent'  , 'area.city'] , function($query) use($userId){
+            return   $event->setAttribute("booked", $event->ParenttsinEvent->isNotEmpty());
+         });
+      } else if ($guard == 'school') {
+         return Event::with(['schoolsinEvent', 'area.city'], function ($query) use ($userId) {
 
-            $query->where('id'  , $userId);
-         })->where('status' ,'in Progress')->orderBy('start_date','DESC')->get()->map(function($event){
+            $query->where('id', $userId);
+         })->where('status', 'in Progress')->orderBy('start_date', 'DESC')->get()->map(function ($event) {
 
-               return   $event->setAttribute("booked" , $event->schoolsinEvent->isNotEmpty());
-          });
-              
-      }elseif ($guard == 'teacher') {
-            
+            return   $event->setAttribute("booked", $event->schoolsinEvent->isNotEmpty());
+         });
+      } elseif ($guard == 'teacher') {
 
-         return Event::with(['teachersinEvent'  , 'area.city'] , function($query) use($userId){
 
-            $query->where('id'  , $userId);
-         })->where('status' ,'in Progress')->orderBy('start_date','DESC')->get()->map(function($event){
+         return Event::with(['teachersinEvent', 'area.city'], function ($query) use ($userId) {
 
-               return   $event->setAttribute("booked" , $event->teachersinEvent->isNotEmpty());
-          });
+            $query->where('id', $userId);
+         })->where('status', 'in Progress')->orderBy('start_date', 'DESC')->get()->map(function ($event) {
+
+            return   $event->setAttribute("booked", $event->teachersinEvent->isNotEmpty());
+         });
       }
-     
-
    }
 
-   public function eventSubscribers($eventId){
-      
-       return Event::with(['ParenttsinEvent' , 'schoolsinEvent' , 'teachersinEvent'])->where('id' , $eventId)->first();
-           
+   public function getReservedEvents($userId = null, $guard){
+      $allEvents = $this->getEventsWeb($userId,$guard)->where('eventable_id' , $userId); 
+      $resrvedEvents = $allEvents->where('booked' , true);
+      return $resrvedEvents;
+   }
 
+   public function eventSubscribers($eventId)
+   {
+
+      return Event::with(['ParenttsinEvent', 'schoolsinEvent', 'teachersinEvent'])->where('id', $eventId)->first();
    }
 
    public function addEvent($data)
@@ -75,24 +77,25 @@ class EventRepository implements EventRepoInterface{
       return Event::create($data);
    }
 
-   public function find($eventId){
+   public function find($eventId)
+   {
 
-     return Event::findOrFail($eventId);
-
+      return Event::findOrFail($eventId);
    }
 
    public function updateEvent($data)
    {
       $event = $this->find($data['id']);
 
-     return $event->update($data);
+      return $event->update($data);
    }
 
-   public function subscribeUser($eventId , $User){
-            
+   public function subscribeUser($eventId, $User)
+   {
+
       $event =  $this->find($eventId);
 
-      if(! $event){
+      if (!$event) {
 
          return false;
       }
@@ -100,14 +103,14 @@ class EventRepository implements EventRepoInterface{
       $User->eventSubscribers()->attach([$event->id]);
 
       return true;
-
    }
 
-   public function cancelSubscribeUser($eventId , $User){
-         
+   public function cancelSubscribeUser($eventId, $User)
+   {
+
       $event =  $this->find($eventId);
 
-      if(! $event){
+      if (!$event) {
 
          return false;
       }
@@ -115,6 +118,5 @@ class EventRepository implements EventRepoInterface{
       $User->eventSubscribers()->detach([$event->id]);
 
       return true;
-       
    }
 }

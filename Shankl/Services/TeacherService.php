@@ -2,6 +2,7 @@
 
 namespace Shankl\Services;
 
+use App\Models\Lesson;
 use App\Models\Teacher;
 use Shankl\Interfaces\EventRepoInterface;
 use Shankl\Repositories\TeacherRepository;
@@ -88,8 +89,17 @@ class TeacherService extends Service{
         return $this->teacherRebo->AddLesson($data);
     }
 
-    public function getLessons($teacherId){
+    public function getLessons($teacherId , $pages){
 
-        return $this->teacherRebo->getLessons($teacherId);
+        return $this->teacherRebo->getLessons($teacherId , $pages);
+    }
+
+    public function deleteLesson($lessonId){
+          
+        $lesson = Lesson::findOrFail($lessonId);
+        $this->fileservice->DeleteFile($lesson->image);
+       return $this->teacherRebo->deleteLesson($lesson);
+
+
     }
 }
