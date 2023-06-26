@@ -4,15 +4,17 @@
 
         @if ($images)
 
-        <div class="row">
-          @foreach ($images as $image)
-            <div class="col-md-3">
-                  <div class="card" style="width: 18rem;">
-                    <img src="uploads/{{$image->name}}" class="card-img-top" alt="...">
-                     <p class="deletePhoto" wire:click="delete({{$image->id}})"><button><i class="fa-solid fa-xmark"></i></button></p>
-                </div>
-            </div>
-         @endforeach
+        <div class="container">
+          <div class="row">
+            @foreach ($images as $image)
+              <div class="col-md-3 p-4">
+                    <div class="card" style="width: 18rem;">
+                      <img src="uploads/{{$image->name}}" class="card-img-top" alt="...">
+                       <p class="deletePhoto" wire:click="delete({{$image->id}})"><button><i class="fa-solid fa-xmark"></i></button></p>
+                  </div>
+              </div>
+           @endforeach
+          </div>
         </div>
       
         @else

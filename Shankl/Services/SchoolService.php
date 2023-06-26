@@ -77,6 +77,11 @@ public function updateComment($newComment , $commentId){
     return $this->commentRepo->updateComment($newComment , $commentId);
 }
 
+public function areaSuppliers($pages){
+    return $this->schoolRepo->getAreaSuppliers($pages);
+}
 
-
+public function AllStudents($pages) {
+    return $this->schoolRepo->getAllStudents($pages);
+}
 }

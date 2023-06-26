@@ -22,4 +22,10 @@ return[
 
     "booked" => "Booked",
     "clsBook" => "cancel Booking",
+
+    "city" => "City",
+    "area" => "Area",
+
+    "cls" => "Cancel Event",
+    "reEvent" => "Re-event",
 ];

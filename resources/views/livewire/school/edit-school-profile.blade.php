@@ -37,8 +37,9 @@
                             </div>
 
                             <div class="upload-avatar">
-                                <button type="button" class="btn-custom" data-bs-toggle="modal"
-                                    data-bs-target="#addEvent">{{ trans('school.addEvent') }}</button>
+                                {{-- <button type="button" class="btn-custom" data-bs-toggle="modal"
+                                    data-bs-target="#addEvent">{{ trans('school.addEvent') }}</button> --}}
+                                <a href="{{ route('school-add-event') }}" class="btn-custom">{{ trans('school.addEvent') }}</a>    
                             </div>
                         </div>
                     </div>
@@ -266,7 +267,7 @@
 
         {{-- school add event --}}
         <!-- Modal -->
-        <div class="modal fade" id="addEvent" tabindex="-1" aria-labelledby="exampleModalLabel"
+        {{-- <div class="modal fade" id="addEvent" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -278,7 +279,7 @@
                     @livewire('school.add-event-form')
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 </div>
 </div>

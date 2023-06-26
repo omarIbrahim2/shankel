@@ -1,5 +1,4 @@
 
-
 <form wire:submit.prevent="save">
 
     
@@ -26,7 +25,7 @@
     <div class="form-group">
         <div class="custom-file-container my-3" data-upload-id="myFirstImage">
             <label for="eventImage" class="form-label">{{ trans('event.upload') }} </label>
-                <input wire:model="image" class="form-control py-2" id="eventImage" type="file"  accept="image/*">
+            <input wire:model="image" class="form-control py-2" id="eventImage" type="file"  accept="image/*">
 
             @error('image')
             <p class="text-danger">{{$message}}</p>
@@ -72,7 +71,7 @@
         <div class="d-flex justify-content-between align-items-center event-times">
             <div class="w-md-100 w-50">
                 <select wire:model="city_id"  id="selectCity" class="form-select form-control" aria-label="Default select example" >
-                    <option selected disabled>City</option>
+                    <option selected disabled>{{ trans('event.city') }}</option>
                     @foreach ($cities as $city)
                     <option value="{{$city->id}}">{{$city->name}}</option>
                     @endforeach
@@ -83,9 +82,9 @@
             </div>
             <div class="w-md-100 w-50">
                 <select wire:model="area_id" id="areaSelect" class="form-select form-control" aria-label="Default select example" >
-                <option  selected >Area</option>
+                <option  selected>{{ trans('event.area') }}</option>
                 </select>
-
+                
                 @error('area_id')
                 <p class="text-danger">{{$message}}</p>
                 @enderror

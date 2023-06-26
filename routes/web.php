@@ -184,6 +184,15 @@ Route::middleware('lang')->group(function(){
         Route::get('changePass/school' , [SchoolController::class , "changePassView"] )->name("change_pass_school");
         Route::post('changePass/school/{user}', [SchoolController::class, 'changePass'])->name("submit_change_pass_school");
         Route::get('suppliers/filter' , [SchoolController::class , 'FilterSuppliers'])->name('filter-suppliers');
+        
+        Route::get('school/add/event' , [SchoolController::class , 'addEvent'])->name('school-add-event');
+
+        Route::get("school/reserved/Events" , [SchoolController::class , 'reservedEvents'])->name('school-reserved-events');
+        Route::get("school/created/Events" , [SchoolController::class , 'schoolEvents'])->name('school-my-events');
+        Route::get("school/area/suppliers" , [SchoolController::class , 'areaSuppliers'])->name('school-area-suppliers');
+        Route::get("school/all/students" , [SchoolController::class , 'schoolStudents'])->name('school-students');
+        
+
     });
     
     Route::post('update/comment' , [SchoolController::class , "updateComment"])->name('update-comment');

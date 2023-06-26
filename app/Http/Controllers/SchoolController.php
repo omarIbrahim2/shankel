@@ -2,28 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\School;
 use App\Models\Supplier;
 use App\Models\EduSystem;
 use App\Events\SchoolViews;
 use Illuminate\Http\Request;
 use Shankl\Helpers\ChangePassword;
 use Shankl\Services\SchoolService;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Shankl\Interfaces\GradeRepoInterface;
 use App\Http\Requests\CommentUpdateRequest;
 use Shankl\Interfaces\LocationRepoInterface;
 use Shankl\Interfaces\EduSystemRepoInterface;
+use Shankl\Services\AdminService;
 
 class SchoolController extends Controller
 {
   private $changePassObj;
-  private $schoolService;
-  public function __construct(ChangePassword $changepass , SchoolService $schoolService)
+  private $schoolService , $adminService;
+  public function __construct(ChangePassword $changepass , SchoolService $schoolService , AdminService $adminService)
   {
     $this->changePassObj = $changepass;
     $this->schoolService = $schoolService;
+    $this->adminService = $adminService ;
   }
 
   public function index(){
@@ -46,9 +46,17 @@ class SchoolController extends Controller
   }
 
 
-  public function school(){
-
-    return view("web.Schools.profile");
+  public function school( LocationRepoInterface $locationRepo, GradeRepoInterface $gradeRepo, EduSystemRepoInterface $eduSystems){
+    $data['Areas'] = $locationRepo->getAreas();
+    $data['Grades'] = $gradeRepo->getGrades();
+    $data['Esystems'] = $eduSystems->getEduSystems();
+    $sliders = $this->adminService->getSliders();
+    if (count($sliders) == 0) {
+      $data['slider'] = collect()->pop();
+    } else {
+      $data['slider'] = $sliders->random();
+    }
+    return view("web.Schools.profile")->with($data);
   }
 
   public function schoolProfile( GradeRepoInterface $gradeRepo , EduSystemRepoInterface $eduRepo){
@@ -123,5 +131,25 @@ class SchoolController extends Controller
      
      return view("web.Suppliers.filteredSuppliers")->with(['Suppliers' => $Suppliers]);
  }
+
+ public function addEvent(){
+  return view('web.schools.addEvent');
+ }
+
+ public function reservedEvents(){
+  return view("web.schools.reservedEvents");
+}
+
+public function schoolEvents(){
+  return view("web.schools.schoolEvents");
+}
+
+public function areaSuppliers() {
+  return view("web.schools.areaSuppliers");
+}
+
+public function schoolStudents(){
+  return view("web.schools.students");
+}
   
 }

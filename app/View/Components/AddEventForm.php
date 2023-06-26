@@ -1,28 +1,44 @@
 <?php
 
-namespace App\Http\Livewire\School;
+namespace App\View\Components;
 
-use App\Models\User;
-use Livewire\Component;
 use Livewire\WithFileUploads;
+use Illuminate\View\Component;
 use Shankl\Services\FileService;
-use Shankl\Services\SchoolService;
 use Illuminate\Support\Facades\Auth;
 use Shankl\Interfaces\LocationRepoInterface;
 use App\Http\Requests\EventValidationRequest;
-
+use Shankl\Services\AdminService;
 
 class AddEventForm extends Component
 {
+    /**
+     * Create a new component instance.
+     *
+     * @return void
+     */
+
     use WithFileUploads;
-    public $attributes= array() , $eventable_type ,$eventable_id , $area_id;
-    public $title, $desc ,$image , $status ,$start_date ,$end_date,$start_time ,$end_time;
+    public $attributes= array() , $eventable_type ,$eventable_id , $area_id ,$locationRepo, $AdminService;
+    public $title, $desc ,$image , $status ,$start_date ,$end_date,$start_time ,$end_time ;
     public static $defaultImage = "assets/images/events/event1.webp";
 
-    public function render(LocationRepoInterface $locationRepo)
+    public function __construct(LocationRepoInterface $locationRepo , AdminService $AdminService)
     {
-        $data['cities'] = $locationRepo->getCities();
-        return view('livewire.school.add-event-form')->with($data);
+        $this->locationRepo = $locationRepo;
+        $this->AdminService = $AdminService;
+    }
+
+    /**
+     * Get the view / contents that represent the component.
+     *
+     * @return \Illuminate\Contracts\View\View|\Closure|string
+     */
+    public function render()
+    {
+        $cities = $this->locationRepo->getCities();
+
+        return view('components.event-form')->with(['cities' => $cities]);
     }
 
     public function mount()
@@ -30,7 +46,6 @@ class AddEventForm extends Component
         $this->eventable_id = Auth::guard('school')->user()->id;
         $this->eventable_id = User::class;
     }
-
 
     public function setAttributes(){
 
@@ -89,5 +104,4 @@ class AddEventForm extends Component
         $this->resetInputs();
 
      }
-
 }

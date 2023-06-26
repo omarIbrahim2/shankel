@@ -19,7 +19,7 @@ class SchoolPhotos extends Component
 
     public $photos = [];
 
-    protected $rules =["photos.*" => 'image|mimes:jpg,png,jpeg|max:2048|nullable'];
+    protected $rules =["photos.*" => 'image|mimes:jpg,png,jpeg,webp|max:2048|nullable'];
     public function render()
     {
         return view('livewire.school.school-photos')->with([

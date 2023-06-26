@@ -2,7 +2,9 @@
 
 namespace Shankl\Repositories;
 
+use App\Models\Child;
 use App\Models\School;
+use App\Models\Supplier;
 use Illuminate\Support\Facades\Auth;
 use Shankl\Interfaces\CardInterface;
 use Shankl\Interfaces\UserReboInterface;
@@ -72,6 +74,19 @@ class SchoolRepository extends AbstractUserRepo implements UserReboInterface , C
     }
 
     
+    public function getAreaSuppliers($pages){
+        $SchoolUserId =  Auth::guard('school')->user()->id;
+        $AuthSchool = School::with('area')->findOrFail($SchoolUserId);
+        $areaId = $AuthSchool->area->id;
+        $areaSuppliers = Supplier::select('id','image','name','type','orgName','area_id')->where('area_id' , $areaId)->paginate($pages);
+        return $areaSuppliers;
+     }
 
+     public function getAllStudents($pages){
+        $SchoolUserId =  Auth::guard('school')->user()->id;
+        $students = Child::with(['parentt','grade'])->where("school_id" , $SchoolUserId )->paginate($pages);
+        // dd($students);
+        return $students ;
+     }
   
 }

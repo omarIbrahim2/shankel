@@ -33,4 +33,13 @@ return[
     "enterEmail" => "Enter Your Email",
     "send" => "Send",
     "bookSeat" => "Book A Seat",
+    "choices" => "Your choices",
+    "choicesInfo" => "Below you will see all your choices through Shankl for easy viewing at any time",
+    "more" => "More",
+    "events" => "Reserved Events" ,
+    "myevents" => "My Events" ,
+    "areaSuppliers" => "Area Suppliers",
+    "students" => "Students",
+    "parents" => "Parents",
+    "visits" => "Visits" ,
 ];
