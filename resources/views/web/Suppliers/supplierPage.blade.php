@@ -13,6 +13,9 @@
 @endsection
 
 @section('main')
+<section class="teacher-banner">
+
+</section>
     <!-- profie -->
     <section class="section edit-teacher-profile">
         <div class="inner">
@@ -35,6 +38,7 @@
                                                 </h4>
                                             </div>
                                         </div>
+
                                     </div>
                                     <div class="add-video">
                                         <div class="sub-title sec-sub-title teach-title">
@@ -62,23 +66,31 @@
                             <div class="col-md-7  col-12">
                                 <div class="right-side">
                                     <div class="row">
-                                        <div class="avatar-data text-center">
-                                            <h4 class="text-primary">
-                                                {{ $Supplier->name }} {{ trans('supplier.services') }}
-                                            </h4>
-                                        </div>
                                         @foreach ($Supplier->services as $service)
                                         <div class=" col-md-6 col-12">
-                                            <div class="teacher-service">
-                                                <img src="{{ asset($service->image) }}" alt="service">
-                                                <h4 class="text-primary">{{ trans('service.name') }}</h4>
-                                                <p>{{ $service->name }}</p>
-                                                <h4 class="text-primary">{{ trans('service.price') }}</h4>
-                                                <p>{{ $service->price }}</p>
+                                            <div class="teacher-service card supplier_service_card">
+                                                <img class="card-img-top" src="{{ asset($service->image) }}" alt="service">
+                                                <div class="card-body">
+                                                <p class="card-text">{{ $service->name }}</p>
+                                                <p class="card-title fw-bold">{{ $service->price }} JOD</p>
+                                                </div>
+                                                <div class="avatar-btns">
+
+                                            <div>
+                                            <a href="{{ route('web-services') }}" class="btn-custom text-center ">add to cart</a>
+
+                                            </div>
+                                        </div>
                                             </div>
                                         </div>
                                         @endforeach
-                                        <a href="{{ route('web-services') }}" class="btn-custom text-center ">{{ trans('supplier.watchNow') }}</a>
+                                        <div class="avatar-btns">
+
+                                            <div>
+                                            <a href="{{ route('web-services') }}" class="btn-custom text-center ">{{ trans('supplier.watchNow') }}</a>
+
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
