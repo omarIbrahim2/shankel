@@ -150,6 +150,38 @@ class AdminController extends Controller
         ]);
     }
 
+    public function Centers($status){
+
+        $possibleStates = ['active'=> 'active' , 'unactive' => 'unactive'];
+
+        if (! array_key_exists($status , $possibleStates)) {
+             
+            return back();
+        }
+
+        $value = $status == "active"?true :false;
+
+        return view("admin.schools.centers")->with([
+            "active" => $value,
+        ]);
+    }
+
+    public function Kg($status){
+
+        $possibleStates = ['active'=> 'active' , 'unactive' => 'unactive'];
+
+        if (! array_key_exists($status , $possibleStates)) {
+             
+            return back();
+        }
+
+        $value = $status == "active"?true :false;
+
+        return view("admin.schools.kg")->with([
+            "active" => $value,
+        ]);
+    }
+
     public function Teachers($status){
         $possibleStates = ['active'=> 'active' , 'unactive' => 'unactive'];
 

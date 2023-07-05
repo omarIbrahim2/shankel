@@ -21,6 +21,42 @@ class SchoolRepository extends AbstractUserRepo implements UserReboInterface , C
         return  School::where('status' , false)->orderBy('id' , 'DESC')->paginate($pages);
     }
 
+    public function getActiveSchools($pages)
+    {
+        return  School::where('status' , true)
+        ->where('type' , 'School')->orderBy('id' , 'DESC')->paginate($pages);
+    }
+
+    public function getUnActiveSchools($pages)
+    {
+        return  School::where('status' , false)
+        ->where('type' , 'School')->orderBy('id' , 'DESC')->paginate($pages);
+    }
+
+    public function getActiveCenters($pages)
+    {
+        return  School::where('status' , true)
+        ->where('type' , 'Center')->orderBy('id' , 'DESC')->paginate($pages);
+    }
+
+    public function getUnActiveCenters($pages)
+    {
+        return  School::where('status' , false)
+        ->where('type' , 'Center')->orderBy('id' , 'DESC')->paginate($pages);
+    }
+
+    public function getActiveKGs($pages)
+    {
+        return  School::where('status' , true)
+        ->where('type' , 'KG')->orderBy('id' , 'DESC')->paginate($pages);
+    }
+
+    public function getUnActiveKGs($pages)
+    {
+        return  School::where('status' , false)
+        ->where('type' , 'KG')->orderBy('id' , 'DESC')->paginate($pages);
+    }
+
 
     public function create($data)
     {
@@ -36,11 +72,6 @@ class SchoolRepository extends AbstractUserRepo implements UserReboInterface , C
         return School::with('images')->findOrFail($schoolId);
     }
 
-
-
-  
-
-  
 
     public function addGrades(array $grades, $schoolId)
     {
@@ -85,8 +116,8 @@ class SchoolRepository extends AbstractUserRepo implements UserReboInterface , C
      public function getAllStudents($pages){
         $SchoolUserId =  Auth::guard('school')->user()->id;
         $students = Child::with(['parentt','grade'])->where("school_id" , $SchoolUserId )->paginate($pages);
-        // dd($students);
         return $students ;
      }
+
   
 }

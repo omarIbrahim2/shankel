@@ -21,6 +21,7 @@ class SchoolFactory extends Factory
     {  
         $areas = Area::all()->pluck('id')->toArray();
         $system = EduSystem::all()->pluck('id')->toArray();
+        $types = ['Center' ,'School' ,'KG'];
         return [
             'name' => $this->faker->catchPhrase(),
             'email' => $this->faker->safeEmail(),
@@ -33,6 +34,7 @@ class SchoolFactory extends Factory
             'free_seats' => $this->faker->randomDigit(),
             'mission' => $this->faker->paragraph(3),
             'vision' => $this->faker->paragraph(4),
+            'type' => $types[rand(0 , count($types) - 1)],
         ];
     }
 }
