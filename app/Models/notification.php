@@ -10,7 +10,7 @@ class Notification extends Model
     use HasFactory;
     protected $guarded = ['id', 'created_at','updated_at'];
 
-    public function noteable()
+    public function notfiable()
     {
         return $this->morphTo('user');
     }

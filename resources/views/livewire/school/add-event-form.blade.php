@@ -70,7 +70,7 @@
      <label for="">{{ trans('event.address') }}</label>
         <div class="d-flex justify-content-between align-items-center event-times">
             <div class="w-md-100 w-50">
-                <select wire:model="city_id"  id="selectCity" class="form-select form-control" aria-label="Default select example" >
+                <select   id="selectCity" class="form-select form-control" aria-label="Default select example" >
                     <option selected disabled>{{ trans('event.city') }}</option>
                     @foreach ($cities as $city)
                     <option value="{{$city->id}}">{{$city->name}}</option>

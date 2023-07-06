@@ -29,6 +29,7 @@ return new class extends Migration
             $table->unsignedInteger("views" , false)->nullable()->default(0);
             $table->rememberToken();
             $table->index(['name' , 'email' , 'status']);
+            $table->unsignedInteger("notifications")->default(0);
             $table->boolean("status")->default(false);
             $table->timestamps();
         });

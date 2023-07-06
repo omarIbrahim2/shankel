@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\school;
+namespace App\Http\Livewire\School;
 
 use App\Models\Area;
 use App\Models\City;

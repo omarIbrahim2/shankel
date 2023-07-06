@@ -47,6 +47,8 @@ class AddEventForm extends Component
             'end_time' => $this->end_time, 
             'area_id' => $this->area_id, 
         ];
+
+        
     }
 
     public function resetInputs(){
@@ -59,11 +61,11 @@ class AddEventForm extends Component
         $this->end_time = '';
     }
 
-    public function save(EventValidationRequest $request , FileService $fileService){
+    public function save(FileService $fileService){
        
-        $validatedData = $this->$request->validated();
+         $this->validated();
        
-        $validatedData =$this->setAttributes();
+         $this->setAttributes();
 
          
        if ($request->has('image')) {

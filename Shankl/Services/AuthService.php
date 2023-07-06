@@ -3,6 +3,7 @@
 
 namespace Shankl\Services;
 
+use App\Events\UserRegisterEvent;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -18,8 +19,7 @@ class AuthService{
     public function RegisterUser(UserReboInterface $userRebo , UserEntity $user){
          
         $createdUser =  $userRebo->create($user->getAttributes());
-
-
+        dd( event(new UserRegisterEvent ($createdUser)));
         return $createdUser;
 
 

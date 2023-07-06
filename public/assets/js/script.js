@@ -1,3 +1,6 @@
+
+
+
 // home slider
 // $(document).on("ready",function(){
 //   if(localStorage.getItem("parentPhoto")){
@@ -5,6 +8,7 @@
 //     console.log("ready")
 //   }
 // })
+
 
 var swiper = new Swiper(".home-slider .mySwiper", {
     loop:true,
@@ -239,4 +243,4 @@ $("#addEventButton").on("shown.bs.modal" ,function(){
   $("#addEvent").modal('show')
 });
 
-$(".print_button").print();
+
