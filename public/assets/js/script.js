@@ -201,7 +201,11 @@ $(".provider-description").on('click',function(){
 $(".textbox-n").on('focus',function(){
   $(this).attr("type","date")
 })
-$(".textbox-n").on("blur",function(){
+$(".textbox-n-time").on('focus',function(){
+  $(this).attr("type","time")
+  $(this).attr("value","00:00:00")
+})
+$(".textbox-n , .textbox-n-time").on("blur",function(){
   $(this).attr("type","text")
 })
 
@@ -246,3 +250,12 @@ $(".print_button").click(function(){
   $("body").printArea({ mode: 'popup', popClose: true });
 });
 
+$(".eventTimePicker").flatpickr({
+  enableTime: true,
+  noCalendar: true,
+  dateFormat: "H:i:S",
+});
+$(".eventDayPicker").flatpickr({
+  enableTime: false,
+  dateFormat: "Y-m-d H:i",
+});
