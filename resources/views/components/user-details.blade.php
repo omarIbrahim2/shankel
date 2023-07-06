@@ -9,23 +9,23 @@
 
             <div class="row not-row">
                 @foreach ($attrs as $attr => $val)
-                @if ($attr == 'image')
-                            <div class="col-12 text-center mb-3"> <img src="{{ asset($val) }}" class="img-fluid profile_img" alt="" style="width: 200px"></div>
-                        @else
+                    @if ($attr == 'image')
+                        <div class="col-12 text-center mb-3"> <img src="{{ asset($val) }}" class="img-fluid profile_img"
+                                alt="" style="width: 200px"></div>
+                    @else
                         <div class="col-md-4 my-3">
-                        
+
                             <div class="text-center card">
-                            <h5>{{ $attr }}</h5> <p class=" text-primary">{{ $val }}</p>
-</div>
-</div>
-                        @endif
-
-                    
+                                <h5>{{ $attr }}</h5>
+                                <p class=" text-primary">{{ $val }}</p>
+                            </div>
+                        </div>
+                    @endif
                 @endforeach
-</div>
             </div>
+        </div>
 
+
+    </div>
 
 </div>
-
-        </div>

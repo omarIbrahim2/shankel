@@ -2,39 +2,36 @@
 
 namespace App\Http\Livewire\Admin;
 
-use App\Http\Livewire\Traits\SearchTrait;
 use App\Models\School;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Shankl\Services\SchoolService;
+use App\Http\Livewire\Traits\SearchTrait;
 
-class Schools extends Component
+class Kg extends Component
 {
-    use WithPagination;
+    use WithPagination , SearchTrait;
     public $active;
     public $guard = "school";
     public $NameOrEmail;
-
-    use SearchTrait;
     public function render(SchoolService $schoolService)
     {
         $query = (new School)->query();
 
         if ($this->active == true) {
-             $Users =$schoolService->getActiveSchoolsOnly(10);
+             $Users =$schoolService->getKGs(10);
         }else{
 
-            $Users =$schoolService->getUnActSchoolsOnly(10);
+            $Users =$schoolService->getUnActKGs(10);
         }
 
         if ($this->NameOrEmail) {
             $Users = $this->NameOrEmailSearch($this->NameOrEmail , ['name' => 'name' , 'email'=> 'email'] ,$this->active , $query );
          }
-
-        return view('livewire.admin.schools')->with(['Users' => $Users]);
+        return view('livewire.admin.kg')->with(['Users' => $Users]);
     }
 
-
+       
     public function Activate( SchoolService $schoolService , $userId){
            
         $school =  $schoolService->getSchool($userId);

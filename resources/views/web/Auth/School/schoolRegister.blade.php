@@ -193,6 +193,12 @@
                                                     id="center">
                                                 <label class="custom-out-btn" for="center">{{ trans('register.center') }}</label>
                                             </div>
+
+                                            <div class="radio">
+                                                <input type="radio" name="type" value="KG"
+                                                    id="kg">
+                                                <label class="custom-out-btn" for="Kindergarten">{{ trans('register.kg') }}</label>
+                                            </div>
                                             @error('type')
                                             <p class="text-danger">{{$message}}</p>
                                             @enderror

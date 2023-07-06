@@ -1802,12 +1802,29 @@ main {
 .teacher-avatar {
   text-align: center;
 }
-
+.teacher-avatar .avatar-img{
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
 .teacher-avatar img {
   margin-bottom: 16px;
   max-width: 100%;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  width: 100%;
+  object-fit: cover;
 }
-
+.teacher-avatar h4{
+    margin-top: 24px;
+}
 .teacher-avatar h4 a {
   transition: var(--trans);
   -webkit-transition: var(--trans);
@@ -2377,4 +2394,7 @@ main {
 
 .wire_con_div{
   height: 100%;
+}
+.supplier_service_card{
+    margin-bottom: 8px;
 }

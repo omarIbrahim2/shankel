@@ -37,12 +37,9 @@ return [
 
    "Supplier" => "Supplier",
    "center" => "Center",
-
+   "kg" => "Kindergarten",
    "nursery" => "nursery",
-
-    
    "LoginToShankl" => "Login to Shankl",
    "ClickHere" => "Click Here",
-
    "signUpAs" => "Sign Up As",
 ];

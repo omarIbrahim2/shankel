@@ -239,6 +239,8 @@ Route::middleware('lang')->group(function(){
         //users
         Route::get("parents/{status}" , [AdminController::class , "Parentts"])->name('admin-parents');
         Route::get("schools/{status}" , [AdminController::class , 'Schools'])->name('admin-schools');
+        Route::get("centers/{status}" , [AdminController::class , 'Centers'])->name('admin-centers');
+        Route::get("kg/{status}" , [AdminController::class , 'Kg'])->name('admin-kg');
         Route::get("teachers/{status}" , [AdminController::class , 'Teachers'])->name('admin-teachers');
          
         Route::get("school/details/{id}" , [SchoolController::class , "getSchoolAdmin"])->name('school-details');

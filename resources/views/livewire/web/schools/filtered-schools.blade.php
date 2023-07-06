@@ -26,6 +26,7 @@
                                     </div>
                                     <div class="area-school-name search-label">
                                         <h4>{{$school->name}}</h4>
+                                        <p class=" text-primary">{{$school->type}}</p>
                                     </div>
                                 </div>
                             </a>

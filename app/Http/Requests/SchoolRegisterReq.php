@@ -35,7 +35,7 @@ class SchoolRegisterReq extends FormRequest
             'image' => 'image|mimes:jpg,png,jpeg,webp|max:2048',
             'password' => 'required|confirmed|min:6',
             'grade_id' => 'required|exists:grades,id',
-             "type" => 'required|in:Center,School',
+             "type" => 'required|in:Center,School,KG',
              "free_seats" => 'required|numeric|min:0',
              "edu_systems_id" => 'required|exists:edu_systems,id',
              "establish_date" => 'required|date|before:today',

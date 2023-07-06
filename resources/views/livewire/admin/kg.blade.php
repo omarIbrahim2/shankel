@@ -98,9 +98,6 @@
                     {{ $Users->links('livewire.admin-pagination') }}
                 @endif
             @endif
-
-
-
         </div>
     </div>
 </div>
