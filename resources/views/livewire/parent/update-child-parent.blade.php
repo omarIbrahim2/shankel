@@ -4,7 +4,7 @@
         <div class="from-container">
             <div class="contact-form black-contact-form">
                 <form wire:submit.prevent="update" enctype="multipart/form-data">
-                
+
                     @if (session()->has("success"))
                     <div class="alert alert-success">
                         {{session('success')}}
@@ -22,7 +22,7 @@
                         <p class="text-danger">{{$message}}</p>
                         @enderror
                     </div>
-                    
+
 
                     <div class="input-item me-auto ms-0">
                         <select wire:model.defer="birth_date" placeholder="MM">
@@ -63,8 +63,8 @@
                         <p class="text-danger">{{$message}}</p>
                         @enderror
                     </div>
-                      
-            
+
+
                     <div class="input-item me-auto ms-0">
                         <label>{{ trans('parent.gender') }}</label>
                         <div class="d-flex align-items-center justify-content-start">
@@ -80,7 +80,7 @@
                     </div>
                     <div class="input-item me-auto ms-0 mt-32">
                         <input type="file" wire:model.defer ="image" id="childUpdate" />
-    
+
                         <label class="file-input" for="childUpdate">
                             <span>
                                 <i class="fa-regular fa-image"></i>
@@ -90,7 +90,7 @@
                             @else
                             <p class="upload-text files-names">{{ trans('parent.upload') }}</p>
                             @endif
-                        
+
                             <button type="button" class="btn-custom btn-gray-custom">
                                 {{ trans('parent.choose') }}
                             </button>
@@ -99,15 +99,15 @@
                         <p class="text-danger">{{$message}}</p>
                         @enderror
                     </div>
-     
-                      
+
+
                     <div class="input-item me-auto ms-0">
                         <select  wire:model.defer="grade_id" class="form-select" aria-label="Default select example" required>
                             <option selected>{{ trans('parent.grade') }}</option>
                             @foreach ($grades as $grade)
                                <option value="{{$grade->id}}">{{$grade->name}}</option>
                             @endforeach
-                            
+
                         </select>
                         <span>
                             <i class="fa-solid fa-graduation-cap"></i>
@@ -115,15 +115,15 @@
                         @error('grade_id')
                         <p class="text-danger">{{$message}}</p>
                         @enderror
-                      
+
                     </div>
-                   
+
                     <div class="input-item me-auto ms-0">
                         <button type="submit" class="custom-out-btn btn-form">
                             {{ trans('parent.save') }}
                         </button>
                     </div>
-                   
+
                 </form>
 
             </div>
@@ -132,7 +132,7 @@
     <div class="col-md-6 col-12 mb-s-0 mb-3">
         <div class="from-container">
             <div class="kids-container">
-                
+
                 @foreach ($children as $ch)
                 <div wire:key="ch-{{$ch->id}}" style="cursor: pointer" class="kid" wire:click="fillInputs({{$ch}})">
                     <div class="kid-icon icon-animate">
@@ -144,11 +144,11 @@
                     </div>
                 </div>
                 @endforeach
-            
-               
-               
+
+
+
                 <div class="kid add-kid">
-                    <a href="{{route("add-child-profile" , auth()->guard('parent')->user()->id)}}"><div class="kid-icon ">
+                    <a href="{{route('add-child-profile' , auth()->guard('parent')->user()->id)}}"><div class="kid-icon ">
                         <img src="assets/images/charcters/plus.png" alt="add kids">
                     </div></a>
                     <div class="kid-data">

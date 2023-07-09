@@ -1,6 +1,6 @@
 <section class="section">
     <div class="inner">
-        
+
         <div>
             <div class="service-banner school-banner">
                 <div class="page-search">
@@ -9,8 +9,8 @@
                     <span><i class="fa-solid fa-magnifying-glass"></i></span>
                 </div>
             </div>
-            
-    
+
+
             <div class="section-content section">
                 <div class="container">
                     <div class="section-title">
@@ -29,7 +29,7 @@
                                                 <div class="area-school school-card">
                                                     <div class="area-school-img">
                                                         <img src="{{ $school->image == null ? asset('assets/images/school/1.webp') : asset($school->image) }}"
-                                                            @style('width:150px') alt="school">
+                                                             alt="school">
                                                     </div>
                                                     <div class="area-school-name search-label">
                                                         <h4>{{ $school->name }}</h4>

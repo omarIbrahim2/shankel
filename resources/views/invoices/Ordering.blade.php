@@ -20,7 +20,7 @@
         <table class="invoice">
           <tr class="header">
             <td class="">
-              <img src="{{asset("assets")}}/images/logo/logo.png" alt="Shankl" />
+              <img src="{{asset('assets')}}/images/logo/logo.png" alt="Shankl" />
             </td>
             <td class="align-right">
               <h2>Invoice</h2>
@@ -50,7 +50,7 @@
                 <tbody>
 
                   @foreach ($services as $service)
-                      
+
                   <tr class="item">
                     <td class="desc">{{ $service->name }}</td>
                     <td class="desc">{{ $service->desc }}</td>
@@ -66,7 +66,7 @@
             <td></td>
             <td>
               <table>
-                
+
                 <tr class="total">
                   <td>Total</td>
                   <td>{{ $order->total_price }} JOD</td>

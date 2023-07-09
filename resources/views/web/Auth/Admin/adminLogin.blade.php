@@ -10,7 +10,7 @@
 @endsection
 
 @section('main')
-    
+
 <main class="colored-section">
     <nav class="sub-nav">
         <div class="container">
@@ -36,16 +36,16 @@
                               @endif
                                 <form method="POST" action="{{route('login-admin')}}">
                                     @csrf
-                                    
+
                                     @include('web.inc.errors')
                                     <div class="input-item me-auto ms-0">
-                                        
-                                        <input type="email" name="email" placeholder="{{trans("register.email")}}">
+
+                                        <input type="email" name="email" placeholder="{{trans('register.email')}}">
                                         <span>
                                             <i class="fa-regular fa-envelope"></i>
                                         </span>
                                     </div>
-                                    
+
                                     <div class="input-item me-auto ms-0">
                                         <input type="password" name="password" placeholder="{{trans('register.password')}}">
                                         <span>
@@ -71,9 +71,9 @@
                                             {{trans("auth.Login")}}
                                         </button>
                                     </div>
-                                    
+
                                 </form>
-                                
+
                             </div>
                         </div>
                     </div>

@@ -11,12 +11,12 @@
         <div class="col-md-4">
             <div class="form-group mb-4">
                 <label class='font-bold' class='font-bold' for="event-title">{{ trans('service.name') }}</label>
-                <input  wire:model="name" id="event-title" value="{{ old("name") }}"  type="text"
+                <input  wire:model="name" id="event-title" value="{{ old('name') }}"  type="text"
                     class="form-control" placeholder="{{ trans('service.name') }}">
                 @error('name')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
-        
+
             </div>
         </div>
         <div class="col-md-4">
@@ -26,7 +26,7 @@
                     @error('quantity')
                     <p class="text-danger">{{$message}}</p>
                     @enderror
-            
+
             </div>
         </div>
 
@@ -38,7 +38,7 @@
                 @error('price')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
-        
+
             </div>
         </div>
     </div>
@@ -53,14 +53,14 @@
                     <input type="file" wire:model.defer="image" id="teacher-avatar">
                     <label class="btn-custom" for="teacher-avatar">{{ trans('supplier.uploadNew') }}</label>
                 </div>
-    
+
                 @error('image')
                     {{ $message }}
                 @enderror
             </div>
         </div>
     </div>
-    
+
     <div class="form-group mb-4">
         <label class='font-bold' for="event-desc">{{ trans('service.desc') }}</label>
         <textarea wire:model="desc" id="event-desc" cols="30" placeholder="{{ trans('service.desc') }}" rows="10"

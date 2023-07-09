@@ -11,7 +11,7 @@
        </div>
 
        @if ($guard == "supplier")
-       <a href="{{route("create-supplier")}}" class="btn btn-success margin_res">Add Supplier</a>
+       <a href="{{route('create-supplier')}}" class="btn btn-success margin_res">Add Supplier</a>
        @endif
     </div>
 

@@ -242,3 +242,4 @@ $("#addEventButton").on("shown.bs.modal" ,function(){
 $(".print_button").click(function(){
    $("body").printArea({ mode: 'popup', popClose: true });
 });
+

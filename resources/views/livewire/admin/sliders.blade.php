@@ -4,7 +4,7 @@
 <div class="table-responsive">
 
        <div class="d-flex align-items-center justify-content-between flex-wrap">
-       <a href="{{ route("slider-create-form") }}" class="btn btn-success mb-sm-3 margin_res">Add Slider</a>
+       <a href="{{ route('slider-create-form') }}" class="btn btn-success mb-sm-3 margin_res">Add Slider</a>
        </div>
 
 

@@ -28,11 +28,11 @@
                                     <h2 class="text-start">Change Password </h2>
                                 </div>
                                 <div class="contact-form black-contact-form">
-                                    <form method="POST" action="{{route('submit_change_pass_school' , "school")}}">
+                                    <form method="POST" action="{{route('submit_change_pass_school' , 'school')}}">
                                         @csrf
 
                                         @include('web.inc.errors')
-                                        
+
                                         <div class="input-item me-auto ms-0">
 
                                             <input type="password" name="old_password" placeholder="Old Password">

@@ -12,7 +12,7 @@
        </div>
 
 
-       <a href="{{route("service-create-form" , $supplierId)}}" class="btn btn-success margin_res">Add Service</a>
+       <a href="{{route('service-create-form' , $supplierId)}}" class="btn btn-success margin_res">Add Service</a>
     </div>
 
 

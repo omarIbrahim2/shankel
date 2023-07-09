@@ -26,12 +26,12 @@
                         <div class="left-side">
                             <div class="section-title">
                                 <h2 class="text-start">{{trans('register.Sign Up')}}</h2>
-                                <p class="text-start p-0">{{trans("auth.LoginToYourAccount")}} <a href="{{route("teacher-login")}}">{{trans("register.ClickHere")}}</a></p>
+                                <p class="text-start p-0">{{trans("auth.LoginToYourAccount")}} <a href="{{route('teacher-login')}}">{{trans("register.ClickHere")}}</a></p>
                             </div>
                             <div class="contact-form black-contact-form">
                                 @if (session()->has('status'))
-                                          
-                                      
+
+
                                 <div class="alert alert-warning">
                                      <p>{{session()->get('status')}}</p>
                                 </div>
@@ -48,7 +48,7 @@
                                         @enderror
                                     </div>
                                     <div class="input-item me-auto ms-0">
-                                        
+
                                         <input value="{{@old('email')}}" type="email" name="email" placeholder="{{trans('register.email')}}">
                                         <span>
                                             <i class="fa-regular fa-envelope"></i>
@@ -72,7 +72,7 @@
                                             @foreach ($cities as $city)
                                                <option value="{{$city->id}}">{{$city->name}}</option>
                                             @endforeach
-                                            
+
                                           </select>
                                         <span>
                                             <i class="fa-solid fa-location-dot"></i>
@@ -80,7 +80,7 @@
                                     </div>
 
                                     <div class="input-item me-auto ms-0">
-                                        
+
                                         <select name="area_id" id="areaSelect" class="form-select" aria-label="Default select example" required>
                                             <option selected disabled>{{trans('register.area')}}</option>
                                           </select>
@@ -91,7 +91,7 @@
                                         <p class="text-danger">{{$message}}</p>
                                         @enderror
                                     </div>
-                                     
+
                                     <div class="input-item me-auto ms-0">
                                         <input value="{{@old('field')}}" type="text" name="field" placeholder="{{ trans('teacher.field') }}">
                                         <span>
@@ -117,7 +117,7 @@
                                         @enderror
                                     </div>
                                     <div class="input-item me-auto ms-0">
-                                       
+
                                         <input value="{{@old('password')}}" type="password" name="password" placeholder="{{trans('register.password')}}">
                                         <span>
                                             <i class="fa-solid fa-lock"></i>
@@ -138,16 +138,16 @@
                                         <span class="second show-passowrd">
                                             <i class="fa-regular fa-eye-slash fa-flip-horizontal"></i>
                                         </span>
-                                        
+
                                     </div>
-                                    
-                                    
+
+
                                     <div class="input-item me-auto ms-0">
                                         <button type="submit" class="custom-out-btn">
                                             {{trans("register.Sign Up")}}
                                         </button>
                                     </div>
-                                    
+
                                 </form>
                             </div>
                         </div>
@@ -162,12 +162,12 @@
         </div>
     </section>
 </main>
-    
+
 @endsection
 
 
 @section('scripts')
-   
+
  <script>
   $("#selectCity").on('change' , function(){
      let cityId = this.value;
@@ -190,14 +190,14 @@
             $("#areaSelect").empty();
             $("#areaSelect").append("<option selected disabled>Area</option>");
             for (const key in data.areas) {
-              
-              
-              your_html += "<option id='ar' value = " + data.areas[key].id + ">"+ data.areas[key].name +"</option>"; 
+
+
+              your_html += "<option id='ar' value = " + data.areas[key].id + ">"+ data.areas[key].name +"</option>";
             }
             $("#areaSelect").append(your_html);
 
 
-            
+
 
 
         }

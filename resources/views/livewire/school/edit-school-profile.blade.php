@@ -11,9 +11,9 @@
                     <div class="sub-title">
                         <h3>{{ trans('school.profile') }}</h3>
                     </div>
-                    <div class="teacher-avatar rounded-0">
+                    <div class="teacher-avatar ">
 
-                        <img src="{{ $AuthUser->image }}" alt="avatar">
+                        <img src="{{ $AuthUser->image }}" alt="avatar" class="rounded-0">
                         <h4>
                             <a href="#">{{ $AuthUser->name }}</a>
                         </h4>
@@ -39,7 +39,7 @@
                             <div class="upload-avatar">
                                 {{-- <button type="button" class="btn-custom" data-bs-toggle="modal"
                                     data-bs-target="#addEvent">{{ trans('school.addEvent') }}</button> --}}
-                                <a href="{{ route('school-add-event') }}" class="btn-custom">{{ trans('school.addEvent') }}</a>    
+                                <a href="{{ route('school-add-event') }}" class="btn-custom">{{ trans('school.addEvent') }}</a>
                             </div>
                         </div>
                     </div>

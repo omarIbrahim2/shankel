@@ -30,13 +30,13 @@
                                 </div>
                                 <div class="contact-form black-contact-form">
                                       @if (session()->has('status'))
-                                          
-                                      
+
+
                                        <div class="alert alert-warning">
                                             <p>{{session()->get('status')}}</p>
                                        </div>
                                        @endif
-                                
+
                                     <form method="POST" action="{{route('school-register')}}" enctype="multipart/form-data">
                                         @csrf
                                         <div class="input-item me-auto ms-0">
@@ -76,17 +76,17 @@
                                                 @foreach ($cities as $city)
                                                    <option value="{{$city->id}}">{{$city->name}}</option>
                                                 @endforeach
-                                                
+
                                               </select>
                                             <span>
                                                 <i class="fa-solid fa-location-dot"></i>
                                             </span>
                                         </div>
-                                        
+
                                         <div class="input-item me-auto ms-0">
-                                            
+
                                             <select name="area_id" id="areaSelect" class="form-select" aria-label="Default select example" >
-                                                <option value="{{old("area_id")}}" selected disabled>{{trans('register.area')}}</option>
+                                                <option value="{{old('area_id')}}" selected disabled>{{trans('register.area')}}</option>
                                               </select>
                                             <span>
                                                 <i class="fa-solid fa-location-dot"></i>
@@ -111,7 +111,7 @@
                                                 @foreach ($eSystems as $system)
                                                    <option value="{{$system->id}}">{{$system->name}}</option>
                                                 @endforeach
-                                                
+
                                               </select>
                                             <span>
                                                 <i class="fa-solid fa-location-dot"></i>
@@ -126,7 +126,7 @@
                                             </h4>
                                             <div class="select-cont">
                                                 @foreach ($grades as $grade)
-                                                    
+
                                                 <div class="checkbox">
                                                     <input type="checkbox" name="grade_id[]" value="{{$grade->id}}"
                                                         id="{{$grade->name}}">
@@ -135,7 +135,7 @@
                                                     </label>
                                                 </div>
                                                 @endforeach
-                                                
+
                                             </div>
                                             @error('grade_id')
                                             <p class="text-danger">{{$message}}</p>
@@ -187,7 +187,7 @@
                                                     id="school">
                                                 <label class="custom-out-btn" for="school">{{ trans('register.School') }}</label>
                                             </div>
-                                            
+
                                             <div class="radio">
                                                 <input type="radio" name="type" value="Center"
                                                     id="center">
@@ -202,7 +202,7 @@
                                             @error('type')
                                             <p class="text-danger">{{$message}}</p>
                                             @enderror
-                                            
+
                                         </div>
 
                                         <div class="input-item me-auto ms-0">

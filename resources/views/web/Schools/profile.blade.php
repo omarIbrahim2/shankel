@@ -12,7 +12,7 @@
 @section('banner_slider')
     <!-- banner slider -->
     <div class="home-slider" id="header">
-         
+
         <div class="home-banner" style="background-image: url({{ asset($slider == null ? 'assets/images/banner/sup-banner.png' : $slider->image) }})">
             <div class="container">
                 <div claas="row">
@@ -20,14 +20,14 @@
                         <div class="slider-content">
                             @if ($slider)
                             <P>{{ $slider->title(App::getLocale()) }}</P>
-                            <p>{{ $slider->info(App::getLocale())  }}</p>       
+                            <p>{{ $slider->info(App::getLocale())  }}</p>
                             @endif
-                         
+
                         </div>
                     </div>
                     <div class="col-12">
                         <div class="banner-filter">
-                            <form  action="{{route("filter-schools")}}" class="filter-form">
+                            <form  action="{{route('filter-schools')}}" class="filter-form">
                                 <div class="filter">
                                     <select name="area_id">
                                         <option selected disabled>area</option>
@@ -40,7 +40,7 @@
                                     <select name="grade_id">
                                         <option selected disabled>grade</option>
                                             @foreach ($Grades as $grade)
-                                             <option value="{{$grade->id}}">{{$grade->name}}</option>     
+                                             <option value="{{$grade->id}}">{{$grade->name}}</option>
                                            @endforeach
                                     </select>
                                 </div>
@@ -48,7 +48,7 @@
                                     <select name="edu_systems_id">
                                         <option selected disabled>Education System</option>
                                             @foreach ($Esystems as $Esystem)
-                                              <option value="{{$Esystem->id}}">{{$Esystem->name}}</option>     
+                                              <option value="{{$Esystem->id}}">{{$Esystem->name}}</option>
                                             @endforeach
                                     </select>
                                 </div>

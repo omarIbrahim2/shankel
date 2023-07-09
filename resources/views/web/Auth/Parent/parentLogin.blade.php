@@ -3,7 +3,7 @@
 @section('title')
 
 Shankl | Parent Login
-    
+
 @endsection
 
 @section('nav')
@@ -37,18 +37,18 @@ Shankl | Parent Login
                               @endif
                                 <form method="POST" action="{{route('login-parent')}}">
                                     @csrf
-                                    
+
                                     @include('web.inc.errors')
                                     <div class="input-item me-auto ms-0">
-                                        
-                                        <input type="email" name="email" placeholder="{{trans("register.email")}}">
+
+                                        <input type="email" name="email" placeholder="{{trans('register.email')}}">
                                         <span>
                                             <i class="fa-regular fa-envelope"></i>
                                         </span>
                                     </div>
-                                    
+
                                     <div class="input-item me-auto ms-0">
-                                        <input type="password" name="password" placeholder="{{trans("register.password")}}">
+                                        <input type="password" name="password" placeholder="{{trans('register.password')}}">
                                         <span>
                                             <i class="fa-solid fa-lock"></i>
                                         </span>
@@ -72,9 +72,9 @@ Shankl | Parent Login
                                             {{trans('auth.Login')}}
                                         </button>
                                     </div>
-                                    
+
                                 </form>
-                               
+
                             </div>
                         </div>
                     </div>
@@ -87,7 +87,7 @@ Shankl | Parent Login
             </div>
         </div>
     </section>
-</main>    
+</main>
 
 
 @endsection

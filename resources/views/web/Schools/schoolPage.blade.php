@@ -1,7 +1,7 @@
 @extends('web.layout')
 
 @section('nav')
-    
+
  @custom_auth
    <x-nav-auth></x-nav-auth>
  @endcustom_auth
@@ -15,15 +15,15 @@
 
 
 @section('main')
-    
-<main data-color="#AF62A6" data-image="{{ asset("assets/images/logo/nurs.png") }}">
+
+<main data-color="#AF62A6" data-image="{{ asset('assets/images/logo/nurs.png') }}">
     <!-- provider info -->
     <section class="section">
         <div class="inner">
             <div class="container">
                 @auth("parent")
                   <a class="btn btn-primary" href="{{route("register-form-school" , $School->id)}}">{{ trans('school.bookSeat') }}</a>
-                @endauth 
+                @endauth
                 <div class="section-title">
                     <h2 class="image-content">{{$School->name}}</h2>
                 </div>
@@ -67,7 +67,7 @@
                                      @livewire('web.comments.comments' , ["school_id" => $School->id])
 
                                 </div>
-                                @endcustom_auth 
+                                @endcustom_auth
                             </div>
                         </div>
                         <div class="col-lg-5 col-md-6 col-12">
@@ -98,19 +98,19 @@
                                     </span>
                                     <span> {{$Es->name}} </span>
                                 </div>
-                                
+
                             </div>
                             <div class="prov-socials">
                                 @if ($School->facebook)
                                 <div>
                                     <a href="{{$School->facebook}}"><i class="fa-brands fa-facebook-f"></i></a>
-                                </div>    
+                                </div>
                                 @endif
                                 @if ($School->twitter)
                                 <div>
                                     <a href="{{$School->twitter}}"><i class="fa-brands fa-twitter"></i></a>
-                                
-                                </div>    
+
+                                </div>
                                 @endif
                                @if ($School->linkedin)
                                <div>
@@ -151,7 +151,7 @@
     </section>
 
 </main>
- 
+
 @endsection
 
 @section('scripts')

@@ -1,15 +1,15 @@
 
 <form wire:submit.prevent="save">
 
-    
+
     <input wire:model="eventable_id" hidden type="text">
     @error('eventable_id')
         <p>{{ $message }}</p>
     @enderror
-    
+
     <div class="form-group mb-4">
     <label for="event-title">{{ trans('event.title') }}</label>
-        <input wire:model="title" id="event-title"  type="text" class="form-control"  placeholder="{{ trans('event.title') }}">
+        <input wire:model="title" id="event-title"  type="text" class="form-control "  placeholder="{{ trans('event.title') }}">
         @error('title')
         <p class="text-danger">{{$message}}</p>
         @enderror
@@ -84,15 +84,15 @@
                 <select wire:model="area_id" id="areaSelect" class="form-select form-control" aria-label="Default select example" >
                 <option  selected>{{ trans('event.area') }}</option>
                 </select>
-                
+
                 @error('area_id')
                 <p class="text-danger">{{$message}}</p>
                 @enderror
             </div>
         </div>
      </div>
-      
+
 
      <button type="submit" class="btn btn-primary mt-4">{{ trans('event.add') }}</button>
-   
+
 </form>

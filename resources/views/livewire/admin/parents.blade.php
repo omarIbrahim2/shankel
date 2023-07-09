@@ -58,7 +58,7 @@
                </div>
              </td>
            @else
-            <td class="text-center"><a href="{{ route("parent-details" , $user['id']) }}" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a></td>
+            <td class="text-center"><a href="{{ route('parent-details' , $user['id']) }}" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a></td>
             @endif
 
 

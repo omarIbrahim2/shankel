@@ -7,9 +7,9 @@
                </div>
             @endif
             <form wire:submit.prevent="save" enctype="multipart/form-data">
-    
+
                 <div class="input-item me-auto ms-0">
-                   
+
                     <input type="text"  placeholder="{{ trans('parent.name') }}" wire:model="name">
                     <span>
                         <i class="fa-solid fa-user"></i>
@@ -45,32 +45,32 @@
                     <p class="text-danger">{{$message}}</p>
                     @enderror
                 </div>
-                
+
                 <div class="input-item me-auto ms-0">
-                   
+
                     <select   wire:model="city" id="selectCity" class="form-select" aria-label="Default select example">
                         <option selected>{{$authCity->name}}</option>
                         @foreach ($cities as $city)
                            <option   value="{{$city->id}}">{{$city->name}}</option>
                         @endforeach
-                        
+
                       </select>
-                    
+
                     <span>
                         <i class="fa-solid fa-location-dot"></i>
                     </span>
 
                     @error('city') {{$message}} @enderror
                 </div>
-                
+
                 <div class="input-item me-auto ms-0">
-                    
+
                     <select wire:model="area_id"   id="areaSelect" class="form-select" aria-label="Default select example" >
                         <option  value="{{$authArea->id}}" selected>{{$authArea->name}}</option>
                           @if ($Areas)
-                    
+
                             @foreach ($Areas as $Area)
-                            <option  value="{{$Area->id}}">{{$Area->name}}</option> 
+                            <option  value="{{$Area->id}}">{{$Area->name}}</option>
                             @endforeach
                          @endif
                       </select>
@@ -81,7 +81,7 @@
                     <p class="text-danger">{{$message}}</p>
                     @enderror
                 </div>
-                
+
                 <div class="input-item me-auto ms-0 mt-32">
                     <input type="file" wire:model = 'image' id="parent-profile">
 
@@ -89,13 +89,13 @@
                         <span>
                             <i class="fa-regular fa-image"></i>
                         </span>
-                        
+
                          @if ($image != null)
                          <p class="upload-text files-names">{{$image->getClientOriginalName()}}</p>
                          @else
                          <p class="upload-text files-names">{{ trans('parent.upload') }}</p>
                          @endif
-                        
+
                         <div type="button" class="btn-custom btn-gray-custom">
                             {{ trans('parent.choose') }}
                         </div>
@@ -109,17 +109,17 @@
                     <button type="submit" class="custom-out-btn btn-form" >
                         {{ trans('parent.save') }}
                     </button>
- 
-                    <a href="{{route("change_pass_parent")}}"  class="custom-out-btn btn-form" >
+
+                    <a href="{{route('change_pass_parent')}}"  class="custom-out-btn btn-form" >
                         {{ trans('parent.reset') }}
                     </a>
-                    
+
                 </div>
 
             </form>
 
         </div>
     </div>
-   
+
 </div>
 
