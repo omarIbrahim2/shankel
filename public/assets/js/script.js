@@ -189,7 +189,6 @@ if($('main').data('color')!=="defined"){
 
 if($('main').data('image')!=="defined"){
   var image=$("main").data('image')
-  console.log(image)
   $('.image-content').append(`<img src=${image} alt="logo">`)
 }
 // make div editaple
