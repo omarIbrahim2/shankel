@@ -76,10 +76,11 @@
     <script src="{{asset('assets')}}/js/select2.min.js"></script>
     <!-- swiper js -->
     <script src="{{asset('assets')}}/js/swiper-bundle.min.js"></script>
-    <script src="{{asset('assets')}}/js/flatpickr/flatpickr.js"></script>
-    <script src="{{asset('assets')}}/js/flatpickr/custom-flatpickr.js"></script>
     <script src="{{asset('assets')}}/js/toastr.min.js"></script>
     <script src="{{asset('assets')}}/js/toastr.js.map"></script>
+    <script src="{{asset('assets')}}/js/flatpickr/flatpickr.js"></script>
+    <script src="{{asset('assets')}}/js/flatpickr/custom-flatpickr.js"></script>
+  
     <!-- custom js -->
     <script src="{{asset('assets')}}/js/script.js"></script>
     

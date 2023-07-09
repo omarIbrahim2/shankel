@@ -124,17 +124,18 @@ class SchoolController extends Controller
     return back();
   }
 
-  public function FilterSuppliers(Request $request){
-      
-    $query = Supplier::query();
-     $Suppliers =  $this->search($request->query() , $query );
-     
-     return view("web.Suppliers.filteredSuppliers")->with(['Suppliers' => $Suppliers]);
+
+
+ public function addEvent(LocationRepoInterface $locationRepo){
+   
+  $cities =  $locationRepo->getCities();
+  return view('web.schools.addEvent')->with([
+
+    'cities' => $cities,
+  ]);
  }
 
- public function addEvent(){
-  return view('web.schools.addEvent');
- }
+ 
 
  public function reservedEvents(){
   return view("web.schools.reservedEvents");

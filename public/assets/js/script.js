@@ -198,9 +198,9 @@ $(".provider-description").on('click',function(){
 })
 
 // date
-$(".textbox-n").on('focus',function(){
-  $(this).attr("type","date")
-})
+// $(".textbox-n").on('focus',function(){
+//   $(this).attr("type","date")
+// })
 $(".textbox-n-time").on('focus',function(){
   $(this).attr("type","time")
   $(this).attr("value","00:00:00")
@@ -256,6 +256,6 @@ $(".eventTimePicker").flatpickr({
   dateFormat: "H:i:S",
 });
 $(".eventDayPicker").flatpickr({
-  enableTime: false,
+  enableTime: true,
   dateFormat: "Y-m-d H:i",
 });

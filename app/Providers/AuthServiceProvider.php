@@ -40,6 +40,8 @@ class AuthServiceProvider extends ServiceProvider
                 return true;
             }elseif(Auth::guard('teacher')->check() == true){
                 return true;
+            }elseif(Auth::guard('supplier')->check() == true){
+                return true;
             }
 
             return false;
@@ -54,6 +56,8 @@ class AuthServiceProvider extends ServiceProvider
                 return false;
             }elseif(Auth::guard('teacher')->check() == true){
                 return false;
+            }elseif(Auth::guard('supplier')->check() == true){
+               return false;
             }
 
             return true;

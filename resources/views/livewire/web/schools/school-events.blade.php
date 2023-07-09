@@ -27,7 +27,7 @@
                                 </div>
                             </div>
                             <div class="event-img">
-                                <img src="{{ asset($event->image ? 'assets/images/events/event1.webp' : 'uploads/' . $event->image) }}"
+                                <img src="{{ asset( 'uploads/'. $event->image) }}"
                                     style="width: 500px" alt="event">
                             </div>
                             <div class="event-description">
@@ -59,12 +59,6 @@
                                         <p>{{ trans('event.secs') }}</p>
                                     </div>
                                 </div>
-
-                                {{-- if condition doesn't work --}}
-                                    <div>
-                                        <button wire:click="reEvent({{ $event->id }})"
-                                            class="white-btn">{{ trans('event.reEvent') }}</button>
-                                    </div>
                                 
                                     <div class="text-center mt-2">
                                         <button wire:click="cancelEvent({{ $event->id }})"
