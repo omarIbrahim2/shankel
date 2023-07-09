@@ -35,4 +35,5 @@ return[
     "publicLec" => "Public Lecture",
     "events" => "Events" ,
     "delete" => "Delete",
+    "teachers" => "Teachers",
 ];

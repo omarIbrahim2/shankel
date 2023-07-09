@@ -4,7 +4,7 @@
         <div>
             <div class="service-banner school-banner">
                 <div class="page-search">
-                    <input wire:model="searchSchool" type="text" class="search-input"
+                    <input wire:model="searchCenters" type="text" class="search-input"
                         placeholder="{{ trans('school.search') }}">
                     <span><i class="fa-solid fa-magnifying-glass"></i></span>
                 </div>
@@ -14,7 +14,7 @@
             <div class="section-content section">
                 <div class="container">
                     <div class="section-title">
-                        <h2>{{ trans('parent.schArea') }}</h2>
+                        <h2>{{ trans('supplier.areaCenters') }}</h2>
                     </div>
                     <div class="area-container ">
 

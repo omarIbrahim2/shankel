@@ -29,4 +29,16 @@ return[
     "saveChange" => "Save changes",
     "watchNow" => "Watch Now All Services",
     "services" => "Services",
+
+    "choices" => "Your choices",
+    "choicesInfo" => "Below you will see all your choices through Shankl for easy viewing at any time",
+    "more" => "More",
+    "events" => "Events" ,
+    "areaSchools" => "Schools in Your Area",
+    "areaCenters" => "Centers in Your Area",
+    "areaKgs" => "Kindergartens in Your Area",
+    "areaSuppliers" => "Other Suppliers in Your Area",
+    "services" => "Your Services",
+    "areaTeachers" => "Teachers in Your Area",
+
 ];

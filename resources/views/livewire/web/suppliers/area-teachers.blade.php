@@ -1,9 +1,17 @@
 <div>
     <section class="section edit-teacher-profile">
         <div class="inner">
-            <div class="container">
+            <div class="service-banner school-banner">
+                <div class="page-search">
+                    <input wire:model="searchTeacher" type="text" class="search-input"
+                        placeholder="{{ trans('school.search') }}">
+                    <span><i class="fa-solid fa-magnifying-glass"></i></span>
+                </div>
+            </div>
+
+            <div class="container p-4">
                 <div class="section-title">
-                    <h2>{{ trans('teacher.teachers') }}</h2>
+                    <h2>{{ trans('supplier.areaTeachers') }}</h2>
                 </div>
                 <div class="section-content">
                     <div class="row">
