@@ -1,8 +1,11 @@
 <?php
 namespace Shankl\Repositories;
 
+use App\Models\School;
 use App\Models\Service;
+use App\Models\Teacher;
 use App\Models\Supplier;
+use Illuminate\Support\Facades\Auth;
 use Shankl\Interfaces\UserReboInterface;
 
 class SupplierRepository implements UserReboInterface{
@@ -53,5 +56,49 @@ class SupplierRepository implements UserReboInterface{
           return Service::paginate($services , $pages);
 
     }
+
+
+    public function getAreaSuppliers($pages){
+        $SupplierUserId =  Auth::guard('supplier')->user()->id;
+        $AuthSupplier = Supplier::with('area')->findOrFail($SupplierUserId);
+        $areaId = $AuthSupplier->area->id;
+        $areaSuppliers = Supplier::select('id','image','name','type','orgName','area_id')->where('area_id' , $areaId)->paginate($pages);
+        return $areaSuppliers;
+     }
+
+     public function getAreaTeachers($pages){
+        $SupplierUserId =  Auth::guard('supplier')->user()->id;
+        $AuthSupplier = Supplier::with('area')->findOrFail($SupplierUserId);
+        $areaId = $AuthSupplier->area->id;
+        $areaTeachers = Teacher::where('status' , true)->where('area_id' , $areaId)->paginate($pages);
+        return $areaTeachers;
+     }
+
+     public function getAreaSchools($pages){
+        $supplierUserId =  Auth::guard('supplier')->user()->id;
+        $AuthSupplier = Supplier::with('area')->findOrFail($supplierUserId);
+        $areaId = $AuthSupplier->area->id;
+        $areaSchools = School::select('id','image','name','area_id')->
+        where('type' , 'School')->where('area_id' , $areaId)->paginate($pages);
+        return $areaSchools;
+     }
+
+     public function getAreaCenters($pages){
+        $supplierUserId =  Auth::guard('supplier')->user()->id;
+        $AuthSupplier = Supplier::with('area')->findOrFail($supplierUserId);
+        $areaId = $AuthSupplier->area->id;
+        $areaCenters = School::select('id','image','name','area_id')->
+        where('type' , 'Center')->where('area_id' , $areaId)->paginate($pages);
+        return $areaCenters;
+     }
+
+     public function getAreaKgs($pages){
+        $supplierUserId =  Auth::guard('supplier')->user()->id;
+        $AuthSupplier = Supplier::with('area')->findOrFail($supplierUserId);
+        $areaId = $AuthSupplier->area->id;
+        $areaKgs = School::select('id','image','name','area_id')->
+        where('type' , 'KG')->where('area_id' , $areaId)->paginate($pages);
+        return $areaKgs;
+     }
 
 }

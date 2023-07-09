@@ -1,3 +1,6 @@
+
+
+
 // home slider
 // $(document).on("ready",function(){
 //   if(localStorage.getItem("parentPhoto")){
@@ -5,6 +8,7 @@
 //     console.log("ready")
 //   }
 // })
+
 
 var swiper = new Swiper(".home-slider .mySwiper", {
     loop:true,
@@ -194,10 +198,14 @@ $(".provider-description").on('click',function(){
 })
 
 // date
-$(".textbox-n").on('focus',function(){
-  $(this).attr("type","date")
+// $(".textbox-n").on('focus',function(){
+//   $(this).attr("type","date")
+// })
+$(".textbox-n-time").on('focus',function(){
+  $(this).attr("type","time")
+  $(this).attr("value","00:00:00")
 })
-$(".textbox-n").on("blur",function(){
+$(".textbox-n , .textbox-n-time").on("blur",function(){
   $(this).attr("type","text")
 })
 
@@ -238,8 +246,16 @@ $("#addEventButton").on("shown.bs.modal" ,function(){
 
   $("#addEvent").modal('show')
 });
-
 $(".print_button").click(function(){
-   $("body").printArea({ mode: 'popup', popClose: true });
+  $("body").printArea({ mode: 'popup', popClose: true });
 });
 
+$(".eventTimePicker").flatpickr({
+  enableTime: true,
+  noCalendar: true,
+  dateFormat: "H:i:S",
+});
+$(".eventDayPicker").flatpickr({
+  enableTime: true,
+  dateFormat: "Y-m-d H:i",
+});

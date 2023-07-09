@@ -53,7 +53,7 @@ class User extends Authenticatable
 
     public function notifications()
     {
-        return $this->morphMany(Notification::class , 'noteable');
+        return $this->morphMany(Notification::class , 'user');
     }
 
     public function events()

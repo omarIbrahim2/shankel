@@ -23,6 +23,7 @@ return new class extends Migration
             $table->foreignId("area_id")->constrained();
             $table->string("type" , 255);
             $table->string("orgName" , 255);
+            $table->unsignedInteger("notifications")->default(0);
             $table->rememberToken();
             $table->timestamps();
             $table->index(['name' , 'email' , 'status']);

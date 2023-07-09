@@ -72,9 +72,9 @@ class EventRepository implements EventRepoInterface
       return Event::with(['ParenttsinEvent', 'schoolsinEvent', 'teachersinEvent'])->where('id', $eventId)->first();
    }
 
-   public function addEvent($data)
+   public function addEvent($data , $AuthUser)
    {
-      return Event::create($data);
+      return $AuthUser->events()->create($data);
    }
 
    public function find($eventId)

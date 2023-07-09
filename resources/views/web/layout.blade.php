@@ -22,6 +22,11 @@
     <link rel="stylesheet" href="{{asset('assets')}}/css//select2.min.css">
     <!-- swiper js -->
     <link rel="stylesheet" href="{{asset('assets')}}/css/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="{{asset('assets')}}/css/flatpickr/flatpickr.css">
+    <link rel="stylesheet" href="{{asset('assets')}}/css/flatpickr/custom-flatpickr.css">
+
+    <link rel="stylesheet" href="{{asset('assets')}}/css/toastr.min.css">
+
     <!-- custom css -->
     <link rel="stylesheet" href="{{asset('assets')}}/css/main.css">
     <!-- custom responsive -->
@@ -30,7 +35,6 @@
       <link rel="stylesheet" href="{{asset('assets')}}/css/ar.css">
     @endif
 
-    <link rel="stylesheet" href="{{asset('assets')}}/css/toastr.min.css">
     @livewireStyles
     @yield('styles')
 </head>
@@ -72,10 +76,14 @@
     <script src="{{asset('assets')}}/js/select2.min.js"></script>
     <!-- swiper js -->
     <script src="{{asset('assets')}}/js/swiper-bundle.min.js"></script>
-    <!-- custom js -->
-    <script src="{{asset('assets')}}/js/script.js"></script>
     <script src="{{asset('assets')}}/js/toastr.min.js"></script>
     <script src="{{asset('assets')}}/js/toastr.js.map"></script>
+    <script src="{{asset('assets')}}/js/flatpickr/flatpickr.js"></script>
+    <script src="{{asset('assets')}}/js/flatpickr/custom-flatpickr.js"></script>
+
+    <!-- custom js -->
+    <script src="{{asset('assets')}}/js/script.js"></script>
+
     @livewireScripts
     @yield('scripts')
 </body>

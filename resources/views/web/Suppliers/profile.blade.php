@@ -10,88 +10,23 @@
 
 
 @section('banner-slider')
-    <!-- banner slider -->
-    <div class="home-slider" id="header">
-        <div class="swiper mySwiper">
-            <div class="marquee">
-                <div class="marquee__item">
-                    <a class="marquee__seperator">Lorem Ipsum Dolor Sit Amet</a>
-                    +++
-                    <a class="marquee__seperator">Lorem Ipsum Dolor Sit Amet</a>
-                    +++
-                    <a class="marquee__seperator">Lorem Ipsum Dolor Sit Amet</a>
-                    +++
-                    <a class="marquee__seperator">Lorem Ipsum Dolor Sit Amet</a>
-                    +++
-                    <a class="marquee__seperator">Lorem Ipsum Dolor Sit Amet</a>
-                    +++
-                    <a class="marquee__seperator">Lorem Ipsum Dolor Sit Amet</a>
-                    +++
-                    <a class="marquee__seperator">Lorem Ipsum Dolor Sit Amet</a>
-                    +++
-                </div>
-            </div>
-            <div class="swiper-wrapper">
-                <div class="swiper-slide" style="background-image:url('{{ asset('assets') }}/images/banner/banner.webp')">
-                    <div class="container">
-                        <div claas="row">
-                            <div class="col-lg-6 col-md-8 col-12">
-                                <div class="slider-content">
-                                    <h1>SHANKAL</h1>
-                                    <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio possimus
-                                        maxime eaque laudantium at, soluta sunt omnis aspernatur et blanditiis sequi
-                                        ea culpa. Aliquid mollitia reiciendis totam minima dolores illo.</P>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide" style="background-image:url('{{ asset('assets') }}/images/banner/banner.webp')">
-                    <div class="container">
-                        <div claas="row">
-                            <div class="col-lg-6 col-md-8 col-12">
-                                <div class="slider-content">
-                                    <h1>SHANKAL</h1>
-                                    <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio possimus
-                                        maxime eaque laudantium at, soluta sunt omnis aspernatur et blanditiis sequi
-                                        ea culpa. Aliquid mollitia reiciendis totam minima dolores illo.</P>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide" style="background-image:url('{{ asset('assets') }}/images/banner/banner.webp')">
-                    <div class="container">
-                        <div claas="row">
-                            <div class="col-lg-6 col-md-8 col-12">
-                                <div class="slider-content">
-                                    <h1>SHANKAL</h1>
-                                    <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio possimus
-                                        maxime eaque laudantium at, soluta sunt omnis aspernatur et blanditiis sequi
-                                        ea culpa. Aliquid mollitia reiciendis totam minima dolores illo.</P>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide" style="background-image:url('{{ asset('assets') }}/images/banner/banner.webp')">
-                    <div class="container">
-                        <div claas="row">
-                            <div class="col-lg-6 col-md-8 col-12">
-                                <div class="slider-content">
-                                    <h1>SHANKAL</h1>
-                                    <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio possimus
-                                        maxime eaque laudantium at, soluta sunt omnis aspernatur et blanditiis sequi
-                                        ea culpa. Aliquid mollitia reiciendis totam minima dolores illo.</P>
-                                </div>
-                            </div>
-                        </div>
+<div class="home-slider" id="header">
+    <div class="home-banner"  style="background-image: url({{ asset($slider == null ? 'assets/images/banner/sup-banner.png' : $slider->image) }})">
+        <div class="container">
+            <div claas="row">
+                <div class="col-lg-6 col-md-8 col-12">
+                    <div class="slider-content">
+                        @if ($slider)
+                        <P>{{ $slider->title(App::getLocale()) }}</P>
+                        <p>{{ $slider->info(App::getLocale())  }}</p>       
+                        @endif
+                     
                     </div>
                 </div>
             </div>
-            <div class="swiper-pagination"></div>
         </div>
     </div>
+</div>
 @endsection
 
 
@@ -101,8 +36,8 @@
         <div class="inner">
             <div class="container">
                 <div class="section-title">
-                    <h2>Our Services</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+                    <h2>{{ trans('supplier.choices') }}</h2>
+                    <p>{{ trans('supplier.choicesInfo') }}</p>
                 </div>
                 <div class="section-content">
                     <div class="parent-services">
@@ -110,65 +45,69 @@
                             <div class="col-lg-4 col-md-6 col-12">
                                 <div class="service" style="--clr:#00A0DC">
                                     <div class="service-icon">
-                                        <i class="fa-regular fa-user"></i>
+                                        <i class="fa-solid fa-dolly"></i>
                                     </div>
                                     <div class="service-name">
-                                        <h3>Reservation User Page</h3>
+                                        <h3>{{ trans('supplier.services') }}</h3>
                                     </div>
-                                    <a href="#" class="custom-out-btn">
-                                        More
+                                    <a href="{{ route('supplier-services') }}" class="custom-out-btn">
+                                        {{ trans('supplier.more') }}
                                     </a>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-6 col-12">
                                 <div class="service" style="--clr:#FF2BB3">
                                     <div class="service-icon">
-                                        <i class="fa-solid fa-location-dot"></i>
+                                        <i class="fa-solid fa-truck-field"></i>
                                     </div>
                                     <div class="service-name">
-                                        <h3>My Area</h3>
+                                        <h3>{{ trans('supplier.areaSuppliers') }}</h3>
                                     </div>
-                                    <a href="#" class="custom-out-btn">
-                                        More
+                                    <a href="{{ route('supplier-area-suppliers') }}" class="custom-out-btn">
+                                        {{ trans('supplier.more') }}
                                     </a>
                                 </div>
                             </div>
+                            
+                            
                             <div class="col-lg-4 col-md-6 col-12">
                                 <div class="service" style="--clr:#AF62A6">
                                     <div class="service-icon">
-                                        <i class="fa-regular fa-calendar-days"></i>
+                                        <i class="fa-solid fa-school"></i>
                                     </div>
                                     <div class="service-name">
-                                        <h3>Events</h3>
+                                        <h3>{{ trans('supplier.areaSchools') }}</h3>
                                     </div>
-                                    <a href="#" class="custom-out-btn">
-                                        More
+                                    <a href="{{ route('supplier-area-schools') }}" class="custom-out-btn">
+                                        {{ trans('supplier.more') }}
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-6 col-12">
-                                <div class="service" style="--clr:#BCCF01">
-                                    <div class="service-icon">
-                                        <i class="fa-solid fa-house"></i>
-                                    </div>
-                                    <div class="service-name">
-                                        <h3>Center</h3>
-                                    </div>
-                                    <a href="#" class="custom-out-btn">
-                                        More
-                                    </a>
-                                </div>
-                            </div>
+
                             <div class="col-lg-4 col-md-6 col-12">
                                 <div class="service" style="--clr:#AF62A6">
                                     <div class="service-icon">
                                         <i class="fa-solid fa-building-columns"></i>
                                     </div>
                                     <div class="service-name">
-                                        <h3>School</h3>
+                                        <h3>{{ trans('supplier.areaCenters') }}</h3>
                                     </div>
-                                    <a href="#" class="custom-out-btn">
-                                        More
+                                    <a href="{{ route('supplier-area-Centers') }}" class="custom-out-btn">
+                                        {{ trans('supplier.more') }}
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 col-12">
+                                <div class="service" style="--clr:#AF62A6">
+                                    <div class="service-icon">
+                                        <i class="fa-solid fa-children"></i>
+                                    </div>
+                                    <div class="service-name">
+                                        <h3>{{ trans('supplier.areaKgs') }}</h3>
+                                    </div>
+                                    <a href="{{ route('supplier-area-Kgs') }}" class="custom-out-btn">
+                                        {{ trans('supplier.more') }}
                                     </a>
                                 </div>
                             </div>
@@ -178,10 +117,10 @@
                                         <i class="fa-solid fa-pen-ruler"></i>
                                     </div>
                                     <div class="service-name">
-                                        <h3>Teacher</h3>
+                                        <h3>{{ trans('supplier.areaTeachers') }}</h3>
                                     </div>
-                                    <a href="#" class="custom-out-btn">
-                                        More
+                                    <a href="{{ route('supplier-area-Teachers') }}" class="custom-out-btn">
+                                        {{ trans('supplier.more') }}
                                     </a>
                                 </div>
                             </div>
@@ -192,46 +131,14 @@
         </div>
     </section>
     <!-- **************** -->
-    <!-- about us -->
-    <section class="section" id="about">
-        <div class="inner">
-            <div class="container">
-                <div class="section-title">
-                    <h2>About Us</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
-                </div>
-                <div class="section-content">
-                    <div class="about-welcome">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="welcome">
-                                    <h3>Welcome To Shankal</h3>
-                                </div>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus nihil labore esse
-                                    ex
-                                    cupiditate numquam est velit minima molestiae! Est a illo eius sapiente labore
-                                    consectetur, eaque modi blanditiis molestiae velit debitis ab laborum quos.</p>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident pariatur
-                                    cupiditate ullam voluptates beatae rerum, enim sequi quae laudantium nam dolore
-                                    alias iure, quo aut et quos blanditiis facere, obcaecati illo possimus laborum.
-                                    Assumenda, illo quasi blanditiis repellat temporibus nemo eligendi reprehenderit
-                                    maxime exercitationem magnam id perferendis, corrupti impedit eveniet.</p>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt officia
-                                    exercitationem nemo voluptates sit ipsa similique voluptatibus libero maxime facere?
-                                </p>
-                            </div>
-                            <div class="col-lg-6 order-lg-0 order-first">
-                                <img src="assets/images/logo/Shanklbig.png" alt="about us">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+     <!-- about us -->
+     <section class="section" id="about">
+        <x-about-us-section></x-about-us-section>
     </section>
     <!-- ****************** -->
     
 
     <!-- contact us -->
-    <x-contact-us></x-contact-us>
+    <x-contact-us></x-contact-us> 
+    <!-- ****************** -->
 @endsection

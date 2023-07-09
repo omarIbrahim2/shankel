@@ -130,4 +130,30 @@ class SupplierService extends Service{
     
         return $this->commentRepo->updateComment($newComment , $commentId);
     }
+
+
+    public function areaSuppliers($pages)
+    {
+        return $this->supplierRebo->getAreaSuppliers($pages);
+    }
+
+    public function areaTeachers($pages)
+    {
+        return $this->supplierRebo->getAreaTeachers($pages);
+    }
+
+    public function areaSchools($pages)
+    {
+        return $this->supplierRebo->getAreaSchools($pages);
+    }
+
+    public function areaCenters($pages)
+    {
+        return $this->supplierRebo->getAreaCenters($pages);
+    }
+
+    public function areaKgs($pages)
+    {
+        return $this->supplierRebo->getAreaKgs($pages);
+    }
 }

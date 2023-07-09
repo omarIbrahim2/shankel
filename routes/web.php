@@ -1,10 +1,7 @@
 <?php
 
-use App\Models\Role;
-use Shankl\Helpers\Paypal;
-use App\Models\Transaction;
+
 use App\Http\Controllers\reader;
-use Shankl\Entities\AdminEntity;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CardController;
@@ -25,8 +22,7 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\LocationCcontroller;
 use App\Http\Controllers\ServiceOrderController;
 use App\Http\Controllers\TransactionController;
-use App\Models\Teacher;
-use Symfony\Component\Routing\Route as RoutingRoute;
+
 
 //Lang Route
 Route::get('set/lang/{lang}' , [LangController::class , 'set'])->name("lang");
@@ -186,7 +182,7 @@ Route::middleware('lang')->group(function(){
         Route::get('suppliers/filter' , [SchoolController::class , 'FilterSuppliers'])->name('filter-suppliers');
         
         Route::get('school/add/event' , [SchoolController::class , 'addEvent'])->name('school-add-event');
-
+        Route::post('school/event/create' , [EventsController::class , 'storeEvent'])->name('school-store-event');
         Route::get("school/reserved/Events" , [SchoolController::class , 'reservedEvents'])->name('school-reserved-events');
         Route::get("school/created/Events" , [SchoolController::class , 'schoolEvents'])->name('school-my-events');
         Route::get("school/area/suppliers" , [SchoolController::class , 'areaSuppliers'])->name('school-area-suppliers');
@@ -203,6 +199,13 @@ Route::middleware('lang')->group(function(){
         Route::get('/supplier-profile' , [SupplierController::class, 'supplierProfile'])->name('supplier-profile');
         Route::get('changePass/supplier' , [SupplierController::class , "changePassView"] )->name("change_pass_supplier");
         Route::post('changePass/supplier/{user}', [SupplierController::class, 'changePass'])->name("submit_change_pass_supplier");
+        Route::get('/supplier-services' , [SupplierController::class , 'supplierServices'])->name('supplier-services');
+        Route::get("supplier/area/suppliers" , [SupplierController::class , 'areaSuppliers'])->name('supplier-area-suppliers');
+        Route::get("supplier-areaSchools" , [SupplierController::class , 'areaSchools'])->name('supplier-area-schools');
+        Route::get("supplier-areaCenters" , [SupplierController::class , 'areaCenters'])->name('supplier-area-Centers');
+        Route::get("supplier-areaKgs" , [SupplierController::class , 'areaKgs'])->name('supplier-area-Kgs');
+        Route::get("supplier-areaTeachers" , [SupplierController::class , 'areaTeachers'])->name('supplier-area-Teachers');
+
     });
  
     Route::post('update/comment' , [SupplierController::class , "updateComment"])->name('update-comment');

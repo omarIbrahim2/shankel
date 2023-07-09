@@ -3,7 +3,7 @@
         <div class="inner">
             <div class="container">
                 <div class="section-title">
-                    <h2>Teachers</h2>
+                    <h2>{{ trans('teacher.teachers') }}</h2>
                 </div>
                 <div class="section-content">
                     <div class="row">

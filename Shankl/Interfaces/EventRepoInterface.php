@@ -7,7 +7,7 @@ interface EventRepoInterface
 
     public function getEvents($pages);
     public function getEventsguest($pages);
-    public function addEvent($data);
+    public function addEvent($data , $AuthUser);
     public function find($eventId);
     public function updateEvent($data);
     public function subscribeUser($eventId, $User);
