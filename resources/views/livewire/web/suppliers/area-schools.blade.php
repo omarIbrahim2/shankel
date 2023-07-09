@@ -14,7 +14,7 @@
             <div class="section-content section">
                 <div class="container">
                     <div class="section-title">
-                        <h2>{{ trans('parent.schArea') }}</h2>
+                        <h2>{{ trans('supplier.areaSchools') }}</h2>
                     </div>
                     <div class="area-container ">
 

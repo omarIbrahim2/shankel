@@ -203,6 +203,13 @@ Route::middleware('lang')->group(function(){
         Route::get('/supplier-profile' , [SupplierController::class, 'supplierProfile'])->name('supplier-profile');
         Route::get('changePass/supplier' , [SupplierController::class , "changePassView"] )->name("change_pass_supplier");
         Route::post('changePass/supplier/{user}', [SupplierController::class, 'changePass'])->name("submit_change_pass_supplier");
+        Route::get('/supplier-services' , [SupplierController::class , 'supplierServices'])->name('supplier-services');
+        Route::get("supplier/area/suppliers" , [SupplierController::class , 'areaSuppliers'])->name('supplier-area-suppliers');
+        Route::get("supplier-areaSchools" , [SupplierController::class , 'areaSchools'])->name('supplier-area-schools');
+        Route::get("supplier-areaCenters" , [SupplierController::class , 'areaCenters'])->name('supplier-area-Centers');
+        Route::get("supplier-areaKgs" , [SupplierController::class , 'areaKgs'])->name('supplier-area-Kgs');
+        Route::get("supplier-areaTeachers" , [SupplierController::class , 'areaTeachers'])->name('supplier-area-Teachers');
+
     });
  
     Route::post('update/comment' , [SupplierController::class , "updateComment"])->name('update-comment');
