@@ -9,6 +9,6 @@ return [
 "Suppliers" => "Suppliers",
 "Services" => "Services",
 "Events" => "Events",
-"Addverts" => "Addvertisments",
+"Addverts" => "Adds",
 'dash' => "Dashboard",
 ];

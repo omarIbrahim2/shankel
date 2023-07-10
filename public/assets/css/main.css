@@ -1973,12 +1973,16 @@ main {
 
 .tags {
   margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-self: start
 }
 
-.tags a {
+.tags p {
   margin: 0 16px 0 0;
   font-weight: 700;
   font-size: 18px;
+  width: auto;
 }
 
 .tags .price {

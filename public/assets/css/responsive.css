@@ -1,15 +1,29 @@
 /* guide */
-/* 
+/*
     1-big screens
 */
 
 /* 1-big screens */
-
+@media screen and (max-width: 1200px){
+    .auth-btn .custom-out-btn{
+        font-size: 16px;
+        padding: 8px 8px;
+    }
+    header .nav-link{
+        font-size: 16px;
+    }
+    .auth-nav .nav-item .nav-link{
+        margin: 0;
+    }
+}
 @media screen and (max-width: 992px) {
   .navbar .auth-btn {
     order: unset;
     margin-inline-start: auto;
     margin-inline-end: 8px;
+  }
+  header .navbar .nav-item{
+    text-align: center;
   }
   .next-event{
     align-items: flex-start;

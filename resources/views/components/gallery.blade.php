@@ -5,15 +5,15 @@
 
 
     @csrf
-  
+
     @if ($update == true)
-        <input name="id" hidden type="text" value="{{$gallery == null ? "":$gallery->id}}">
+        <input name="id" hidden type="text" value="{{$gallery == null ? '':$gallery->id}}">
         @error("id")
            <p>{{$message}}</p>
         @enderror
     @endif
 
-    
+
     <div class="form-group mb-4">
     <label for="event-title">Title</label>
         <input name="title" id="event-title" value="{{$gallery == null ? old('title'): $gallery->title}}" type="text" class="form-control"  placeholder="title">
@@ -32,13 +32,13 @@
             <p class="text-danger">{{$message}}</p>
             @enderror
         </div>
-    </div> 
-       
-    
+    </div>
+
+
             @if ($update == false)
             <button type="submit" class="btn btn-primary mt-4">Add</button>
             @else
             <button type="submit" class="btn btn-primary mt-4">Update</button>
             @endif
-            
+
 </form>

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light ">
+<nav class="navbar navbar-expand-lg navbar-light auth-nav">
     <div class="container">
         <a class="navbar-brand" href="{{ route('home') }}">
             <img src="{{asset('assets')}}/images/logo/logo.png" alt="shankal">
@@ -14,11 +14,11 @@
 
              @if ($guard == 'web')
              <a class="icons" href="{{route('dashboard')}}">
-                <img src="{{asset('assets')}}/images/logo/Shanklbig.png" style="width: 70px" alt="user avatar">
+                <img src="{{asset('assets')}}/images/logo/Shanklbig.png" style="width: 70px" alt="user avatar" title="user profile">
              </a>
              @else
              <a class="icons profile_photo" href="{{route($guard.'-profile')}}">
-                <img src="{{asset(auth()->guard($guard)->user()->image)}}" style="width: 70px" style=" border-radius: 50%" alt="user avatar">
+                <img src="{{asset(auth()->guard($guard)->user()->image)}}" style="width: 70px" style=" border-radius: 50%" alt="user avatar" title="user profile">
              </a>
              @endif
 
@@ -37,18 +37,6 @@
                     <a class="nav-link active" aria-current="" href="{{route($guard)}}">{{trans("nav.Home")}}</a>
                   </li>
                 @endif
-
-                @if ($guard == 'web')
-                 <li class="nav-item">
-
-                    <a class="nav-link" href="{{route('dashboard')}}">{{trans("nav.dash")}}</a>
-                  </li>
-                @else
-                  <li class="nav-item">
-                    <a class="nav-link" href="{{route($guard.'-profile')}}">{{trans("nav.Profile")}}</a>
-                  </li>
-                @endif
-
 
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('web-services')}}">{{trans("nav.Services")}}</a>

@@ -15,11 +15,11 @@
                                 <div class="service-item-data">
                                     <div class="service-text">
                                         <div class="tags">
-                                            <a href="#" class="tag rounded-pill btn-custom">{{$service->name}}</a>
-                                            <a href="#" class="price">{{$service->price}} JOD</a>
+                                            <p class="tag rounded-pill btn-custom">{{$service->name}}</p>
+                                            <p class="price">{{$service->price}} JOD</p>
                                         </div>
                                         <div class="service-item-title">
-                                            
+
                                             <h3>{{$service->supplier->name}}</h3>
                                         </div>
                                         <div class="service-item-description">
@@ -35,14 +35,14 @@
                                             @method('DELETE')
                                          <input type="hidden" value="{{ $service->id }}" name="service_id">
                                          <button type="submit"  class="btn-custom-danger">{{ trans('service.remove') }}</button>
-                                        </form>                                        
+                                        </form>
                                     </div>
-                                        
+
                                     @else
-                                        
+
                                     <div class="service-booking">
                                         <form action="{{ route('add-to-card') }}" method="post">
-                                             @csrf  
+                                             @csrf
                                             <input type="hidden" name="service_id" value="{{ $service->id }}">
                                             <div class="service-booking">
                                                 <label for="">{{ trans('service.quantity') }}</label>
@@ -54,24 +54,24 @@
 
                                             <button type="submit" class="btn-custom">{{ trans('service.book') }}</button>
                                         </form>
-                                        
+
                                     </div>
 
                                     @endif
-                                    
-                                   @endcustom_auth 
+
+                                   @endcustom_auth
                                 </div>
-                               
+
                             </div>
                         </div>
                     </div>
                     @endforeach
-                    
+
                 </div>
             </div>
             <div class="pagination">
                 @if ($Services == null)
-                    
+
                 @else
                 @if ($Services->links("livewire.web-pagination"))
                 {{$Services->links("livewire.web-pagination")}}
