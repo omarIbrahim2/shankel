@@ -53,10 +53,6 @@
                                         <span>{{ $event->diffMinutes() }}</span>
                                         <p>{{ trans('event.mins') }}</p>
                                     </div>
-                                    <div class="counter-item">
-                                        <span>{{ $event->diffSeconds() }}</span>
-                                        <p>{{ trans('event.secs') }}</p>
-                                    </div>
                                 </div>
                                 @custom_auth
                                     @if ($event->booked == true)

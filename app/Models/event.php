@@ -82,37 +82,18 @@ class Event extends Model
        return $days;
     }
 
-    public function diffSeconds(){
-        $start =  $this->attributes['start_date'] . " ". $this->attributes['start_time'];
 
-        $end =  $this->attributes['end_date'] . " ". $this->attributes['end_time'];
- 
-        $startDate = Carbon::createFromFormat('Y-m-d H:i:s' , $start);
-        $endDate = Carbon::createFromFormat('Y-m-d H:i:s' , $end); 
-       
-        $days = $this->diffD();
-        $hours = $this->diffHours();
-
-        $minutes = $this->diffMinutes();
-
-        $seconds = $startDate->copy()->addDays($days)->addHours($hours)->addMinutes($minutes)->diffInSeconds();
-        
-        return $seconds;
-
-    }
 
 
     public function diffHours(){
-        $start =  $this->attributes['start_date'] . " ". $this->attributes['start_time'];
 
-        $end =  $this->attributes['end_date'] . " ". $this->attributes['end_time'];
  
-        $startDate = Carbon::createFromFormat('Y-m-d H:i:s' , $start);
-        $endDate = Carbon::createFromFormat('Y-m-d H:i:s' , $end); 
+        $start_time = Carbon::createFromFormat('H:i:s' , $this->attributes['start_time']);
+        $end_time = Carbon::createFromFormat('H:i:s' ,$this->attributes['end_time'] ); 
 
-        $days = $this->diffD();
+        
 
-        $hours = $startDate->copy()->addDays($days)->diffInHours();
+        $hours = $start_time->diffInHours($end_time);
       
         return $hours;
 
@@ -120,20 +101,15 @@ class Event extends Model
 
     public function diffMinutes(){
          
-        $start =  $this->attributes['start_date'] . " ". $this->attributes['start_time'];
+        $start_time = Carbon::createFromFormat('H:i:s' , $this->attributes['start_time']);
+        $end_time = Carbon::createFromFormat('H:i:s' ,$this->attributes['end_time'] ); 
+        $minutes= $start_time->diffInMinutes($end_time);
+        
 
-        $end =  $this->attributes['end_date'] . " ". $this->attributes['end_time'];
- 
-        $startDate = Carbon::createFromFormat('Y-m-d H:i:s' , $start);
-        $endDate = Carbon::createFromFormat('Y-m-d H:i:s' , $end); 
-       
-        $days = $this->diffD();
-        $hours = $this->diffHours();
+        
+      
+        return $minutes < 60 ? $minutes : $minutes % 60;
 
-
-        $minutes = $startDate->copy()->addDays($days)->addHours($hours)->diffInMinutes();
-
-        return $minutes;
 
     }
 

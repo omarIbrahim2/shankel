@@ -7,7 +7,7 @@
     @csrf
   
     @if ($update == true)
-        <input name="id" hidden type="text" value="{{$gallery == null ? "":$gallery->id}}">
+        <input name="id" hidden type="text" value="{{$gallery == null ? '':$gallery->id}}">
         @error("id")
            <p>{{$message}}</p>
         @enderror

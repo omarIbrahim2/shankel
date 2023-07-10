@@ -157,7 +157,7 @@
 @section('scripts')
     <script>
         $(".comment").on("click",function(){
-
+            
             let comment = $(this).attr("data-comment");
 
             let commentId = $(this).attr("data-commentId");
