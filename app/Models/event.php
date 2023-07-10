@@ -50,6 +50,8 @@ class Event extends Model
         return $this->morphedByMany(Supplier::class, 'eventable');
     }
 
+  
+
     public function startAt(){
 
         return Carbon::createFromFormat('H:i:s' , $this->attributes['start_time'])->format('g:i A');
@@ -68,31 +70,70 @@ class Event extends Model
 
     public function diffD(){
 
-         $endat = Carbon::createFromFormat('Y-m-d' , $this->attributes['end_date']);
+       $start =  $this->attributes['start_date'] . " ". $this->attributes['start_time'];
 
-          return $endat->diffInDays(Carbon::now());
+       $end =  $this->attributes['end_date'] . " ". $this->attributes['end_time'];
+
+       $startDate = Carbon::createFromFormat('Y-m-d H:i:s' , $start);
+       $endDate = Carbon::createFromFormat('Y-m-d H:i:s' , $end);
+
+       $days = $startDate->diffInDays($endDate);
+
+       return $days;
     }
 
     public function diffSeconds(){
-        $endat = Carbon::createFromFormat('Y-m-d' , $this->attributes['end_date']);
+        $start =  $this->attributes['start_date'] . " ". $this->attributes['start_time'];
 
+        $end =  $this->attributes['end_date'] . " ". $this->attributes['end_time'];
+ 
+        $startDate = Carbon::createFromFormat('Y-m-d H:i:s' , $start);
+        $endDate = Carbon::createFromFormat('Y-m-d H:i:s' , $end); 
+       
+        $days = $this->diffD();
+        $hours = $this->diffHours();
 
-        return $endat->diffInSeconds(Carbon::now());
+        $minutes = $this->diffMinutes();
+
+        $seconds = $startDate->copy()->addDays($days)->addHours($hours)->addMinutes($minutes)->diffInSeconds();
+        
+        return $seconds;
 
     }
 
 
     public function diffHours(){
-        $endat = Carbon::createFromFormat('Y-m-d' , $this->attributes['end_date']);
+        $start =  $this->attributes['start_date'] . " ". $this->attributes['start_time'];
 
-        return $endat->diffInHours(Carbon::now());
+        $end =  $this->attributes['end_date'] . " ". $this->attributes['end_time'];
+ 
+        $startDate = Carbon::createFromFormat('Y-m-d H:i:s' , $start);
+        $endDate = Carbon::createFromFormat('Y-m-d H:i:s' , $end); 
+
+        $days = $this->diffD();
+
+        $hours = $startDate->copy()->addDays($days)->diffInHours();
+      
+        return $hours;
 
     }
 
     public function diffMinutes(){
-        $endat = Carbon::createFromFormat('Y-m-d' , $this->attributes['end_date']);
+         
+        $start =  $this->attributes['start_date'] . " ". $this->attributes['start_time'];
 
-        return $endat->diffInMinutes(Carbon::now());
+        $end =  $this->attributes['end_date'] . " ". $this->attributes['end_time'];
+ 
+        $startDate = Carbon::createFromFormat('Y-m-d H:i:s' , $start);
+        $endDate = Carbon::createFromFormat('Y-m-d H:i:s' , $end); 
+       
+        $days = $this->diffD();
+        $hours = $this->diffHours();
+
+
+        $minutes = $startDate->copy()->addDays($days)->addHours($hours)->diffInMinutes();
+
+        return $minutes;
 
     }
 

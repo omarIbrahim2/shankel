@@ -10,7 +10,7 @@
     @endif
     <div class="form-group mb-4">
     <label for="addvert-title">{{ trans('addvert.title') }}</label>
-        <input name="title" id="addvert-title" value="{{$addvert == null ? '":$addvert->title}}" type="text" class="form-control"  placeholder="{{ trans('addvert.title') }}">
+        <input name="title" id="addvert-title" value="{{$addvert == null ? '':$addvert->title}}" type="text" class="form-control"  placeholder="{{ trans('addvert.title') }}">
         @error('title')
         <p class="text-danger">{{$message}}</p>
         @enderror
