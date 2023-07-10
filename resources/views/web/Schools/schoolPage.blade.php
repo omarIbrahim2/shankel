@@ -22,7 +22,7 @@
         <div class="inner">
             <div class="container">
                 @auth("parent")
-                  <a class="btn btn-primary" href="{{route("register-form-school" , $School->id)}}">{{ trans('school.bookSeat') }}</a>
+                  <a class="btn btn-primary" href="{{route('register-form-school' , $School->id)}}">{{ trans('school.bookSeat') }}</a>
                 @endauth
                 <div class="section-title">
                     <h2 class="image-content">{{$School->name}}</h2>
@@ -157,7 +157,7 @@
 @section('scripts')
     <script>
         $(".comment").on("click",function(){
-            
+
             let comment = $(this).attr("data-comment");
 
             let commentId = $(this).attr("data-commentId");

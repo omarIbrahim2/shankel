@@ -258,3 +258,6 @@ $(".eventDayPicker").flatpickr({
   enableTime: true,
   dateFormat: "Y-m-d H:i",
 });
+$(".paginate-top").on("click",()=>{
+    offset().top=0
+})
