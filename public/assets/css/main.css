@@ -1497,7 +1497,9 @@ main {
 .area-school-img {
   text-align: center;
 }
-
+.area-school-img img{
+  width: 342px;
+}
 .school-card {
   margin-bottom: 64px;
 }
@@ -1877,7 +1879,9 @@ main {
   padding: 0 16px;
   height: 100%;
 }
-
+.edit-teacher-profile .sub-btns a{
+    white-space: nowrap;
+}
 .right-side-item {
   margin-bottom: 64px;
 }

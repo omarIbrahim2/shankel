@@ -198,7 +198,16 @@
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
                                 </div>
-
+                                <h4 class="mt-2">seats</h4>
+                                <div class="input-item">
+                                <input type="number" wire:model.defer="free_seats"  placeholder="seats">
+                                <span>
+                                <i class="fa-solid fa-chair"></i>
+                                </span>
+                                @error('email')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
                             </div>
                         </div>
                     </div>
