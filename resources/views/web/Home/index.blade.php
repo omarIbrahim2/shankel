@@ -467,40 +467,19 @@
         <div class="inner">
             <div class="container">
                 <div class="section-title">
-                    <h2>Partners</h2>
+                    <h2>{{trans('partners.partners')}}</h2>
                 </div>
                 <div class="pratners-data">
                     <div class="row">
+                        @foreach ($Partners as $partner )
                         <div class="col-md-4">
                             <div class="partner">
-                                <img src="assets/images/partners/1.png" alt="partner">
+                                <img src="{{asset($partner->image)}}" alt="partner">
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="partner">
-                                <img src="assets/images/partners/2.png" alt="partner">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="partner">
-                                <img src="assets/images/partners/3.png" alt="partner">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="partner">
-                                <img src="assets/images/partners/4.png" alt="partner">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="partner">
-                                <img src="assets/images/partners/5.png" alt="partner">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="partner">
-                                <img src="assets/images/partners/6.png" alt="partner">
-                            </div>
-                        </div>
+                        </div>     
+                        @endforeach
+                       
+                      
                     </div>
                 </div>
             </div>

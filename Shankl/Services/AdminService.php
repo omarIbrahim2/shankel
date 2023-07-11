@@ -47,11 +47,7 @@ class AdminService{
 
     }
 
-    public function addEvent($data){
-
-       return  $this->eventRebo->addEvent($data);
-          
-    }
+   
 
     public function getEvent($eventId){
 

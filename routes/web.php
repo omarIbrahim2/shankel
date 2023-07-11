@@ -20,6 +20,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\LocationCcontroller;
+use App\Http\Controllers\PartnersController;
 use App\Http\Controllers\ServiceOrderController;
 use App\Http\Controllers\TransactionController;
 
@@ -316,6 +317,16 @@ Route::middleware('lang')->group(function(){
         Route::get('gallery/delete/{galleryId}' , [GalleryConroller::class , 'delete'])->name('gallery-delete');
         Route::post('gallery/store' , [GalleryConroller::class , 'store'])->name('gallery-create');
         Route::post('gallery/update' , [GalleryConroller::class , 'edit'])->name('gallery-update');
+
+        //partners
+
+        Route::get('partners' , [PartnersController::class , 'index'])->name('admin-partners');
+        Route::get("partners/create" , [PartnersController::class , "create"])->name("partner-create-form");
+        Route::get('partners/edit/{partnerId}' , [PartnersController::class , 'edit'])->name("partner-update-form");
+        Route::get('partner/delete/{partnerId}' , [PartnersController::class , "delete"])->name('partner-delete');
+        Route::post("partners/store" , [PartnersController::class, 'store'])->name("partner-create");
+        Route::post('partner/update' , [PartnersController::class , "update"])->name('partner-update');
+
     });
      
     //Logout

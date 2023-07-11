@@ -161,13 +161,17 @@ class EventsController extends Controller
             'id' => 'required|exists:events,id',
       ]);
 
-         $this->eventRepo->updateEvent([
+    
+        
+
+          $this->eventRepo->updateEvent([
             'id' => $validatedData['id'],
              'status' => 'Cancelled',
          ]);
 
-         $subscribers = $this->getSubscribers($validatedData);
 
+         $subscribers = $this->getSubscribers($validatedData);
+          
          if (count($subscribers) > 0) {
             CancelSubscribtion::dispatch($subscribers)->onQueue('EventMailingQueue');
          } 

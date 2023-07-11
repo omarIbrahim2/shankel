@@ -19,8 +19,10 @@ use Shankl\Repositories\LocationRepository;
 use Shankl\Interfaces\LocationRepoInterface;
 use Shankl\Repositories\EduSystemRepository;
 use Shankl\Interfaces\EduSystemRepoInterface;
+use Shankl\Interfaces\PartnerRepoInterface;
 use Shankl\Interfaces\ServiceRepoInterface;
 use Shankl\Repositories\AddvertRepository;
+use Shankl\Repositories\PartnerRepo;
 use Shankl\Repositories\ServiceRepository;
 
 class AppServiceProvider extends ServiceProvider
@@ -39,6 +41,7 @@ class AppServiceProvider extends ServiceProvider
         app()->bind(EventRepoInterface::class , EventRepository::class);
         app()->bind(ServiceRepoInterface::class , ServiceRepository::class);
         app()->bind(AddvertRepoInterface::class , AddvertRepository::class);
+        app()->bind(PartnerRepoInterface::class , PartnerRepo::class);
         
     }
 
