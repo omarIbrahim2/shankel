@@ -1609,7 +1609,6 @@ main {
 
 .loc-data .event-data-item {
   display: flex;
-  align-items: center;
   justify-content: flex-start;
   margin-bottom: 16px;
 }

@@ -10,13 +10,13 @@
 // })
 
 
-window.onload=function(){var swiper = new Swiper(".home-slider .mySwiper", {
+var swiper = new Swiper(".home-slider .mySwiper", {
     loop:true,
     pagination: {
       el: ".home-slider .swiper-pagination",
       clickable:true,
     },
-  })};
+  });
 
 
   // faq
@@ -262,8 +262,7 @@ $(".paginate-top").on("click",()=>{
     offset().top=0
 })
 // Set the date we're counting down to
-// var countDownDate = new Date("Jan 5, 2024 15:37:25").getTime();
-
+var countDownDate = new Date("11 July 2023").getTime();
 // // Update the count down every 1 second
 // var x = setInterval(function() {
 
