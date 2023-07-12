@@ -13,8 +13,8 @@ trait HandleUpload{
        }
 
        if ($model != null) {
-           
-           $fileService->DeleteFile($model->image);
+            $deletedPath = substr($model->image , 8 );
+           $fileService->DeleteFile($deletedPath);
        }
 
 

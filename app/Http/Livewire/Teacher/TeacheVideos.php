@@ -4,16 +4,18 @@ namespace App\Http\Livewire\Teacher;
 
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use Shankl\Services\TeacherService;
-
+ 
 class TeacheVideos extends Component
 {
 
+    use WithFileUploads;
     
-    protected $rules = ['url' => 'required|url'];
+    protected $rules = ['url' => 'required|url' , 'title' => 'required|string|min:3' , 'image' => 'required|image|mimes:png,jpg,webp,jpeg|max:2048'];
 
-    public $url;
-     
+    public $url , $title , $image;
+         
     public $attributes;
 
     public $AuthUserId;
@@ -23,9 +25,8 @@ class TeacheVideos extends Component
     ];
     public function render(TeacherService $teacherService)
     {
-          $videos = $teacherService->getLessons($this->AuthUserId);
-        
-        return view('livewire.teacher.teache-videos')->with(['videos' => $videos]);
+        return view('livewire.teacher.teache-videos');
+       
     }
 
     public function mount(){
@@ -41,6 +42,7 @@ class TeacheVideos extends Component
         $this->attributes = [
             "url" => $this->url,
             "teacher_id" => $this->AuthUserId,
+            'title' => $this->title,
         ];
 
         
@@ -54,6 +56,8 @@ class TeacheVideos extends Component
 
          $this->setAttributes();
 
+        $this->attributes['image'] =  $teacherService->handleUploadLessonPic($this->image , null);
+
         $lesson= $teacherService->AddLesson($this->attributes);
 
         if ($lesson) {
@@ -63,9 +67,10 @@ class TeacheVideos extends Component
             toastr("Lesson Add Faild" , 'success');
         }
 
-        $this->emit('fresh');
+        
 
         $this->url = "";
+        $this->title = "";
 
 
     }

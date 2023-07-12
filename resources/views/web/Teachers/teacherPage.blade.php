@@ -104,7 +104,7 @@
                                                 <h4>{{ $lesson->title }}</h4>
                                                 <p>{{ $lesson->type }}</p>
                                                 @if ($lesson->type == 'Public')
-                                                    <a href="{{ $lesson->url }}" class="btn-custom">{{ trans('teacher.watchNow') }}</a>
+                                                    <a href="{{ $lesson->url }}" target="_blank" class="btn-custom">{{ trans('teacher.watchNow') }}</a>
                                                 @endif
                                             </div>
                                         </div>

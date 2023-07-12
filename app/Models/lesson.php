@@ -36,9 +36,16 @@ class Lesson extends Model
                     return str_replace("watch?v=" , "embed/" , $value );
                 }
                  
+            },
+
+            get:function($value){
+                return str_replace( "embed/","watch?v=" , $value );
+
             }
         );
     }
+
+   
 
     public function image(): Attribute
     {

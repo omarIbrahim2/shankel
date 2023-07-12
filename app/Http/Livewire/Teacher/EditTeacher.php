@@ -24,6 +24,8 @@ class EditTeacher extends Component
     public $linkedin;
     public $profilePic;
     public $attributes = array();
+
+    public $cvName;
     protected $teacherService;
 
    
@@ -54,7 +56,16 @@ class EditTeacher extends Component
         $this->facebook = $this->authUser->facebook;
         $this->twitter = $this->authUser->twitter;
         $this->linkedin = $this->authUser->linkedin;
+        if ($this->authUser->cv != 'null' ) {
+              if ($this->authUser->cv != null) {
+                $this->authUser->cv = json_decode($this->authUser->cv);
+                $this->cvName = $this->authUser->cv->name;
+              }
+           
+        }
+ 
     }
+
 
     public function setAttributes(){
         
@@ -66,7 +77,7 @@ class EditTeacher extends Component
              'field' => $this->field,
              'facebook' => $this->facebook,
              'twitter' => $this->twitter,
-             'linkedin' => $this->linkedin
+             'linkedin' => $this->linkedin,
         ];
 
     }
@@ -88,13 +99,21 @@ class EditTeacher extends Component
         $this->setAttributes();
 
        $imagePath = $teacherService->handleUploadProfilePic($this->image , $this->profilePic);
+        
+       if ($this->authUser->cv != 'null') {
+         $this->authUser->cv = json_decode($this->authUser->cv);
+       }
 
-       $cvPath = $teacherService->handleUploadcv($this->cv);
+
+       $cvData = $teacherService->handleUploadcv($this->cv , $this->authUser->cv);
 
        if ($imagePath != null) {
           $this->attributes['image'] = $imagePath;
        }
-
+        
+       if ($cvData != null) {
+          $this->attributes['cv'] = $cvData;
+       }
 
         $action = $teacherService->updateProfile($this->attributes);
       
@@ -103,6 +122,7 @@ class EditTeacher extends Component
              toastr("data updated successfully" , "success");
              $this->emit('fresh');
              $this->image = null;
+             $this->cv = null;
              return;
         }
 

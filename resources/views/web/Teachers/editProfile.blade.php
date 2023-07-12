@@ -1,4 +1,4 @@
-@extends('web.layout');
+@extends('web.layout')
 
 @section('nav')
 <x-nav-auth></x-nav-auth>

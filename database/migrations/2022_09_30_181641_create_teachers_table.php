@@ -21,7 +21,7 @@ return new class extends Migration
             $table->foreignId("area_id")->constrained();
             $table->string("field" , 255);
             $table->string("image" , 255)->nullable();
-            $table->string('CV' , 255)->nullable();
+            $table->json('cv')->nullable();
             $table->string("phone" , 50);
             $table->string('facebook' , 255)->nullable();
             $table->string('twitter' , 255)->nullable();
