@@ -1,5 +1,10 @@
 /* add another kids */
-
+a {
+    text-decoration: none;
+  }
+  a:hover{
+    color: unset;
+  }
 .kids-container .kid-icon{
     margin-right: 0;
     margin-left: 16px;

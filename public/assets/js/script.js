@@ -10,13 +10,13 @@
 // })
 
 
-var swiper = new Swiper(".home-slider .mySwiper", {
+window.onload=function(){var swiper = new Swiper(".home-slider .mySwiper", {
     loop:true,
     pagination: {
       el: ".home-slider .swiper-pagination",
       clickable:true,
     },
-  });
+  })};
 
 
   // faq

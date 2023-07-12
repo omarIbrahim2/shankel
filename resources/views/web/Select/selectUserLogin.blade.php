@@ -27,7 +27,7 @@
 
                     <a href="{{route('school-login')}}" class="user-level">
                         <div class="level-img">
-                            <img src="{{asset("assets")}}/images/user/Vector2.png" alt="level">
+                            <img src="{{asset('assets')}}/images/user/Vector2.png" alt="level">
                         </div>
                         <div class="level-name">
                             <h3>{{trans('register.School')}}</h3>
@@ -35,7 +35,7 @@
                     </a>
                     <a href="{{route('teacher-login')}}" class="user-level">
                         <div class="level-img">
-                            <img src="{{asset("assets")}}/images/user/teach.png" alt="level">
+                            <img src="{{asset('assets')}}/images/user/teach.png" alt="level">
                         </div>
                         <div class="level-name">
                             <h3>{{trans('register.Teacher')}}</h3>
@@ -43,7 +43,7 @@
                     </a>
                     <a href="{{route('supplier-login')}}" class="user-level">
                         <div class="level-img">
-                            <img src="{{asset("assets")}}/images/user/Vector.png" alt="level">
+                            <img src="{{asset('assets')}}/images/user/Vector.png" alt="level">
                         </div>
                         <div class="level-name">
                             <h3>{{trans('register.Supplier')}}</h3>
