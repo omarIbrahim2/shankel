@@ -68,6 +68,15 @@ class Event extends Model
 
     }
 
+
+    public function formatedToCounter(){
+
+
+        $date =  Carbon::createFromFormat('Y-m-d' , $this->attributes['start_date'])->format("d F Y");
+        $time = Carbon::createFromFormat('H:i:s' , $this->attributes['start_time'])->format('H:i:s');
+        return  $date . ' '. $time;
+    }
+
     public function diffD(){
 
        $start =  $this->attributes['start_date'] . " ". $this->attributes['start_time'];

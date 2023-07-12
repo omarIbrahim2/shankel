@@ -262,7 +262,8 @@ $(".paginate-top").on("click",()=>{
     offset().top=0
 })
 // Set the date we're counting down to
-var countDownDate = new Date("11 July 2023").getTime();
+var countDownDate = new Date("Jan 5, 2024 15:37:25").getTime();
+console.log(countDownDate)
 // // Update the count down every 1 second
 // var x = setInterval(function() {
 
