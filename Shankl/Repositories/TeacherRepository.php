@@ -47,6 +47,16 @@ class TeacherRepository extends AbstractUserRepo implements UserReboInterface , 
       return $lesson->delete();
    }
 
+   public function updateLesson($lesson , $data){
+      
+
+    return   $lesson->update($data);
+
+      
+   }
+
+
+
 
     public function update($data)
     {

@@ -3,8 +3,8 @@
 return[
     "profile" => "Profile",
     "uploadNew" => "Upload New Avatar",
-    "addV" => "Add Video",
-    "addNewV" => "Add New Video",
+    "addL" => "Add Lesson",
+    "addNewL" => "Add New Lesson",
     "addFreeC" => "Add Free Courses",
     "info" => "Basic Info",
     "save" => "Save",
@@ -24,7 +24,7 @@ return[
     "seeMore" => "See More",
     "enterEmail" => "Enter Your Email",
     "send" => "Send",
-    'videos' => "Teacher Videos",
+    'lessons' => "Teacher Lessons",
     "noVideo" => 'no videos found',
     "noSocial" => 'There are no accounts on social media platforms',
     "watchNow" => "Watch Now",
@@ -36,5 +36,13 @@ return[
     "events" => "Events" ,
     "delete" => "Delete",
     "teachers" => "Teachers",
+<<<<<<< HEAD
     "teacher" => "Teacher",
+=======
+    'title' => 'Title',
+    'url' => 'Url Youtube video',
+    'addLesson' => 'Add Lesson',
+    'update' => 'update',
+    'editLesson' => 'Update Lesson',
+>>>>>>> 7de8cc14a3a2547bb34d29b8123b841050cb6e60
 ];

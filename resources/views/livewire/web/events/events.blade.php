@@ -41,7 +41,7 @@
                         <div class="event-right-side">
                             <div class="counter">
                                 <div class="counter-body">
-                                    <div class="counter-item">
+                                    <div class="counter-item" data-date="{{$event->formatedToCounter()}}">
                                         <span>{{ $event->diffD() }}</span>
                                         <p>{{ trans('event.days') }}</p>
                                     </div>

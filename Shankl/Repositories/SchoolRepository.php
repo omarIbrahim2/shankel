@@ -119,5 +119,10 @@ class SchoolRepository extends AbstractUserRepo implements UserReboInterface , C
         return $students ;
      }
 
+     public function MostViewedSchools(){
+        
+      return  School::select('id' , 'image' , 'name' , 'type')->where('status' , true)->orderBy('views' , 'desc')->limit(3)->get();
+     }
+
   
 }

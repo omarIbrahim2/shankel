@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LessonUpdateReq;
+use App\Models\Lesson;
 use App\Models\Supplier;
+use App\Traits\HandleUpload;
 use Illuminate\Http\Request;
 use Shankl\Helpers\ChangePassword;
 use Illuminate\Support\Facades\Auth;
@@ -10,13 +13,15 @@ use Illuminate\Support\Facades\Config;
 use Shankl\Factories\AuthUserFactory;
 use Shankl\Interfaces\LocationRepoInterface;
 use Shankl\Services\AdminService;
+use Shankl\Services\FileService;
 use Shankl\Services\TeacherService;
 
 class TeacherController extends Controller
 {
   private $changePassObj, $adminService;
   public $teacherService;
-
+   
+  use HandleUpload;
 
   public function __construct(ChangePassword $changePass, TeacherService $teacherService, AdminService $adminService)
   {
@@ -132,5 +137,30 @@ class TeacherController extends Controller
     toastr("Lesson Video Deleted Successfully", 'warning');
 
     return back();
+  }
+
+  public function updateLesson(LessonUpdateReq $request  , FileService $fileService){
+         
+    $validatedReq = $request->validated();
+   
+     $lesson = Lesson::findOrFail($validatedReq['id']);
+
+     $lessonImagePath = $this->handleUpload($request , $fileService , $lesson , 'lessons');
+
+     if ($lessonImagePath != null) {
+       $validatedReq['image'] = $lessonImagePath;
+     }
+
+     $this->teacherService->updateLesson($lesson , $validatedReq);
+
+    toastr("lesson updated successfully" , 'success');
+
+
+    return back();
+
+
+    
+
+
   }
 }

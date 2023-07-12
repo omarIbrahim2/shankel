@@ -51,6 +51,10 @@ class SchoolService extends Service
         return $this->schoolRepo->getActiveCenters($pages);
     }
 
+    public function getMostViewed(){
+        return $this->schoolRepo->MostViewedSchools();
+    }
+
 
     public function getUnActCenters($pages)
     {

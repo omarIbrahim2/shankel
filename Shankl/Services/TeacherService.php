@@ -4,6 +4,7 @@ namespace Shankl\Services;
 
 use App\Models\Lesson;
 use App\Models\Teacher;
+
 use Shankl\Interfaces\EventRepoInterface;
 use Shankl\Repositories\TeacherRepository;
 
@@ -16,6 +17,8 @@ class TeacherService extends Service{
     private static $defaultProfilePath = "assets/images/logo/user.png";
 
     private $EventRepo;
+
+    
 
     public function __construct(TeacherRepository $teacherRebo , FileService $fileService , EventRepoInterface $EventRepo)
     {
@@ -64,16 +67,57 @@ class TeacherService extends Service{
           return $this->fileservice->uploadFile();
     }
 
-    public function handleUploadcv($uploadedFile){
+    private function deleteLessonPic($lessonImagePath){
+        $deletedFile = substr($lessonImagePath , 8);
+
+        $this->fileservice->DeleteFile($deletedFile);
+         
+    }
+
+    public function handleUploadLessonPic($uploadedFile , $UsercurrentFile = null){
+              
+        if ($uploadedFile == null) {
+            return null;
+        }
+
+        if ($UsercurrentFile != null) {
+            $deletedFile = substr($UsercurrentFile , 8);
+
+            $this->fileservice->DeleteFile($deletedFile);
+        }
+
+        
+        
+        $this->fileservice->setFile($uploadedFile);
+        $this->fileservice->setPath("lessons");
+        return $this->fileservice->uploadFile();
+
+    }
+
+    public function handleUploadcv($uploadedFile , $currentCv){
+
+        $targetCvData = array();
+         
+    
+       
          
         if ($uploadedFile  == null){
             
             return null;
         }
+        $targetCvData['name'] = $uploadedFile->getClientOriginalName();
+        if ($currentCv != "null") {
+            if ($currentCv != null) {
+                $this->fileservice->DeleteFile($currentCv->cv);
+            }
+            
+        }
 
           $this->fileservice->setFile($uploadedFile);
           $this->fileservice->setPath("teachers/cv");
-          return $this->fileservice->uploadFile();
+          $targetCvData ['cv'] = $this->fileservice->uploadFile();
+
+          return json_encode($targetCvData);
     }
 
     public function BookASeat($eventId , $User){
@@ -97,9 +141,18 @@ class TeacherService extends Service{
     public function deleteLesson($lessonId){
           
         $lesson = Lesson::findOrFail($lessonId);
-        $this->fileservice->DeleteFile($lesson->image);
+        $this->deleteLessonPic($lesson->image);
        return $this->teacherRebo->deleteLesson($lesson);
 
+
+    }
+
+    public function updateLesson($lesson , $data){
+
+        return  $this->teacherRebo->updateLesson($lesson , $data);
+         
+        
+    
 
     }
 }

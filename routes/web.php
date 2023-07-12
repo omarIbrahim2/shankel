@@ -172,6 +172,7 @@ Route::middleware('lang')->group(function(){
         Route::get("teacher/reserved/Events" , [TeacherController::class , 'reservedEvents'])->name('teacher-reserved-events');
         Route::get("teacher/public/lessons" , [TeacherController::class , 'publicLessons'])->name('teacher-public-lessons');
         Route::delete("lesson-delete/{id}",[TeacherController::class , 'deleteLesson'])->name('delete-lesson');
+        Route::post("lesson-edit",[TeacherController::class , 'updateLesson'])->name('update-lesson');
     });
     
     //school Group

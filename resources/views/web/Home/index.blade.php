@@ -141,20 +141,22 @@ Shankal | Home
                         <div class="area-content text-center">
                             <div class="row mb-5">
                                 <!-- add the dynamic data and write the for each -->
-
+                                @foreach ($Schools as $school)
                                 <div class="col-md-4 col-12 search-resault">
                                     <a href="#">
                                         <div class="area-school school-card">
                                             <div class="area-school-img">
-                                                <img src=" asset('assets/images/school/1.webp') " alt="school">
+                                                <img src="{{asset($school->image)}}" alt="school">
                                             </div>
                                             <div class="area-school-name search-label">
-                                                <h4>School 1</h4>
-                                                <p class=" text-primary">School Type</p>
+                                                <h4>{{$school->name}}</h4>
+                                                <p class=" text-primary">{{$school->type}}</p>
                                             </div>
                                         </div>
                                     </a>
                                 </div>
+                                @endforeach
+                                
 
 
 
