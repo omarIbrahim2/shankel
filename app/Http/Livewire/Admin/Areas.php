@@ -18,9 +18,10 @@ class Areas extends Component
         if ($this->searchAreas) {
             $Areas = $this->TitleSearch($this->searchAreas, 'name', $AreasQuery);
         } else {
-            $Areas = $locationRepo->cityAreas($this->cityId);
+            $City = $locationRepo->cityAreas($this->cityId);
+             $Areas= Area::paginate($City->areas , 10);  
         }
-        return view('livewire.admin.areas')->with(['Areas' => $Areas]);
+        return view('livewire.admin.areas')->with(['Areas' => $Areas , 'City' => $City]);
     }
 
     public function paginationView()

@@ -24,7 +24,8 @@ class areaupdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'required|exists:cities,id',
+            'id' => 'required|exists:areas,id',
+            'city_id' => 'required:exists:cities,id',
             'name_en' => 'required|string|max:50|min:3',
             'name_ar' => 'required|string|max:50',
         ];

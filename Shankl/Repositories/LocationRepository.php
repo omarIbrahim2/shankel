@@ -38,9 +38,10 @@ class LocationRepository implements LocationRepoInterface{
     
 
   public function cityAreas($cityId){
-    $city = City::with('areas')->findOrFail($cityId);
-    $areas = $city->areas;
-    return Area::paginate($areas , 10);
+    $city = City::select('id' , "name")->with('areas')->findOrFail($cityId);
+    
+    
+    return $city;
   }
 
 };

@@ -6,9 +6,9 @@
     <div class="row pt-3">
         <div class="col-12 filtered-list-search mx-auto">
 
-            <h1 class="grid_title">{{ $city->name() }} Areas</h1>
+            <h1 class="grid_title"> Areas</h1>
 
-            @livewire('admin.areas')
+            @livewire('admin.areas' , ['cityId' => $CityId])
         </div>
     </div>
 @endsection

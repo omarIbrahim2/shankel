@@ -318,7 +318,7 @@ Route::middleware('lang')->group(function(){
 
         Route::get("city-areas/{cityId}" , [LocationCcontroller::class , 'showCityAreas'])->name('city-show-areas');
 
-        Route::get('areas/create' , [LocationCcontroller::class , 'createArea'])->name('areas-create-form');
+        Route::get('areas/create/{cityId}' , [LocationCcontroller::class , 'createArea'])->name('areas-create-form');
         Route::get('areas/edit/{areaId}' , [LocationCcontroller::class , 'updateArea'])->name('areas-update-form');
         Route::get('area/delete/{areaId}' , [LocationCcontroller::class , 'deleteArea'])->name('area-delete');
         Route::post('areas/store' , [LocationCcontroller::class , 'storeArea'])->name('area-create');

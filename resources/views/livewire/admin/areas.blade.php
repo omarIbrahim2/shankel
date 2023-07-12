@@ -2,7 +2,7 @@
     <div class="d-flex align-items-center justify-content-between flex-wrap">
         
 
-        <a href="{{ route('areas-create-form') }}" class="btn btn-success margin_res">Add new area</a>
+        <a href="{{ route('areas-create-form' , $City->id) }}" class="btn btn-success margin_res">Add new area</a>
     </div>
 
     <table class="table table-bordered table-hover table-striped mb-4 admin_table">
