@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->charset = "utf8";
             $table->collation = "utf8_unicode_ci";
-            $table->string('name' , 255);
+            $table->json('name' );
             $table->foreignId("city_id")->constrained();
             $table->timestamps();
 

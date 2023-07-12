@@ -74,7 +74,7 @@
                                             <select id="selectCity" class="form-select" aria-label="Default select example" >
                                                 <option selected  disabled>{{trans('register.city')}}</option>
                                                 @foreach ($cities as $city)
-                                                   <option value="{{$city->id}}">{{$city->name}}</option>
+                                                   <option value="{{$city->id}}">{{$city->name()}}</option>
                                                 @endforeach
 
                                               </select>
@@ -109,7 +109,7 @@
                                             <select id="selectEduSystem" class="form-select" aria-label="Default select example" name="edu_systems_id" >
                                                 <option  selected disabled>{{ trans('school.eduSystem') }} </option>
                                                 @foreach ($eSystems as $system)
-                                                   <option value="{{$system->id}}">{{$system->name}}</option>
+                                                   <option value="{{$system->id}}">{{$system->name()}}</option>
                                                 @endforeach
 
                                               </select>
@@ -129,9 +129,9 @@
 
                                                 <div class="checkbox">
                                                     <input type="checkbox" name="grade_id[]" value="{{$grade->id}}"
-                                                        id="{{$grade->name}}">
-                                                    <label for="{{$grade->name}}">
-                                                        {{$grade->name}}
+                                                        id="{{$grade->name()}}">
+                                                    <label for="{{$grade->name()}}">
+                                                        {{$grade->name()}}
                                                     </label>
                                                 </div>
                                                 @endforeach

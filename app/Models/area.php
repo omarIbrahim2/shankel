@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\App;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Area extends Model
 {
@@ -40,5 +41,11 @@ class Area extends Model
     public function city()
     {
         return $this->belongsTo(City::class);
+    }
+
+    public function name($lang = null){
+        $lang = $lang ?? App::getLocale();
+
+        return json_decode($this->name)->$lang ;
     }
 }

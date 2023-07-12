@@ -80,7 +80,7 @@
                                         <select  name="grade_id" class="form-select" aria-label="Default select example" required>
                                             <option selected disabled>{{ trans('parent.grade') }}</option>
                                             @foreach ($grades as $grade)
-                                               <option value="{{$grade->id}}">{{$grade->name}}</option>
+                                               <option value="{{$grade->id}}">{{$grade->name()}}</option>
                                             @endforeach
 
                                         </select>

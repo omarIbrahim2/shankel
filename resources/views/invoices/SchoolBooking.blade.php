@@ -55,8 +55,8 @@
           <div class="columns">
             <h5>Reserve Information</h5>
             <p>{{ $parent->name }}<br>
-              {{ $parent->area->name }}.<br>
-              {{ $parent->area->city->name }}<br>
+              {{ $parent->area->name() }}.<br>
+              {{ $parent->area->city->name() }}<br>
               Jordan</p>
           </div>
           <div class="columns">

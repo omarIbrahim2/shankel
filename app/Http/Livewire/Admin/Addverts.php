@@ -20,22 +20,21 @@ class Addverts extends Component
     {
         $addvertQuery = (new Addvert)->query();
         if ($this->searchAddvert) {
-             $addverts = $this->TitleSearch($this->searchAddvert , 'title' , $addvertQuery);
-        }else{
+            $addverts = $this->TitleSearch($this->searchAddvert, 'title', $addvertQuery);
+        } else {
             $addverts =  $adminService->getAddverts(10);
-            
         }
         return view('livewire.admin.addverts')->with(['addverts' => $addverts]);
     }
 
-    public function getAddverts(){
-           
+    public function getAddverts()
+    {
+
         return  $this->adminService->getAddverts(10);
- 
-     }
- 
-     public function paginationView()
-     {
-         return 'livewire.admin-pagination';
-     }
+    }
+
+    public function paginationView()
+    {
+        return 'livewire.admin-pagination';
+    }
 }

@@ -20,7 +20,7 @@
     <div class="inner">
         <div class="container">
             <div class="section-title">
-                <h2>Addvertisements</h2>
+                <h2>{{ trans('addvert.addverts') }}</h2>
             </div>
             @livewire('web.addverts.addverts')
           

@@ -78,9 +78,9 @@
 
                             <div class="input-item ">
                                 <select wire:model="city" class="form-select" aria-label="Default select example">
-                                    <option selected>{{ $authCity->name }}</option>
+                                    <option selected>{{ $authCity->name() }}</option>
                                     @foreach ($cities as $city)
-                                        <option value="{{ $city->id }}">{{ $city->name }}</option>
+                                        <option value="{{ $city->id }}">{{ $city->name() }}</option>
                                     @endforeach
                                 </select>
                                 <span>
@@ -90,11 +90,11 @@
                             <div class="input-item ">
                                 <select wire:model="area_id" id="areaSelect" class="form-select"
                                     aria-label="Default select example">
-                                    <option value="{{ $authArea->id }}" selected>{{ $authArea->name }}</option>
+                                    <option value="{{ $authArea->id }}" selected>{{ $authArea->name() }}</option>
                                     @if ($Areas)
 
                                         @foreach ($Areas as $Area)
-                                            <option value="{{ $Area->id }}">{{ $Area->name }}</option>
+                                            <option value="{{ $Area->id }}">{{ $Area->name() }}</option>
                                         @endforeach
                                     @endif
                                 </select>

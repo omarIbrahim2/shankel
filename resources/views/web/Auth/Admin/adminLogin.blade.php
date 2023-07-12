@@ -36,7 +36,6 @@
                               @endif
                                 <form method="POST" action="{{route('login-admin')}}">
                                     @csrf
-
                                     @include('web.inc.errors')
                                     <div class="input-item me-auto ms-0">
 

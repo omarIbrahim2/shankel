@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('edu_systems', function (Blueprint $table) {
             $table->id();
-            $table->string('name',255);
+            $table->json('name',255);
             $table->timestamps();
         });
     }

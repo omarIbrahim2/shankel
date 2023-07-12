@@ -30,25 +30,25 @@
                             <form  action="{{route('filter-schools')}}" class="filter-form">
                                 <div class="filter">
                                     <select name="area_id">
-                                        <option selected disabled>area</option>
+                                        <option selected disabled>{{ trans('parent.area') }}</option>
                                           @foreach ($Areas as $area)
-                                           <option value="{{$area->id}}">{{$area->name}}</option>
+                                           <option value="{{$area->id}}">{{$area->name()}}</option>
                                           @endforeach
                                     </select>
                                 </div>
                                 <div class="filter">
                                     <select name="grade_id">
-                                        <option selected disabled>grade</option>
+                                        <option selected disabled>{{ trans('parent.grade') }}</option>
                                             @foreach ($Grades as $grade)
-                                             <option value="{{$grade->id}}">{{$grade->name}}</option>
+                                             <option value="{{$grade->id}}">{{$grade->name()}}</option>
                                            @endforeach
                                     </select>
                                 </div>
                                 <div class="filter">
                                     <select name="edu_systems_id">
-                                        <option selected disabled>Education System</option>
+                                        <option selected disabled>{{ trans('parent.eSystems') }}</option>
                                             @foreach ($Esystems as $Esystem)
-                                              <option value="{{$Esystem->id}}">{{$Esystem->name}}</option>
+                                              <option value="{{$Esystem->id}}">{{$Esystem->name()}}</option>
                                             @endforeach
                                     </select>
                                 </div>

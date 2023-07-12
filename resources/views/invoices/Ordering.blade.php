@@ -81,8 +81,8 @@
           <div class="columns">
             <h5>Billing Information</h5>
             <p>{{ $user->name }}<br>
-              {{ $user->area->name }}<br>
-              {{ $user->area->city->name }}<br>
+              {{ $user->area->name() }}<br>
+              {{ $user->area->city->name() }}<br>
               Jordan</p>
           </div>
           <div class="columns">

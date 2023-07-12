@@ -13,83 +13,81 @@ use Yoeunes\Toastr\Facades\Toastr;
 class InfoController extends Controller
 {
     use HandleUpload;
-    public function index(){
+    public function index()
+    {
 
         return view('admin.informations.informations');
-
     }
 
-    public function create(){
+    public function create()
+    {
 
         return view('admin.informations.create');
     }
 
-    public function update($infoId){
-     
+    public function update($infoId)
+    {
+
         $Info = Information::findOrFail($infoId);
 
-         if ($Info) {
+        if ($Info) {
             return view('admin.informations.update')->with(['Info' => $Info]);
-         }
+        }
 
-         return back();
-
-
+        return back();
     }
 
-    public function store(InfoAddReq $request , FileService $fileService){
+    public function store(InfoAddReq $request, FileService $fileService)
+    {
 
         $validatedReq =  $request->validated();
 
         $data = $this->evaluateData($validatedReq);
-         
 
-        $data['image'] =  $this->handleUpload($request , $fileService ,null,"info");
-         
+
+        $data['image'] =  $this->handleUpload($request, $fileService, null, "info");
+
         $Info = Information::create($data);
 
 
         if ($Info) {
-            toastr('info created successfully' , 'success' , 'create info');
+            toastr('info created successfully', 'success');
             return redirect()->route('Infos');
         }
 
-         
-        toastr('error in  creating' , 'error');
 
+        toastr('error in  creating', 'error');
     }
 
 
-    public function edit(InfoUpdateReq $request , FileService $fileService){
-        
+    public function edit(InfoUpdateReq $request, FileService $fileService)
+    {
+
         $validatedReq =  $request->validated();
 
         $data = $this->evaluateData($validatedReq);
 
-        
+
         $Info = Information::findOrFail($data['id']);
 
-        $data['image'] = $this->handleUpload($request , $fileService , $Info , "info");
-
-         
-         $action = $Info->update($data);
+        $data['image'] = $this->handleUpload($request, $fileService, $Info, "info");
 
 
-         if ($action) {
-             toastr('Info Updated successfully' , 'success' , 'update Info');
-
-             return redirect()->route('Infos');
-         }
+        $action = $Info->update($data);
 
 
-         toastr('error in updating' , 'error');
+        if ($action) {
+            toastr('Info Updated successfully', 'success', 'update Info');
+
+            return redirect()->route('Infos');
+        }
 
 
-
-           
+        toastr('error in updating', 'error');
     }
 
-    public function delete($infoId){
+    public function delete($infoId)
+    {
 
         $Info = Information::findOrFail($infoId);
 
@@ -97,26 +95,24 @@ class InfoController extends Controller
             $action = $Info->delete();
 
             if ($action) {
-                 toastr("Info deleted successfully" , 'success' , "delete info");
-
-                 return back();
-            }else{
-                 
-                toastr("error in deleting" , 'error');
+                toastr("Info deleted successfully", 'success', "delete info");
 
                 return back();
+            } else {
 
+                toastr("error in deleting", 'error');
+
+                return back();
             }
-        }else{
+        } else {
 
             return back();
         }
-
-
     }
 
 
-    public function show($infoId){
+    public function show($infoId)
+    {
 
         $Info = Information::findOrFail($infoId);
 
@@ -128,25 +124,26 @@ class InfoController extends Controller
     }
 
 
-    private function evaluateData($request){
+    private function evaluateData($request)
+    {
         $data = array();
-       if (array_key_exists('id' , $request)) {
-           
-           $data['id'] = $request['id'];  
-       }
-       $data['title'] = json_encode([
-           'en' => $request['title_en'],
-           'ar' => $request['title_ar'],
-       ]);
-           
+        if (array_key_exists('id', $request)) {
 
-           $data['aboutUs'] = json_encode([
-               'en' => $request['aboutUs_en'],
-               'ar' => $request['aboutUs_ar'],
-           ]);
-       
+            $data['id'] = $request['id'];
+        }
+        $data['title'] = json_encode([
+            'en' => $request['title_en'],
+            'ar' => $request['title_ar'],
+        ]);
 
-           $data['mission'] = json_encode([
+
+        $data['aboutUs'] = json_encode([
+            'en' => $request['aboutUs_en'],
+            'ar' => $request['aboutUs_ar'],
+        ]);
+
+
+        $data['mission'] = json_encode([
             'en' => $request['mission_en'],
             'ar' => $request['mission_ar'],
         ]);
@@ -162,8 +159,6 @@ class InfoController extends Controller
             'ar' => $request['choose_ar'],
         ]);
 
-       return $data;
-
-
-   }
+        return $data;
+    }
 }

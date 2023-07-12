@@ -42,4 +42,5 @@ return[
     "students" => "Students",
     "parents" => "Parents",
     "visits" => "Visits" ,
+    "chooseChild" => "Choose Your Child",
 ];

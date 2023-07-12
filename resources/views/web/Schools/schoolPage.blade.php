@@ -96,7 +96,7 @@
                                     <span>
                                         <i class="fa-regular fa-pen-to-square"></i>
                                     </span>
-                                    <span> {{$Es->name}} </span>
+                                    <span> {{$Es->name()}} </span>
                                 </div>
 
                             </div>

@@ -17,7 +17,10 @@ class AreaFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->city()
+            'name' => json_encode([
+                'en' => $this->faker->city(),
+                'ar' => $this->faker->city(),
+            ])
         ];
     }
 }

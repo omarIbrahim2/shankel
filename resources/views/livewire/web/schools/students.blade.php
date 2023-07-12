@@ -3,7 +3,7 @@
         <div class="inner">
             <div class="container">
                 <div class="section-title">
-                    <h2>Students</h2>
+                    <h2>{{ trans('school.students') }}</h2>
                 </div>
                 <div class="section-content">
                     <div class="row">
@@ -16,9 +16,9 @@
                                 <div class="teacher-item-data">
                                         <h3>{{ $student->name }}</h3>
                                         <h5>{{ $student->gender }}</h5>
-                                        <h4>{{ $student->grade->name }}</h4>
+                                        <h4>{{ $student->grade->name() }}</h4>
                                         
-                                        <p><i class="fa-solid fa-location-dot"></i> {{ $student->parentt->area->name }}</p>
+                                        <p><i class="fa-solid fa-location-dot"></i> {{ $student->parentt->area->name() }}</p>
 
                                 </div>
                             </div>

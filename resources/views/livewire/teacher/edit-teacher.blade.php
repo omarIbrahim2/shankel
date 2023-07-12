@@ -44,7 +44,7 @@
                             <div class="sub-title main-sub-title">
                                 <h3>{{ trans('teacher.info') }}</h3>
                                 <div class="sub-btns">
-                                    <button type="button" wire:click="update" class="btn-custom">Save</button>
+                                    <button type="button" wire:click="update" class="btn-custom">{{ trans('teacher.save') }}</button>
                                 </div>
                     
                                 <a href="{{route('change_pass_teacher')}}"  class="btn-custom" >

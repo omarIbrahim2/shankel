@@ -1,4 +1,4 @@
-@props(['actionRoute'=> "create-slider" , "Info" => null  ,  "update" =>false])
+@props(['actionRoute'=> "info-create" , "Info" => null  ,  "update" =>false])
 
 
 <form action="{{ route($actionRoute) }}"  method="POST" enctype="multipart/form-data">

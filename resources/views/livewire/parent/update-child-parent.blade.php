@@ -105,7 +105,7 @@
                         <select  wire:model.defer="grade_id" class="form-select" aria-label="Default select example" required>
                             <option selected>{{ trans('parent.grade') }}</option>
                             @foreach ($grades as $grade)
-                               <option value="{{$grade->id}}">{{$grade->name}}</option>
+                               <option value="{{$grade->id}}">{{$grade->name()}}</option>
                             @endforeach
 
                         </select>

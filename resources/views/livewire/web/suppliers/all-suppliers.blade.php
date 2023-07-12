@@ -3,7 +3,7 @@
         <div class="inner">
             <div class="container">
                 <div class="section-title">
-                    <h2>Suppliers</h2>
+                    <h2>{{ trans('supplier.suppliers') }}</h2>
                 </div>
                 <div class="section-content">
                     <div class="row">
@@ -17,7 +17,7 @@
                                         <h3>{{ $supplier->name }}</h3>
                                         <h5>{{ $supplier->type }}</h5>
                                         <h4>{{ $supplier->orgName }}</h4>
-                                        <p><i class="fa-solid fa-location-dot"></i> {{ $supplier->area->name }}</p>
+                                        <p><i class="fa-solid fa-location-dot"></i> {{ $supplier->area->name() }}</p>
                                         
                                         <a href="{{ route('supplier-by-id', $supplier->id) }}"
                                             class="btn-custom">{{ trans('teacher.seeMore') }}</a>

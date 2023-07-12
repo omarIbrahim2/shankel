@@ -40,4 +40,10 @@ return[
     "areaSuppliers" => "الموردين فى منطقتك",
     "services" => "خدماتك",
     "areaTeachers" => "المعلمين فى منطقتك",
+    "addToCart" => "أضف إلى عربة التسوق",
+    "bookFees" => "ضريبة الحجز",
+    "Payment" => "الدفع",
+    "chooseGrade" => "إختر السنه الدراسية",
+    "suppliers" => "الموردين"
+
 ];

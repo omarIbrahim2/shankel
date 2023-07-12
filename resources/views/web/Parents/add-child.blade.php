@@ -19,8 +19,8 @@
                     <div class="col-lg-6 col-md-8 col-12">
                         <div class="left-side">
                             <div class="section-title">
-                                <h2 class="text-start">Add Your Kids Now</h2>
-                                <p class="text-start p-0">You  Must Add Your Child</p>
+                                <h2 class="text-start">{{ trans('parent.kids') }}</h2>
+                                <p class="text-start p-0">{{ trans('parent.mustAddC') }}</p>
                             </div>
                             <div class="contact-form black-contact-form">
                                 <form method="POST" action="{{url('editProfile/child')}}" enctype="multipart/form-data">
@@ -74,7 +74,7 @@
                                         <select  name="grade_id" class="form-select" aria-label="Default select example" required>
                                             <option selected disabled>Grade</option>
                                             @foreach ($grades as $grade)
-                                               <option value="{{$grade->id}}">{{$grade->name}}</option>
+                                               <option value="{{$grade->id}}">{{$grade->name()}}</option>
                                             @endforeach
 
                                         </select>

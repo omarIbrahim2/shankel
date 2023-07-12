@@ -30,7 +30,7 @@
                                         <div class="avatar-container">
                                             <div class="avatar-img">
                                                 <img width="100px" src="{{ asset($Supplier->image) }}" alt="avatar">
-                                                <p><i class="fa-solid fa-location-dot"></i> {{ $Supplier->area->name }}</p>
+                                                <p><i class="fa-solid fa-location-dot"></i> {{ $Supplier->area->name() }}</p>
                                             </div>
                                             <div class="avatar-data">
                                                 <h4>
@@ -77,7 +77,7 @@
                                                 <div class="avatar-btns">
 
                                             <div>
-                                            <a href="{{ route('web-services') }}" class="btn-custom text-center ">add to cart</a>
+                                            <a href="{{ route('web-services') }}" class="btn-custom text-center ">{{ trans('supplier.addToCart') }}</a>
 
                                             </div>
                                         </div>

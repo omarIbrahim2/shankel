@@ -307,6 +307,22 @@ Route::middleware('lang')->group(function(){
         Route::post('infos/store' , [InfoController::class , 'store'])->name('info-create');
         Route::post('infos/update' , [InfoController::class , 'edit'])->name('info-update');
 
+        //Locations
+        Route::get('cities' , [LocationCcontroller::class , 'index'])->name('cities');
+        Route::get('cities/create' , [LocationCcontroller::class , 'createCity'])->name('cities-create-form');
+        Route::get('cities/edit/{cityId}' , [LocationCcontroller::class , 'updateCity'])->name('cities-update-form');
+        Route::get('city/delete/{cityId}' , [LocationCcontroller::class , 'deleteCity'])->name('city-delete');
+        Route::post('cities/store' , [LocationCcontroller::class , 'storeCity'])->name('city-create');
+        Route::post('cities/update' , [LocationCcontroller::class , 'editCity'])->name('city-update');
+
+        Route::get("city-areas/{cityId}" , [LocationCcontroller::class , 'showCityAreas'])->name('city-show-areas');
+
+        Route::get('areas/create' , [LocationCcontroller::class , 'createArea'])->name('areas-create-form');
+        Route::get('areas/edit/{areaId}' , [LocationCcontroller::class , 'updateArea'])->name('areas-update-form');
+        Route::get('area/delete/{areaId}' , [LocationCcontroller::class , 'deleteArea'])->name('area-delete');
+        Route::post('areas/store' , [LocationCcontroller::class , 'storeArea'])->name('area-create');
+        Route::post('areas/update' , [LocationCcontroller::class , 'editArea'])->name('area-update');
+
         //Gallery
 
         

@@ -1,1 +1,2 @@
-<h1>hello event is cancelles</h1>
+<h1>Your event is cancelled</h1>
+

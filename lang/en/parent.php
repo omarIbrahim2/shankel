@@ -25,4 +25,8 @@ return[
     "schools" => "Your kids Schools",
     "teachers" => "Your kids Teachers",
     "lookSchools" => "Click here and get a look to schools in your area and take a seat to your child now",
+    "area" => "Area",
+    "grade" => "Grade",
+    "eSystems" => "Education System",
+    
 ];

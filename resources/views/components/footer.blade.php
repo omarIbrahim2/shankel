@@ -11,19 +11,21 @@
                     <div class="col-md-8">
                         <div class="footer-nav">
                             <ul class="navbar-nav m-auto">
-
-
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('home')}}">{{trans("nav.Home")}}</a>
+                                </li>
+                                
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('web-schools')}}">{{trans("nav.Schools")}}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('web-teachers')}}">{{trans("nav.Teachers")}}</a>
+                                </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{route('web-services')}}">{{trans("nav.Services")}}</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{route('web-events')}}">{{trans("nav.Events")}}</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{route('web-schools')}}">{{trans("nav.Schools")}}</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#contact">{{trans("nav.Teachers")}}</a>
                                 </li>
 
                             </ul>

@@ -17,8 +17,13 @@ class GradeFactory extends Factory
     public function definition()
     {
         $grades = ['primary' , 'secondery' , 'Kg' , 'high'];
+
         return [
-            'name' => $grades[rand(0 , count($grades)-1)],
+            'name' => json_encode([
+                'en' => $grades[rand(0 , count($grades)-1)],
+                'ar' =>  $this->faker->word(),
+            ])
+            
         ];
     }
 }

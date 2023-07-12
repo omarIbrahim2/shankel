@@ -36,4 +36,5 @@ return[
     "events" => "Events" ,
     "delete" => "Delete",
     "teachers" => "Teachers",
+    "teacher" => "Teacher",
 ];
