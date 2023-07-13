@@ -31,19 +31,19 @@
                                     @csrf
 
                                     <div class="input-item me-auto ms-0">
-                                        
-                                                                                
+
+
                                         <input value="{{@old('name')}}" type="text" name="name" placeholder="{{trans('register.name')}}" />
                                         <span>
                                             <i class="fa-solid fa-user"></i>
                                         </span>
                                         @error('name')
                                         <p class="text-danger">{{$message}}</p>
-                                        @enderror 
+                                        @enderror
                                     </div>
                                     <div class="input-item me-auto ms-0">
-                                        
-                                        
+
+
                                         <input value="{{@old('email')}}" type="email" name="email" placeholder="{{trans('register.email')}}" />
                                         <span>
                                             <i class="fa-regular fa-envelope"></i>
@@ -53,7 +53,7 @@
                                         @enderror
                                     </div>
                                     <div class="input-item me-auto ms-0">
-                                        
+
                                         <input value="{{@old('phone')}}" type="tel" name="phone" placeholder="{{trans('register.phone')}}" />
                                         <span>
                                             <i class="fa-solid fa-phone"></i>
@@ -66,17 +66,17 @@
                                         <select id="selectCity" class="form-select" aria-label="Default select example" required>
                                             <option selected disabled>{{trans('register.city')}}</option>
                                             @foreach ($cities as $city)
-                                               <option value="{{$city->id}}">{{$city->name()}}</option>
+                                               <option value="{{$city->id}}">{{$city->name}}</option>
                                             @endforeach
-                                            
+
                                           </select>
                                         <span>
                                             <i class="fa-solid fa-location-dot"></i>
                                         </span>
                                     </div>
-                                    
+
                                     <div class="input-item me-auto ms-0">
-                                        
+
                                         <select name="area_id" id="areaSelect" class="form-select" aria-label="Default select example" required>
                                             <option selected disabled>{{trans('register.area')}}</option>
                                           </select>
@@ -111,7 +111,7 @@
                                                     id="female"
                                                 />
                                             </div>
-                                           
+
                                         </div>
                                         @error('gender')
                                         <p class="text-danger">{{$message}}</p>
@@ -181,11 +181,11 @@
         </div>
     </section>
 </main>
-    
+
 @endsection
 
 @section('scripts')
-   
+
  <script>
   $("#selectCity").on('change' , function(){
      let cityId = this.value;
@@ -207,25 +207,25 @@
             var your_html = "";
             $("#areaSelect").empty();
             $("#areaSelect").append("<option selected disabled>Area</option>");
-            
+
            var lang = $('#startInn').data('langshankl')
 
-           
-          
+
+
             for (const key in data.areas) {
-              
+
                var name = JSON.parse(data.areas[key].name);
                if (lang == 'ar') {
-                your_html += "<option id='ar' value = " + data.areas[key].id + ">"+ name.ar +"</option>"; 
+                your_html += "<option id='ar' value = " + data.areas[key].id + ">"+ name.ar +"</option>";
                }else{
-                your_html += "<option id='ar' value = " + data.areas[key].id + ">"+ name.en +"</option>"; 
+                your_html += "<option id='ar' value = " + data.areas[key].id + ">"+ name.en +"</option>";
                }
-             
+
             }
             $("#areaSelect").append(your_html);
 
 
-            
+
 
 
         }
@@ -239,7 +239,7 @@
 
  <script>
     $('#teacher-avatar').change(function() {
-  
+
   var file = $('#teacher-avatar')[0].files[0].name;
   $("#imgName").text(file);
    });

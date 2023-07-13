@@ -10,8 +10,8 @@
     <div class="inner">
         <div class="container">
             <div class="contact-form black-contact-form">
-                <form action="{{route("school-store-event")}}"  method="POST"  enctype="multipart/form-data">   
-                    @csrf 
+                <form action="{{route("school-store-event")}}"  method="POST"  enctype="multipart/form-data">
+                    @csrf
                     <div class="input-item me-auto ms-0">
                         <input name="title" id="event-title"  type="text"  value="{{old('title')}}" placeholder="{{ trans('event.title') }}">
                         <span>
@@ -33,7 +33,7 @@
                         <div class="upload-avatar text-start" data-upload-id="myFirstImage">
                             <label for="eventImage" class="btn-custom">{{ trans('event.upload') }} </label>
                             <input name="image" class="form-control py-2" id="eventImage" type="file"  accept="image/*">
-                
+
                             @error('image')
                             <p class="text-danger">{{$message}}</p>
                             @enderror
@@ -47,7 +47,7 @@
                          <p class="text-danger">{{$message}}</p>
                          @enderror
                      </div>
-                
+
                      <div class="input-item me-auto ms-0">
                          <input type="text" value="{{old('end_date')}}" name="end_date" id="basicFlatpickr" placeholder="{{ trans('event.select') }}"  class="textbox-n eventDayPicker">
                          <span>
@@ -76,14 +76,14 @@
                                 <p class="text-danger">{{$message}}</p>
                                 @enderror
                                 </div>
-                
+
                                 <div class="input-item me-auto ms-0">
                                     <select id="selectCity" class="form-select" aria-label="Default select example" name="edu_systems_id" >
                                         <option selected disabled>{{ trans('event.city') }}</option>
                                     @foreach ($cities as $city)
-                                    <option value="{{$city->id}}">{{$city->name()}}</option>
+                                    <option value="{{$city->id}}">{{$city->name}}</option>
                                     @endforeach
-                                        
+
                                       </select>
                                     <span>
                                         <i class="fa-solid fa-location-dot"></i>
@@ -103,9 +103,9 @@
                                 <p class="text-danger">{{$message}}</p>
                                 @enderror
                                 </div>
-                     
-                      
-                
+
+
+
                      <div class="input-item me-auto ms-0">
                         <button type="submit" class="custom-out-btn">
                             {{ trans('event.add') }}
