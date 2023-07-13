@@ -19,7 +19,7 @@
         </div>
     </nav>
     <section class="section ">
-        <div class="inner">
+        <div id="startInn" class="inner" data-langShankl="{{App::getLocale()}}">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-md-8 col-12">

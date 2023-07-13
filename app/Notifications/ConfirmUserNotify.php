@@ -61,4 +61,12 @@ class ConfirmUserNotify extends Notification implements ShouldQueue
             //
         ];
     }
+
+    public function viaQueues() : array
+    {
+
+        return [
+          "mail" => "EventMailingQueue"
+        ];
+    }
 }

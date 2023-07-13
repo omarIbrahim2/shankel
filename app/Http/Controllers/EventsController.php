@@ -60,34 +60,6 @@ class EventsController extends Controller
     }
 
     public function storeEvent(EventValidationRequest $request , FileService $fileService){
-       
-    //    $validatedData = $request->validated();
-      
-    //    $validatedData["eventable_type"] = User::class;
-
-    //    $validatedData["eventable_id"] =  auth()->guard("web")->user()->id;
-        
-    //   if ($request->has('image')) {
-        
-    //     $fileService->setPath('events');
-
-    //     $fileService->setFile($request->image);
- 
-    //     $validatedData['image'] = $fileService->uploadFile();
-    //   }
-     
-
-
-    //      $event =$this->AdminService->addEvent($validatedData);
-
-    //      if ($event) {
-    //         toastr("event created successfully" , "success");
-    //         return redirect()->route("admin-events");
-    //      }
-
-    //      toastr("error in creation " , "error" , "Error");
-    //      return redirect()->route("admin-events");
-
      
         $validatedData = $request->validated();
      
