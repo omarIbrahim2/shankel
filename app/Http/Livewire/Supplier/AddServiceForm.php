@@ -2,14 +2,18 @@
 
 namespace App\Http\Livewire\Supplier;
 
+use App\Traits\HandleUpload;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
+use Shankl\Services\FileService;
 use Shankl\Services\SupplierService;
 
 class AddServiceForm extends Component
 {
     use WithFileUploads;
+
+    
 
     public $name , $desc , $price , $quantity , $image , $supplier_id , $attributes= array();
 
@@ -46,7 +50,7 @@ class AddServiceForm extends Component
     }
 
 
-    public function save(SupplierService $supplierService){
+    public function save(SupplierService $supplierService , FileService $fileService){
 
         $this->validate([
             "name" => "required|string|max:255",
@@ -58,9 +62,11 @@ class AddServiceForm extends Component
         ]);
 
         $this->setAttributes();
+        $currentImage = $supplierService->getServiceDefaultImage();
 
+         $this->attributes['image'] =$supplierService->uploadServiceImage($this->image , $currentImage );
         $service = $supplierService->createService($this->attributes);
-
+        
          toastr("service created successfully" , 'success');
 
         $this->resetInputs();

@@ -11,7 +11,7 @@
         <div class="col-md-4">
             <div class="form-group mb-4">
                 <label class='font-bold' class='font-bold' for="event-title">{{ trans('service.name') }}</label>
-                <input  wire:model="name" id="event-title" value="{{ old('name') }}"  type="text"
+                <input  wire:model.defer="name" id="event-title" value="{{ old('name') }}"  type="text"
                     class="form-control" placeholder="{{ trans('service.name') }}">
                 @error('name')
                     <p class="text-danger">{{ $message }}</p>
@@ -22,7 +22,7 @@
         <div class="col-md-4">
             <div class="form-group mb-4">
                 <label class='font-bold' for="event-title">{{ trans('service.quantity') }}</label>
-                <input wire:model="quantity" id="event-title" value="{{ old('quantity') }}" type="number" class="form-control"  placeholder="{{ trans('service.name') }}">
+                <input wire:model.defer="quantity" id="event-title" value="{{ old('quantity') }}" type="number" class="form-control"  placeholder="{{ trans('service.name') }}">
                     @error('quantity')
                     <p class="text-danger">{{$message}}</p>
                     @enderror
@@ -33,7 +33,7 @@
         <div class="col-md-4">
             <div class="form-group mb-4">
                 <label class='font-bold' for="event-title">{{ trans('service.price') }}</label>
-                <input wire:model="price" id="event-title" value="{{ old('price') }}" type="number"
+                <input wire:model.defer="price" id="event-title" value="{{ old('price') }}" type="number"
                     class="form-control" placeholder="{{ trans('service.price') }}">
                 @error('price')
                     <p class="text-danger">{{ $message }}</p>
@@ -43,27 +43,21 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-6">
-            <div class="avatar-btns">
-                @if ($image != null)
-                    <p>{{ $image->getClientOriginalName() }}</p>
-                @endif
-                <div class="upload-avatar">
-                    <input type="file" wire:model.defer="image" id="teacher-avatar">
-                    <label class="btn-custom" for="teacher-avatar">{{ trans('supplier.uploadNew') }}</label>
-                </div>
+    <div class="upload-avatar text-start" data-upload-id="myFirstImage"> 
+        @if ($image != null)
+        <p>{{ $image->getClientOriginalName() }}</p>
+       @endif
+        <label for="eventImage" class="btn-custom">{{ trans('teacher.uploadNew') }} </label>
+        <input wire:model.defer="image" class="form-control py-2" id="eventImage" type="file"  accept="image/*">
 
-                @error('image')
-                    {{ $message }}
-                @enderror
-            </div>
-        </div>
+        @error('image')
+        <p class="text-danger">{{$message}}</p>
+        @enderror
     </div>
 
     <div class="form-group mb-4">
         <label class='font-bold' for="event-desc">{{ trans('service.desc') }}</label>
-        <textarea wire:model="desc" id="event-desc" cols="30" placeholder="{{ trans('service.desc') }}" rows="10"
+        <textarea wire:model.defer="desc" id="event-desc" cols="30" placeholder="{{ trans('service.desc') }}" rows="10"
             class="form-control ">{{ old("desc") }}</textarea>
         @error('desc')
             <p class="text-danger">{{ $message }}</p>

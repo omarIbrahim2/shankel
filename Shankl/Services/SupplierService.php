@@ -52,6 +52,11 @@ class SupplierService extends Service{
        return $this->supplierRebo->delete($supplierId);
     }
 
+    public function getServiceDefaultImage(){
+
+        return self::$defaultServicImage;
+    }
+
 
     public function handleUploadProfilepic($uploadedFile , $UsercurrentFile){
 
@@ -69,6 +74,14 @@ class SupplierService extends Service{
        $this->fileService->setFile($uploadedFile);
        $this->fileService->setPath("suppliers");
        return $this->fileService->uploadFile();
+    }
+
+    public function deleteImage($image){
+
+        if ($image != self::$defaultServicImage) {
+            $deletedFile = substr($image , 8);
+            $this->fileService->DeleteFile($deletedFile);
+        }
     }
 
     public function getServices($supplierId , $pages){
@@ -105,7 +118,9 @@ class SupplierService extends Service{
     }
 
     public function DeleteService($serviceId){
+          $service = $this->getService($serviceId);
 
+           $this->deleteImage($service->image);
         return $this->ServiceRebo->delete($serviceId);
     }
 

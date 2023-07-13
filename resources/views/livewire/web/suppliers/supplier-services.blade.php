@@ -26,10 +26,22 @@
                                             {{$service->desc}}
                                          </div>
                                     </div>
+                                    <div class="service-booking">
+                                        <div class="m-2">
+                                            <form action="{{route('supplier-service-delete' , $service->id)}}" method="post">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button type="submit" class=" px-4 btn btn-danger">{{ trans('teacher.delete') }}</button>
+                                            </form>
+                                        </div>
+                                        <button type="button" class="get btn btn-warning"data-bs-toggle="modal" data-bs-target="#teacherVideos">{{trans('teacher.update')}}</button>
+                                    </div>
 
                                 </div>
                                
                             </div>
+                            
+                          
                         </div>
                     </div>
                     @endforeach
