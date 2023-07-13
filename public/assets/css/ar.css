@@ -87,3 +87,6 @@ input{
     display: flex;
     align-items: center;
 }
+.tags p{
+    margin: 0 0 0 16px;
+}

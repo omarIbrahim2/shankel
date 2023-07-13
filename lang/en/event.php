@@ -28,6 +28,6 @@ return[
 
     "cls" => "Cancel Event",
     "reEvent" => "Re-event",
-
+    "notifyEventStart" => "The Event Is Started",
     "reservedEvents" => "Reserved Events",
 ];

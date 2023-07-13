@@ -15,12 +15,12 @@ class EventRepository implements EventRepoInterface
 
    public function getEvents($pages)
    {
-      return Event::with('area.city')->orderBy('start_date', 'DESC')->paginate($pages);
+      return Event::with('area.city')->orderBy('start_date', 'ASC')->paginate($pages);
    }
 
    public function getEventsguest($pages)
    {
-      return Event::with('area.city')->where('status', 'in Progress')->orderBy('start_date', 'DESC')->paginate($pages);
+      return Event::with('area.city')->where('status', 'in Progress')->orderBy('start_date', 'ASC')->paginate($pages);
    }
 
    public function getEventsWeb($userId = null, $guard)
@@ -61,7 +61,7 @@ class EventRepository implements EventRepoInterface
    }
 
    public function getReservedEvents($userId = null, $guard){
-      $allEvents = $this->getEventsWeb($userId,$guard)->where('eventable_id' , $userId); 
+      $allEvents = $this->getEventsWeb($userId,$guard)->where('eventable_id' , $userId);
       $resrvedEvents = $allEvents->where('booked' , true);
       return $resrvedEvents;
    }
@@ -121,5 +121,5 @@ class EventRepository implements EventRepoInterface
    }
   
 
-   
+
 }
