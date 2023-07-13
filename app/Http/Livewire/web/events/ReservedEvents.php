@@ -6,6 +6,7 @@ use App\Models\Event;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Shankl\Factories\AuthUserFactory;
+use Shankl\Helpers\Event as HelpersEvent;
 use Shankl\Interfaces\EventRepoInterface;
 
 class ReservedEvents extends Component
@@ -28,13 +29,11 @@ class ReservedEvents extends Component
         return 'livewire.web-pagination';
     }
 
-    public function cancelBooking($event, EventRepoInterface $eventRepo)
+    public function cancelBooking($event, HelpersEvent $Event)
     {
-        $User =  AuthUserFactory::getAuthUser();
+        
 
-        $action = $eventRepo->cancelSubscribeUser($event['id'], $User);
-
-        if ($action) {
+        if ($Event->cancelBooking($event['id'])) {
 
             toastr("Booking cancelled successfully", "success");
 
@@ -42,6 +41,7 @@ class ReservedEvents extends Component
         } else {
 
             toastr("Error happened ..!", "error");
+            $this->emit('fresh');
         }
     }
 }
