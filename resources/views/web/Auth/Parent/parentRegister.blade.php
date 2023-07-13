@@ -15,7 +15,7 @@
         </div>
     </nav>
     <section class="section">
-        <div class="inner">
+        <div id="startInn" data-langShankl="{{App::getLocale()}}" class="inner">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-md-8 col-12">
@@ -89,28 +89,24 @@
                                     </div>
                                     <div class="input-item me-auto ms-0">
                                         <label>{{ trans('parent.gender') }}</label>
-                                        <div
-                                            class="d-flex align-items-center justify-content-start"
-                                        >
-                                            <div
-                                                class="d-flex align-items-center justify-content-start"
-                                            >
+                                        <div class="d-flex align-items-center justify-content-start" >
+                                            <div class="d-flex align-items-center justify-content-start">
                                                 <label for="male">{{ trans('parent.male') }}</label>
                                                 <input
                                                     type="radio"
                                                     value="male"
+                                                    {{old('gender') == 'male' ? 'checked=' . '"' . 'checked'. '"' : ''}}
                                                     name="gender"
                                                     class="not-hidden ms-2"
                                                     id="male"
                                                 />
                                             </div>
-                                            <div
-                                                class="d-flex align-items-center justify-content-start ms-2"
-                                            >
+                                            <div class="d-flex align-items-center justify-content-start ms-2" >
                                                 <label for="female">{{ trans('parent.female') }}</label>
                                                 <input type="radio"
                                                     value="female "
                                                     name="gender"
+                                                    {{old('gender') == 'female' ? 'checked=' . '"' . 'checked'. '"' : ''}}
                                                     class="not-hidden ms-2"
                                                     id="female"
                                                 />
@@ -134,6 +130,7 @@
                                         <input
                                             type="password"
                                             name="password"
+                                            value="{{old('password')}}"
                                             placeholder="{{trans('register.password')}}"
                                         />
                                         <span>
@@ -152,6 +149,7 @@
                                         <input
                                             type="password"
                                             name="password_confirmation"
+                                            value="{{old('password_confirmation')}}"
                                             placeholder="{{trans('register.confirm_password')}}"
                                         />
                                         <span>
@@ -209,10 +207,20 @@
             var your_html = "";
             $("#areaSelect").empty();
             $("#areaSelect").append("<option selected disabled>Area</option>");
+            
+           var lang = $('#startInn').data('langshankl')
+
+           
+          
             for (const key in data.areas) {
               
-              
-              your_html += "<option id='ar' value = " + data.areas[key].id + ">"+ data.areas[key].name +"</option>"; 
+               var name = JSON.parse(data.areas[key].name);
+               if (lang == 'ar') {
+                your_html += "<option id='ar' value = " + data.areas[key].id + ">"+ name.ar +"</option>"; 
+               }else{
+                your_html += "<option id='ar' value = " + data.areas[key].id + ">"+ name.en +"</option>"; 
+               }
+             
             }
             $("#areaSelect").append(your_html);
 

@@ -24,7 +24,7 @@ class LocationRepository implements LocationRepoInterface{
   public function getArea($cityId)
   {
      
-    $city = City::findOrFail($cityId);
+    $city = City::with('areas')->findOrFail($cityId);
 
     return $city->areas;
      

@@ -5,6 +5,9 @@ return [
   "OurVision" => "رؤيتنا",
   "OurMission" => 'هدفنا',
   "WhyChooseUs" => "لماذا تختارنا",
-  "gallery" => "المعرض"
+  "gallery" => "المعرض",
+  'recentSer' => 'أجدد الخدمات',
+  'famousSch' => 'أشهر المدارس',
+  'showMore' => 'المزيد..',
 
 ];

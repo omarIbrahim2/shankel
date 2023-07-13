@@ -22,7 +22,7 @@ class Card
             return $next($request);
         }
 
-        return back();
+        return redirect()->route('selectUserRegister');
        
     }
 }

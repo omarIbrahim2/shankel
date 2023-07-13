@@ -28,7 +28,7 @@ return [
     "Upload New Photo" => "ارفع صورة جديدة",
     "changePass" => "تغيير كلمة السر",
     "submit" => "تفعيل",
-
+     'send' => 'أرسال',
     "oldPass" => "كلمة السر الحاليه",
     "newPass" => "كلمة المرور الجديدة",
     "passConfirm" => "تأكيد كلمة المرور",

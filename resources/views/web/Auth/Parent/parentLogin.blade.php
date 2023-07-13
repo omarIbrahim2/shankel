@@ -41,7 +41,7 @@ Shankl | Parent Login
                                     @include('web.inc.errors')
                                     <div class="input-item me-auto ms-0">
 
-                                        <input type="email" name="email" placeholder="{{trans('register.email')}}">
+                                        <input type="email" value="{{old('email')}}" name="email" placeholder="{{trans('register.email')}}">
                                         <span>
                                             <i class="fa-regular fa-envelope"></i>
                                         </span>

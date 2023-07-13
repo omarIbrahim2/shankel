@@ -88,6 +88,7 @@
                                     <div class="service-name">
                                         <h3>{{ trans('parent.schArea') }}</h3>
                                     </div>
+                                    
                                     <a href="{{ route('area-schools') }}" class="custom-out-btn">
                                         {{ trans('parent.more') }}
                                     </a>

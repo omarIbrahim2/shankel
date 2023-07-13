@@ -57,16 +57,16 @@ class ParentRepository extends AbstractUserRepo implements UserReboInterface, Ca
 
       $parentUserId =  Auth::guard('parent')->user()->id;
 
-      $AuthParent = Parentt::with('children')->findOrFail($parentUserId);
+      $AuthParent = Parentt::select('name' , 'image' , 'id')->with('children')->findOrFail($parentUserId);
 
       return $AuthParent;
    }
 
    public function getAreaSchools($pages){
-      $parentUserId =  Auth::guard('parent')->user()->id;
-      $AuthParent = Parentt::with('area')->findOrFail($parentUserId);
-      $areaId = $AuthParent->area->id;
-      $areaSchools = School::select('id','image','name','area_id')->where('area_id' , $areaId)->paginate($pages);
+      $parentAreaId=  Auth::guard('parent')->user()->area_id;
+        
+     
+      $areaSchools = School::select('id','image','name','area_id')->where('area_id' , $parentAreaId)->paginate($pages);
       return $areaSchools;
    }
 

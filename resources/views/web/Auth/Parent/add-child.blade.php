@@ -33,7 +33,7 @@
                                     @csrf
                                     <input value="{{$parent_id}}" type="hidden" name="parentt_id">
                                     <div class="input-item me-auto ms-0">
-                                        <input type="text" name="name" placeholder="{{ trans('parent.name') }}">
+                                        <input type="text"value="{{old('name')}}" name="name" placeholder="{{ trans('parent.name') }}">
                                         <span>
                                             <i class="fa-solid fa-user"></i>
                                         </span>
@@ -43,7 +43,7 @@
                                     </div>
                                     <div class="input-item me-auto ms-0">
 
-                                        <input type="number" name="age" placeholder="{{ trans('parent.age') }}">
+                                        <input type="number"value="{{old('age')}}" name="age" placeholder="{{ trans('parent.age') }}">
                                         <span>
                                             <i class="fa-regular fa-hourglass"></i>
                                         </span>
@@ -55,18 +55,18 @@
                                     <div class="input-item me-auto ms-0">
                                         <select name="birth_date" placeholder="MM">
                                             <option selected disabled aria-hidden="true">MM</option>
-                                            <option name="January" value="January">Jan</option>
-                                            <option name="February" value="February">Feb</option>
-                                            <option name="March" value="March">Mar</option>
-                                            <option name="April" value="April">Apr</option>
-                                              <option name="May" value="May">May</option>
-                                            <option name="June" value="June">Jun</option>
-                                            <option name="July" value="July">Jul</option>
-                                            <option name="August" value="August">Aug</option>
-                                              <option name="September" value="September">Sep</option>
-                                            <option name="October" value="October">Oct</option>
-                                            <option name="November" value="November">Nov</option>
-                                            <option name="December" value="December">Dec</option>
+                                            <option {{old('birth_date') == 'January' ? 'selected' : ''}}  value="January">Jan</option>
+                                            <option {{old('birth_date') == 'February' ? 'selected' : ''}} value="February">Feb</option>
+                                            <option {{old('birth_date') == 'March' ? 'selected' : ''}} value="March">Mar</option>
+                                            <option {{old('birth_date') == 'April' ? 'selected' : ''}} value="April">Apr</option>
+                                              <option name="May" {{old('birth_date') == 'May' ? 'selected' : ''}} value="May">May</option>
+                                            <option {{old('birth_date') == 'June' ? 'selected' : ''}} value="June">Jun</option>
+                                            <option {{old('birth_date') == 'July' ? 'selected' : ''}} value="July">Jul</option>
+                                            <option {{old('birth_date') == 'August' ? 'selected' : ''}} value="August">Aug</option>
+                                              <option {{old('birth_date') == 'September' ? 'selected' : ''}} value="September">Sep</option>
+                                            <option {{old('birth_date') == 'October' ? 'selected' : ''}} value="October">Oct</option>
+                                            <option {{old('birth_date') == 'November' ? 'selected' : ''}} value="November">Nov</option>
+                                            <option {{old('birth_date') == 'December' ? 'selected' : ''}} value="December">Dec</option>
                                           </select>
 
                                         <span>
@@ -80,7 +80,7 @@
                                         <select  name="grade_id" class="form-select" aria-label="Default select example" required>
                                             <option selected disabled>{{ trans('parent.grade') }}</option>
                                             @foreach ($grades as $grade)
-                                               <option value="{{$grade->id}}">{{$grade->name()}}</option>
+                                               <option {{old('grade_id') == $grade->id ? 'selected' : ''}} value="{{$grade->id}}">{{$grade->name()}}</option>
                                             @endforeach
 
                                         </select>
@@ -95,7 +95,7 @@
                                     <div class="social-auth">
                                         <div class="social-btns">
                                             <div class="input-item m-0 mb-3 charcter">
-                                                <input type="radio" name="gender" value="male" id="male">
+                                                <input  type="radio" name="gender" value="male" id="male">
                                                 <label for="male" class="icon-animate">
                                                     <img src="{{asset('assets')}}/images/charcters/shankal.png" alt="shankal">
                                                     <span><i class="fa-solid fa-check"></i></span>

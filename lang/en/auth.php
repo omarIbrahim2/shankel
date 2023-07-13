@@ -28,7 +28,7 @@ return [
     "Upload New Photo" => "Upload New Photo",
     "changePass" => "Change Password",
     "submit" => "Submit",
-
+      'send' => 'Send',
     "oldPass" => "Old Password",
     "newPass" => "New Password",
     "passConfirm" => "password confirmation",

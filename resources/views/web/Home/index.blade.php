@@ -96,30 +96,49 @@ Shankal | Home
     <div class="inner">
         <div class="container">
             <div class="section-title">
-                <h2>Recently Services</h2>
+                <h2>{{trans('home.recentSer')}}</h2>
             </div>
             <div class="section-content text-center">
                 <div class="row align-items-center mb-5">
                     <!-- add the dynamic data and write the for each -->
+
+                    @foreach ($Services as $service)
                     <div class=" col-lg-4 col-md-6 col-12">
                         <div class="teacher-service card supplier_service_card">
-                            <img class="card-img-top" src="#" alt="service">
+                            <img class="card-img-top" src="{{asset($service->image)}}" alt="service">
                             <div class="card-body">
-                                <p class="card-text">service 1</p>
-                                <p class="card-title fw-bold">10000 JOD</p>
+                                <p class="card-text">{{$service->name}}</p>
+                                <p class="card-title fw-bold">{{$service->price}} JOD</p>
                             </div>
                             <div class="avatar-btns">
 
                                 <div>
-                                    <a href="#" class="btn-custom text-center ">add to cart</a>
+                                  <div class="service-booking">
+                                        <form action="{{ route('add-to-card') }}" method="post">
+                                             @csrf
+                                            <input type="hidden" name="service_id" value="{{ $service->id }}">
+                                            <div class="service-booking">
+                                                <label for="">{{ trans('service.quantity') }}</label>
+                                                @error('quantity')
+                                                    <p class="text-danger">{{ $message }}</p>
+                                                @enderror
+                                                <input id="" name="quantity" class="num_cart_item form-control mb-3" placeholder="0" type="number" min="0" max={{ $service->quantity }}>
+                                            </div>
+
+                                            <button type="submit" class="btn-custom">{{ trans('service.book') }}</button>
+                                        </form>
+
+                                    </div>
 
                                 </div>
                             </div>
                         </div>
                     </div>
+                    @endforeach
+                   
                 </div>
 
-                <a href="#" class="custom-out-btn text-center ">Show More</a>
+                <a href="{{route('web-services')}}" class="custom-out-btn text-center ">{{trans('home.showMore')}}</a>
 
 
             </div>
@@ -132,7 +151,7 @@ Shankal | Home
     <div class="inner">
         <div class="container">
             <div class="section-title">
-                <h2>Schools</h2>
+                <h2>{{trans('home.famousSch')}}</h2>
             </div>
             <div class="section-content ">
                 <div class="container">
@@ -156,13 +175,8 @@ Shankal | Home
                                     </a>
                                 </div>
                                 @endforeach
-                                
-
-
-
-
                             </div>
-                            <a href="#" class="custom-out-btn text-center ">Show More</a>
+                            <a href="{{route('web-schools')}}" class="custom-out-btn text-center ">{{trans('home.showMore')}}</a>
                         </div>
                     </div>
                 </div>
