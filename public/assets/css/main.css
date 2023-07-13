@@ -2414,3 +2414,6 @@ main {
 .event_desc+span{
   left: 8px;
 }
+.teacher-avatar .tech-img{
+    height: auto;
+}

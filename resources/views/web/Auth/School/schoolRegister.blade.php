@@ -72,7 +72,7 @@
                                             <select id="selectCity" class="form-select" aria-label="Default select example" >
                                                 <option selected  disabled>{{trans('register.city')}}</option>
                                                 @foreach ($cities as $city)
-                                                   <option value="{{$city->id}}">{{$city->name(App::getLocale())}}</option>
+                                                   <option value="{{$city->id}}">{{$city->name()}}</option>
                                                 @endforeach
 
                                               </select>

@@ -35,7 +35,7 @@ Route::middleware('lang')->group(function(){
     // Home
     Route::get('/', [HomeController::class , "index"])->name('home');
 
-    // Select Page 
+    // Select Page
     Route::get('/select' , [HomeController::class ,'selectUserRegister'])->name("selectUserRegister");
     Route::get('/select/login' , [HomeController::class ,'selectUserLogin'])->name("selectUserLogin");
 
@@ -54,7 +54,7 @@ Route::middleware('lang')->group(function(){
     Route::get("/forgot-password-teacher" , [AuthController::class , "TeacherforgotPassword"])->middleware('guest')->name("password.request.teacher");
     //admin Forget Password
     Route::get("/forgot-password-admin" , [AuthController::class , "AdminforgotPassword"])->middleware('guest')->name("password.request.admin");
-    
+
     Route::post('/forgot-password/{broker}', [AuthController::class , 'forgotPasswordPostRequest'])->middleware('guest')->name('password.email');
     //Reset Password
 
@@ -70,8 +70,8 @@ Route::middleware('lang')->group(function(){
     Route::get('/reset-password-supplier/{token}', [AuthController::class , 'SupplierresetPassword'])->middleware('guest')->name('password.reset.supplier');
 
     Route::post('/reset-password-parent/{broker}/{guard}', [AuthController::class , 'resetPasswordPostRequest'])->middleware('guest')->name('password.update');
-    
-   //web Routes 
+
+   //web Routes
    //*-------*//
 
    Route::get('/events' , [EventsController::class , 'index'])->name('web-events');
@@ -87,8 +87,8 @@ Route::middleware('lang')->group(function(){
    Route::get('/services' , [ServiceController::class , 'index'])->name('web-services');
 
    Route::get('/teachers' , [TeacherController::class , 'getAllTeachers'])->name('web-teachers');
-   Route::get('/teacher/{id}' , [TeacherController::class , 'getOneTeacher'])->middleware('teacherDetails')->name('teacher-by-id');
-  
+   Route::get('/teacher/{id}' , [TeacherController::class , 'getOneTeacher'])->name('teacher-by-id');
+
 
     // Authentication Routs
     //*-----------*
@@ -96,23 +96,23 @@ Route::middleware('lang')->group(function(){
     // Parent Authentication
     Route::get('register/parent' , [ParentController::class , 'showRegister'])->middleware("guest")->name('parent_register');
     Route::get('login/parent' , [ParentController::class , 'showLogin'])->middleware('guest')->name('parent-login');
-  
+
     Route::post('parent/login' , [AuthController::class , 'parentLogin'])->name('login-parent');
     Route::post('parent/register' , [AuthController::class , 'Parentregister'])->name('parent-register');
-    
-   
+
+
     // Teacher Authentication
     Route::get('register/teacher' , [TeacherController::class , 'showRegister'])->middleware("guest")->name('teacher_register');
     Route::get('login/teacher' , [TeacherController::class , 'showLogin'])->middleware('guest')->name('teacher-login');
     Route::post('teacher/register' , [AuthController::class , 'TeacherRegister'])->name('teacher-register');
     Route::post('teacher/login' , [AuthController::class , 'teacherLogin'])->name('login-teacher');
- 
+
     // School Authentication
     Route::get('register/school' , [SchoolController::class , 'showRegister'])->middleware("guest")->name('school_register');
     Route::get('login/school' , [SchoolController::class , 'showLogin'])->middleware('guest')->name('school-login');
     Route::post('school/register' , [AuthController::class , 'SchoolRegister'])->name('school-register');
     Route::post('school/login' , [AuthController::class , 'schoolLogin'])->name('login-school');
-    
+
     // Supplier Authentication
     Route::get('register/supplier' , [SupplierController::class , 'showRegister'])->middleware("guest")->name('supplier_register');
     Route::get('login/supplier' , [SupplierController::class , 'showLogin'])->middleware('guest')->name('supplier-login');
@@ -122,18 +122,18 @@ Route::middleware('lang')->group(function(){
     // Admin Auth
     Route::get('/login' , [AdminController::class , 'showLogin'])->middleware('guest')->name('admin-login');
     Route::post('admin/login' , [AuthController::class , 'AdminLogin'])->name('login-admin');
-  
+
     Route::middleware('card')->group(function(){
         Route::post("add/card" , [CardController::class , 'AddToCard'])->name('add-to-card');
         Route::get('card/services' , [CardController::class , "Card"])->name('Card');
         Route::delete('remove/card/' , [CardController::class , "remove"])->name('remove-from-card');
            //service Payment
-        Route::post("paypal/service/payment" , [ServiceOrderController::class , "payment"])->name("paypal-service-payment");; 
+        Route::post("paypal/service/payment" , [ServiceOrderController::class , "payment"])->name("paypal-service-payment");;
         Route::get("paypal/service/success" , [ServiceOrderController::class , 'success'])->name('paypal-service-success');
         Route::get("paypal/service/cancel" , [ServiceOrderController::class , 'cancel'])->name('paypal-service-cancel');
     });
- 
-    
+
+
     //Parent Group
     Route::middleware('parent')->group(function(){
         Route::get('/parent' , [ParentController::class , 'parent'])->name('parent')->middleware('child');
@@ -145,7 +145,7 @@ Route::middleware('lang')->group(function(){
         Route::get('changePass/parent' , [ParentController::class , "changePassView"] )->name("change_pass_parent");
         Route::post("changePass/parent/{user}" , [ParentController::class , "changePass"])->name("submit-change-pass-parent");
         Route::get('register/school/payment/{schoolId}' , [ParentController::class , "showRegisterForm"])->middleware('child')->name("register-form-school");
-        Route::post("paypal/payment" , [PaypalController::class , "payment"])->name("paypal-payment")->middleware('child'); 
+        Route::post("paypal/payment" , [PaypalController::class , "payment"])->name("paypal-payment")->middleware('child');
         Route::get("paypal/success" , [PaypalController::class , 'success'])->name('paypal-success')->middleware('child');
         Route::get("paypal/cancel" , [PaypalController::class , 'cancel'])->name('paypal-cancel')->middleware('child');
         Route::get("filters/view" , [ParentController::class , 'FilterSchoolView'])->name('filter-view');
@@ -157,11 +157,11 @@ Route::middleware('lang')->group(function(){
         Route::get("reserved/Schools" , [ParentController::class , 'reservedSchools'])->name('reserved-schools');
         Route::get("reserved/Teachers" , [ParentController::class , 'reservedTeachers'])->name('reserved-teachers');
     });
-    
+
     Route::post('paypal/services/payment' , [TransactionController::class , 'payment'])->name('payment-services');
     Route::get('suppliers/filter' , [ParentController::class , 'FilterSuppliers'])->name('filter-suppliers');
 
-    
+
     //teacher Group
     Route::middleware('teacher')->group(function(){
         Route::get('/teacher' , [TeacherController::class , 'teacher'])->name('teacher');
@@ -174,7 +174,7 @@ Route::middleware('lang')->group(function(){
         Route::delete("lesson-delete/{id}",[TeacherController::class , 'deleteLesson'])->name('delete-lesson');
         Route::post("lesson-edit",[TeacherController::class , 'updateLesson'])->name('update-lesson');
     });
-    
+
     //school Group
     Route::middleware('school')->group(function(){
         Route::get('/school' , [SchoolController::class , 'school'])->name('school');
@@ -182,17 +182,17 @@ Route::middleware('lang')->group(function(){
         Route::get('changePass/school' , [SchoolController::class , "changePassView"] )->name("change_pass_school");
         Route::post('changePass/school/{user}', [SchoolController::class, 'changePass'])->name("submit_change_pass_school");
         Route::get('suppliers/filter' , [SchoolController::class , 'FilterSuppliers'])->name('filter-suppliers');
-        
+
         Route::get('school/add/event' , [SchoolController::class , 'addEvent'])->name('school-add-event');
         Route::post('school/event/create' , [EventsController::class , 'storeEvent'])->name('school-store-event');
         Route::get("school/reserved/Events" , [SchoolController::class , 'reservedEvents'])->name('school-reserved-events');
         Route::get("school/created/Events" , [SchoolController::class , 'schoolEvents'])->name('school-my-events');
         Route::get("school/area/suppliers" , [SchoolController::class , 'areaSuppliers'])->name('school-area-suppliers');
         Route::get("school/all/students" , [SchoolController::class , 'schoolStudents'])->name('school-students');
-        
+
 
     });
-    
+
     Route::post('update/comment' , [SchoolController::class , "updateComment"])->name('update-comment');
 
     //supplier Group
@@ -210,13 +210,13 @@ Route::middleware('lang')->group(function(){
         Route::delete('supplier-service-delete/{serviceId}' , [ServiceController::class , 'deleteService'])->name('supplier-service-delete');
 
     });
- 
+
     Route::post('update/comment' , [SupplierController::class , "updateComment"])->name('update-comment');
-       
- 
+
+
      //admin group
 
-    Route::prefix('dashboard')->middleware('auth')->group(function(){ 
+    Route::prefix('dashboard')->middleware('auth')->group(function(){
         Route::get('/' , [AdminController::class , 'dashboard'])->name('dashboard');
 
         //events
@@ -225,9 +225,9 @@ Route::middleware('lang')->group(function(){
         Route::get('event/update/{eventid}' , [EventsController::class , "updateEventView"])->name("update-events-view");
         Route::post("event/store" , [EventsController::class , "storeEvent"])->name("create-events");
         Route::post('event/update' , [EventsController::class , "updateEvent"])->name("update-event");
-        Route::post('cancelEvent' , [EventsController::class , 'cancelEvent'])->name('cancel-event');  
+        Route::post('cancelEvent' , [EventsController::class , 'cancelEvent'])->name('cancel-event');
         //addvertisments
-        
+
         Route::get('addverts' , [AdvertController::class , 'index'])->name('admin-addverts');
         Route::get('addvert/{addvertId}' , [AdvertController::class , 'show'])->name('addvert-show');
         Route::get('create' , [AdvertController::class , "createAddvertView"])->name('create-addverts-view');
@@ -248,7 +248,7 @@ Route::middleware('lang')->group(function(){
         Route::get("centers/{status}" , [AdminController::class , 'Centers'])->name('admin-centers');
         Route::get("kg/{status}" , [AdminController::class , 'Kg'])->name('admin-kg');
         Route::get("teachers/{status}" , [AdminController::class , 'Teachers'])->name('admin-teachers');
-         
+
         Route::get("school/details/{id}" , [SchoolController::class , "getSchoolAdmin"])->name('school-details');
         Route::get("teacher/details/{id}" , [TeacherController::class , "getTeacherAdmin"])->name('teacher-details');
         Route::get('parent/details/{id}' , [ParentController::class , 'getParentAdmin'])->name("parent-details");
@@ -284,7 +284,7 @@ Route::middleware('lang')->group(function(){
         Route::post('social/add' , [AdminController::class , 'socialCreate'])->name('social-create');
         Route::post('social/update' , [AdminController::class , "SocialUpdate"])->name('social-update');
         Route::get('social/delete/{socialId}' , [AdminController::class , "SocialDelete"])->name("social-delete");
-       
+
         //messages
         Route::get('messages' , [AdminController::class , 'Messages'])->name('Messsages');
         Route::get('message/delete/{messageId}' , [AdminController::class , 'deleteMessage'])->name('message-delete');
@@ -327,7 +327,7 @@ Route::middleware('lang')->group(function(){
 
         //Gallery
 
-        
+
         Route::get('gallery' , [GalleryConroller::class , 'index'])->name('gallery');
         Route::get('gallery/create' , [GalleryConroller::class , 'create'])->name('gallery-create-form');
         Route::get('gallery/edit/{galleryId}' , [GalleryConroller::class , 'update'])->name('gallery-update-form');
@@ -346,11 +346,11 @@ Route::middleware('lang')->group(function(){
         Route::post('partner/update' , [PartnersController::class , "update"])->name('partner-update');
 
     });
-     
+
     //Logout
-    
+
     Route::middleware('logout')->group(function(){
         Route::post('logout/{guard}' , [AuthController::class , 'logout'])->name('logout');
     });
-    
+
 });
