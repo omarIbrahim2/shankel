@@ -26,9 +26,9 @@ class Events extends Component
         $FilteredEvents = $eventRepo->getEventsWeb($userid, $guard);
 
         if ($FilteredEvents == null) {
-            $Events = $eventRepo->getEventsguest(5);
+            $Events = $eventRepo->getEventsguest(2);
         } else {
-            $Events = Event::paginate($FilteredEvents, 5);
+            $Events = Event::paginate($FilteredEvents, 2);
         }
 
         return view('livewire.web.events.events')->with(['Events' => $Events]);

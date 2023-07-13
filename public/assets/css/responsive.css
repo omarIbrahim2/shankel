@@ -144,3 +144,12 @@
     display: none;
   }
 }
+@media screen and (max-width: 320px){
+    .navbar-brand{
+        width: 100%;
+        text-align: center;
+    }
+    .auth-btn .custom-out-btn{
+        margin-left: 0;
+    }
+}

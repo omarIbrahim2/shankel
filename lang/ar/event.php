@@ -28,6 +28,6 @@ return[
 
     "cls" => "إلغاء الحدث",
     "reEvent" => "اعادة الحدث",
-
+    "notifyEventStart" => "الحدث قد بدا"
 
 ];
