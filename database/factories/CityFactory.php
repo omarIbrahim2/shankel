@@ -17,7 +17,10 @@ class CityFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->state()
+            'name' => json_encode([
+                'en' => $this->faker->state(),
+                'ar' => $this->faker->state(),
+            ])
         ];
     }
 }

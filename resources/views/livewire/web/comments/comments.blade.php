@@ -7,7 +7,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                    <h4>Edit Comment</h4>
+                    <h4>{{ trans('comment.editComment') }}</h4>
                     <div class="container">
                       <form method="POST"  action="{{route('update-comment')}}"   class="form-group">
                         @csrf
@@ -15,13 +15,13 @@
                                <p class="text-danger">{{$message}}</p>
                           @enderror
                             <input type="hidden" name="id" id="editcommentId">
-                            <label for="editcomment">Comment</label>
+                            <label for="editcomment">{{ trans('comment.comment') }}</label>
                            <input type="text" name="comment"  class="input-form"  id="editcomment">
                    </div>
               </div>
               <div class="modal-footer">
-                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                 <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Edit</button>
+                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ trans('comment.cls') }}</button>
+                 <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">{{ trans('comment.edit') }}</button>
                 </form>
                </div>
               </div>

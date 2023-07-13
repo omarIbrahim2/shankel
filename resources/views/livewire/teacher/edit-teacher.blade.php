@@ -40,6 +40,16 @@
                             </div>
                         </div>
                     </div>
+<<<<<<< HEAD
+                </div>
+                <div class="col-lg-9 col-md-7  col-12">
+                    <div class="right-side">
+                        <div class="right-side-item">
+                            <div class="sub-title main-sub-title">
+                                <h3>{{ trans('teacher.info') }}</h3>
+                                <div class="sub-btns">
+                                    <button type="button" wire:click="update" class="btn-custom">{{ trans('teacher.save') }}</button>
+=======
                     <div class="col-lg-9 col-md-7  col-12">
                         <div class="right-side">
                             <div class="right-side-item">
@@ -52,6 +62,7 @@
                                     <a href="{{route('change_pass_teacher')}}"  class="btn-custom" >
                                         {{ trans('teacher.reset') }}
                                     </a>
+>>>>>>> 7de8cc14a3a2547bb34d29b8123b841050cb6e60
                                 </div>
                                 </div>
                                 <div class="contact-form ">

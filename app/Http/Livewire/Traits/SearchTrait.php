@@ -16,7 +16,7 @@ trait SearchTrait{
     }
 
     public function NameOrEmailSearch($value , $keys ,$active , Builder $query){
-           
+           $query->select('name' , "image" , 'id' , 'area_id');
        if ($active == true) {
          $result = $query->where('status' , true);
        }else{

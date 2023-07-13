@@ -4,6 +4,9 @@
     SHANKEL|RESET PASSWORD
 @endsection
 
+@section('nav')
+<x-nav-guest/>
+@endsection
 @section('main')
     <main class="colored-section">
         <nav class="sub-nav">
@@ -30,7 +33,7 @@
                                         <input type="hidden" name="token" value="{{$token}}">
                                         <div class="input-item me-auto ms-0">
 
-                                            <input type="email" name="email" placeholder="email">
+                                            <input type="email" name="email" placeholder="{{}}">
                                             <span>
                                                 <i class="fa-regular fa-envelope"></i>
                                             </span>
@@ -40,7 +43,10 @@
                                         </div>
                                         <div class="input-item me-auto ms-0">
 
-                                            <input type="password" name="password" placeholder="password">
+                                            <input type="password" name="password" placeholder="{{trans('auth.password')}}">
+                                            <span>
+                                                <i class="fa-solid fa-lock"></i>
+                                            </span>
                                             <span class="second show-passowrd">
                                                 <i class="fa-regular fa-eye-slash fa-flip-horizontal"></i>
                                             </span>
@@ -50,7 +56,10 @@
                                         </div>
                                         <div class="input-item me-auto ms-0">
 
-                                            <input type="password" name="password_confirmation" placeholder="password_confirmation">
+                                            <input type="password" name="password_confirmation" placeholder="{{trans('auth.passConfirm')}}">
+                                            <span>
+                                                <i class="fa-solid fa-lock"></i>
+                                            </span>
                                             <span class="second show-passowrd">
                                                 <i class="fa-regular fa-eye-slash fa-flip-horizontal"></i>
                                             </span>
@@ -61,7 +70,7 @@
 
                                         <div class="input-item me-auto ms-0">
                                             <button type="submit" class="custom-out-btn">
-                                                Send
+                                                {{trans('auth.send')}}
                                             </button>
                                         </div>
 

@@ -41,4 +41,11 @@ return[
     "services" => "Your Services",
     "areaTeachers" => "Teachers in Your Area",
 
+    "addToCart" => "Add to cart",
+    "bookFees" => "Booking Fees",
+    "Payment" => "Payment",
+    "chooseGrade" => "Choose Grade",
+    "suppliers" => "Suppliers",
+
+
 ];

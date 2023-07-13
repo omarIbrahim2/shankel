@@ -51,8 +51,7 @@
                                         </div>
                                         <div class="input-item me-auto ms-0">
 
-                                            <input type="email" name="email" value="{{old('email')}}" placeholder="{{ trans('register.email') }}"
-                                                >
+                                            <input type="email" name="email" value="{{old('email')}}" placeholder="{{ trans('register.email') }}" >
                                             <span>
                                                 <i class="fa-regular fa-envelope"></i>
                                             </span>
@@ -61,8 +60,7 @@
                                             @enderror
                                         </div>
                                         <div class="input-item me-auto ms-0">
-                                            <input type="tel" name="phone" value="{{old('phone')}}" placeholder="{{ trans('register.phone') }}"
-                                                >
+                                            <input type="tel" name="phone" value="{{old('phone')}}" placeholder="{{ trans('register.phone') }}">
                                             <span>
                                                 <i class="fa-solid fa-phone"></i>
                                             </span>
@@ -74,7 +72,7 @@
                                             <select id="selectCity" class="form-select" aria-label="Default select example" >
                                                 <option selected  disabled>{{trans('register.city')}}</option>
                                                 @foreach ($cities as $city)
-                                                   <option value="{{$city->id}}">{{$city->name}}</option>
+                                                   <option value="{{$city->id}}">{{$city->name(App::getLocale())}}</option>
                                                 @endforeach
 
                                               </select>
@@ -109,7 +107,7 @@
                                             <select id="selectEduSystem" class="form-select" aria-label="Default select example" name="edu_systems_id" >
                                                 <option  selected disabled>{{ trans('school.eduSystem') }} </option>
                                                 @foreach ($eSystems as $system)
-                                                   <option value="{{$system->id}}">{{$system->name}}</option>
+                                                   <option {{old("edu_systems_id") == $system->id ? 'selected' : ''}} value="{{$system->id}}">{{$system->name()}}</option>
                                                 @endforeach
 
                                               </select>
@@ -129,9 +127,9 @@
 
                                                 <div class="checkbox">
                                                     <input type="checkbox" name="grade_id[]" value="{{$grade->id}}"
-                                                        id="{{$grade->name}}">
-                                                    <label for="{{$grade->name}}">
-                                                        {{$grade->name}}
+                                                        id="{{$grade->name()}}" @if(is_array(old('grade_id')) && in_array($grade->id, old('grade_id'))) checked @endif>
+                                                    <label for="{{$grade->name()}}">
+                                                        {{$grade->name()}}
                                                     </label>
                                                 </div>
                                                 @endforeach
@@ -184,20 +182,26 @@
 
                                             <div class="radio">
                                                 <input type="radio" name="type" value="School"
-                                                    id="school">
-                                                <label class="custom-out-btn" for="school">{{ trans('register.School') }}</label>
+                                                  id="school">
+                                                <label class="custom-out-btn  @if(old('type') == 'School')
+                                                radio-checked
+                                            @endif" for="school">{{ trans('register.School') }}</label>
                                             </div>
 
                                             <div class="radio">
                                                 <input type="radio" name="type" value="Center"
-                                                    id="center">
-                                                <label class="custom-out-btn" for="center">{{ trans('register.center') }}</label>
+                                                 id="center">
+                                                <label class="custom-out-btn  @if(old('type') == 'Center')
+                                                radio-checked
+                                            @endif" for="center">{{ trans('register.center') }}</label>
                                             </div>
 
                                             <div class="radio">
                                                 <input type="radio" name="type" value="KG"
-                                                    id="kg">
-                                                <label class="custom-out-btn" for="Kindergarten">{{ trans('register.kg') }}</label>
+                                             id="kg">
+                                                <label class="custom-out-btn @if(old('type') == 'KG')
+                                                    radio-checked
+                                                @endif" for="kg">{{ trans('register.kg') }}</label>
                                             </div>
                                             @error('type')
                                             <p class="text-danger">{{$message}}</p>
@@ -206,7 +210,7 @@
                                         </div>
 
                                         <div class="input-item me-auto ms-0">
-                                            <input type="number" name="free_seats" placeholder="{{ trans('school.freeSeats') }}"
+                                            <input value="{{old('free_seats')}}" type="number" name="free_seats" placeholder="{{ trans('school.freeSeats') }}"
                                                 >
                                             <span>
                                                 <i class="fa-solid fa-user"></i>

@@ -10,10 +10,10 @@ use Shankl\Services\SupplierService;
 
 class Services extends Component
 {
+    use WithPagination ,SearchTrait;
     public $supplierId;
     public $searchName;
-    use WithPagination;
-    use SearchTrait;
+    
     public function render(SupplierService $supplierService)
     {
         $query = (new Service)->query();

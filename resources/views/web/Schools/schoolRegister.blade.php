@@ -17,7 +17,7 @@
                 <div class="col-lg-6 col-md-8 col-12">
                     <div class="left-side">
                         <div class="section-title">
-                            <h2 class="text-center">Book a seat</h2>
+                            <h2 class="text-center">{{ trans('school.bookSeat') }}</h2>
                         </div>
                         @if (session()->has('error'))
                             <p class="text-danger">{{ session()->get('error') }}</p>
@@ -27,7 +27,7 @@
                                 @csrf
                                 <div class="input-item me-auto ms-0">
                                     <select name="child_id" placeholder="Choose Your Child">
-                                        <option selected disabled aria-hidden="true">Choose Your Child</option>
+                                        <option selected disabled aria-hidden="true">{{ trans('school.chooseChild') }}</option>
                                         @foreach ($Parent->children as $child )
                                            <option  value="{{$child->id}}">{{$child->name}}</option>
                                         @endforeach
@@ -49,7 +49,7 @@
                                     <select name="grade_id" id="selectEduSystem" class="form-select" aria-label="Default select example" >
                                         <option  selected disabled>Choose Grade </option>
                                         @foreach ($School->grades as $grade)
-                                             <option value="{{$grade->id}}">{{$grade->name}}</option>
+                                             <option value="{{$grade->id}}">{{$grade->name()}}</option>
                                         @endforeach
                                       </select>
                                     <span>

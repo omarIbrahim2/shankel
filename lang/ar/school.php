@@ -42,4 +42,6 @@ return[
     "students" => "الطلاب",
     "parents" => "أولياء الأمور",
     "visits" => "الزيارات" ,
+    "chooseChild" => "إختر طفلك",
+
 ];

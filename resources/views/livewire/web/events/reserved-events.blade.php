@@ -2,7 +2,7 @@
         <div class="inner">
             <div class="container">
                 <div class="section-title">
-                    <h2>Reserved Events</h2>
+                    <h2>{{ trans('event.reservedEvents') }}</h2>
                 </div>
                 <div class="events-section">
 
@@ -30,7 +30,7 @@
                                                 <span class="meta-icon"><i class="fa-solid fa-location-dot"></i></span>
 
                                                 <span
-                                                    class="meta-desc">{{ $event->area->city->name }},{{ $event->area->name }}</span>
+                                                    class="meta-desc">{{ $event->area->city->name() }},{{ $event->area->name() }}</span>
                                             </div>
                                         </div>
                                         <div class="event-img">
@@ -115,7 +115,7 @@
                                                 </div>
                                                 <div class="event-data-text">
                                                     <h5>{{ trans('event.address') }}</h5>
-                                                    <span>{{ $event->area->city->name }},{{ $event->area->name }}</span>
+                                                    <span>{{ $event->area->city->name() }},{{ $event->area->name() }}</span>
                                                 </div>
                                             </div>
                                         </div>

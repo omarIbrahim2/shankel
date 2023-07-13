@@ -15,11 +15,16 @@ class LocationRepository implements LocationRepoInterface{
      return $cities;
   }
 
+  public function cities() {
+    $cities = City::select("id" , "name")->paginate(10);
+
+     return $cities;
+  }
 
   public function getArea($cityId)
   {
      
-    $city = City::findOrFail($cityId);
+    $city = City::with('areas')->findOrFail($cityId);
 
     return $city->areas;
      
@@ -28,10 +33,15 @@ class LocationRepository implements LocationRepoInterface{
 
   public function getAreas()
   {
-       return  Area::select('name' , 'id')->get();
+    return  Area::select('name' , 'id')->get();
   }
     
 
-
+  public function cityAreas($cityId){
+    $city = City::select('id' , "name")->with('areas')->findOrFail($cityId);
+    
+    
+    return $city;
+  }
 
 };

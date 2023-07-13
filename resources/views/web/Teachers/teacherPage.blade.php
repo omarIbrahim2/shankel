@@ -27,7 +27,7 @@
                                         <div class="avatar-container">
                                             <div class="avatar-img">
                                                 <img width="100px" src="{{ asset($teacher->image) }}" alt="avatar">
-                                                <p><i class="fa-solid fa-location-dot"></i> {{ $teacher->area->name }}</p>
+                                                <p><i class="fa-solid fa-location-dot"></i> {{ $teacher->area->name() }}</p>
                                             </div>
                                             <div class="avatar-data">
                                                 <h4>

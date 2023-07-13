@@ -132,9 +132,9 @@
                             </div>
                             <div class="input-item ">
                                 <select wire:model="city" class="form-select" aria-label="Default select example">
-                                    <option selected>{{ $authCity->name }}</option>
+                                    <option selected>{{ $authCity->name() }}</option>
                                     @foreach ($cities as $city)
-                                        <option value="{{ $city->id }}">{{ $city->name }}</option>
+                                        <option value="{{ $city->id }}">{{ $city->name() }}</option>
                                     @endforeach
                                 </select>
                                 <span>
@@ -144,11 +144,11 @@
                             <div class="input-item ">
                                 <select wire:model="area_id" id="areaSelect" class="form-select"
                                     aria-label="Default select example">
-                                    <option value="{{ $authArea->id }}" selected>{{ $authArea->name }}</option>
+                                    <option value="{{ $authArea->id }}" selected>{{ $authArea->name() }}</option>
                                     @if ($Areas)
 
                                         @foreach ($Areas as $Area)
-                                            <option value="{{ $Area->id }}">{{ $Area->name }}</option>
+                                            <option value="{{ $Area->id }}">{{ $Area->name() }}</option>
                                         @endforeach
                                     @endif
                                 </select>
@@ -173,7 +173,7 @@
                                             <input type="checkbox" wire:model="Ugrades.{{ $grade->id }}"
                                                 id="nursery">
                                             <label for="nursery">
-                                                {{ $grade->name }}
+                                                {{ $grade->name() }}
                                             </label>
                                         </div>
                                     @endforeach
@@ -188,7 +188,7 @@
                                         aria-label="Default select example" wire:model="edu_systems_id">
                                         <option selected>{{ trans('school.eduSystem') }} </option>
                                         @foreach ($eSystems as $system)
-                                            <option value="{{ $system->id }}">{{ $system->name }}</option>
+                                            <option value="{{ $system->id }}">{{ $system->name() }}</option>
                                         @endforeach
                                     </select>
                                     <span>

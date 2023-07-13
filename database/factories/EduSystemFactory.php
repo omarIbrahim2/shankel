@@ -17,7 +17,10 @@ class EduSystemFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->catchPhrase(),
+            'name' => json_encode([
+                'en' => $this->faker->catchPhrase(),
+                'ar' => $this->faker->catchPhrase(),
+            ])
         ];
     }
 }

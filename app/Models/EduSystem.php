@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\App;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class EduSystem extends Model
 {
@@ -13,5 +14,11 @@ class EduSystem extends Model
     public function schools()
     {
         return $this->hasMany(School::class);
+    }
+
+    public function name($lang = null){
+        $lang = $lang ?? App::getLocale();
+
+        return json_decode($this->name)->$lang ;
     }
 }

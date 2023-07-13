@@ -13,6 +13,12 @@ class ServiceRepository implements ServiceRepoInterface{
      }
 
 
+     public function RecentServices(){
+       return Service::select('name' , 'price' , 'id' , 'image')->orderBy('created_at' , 'DESC')->limit(3)->get();
+
+     }
+
+
      public function update($data)
      {
        $service = $this->find($data['id']);

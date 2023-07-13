@@ -18,7 +18,7 @@
 <section class="section">
     <div class="inner">
         <div class="section-title">
-            <h2>Schools</h2>
+            <h2>{{ trans('nav.Schools') }}</h2>
         </div>
        
 
