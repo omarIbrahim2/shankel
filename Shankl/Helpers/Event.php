@@ -2,6 +2,7 @@
 
 namespace  Shankl\Helpers;
 
+use App\Jobs\CancelSubscribtion;
 use Illuminate\Support\Facades\Log;
 use Shankl\Factories\AuthUserFactory;
 use App\Notifications\EventSeatBooked;
@@ -56,8 +57,38 @@ class Event{
 
             return false;
         }
-        
 
+    }
+
+
+    public function cancelEvent($eventId){
+        
+         $this->eventReboInterface->updateEvent(['id' =>$eventId , 'status' => 'Cancelled']);
+
+         $subscribers = $this->getSubscribers($eventId);
+
+         $this->notifySubscibers($subscribers);
+
+    }
+
+
+    private function getSubscribers($eventId){
+          
+        $Parents = $this->eventReboInterface->eventSubscribers($eventId)->ParenttsinEvent->toArray();
+        $Schools =  $this->eventReboInterface->eventSubscribers($eventId)->schoolsinEvent->toArray();
+        $Teachers = $this->eventReboInterface->eventSubscribers($eventId)->teachersinEvent->toArray();
+        $subscribers = array_merge($Parents , $Schools , $Teachers);
+
+        return $subscribers;
+          
+    }
+
+
+    private function  notifySubscibers($subscribers){
+ 
+        if (count($subscribers) > 0) {
+            CancelSubscribtion::dispatch($subscribers)->onQueue('EventMailingQueue');
+         } 
 
 
     }

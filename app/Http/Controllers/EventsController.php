@@ -113,16 +113,7 @@ class EventsController extends Controller
     }
 
 
-    private function getSubscribers($validatedData){
-          
-        $Parents = $this->eventRepo->eventSubscribers($validatedData['id'])->ParenttsinEvent->toArray();
-        $Schools =  $this->eventRepo->eventSubscribers($validatedData['id'])->schoolsinEvent->toArray();
-        $Teachers = $this->eventRepo->eventSubscribers($validatedData['id'])->teachersinEvent->toArray();
-        $subscribers = array_merge($Parents , $Schools , $Teachers);
-
-        return $subscribers;
-          
-    }
+   
 
     
 
@@ -131,23 +122,13 @@ class EventsController extends Controller
           
       $validatedData =  $request->validate([
             'id' => 'required|exists:events,id',
+            'status' => 'required'
       ]);
 
     
+        $this->Eventobj->cancelEvent($validatedData['id']);
+
         
-
-          $this->eventRepo->updateEvent([
-            'id' => $validatedData['id'],
-             'status' => 'Cancelled',
-         ]);
-
-
-         $subscribers = $this->getSubscribers($validatedData);
-          
-         if (count($subscribers) > 0) {
-            CancelSubscribtion::dispatch($subscribers)->onQueue('EventMailingQueue');
-         } 
-       
       toastr("event cancelled successfully" , "success");
       return back();
       

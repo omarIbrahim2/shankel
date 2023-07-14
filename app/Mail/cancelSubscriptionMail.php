@@ -13,15 +13,15 @@ class cancelSubscriptionMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $email;
+    public $User;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($email)
+    public function __construct($User)
     {
-        $this->email = $email;
+        $this->User = $User;
     }
 
     /**
@@ -34,7 +34,7 @@ class cancelSubscriptionMail extends Mailable
         
         return new Envelope( 
             subject: 'Cancel Subscription Mail',
-            to: [$this->email],
+            to: [$this->User['email']],
             
         );
     }

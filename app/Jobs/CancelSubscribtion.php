@@ -37,7 +37,7 @@ class CancelSubscribtion implements ShouldQueue
     
         foreach($this->Users as $user){
             
-            Mail::send(new cancelSubscriptionMail($user['email']));
+            Mail::send(new cancelSubscriptionMail($user));
         }
          
  

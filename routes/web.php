@@ -188,7 +188,7 @@ Route::middleware('lang')->group(function(){
         Route::get("school/created/Events" , [SchoolController::class , 'schoolEvents'])->name('school-my-events');
         Route::get("school/area/suppliers" , [SchoolController::class , 'areaSuppliers'])->name('school-area-suppliers');
         Route::get("school/all/students" , [SchoolController::class , 'schoolStudents'])->name('school-students');
-
+        Route::post('school/cancelEvent' , [EventsController::class , 'cancelEvent'])->name('school-cancel-event');
 
     });
 

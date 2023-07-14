@@ -11,3 +11,9 @@
     @livewire('admin.events')
 
 @endsection
+
+
+@section('scripts')
+    
+     
+@endsection

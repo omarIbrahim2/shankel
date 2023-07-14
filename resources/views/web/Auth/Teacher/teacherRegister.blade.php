@@ -19,7 +19,7 @@
         </div>
     </nav>
     <section class="section ">
-        <div class="inner">
+        <div  id="startInn" data-langshankl="{{App::getLocale()}}" class="inner">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-md-8 col-12">
@@ -166,6 +166,7 @@
 @endsection
 
 
+
 @section('scripts')
 
  <script>
@@ -189,10 +190,20 @@
             var your_html = "";
             $("#areaSelect").empty();
             $("#areaSelect").append("<option selected disabled>Area</option>");
+
+           var lang = $('#startInn').data('langshankl')
+
+
+
             for (const key in data.areas) {
 
+               var name = JSON.parse(data.areas[key].name);
+               if (lang == 'ar') {
+                your_html += "<option id='ar' value = " + data.areas[key].id + ">"+ name.ar +"</option>";
+               }else{
+                your_html += "<option id='ar' value = " + data.areas[key].id + ">"+ name.en +"</option>";
+               }
 
-              your_html += "<option id='ar' value = " + data.areas[key].id + ">"+ data.areas[key].name +"</option>";
             }
             $("#areaSelect").append(your_html);
 
@@ -209,6 +220,7 @@
 
  </script>
 
+ 
 
 
 @endsection

@@ -1,7 +1,9 @@
 <div>
 
     <div class="events-section">
-
+        <form id="cancelEvent" action="{{route('school-cancel-event') }}" method="POST">
+            @csrf
+        </form>
         @foreach ($Events as $event)
             <div class="event">
                 <div class="row">
@@ -57,8 +59,8 @@
                                 </div>
                                 
                                     <div class="text-center mt-2">
-                                        <button wire:click="cancelEvent({{ $event->id }})"
-                                            class="btn btn-danger">{{ trans('event.cls') }}</button>
+                                        <input form="cancelEvent" type="hidden" name="id" value="{{ $event->id }}">
+                                     <button form="cancelEvent" type="submit" class="btn btn-danger" >cancel event</button>
                                     </div>
                                 
                                 {{-- end comment --}}
