@@ -19,7 +19,7 @@
                                             <a href="#" class="price">{{$service->price}} JOD</a>
                                         </div>
                                         <div class="service-item-title">
-                                            
+
                                             <h3>{{$service->supplier->name}}</h3>
                                         </div>
                                         <div class="service-item-description">
@@ -38,19 +38,19 @@
                                     </div>
 
                                 </div>
-                               
+
                             </div>
-                            
-                          
+
+
                         </div>
                     </div>
                     @endforeach
-                    
+
                 </div>
             </div>
             <div class="pagination">
                 @if ($Services == null)
-                    
+
                 @else
                 @if ($Services->links("livewire.web-pagination"))
                 {{$Services->links("livewire.web-pagination")}}

@@ -14,6 +14,9 @@
 
 @section('main')
     <!-- profie -->
+    <section class="teacher-banner">
+
+    </section>
     <section class="section edit-teacher-profile">
         <div class="inner">
             <div class="container">
@@ -25,7 +28,7 @@
 
                                     <div class="teacher-avatar">
                                         <div class="avatar-container">
-                                            <div class="avatar-img">
+                                            <div class="avatar-img tech-img">
                                                 <img width="100px" src="{{ asset($teacher->image) }}" alt="avatar">
                                                 <p><i class="fa-solid fa-location-dot"></i> {{ $teacher->area->name() }}</p>
                                             </div>

@@ -122,7 +122,7 @@ Shankal | Home
                                                 @error('quantity')
                                                     <p class="text-danger">{{ $message }}</p>
                                                 @enderror
-                                                <input id="" name="quantity" class="num_cart_item form-control mb-3" placeholder="0" type="number" min="0" max={{ $service->quantity }}>
+                                                <input id="" name="quantity" class="num_cart_item form-control mb-3" placeholder="0" type="number" min="0" max="{{ $service->quantity }}">
                                             </div>
 
                                             <button type="submit" class="btn-custom">{{ trans('service.book') }}</button>
@@ -135,7 +135,7 @@ Shankal | Home
                         </div>
                     </div>
                     @endforeach
-                   
+
                 </div>
 
                 <a href="{{route('web-services')}}" class="custom-out-btn text-center ">{{trans('home.showMore')}}</a>

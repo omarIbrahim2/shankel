@@ -19,7 +19,6 @@ class City extends Model
 
     public function name($lang = null){
         $lang = $lang ?? App::getLocale();
-
         return json_decode($this->name)->$lang ;
     }
 }

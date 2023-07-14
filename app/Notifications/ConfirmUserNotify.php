@@ -10,7 +10,7 @@ use Illuminate\Notifications\Notification;
 class ConfirmUserNotify extends Notification implements ShouldQueue
 {
     use Queueable;
-    
+
     public $data;
     /**
      * Create a new notification instance.
@@ -61,7 +61,6 @@ class ConfirmUserNotify extends Notification implements ShouldQueue
             //
         ];
     }
-
     public function viaQueues() : array
     {
 
