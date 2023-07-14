@@ -12,7 +12,7 @@ class SchoolRegOrdersRepo implements OrderRepoInterface{
 
      public function getAll($pages){
 
-       return  SchoolRegOrder::with(['school' , 'parentt'])->paginate($pages);
+       return  SchoolRegOrder::with(['school:id,name' , 'parentt:id,name'])->paginate($pages);
 
         
      }
@@ -32,6 +32,12 @@ class SchoolRegOrdersRepo implements OrderRepoInterface{
 
        $order = SchoolRegOrder::findOrFail($data['id']);
         return $order->update($data);
+     }
+
+     public function singleOrder($orderId){
+         
+       return SchoolRegOrder::with(['school.area:id,name' , 'parentt.area:id,name'])->findOrFail($orderId);
+
      }
 
 

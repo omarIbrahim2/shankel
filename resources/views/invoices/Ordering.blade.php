@@ -5,15 +5,14 @@
 
 <header class="top-bar align-center">
   <div class="top-bar-title">
-    <h1>Your Order Invoice</h1>
+    <h1>فاتورة طلبك </h1>
   </div>
 </header>
 <div class="row expanded">
   <main class="columns">
     <div class="inner-container">
     <header class="row align-center">
-        <a class="button hollow secondary"><i class="ion ion-chevron-left"></i> Go Back to Purchases</a>
-        &nbsp;&nbsp;<a class="button print_button"><i class="ion ion-ios-printer-outline"></i> Print Invoice</a>
+        &nbsp;&nbsp;<a class="button print_button"><i class="ion ion-ios-printer-outline"></i>اطبع الفاتورة</a>
       </header>
     <section class="row">
       <div class="callout large invoice-container">
@@ -23,16 +22,16 @@
               <img src="{{asset('assets')}}/images/logo/logo.png" alt="Shankl" />
             </td>
             <td class="align-right">
-              <h2>Invoice</h2>
+              <h2>الفاتورة</h2>
             </td>
           </tr>
           <tr class="intro">
             <td class="">
-              Hello, {{ $user->name }}.<br>
-              Thank you for your order.
+               {{ $user->name }} اهلا <br>
+              شكرا لطلبك من شنكل
             </td>
             <td class="text-right">
-              <span class="num">Order {{ $order->barcode }}</span><br>
+              <span class="num">{{ $order->barcode }} كود الطلب</span><br>
               {{ $order->created_at }}
             </td>
           </tr>
@@ -41,10 +40,10 @@
               <table>
                 <thead>
                   <tr>
-                    <th class="desc">Service Name</th>
-                    <th class="desc">Service Description</th>
-                    <th class="qty">Quantity</th>
-                    <th class="amt">Price</th>
+                    <th class="desc">اسم الخدمة</th>
+                    <th class="desc">وصف الخدمة</th>
+                    <th class="qty">الكمية</th>
+                    <th class="amt">السعر</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -77,22 +76,7 @@
         </table>
 
         <section class="additional-info">
-        <div class="row">
-          <div class="columns">
-            <h5>Billing Information</h5>
-            <p>{{ $user->name }}<br>
-              {{ $user->area->name() }}<br>
-              {{ $user->area->city->name() }}<br>
-              Jordan</p>
-          </div>
-          <div class="columns">
-            <h5>Payment Information</h5>
-            <p>Credit Card<br>
-              Card Type: Visa<br>
-              &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; 1234
-              </p>
-          </div>
-        </div>
+  
         </section>
       </div>
     </section>

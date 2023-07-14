@@ -49,7 +49,11 @@
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </h4>
+<<<<<<< HEAD
                         <textarea class="form-control" wire:model.defer="desc_en"> {{ $desc_en ? $desc_en : 'No data' }}</textarea>
+=======
+                        <textarea id="editor" class="form-control" wire:model.defer="desc"> {{ $desc ? $desc : 'No data' }}</textarea>
+>>>>>>> ad69bac008fcf386d72c432bcfecac7347fd2720
                     </div>
 
                     <div class="provider-description">
@@ -71,7 +75,11 @@
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </h4>
+<<<<<<< HEAD
                         <textarea class="form-control" wire:model.defer="mission_en">{{ $mission_en }}</textarea>
+=======
+                        <textarea id="editorar" class="form-control" wire:model.defer="mission">{{ $mission }}</textarea>
+>>>>>>> ad69bac008fcf386d72c432bcfecac7347fd2720
                     </div>
 
                     <div class="provider-description">
@@ -93,6 +101,7 @@
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </h4>
+<<<<<<< HEAD
                         <textarea class="form-control" wire:model.defer="vision_en"> {{ $vision_en }}</textarea>
                     </div>
 
@@ -105,6 +114,9 @@
                             @enderror
                         </h4>
                         <textarea class="form-control" wire:model.defer="vision_ar"> {{ $vision_ar }}</textarea>
+=======
+                        <textarea id="editor" class="form-control" wire:model.defer="vision"> {{ $vision }}</textarea>
+>>>>>>> ad69bac008fcf386d72c432bcfecac7347fd2720
                     </div>
                 </div>
             </div>
