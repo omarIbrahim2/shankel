@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignId("grade_id")->constrained();
             $table->string("name" , 255);
             $table->unsignedInteger("age" , false);
-            $table->string("gender" , 50);
+            $table->enum("gender" , ['male' , 'female']);
             $table->string("birth_date" , 100);
             $table->string("image" , 255)->nullable();
             $table->timestamps();

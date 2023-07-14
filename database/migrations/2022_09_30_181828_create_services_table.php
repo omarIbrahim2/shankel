@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->string("name" , 255);
+            $table->json("name" , 255);
             $table->unsignedFloat("price" );
             $table->unsignedInteger("quantity");
-            $table->text("desc");
+            $table->json("desc");
             $table->string("image" , 100)->nullable();
             $table->foreignId("supplier_id")->constrained();
             $table->timestamps();

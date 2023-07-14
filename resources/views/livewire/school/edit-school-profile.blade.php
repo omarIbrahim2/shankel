@@ -15,7 +15,7 @@
 
                         <img src="{{ $AuthUser->image }}" alt="avatar" class="rounded-0">
                         <h4>
-                            <a href="#">{{ $AuthUser->name }}</a>
+                            <a href="#">{{ $AuthUser->name() }}</a>
                         </h4>
 
                         <div class="avatar-btns">
@@ -37,8 +37,6 @@
                             </div>
 
                             <div class="upload-avatar">
-                                {{-- <button type="button" class="btn-custom" data-bs-toggle="modal"
-                                    data-bs-target="#addEvent">{{ trans('school.addEvent') }}</button> --}}
                                 <a href="{{ route('school-add-event') }}" class="btn-custom">{{ trans('school.addEvent') }}</a>
                             </div>
                         </div>
@@ -46,32 +44,67 @@
                     <div class="provider-description">
                         <h4>
                             <span><i class="fa-solid fa-file-pen"></i></span>
-                            <span>{{ trans('school.desc') }}</span>
+                            <span>{{ trans('school.desc_en') }}</span>
                             @error('desc')
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </h4>
-                        <textarea class="form-control" wire:model.defer="desc"> {{ $desc ? $desc : 'No data' }}</textarea>
+                        <textarea class="form-control" wire:model.defer="desc_en"> {{ $desc_en ? $desc_en : 'No data' }}</textarea>
                     </div>
+
                     <div class="provider-description">
                         <h4>
                             <span><i class="fa-solid fa-file-pen"></i></span>
-                            <span>{{ trans('school.mission') }}</span>
+                            <span>{{ trans('school.desc_ar') }}</span>
+                            @error('desc')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
+                        </h4>
+                        <textarea class="form-control" wire:model.defer="desc_ar"> {{ $desc_ar ? $desc_ar : 'No data' }}</textarea>
+                    </div>
+
+                    <div class="provider-description">
+                        <h4>
+                            <span><i class="fa-solid fa-file-pen"></i></span>
+                            <span>{{ trans('school.mission_en') }}</span>
                             @error('mission')
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </h4>
-                        <textarea class="form-control" wire:model.defer="mission">{{ $mission }}</textarea>
+                        <textarea class="form-control" wire:model.defer="mission_en">{{ $mission_en }}</textarea>
                     </div>
+
                     <div class="provider-description">
                         <h4>
                             <span><i class="fa-solid fa-file-pen"></i></span>
-                            <span>{{ trans('school.vision') }}</span>
+                            <span>{{ trans('school.mission_ar') }}</span>
+                            @error('mission')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
+                        </h4>
+                        <textarea class="form-control" wire:model.defer="mission_ar">{{ $mission_ar }}</textarea>
+                    </div>
+
+                    <div class="provider-description">
+                        <h4>
+                            <span><i class="fa-solid fa-file-pen"></i></span>
+                            <span>{{ trans('school.vision_en') }}</span>
                             @error('vision')
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </h4>
-                        <textarea class="form-control" wire:model.defer="vision"> {{ $vision }}</textarea>
+                        <textarea class="form-control" wire:model.defer="vision_en"> {{ $vision_en }}</textarea>
+                    </div>
+
+                    <div class="provider-description">
+                        <h4>
+                            <span><i class="fa-solid fa-file-pen"></i></span>
+                            <span>{{ trans('school.vision_ar') }}</span>
+                            @error('vision')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
+                        </h4>
+                        <textarea class="form-control" wire:model.defer="vision_ar"> {{ $vision_ar }}</textarea>
                     </div>
                 </div>
             </div>
@@ -91,7 +124,17 @@
                         </div>
                         <div class="contact-form ">
                             <div class="input-item">
-                                <input type="text" wire:model="name" placeholder="{{ trans('school.name') }}">
+                                <input type="text" wire:model="name_en" placeholder="{{ trans('school.name_en') }}">
+                                <span>
+                                    <i class="fa-solid fa-user"></i>
+                                </span>
+                                @error('name')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <div class="input-item">
+                                <input type="text" wire:model="name_ar" placeholder="{{ trans('school.name_ar') }}">
                                 <span>
                                     <i class="fa-solid fa-user"></i>
                                 </span>
@@ -198,9 +241,9 @@
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
                                 </div>
-                                <h4 class="mt-2">seats</h4>
+                                <h4 class="mt-2">{{ trans('school.seats') }}</h4>
                                 <div class="input-item">
-                                <input type="number" wire:model.defer="free_seats"  placeholder="seats">
+                                <input type="number" wire:model.defer="free_seats"  placeholder="{{ trans('school.seats') }}">
                                 <span>
                                 <i class="fa-solid fa-chair"></i>
                                 </span>
@@ -273,22 +316,6 @@
                 </div>
             </div>
         </div>
-
-        {{-- school add event --}}
-        <!-- Modal -->
-        {{-- <div class="modal fade" id="addEvent" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">{{ trans('school.addEvent') }}</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="model"
-                            aria-label="Close"></button>
-                    </div>
-                    @livewire('school.add-event-form')
-                </div>
-            </div>
-        </div> --}}
     </div>
 </div>
 </div>

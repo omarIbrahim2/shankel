@@ -14,7 +14,7 @@ class TeacheVideos extends Component
     
     protected $rules = ['url' => 'required|url' , 'title' => 'required|string|min:3' , 'image' => 'required|image|mimes:png,jpg,webp,jpeg|max:2048'];
 
-    public $url , $title , $image;
+    public $url , $title_en, $title_ar , $image;
          
     public $attributes;
 
@@ -42,7 +42,10 @@ class TeacheVideos extends Component
         $this->attributes = [
             "url" => $this->url,
             "teacher_id" => $this->AuthUserId,
-            'title' => $this->title,
+            'title' => [
+                'en' => $this->title_en,
+                'ar' => $this->title_ar
+            ],
         ];
 
         
@@ -70,8 +73,8 @@ class TeacheVideos extends Component
         
 
         $this->url = "";
-        $this->title = "";
-
+        $this->title_en = "";
+        $this->title_ar = "";
 
     }
 

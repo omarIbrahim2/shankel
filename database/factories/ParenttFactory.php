@@ -27,6 +27,7 @@ class ParenttFactory extends Factory
             'image' => null,
             'phone' => $this->faker->phoneNumber(),
             'area_id' => $areas[rand(0 , count($areas) - 1)],
+            'status' => true,
         ];
     }
 }

@@ -13,10 +13,12 @@ class EditTeacher extends Component
     use WithFileUploads;
     public $authUser;
     public $teacherid;
-    public $name;
+    public $name_en;
+    public $name_ar;
     public $email;
     public $phone;
-    public $field;
+    public $field_en;
+    public $field_ar;
     public $image;
     public $cv;
     public $facebook;
@@ -48,10 +50,12 @@ class EditTeacher extends Component
 
     public function intialize(){
         $this->teacherid = $this->authUser->id;
-        $this->name = $this->authUser->name;
+        $this->name_en = $this->authUser->name_en;
+        $this->name_ar = $this->authUser->name_ar;
         $this->email = $this->authUser->email;
         $this->phone = $this->authUser->phone;
-        $this->field = $this->authUser->field;
+        $this->field_en = $this->authUser->field_en;
+        $this->field_ar = $this->authUser->field_ar;
         $this->profilePic = $this->authUser->image;
         $this->facebook = $this->authUser->facebook;
         $this->twitter = $this->authUser->twitter;
@@ -71,10 +75,16 @@ class EditTeacher extends Component
         
         $this->attributes = [
             'id' => $this->teacherid,
-            'name' => $this->name,
+            'name' => [
+                'en' => $this->name_en ,
+                'ar' => $this->name_ar 
+            ],
              'email' => $this->email,
              'phone' => $this->phone,
-             'field' => $this->field,
+             'field' => [
+                'en' => $this->field_en ,
+                'ar' => $this->field_ar 
+            ],
              'facebook' => $this->facebook,
              'twitter' => $this->twitter,
              'linkedin' => $this->linkedin,
@@ -85,10 +95,12 @@ class EditTeacher extends Component
     public function update(TeacherService $teacherService){
 
         $this->validate([
-            "name" => "required|min:3|string",
+            "name_en" => "required|min:3|string",
+            "name_ar" => "required|min:3|string",
             "email" => ['required','email' , 'unique:teachers,email,'.$this->teacherid],
             "phone" => ['required', new PhoneValidationRule()],
-            'field' => 'required|min:3|string',
+            'field_en' => 'required|min:3|string',
+            'field_ar' => 'required|min:3|string',
             "facebook" => "nullable|url",
             "twitter" => "nullable|url",
             "linkedin" => "nullable|url",

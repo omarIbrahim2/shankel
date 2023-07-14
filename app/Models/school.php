@@ -7,6 +7,7 @@ namespace App\Models;
 
 use App\Models\EduSystem;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use App\Support\Authorization\AuthorizationUserTrait;
@@ -116,4 +117,24 @@ class School extends Authenticatable
 
     }
 
+
+    public function name($lang = null){
+        $lang = $lang ?? App::getLocale();
+        return json_decode($this->name)->$lang ;
+    }
+
+    public function desc($lang = null){
+        $lang = $lang ?? App::getLocale();
+        return json_decode($this->desc)->$lang ;
+    }
+
+    public function mission($lang = null){
+        $lang = $lang ?? App::getLocale();
+        return json_decode($this->mission)->$lang ;
+    }
+
+    public function vision($lang = null){
+        $lang = $lang ?? App::getLocale();
+        return json_decode($this->vision)->$lang ;
+    }
 }

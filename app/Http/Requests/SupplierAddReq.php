@@ -24,13 +24,16 @@ class SupplierAddReq extends FormRequest
     public function rules()
     {
         return [
-            'name' => "required|string|max:255",
+            'name_en' => "required|string|max:255",
+            'name_ar' => "required|string|max:255",
             'email' => 'required|email|unique:suppliers,email',
             'password' => 'required|min:5|confirmed',
             'area_id' => "required|exists:areas,id",
             "image" => 'image|mimes:png,jpeg,jpg,webp|max:1024|nullable',
-            'type' => 'required|string|max:255',
-            'orgName' => 'required|string|max:255',
+            'type_en' => 'required|string|max:255',
+            'type_ar' => 'required|string|max:255',
+            'orgName_en' => 'required|string|max:255',
+            'orgName_ar' => 'required|string|max:255',
         ];
     }
 }

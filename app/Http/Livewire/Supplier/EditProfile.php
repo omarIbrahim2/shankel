@@ -18,7 +18,10 @@ class EditProfile extends Component
     use WithFileUploads;
 
     private static  $defaultPath = "assets/images/logo/user.png";
-    public $name , $orgName , $type ,$email,$image,$imagePath,$city,$area_id,$Areas,$attributes = array(),$data,$AuthUser;
+    public $name_en ,$name_ar ,
+    $orgName_en , $orgName_ar , $type_en , $type_ar ,
+    $email,$image,$imagePath,$city,$area_id,
+    $Areas,$attributes = array(),$data,$AuthUser;
     protected $listeners = [
         "fresh" => '$refresh',
     ];
@@ -55,12 +58,15 @@ class EditProfile extends Component
     public function intialize()
     {
         $this->AuthUser = Auth::guard('supplier')->user();
-        $this->name = $this->AuthUser->name;
+        $this->name_en = $this->AuthUser->name_en;
+        $this->name_ar = $this->AuthUser->name_ar;
         $this->email = $this->AuthUser->email;
         $this->area_id = $this->AuthUser->area_id;
         $this->imagePath  = $this->AuthUser->image;
-        $this->type = $this->AuthUser->type;
-        $this->orgName = $this->AuthUser->orgName;
+        $this->type_en = $this->AuthUser->type_en;
+        $this->type_ar = $this->AuthUser->type_ar;
+        $this->orgName_en = $this->AuthUser->orgName_en;
+        $this->orgName_ar = $this->AuthUser->orgName_ar;
     }
 
     public function setAttributes()
@@ -68,11 +74,20 @@ class EditProfile extends Component
 
         $this->attributes = [
             'id' => $this->AuthUser->id,
-            "name" => $this->name,
+            "name" => [
+                'en' => $this->name_en ,
+                'ar' => $this->name_ar 
+            ],
             "email" => $this->email,
             "area_id" => $this->area_id,
-            "type" => $this->type,
-            "orgName" => $this->orgName,
+            "type" => [
+                'en' => $this->type_en ,
+                'ar' => $this->type_ar 
+            ],
+            "orgName" => [
+                'en' => $this->orgName_en ,
+                'ar' => $this->orgName_ar 
+            ],
         ];
     }
 
@@ -81,12 +96,15 @@ class EditProfile extends Component
 
 
         $this->validate([
-            "name" => "required|min:3|string|max:50",
+            "name_en" => "required|min:3|string|max:50",
+            "name_ar" => "required|min:3|string|max:50",
             "email" => ['required', 'email', 'unique:suppliers,email,' . $this->AuthUser->id],
             'area_id' => 'required|numeric|exists:areas,id',
             "image" => "image|mimes:jpg,png,jpeg,webp|max:2048|nullable",
-            "type" =>"required|min:3|string|max:50" ,
-            "orgName" => "required|min:3|string|max:255",
+            "type_en" =>"required|min:3|string|max:50" ,
+            "type_ar" =>"required|min:3|string|max:50" ,
+            "orgName_en" => "required|min:3|string|max:255",
+            "orgName_ar" => "required|min:3|string|max:255",
         ]);
 
         $this->setAttributes();

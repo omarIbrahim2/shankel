@@ -5,12 +5,13 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-use App\Notifications\SupplierResetPasswordNotification;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Notifications\SupplierResetPasswordNotification;
 
 class Supplier extends Authenticatable
 {
@@ -68,6 +69,21 @@ class Supplier extends Authenticatable
           
         $this->notify(new SupplierResetPasswordNotification($token));
 
+    }
+
+    public function name($lang = null){
+        $lang = $lang ?? App::getLocale();
+        return json_decode($this->name)->$lang ;
+    }
+
+    public function type($lang = null){
+        $lang = $lang ?? App::getLocale();
+        return json_decode($this->type)->$lang ;
+    }
+
+    public function orgName($lang = null){
+        $lang = $lang ?? App::getLocale();
+        return json_decode($this->orgName)->$lang ;
     }
 
 }

@@ -25,7 +25,8 @@ class LessonUpdateReq extends FormRequest
     {
         return [
             'id' => 'required|exists:lessons,id',
-            'title' => 'required|string|min:3',
+            'title_en' => 'required|string|min:3',
+            'title_ar' => 'required|string|min:3',
             'url' => 'required|url',
             'image'=> 'nullable|image|mimes:png,jpg,jpeg,webp|max:1024',
         ];

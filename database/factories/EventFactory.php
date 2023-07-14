@@ -20,8 +20,14 @@ class EventFactory extends Factory
     {
         $areas = Area::all()->pluck('id')->toArray();
         return [
-            'title' => $this->faker->sentence(),
-            'desc' =>$this->faker->text(),
+            'title' => json_encode([
+                'en' => $this->faker->sentence(),
+                'ar' => $this->faker->word(),
+            ]),
+            'desc' => json_encode([
+                'en' => $this->faker->paragraph(2),
+                'ar' => $this->faker->text(),
+            ]),
             'image' => "event.jpg",
             'start_date' => $this->faker->date('Y-m-d'),
             'end_date' => $this->faker->date('Y-m-d'),

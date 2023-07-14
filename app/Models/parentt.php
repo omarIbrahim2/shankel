@@ -90,4 +90,8 @@ class Parentt extends Authenticatable
             }
         );
     }
+
+    public function name() {
+        return $this->attributes['name'];
+    }
 }

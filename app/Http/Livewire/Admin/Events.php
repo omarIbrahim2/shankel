@@ -37,13 +37,6 @@ class Events extends Component
     public function mount(AdminService $adminService){
          
         $this->adminService = $adminService;
-         
-      
-    
-        // $this->Events =$this->getEvents();  
-       
-        // $this->PaginEvents = $this->Events;
-        // $this->Events = collect($this->Events->items());
         
     }
 

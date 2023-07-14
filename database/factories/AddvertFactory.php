@@ -17,8 +17,14 @@ class AddvertFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->bs(),
-            'desc' => $this->faker->text(),
+            'title' => json_encode([
+                'en' => $this->faker->bs(),
+                'ar' => $this->faker->word(),
+            ]),
+            'desc' => json_encode([
+                'en' => $this->faker->paragraph(2),
+                'ar' => $this->faker->text(),
+            ]),
             'image' => "addvertisment/img.png"
         ];
     }

@@ -28,7 +28,8 @@ class SchoolRegisterReq extends FormRequest
     {
       
         return [
-            'name' => 'required|string|min:3|max:50',
+            'name_en' => 'required|string|min:3|max:50',
+            'name_ar' => 'required|string|min:3|max:50',
             'email' => 'required|email|unique:schools,email',
             'phone' => ['required' , new PhoneValidationRule()],
             'area_id' => 'required|exists:areas,id',

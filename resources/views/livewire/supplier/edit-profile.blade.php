@@ -15,7 +15,7 @@
 
                         <img src="{{ $AuthUser->image }}" alt="avatar">
                         <h4>
-                            <a href="#">{{ $AuthUser->name }}</a>
+                            <a href="#">{{ $AuthUser->name(_en) }}</a>
                         </h4>
 
                         <div class="avatar-btns">
@@ -56,7 +56,17 @@
                         </div>
                         <div class="contact-form ">
                             <div class="input-item">
-                                <input type="text" wire:model="name" placeholder="{{ trans('supplier.name') }}">
+                                <input type="text" wire:model="name_en" placeholder="{{ trans('supplier.name_en') }}">
+                                <span>
+                                    <i class="fa-solid fa-user"></i>
+                                </span>
+                                @error('name')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <div class="input-item">
+                                <input type="text" wire:model="name_ar" placeholder="{{ trans('supplier.name_ar') }}">
                                 <span>
                                     <i class="fa-solid fa-user"></i>
                                 </span>
@@ -106,7 +116,7 @@
                                 @enderror
                             </div>
                             <div class="input-item">
-                                <input type="text" wire:model="type" placeholder="{{ trans('supplier.type') }}">
+                                <input type="text" wire:model="type_en" placeholder="{{ trans('supplier.type_en') }}">
                                 <span>
                                     <i class="fa-solid fa-user"></i>
                                 </span>
@@ -115,8 +125,28 @@
                                 @enderror
                             </div>
                             <div class="input-item">
-                                <input type="text" wire:model="orgName"
-                                    placeholder="{{ trans('supplier.orgName') }}">
+                                <input type="text" wire:model="type_ar" placeholder="{{ trans('supplier.type_ar') }}">
+                                <span>
+                                    <i class="fa-solid fa-user"></i>
+                                </span>
+                                @error('type')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div class="input-item">
+                                <input type="text" wire:model="orgName_en"
+                                    placeholder="{{ trans('supplier.orgName_en') }}">
+                                <span>
+                                    <i class="fa-solid fa-user"></i>
+                                </span>
+                                @error('orgName')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <div class="input-item">
+                                <input type="text" wire:model="orgName_ar"
+                                    placeholder="{{ trans('supplier.orgName_ar') }}">
                                 <span>
                                     <i class="fa-solid fa-user"></i>
                                 </span>

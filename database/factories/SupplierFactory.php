@@ -19,13 +19,24 @@ class SupplierFactory extends Factory
         $areas = Area::all()->pluck('id')->toArray();
 
         return [
-            'name' => $this->faker->name(),
+            'name' => json_encode([
+                'en' => $this->faker->name(),
+                'ar' => $this->faker->word(),
+            ]),
             'email' => $this->faker->safeEmail(),
             'password' => $this->faker->password(),
             'image' => null,
-            'type' => $this->faker->catchPhrase(),
-            'orgName' => $this->faker->company(),
+            'type' => json_encode([
+                'en' => $this->faker->catchPhrase(),
+                'ar' => $this->faker->word(),
+            ]),
+            'orgName' => json_encode([
+                'en' => $this->faker->company(),
+                'ar' => $this->faker->word(),
+            ]),
             'area_id' => $areas[rand(0 , count($areas) - 1)],
+            'status' => true,
+
         ];
     }
 }

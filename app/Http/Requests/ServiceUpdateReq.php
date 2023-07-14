@@ -25,11 +25,13 @@ class ServiceUpdateReq extends FormRequest
     {
         return [
             'id' => 'required|exists:services,id',
-            "name" => "required|string|max:255",
+            'name_en' => 'required|string|min:3|max:50',
+            'name_ar' => 'required|string|min:3|max:50',
             "supplier_id" => 'exists:suppliers,id',
             'quantity' => 'required|numeric|integer|min:1',
             "price" => "required|numeric|min:1",
-            "desc" => "required|string",
+            "desc_en" => "required|string",
+            "desc_ar" => "required|string",
             'image' => "image|mimes:jpeg,jpg,png,webp|max:1024|nullable",
         ];
     }

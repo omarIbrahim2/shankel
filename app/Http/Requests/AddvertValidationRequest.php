@@ -24,8 +24,10 @@ class AddvertValidationRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string|min:5|max:255',
-            "desc" => 'required|string',
+            'title_en' => 'required|string|min:5|max:255',
+            'title_ar' => 'required|string|min:5|max:255',
+            "desc_en" => 'required|string',
+            "desc_ar" => 'required|string',
             'image' => 'required|image|mimes:jpeg,jpg,png,webp|max:1024',
         ];
     }

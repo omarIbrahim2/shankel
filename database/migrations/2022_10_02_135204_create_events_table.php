@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->morphs("eventable");
-            $table->string("title" , 255);
-            $table->text("desc");
+            $table->json("title");
+            $table->json("desc");
             $table->string('image');
             $table->foreignId("area_id")->constrained();
-            $table->enum('status' , ['cancelEvent' , 'Cancelled' , 'Finished'])->default('in Progress');
+            $table->enum('status' , ['in Progress' , 'Cancelled' , 'Finished'])->default('in Progress');
             $table->date("start_date");
             $table->date('end_date');
             $table->time('start_time');

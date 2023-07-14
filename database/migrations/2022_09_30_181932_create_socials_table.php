@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string("twitter" , 100)->nullable();
             $table->string("email" , 100)->nullable();
             $table->string("phone" , 100)->nullable();
-            $table->text("address")->nullable();
+            $table->json("address")->nullable();
             $table->timestamps();
         });
     }

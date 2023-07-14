@@ -1,6 +1,8 @@
 <?php
 return[
     "name" => "Name",
+    "name_en" => "English name",
+    "name_ar" => "Arabic name",
     "email" => "Email",
     "upload" => "Upload Image",
     "update" => "Update",
@@ -8,8 +10,10 @@ return[
     "address" => "Address",
     "password" => "Password",
     "confirm_password" => "Confirm Password",
-    "type" => "Type",
-    "orgName" => "Organization Name",
+    "type_en" => "Type En.",
+    "type_ar" => "Type Ar.",
+    "orgName_en" => "Organization Name En.",
+    "orgName_ar" => "Organization Name Ar.",
     "search" => "Search by Name Or Email",
     "enterEmail" => "Enter Your Email",
     "send" => "Send",

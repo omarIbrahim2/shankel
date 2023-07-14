@@ -32,7 +32,8 @@ class SocialUpdateReq extends FormRequest
             'Linkedin' => 'url|nullable',
             'email' => 'email',
             'phone' => new PhoneValidationRule(),
-            'address' => 'string',
+            'address_en' => 'string',
+            'address_ar' => 'string',
         ];
     }
 }

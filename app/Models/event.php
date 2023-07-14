@@ -6,14 +6,15 @@ use Carbon\Carbon;
 
 
 
-use App\Models\Parentt;
 use App\Models\School;
+use App\Models\Parentt;
 use App\Models\Teacher;
-use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Support\Facades\App;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Event extends Model
@@ -155,7 +156,14 @@ class Event extends Model
         return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
     }
 
+    public function title($lang = null){
+        $lang = $lang ?? App::getLocale();
+        return json_decode($this->title)->$lang ;
+    }
     
-
+    public function desc($lang = null){
+        $lang = $lang ?? App::getLocale();
+        return json_decode($this->desc)->$lang ;
+    }
 
 }

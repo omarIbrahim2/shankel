@@ -25,7 +25,8 @@ class GalleryAddReq extends FormRequest
     {
         return [
             //return [
-            "title" => 'required|string|max:50',
+            "title_en" => 'required|string|max:50',
+            "title_ar" => 'required|string|max:50',
             'image' => 'required|image|mimes:png,jpg,webp,jpeg|max:2048',
         ];
         

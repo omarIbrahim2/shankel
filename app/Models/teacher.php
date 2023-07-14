@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\App;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Collection;
@@ -85,4 +86,13 @@ class Teacher extends Authenticatable
     }
 
 
+    public function name($lang = null){
+        $lang = $lang ?? App::getLocale();
+        return json_decode($this->name)->$lang ;
+    }
+
+    public function field($lang = null){
+        $lang = $lang ?? App::getLocale();
+        return json_decode($this->field)->$lang ;
+    }
 }

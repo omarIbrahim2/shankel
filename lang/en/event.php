@@ -1,7 +1,11 @@
 <?php
 return[
     "title" => "Title",
+    "title_en" => "English Title",
+    "title_ar" => "Arabic Title",
     "desc" => "Description",
+    "desc_en" => "English Description",
+    "desc_ar" => "Arabic Description",
     "upload" => "Upload Image",
     "day" => "Event Day",
     "time" => "Event Time",
@@ -30,4 +34,5 @@ return[
     "reEvent" => "Re-event",
     "notifyEventStart" => "The Event Is Started",
     "reservedEvents" => "Reserved Events",
+    "eventEndDate" => "Event End Date",
 ];

@@ -25,7 +25,8 @@ class GalleryUpdateReq extends FormRequest
     {
         return [
             'id' => 'required|exists:galleries,id',
-            "title" => 'required|string|max:50',
+            "title_en" => 'required|string|max:50',
+            "title_ar" => 'required|string|max:50',
             'image' => 'image|mimes:png,jpg,webp,jpeg|max:2048|nullable',
         ];
     }

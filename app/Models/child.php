@@ -52,4 +52,8 @@ class Child extends Model
          }
        );
     }
+
+    public function name() {
+        return $this->attributes['name'];
+    }
 }

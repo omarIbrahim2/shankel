@@ -15,15 +15,15 @@ return new class extends Migration
     {
         Schema::create('schools', function (Blueprint $table) {
             $table->id();
-            $table->string("name" , 255);
+            $table->json("name");
             $table->string("email" , 100);
             $table->string("password" , 255);
             $table->foreignId("area_id")->constrained();
             $table->string("image" , 255)->nullable();
             $table->string("phone" , 50);
-            $table->text('desc')->nullable();
-            $table->text('mission')->nullable();
-            $table->text('vision')->nullable();
+            $table->json('desc')->nullable();
+            $table->json('mission')->nullable();
+            $table->json('vision')->nullable();
             $table->string('facebook' , 255)->nullable();
             $table->string('twitter' , 255)->nullable();
             $table->string('linkedin' , 255)->nullable();
@@ -35,7 +35,7 @@ return new class extends Migration
             $table->unsignedInteger("free_seats" , false);
             $table->rememberToken();
             $table->unsignedInteger("notifications")->default(0);
-            $table->index(['name' , 'email' , 'status']);
+            $table->index([ 'email' , 'status']);
             $table->timestamps();
         });
     }

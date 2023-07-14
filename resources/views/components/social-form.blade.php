@@ -59,7 +59,15 @@
 
     <div class="form-group mb-4">
         <label for="event-title">Address</label>
-        <input name="address" id="event-title" value="{{$Social == null ? old('address'):$Social->address}}" type="text" class="form-control"  placeholder="Address">
+        <input name="address_en" id="event-title" value="{{$Social == null ? old('address_en'):$Social->address('en')}}" type="text" class="form-control"  placeholder="Address">
+        @error('address')
+            <p class="text-danger">{{$message}}</p>
+        @enderror
+    </div>
+
+    <div class="form-group mb-4">
+        <label for="event-title">العنوان</label>
+        <input name="address_en" id="event-title" value="{{$Social == null ? old('address_en'):$Social->address('en')}}" type="text" class="form-control"  placeholder="العنوان">
         @error('address')
             <p class="text-danger">{{$message}}</p>
         @enderror

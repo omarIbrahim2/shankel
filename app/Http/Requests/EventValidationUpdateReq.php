@@ -26,8 +26,10 @@ class EventValidationUpdateReq extends FormRequest
     {
         return [
             'id' => 'required|exists:events,id',
-            'title' => 'required|string|min:5|max:255',
-            "desc" => 'required|string',
+            'title_en' => 'required|string|min:3',
+            'title_ar' => 'required|string|min:3',
+            "desc_en" => 'required|string',
+            "desc_ar" => 'required|string',
             'start_date' => 'required|date|after:today',
             'end_date' => 'required|date|after:start_date',
             "start_time" => 'required|regex:/(\d+\:\d+)/',

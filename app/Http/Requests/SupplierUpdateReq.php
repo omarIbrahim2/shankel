@@ -27,11 +27,14 @@ class SupplierUpdateReq extends FormRequest
     {
         return [
             'id' => 'required|exists:suppliers,id',
-            'name' => "required|string|max:255",
+            'name_en' => "required|string|max:255",
+            'name_ar' => "required|string|max:255",
             'email' => ['required','email' ,Rule::unique("suppliers")->ignore($this->id) ],
             "image" => 'image|mimes:png,jpeg,jpg,webp|max:2024|nullable',
-            'type' => 'required|string|max:255',
-            'orgName' => 'required|string|max:255',
+            'type_en' => 'required|string|max:255',
+            'type_ar' => 'required|string|max:255',
+            'orgName_en' => 'required|string|max:255',
+            'orgName_ar' => 'required|string|max:255',
         ];
     }
 }

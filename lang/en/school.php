@@ -43,4 +43,13 @@ return[
     "parents" => "Parents",
     "visits" => "Visits" ,
     "chooseChild" => "Choose Your Child",
+    "seats" => "Seats",
+    "desc_en"=>"Description En.",
+    "desc_ar"=>"Description Ar.",
+    "mission_en" => "Mission En.",
+    "mission_ar" => "Mission Ar.",
+    "vision_en" => "Vision En.",
+    "vision_ar" => "Vision Ar.",
+    "name_en" => "Name En.",
+    "name_ar" => "Name Ar.",
 ];

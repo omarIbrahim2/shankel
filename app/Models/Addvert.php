@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Http\Middleware\School;
 use App\Http\Middleware\Teacher;
+use Illuminate\Support\Facades\App;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
@@ -41,4 +42,15 @@ class Addvert extends Model
         return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
     }
 
+    
+
+    public function title($lang = null){
+        $lang = $lang ?? App::getLocale();
+        return json_decode($this->title)->$lang ;
+    }
+    
+    public function desc($lang = null){
+        $lang = $lang ?? App::getLocale();
+        return json_decode($this->desc)->$lang ;
+    }
 }

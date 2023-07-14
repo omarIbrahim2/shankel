@@ -19,46 +19,27 @@ class EditSchoolProfile extends Component
    
     private static  $defaultPath = "assets/images/logo/user.png";
     public $data;
-
     public $AuthUser;
-
-    public $mission;
-
-    public $vision;
-
-    public $desc;
-
-    public $name;
-
+    public $mission_en , $mission_ar;
+    public $vision_en , $vision_ar;
+    public $desc_en , $desc_ar;
+    public $name_en , $name_ar;
     public $facebook;
-
     public $twitter;
-
     public $linkedin;
-
     public $email;
-
     public $phone;
-
     public $establish_date;
-
     public $grades;
-    
     public $image;
     public $imagePath;
     public $Ugrades=array();
     public $eSystems;
-
     public $edu_systems_id;
-
     public $userGrades= array();
-
     public $city;
-
     public $area_id;
-
     public $Areas;
-
     public $attributes = array();
     protected $listeners = [
         "fresh" => '$refresh',
@@ -68,13 +49,8 @@ class EditSchoolProfile extends Component
     public function render()
     {
         $cities = City::select("id" , "name")->get();
-
-        
-         
         $authArea =  Area::findOrFail(Auth::guard('school')->user()->area_id);
-
         $authCity =  $authArea->city;
-       
        $this->Areas =  Area::where('city_id' , $this->city)->get();
         return view('livewire.school.edit-school-profile' 
         , [ 'cities' => $cities , 
@@ -99,13 +75,17 @@ class EditSchoolProfile extends Component
     public function intialize(){
         $this->AuthUser = Auth::guard('school')->user();
         
-        $this->mission = $this->AuthUser->mission;
+        $this->mission_en = $this->AuthUser->mission_en;
+        $this->mission_ar = $this->AuthUser->mission_ar;
 
-        $this->vision = $this->AuthUser->vision;
+        $this->vision_en = $this->AuthUser->vision_en;
+        $this->vision_ar = $this->AuthUser->vision_ar;
 
-        $this->desc = $this->AuthUser->desc;
+        $this->desc_en = $this->AuthUser->desc_en;
+        $this->desc_ar = $this->AuthUser->desc_ar;
 
-        $this->name = $this->AuthUser->name;
+        $this->name_en = $this->AuthUser->name_en;
+        $this->name_ar = $this->AuthUser->name_ar;
 
         $this->email = $this->AuthUser->email;
 
@@ -130,10 +110,22 @@ class EditSchoolProfile extends Component
         
          $this->attributes = [
             'id' => $this->AuthUser->id,
-           "name" => $this->name,
-           "mission" => $this->mission,
-           "desc" => $this->desc,
-           "vision" => $this->vision,
+           "name" => [
+            'en' => $this->name_en ,
+            'ar' => $this->name_ar 
+            ],
+           "mission" => [
+            'en' => $this->mission_en,
+            'ar' => $this->mission_ar,
+           ],
+           "desc" => [
+            'en' => $this->desc_en,
+            'ar' => $this->desc_ar,
+           ],
+           "vision" => [
+            'en' => $this->vision_en,
+            'ar' => $this->vision_ar,
+           ],
             "email" => $this->email,
             'phone' => $this->phone,
             "establish_date" => $this->establish_date,
@@ -196,14 +188,18 @@ class EditSchoolProfile extends Component
           
        
          $this->validate([
-            "name" => "required|min:3|string|max:50",
+            "name_en" => "required|min:3|string|max:50",
+            "name_ar" => "required|min:3|string|max:50",
             "email" => ['required','email', 'unique:schools,email,' .$this->AuthUser->id ],
             "phone" => ['required', new PhoneValidationRule()],
             'area_id' => 'required|numeric|exists:areas,id',
             "establish_date" => "required|date|before:today",
-            "desc" => 'string|nullable',
-            "mission" => "string|nullable",
-            "vision" => 'string|nullable',
+            "desc_en" => 'string|nullable',
+            "desc_ar" => 'string|nullable',
+            "mission_en" => "string|nullable",
+            "mission_ar" => "string|nullable",
+            "vision_en" => 'string|nullable',
+            "vision_ar" => 'string|nullable',
             "edu_systems_id" => 'required|exists:edu_systems,id',
             "facebook" => "nullable|url",
             "twitter" => "nullable|url",
@@ -235,10 +231,7 @@ class EditSchoolProfile extends Component
           $schoolService->updateProfile($this->attributes);
           $this->emit("fresh");
           $this->image=null;
-          toastr("data updated successfully" , "success");
-
-          //session()->flash("success" , "data updated successfully");
-                  
+          toastr("data updated successfully" , "success");                  
 
     }
 }

@@ -18,7 +18,10 @@ class LessonFactory extends Factory
     {
         $types = ['Private','Public'];
         return [
-            'title' => $this->faker->catchPhrase(),
+            'title' => json_encode([
+                'en' => $this->faker->catchPhrase(),
+                'ar' => $this->faker->word(),
+            ]),
             'url' => $this->faker->url(),
             'image' => null,
             'type' => $types[rand(0 , 1)]

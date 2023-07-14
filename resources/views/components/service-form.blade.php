@@ -19,31 +19,52 @@
     @enderror
 
     <div class="form-group mb-4">
-        <label for="event-title">{{ trans('service.name') }}</label>
-        <input name="name" id="event-title" value="{{ $Service == null ? '' : $Service->name }}" type="text"
-            class="form-control" placeholder="{{ trans('service.name') }}">
+        <label for="event-title">{{ trans('service.name_en') }}</label>
+        <input name="name_en" id="event-title" value="{{ $Service == null ? '' : $Service->name('en') }}" type="text"
+            class="form-control" placeholder="{{ trans('service.name_en') }}">
         @error('name')
             <p class="text-danger">{{ $message }}</p>
         @enderror
 
     </div>
+
     <div class="form-group mb-4">
-        <label for="event-desc">{{ trans('service.desc') }}</label>
-        <textarea name="desc" id="event-desc" cols="30" placeholder="{{ trans('service.desc') }}" rows="10"
-            class="form-control ">{{ $Service == null ? '' : $Service->desc }}</textarea>
+        <label for="event-title">{{ trans('service.name_ar') }}</label>
+        <input name="name_ar" id="event-title" value="{{ $Service == null ? '' : $Service->name('ar') }}" type="text"
+            class="form-control" placeholder="{{ trans('service.name_ar') }}">
+        @error('name')
+            <p class="text-danger">{{ $message }}</p>
+        @enderror
+
+    </div>
+
+    <div class="form-group mb-4">
+        <label for="event-desc">{{ trans('service.desc_en') }}</label>
+        <textarea name="desc_en" id="event-desc" cols="30" placeholder="{{ trans('service.desc_en') }}" rows="10"
+            class="form-control ">{{ $Service == null ? '' : $Service->desc('en') }}</textarea>
         @error('desc')
             <p class="text-danger">{{ $message }}</p>
         @enderror
     </div>
 
     <div class="form-group mb-4">
-        <label for="event-title">{{ trans('service.name') }}</label>
-            <input name="quantity" id="event-title" value="{{$Service == null ? "":$Service->quantity}}" type="number" class="form-control"  placeholder="{{ trans('service.name') }}">
-            @error('quantity')
-            <p class="text-danger">{{$message}}</p>
-            @enderror
-    
-        </div>
+        <label for="event-desc">{{ trans('service.desc_ar') }}</label>
+        <textarea name="desc_ar" id="event-desc" cols="30" placeholder="{{ trans('service.desc_ar') }}" rows="10"
+            class="form-control ">{{ $Service == null ? '' : $Service->desc('ar') }}</textarea>
+        @error('desc')
+            <p class="text-danger">{{ $message }}</p>
+        @enderror
+    </div>
+
+    <div class="form-group mb-4">
+        <label for="event-title">{{ trans('service.quantity') }}</label>
+        <input name="quantity" id="event-title" value="{{ $Service == null ? '' : $Service->quantity }}" type="number"
+            class="form-control" placeholder="{{ trans('service.quantity') }}">
+        @error('quantity')
+            <p class="text-danger">{{ $message }}</p>
+        @enderror
+
+    </div>
 
     <div class="form-group">
         <div class="custom-file-container my-3" data-upload-id="myFirstImage">
