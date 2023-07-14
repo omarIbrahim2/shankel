@@ -113,21 +113,27 @@ Shankal | Home
                             <div class="avatar-btns">
 
                                 <div>
-                                  <div class="service-booking">
+                                    <div class="service-booking">
                                         <form action="{{ route('add-to-card') }}" method="post">
-                                             @csrf
+                                            @csrf
                                             <input type="hidden" name="service_id" value="{{ $service->id }}">
-                                            <div class="service-booking">
-                                                <label for="">{{ trans('service.quantity') }}</label>
-                                                @error('quantity')
-                                                    <p class="text-danger">{{ $message }}</p>
-                                                @enderror
-                                                <input id="" name="quantity" class="num_cart_item form-control mb-3" placeholder="0" type="number" min="0" max="{{ $service->quantity }}">
+
+                                            <div class="srv-cont">
+                                            <button type="submit"
+                                                    class="btn-custom">{{ trans('service.book') }}</button>
+                                                <div class="service-booking">
+
+                                                    <input id="" name="quantity" class="num_cart_item form-control"
+                                                        placeholder="0" type="number" min="0"
+                                                        max="{{ $service->quantity }}">
+                                                </div>
+
+
                                             </div>
-
-                                            <button type="submit" class="btn-custom">{{ trans('service.book') }}</button>
                                         </form>
-
+                                        @error('quantity')
+                                        <p class="text-danger">{{ $message }}</p>
+                                        @enderror
                                     </div>
 
                                 </div>
@@ -176,7 +182,8 @@ Shankal | Home
                                 </div>
                                 @endforeach
                             </div>
-                            <a href="{{route('web-schools')}}" class="custom-out-btn text-center ">{{trans('home.showMore')}}</a>
+                            <a href="{{route('web-schools')}}"
+                                class="custom-out-btn text-center ">{{trans('home.showMore')}}</a>
                         </div>
                     </div>
                 </div>

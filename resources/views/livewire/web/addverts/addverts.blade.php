@@ -1,6 +1,6 @@
 <div>
 
- 
+
 <div class="section-content">
     <div class="container">
         <div class="ads">
@@ -13,8 +13,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6 colored-ad col-12 m-0 p-0">
-            <div class="ads-item">
+        <div class="col-md-6 col-12 m-0 p-0">
+            <div class="ads-item ads-item-info">
                 <div class="ads-info">
                     <h4>{{ $addvert->title }}</h4>
                     <p>{{ $addvert->desc }}</p>
@@ -22,18 +22,18 @@
             </div>
         </div>
     </div>
-@endforeach 
-     
-        
-        
-   
+@endforeach
+
+
+
+
 
 <div class="pagination">
     <div class="d-flex">
         <div class="justify-content-center">
             @if ($addverts->links("livewire.admin-pagination"))
                 {{$addverts->links("livewire.admin-pagination")}}
-            
+
             @endif
         </div>
    </div>

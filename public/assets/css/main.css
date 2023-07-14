@@ -2417,3 +2417,40 @@ main {
 .teacher-avatar .tech-img{
     height: auto;
 }
+.ads-item-info{
+    border: 1px solid var(--main-color);
+    color: var(--main-color);
+    border-left: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    padding: 32px ;
+}
+.ads .ads-item:first-of-type img{
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.ads .ads-item:last-of-type{
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.srv-cont{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.srv-cont .service-booking{
+    width: 70px;
+}

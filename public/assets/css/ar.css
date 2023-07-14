@@ -90,3 +90,8 @@ input{
 .tags p{
     margin: 0 0 0 16px;
 }
+@media screen and (max-width: 991px){
+.auth-btn .custom-out-btn {
+    font-size: 12px;
+    padding: 8px 8px;
+}}

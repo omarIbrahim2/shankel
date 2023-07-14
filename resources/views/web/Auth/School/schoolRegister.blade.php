@@ -94,7 +94,7 @@
                                             @enderror
                                         </div>
                                         <div class="input-item me-auto ms-0">
-                                            <input placeholder="Date Of establishment" value="{{old('establish_date')}}" class="textbox-n" type="text"
+                                            <input placeholder="Date Of establishment" value="{{old('establish_date')}}" class=" eventDayPicker" type="text"
                                                 name="establish_date" id="date" />
                                             <span>
                                                 <i class="fa-regular fa-calendar-days"></i>
@@ -296,7 +296,7 @@
 
  </script>
 
- 
+
 
 
 @endsection
