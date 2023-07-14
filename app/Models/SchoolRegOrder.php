@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\School;
+use App\Models\Parentt;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class SchoolRegOrder extends Model
 {
@@ -15,12 +16,12 @@ class SchoolRegOrder extends Model
 
     public function school(){
 
-          return $this->belongsTo(School::class);
+          return $this->belongsTo(School::class , 'school_id');
     }
 
 
     public function parentt(){
 
-        return $this->belongsTo(Parentt::class);
+        return $this->belongsTo(Parentt::class , 'parentt_id');
     }
 }

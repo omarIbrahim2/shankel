@@ -23,6 +23,7 @@
             <th>Parent</th>
             <th class="text-center">Status</th>
             <th>created at</th>
+            <th>Order Details</th>
 
 
         </tr>
@@ -34,7 +35,7 @@
          <tr>
 
             <td>{{$order->id}}</td>
-            <td><a href="#">{{$order->school->name}} </a> </td>
+            <td>{{$order->school->name}}</td>
             <td>{{$order->parentt->name}}</td>
             @if ($order->status == true)
               <td class="text-center"><span class="text-secondary">Compeleted</span></td>
@@ -43,6 +44,10 @@
             @endif
 
             <td>{{$order->created_at}}</td>
+
+            <td>
+              <a href="{{route('order' , $order->id)}}" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a>
+          </td>
 
         </tr>
 

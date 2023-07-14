@@ -82,11 +82,17 @@
     <script src="{{asset('assets')}}/js/toastr.js.map"></script>
     <script src="{{asset('assets')}}/js/flatpickr/flatpickr.js"></script>
     <script src="{{asset('assets')}}/js/flatpickr/custom-flatpickr.js"></script>
+    <script src="{{asset('assets')}}/vendor/ckeditor5-build-classic/ckeditor.js"></script>
+    <script src="{{asset('assets')}}/vendor/ckeditor5-build-classic/ckeditor.js.map"></script>
+    <script src="{{asset('assets')}}/vendor/ckeditor5-build-classic/translations/ar.js"></script>
+   
 
     <!-- custom js -->
     <script src="{{asset('assets')}}/js/script.js"></script>
 
     @livewireScripts
+
+
     @yield('scripts')
 </body>
 

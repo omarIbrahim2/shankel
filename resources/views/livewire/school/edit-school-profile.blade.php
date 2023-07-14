@@ -51,7 +51,7 @@
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </h4>
-                        <textarea class="form-control" wire:model.defer="desc"> {{ $desc ? $desc : 'No data' }}</textarea>
+                        <textarea id="editor" class="form-control" wire:model.defer="desc"> {{ $desc ? $desc : 'No data' }}</textarea>
                     </div>
                     <div class="provider-description">
                         <h4>
@@ -61,7 +61,7 @@
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </h4>
-                        <textarea class="form-control" wire:model.defer="mission">{{ $mission }}</textarea>
+                        <textarea id="editorar" class="form-control" wire:model.defer="mission">{{ $mission }}</textarea>
                     </div>
                     <div class="provider-description">
                         <h4>
@@ -71,7 +71,7 @@
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </h4>
-                        <textarea class="form-control" wire:model.defer="vision"> {{ $vision }}</textarea>
+                        <textarea id="editor" class="form-control" wire:model.defer="vision"> {{ $vision }}</textarea>
                     </div>
                 </div>
             </div>

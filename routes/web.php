@@ -271,6 +271,7 @@ Route::middleware('lang')->group(function(){
 
         //School booking orders
         Route::get('orders' , [AdminController::class , "Orders"])->name("Orders");
+        Route::get('single-order/{orderId}' , [TransactionController::class , 'singleOrder'])->name('order');
 
         //service orders
         Route::get('orders/services' , [ServiceOrderController::class , "OrdersServ"])->name("service-orders");
