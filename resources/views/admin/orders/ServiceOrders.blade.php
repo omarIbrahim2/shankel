@@ -11,5 +11,6 @@
 
         @livewire('admin.service-orders')
 
-
+    </div>
+</div>
 @endsection

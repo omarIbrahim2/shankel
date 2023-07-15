@@ -14,9 +14,9 @@
                                     <img width="250px" src="{{ asset($supplier->image) }}" alt="teacher">
                                 </div>
                                 <div class="teacher-item-data">
-                                        <h3>{{ $supplier->name }}</h3>
-                                        <h5>{{ $supplier->type }}</h5>
-                                        <h4>{{ $supplier->orgName }}</h4>
+                                        <h3>{{ $supplier->name() }}</h3>
+                                        <h5>{{ $supplier->type() }}</h5>
+                                        <h4>{{ $supplier->orgName()}}</h4>
                                         <p><i class="fa-solid fa-location-dot"></i> {{ $supplier->area->name() }}</p>
                                         
                                         <a href="{{ route('supplier-by-id', $supplier->id) }}"

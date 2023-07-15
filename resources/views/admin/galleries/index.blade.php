@@ -2,14 +2,13 @@
 
 
 @section('content')
+    <div class="row pt-3">
+        <div class="col-12 filtered-list-search mx-auto">
 
-<div class="row pt-3">
-    <div class="col-12 filtered-list-search mx-auto">
+            <h1 class="grid_title">Gallaries</h1>
 
-        <h1 class="grid_title">Gallaries</h1>
+            @livewire('admin.gallery')
 
-         @livewire('admin.gallery')
-
-
-
+        </div>
+    </div>
 @endsection

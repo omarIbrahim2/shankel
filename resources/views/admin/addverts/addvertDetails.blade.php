@@ -17,12 +17,20 @@
             </div>
 
             <div class="mt-4">
-               Title:  <p>{{$Addvert->title}}</p>
+               Title En:  <p>{{$Addvert->title('en')}}</p>
             </div>
 
             <div class="mt-4">
-                Description:  <p>{{$Addvert->desc}}</p>
+              Title Ar:  <p>{{$Addvert->title('ar')}}</p>
+           </div>
+
+            <div class="mt-4">
+                Description En:  <p>{{$Addvert->desc('en')}}</p>
              </div>
+
+             <div class="mt-4">
+              Description Ar:  <p>{{$Addvert->desc('ar')}}</p>
+           </div>
         </div>
 
 

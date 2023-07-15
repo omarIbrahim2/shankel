@@ -8,7 +8,7 @@
                     <div class="col-lg-7 col-md-6 col-12">
                         <div class="event-left-side">
                             <div class="event-title">
-                                <h3>{{ $event->title }}</h3>
+                                <h3>{{ $event->title() }}</h3>
                             </div>
                             <div class="event-meta-data">
                                 <div class="event-meta">
@@ -31,7 +31,7 @@
                             </div>
                             <div class="event-description">
                                 <p>
-                                    {{ $event->desc }}
+                                    {{ $event->desc() }}
 
                                 </p>
                             </div>

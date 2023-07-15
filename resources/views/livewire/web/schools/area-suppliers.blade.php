@@ -11,12 +11,12 @@
                         <div class="col-md-4 col-12">
                             <div class="teacher-item">
                                 <div class="teacher-item-img">
-                                    <img width="250px" src="{{ $supplier->image ? asset('assets/images/partners/4.png')  :  asset("'uploads.' $supplier->image") }}" alt="{{ $supplier->name }}">
+                                    <img width="250px" src="{{ $supplier->image ? asset('assets/images/partners/4.png')  :  asset("'uploads.' $supplier->image") }}" alt="{{ $supplier->name() }}">
                                 </div>
                                 <div class="teacher-item-data">
-                                        <h3>{{ $supplier->name }}</h3>
-                                        <h5>{{ $supplier->type }}</h5>
-                                        <h4>{{ $supplier->orgName }}</h4>
+                                        <h3>{{ $supplier->name() }}</h3>
+                                        <h5>{{ $supplier->type() }}</h5>
+                                        <h4>{{ $supplier->orgName() }}</h4>
                                         <p><i class="fa-solid fa-location-dot"></i> {{ $supplier->area->name() }}</p>
                                         
                                         <a href="{{ route('supplier-by-id', $supplier->id) }}"

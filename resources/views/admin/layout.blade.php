@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
     <title>@yield('title')</title>
-    <link rel="icon" type="image/x-icon" href="{{asset('admin')}}/img/favicon.ico"/>
+    <link rel="icon" type="image/x-icon" href="{{ asset('admin') }}/img/favicon.ico" />
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,600,700&display=swap" rel="stylesheet">
-    <link href="{{asset('admin')}}/bootstrap/css/bootstrap.min.css" rel="stylesheet"  />
-    <link rel="stylesheet" href="{{asset('assets')}}/css/all.min.css">
-    <link href="{{asset('admin')}}/css/plugins.css" rel="stylesheet" type="text/css" />
-    <link href="{{asset('admin')}}/plugins/perfect-scrollbar/perfect-scrollbar.css " rel="stylesheet"  />
-    <link href="{{asset('admin')}}/plugins/highlight/styles/monokai-sublime.css"  rel="stylesheet"  />
-    <link href="{{asset('admin')}}/plugins/flatpickr/flatpickr.css" rel="stylesheet"  />
+    <link href="{{ asset('admin') }}/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('assets') }}/css/all.min.css">
+    <link href="{{ asset('admin') }}/css/plugins.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('admin') }}/plugins/perfect-scrollbar/perfect-scrollbar.css " rel="stylesheet" />
+    <link href="{{ asset('admin') }}/plugins/highlight/styles/monokai-sublime.css" rel="stylesheet" />
+    <link href="{{ asset('admin') }}/plugins/flatpickr/flatpickr.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
-    <link rel="stylesheet" href="{{asset("admin")}}/css/structure.css">
+    <link rel="stylesheet" href="{{ asset('admin') }}/css/structure.css">
     <!-- END GLOBAL MANDATORY STYLES -->
 
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
@@ -28,15 +29,16 @@
             margin-left: auto;
         }*/
         .layout-px-spacing {
-            min-height: calc(100vh - 140px)!important;
+            min-height: calc(100vh - 140px) !important;
         }
     </style>
-       @yield('styles')
+    @yield('styles')
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
-     @livewireStyles
+    @livewireStyles
 </head>
+
 <body class="sidebar-noneoverflow">
-    <form id="logout-form" method="POST" action="{{route("logout" , "web")}}">
+    <form id="logout-form" method="POST" action="{{ route('logout', 'web') }}">
         @csrf
     </form>
     <!--  BEGIN NAVBAR  -->
@@ -45,15 +47,25 @@
 
             <ul class="navbar-nav theme-brand flex-row  text-center">
                 <li class="nav-item theme-logo">
-                    <a href="{{route('dashboard')}}">
-                        <img src="{{asset("assets")}}/images/logo/logo.png" class="navbar-logo" alt="logo">
+                    <a href="{{ route('dashboard') }}">
+                        <img src="{{ asset('assets') }}/images/logo/logo.png" class="navbar-logo" alt="logo">
                     </a>
                 </li>
                 <li class="nav-item theme-text">
-                    <a href="{{route('dashboard')}}" class="nav-link"> Shankl </a>
+                    <a href="{{ route('dashboard') }}" class="nav-link"> Shankl </a>
                 </li>
                 <li class="nav-item toggle-sidebar">
-                    <a href="javascript:void(0);" class="sidebarCollapse" data-placement="bottom"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-list"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3" y2="6"></line><line x1="3" y1="12" x2="3" y2="12"></line><line x1="3" y1="18" x2="3" y2="18"></line></svg></a>
+                    <a href="javascript:void(0);" class="sidebarCollapse" data-placement="bottom"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-list">
+                            <line x1="8" y1="6" x2="21" y2="6"></line>
+                            <line x1="8" y1="12" x2="21" y2="12"></line>
+                            <line x1="8" y1="18" x2="21" y2="18"></line>
+                            <line x1="3" y1="6" x2="3" y2="6"></line>
+                            <line x1="3" y1="12" x2="3" y2="12"></line>
+                            <line x1="3" y1="18" x2="3" y2="18"></line>
+                        </svg></a>
                 </li>
             </ul>
             @livewire('admin.notification')
@@ -65,13 +77,22 @@
             <ul class="navbar-item flex-row navbar-dropdown ml-auto">
 
                 <li class="nav-item dropdown user-profile-dropdown  order-lg-0 order-1">
-                    <a href="javascript:void(0);" class="nav-link dropdown-toggle user" id="userProfileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                    <a href="javascript:void(0);" class="nav-link dropdown-toggle user" id="userProfileDropdown"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-settings">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path
+                                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                            </path>
+                        </svg>
                     </a>
                     <div class="dropdown-menu position-absolute" aria-labelledby="userProfileDropdown">
                         <div class="user-profile-section">
                             <div class="media mx-auto">
-                                <img src="{{asset("assets")}}/images/logo/logo.png" class="img-fluid mr-2" alt="avatar">
+                                <img src="{{ asset('assets') }}/images/logo/logo.png" class="img-fluid mr-2"
+                                    alt="avatar">
                                 <div class="media-body">
                                     <h5>Admin</h5>
                                     <p>Super Admin</p>
@@ -79,16 +100,28 @@
                             </div>
                         </div>
                         <div class="dropdown-item">
-                            @if (Gate::allows("superAdminProfile"))
-                            <a href="{{ route('admin-profile') }}">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> <span>My Profile</span>
-                            </a>
+                            @if (Gate::allows('superAdminProfile'))
+                                <a href="{{ route('admin-profile') }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" class="feather feather-user">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg> <span>My Profile</span>
+                                </a>
                             @endif
 
                         </div>
                         <div class="dropdown-item">
                             <a href="{{ route('home') }}">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-inbox"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"></path></svg> <span>Website</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="feather feather-inbox">
+                                    <polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline>
+                                    <path
+                                        d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z">
+                                    </path>
+                                </svg> <span>Website</span>
                             </a>
                         </div>
 
@@ -96,14 +129,20 @@
 
 
                             <button form="logout-form" type="submit" class="btn ">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg> <span>Log Out</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out">
+                                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                    <polyline points="16 17 21 12 16 7"></polyline>
+                                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                                </svg> <span>Log Out</span>
                             </button>
 
                         </div>
                     </div>
                 </li>
             </ul>
-           
+
         </header>
     </div>
     <!--  END NAVBAR  -->
@@ -121,8 +160,8 @@
                 <div class="profile-info">
                     <figure class="user-cover-image"></figure>
                     <div class="user-info">
-                        <img src="{{asset("assets")}}/images/logo/logo.png" alt="avatar">
-                        <h6 class="">{{auth()->guard('web')->user()->name}}</h6>
+                        <img src="{{ asset('assets') }}/images/logo/logo.png" alt="avatar">
+                        <h6 class="">{{ auth()->guard('web')->user()->name }}</h6>
                         <p class="">Admin</p>
                     </div>
                 </div>
@@ -132,36 +171,39 @@
                     <li class="menu">
                         <a href="#submenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-anchor"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="feather feather-anchor">
+                                    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                                    <polyline points="13 2 13 9 20 9"></polyline>
+                                </svg>
                                 <span> Users</span>
                             </div>
                             <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="feather feather-chevron-right">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
                             </div>
                         </a>
                         <ul class="collapse submenu list-unstyled" id="submenu2" data-parent="#accordionExample">
                             <li>
-                                <a href="#sm1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> Parents <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg> </a>
-                                <ul class="collapse list-unstyled sub-submenu" id="sm1" data-parent="#submenu2">
+                                <a href="#sm1" data-toggle="collapse" aria-expanded="false"
+                                    class="dropdown-toggle"> Parents <svg xmlns="http://www.w3.org/2000/svg"
+                                        width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="feather feather-chevron-right">
+                                        <polyline points="9 18 15 12 9 6"></polyline>
+                                    </svg> </a>
+                                <ul class="collapse list-unstyled sub-submenu" id="sm1"
+                                    data-parent="#submenu2">
                                     <li>
-                                        <a href="{{route("admin-parents" , "active")}}"> avtive </a>
+                                        <a href="{{ route('admin-parents', 'active') }}"> avtive </a>
                                     </li>
                                     <li>
-                                        <a href="{{route("admin-parents" , "unactive")}}"> un active </a>
-                                    </li>
-
-                                </ul>
-                            </li>
-                        </ul>
-                        <ul class="collapse submenu list-unstyled" id="submenu2" data-parent="#accordionExample">
-                            <li>
-                                <a href="#sm2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> Schools <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg> </a>
-                                <ul class="collapse list-unstyled sub-submenu" id="sm2" data-parent="#submenu2">
-                                    <li>
-                                        <a href="{{route('admin-schools' , "active")}}"> avtive </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{route('admin-schools' , "unactive")}}"> un active </a>
+                                        <a href="{{ route('admin-parents', 'unactive') }}"> un active </a>
                                     </li>
 
                                 </ul>
@@ -169,27 +211,20 @@
                         </ul>
                         <ul class="collapse submenu list-unstyled" id="submenu2" data-parent="#accordionExample">
                             <li>
-                                <a href="#sm2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> Centers <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg> </a>
-                                <ul class="collapse list-unstyled sub-submenu" id="sm2" data-parent="#submenu2">
+                                <a href="#sm2" data-toggle="collapse" aria-expanded="false"
+                                    class="dropdown-toggle"> Schools <svg xmlns="http://www.w3.org/2000/svg"
+                                        width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="feather feather-chevron-right">
+                                        <polyline points="9 18 15 12 9 6"></polyline>
+                                    </svg> </a>
+                                <ul class="collapse list-unstyled sub-submenu" id="sm2"
+                                    data-parent="#submenu2">
                                     <li>
-                                        <a href="{{route('admin-centers' , "active")}}"> avtive </a>
+                                        <a href="{{ route('admin-schools', 'active') }}"> avtive </a>
                                     </li>
                                     <li>
-                                        <a href="{{route('admin-centers' , "unactive")}}"> un active </a>
-                                    </li>
-
-                                </ul>
-                            </li>
-                        </ul>
-                        <ul class="collapse submenu list-unstyled" id="submenu2" data-parent="#accordionExample">
-                            <li>
-                                <a href="#sm2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> Kindergartens <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg> </a>
-                                <ul class="collapse list-unstyled sub-submenu" id="sm2" data-parent="#submenu2">
-                                    <li>
-                                        <a href="{{route('admin-kg' , "active")}}"> avtive </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{route('admin-kg' , "unactive")}}"> un active </a>
+                                        <a href="{{ route('admin-schools', 'unactive') }}"> un active </a>
                                     </li>
 
                                 </ul>
@@ -197,13 +232,62 @@
                         </ul>
                         <ul class="collapse submenu list-unstyled" id="submenu2" data-parent="#accordionExample">
                             <li>
-                                <a href="#sm3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> Teachers <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg> </a>
-                                <ul class="collapse list-unstyled sub-submenu" id="sm3" data-parent="#submenu2">
+                                <a href="#sm2" data-toggle="collapse" aria-expanded="false"
+                                    class="dropdown-toggle"> Centers <svg xmlns="http://www.w3.org/2000/svg"
+                                        width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="feather feather-chevron-right">
+                                        <polyline points="9 18 15 12 9 6"></polyline>
+                                    </svg> </a>
+                                <ul class="collapse list-unstyled sub-submenu" id="sm2"
+                                    data-parent="#submenu2">
                                     <li>
-                                        <a href="{{route('admin-teachers' , 'active')}}"> avtive </a>
+                                        <a href="{{ route('admin-centers', 'active') }}"> avtive </a>
                                     </li>
                                     <li>
-                                        <a href="{{route('admin-teachers' , 'unactive')}}"> un active </a>
+                                        <a href="{{ route('admin-centers', 'unactive') }}"> un active </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="collapse submenu list-unstyled" id="submenu2" data-parent="#accordionExample">
+                            <li>
+                                <a href="#sm2" data-toggle="collapse" aria-expanded="false"
+                                    class="dropdown-toggle"> Kindergartens <svg xmlns="http://www.w3.org/2000/svg"
+                                        width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="feather feather-chevron-right">
+                                        <polyline points="9 18 15 12 9 6"></polyline>
+                                    </svg> </a>
+                                <ul class="collapse list-unstyled sub-submenu" id="sm2"
+                                    data-parent="#submenu2">
+                                    <li>
+                                        <a href="{{ route('admin-kg', 'active') }}"> avtive </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('admin-kg', 'unactive') }}"> un active </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="collapse submenu list-unstyled" id="submenu2" data-parent="#accordionExample">
+                            <li>
+                                <a href="#sm3" data-toggle="collapse" aria-expanded="false"
+                                    class="dropdown-toggle"> Teachers <svg xmlns="http://www.w3.org/2000/svg"
+                                        width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="feather feather-chevron-right">
+                                        <polyline points="9 18 15 12 9 6"></polyline>
+                                    </svg> </a>
+                                <ul class="collapse list-unstyled sub-submenu" id="sm3"
+                                    data-parent="#submenu2">
+                                    <li>
+                                        <a href="{{ route('admin-teachers', 'active') }}"> avtive </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('admin-teachers', 'unactive') }}"> un active </a>
                                     </li>
 
                                 </ul>
@@ -212,51 +296,80 @@
 
                         <ul class="collapse submenu list-unstyled" id="submenu2" data-parent="#accordionExample">
                             <li>
-                                <a href="#sm4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> Suppliers <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg> </a>
-                                <ul class="collapse list-unstyled sub-submenu" id="sm4" data-parent="#submenu2">
+                                <a href="#sm4" data-toggle="collapse" aria-expanded="false"
+                                    class="dropdown-toggle"> Suppliers <svg xmlns="http://www.w3.org/2000/svg"
+                                        width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="feather feather-chevron-right">
+                                        <polyline points="9 18 15 12 9 6"></polyline>
+                                    </svg> </a>
+                                <ul class="collapse list-unstyled sub-submenu" id="sm4"
+                                    data-parent="#submenu2">
                                     <li>
-                                        <a href="{{route("admin-suppliers" , "active")}}" aria-expanded="false" class="dropdown-toggle">  avtive </a>
+                                        <a href="{{ route('admin-suppliers', 'active') }}" aria-expanded="false"
+                                            class="dropdown-toggle"> avtive </a>
                                     </li>
                                     <li>
-                                        <a href="{{route("admin-suppliers" , "unactive")}}" aria-expanded="false" class="dropdown-toggle"> un avtive </a>
+                                        <a href="{{ route('admin-suppliers', 'unactive') }}" aria-expanded="false"
+                                            class="dropdown-toggle"> un avtive </a>
                                     </li>
 
                                 </ul>
                             </li>
                         </ul>
 
-
-                        <li class="menu">
-                            <a href="{{route("cities")}}" aria-expanded="false" class="dropdown-toggle">
-                                <div class="">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                                    <span>Locations</span>
-                                </div>
-                            </a>
-                        </li>
 
                     <li class="menu">
-                        <a href="{{route("admin-events")}}" aria-expanded="false" class="dropdown-toggle">
+                        <a href="{{ route('cities') }}" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg>
+                                <span>Locations</span>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="menu">
+                        <a href="{{ route('admin-events') }}" aria-expanded="false" class="dropdown-toggle">
+                            <div class="">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg>
                                 <span>Events</span>
                             </div>
                         </a>
                     </li>
 
                     <li class="menu">
-                        <a href="{{ route("gallery") }}" aria-expanded="false" class="dropdown-toggle">
+                        <a href="{{ route('gallery') }}" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg>
                                 <span>Gallery</span>
                             </div>
                         </a>
                     </li>
 
                     <li class="menu">
-                        <a href="{{ route("Infos") }}" aria-expanded="false" class="dropdown-toggle">
+                        <a href="{{ route('Infos') }}" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg>
                                 <span>Informations</span>
                             </div>
                         </a>
@@ -265,35 +378,55 @@
 
 
                     <li class="menu">
-                        <a href="{{ route("Sliders") }}" aria-expanded="false" class="dropdown-toggle">
+                        <a href="{{ route('Sliders') }}" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg>
                                 <span>Sliders</span>
                             </div>
                         </a>
                     </li>
 
                     <li class="menu">
-                        <a href="{{ route("admin-addverts") }}" aria-expanded="false" class="dropdown-toggle">
+                        <a href="{{ route('admin-addverts') }}" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg>
                                 <span>Addvertisments</span>
                             </div>
                         </a>
                     </li>
 
                     <li class="menu">
-                        <a href="{{route("Orders")}}" aria-expanded="false" class="dropdown-toggle">
+                        <a href="{{ route('Orders') }}" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg>
                                 <span>School booking Orders</span>
                             </div>
                         </a>
                     </li>
                     <li class="menu">
-                        <a href="{{route("service-orders")}}" aria-expanded="false" class="dropdown-toggle">
+                        <a href="{{ route('service-orders') }}" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg>
                                 <span>Service Orders</span>
                             </div>
                         </a>
@@ -302,7 +435,12 @@
                     <li class="menu">
                         <a href="{{ route('Socials') }}" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg>
                                 <span>Socials</span>
                             </div>
                         </a>
@@ -312,7 +450,12 @@
                     <li class="menu">
                         <a href="{{ route('Messsages') }}" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg>
                                 <span>Messages</span>
                             </div>
                         </a>
@@ -320,9 +463,14 @@
 
 
                     <li class="menu">
-                        <a href="{{route("admin-partners")}}" aria-expanded="false" class="dropdown-toggle">
+                        <a href="{{ route('admin-partners') }}" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg>
                                 <span>Partners</span>
                             </div>
                         </a>
@@ -366,8 +514,8 @@
 
 
                 <div class="container">
-                <!-- CONTENT AREA -->
-                  @yield("content")
+                    <!-- CONTENT AREA -->
+                    @yield('content')
 
                 </div>
                 <!-- CONTENT AREA -->
@@ -375,10 +523,18 @@
             </div>
             <div class="footer-wrapper">
                 <div class="footer-section f-section-1">
-                    <p class="">Copyright © 2021 <a target="_blank" href="https://designreset.com">DesignReset</a>, All rights reserved.</p>
+                    <p class="">Copyright © 2021 <a target="_blank"
+                            href="https://designreset.com">DesignReset</a>, All rights reserved.</p>
                 </div>
                 <div class="footer-section f-section-2">
-                    <p class="">Coded with <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></p>
+                    <p class="">Coded with <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-heart">
+                            <path
+                                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                            </path>
+                        </svg></p>
                 </div>
             </div>
         </div>
@@ -388,20 +544,19 @@
     <!-- END MAIN CONTAINER -->
 
     <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
-    <script src="{{asset('admin')}}/js/libs/jquery-3.1.1.min.js"></script>
-    <script src="{{asset('admin')}}/bootstrap/js/popper.min.js"></script>
-    <script src="{{asset('admin')}}/bootstrap/js/bootstrap.min.js"></script>
-    <script src="{{asset('admin')}}/plugins/flatpickr/flatpickr.js"></script>
-    <link rel="stylesheet" href="{{asset('assets')}}/css/all.min.css">
-    <script src="{{asset('admin')}}/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="{{asset('admin')}}/js/app.js"></script>
+    <script src="{{ asset('admin') }}/js/libs/jquery-3.1.1.min.js"></script>
+    <script src="{{ asset('admin') }}/bootstrap/js/popper.min.js"></script>
+    <script src="{{ asset('admin') }}/bootstrap/js/bootstrap.min.js"></script>
+    <script src="{{ asset('admin') }}/plugins/flatpickr/flatpickr.js"></script>
+    <link rel="stylesheet" href="{{ asset('assets') }}/css/all.min.css">
+    <script src="{{ asset('admin') }}/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="{{ asset('admin') }}/js/app.js"></script>
     <script>
         $(document).ready(function() {
             App.init();
         });
     </script>
-    <script src="{{asset('admin')}}/js/custom.js"></script>
-   @livewireScripts
+    <script src="{{ asset('admin') }}/js/custom.js"></script>
+    @livewireScripts
     @yield('scripts')
-  </body>
-
+</body>

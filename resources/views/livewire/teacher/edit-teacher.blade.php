@@ -2,6 +2,7 @@
 <div>
     <div>
         <form>
+            @csrf 
             <div class="section-content">
                 <div class="row">
                     <div class="col-lg-3 col-md-5 col-12">
@@ -12,9 +13,9 @@
                             <div class="teacher-avatar">
                                 <img src="{{asset($authUser->image)}}" alt="avatar">
                                 <h4>
-                                    <a href="#">{{$authUser->name}}</a>
+                                    <a href="#">{{$authUser->name()}}</a>
                                 </h4>
-                                <p>{{$authUser->field}}</p>
+                                <p>{{$authUser->field()}}</p>
                                 <div class="avatar-btns">
                                     @if ($image != null)
                                     <p>{{$image->getClientOriginalName()}}</p>
@@ -40,41 +41,36 @@
                             </div>
                         </div>
                     </div>
-<<<<<<< HEAD
-                </div>
-                <div class="col-lg-9 col-md-7  col-12">
-                    <div class="right-side">
-                        <div class="right-side-item">
-                            <div class="sub-title main-sub-title">
-                                <h3>{{ trans('teacher.info') }}</h3>
-                                <div class="sub-btns">
-                                    <button type="button" wire:click="update" class="btn-custom">{{ trans('teacher.save') }}</button>
-=======
                     <div class="col-lg-9 col-md-7  col-12">
                         <div class="right-side">
                             <div class="right-side-item">
                                 <div class="sub-title main-sub-title">
                                     <h3>{{ trans('teacher.info') }}</h3>
                                     <div class="sub-btns">
-                                        <button type="button" wire:click="update" class="btn-custom">Save</button>
+                                        <button type="button" wire:click="update" class="btn-custom">{{ trans('teacher.save') }}</button>
                                     </div>
                         
                                     <a href="{{route('change_pass_teacher')}}"  class="btn-custom" >
                                         {{ trans('teacher.reset') }}
                                     </a>
->>>>>>> 7de8cc14a3a2547bb34d29b8123b841050cb6e60
                                 </div>
                                 </div>
                                 <div class="contact-form ">
                                     <form>
+                                        @csrf 
                                         <div class="input-item">
-                                            <input type="text" wire:model.defer="name" placeholder="{{ trans('teacher.name') }}">
+                                            <input type="text" wire:model.defer="name_en" placeholder="{{ trans('teacher.name_en') }}">
                                             <span>
                                                 <svg class="svg-inline--fa fa-user" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M224 256c70.7 0 128-57.31 128-128s-57.3-128-128-128C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3c0 19.14 15.52 34.67 34.66 34.67h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304z"></path></svg><!-- <i class="fa-solid fa-user"></i> Font Awesome fontawesome.com -->
                                             </span>
                                             @error('name') <p class="text-danger">{{$message}}</p>  @enderror
-                                                
-                                          
+                                        </div>
+                                        <div class="input-item">
+                                            <input type="text" wire:model.defer="name_ar" placeholder="{{ trans('teacher.name_ar') }}">
+                                            <span>
+                                                <svg class="svg-inline--fa fa-user" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M224 256c70.7 0 128-57.31 128-128s-57.3-128-128-128C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3c0 19.14 15.52 34.67 34.66 34.67h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304z"></path></svg><!-- <i class="fa-solid fa-user"></i> Font Awesome fontawesome.com -->
+                                            </span>
+                                            @error('name') <p class="text-danger">{{$message}}</p>  @enderror
                                         </div>
                                         
                                         <div class="input-item">
@@ -85,7 +81,14 @@
                                             @error('email') <p class="text-danger">{{$message}}</p>  @enderror
                                         </div>
                                         <div class="input-item">
-                                            <input type="text" wire:model.defer="field" placeholder="{{ trans('teacher.sub') }}">
+                                            <input type="text" wire:model.defer="field_en" placeholder="{{ trans('teacher.field_en') }}">
+                                            <span>
+                                                <svg class="svg-inline--fa fa-book" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="book" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M448 336v-288C448 21.49 426.5 0 400 0H96C42.98 0 0 42.98 0 96v320c0 53.02 42.98 96 96 96h320c17.67 0 32-14.33 32-31.1c0-11.72-6.607-21.52-16-27.1v-81.36C441.8 362.8 448 350.2 448 336zM143.1 128h192C344.8 128 352 135.2 352 144C352 152.8 344.8 160 336 160H143.1C135.2 160 128 152.8 128 144C128 135.2 135.2 128 143.1 128zM143.1 192h192C344.8 192 352 199.2 352 208C352 216.8 344.8 224 336 224H143.1C135.2 224 128 216.8 128 208C128 199.2 135.2 192 143.1 192zM384 448H96c-17.67 0-32-14.33-32-32c0-17.67 14.33-32 32-32h288V448z"></path></svg><!-- <i class="fa-solid fa-book"></i> Font Awesome fontawesome.com -->
+                                            </span>
+                                            @error('field') <p class="text-danger">{{$message}}</p>  @enderror
+                                        </div>
+                                        <div class="input-item">
+                                            <input type="text" wire:model.defer="field_ar" placeholder="{{ trans('teacher.field_ar') }}">
                                             <span>
                                                 <svg class="svg-inline--fa fa-book" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="book" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M448 336v-288C448 21.49 426.5 0 400 0H96C42.98 0 0 42.98 0 96v320c0 53.02 42.98 96 96 96h320c17.67 0 32-14.33 32-31.1c0-11.72-6.607-21.52-16-27.1v-81.36C441.8 362.8 448 350.2 448 336zM143.1 128h192C344.8 128 352 135.2 352 144C352 152.8 344.8 160 336 160H143.1C135.2 160 128 152.8 128 144C128 135.2 135.2 128 143.1 128zM143.1 192h192C344.8 192 352 199.2 352 208C352 216.8 344.8 224 336 224H143.1C135.2 224 128 216.8 128 208C128 199.2 135.2 192 143.1 192zM384 448H96c-17.67 0-32-14.33-32-32c0-17.67 14.33-32 32-32h288V448z"></path></svg><!-- <i class="fa-solid fa-book"></i> Font Awesome fontawesome.com -->
                                             </span>

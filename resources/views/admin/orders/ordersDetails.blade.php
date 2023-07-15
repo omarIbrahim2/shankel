@@ -11,5 +11,6 @@
 
         @livewire('admin.orders-details',['transactionId' => $transactionId])
 
-
+    </div>
+</div>
 @endsection

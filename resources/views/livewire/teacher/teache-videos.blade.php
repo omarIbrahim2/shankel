@@ -3,7 +3,17 @@
     <form  wire:submit.prevent="save">   
         @csrf 
         <div class="input-item me-auto ms-0">
-            <input wire:model.defer="title" id="event-title"  type="text"  value="{{old('title')}}" placeholder="{{trans('teacher.title')}}">
+            <input wire:model.defer="title_en" id="event-title"  type="text"  value="{{old('title_en')}}" placeholder="{{trans('teacher.title_en')}}">
+            <span>
+                <i class="fa-solid fa-person-chalkboard"></i>
+            </span>
+            @error('title')
+            <p class="text-danger">{{$message}}</p>
+            @enderror
+        </div>
+
+        <div class="input-item me-auto ms-0">
+            <input wire:model.defer="title_ar" id="event-title"  type="text"  value="{{old('title_ar')}}" placeholder="{{trans('teacher.title_ar')}}">
             <span>
                 <i class="fa-solid fa-person-chalkboard"></i>
             </span>

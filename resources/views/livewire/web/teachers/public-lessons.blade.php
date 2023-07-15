@@ -17,11 +17,11 @@
                             <div class="service-item-data">
                                 <div class="service-text">
                                     <div class="tags">
-                                        <a href="#" class="tag rounded-pill btn-custom">{{ $lesson->teacher->field }}</a>
+                                        <a href="#" class="tag rounded-pill btn-custom">{{ $lesson->teacher->field() }}</a>
                                         
                                     </div>
                                     <div class="service-item-title free-title">
-                                        <h3>{{ $lesson->title }}</h3>
+                                        <h3>{{ $lesson->title() }}</h3>
                                     </div>
                                     
                                 </div>

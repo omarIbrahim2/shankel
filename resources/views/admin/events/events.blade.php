@@ -3,17 +3,15 @@
 
 
 @section('content')
+    <div class="row pt-3">
+        <div class="col-12 filtered-list-search mx-auto">
 
-<div class="row pt-3">
-    <div class="col-12 filtered-list-search mx-auto">
 
-
-    @livewire('admin.events')
-
+            @livewire('admin.events')
+        </div>
+    </div>
 @endsection
 
 
 @section('scripts')
-    
-     
 @endsection

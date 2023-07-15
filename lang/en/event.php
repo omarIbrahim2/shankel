@@ -26,7 +26,7 @@ return[
 
     "booked" => "Booked",
     "clsBook" => "cancel Booking",
-
+    
     "city" => "City",
     "area" => "Area",
 

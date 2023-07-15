@@ -16,8 +16,8 @@
         <div class="col-md-6 col-12 m-0 p-0">
             <div class="ads-item ads-item-info">
                 <div class="ads-info">
-                    <h4>{{ $addvert->title }}</h4>
-                    <p>{{ $addvert->desc }}</p>
+                    <h4>{{ $addvert->title() }}</h4>
+                    <p>{{ $addvert->desc() }}</p>
                 </div>
             </div>
         </div>

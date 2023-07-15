@@ -25,7 +25,7 @@
                                         <img src="{{$supplier->image == null ? asset('assets/images/supplier/1.webp') : asset($supplier->image)}}" @style('width:150px') alt="supplier">
                                     </div>
                                     <div class="area-supplier-name search-label">
-                                        <h4>{{$supplier->name}}</h4>
+                                        <h4>{{$supplier->name()}}</h4>
                                     </div>
                                 </div>
                             </a>

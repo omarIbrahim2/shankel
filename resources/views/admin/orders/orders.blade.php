@@ -10,6 +10,7 @@
         <h1 class="grid_title">Schools Booking Orders</h1>
 
         @livewire('admin.orders')
-
+    </div>
+</div>
 
 @endsection
