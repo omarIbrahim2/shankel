@@ -39,7 +39,16 @@
                                 <form method="POST" action="{{route('teacher-register')}}" enctype="multipart/form-data">
                                     @csrf
                                     <div class="input-item me-auto ms-0">
-                                        <input value="{{@old('name')}}" type="text" name="name" placeholder="{{trans('register.name')}}">
+                                        <input value="{{@old('name_en')}}" type="text" name="name_en" placeholder="{{trans('teacher.name_en')}}">
+                                        <span>
+                                            <i class="fa-solid fa-user"></i>
+                                        </span>
+                                        @error('name')
+                                        <p class="text-danger">{{$message}}</p>
+                                        @enderror
+                                    </div>
+                                    <div class="input-item me-auto ms-0">
+                                        <input value="{{@old('name_ar')}}" type="text" name="name_ar" placeholder="{{trans('teacher.name_ar')}}">
                                         <span>
                                             <i class="fa-solid fa-user"></i>
                                         </span>
@@ -93,11 +102,20 @@
                                     </div>
 
                                     <div class="input-item me-auto ms-0">
-                                        <input value="{{@old('field')}}" type="text" name="field" placeholder="{{ trans('teacher.field') }}">
+                                        <input value="{{@old('field_en')}}" type="text" name="field_en" placeholder="{{ trans('teacher.field_en') }}">
                                         <span>
                                             <i class="fa-solid fa-book-open"></i>
                                         </span>
-                                        @error('field')
+                                        @error('field_en')
+                                        <p class="text-danger">{{$message}}</p>
+                                        @enderror
+                                    </div>
+                                    <div class="input-item me-auto ms-0">
+                                        <input value="{{@old('field_ar')}}" type="text" name="field_ar" placeholder="{{ trans('teacher.field_ar') }}">
+                                        <span>
+                                            <i class="fa-solid fa-book-open"></i>
+                                        </span>
+                                        @error('field_ar')
                                         <p class="text-danger">{{$message}}</p>
                                         @enderror
                                     </div>

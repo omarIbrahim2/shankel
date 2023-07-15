@@ -21,7 +21,8 @@
     <thead>
         <tr>
             <th>image</th>
-            <th>name</th>
+            <th>name En</th>
+            <th>name Ar</th>
             <th>email</th>
             <th class="text-center">Status</th>
              <th class="text-center">Actions</th>
@@ -37,7 +38,8 @@
         @foreach ($Users as $user)
         <tr>
            <td><img src="{{asset($user->image)}}" alt="" style="width: 50px"></td>
-           <td>{{$user['name']}}</td>
+           <td>{{$user->name('en')}}</td>
+           <td>{{$user->name('ar')}}</td>
            <td>{{$user["email"]}}</td>
            @if ($active == true)
 

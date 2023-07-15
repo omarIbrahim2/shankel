@@ -36,7 +36,7 @@
          <tr class="text-center">
 
             <td>{{$order->id}}</td>
-            <td>{{ $order->user->name }}</td>
+            <td>{{ $order->user->name() }}</td>
             <td>{{$order->getUserType($order->user_type)}}</td>
             <td><span class="text-secondary">{{ $order->status }}</span></td>
             <td>{{$order->barcode}}</td>

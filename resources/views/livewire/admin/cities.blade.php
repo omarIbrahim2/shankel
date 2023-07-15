@@ -15,7 +15,8 @@
     <table class="table table-bordered table-hover table-striped mb-4 admin_table">
         <thead>
             <tr>
-                <th>name</th>
+                <th>name En</th>
+                <th>name Ar</th>
                 <th class="text-center">Actions</th>
 
             </tr>
@@ -25,7 +26,8 @@
             @foreach ($Cities as $city)
                 <tr>
 
-                    <td class="elpsis">{{ $city->name() }}</td>
+                    <td class="elpsis">{{ $city->name('en') }}</td>
+                    <td class="elpsis">{{ $city->name('ar') }}</td>
                     <td class="text-center elpsis_controls">
 
                         <div class="d-flex justify-content-center align-items-center flex-wrap">

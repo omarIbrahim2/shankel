@@ -1,5 +1,5 @@
 <?php
-return[
+return [
     "name" => "Name",
     "name_en" => "English name",
     "name_ar" => "Arabic name",
@@ -10,8 +10,10 @@ return[
     "address" => "Address",
     "password" => "Password",
     "confirm_password" => "Confirm Password",
+    "type" => "type",
     "type_en" => "Type En.",
     "type_ar" => "Type Ar.",
+    "orgName" => "Organization Name",
     "orgName_en" => "Organization Name En.",
     "orgName_ar" => "Organization Name Ar.",
     "search" => "Search by Name Or Email",
@@ -37,7 +39,7 @@ return[
     "choices" => "Your choices",
     "choicesInfo" => "Below you will see all your choices through Shankl for easy viewing at any time",
     "more" => "More",
-    "events" => "Events" ,
+    "events" => "Events",
     "areaSchools" => "Schools in Your Area",
     "areaCenters" => "Centers in Your Area",
     "areaKgs" => "Kindergartens in Your Area",

@@ -7,7 +7,8 @@
         <thead>
             <tr>
                 <th>Image</th>
-                <th>title</th>
+                <th>title En</th>
+                <th>title Ar</th>
                 <th class="text-center">Actions</th>
             </tr>
         </thead>
@@ -18,7 +19,8 @@
                 <tr>
 
                     <td><img src="{{ asset($Infos->image) }}" alt="" style="width: 50px"></td>
-                    <td>{{ $Infos->title() }}</td>
+                    <td>{{ $Infos->title('en') }}</td>
+                    <td>{{ $Infos->title('ar') }}</td>
                     <td class="text-center elpsis_controls">
 
                         <div class="d-flex justify-content-center align-items-center flex-wrap">

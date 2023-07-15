@@ -32,5 +32,6 @@ return [
     "oldPass" => "Old Password",
     "newPass" => "New Password",
     "passConfirm" => "password confirmation",
+    "pass" => "password",
 
 ];

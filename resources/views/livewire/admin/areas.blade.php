@@ -1,14 +1,15 @@
 <div class="table-responsive">
     <div class="d-flex align-items-center justify-content-between flex-wrap">
-        
 
-        <a href="{{ route('areas-create-form' , $City->id) }}" class="btn btn-success margin_res">Add new area</a>
+
+        <a href="{{ route('areas-create-form', $City->id) }}" class="btn btn-success margin_res">Add new area</a>
     </div>
 
     <table class="table table-bordered table-hover table-striped mb-4 admin_table">
         <thead>
             <tr>
-                <th>name</th>
+                <th>name En</th>
+                <th>name Ar</th>
                 <th class="text-center">Actions</th>
 
             </tr>
@@ -18,7 +19,8 @@
             @foreach ($Areas as $area)
                 <tr>
 
-                    <td class="elpsis">{{ $area->name() }}</td>
+                    <td class="elpsis">{{ $area->name('en') }}</td>
+                    <td class="elpsis">{{ $area->name('ar') }}</td>
                     <td class="text-center elpsis_controls">
 
                         <div class="d-flex justify-content-center align-items-center flex-wrap">
@@ -43,7 +45,7 @@
                                         <line x1="10" y1="11" x2="10" y2="17"></line>
                                         <line x1="14" y1="11" x2="14" y2="17"></line>
                                     </svg></a></div>
-                            
+
                         </div>
                     </td>
                 </tr>

@@ -14,7 +14,8 @@
                 <th>LinkedIn</th>
                 <th>Email</th>
                 <th>Phone</th>
-                <th>Address</th>
+                <th>Address En</th>
+                <th>Address Ar</th>
                 <th class="text-center">Actions</th>
             </tr>
         </thead>
@@ -32,7 +33,8 @@
             <td><a href="{{ $Social->Linkedin}}">{{ $Social->Linkedin }}</a></td>
             <td><a href="{{ $Social->email }}">{{ $Social->email }}</a></td>
             <td>{{ $Social->phone }}</td>
-            <td>{{ $Social->address }}</td>
+            <td>{{ $Social->address('en') }}</td>
+            <td>{{ $Social->address('ar') }}</td>
             <td class="text-center elpsis_controls">
 
                 <div class="d-flex justify-content-center align-items-center flex-wrap">

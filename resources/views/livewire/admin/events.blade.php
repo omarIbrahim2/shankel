@@ -24,7 +24,8 @@
     <thead>
         <tr>
             <th>image</th>
-            <th>title</th>
+            <th>title En</th>
+            <th>title Ar</th>
             <th>start date</th>
             <th>end date</th>
             <th>start time</th>
@@ -40,7 +41,8 @@
          <tr>
 
             <td><img src="{{asset('uploads')}}/{{$event->image}}" alt="" style="width: 50px"></td>
-            <td class="elpsis">{{$event['title']}}</td>
+            <td class="elpsis">{{$event->title('en')}}</td>
+            <td class="elpsis">{{$event->title('ar')}}</td>
             <td>{{$event["start_date"]}}</td>
             <td>{{$event["end_date"]}}</td>
             <td>{{$event["start_time"]}}</td>

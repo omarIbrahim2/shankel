@@ -16,7 +16,8 @@
     <thead>
         <tr>
             <th>image</th>
-            <th>title</th>
+            <th>title En</th>
+            <th>title Ar</th>
             <th class="text-center">Desciription</th>
             <th class="text-center">Actions</th>
 
@@ -28,7 +29,8 @@
          <tr>
 
             <td><img src="{{asset($addvert->image)}}" alt="" style="width: 50px"></td>
-            <td class="elpsis">{{$addvert['title']}}</td>
+            <td class="elpsis">{{$addvert->title('en')}}</td>
+            <td class="elpsis">{{$addvert->title('ar')}}</td>
             <td class="text-center elpsis"><span class="text-secondary">Desciription</span></td>
              <td class="text-center">
             <ul class="table-controls">
