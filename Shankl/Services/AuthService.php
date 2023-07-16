@@ -20,10 +20,7 @@ class AuthService{
          
     
         $createdUser =  $userRebo->create($user->getAttributes());
-        // dd( event(new UserRegisterEvent ($createdUser)));
         return $createdUser;
-
-
     }
 
 

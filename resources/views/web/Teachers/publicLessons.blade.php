@@ -23,12 +23,13 @@
 <script>
      $('.get').on('click' , function(){
            
-        var title = $(this).attr('data-title');
+        var title_en = $(this).attr('data-title-en');
+        var title_ar = $(this).attr('data-title-ar');
         var url = $(this).attr('data-url');
         var id = $(this).attr('data-id');
 
-        $("#lesson-title").val(title);
-
+        $("#lesson-title_en").val(title_en);
+        $("#lesson-title_ar").val(title_ar);
         $("#lesson-url").val(url);
         $("#lesson-id").val(id);
 

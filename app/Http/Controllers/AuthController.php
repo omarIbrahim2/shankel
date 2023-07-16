@@ -100,13 +100,15 @@ class AuthController extends Controller
 
     //Teacher Authentecation
 
+
     public function teacherRegister(TeacherRegisterReq $request , TeacherRepository $teacherRepo)
     {
         $validatedReq = $request->validated();
-
+        
         $teacherObj = EntitiesFactory::createEntity(Arr::except($validatedReq , ['image']) , 'teacher');
 
-         $teacherObj->UploadImage($this->fileser , $request);
+        
+        $teacherObj->UploadImage($this->fileser , $request);
 
         $authTeacher = $this->authService->RegisterUser($teacherRepo, $teacherObj);
 

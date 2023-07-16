@@ -55,10 +55,11 @@ class AdvertController extends Controller
 
         $validatedData = $request->validated();
 
-        $validatedData['image'] =  $this->handleUpload($request, $fileService, null, 'addverts');
+        $data = $this->evaluateData($validatedData);
+        $data['image'] =  $this->handleUpload($request, $fileService, null, 'addverts');
 
 
-        $addvert = $this->AdminService->addAddvert($validatedData);
+        $addvert = $this->AdminService->addAddvert($data);
 
         if ($addvert) {
             toastr("add Addvertisment created successfully", "success");
@@ -83,10 +84,11 @@ class AdvertController extends Controller
 
         $validatedData = $request->validated();
         $addvert = $this->AdminService->getAddvert($request->id);
-        $validatedData['image'] = $this->handleUpload($request, $fileService, $addvert, 'addverts');
+        $data = $this->evaluateData($validatedData);
+        $data['image'] = $this->handleUpload($request, $fileService, $addvert, 'addverts');
 
 
-        $action = $this->AdminService->updateAddvert($validatedData);
+        $action = $this->AdminService->updateAddvert($data);
 
 
         if ($action) {
@@ -112,5 +114,27 @@ class AdvertController extends Controller
         }
 
         toastr("errot in deleting Addvertisment", 'error');
+    }
+
+
+    private function evaluateData($request)
+    {
+        $data = array();
+        if (array_key_exists('id', $request)) {
+
+            $data['id'] = $request['id'];
+        }
+        $data['title'] = json_encode([
+            'en' => $request['title_en'],
+            'ar' => $request['title_ar'],
+        ]);
+
+        $data['desc'] = json_encode([
+            'en' => $request['desc_en'],
+            'ar' => $request['desc_ar'],
+        ]);
+
+
+        return $data;
     }
 }

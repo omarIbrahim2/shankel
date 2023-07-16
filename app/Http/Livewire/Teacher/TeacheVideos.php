@@ -78,5 +78,18 @@ class TeacheVideos extends Component
 
     }
 
+    private function evaluateData($request)
+    {
+        $data = array();
+        if (array_key_exists('id', $request)) {
+
+            $data['id'] = $request['id'];
+        }
+        $data['title'] = json_encode([
+            'en' => $request['title_en'],
+            'ar' => $request['title_ar'],
+        ]);
+        return $data;
+    }
 
 }

@@ -20,7 +20,7 @@ class TeacherController extends Controller
 {
   private $changePassObj, $adminService;
   public $teacherService;
-   
+
   use HandleUpload;
 
   public function __construct(ChangePassword $changePass, TeacherService $teacherService, AdminService $adminService)
@@ -131,7 +131,8 @@ class TeacherController extends Controller
     return view("web.Teachers.publicLessons");
   }
 
-  public function deleteLesson($lessonId) {
+  public function deleteLesson($lessonId)
+  {
 
     $this->teacherService->deleteLesson($lessonId);
     toastr("Lesson Video Deleted Successfully", 'warning');
@@ -139,28 +140,39 @@ class TeacherController extends Controller
     return back();
   }
 
-  public function updateLesson(LessonUpdateReq $request  , FileService $fileService){
-         
+  private function evaluateLessonData($request)
+  {
+    $data = array();
+    if (array_key_exists('id', $request)) {
+
+      $data['id'] = $request['id'];
+    }
+    $data['title'] = json_encode([
+      'en' => $request['title_en'],
+      'ar' => $request['title_ar'],
+    ]);
+    return $data;
+  }
+
+  public function updateLesson(LessonUpdateReq $request, FileService $fileService)
+  {
+
     $validatedReq = $request->validated();
-   
-     $lesson = Lesson::findOrFail($validatedReq['id']);
+    $data = $this->evaluateData($validatedReq);
 
-     $lessonImagePath = $this->handleUpload($request , $fileService , $lesson , 'lessons');
+    $lesson = Lesson::findOrFail($data['id']);
 
-     if ($lessonImagePath != null) {
-       $validatedReq['image'] = $lessonImagePath;
-     }
+    $lessonImagePath = $this->handleUpload($request, $fileService, $lesson, 'lessons');
 
-     $this->teacherService->updateLesson($lesson , $validatedReq);
+    if ($lessonImagePath != null) {
+      $data['image'] = $lessonImagePath;
+    }
 
-    toastr("lesson updated successfully" , 'success');
+    $this->teacherService->updateLesson($lesson, $data);
+
+    toastr("lesson updated successfully", 'success');
 
 
     return back();
-
-
-    
-
-
   }
 }
