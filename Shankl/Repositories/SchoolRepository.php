@@ -73,11 +73,9 @@ class SchoolRepository extends AbstractUserRepo implements UserReboInterface , C
     }
 
 
-    public function addGrades(array $grades, $schoolId)
+    public function addGrades(array $grades, $school)
     {
 
-
-        $school =  $this->find($schoolId);
         foreach ($grades as $grade) {
 
             $school->grades()->attach($grade);

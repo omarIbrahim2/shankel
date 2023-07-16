@@ -39,8 +39,8 @@ class AuthController extends Controller
        
     private AuthService  $authService;
 
-    private FileServiceAdapter $fileser;
-    public function __construct(AuthService $authService, FileServiceAdapter $fileser)
+    private  $fileser;
+    public function __construct(AuthService $authService, FileService $fileser)
     {
         $this->authService = $authService;
 
@@ -58,21 +58,9 @@ class AuthController extends Controller
 
         $parentObj =  EntitiesFactory::createEntity( Arr::except($validatedReq , ['image']) , 'parent');
 
-        $parentObj->setPassword($validatedReq['password']);
-
         $parentObj->changeStatus();
-
-        if ($request->hasFile('image')) {
-
-
-            $this->fileser->setFile($request->file('image'));
-
-            $this->fileser->setPath("parents");
-
-            $filePath =  $this->fileser->upload();
-
-            $parentObj->setImage($filePath);
-        }
+       
+        $parentObj->UploadImage($this->fileser , $request);
 
         $authParent = $this->authService->RegisterUser($parentRepo, $parentObj);
 
@@ -118,18 +106,7 @@ class AuthController extends Controller
 
         $teacherObj = EntitiesFactory::createEntity(Arr::except($validatedReq , ['image']) , 'teacher');
 
-        $teacherObj->setPassword($validatedReq['password']);
-        if ($request->hasFile('image')) {
-
-
-            $this->fileser->setFile($request->file('image'));
-
-            $this->fileser->setPath("teachers");
-
-            $filePath =  $this->fileser->upload();
-
-            $teacherObj->setImage($filePath);
-        }
+         $teacherObj->UploadImage($this->fileser , $request);
 
         $authTeacher = $this->authService->RegisterUser($teacherRepo, $teacherObj);
 
@@ -162,25 +139,12 @@ class AuthController extends Controller
         
         $schoolObj = EntitiesFactory::createEntity(Arr::except($validatedReq , ['image' , 'grade_id']) , 'school');
         
-        if ($request->hasFile('image')) {
-
-
-            $this->fileser->setFile($request->file('image'));
-
-            $this->fileser->setPath("schools");
-
-            $filePath =  $this->fileser->upload();
-
-            $schoolObj->setImage($filePath);
-        }
-
-        $schoolObj->setPassword($validatedReq['password']);
+        $schoolObj->UploadImage($this->fileser , $request);
         
        
-   
         $createdSchool = $this->authService->RegisterUser($schoolRepo , $schoolObj);
 
-        $schoolRepo->addGrades($request->grade_id , $createdSchool->id);
+        $schoolRepo->addGrades($request->grade_id , $createdSchool);
 
     
     
@@ -212,19 +176,9 @@ class AuthController extends Controller
     
             $supplierObj =  EntitiesFactory::createEntity( Arr::except($validatedReq , ['image']) , 'supplier');
                
-            $supplierObj->setPassword($validatedReq['password']);
-    
-            if ($request->hasFile('image')) {
-    
-    
-                $this->fileser->setFile($request->file('image'));
-    
-                $this->fileser->setPath("suppliers");
-    
-                $filePath =  $this->fileser->upload();
-    
-                $supplierObj->setImage($filePath);
-            }
+          
+          
+            $supplierObj->UploadImage($this->fileser , $request);
     
              $supplier = $this->authService->RegisterUser($supplierRepo , $supplierObj);
     
@@ -236,6 +190,10 @@ class AuthController extends Controller
         
            
         }
+
+
+
+      
 
     
     

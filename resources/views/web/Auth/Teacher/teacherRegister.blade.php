@@ -120,6 +120,7 @@
                                         @enderror
                                     </div>
                                     <div class="upload-avatar text-start">
+                                        <p id="imgName"></p>
                                         <input
                                             type="file"
                                             name="image"
@@ -238,7 +239,14 @@
 
  </script>
 
- 
+ <script>
+    $('#teacher-avatar').change(function() {
+
+  var file = $('#teacher-avatar')[0].files[0].name;
+  $("#imgName").text(file);
+   });
+ </script>
+
 
 
 @endsection

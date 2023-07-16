@@ -2,45 +2,61 @@
 
 namespace Shankl\Entities;
 
+use App\Traits\HandleUpload;
 use Illuminate\Support\Facades\Hash;
+use Shankl\Services\FileService;
 
  abstract class  UserEntity{
       
-  protected $attributes;
+  protected $schema = array();
   protected $status = false;
+
+  protected  $path;
+
+
+  use HandleUpload;
 
    public function __construct($attributes)
    {
-     $this->attributes = $attributes;
+
+    if (isset($attributes['name_en']) && $attributes['name_ar']) {
+        
+        $this->schema['name'] = json_encode([
+            'en' => $attributes['name_en'],
+            'ar' => $attributes['name_ar'],
+       ]);
+    }else{
+
+
+        $this->schema['name'] = $attributes['name'];
+    }
+   
+    if (isset($attributes['phone'])) {
+        $this->schema['phone'] = $attributes['phone'];
+    }
+    
+     $this->schema['email'] = $attributes['email'];
+     $this->setPassword($attributes['password']);
+     $this->schema['area_id'] = $attributes['area_id'];
    }
 
 
+  
+
+
   public function getAttributes(){
-      return $this->attributes;
+      return $this->schema;
   }
 
   public function getEmail(){
 
-      return $this->attributes['email'];
+      return $this->schema['email'];
   }
 
   public function getPassword()
   {
-      return $this->attributes['password'];
+      return $this->schema['password'];
   }
-
-  public function getName(){
-       
-    return $this->attributes['name'];
-
-}
-
-public function getArea(){
-
-    return $this->attributes['area'];
-}
-
-
 
 public function changeStatus(){
 
@@ -50,17 +66,20 @@ public function changeStatus(){
         $this->status = true;
     }
 
-    $this->attributes['status'] = $this->status;
+    $this->schema['status'] = $this->status;
 }
 
 public function setPassword($password){
     $hashedPassword = Hash::make($password);
-    $this->attributes['password'] = $hashedPassword;
+    $this->schema['password'] = $hashedPassword;
 }
 
-public function setImage($imagePath){
+public function UploadImage( FileService $fileService ,$request){
 
-    $this->attributes['image'] = $imagePath;
+    $imagePath =  $this->handleUpload($request , $fileService , null , $this->path);
+
+    $this->schema['image'] = $imagePath;
+    
 }
 
 }

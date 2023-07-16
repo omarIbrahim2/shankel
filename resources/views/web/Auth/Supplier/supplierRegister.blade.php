@@ -40,7 +40,7 @@
                                     <form method="POST" action="{{route('supplier-registeration')}}" enctype="multipart/form-data">
                                         @csrf
                                         <div class="input-item me-auto ms-0">
-                                            <input type="text" name="name_en" value="{{old('name_en')}}" placeholder="{{ trans('register.name_en') }}"
+                                            <input type="text" name="name_en" value="{{old('name_en')}}" placeholder="{{ trans('supplier.name_en') }}"
                                                 >
                                             <span>
                                                 <i class="fa-solid fa-user"></i>
@@ -50,7 +50,7 @@
                                             @enderror
                                         </div>
                                         <div class="input-item me-auto ms-0">
-                                            <input type="text" name="name_ar" value="{{old('name_ar')}}" placeholder="{{ trans('register.name_ar') }}"
+                                            <input type="text" name="name_ar" value="{{old('name_ar')}}" placeholder="{{ trans('supplier.name_ar') }}"
                                                 >
                                             <span>
                                                 <i class="fa-solid fa-user"></i>
@@ -146,6 +146,7 @@
                                         </div>
 
                                         <div class="upload-avatar text-start">
+                                            <p id="imgName"></p>
                                             <input type="file" name="image"  id="teacher-avatar" multiple>
                                             <label class="btn-custom" for="teacher-avatar">{{ trans('supplier.upload') }}</label>
                                             <div class="files-names">
@@ -156,7 +157,7 @@
                                             @enderror
                                         </div>
                                         <div class="input-item me-auto ms-0">
-                                            <input type="password" name="password" placeholder="{{ trans('auth.password') }}" >
+                                            <input type="password" name="password" placeholder="{{ trans('supplier.password') }}" >
                                             <span>
                                                 <i class="fa-solid fa-lock"></i>
                                             </span>
@@ -205,37 +206,66 @@
 
 
 @section('scripts')
-    <script>
-        $("#selectCity").on('change', function() {
-            let cityId = this.value;
-            var url = '{{ route('areas', ':id') }}';
-            url = url.replace(':id', cityId);
 
-            $.ajax({
-                type: 'GET',
+ <script>
+  $("#selectCity").on('change' , function(){
+     let cityId = this.value;
+     var url = '{{ route("areas", ":id") }}';
+    url = url.replace(':id', cityId);
 
-                url: url,
+     $.ajax({
+        type: 'GET',
 
-                processData: false,
+        url: url ,
 
-                contentType: 'application/json',
+        processData: false,
 
-                cache: false,
+        contentType: 'application/json',
 
-                success: function(data) {
-                    var your_html = "";
-                    $("#areaSelect").empty();
-                    $("#areaSelect").append("<option selected disabled>Area</option>");
-                    for (const key in data.areas) {
-                        your_html += "<option id='ar' value = " + data.areas[key].id + ">" + data.areas[
-                            key].name + "</option>";
-                    }
-                    $("#areaSelect").append(your_html);
+        cache:false,
 
-                }
+        success: function(data){
+            var your_html = "";
+            $("#areaSelect").empty();
+            $("#areaSelect").append("<option selected disabled>Area</option>");
 
-            })
+           var lang = $('#startInn').data('langshankl')
 
-        })
-    </script>
+
+
+            for (const key in data.areas) {
+
+               var name = JSON.parse(data.areas[key].name);
+               if (lang == 'ar') {
+                your_html += "<option id='ar' value = " + data.areas[key].id + ">"+ name.ar +"</option>";
+               }else{
+                your_html += "<option id='ar' value = " + data.areas[key].id + ">"+ name.en +"</option>";
+               }
+
+            }
+            $("#areaSelect").append(your_html);
+
+
+
+
+
+        }
+
+     })
+
+  })
+
+
+ </script>
+
+ <script>
+    $('#teacher-avatar').change(function() {
+
+  var file = $('#teacher-avatar')[0].files[0].name;
+  $("#imgName").text(file);
+   });
+ </script>
+
+
+
 @endsection

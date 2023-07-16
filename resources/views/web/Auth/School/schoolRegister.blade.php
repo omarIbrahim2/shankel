@@ -155,7 +155,10 @@
                                                 <p class="text-danger">{{ $message }}</p>
                                             @enderror
                                         </div>
+
+
                                         <div class="upload-avatar text-start">
+                                            <p id="imgName"></p>
                                             <input type="file" name="image" id="teacher-avatar" multiple>
                                             <label class="btn-custom"
                                                 for="teacher-avatar">{{ trans('school.uploadNew') }}</label>
@@ -168,7 +171,7 @@
                                         </div>
                                         <div class="input-item me-auto ms-0">
                                             <input type="password" name="password"
-                                                placeholder="{{ trans('auth.pass') }}">
+                                                placeholder="{{ trans('supplier.password') }}">
                                             <span>
                                                 <i class="fa-solid fa-lock"></i>
                                             </span>
@@ -259,54 +262,66 @@
 
 
 @section('scripts')
-    <script>
-        $("#selectCity").on('change', function() {
-            let cityId = this.value;
-            var url = '{{ route('areas', ':id') }}';
-            url = url.replace(':id', cityId);
 
-            $.ajax({
-                type: 'GET',
+ <script>
+  $("#selectCity").on('change' , function(){
+     let cityId = this.value;
+     var url = '{{ route("areas", ":id") }}';
+    url = url.replace(':id', cityId);
 
-                url: url,
+     $.ajax({
+        type: 'GET',
 
-                processData: false,
+        url: url ,
 
-                contentType: 'application/json',
+        processData: false,
 
-                cache: false,
+        contentType: 'application/json',
 
-                success: function(data) {
-                    var your_html = "";
-                    $("#areaSelect").empty();
-                    $("#areaSelect").append("<option selected disabled>Area</option>");
+        cache:false,
 
-                    var lang = $('#startInn').data('langshankl')
+        success: function(data){
+            var your_html = "";
+            $("#areaSelect").empty();
+            $("#areaSelect").append("<option selected disabled>Area</option>");
+
+           var lang = $('#startInn').data('langshankl')
 
 
 
-                    for (const key in data.areas) {
+            for (const key in data.areas) {
 
-                        var name = JSON.parse(data.areas[key].name);
-                        if (lang == 'ar') {
-                            your_html += "<option id='ar' value = " + data.areas[key].id + ">" + name
-                                .ar + "</option>";
-                        } else {
-                            your_html += "<option id='ar' value = " + data.areas[key].id + ">" + name
-                                .en + "</option>";
-                        }
+               var name = JSON.parse(data.areas[key].name);
+               if (lang == 'ar') {
+                your_html += "<option id='ar' value = " + data.areas[key].id + ">"+ name.ar +"</option>";
+               }else{
+                your_html += "<option id='ar' value = " + data.areas[key].id + ">"+ name.en +"</option>";
+               }
 
-                    }
-                    $("#areaSelect").append(your_html);
-
+            }
+            $("#areaSelect").append(your_html);
 
 
 
 
-                }
 
-            })
+        }
 
-        })
-    </script>
+     })
+
+  })
+
+
+ </script>
+
+ <script>
+    $('#teacher-avatar').change(function() {
+
+  var file = $('#teacher-avatar')[0].files[0].name;
+  $("#imgName").text(file);
+   });
+ </script>
+
+
+
 @endsection

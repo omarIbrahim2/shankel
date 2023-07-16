@@ -4,46 +4,71 @@
 @section('content')
     <div class="container mt-3">
         <h1 class="grid_title">Create Supplier</h1>
-
-
         <x-supplier-form actionRoute="supplier-register" :cities="$cities"></x-supplier-form>
     </div>
 @endsection
 
 @section('scripts')
-    <script>
-        $("#selectCity").on('change', function() {
-            let cityId = this.value;
-            var url = '{{ route('areas', ':id') }}';
-            url = url.replace(':id', cityId);
 
-            $.ajax({
-                type: 'GET',
+ <script>
+  $("#selectCity").on('change' , function(){
+     let cityId = this.value;
+     var url = '{{ route("areas", ":id") }}';
+    url = url.replace(':id', cityId);
 
-                url: url,
+     $.ajax({
+        type: 'GET',
 
-                processData: false,
+        url: url ,
 
-                contentType: 'application/json',
+        processData: false,
 
-                cache: false,
+        contentType: 'application/json',
 
-                success: function(data) {
-                    var your_html = "";
-                    $("#areaSelect").empty();
-                    $("#areaSelect").append("<option selected disabled>Area</option>");
-                    for (const key in data.areas) {
+        cache:false,
+
+        success: function(data){
+            var your_html = "";
+            $("#areaSelect").empty();
+            $("#areaSelect").append("<option selected disabled>Area</option>");
+
+           var lang = $('#startInn').data('langshankl')
 
 
-                        your_html += "<option id='ar' value = " + data.areas[key].id + ">" + data.areas[
-                            key].name + "</option>";
-                    }
-                    $("#areaSelect").append(your_html);
 
-                }
+            for (const key in data.areas) {
 
-            })
+               var name = JSON.parse(data.areas[key].name);
+               if (lang == 'ar') {
+                your_html += "<option id='ar' value = " + data.areas[key].id + ">"+ name.ar +"</option>";
+               }else{
+                your_html += "<option id='ar' value = " + data.areas[key].id + ">"+ name.en +"</option>";
+               }
 
-        })
-    </script>
+            }
+            $("#areaSelect").append(your_html);
+
+
+
+
+
+        }
+
+     })
+
+  })
+
+
+ </script>
+
+ <script>
+    $('#eventImage').change(function() {
+
+  var file = $('#eventImage')[0].files[0].name;
+  $("#imgName").text(file);
+   });
+ </script>
+
+
+
 @endsection
