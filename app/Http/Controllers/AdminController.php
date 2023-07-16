@@ -322,11 +322,27 @@ class AdminController extends Controller
         ]);
     }
 
+    
+    private function evaluateSocialData($request)
+    {
+        $data = array();
+        if (array_key_exists('id', $request)) {
+
+            $data['id'] = $request['id'];
+        }
+        $data['address'] = json_encode([
+            'en' => $request['address_en'],
+            'ar' => $request['address_ar'],
+        ]);
+        return $data;
+    }
+
     public function socialCreate(SocialsAddReq $request){
 
        $validatedData =  $request->validated();
+       $data = $this->evaluateSocialData($validatedData);
 
-       $social = $this->AdminService->AddSocial($validatedData);
+       $social = $this->AdminService->AddSocial($data);
 
        if ($social) {
           toastr("social created successfully" , 'success');
@@ -339,8 +355,9 @@ class AdminController extends Controller
     public function SocialUpdate(SocialUpdateReq $request){
           
        $validatedData =  $request->validated();
+       $data = $this->evaluateSocialData($validatedData);
 
-       $action = $this->AdminService->UpdateSocial($validatedData , $validatedData['id']);
+       $action = $this->AdminService->UpdateSocial($data , $data['id']);
          
        if ($action) {
           

@@ -42,9 +42,8 @@ class GalleryConroller extends Controller
 
     public function store(GalleryAddReq $request){
 
-        $data = $request->validated();
-      
-
+        $validatedData = $request->validated();
+        $data = $this->evaluateData($validatedData);
         $data['image'] =$this->handleUpload($request , $this->fileService , null , 'galleries' );
       
 
@@ -64,11 +63,9 @@ class GalleryConroller extends Controller
 
     public function edit(GalleryUpdateReq $request){
 
-        $data = $request->validated();
-
-        
-        $image =  $this->adminService->getImage($data['id']);
-
+        $validatedData = $request->validated();
+        $image =  $this->adminService->getImage($validatedData['id']);
+        $data = $this->evaluateData($validatedData);
         $data['image'] =  $this->handleUpload($request , $this->fileService , $image , "galleries");       
 
 
@@ -116,5 +113,20 @@ class GalleryConroller extends Controller
 
     }
 
+
+    private function evaluateData($request)
+    {
+        $data = array();
+        if (array_key_exists('id', $request)) {
+
+            $data['id'] = $request['id'];
+        }
+        $data['title'] = json_encode([
+            'en' => $request['title_en'],
+            'ar' => $request['title_ar'],
+        ]);
+
+        return $data;
+    }
     
 }
