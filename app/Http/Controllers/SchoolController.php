@@ -59,11 +59,11 @@ class SchoolController extends Controller
     return view("web.Schools.profile")->with($data);
   }
 
-  public function schoolProfile( GradeRepoInterface $gradeRepo , EduSystemRepoInterface $eduRepo){
+  public function schoolProfile( LocationRepoInterface $locationRepo , EduSystemRepoInterface $eduRepo){
 
-    
-    $data['grades'] = $gradeRepo->getGrades();
     $data['eSystems'] = $eduRepo->getEduSystems(); 
+
+    $data['Cities'] = $locationRepo->getCities();
     return view("web.Schools.editProfile")->with($data);
   }
 

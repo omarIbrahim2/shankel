@@ -10,7 +10,7 @@
                     <div class="col-lg-7 col-md-6 col-12">
                         <div class="event-left-side">
                             <div class="event-title">
-                                <h3>{{ $event->title() }}</h3>
+                                <h3>{{  $event->title() }}</h3>
                             </div>
                             <div class="event-meta-data">
                                 <div class="event-meta">
@@ -29,12 +29,12 @@
                                 </div>
                             </div>
                             <div class="event-img">
-                                <img src="{{ asset( 'uploads/'. $event->image) }}"
+                                <img src="{{ asset($event->image) }}"
                                     style="width: 500px" alt="event">
                             </div>
                             <div class="event-description">
                                 <p>
-                                    {{ $event->desc() }}
+                                    {!! $event->desc() !!}
 
                                 </p>
                             </div>
@@ -61,6 +61,11 @@
                                     <div class="text-center mt-2">
                                         <input form="cancelEvent" type="hidden" name="id" value="{{ $event->id }}">
                                      <button form="cancelEvent" type="submit" class="btn btn-danger" >{{ trans('event.cls') }}</button>
+                                    </div>
+
+                                    <div class="text-center mt-2">
+                                           
+                                        <a href="{{route("school-edit-view-event" , $event->id)}}" class="btn btn-info">{{trans('event.update')}}</a>
                                     </div>
                                 
                                 {{-- end comment --}}

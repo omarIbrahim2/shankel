@@ -83,9 +83,9 @@ class EventRepository implements EventRepoInterface
       return Event::findOrFail($eventId);
    }
 
-   public function updateEvent($data)
+   public function updateEvent($data , $event)
    {
-      $event = $this->find($data['id']);
+      
       
 
       return $event->update($data);

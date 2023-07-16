@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\Area;
 use Illuminate\Support\Facades\App;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class City extends Model
 {
@@ -14,7 +15,7 @@ class City extends Model
 
     public function areas()
     {
-        return $this->hasMany(Area::class);
+        return $this->hasMany(Area::class );
     }
 
     public function name($lang = null){

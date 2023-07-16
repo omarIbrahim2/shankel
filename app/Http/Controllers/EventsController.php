@@ -12,7 +12,7 @@ use Shankl\Interfaces\EventRepoInterface;
 use Shankl\Interfaces\LocationRepoInterface;
 use App\Http\Requests\EventValidationRequest;
 use App\Http\Requests\EventValidationUpdateReq;
-
+use Shankl\Factories\AuthUserFactory;
 
 class EventsController extends Controller
 {
@@ -49,67 +49,85 @@ class EventsController extends Controller
 
     public function updateEventView(LocationRepoInterface $locationRepo ,$Eventid){
         $cities= $locationRepo->getCities();
-        $event = $this->AdminService->getEvent($Eventid);
-        if (! $event) {
-            
-            return redirect()->back();
+        $event = $this->Eventobj->getEvent($Eventid);
+        
+        if (AuthUserFactory::geGuard() == 'web') {
+            return view('admin.events.updateEvent')->with(['Event' => $event , 'cities' => $cities]);
         }
         
-        return view('admin.events.updateEvent')->with(['Event' => $event , 'cities' => $cities]);
+        return view("web.Schools.editEvent")->with(['Event' => $event , 'cities' => $cities]);
+        
+       
         
     }
 
     public function storeEvent(EventValidationRequest $request , FileService $fileService){
      
         $validatedData = $request->validated();
-     
+         
 
-         $validatedData['image'] = $this->handleUpload($request , $fileService , null , 'events');
-
-        $event = $this->Eventobj->Add($validatedData);
+        $this->Eventobj->setRequest($request);
 
 
-        if ($event) {
-            toastr('event created successfully' , 'success');
+      $data = $this->evaluateData($validatedData);
 
-            return back();
-        }
-
-
-        
-        
+    
+    
+      return  $this->Eventobj->Add($data);
     }
 
 
-    public function updateEvent( EventValidationUpdateReq $request , FileService $fileService){
+    private function evaluateData($request){
+        
+         $data = array();
+
+          if (isset($request['image'])) {
+              $data['image'] = $request['image'];
+          }
+
+          if (isset($request['id'])) {
+             $data['id'] = $request['id'];
+          }
+
+
+          $data['title'] = json_encode([
+               'en' => $request["title_en"],
+               'ar' => $request["title_ar"],  
+          ]); 
+
+
+          $data['desc'] = json_encode([
+             'en' => $request["desc_en"],
+             'ar' => $request["desc_ar"],
+          ]);
+
+
+        $data['start_date'] = $request['start_date'];
+
+        $data['end_date'] = $request['end_date'];
+
+        $data['start_time'] = $request['start_time'];
+
+        $data['end_time'] = $request['end_time'];
+
+        $data['area_id'] = $request['area_id'];
+
+        return $data;
+    }
+
+
+    public function updateEvent( EventValidationUpdateReq $request){
         $validatedData = $request->validated();
            
-        if ($request->hasFile('image')) {
-            $event = $this->AdminService->getEvent($request->id);
-            $fileService->DeleteFile($event->image);
-
-            $fileService->setPath('events');
-
-            $fileService->setFile($request->image);
-
-            $validatedData['image'] = $fileService->uploadFile();
-
-        }
-        $validatedData["eventable_type"] = User::class;
-        $validatedData["eventable_id"] =  auth()->guard("web")->user()->id;
-        
-        $action = $this->AdminService->updateEvent($validatedData);
+      
+          $data = $this->evaluateData($validatedData);
 
 
-        if ($action) {
+          $this->Eventobj->setRequest($request);
+
+         
+         return $this->Eventobj->update($data);
             
-            toastr("event updated successfully" , "info" , "Event update");
-
-            return redirect()->route('admin-events');
-        }
-
-        toastr("something wrong happened" , "error" , "Event update");
-        return redirect()->back();
     }
 
 

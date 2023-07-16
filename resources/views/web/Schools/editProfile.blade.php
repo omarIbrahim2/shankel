@@ -11,7 +11,7 @@
 <section class="section edit-teacher-profile">
     <div class="inner">
         <div class="container">
-           @livewire('school.edit-school-profile' , [ 'grades' => $grades , 'eSystems' => $eSystems])
+           @livewire('school.edit-school-profile' , [ 'eSystems' => $eSystems , 'Cities' => $Cities])
         </div>
     </div>
 </section>
@@ -23,7 +23,7 @@
 <script>
        
     ClassicEditor
-    .create(document.querySelector( '#editorar' ) , {
+    .create(document.querySelector( '#desc_ar' ) , {
         language: 'ar'
     })
      
@@ -34,11 +34,52 @@
 
  <script>
     ClassicEditor
-    .create(document.querySelector( '#editoren' ))
+    .create(document.querySelector( '#desc_en' ))
     .catch(error2=>{
       
     })
+</script>
+
+
+<script>
+       
+    ClassicEditor
+    .create(document.querySelector( '#mission_ar' ) , {
+        language: 'ar'
+    })
+     
+    .catch(error=>{
+       console.error( error );
+    })
 </script> 
+
+ <script>
+    ClassicEditor
+    .create(document.querySelector( '#mission_en' ))
+    .catch(error2=>{
+      
+    })
+</script>
+
+<script>
+       
+    ClassicEditor
+    .create(document.querySelector( '#vision_ar' ) , {
+        language: 'ar'
+    })
+     
+    .catch(error=>{
+       console.error( error );
+    })
+</script> 
+
+ <script>
+    ClassicEditor
+    .create(document.querySelector( '#vision_en' ))
+    .catch(error2=>{
+      
+    })
+</script>
     
 @endsection
 

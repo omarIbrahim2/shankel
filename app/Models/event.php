@@ -148,7 +148,17 @@ class Event extends Model
            }
        );
     }
+   
 
+    public function image(): Attribute
+    {
+
+        return new Attribute(
+            get: function($value){
+               return "uploads/".$value;
+            }
+        );
+    }
 
     public static function  paginate($items, $perPage , $page = null, $options = []){
         $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);

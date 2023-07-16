@@ -45,78 +45,66 @@
                         <h4>
                             <span><i class="fa-solid fa-file-pen"></i></span>
                             <span>{{ trans('school.desc_en') }}</span>
-                            @error('desc')
+                            @error('desc_en')
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </h4>
-<<<<<<< HEAD
-                        <textarea class="form-control" wire:model.defer="desc_en"> {{ $desc_en ? $desc_en : 'No data' }}</textarea>
-=======
-                        <textarea id="editor" class="form-control" wire:model.defer="desc"> {{ $desc ? $desc : 'No data' }}</textarea>
->>>>>>> ad69bac008fcf386d72c432bcfecac7347fd2720
+                        <textarea id="desc_en" class="form-control" wire:model.defer="desc_en"> {{ $desc_en ? $desc_en : null }}</textarea>
                     </div>
 
                     <div class="provider-description">
                         <h4>
                             <span><i class="fa-solid fa-file-pen"></i></span>
                             <span>{{ trans('school.desc_ar') }}</span>
-                            @error('desc')
+                            @error('desc_ar')
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </h4>
-                        <textarea class="form-control" wire:model.defer="desc_ar"> {{ $desc_ar ? $desc_ar : 'No data' }}</textarea>
+                        <textarea id="desc_ar" class="form-control" wire:model.defer="desc_ar"> {{ $desc_ar }}</textarea>
                     </div>
 
                     <div class="provider-description">
                         <h4>
                             <span><i class="fa-solid fa-file-pen"></i></span>
                             <span>{{ trans('school.mission_en') }}</span>
-                            @error('mission')
+                            @error('mission_en')
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </h4>
-<<<<<<< HEAD
-                        <textarea class="form-control" wire:model.defer="mission_en">{{ $mission_en }}</textarea>
-=======
-                        <textarea id="editorar" class="form-control" wire:model.defer="mission">{{ $mission }}</textarea>
->>>>>>> ad69bac008fcf386d72c432bcfecac7347fd2720
+                        <textarea id="mission_en" class="form-control" wire:model.defer="mission_en">{{$mission_en}}</textarea>
                     </div>
 
                     <div class="provider-description">
                         <h4>
                             <span><i class="fa-solid fa-file-pen"></i></span>
                             <span>{{ trans('school.mission_ar') }}</span>
-                            @error('mission')
+                            @error('mission_ar')
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </h4>
-                        <textarea class="form-control" wire:model.defer="mission_ar">{{ $mission_ar }}</textarea>
+                        <textarea id="mission_ar" class="form-control" wire:model.defer="mission_ar">{{$mission_ar}}</textarea>
                     </div>
 
                     <div class="provider-description">
                         <h4>
                             <span><i class="fa-solid fa-file-pen"></i></span>
                             <span>{{ trans('school.vision_en') }}</span>
-                            @error('vision')
+                            @error('vision_en')
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </h4>
-<<<<<<< HEAD
-                        <textarea class="form-control" wire:model.defer="vision_en"> {{ $vision_en }}</textarea>
+                        <textarea id="vision_en" class="form-control" wire:model.defer="vision_en"> {{ $vision_en }}</textarea>
                     </div>
 
                     <div class="provider-description">
                         <h4>
                             <span><i class="fa-solid fa-file-pen"></i></span>
-                            <span>{{ trans('school.vision_ar') }}</span>
-                            @error('vision')
+                            <span>{{ trans('school.vision_en') }}</span>
+                            @error('vision_Ar')
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </h4>
-                        <textarea class="form-control" wire:model.defer="vision_ar"> {{ $vision_ar }}</textarea>
-=======
-                        <textarea id="editor" class="form-control" wire:model.defer="vision"> {{ $vision }}</textarea>
->>>>>>> ad69bac008fcf386d72c432bcfecac7347fd2720
+                        <textarea id="vision_ar" class="form-control" wire:model.defer="vision_ar"> {{ $vision_ar }}</textarea>
                     </div>
                 </div>
             </div>
@@ -140,7 +128,7 @@
                                 <span>
                                     <i class="fa-solid fa-user"></i>
                                 </span>
-                                @error('name')
+                                @error('name_en')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
@@ -150,7 +138,7 @@
                                 <span>
                                     <i class="fa-solid fa-user"></i>
                                 </span>
-                                @error('name')
+                                @error('name_ar')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
@@ -187,7 +175,7 @@
                             </div>
                             <div class="input-item ">
                                 <select wire:model="city" class="form-select" aria-label="Default select example">
-                                    <option selected>{{ $authCity->name() }}</option>
+                                    <option value="{{$authCity}}" selected>{{$authCity->name()}}</option>
                                     @foreach ($cities as $city)
                                         <option value="{{ $city->id }}">{{ $city->name() }}</option>
                                     @endforeach
@@ -199,7 +187,7 @@
                             <div class="input-item ">
                                 <select wire:model="area_id" id="areaSelect" class="form-select"
                                     aria-label="Default select example">
-                                    <option value="{{ $authArea->id }}" selected>{{ $authArea->name() }}</option>
+                                    <option value="{{$authArea->id}}" selected>{{$authArea->name()}}</option>
                                     @if ($Areas)
 
                                         @foreach ($Areas as $Area)
@@ -232,6 +220,7 @@
                                             </label>
                                         </div>
                                     @endforeach
+                                       
 
 
                                 </div>

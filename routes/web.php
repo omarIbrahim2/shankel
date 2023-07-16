@@ -183,6 +183,8 @@ Route::middleware('lang')->group(function(){
         Route::get('suppliers/filter' , [SchoolController::class , 'FilterSuppliers'])->name('filter-suppliers');
 
         Route::get('school/add/event' , [SchoolController::class , 'addEvent'])->name('school-add-event');
+        Route::get('school/edit/event/{eventId}' , [EventsController::class , "updateEventView"])->name('school-edit-view-event');
+        Route::post('school/event/update' , [EventsController::class , 'updateEvent'])->name('school-edit-event');
         Route::post('school/event/create' , [EventsController::class , 'storeEvent'])->name('school-store-event');
         Route::get("school/reserved/Events" , [SchoolController::class , 'reservedEvents'])->name('school-reserved-events');
         Route::get("school/created/Events" , [SchoolController::class , 'schoolEvents'])->name('school-my-events');

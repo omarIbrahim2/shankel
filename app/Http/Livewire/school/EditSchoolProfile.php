@@ -4,14 +4,18 @@ namespace App\Http\Livewire\School;
 
 use App\Models\Area;
 use App\Models\City;
+use App\Models\Grade;
 use Livewire\Component;
 use Illuminate\Support\Arr;
 use Livewire\WithFileUploads;
 use Illuminate\Validation\Rule;
+use Shankl\Interfaces\GradeRepoInterface;
+use Shankl\Interfaces\LocationRepoInterface;
 use Shankl\Services\FileService;
 use App\Rules\PhoneValidationRule;
 use Shankl\Services\SchoolService;
 use Illuminate\Support\Facades\Auth;
+use Shankl\Factories\AuthUserFactory;
 
 class EditSchoolProfile extends Component
 {
@@ -36,9 +40,13 @@ class EditSchoolProfile extends Component
     public $Ugrades=array();
     public $eSystems;
     public $edu_systems_id;
+
+    public $free_seats;
     public $userGrades= array();
-    public $city;
+    public $Cities;
     public $area_id;
+    public $city;
+
     public $Areas;
     public $attributes = array();
     protected $listeners = [
@@ -48,44 +56,51 @@ class EditSchoolProfile extends Component
 
     public function render()
     {
-        $cities = City::select("id" , "name")->get();
-        $authArea =  Area::findOrFail(Auth::guard('school')->user()->area_id);
+
+       
+        $Cities = $this->Cities;
+        $authArea =  Area::select('name' , 'id' , 'city_id')->with(['city:name,id'])->findOrFail($this->AuthUser->area_id);
         $authCity =  $authArea->city;
-       $this->Areas =  Area::where('city_id' , $this->city)->get();
-        return view('livewire.school.edit-school-profile' 
-        , [ 'cities' => $cities , 
+       $this->Areas =  Area::select('name' , 'id')->where('city_id' , $this->city)->get();
+        return view('livewire.school.edit-school-profile'
+        , [ 'cities' => $Cities , 
         "Areas" => $this->Areas,
         "authArea" => $authArea,
         "authCity" => $authCity,
     ]
+    
 
      
-);
+       );
     }
 
+
+    public function getAuthArea(){
+        
+        return  Area::select('id' , 'name' , "city_id")->with(['city:id,name'])->where('id' , $this->AuthUser->area_id)->first();
+          
+    }
+
+ 
     public function mount(){
        
         $this->intialize();
-        $this->assignGrades();
-        $this->setUgrades();
-
-        
+        $this->assignGrades();        
     }
 
     public function intialize(){
-        $this->AuthUser = Auth::guard('school')->user();
-        
-        $this->mission_en = $this->AuthUser->mission_en;
-        $this->mission_ar = $this->AuthUser->mission_ar;
+        $this->AuthUser = AuthUserFactory::getAuthUser();
+        $this->mission_en = $this->AuthUser->mission('en');
+        $this->mission_ar = $this->AuthUser->mission('ar');
 
-        $this->vision_en = $this->AuthUser->vision_en;
-        $this->vision_ar = $this->AuthUser->vision_ar;
+        $this->vision_en = $this->AuthUser->vision('en');
+        $this->vision_ar = $this->AuthUser->vision("ar");
 
-        $this->desc_en = $this->AuthUser->desc_en;
-        $this->desc_ar = $this->AuthUser->desc_ar;
+        $this->desc_en = $this->AuthUser->desc('en');
+        $this->desc_ar = $this->AuthUser->desc('ar');
 
-        $this->name_en = $this->AuthUser->name_en;
-        $this->name_ar = $this->AuthUser->name_ar;
+        $this->name_en = $this->AuthUser->name('en');
+        $this->name_ar = $this->AuthUser->name('ar');
 
         $this->email = $this->AuthUser->email;
 
@@ -104,6 +119,7 @@ class EditSchoolProfile extends Component
         $this->area_id = $this->AuthUser->area_id;
 
         $this->imagePath  = $this->AuthUser->image;
+        $this->free_seats = $this->AuthUser->free_seats;
     }
 
     public function setAttributes(){
@@ -134,6 +150,7 @@ class EditSchoolProfile extends Component
             "facebook" => $this->facebook,
             "linkedin" => $this->linkedin,
             "twitter" => $this->twitter,
+            'free_seats' => $this->free_seats,
 
          ];
 
@@ -143,30 +160,19 @@ class EditSchoolProfile extends Component
 
     public function assignGrades(){
          
-        $grades = $this->AuthUser->grades;
-
-
-        foreach($grades as $grade){
-             
-            $this->userGrades[$grade->id] = $grade;
-         
-            
-        }
-
-
-    }
-
-    public function setUgrades(){
-
+        
+        $this->grades = Grade::select('name' , 'id')->with(['schools:id,name'])->get();
+    
         foreach($this->grades as $grade){
+               $Gradeschools = $grade->schools;
 
-            if (array_key_exists($grade->id , $this->userGrades)) {
-                $this->Ugrades[$grade->id] = true;
-            }else{
-                $this->Ugrades[$grade->id] = false;
-            }
+               $this->Ugrades[$grade->id] = $Gradeschools->contains($this->AuthUser->id);  
         }
+
+
     }
+
+
 
     public function getChoosenGrades(){
         $filtered = array();
@@ -194,6 +200,7 @@ class EditSchoolProfile extends Component
             "phone" => ['required', new PhoneValidationRule()],
             'area_id' => 'required|numeric|exists:areas,id',
             "establish_date" => "required|date|before:today",
+            'free_seats' => 'numeric|min:0|nullable',
             "desc_en" => 'string|nullable',
             "desc_ar" => 'string|nullable',
             "mission_en" => "string|nullable",

@@ -1,11 +1,11 @@
 <?php
 return[
-    "title" => "Title",
-    "title_en" => "English Title",
-    "title_ar" => "Arabic Title",
+    "title" => "إٍسم الحدث",
+    "title_en" => "Title",
+    "title_ar" => "عنوان الحدث",
     "desc" => "Description",
-    "desc_en" => "English Description",
-    "desc_ar" => "Arabic Description",
+    "desc_en" => "Description",
+    "desc_ar" => "تفاصيل الحدث ",
     "upload" => "Upload Image",
     "day" => "Event Day",
     "time" => "Event Time",

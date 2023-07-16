@@ -3,18 +3,32 @@
 namespace  Shankl\Helpers;
 
 use App\Jobs\CancelSubscribtion;
+use App\Traits\HandleUpload;
 use Illuminate\Support\Facades\Log;
 use Shankl\Factories\AuthUserFactory;
 use App\Notifications\EventSeatBooked;
 use Shankl\Interfaces\EventRepoInterface;
 use Illuminate\Support\Facades\Notification;
+use Shankl\Services\FileService;
 
 class Event{
 
     private $eventReboInterface;
-    public function __construct(EventRepoInterface $eventRepoInterface){
+
+    private $request;
+      
+     const AdminGuard = "web";
+
+     const SchoolGuard = 'school';
+
+    private $fileService;
+
+    use HandleUpload;
+    public function __construct(EventRepoInterface $eventRepoInterface , FileService $fileService){
         
         $this->eventReboInterface = $eventRepoInterface;
+
+        $this->fileService = $fileService;
 
     }
 
@@ -22,8 +36,62 @@ class Event{
     public function Add($data){
        
         $AuthUser = AuthUserFactory::getAuthUser();
+          
+         $data['image'] = $this->handleUpload($this->request , $this->fileService , null , 'events');
+         $this->eventReboInterface->addEvent($data , $AuthUser);
 
-        return $this->eventReboInterface->addEvent($data , $AuthUser);
+        if ($this->getGuard() == self::AdminGuard) {
+            toastr('event created successfully' , 'success');
+            return $this->responseRoute("admin-events");
+            
+       }
+
+          toastr('event created successfully' , 'success');     
+          return $this->responseRoute("school-my-events");
+    }
+
+
+    public function update($data){
+            
+       $event = $this->eventReboInterface->find($data['id']);
+
+
+        $data['image'] = $this->handleUpload($this->request , $this->fileService , $event , 'events');
+             
+         
+        $this->eventReboInterface->updateEvent($data , $event);
+
+
+        if ($this->getGuard() == self::AdminGuard) {
+    
+            toastr("event updated successfully" , "info" , "Event update");
+             return $this->responseRoute("admin-events");
+             
+        }
+
+        toastr("event updated successfully" , "info" , "Event update");
+        return $this->responseRoute('school-my-events');
+           
+             
+    }
+
+
+
+
+    public function getEvent($eventId){
+
+
+        return $this->eventReboInterface->find($eventId);
+
+    }
+    
+    
+
+
+
+    public function setRequest($request){
+
+        $this->request = $request;
     }
 
     public function bookSeat($eventId){
@@ -63,7 +131,10 @@ class Event{
 
     public function cancelEvent($eventId){
         
-         $this->eventReboInterface->updateEvent(['id' =>$eventId , 'status' => 'Cancelled']);
+        
+        $event = $this->eventReboInterface->find($eventId);
+           
+         $this->eventReboInterface->updateEvent(['status' => 'Cancelled'] , $event);
 
          $subscribers = $this->getSubscribers($eventId);
 
@@ -84,6 +155,13 @@ class Event{
     }
 
 
+    private function getGuard(){
+
+
+        return AuthUserFactory::geGuard();
+    }
+
+
     private function  notifySubscibers($subscribers){
  
         if (count($subscribers) > 0) {
@@ -93,7 +171,16 @@ class Event{
 
     }
 
+    private function responseView($view){
+            
+        return view($view);
+    }
 
+   
+     private function responseRoute($route){
+            
+         return redirect()->route($route);
+     }
     
 
 

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\City;
 use Illuminate\Support\Facades\App;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Model;

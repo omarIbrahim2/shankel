@@ -10,7 +10,7 @@ class LocationRepository implements LocationRepoInterface{
 
   public function getCities()
   {
-     $cities = City::select("id" , "name")->get();
+     $cities = City::select("id" , "name")->with(['areas:id,name'])->get();
 
      return $cities;
   }
