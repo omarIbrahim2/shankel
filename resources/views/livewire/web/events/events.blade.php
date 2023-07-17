@@ -129,11 +129,11 @@
             </div>
         @endforeach
 
-        <div class="pagination">
+        {{-- <div class="pagination">
             @if ($Events->links('livewire.web-pagination'))
                 {{ $Events->links('livewire.web-pagination') }}
             @endif
-        </div>
+        </div> --}}
     </div>
 
 

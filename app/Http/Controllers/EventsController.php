@@ -28,13 +28,21 @@ class EventsController extends Controller
 
 
     public function index(){
-        return view("web.events.events");
+        $userid  = AuthUserFactory::getAuthUserId();
+        $guard = AuthUserFactory::geGuard();
+        $FilteredEvents = $this->eventRepo->getEventsWeb($userid, $guard);
+
+        if ($FilteredEvents == null) {
+            $Events = $this->eventRepo->getEventsguest(2);
+        } else {
+            $Events = Event::paginate($FilteredEvents, 2);
+        }
+
+        return view("web.events.events")->with(['Events' => $Events ]);
     }
 
-    public function showEvent($eventId){
-                
+    public function showEvent($eventId){            
         $event = $this->eventRepo->find($eventId);
-
     }
 
 

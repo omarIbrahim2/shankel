@@ -24,6 +24,10 @@
             </div>
 
             @livewire('web.events.events')
+
+            <div class="pagination">
+                {{ $Events->links('web.inc.pagination') }}
+            </div>
         </div>
     </div>
 </section>

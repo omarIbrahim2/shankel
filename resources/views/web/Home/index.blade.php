@@ -107,7 +107,7 @@ Shankal | Home
                         <div class="teacher-service card supplier_service_card">
                             <img class="card-img-top" src="{{asset($service->image)}}" alt="service">
                             <div class="card-body">
-                                <p class="card-text">{{$service->name}}</p>
+                                <p class="card-text">{{$service->name()}}</p>
                                 <p class="card-title fw-bold">{{$service->price}} JOD</p>
                             </div>
                             <div class="avatar-btns">
@@ -174,7 +174,7 @@ Shankal | Home
                                                 <img src="{{asset($school->image)}}" alt="school">
                                             </div>
                                             <div class="area-school-name search-label">
-                                                <h4>{{$school->name}}</h4>
+                                                <h4>{{$school->name()}}</h4>
                                                 <p class=" text-primary">{{$school->type}}</p>
                                             </div>
                                         </div>
