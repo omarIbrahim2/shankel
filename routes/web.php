@@ -10,8 +10,10 @@ use App\Http\Controllers\InfoController;
 use App\Http\Controllers\LangController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdvertController;
+use App\Http\Controllers\EduSystemController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\GalleryConroller;
+use App\Http\Controllers\GradeController;
 use App\Http\Controllers\ParentController;
 use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\SchoolController;
@@ -329,8 +331,25 @@ Route::middleware('lang')->group(function(){
         Route::post('areas/store' , [LocationCcontroller::class , 'storeArea'])->name('area-create');
         Route::post('areas/update' , [LocationCcontroller::class , 'editArea'])->name('area-update');
 
-        //Gallery
+        //Grades
 
+        Route::get('grades' , [GradeController::class , 'grades'])->name('grades');
+        Route::get('grades/create' , [GradeController::class , 'create'])->name('grades-create-form');
+        Route::get('grades/edit/{gradeId}' , [GradeController::class , 'update'])->name('grades-update-form');
+        Route::get('grade/delete/{gradeId}' , [GradeController::class , 'delete'])->name('grade-delete');
+        Route::post('grades/store' , [GradeController::class , 'store'])->name('grade-create');
+        Route::post('grades/update' , [GradeController::class , 'edit'])->name('grade-update');
+
+        //Grades
+
+        Route::get('Education-Systems' , [EduSystemController::class , 'eduSystems'])->name('eduSystems');
+        Route::get('Education-Systems/create' , [EduSystemController::class , 'create'])->name('eduSystems-create-form');
+        Route::get('Education-Systems/edit/{eduSystemId}' , [EduSystemController::class , 'update'])->name('eduSystems-update-form');
+        Route::get('Education-System/delete/{eduSystemId}' , [EduSystemController::class , 'delete'])->name('eduSystem-delete');
+        Route::post('Education-Systems/store' , [EduSystemController::class , 'store'])->name('eduSystem-create');
+        Route::post('Education-Systems/update' , [EduSystemController::class , 'edit'])->name('eduSystem-update');
+
+        //Gallery
 
         Route::get('gallery' , [GalleryConroller::class , 'index'])->name('gallery');
         Route::get('gallery/create' , [GalleryConroller::class , 'create'])->name('gallery-create-form');

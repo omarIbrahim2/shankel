@@ -94,32 +94,27 @@ class LocationCcontroller extends Controller
 
         $City = City::findOrFail($cityId);
 
-           try {
+        try {
             $action = $City->delete();
 
             toastr("City deleted successfully", 'success', "delete City");
 
             return back();
-
-
-           } catch (\Throwable $th) {
+        } catch (\Throwable $th) {
             toastr("error in deleting You must delete areas first", 'error');
 
             return back();
-           }
-          
-
-         
-        
+        }
     }
 
 
-    public function showCityAreas($cityId){
-      
-    
+    public function showCityAreas($cityId)
+    {
+
+
         return view('admin.locations.areas')->with([
             'CityId' => $cityId,
-         ]);
+        ]);
     }
 
     public function createArea($cityId)
@@ -134,7 +129,7 @@ class LocationCcontroller extends Controller
         $Area = Area::findOrFail($areaId);
 
         if ($Area) {
-            return view('admin.locations.updateArea')->with(['Area' => $Area , 'City' => $Area->city]);
+            return view('admin.locations.updateArea')->with(['Area' => $Area, 'City' => $Area->city]);
         }
 
         return back();
@@ -146,14 +141,14 @@ class LocationCcontroller extends Controller
         $validatedReq =  $request->validated();
 
         $data = $this->evaluateData($validatedReq);
-        
+
 
         $Area = Area::create($data);
 
 
         if ($Area) {
             toastr('Area created successfully', 'success', 'create Area');
-            return redirect()->route('city-show-areas' , $Area->city->id);
+            return redirect()->route('city-show-areas', $Area->city->id);
         }
 
 
@@ -176,7 +171,7 @@ class LocationCcontroller extends Controller
         if ($action) {
             toastr('Area Updated successfully', 'success', 'update Area');
 
-            return redirect()->route('city-show-areas' , $Area->city->id);
+            return redirect()->route('city-show-areas', $Area->city->id);
         }
 
 
@@ -188,22 +183,16 @@ class LocationCcontroller extends Controller
 
         $Area = Area::findOrFail($areaId);
 
-            try {
-                $action = $Area->delete();
-                toastr("Area deleted successfully", 'success', "delete Area");
+        try {
+            $action = $Area->delete();
+            toastr("Area deleted successfully", 'success', "delete Area");
 
-                return back();
-            } catch (\Throwable $th) {
-                toastr("error in deleting this area related to another data", 'error');
+            return back();
+        } catch (\Throwable $th) {
+            toastr("error in deleting this area related to another data", 'error');
 
-                return back();
-            }
-        
-         
-
-               
-           
-         
+            return back();
+        }
     }
 
     public function Areas($cityId)
