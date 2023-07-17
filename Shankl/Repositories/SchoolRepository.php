@@ -3,6 +3,7 @@
 namespace Shankl\Repositories;
 
 use App\Models\Child;
+use App\Models\Parentt;
 use App\Models\School;
 use App\Models\Supplier;
 use Illuminate\Support\Facades\Auth;
@@ -115,6 +116,13 @@ class SchoolRepository extends AbstractUserRepo implements UserReboInterface , C
         $SchoolUserId =  Auth::guard('school')->user()->id;
         $students = Child::with(['parentt','grade'])->where("school_id" , $SchoolUserId )->paginate($pages);
         return $students ;
+     }
+
+     public function getStudentsParents(){
+        $SchoolUserId =  Auth::guard('school')->user()->id;
+        $studentsParentsId = Child::with(['parentt','grade'])->where("school_id" , $SchoolUserId )->pluck('parentt_id')->toArray();
+        $Parents = Parentt::select('id')->whereIn('id',$studentsParentsId)->get();
+        return $Parents;
      }
 
      public function MostViewedSchools(){

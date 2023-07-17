@@ -137,4 +137,8 @@ class SchoolService extends Service
     {
         return $this->schoolRepo->getAllStudents($pages);
     }
+
+    public function studentsParents()  {
+        return $this->schoolRepo->getStudentsParents();
+    }
 }
