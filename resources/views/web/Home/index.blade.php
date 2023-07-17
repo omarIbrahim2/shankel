@@ -123,9 +123,9 @@ Shankal | Home
                                                     class="btn-custom">{{ trans('service.book') }}</button>
                                                 <div class="service-booking">
 
-                                                    <input id="" name="quantity" class="num_cart_item form-control"
-                                                        placeholder="0" type="number" min="0"
-                                                        max="{{ $service->quantity }}">
+                                                    <input  name="quantity" class="num_cart_item form-control"
+                                                        placeholder="0" type="number"
+                                                        >
                                                 </div>
 
 

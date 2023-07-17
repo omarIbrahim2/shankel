@@ -6,7 +6,7 @@ use Shankl\Interfaces\ServiceRepoInterface;
 
 class ServiceRepository implements ServiceRepoInterface{
 
-  
+
      public function create($data)
      {
          return Service::create($data);
@@ -14,15 +14,15 @@ class ServiceRepository implements ServiceRepoInterface{
 
 
      public function RecentServices(){
-       return Service::select('name' , 'price' , 'id' , 'image')->orderBy('created_at' , 'DESC')->limit(3)->get();
+       return Service::select('name' , 'price' , 'id' , 'image','quantity')->orderBy('created_at' , 'DESC')->limit(3)->get();
 
      }
 
 
      public function update($data , $service)
      {
-    
-         
+
+
        return $service->update($data);
 
      }
@@ -32,13 +32,13 @@ class ServiceRepository implements ServiceRepoInterface{
        $service = $this->find($serviceId);
 
        return $service->delete();
-        
+
      }
 
      public function getServices(){
-           
+
       return  Service::with(['supplier'] , function($query){
-          
+
         $query->select('name')->first();
        })->get();
 
@@ -48,6 +48,6 @@ class ServiceRepository implements ServiceRepoInterface{
 
         return  Service::findOrFail($serviceId);
      }
-   
+
 
 }
