@@ -208,6 +208,8 @@ Route::middleware('lang')->group(function(){
         Route::get("supplier-areaCenters" , [SupplierController::class , 'areaCenters'])->name('supplier-area-Centers');
         Route::get("supplier-areaKgs" , [SupplierController::class , 'areaKgs'])->name('supplier-area-Kgs');
         Route::get("supplier-areaTeachers" , [SupplierController::class , 'areaTeachers'])->name('supplier-area-Teachers');
+        Route::post('supplier-service-update' , [ServiceController::class , 'UpdateService'])->name('supplier-service-update');
+
         Route::delete('supplier-service-delete/{serviceId}' , [ServiceController::class , 'deleteService'])->name('supplier-service-delete');
 
     });

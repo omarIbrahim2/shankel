@@ -7,7 +7,7 @@ interface ServiceRepoInterface{
 
    public function create($data);
 
-   public function update($data);
+   public function update($data , $service);
 
    public function delete($serviceId);
 

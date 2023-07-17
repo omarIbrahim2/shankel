@@ -53,5 +53,8 @@ return [
     "chooseGrade" => "Choose Grade",
     "suppliers" => "Suppliers",
 
+    "supplierUpdateServ" => 'Update service',
+    
+
 
 ];

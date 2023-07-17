@@ -19,9 +19,9 @@ class ServiceRepository implements ServiceRepoInterface{
      }
 
 
-     public function update($data)
+     public function update($data , $service)
      {
-       $service = $this->find($data['id']);
+    
          
        return $service->update($data);
 

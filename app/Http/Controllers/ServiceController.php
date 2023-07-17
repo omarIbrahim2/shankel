@@ -87,30 +87,12 @@ class ServiceController extends Controller
     {
 
         $validatedReq = $request->validated();
-        $data = $this->evaluateData($validatedReq);
-        $data = $this->credientials($validatedReq, ['image']);
+       
+        $cred = $this->credientials($validatedReq, ['image']);
 
-        $serviceCurrentImage = $supplierService->getService($data['id'])->image;
+        $data = $this->evaluateData($cred);
 
-        $image = $supplierService->uploadServiceImage($request->image, $serviceCurrentImage);
-
-        if ($image != null) {
-
-            $data['image'] = $image;
-        }
-
-
-        $action = $supplierService->updateService($data);
-
-        if ($action) {
-
-            toastr("service updated successfully", "info", "Service update");
-
-            return redirect()->route('dashboard');
-        }
-
-        toastr("something wrong happened", "error", "Service update");
-        return redirect()->back();
+        return $supplierService->updateService($data , $request->file('image'));
     }
 
     private function credientials($validatedReq, $vals)

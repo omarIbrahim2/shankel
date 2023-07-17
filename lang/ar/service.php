@@ -10,9 +10,9 @@ return[
     'remove' => 'أزاله من السلة',
     'quantity' => 'الكمية',
 
-    "name_en" => "الإسم بالإنجليزيه",
-    "name_ar" => "الإسم بالعربية",
-    "desc_en" => "الوصف بالإنجليزيه",
-    "desc_ar" => "الوصف بالعربية",
+    "name_en" => "Name",
+    "name_ar" => "الإسم",
+    "desc_en" => "Description",
+    "desc_ar" => "الوصف",
 
 ];

@@ -34,15 +34,15 @@ class AddServiceForm extends Component
 
         $this->attributes = [
             'supplier_id' => $this->supplier_id,
-            "name" => [
+            "name" => json_encode( [
                 'en' => $this->name_en ,
                 'ar' => $this->name_ar 
-                ],
+                ]),
             'price' => $this->price,
-            "desc" => [
+            "desc" =>json_encode( [
                 'en' => $this->desc_en,
                 'ar' => $this->desc_ar,
-               ],
+               ]),
             'quantity' => $this->quantity, 
         ];
     }

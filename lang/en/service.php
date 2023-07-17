@@ -1,11 +1,9 @@
 <?php
 return[
-    "name" => "Name",
-    "name_en" => "English name",
-    "name_ar" => "Arabic name",
-    "desc" => "Description",
-    "desc_en" => "English Description",
-    "desc_ar" => "Arabic Description",
+    "name_en" => "Name",
+    "name_ar" => "الإسم",
+    "desc_en" => "Description",
+    "desc_ar" => "الوصف",
     "upload" => "Upload Image",
     "price" => "Price" ,
     "update" => "Update",

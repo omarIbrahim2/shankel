@@ -13,7 +13,7 @@
                     <label class='font-bold' class='font-bold' for="event-title">{{ trans('service.name_en') }}</label>
                     <input wire:model.defer="name_en" id="event-title" value="{{ old('name_en') }}" type="text"
                         class="form-control" placeholder="{{ trans('service.name_en') }}">
-                    @error('name')
+                    @error('name_en')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
 
@@ -25,7 +25,7 @@
                     <label class='font-bold' class='font-bold' for="event-title">{{ trans('service.name_ar') }}</label>
                     <input wire:model.defer="name_ar" id="event-title" value="{{ old('name_ar') }}" type="text"
                         class="form-control" placeholder="{{ trans('service.name_ar') }}">
-                    @error('name')
+                    @error('name_ar')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
 
@@ -36,7 +36,7 @@
                 <div class="form-group mb-4">
                     <label class='font-bold' for="event-title">{{ trans('service.quantity') }}</label>
                     <input wire:model.defer="quantity" id="event-title" value="{{ old('quantity') }}" type="number"
-                        class="form-control" placeholder="{{ trans('service.name') }}">
+                        class="form-control" placeholder="{{ trans('service.quantity') }}">
                     @error('quantity')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
@@ -57,7 +57,7 @@
             </div>
         </div>
 
-        <div class="upload-avatar text-start" data-upload-id="myFirstImage">
+        <div class="upload-avatar text-start">
             @if ($image != null)
                 <p>{{ $image->getClientOriginalName() }}</p>
             @endif
@@ -70,19 +70,19 @@
         </div>
 
         <div class="form-group mb-4">
-            <label class='font-bold' for="event-desc">{{ trans('service.desc_en') }}</label>
-            <textarea wire:model.defer="desc_en" id="event-desc" cols="30" placeholder="{{ trans('service.desc_en') }}"
+            <label class='font-bold' for="event-desc_en">{{ trans('service.desc_en') }}</label>
+            <textarea wire:model.defer="desc_en" id="event-desc-en" cols="30" placeholder="{{ trans('service.desc_en') }}"
                 rows="10" class="form-control ">{{ old('desc_en') }}</textarea>
-            @error('desc')
+            @error('desc_en')
                 <p class="text-danger">{{ $message }}</p>
             @enderror
         </div>
 
         <div class="form-group mb-4">
-            <label class='font-bold' for="event-desc">{{ trans('service.desc_ar') }}</label>
-            <textarea wire:model.defer="desc_ar" id="event-desc" cols="30" placeholder="{{ trans('service.desc_ar') }}"
+            <label class='font-bold' for="event-desc-ar">{{ trans('service.desc_ar') }}</label>
+            <textarea wire:model.defer="desc_ar" id="event-desc-ar" cols="30" placeholder="{{ trans('service.desc_ar') }}"
                 rows="10" class="form-control ">{{ old('desc_ar') }}</textarea>
-            @error('desc')
+            @error('desc_ar')
                 <p class="text-danger">{{ $message }}</p>
             @enderror
         </div>

@@ -2,6 +2,7 @@
 
 namespace Shankl\Services;
 
+use Shankl\Factories\AuthUserFactory;
 use Shankl\Repositories\CommentRepo;
 use Shankl\Interfaces\ServiceRepoInterface;
 use Shankl\Repositories\SupplierRepository;
@@ -94,9 +95,24 @@ class SupplierService extends Service{
         return $this->ServiceRebo->create($data);
     }
 
-    public function updateService($data){
+    public function updateService($data , $file){
+             
+        $service = $this->ServiceRebo->find($data['id']);
 
-        return $this->ServiceRebo->update($data);
+       $data['image'] = $this->uploadServiceImage($file , $service->image);
+
+         $this->ServiceRebo->update($data , $service);
+
+         if (AuthUserFactory::geGuard() == 'web') {
+              
+            toastr("service updated successfully", "info", "Service update");
+
+            return redirect()->route('dashboard');
+         }
+
+         toastr("service updated successfully", "info", "Service update");
+           dd("dlsd");
+         return redirect()->route('supplier-services');
     }
 
     public function uploadServiceImage($uploadedImage , $currentImage){

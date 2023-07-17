@@ -50,6 +50,8 @@ return[
     "bookFees" => "ضريبة الحجز",
     "Payment" => "الدفع",
     "chooseGrade" => "إختر السنه الدراسية",
-    "suppliers" => "الموردين"
+    "suppliers" => "الموردين",
+
+    "supplierUpdateServ" => 'تعديل الخدمة',
 
 ];

@@ -18,3 +18,27 @@
 
 @endsection
 
+@section('scripts')
+    
+<script>
+       
+    ClassicEditor
+    .create(document.querySelector( '#event-desc-ar' ) , {
+        language: 'ar'
+    })
+     
+    .catch(error=>{
+       console.error( error );
+    })
+</script> 
+
+ <script>
+    ClassicEditor
+    .create(document.querySelector( '#event-desc-en' ))
+    .catch(error2=>{
+      
+    })
+</script>
+ 
+@endsection
+
