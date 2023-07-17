@@ -90,9 +90,22 @@ class SupplierService extends Service{
          return $this->supplierRebo->SupplierServices($supplierId , $pages);
     }
 
-    public function createService($data){
+    public function createService($data , $file){
+          
+        $data['image'] = $this->uploadServiceImage($file , null);
+        
+         $this->ServiceRebo->create($data);
+          if (AuthUserFactory::geGuard() == 'web') {
+               
+            toastr("service created successfully", "success");
 
-        return $this->ServiceRebo->create($data);
+            return redirect()->route("Services", $data['supplier_id']);
+          }
+          
+          toastr("service created successfully", "success");
+
+          return redirect()->route("supplier-services");
+
     }
 
     public function updateService($data , $file){
@@ -111,7 +124,7 @@ class SupplierService extends Service{
          }
 
          toastr("service updated successfully", "info", "Service update");
-           dd("dlsd");
+
          return redirect()->route('supplier-services');
     }
 

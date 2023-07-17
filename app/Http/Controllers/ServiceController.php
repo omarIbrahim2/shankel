@@ -8,6 +8,7 @@ use Shankl\Services\FileService;
 use App\Http\Requests\ServiceAddReq;
 use Shankl\Services\SupplierService;
 use App\Http\Requests\ServiceUpdateReq;
+use Shankl\Factories\AuthUserFactory;
 
 class ServiceController extends Controller
 {
@@ -41,46 +42,38 @@ class ServiceController extends Controller
 
     public function serviceCreateView($supplierId)
     {
+          
+        if (AuthUserFactory::geGuard() == 'web') {
+            return view("admin.services.create")->with(["supplierId" => $supplierId]);
+        }
 
-        return view("admin.services.create")->with(["supplierId" => $supplierId]);
+        return view("web.Suppliers.create")->with(['supplierId' => $supplierId]);
+       
     }
 
     public function serviceUpdateView($serviceId, $supplierId)
     {
         $Service = $this->supplierService->getService($serviceId);
+          
+        if (AuthUserFactory::geGuard() == 'web') {
+            return view("admin.services.update")->with(['Service' => $Service, "supplierId" => $supplierId]);
+        }
 
-        return view("admin.services.update")->with(['Service' => $Service, "supplierId" => $supplierId]);
+        return view('web.Suppliers.edit')->with(['Service' => $Service , 'supplierId' => $supplierId]);
+       
     }
 
     public function CreateService(ServiceAddReq $request, FileService $fileService)
     {
 
-        $validatedreq =  $request->validated();
-        $data = $this->evaluateData($validatedreq );
-        $data = $this->credientials($validatedreq, ['image']);
+        $validatedReq = $request->validated();
+       
+        $cred = $this->credientials($validatedReq, ['image']);
 
-
-        if ($request->has('image')) {
-
-            $fileService->setPath('services');
-
-            $fileService->setFile($request->image);
-
-
-            $data['image'] = $fileService->uploadFile();
-        }
-
-        $service = $this->supplierService->CreateService($data);
-
-        if ($service) {
-            toastr("service created successfully", "success");
-
-            return redirect()->route("Services", $data['supplier_id']);
-        }
-
-        toastr("error in creating", "error");
-
-        return redirect()->route("Services", $data['supplier_id']);
+        $data = $this->evaluateData($cred);
+        
+        return $this->supplierService->CreateService($data , $request->file('image'));
+        
     }
 
     public function UpdateService(ServiceUpdateReq $request, SupplierService $supplierService)
@@ -109,6 +102,11 @@ class ServiceController extends Controller
 
             $data['id'] = $request['id'];
         }
+
+        if (array_key_exists('supplier_id', $request)) {
+
+            $data['supplier_id'] = $request['supplier_id'];
+        }
         $data['name'] = json_encode([
             'en' => $request['name_en'],
             'ar' => $request['name_ar'],
@@ -118,6 +116,10 @@ class ServiceController extends Controller
             'en' => $request['desc_en'],
             'ar' => $request['desc_ar'],
         ]);
+
+        $data['price'] = $request['price'];
+
+        $data['quantity'] = $request['quantity'];
 
 
         return $data;

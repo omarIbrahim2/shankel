@@ -32,8 +32,8 @@
                                 {{ $message }}
                             @enderror
                             <div class="upload-avatar">
-                                <button type="button" class="btn-custom" data-bs-toggle="modal"
-                                    data-bs-target="#supplierAlbum">{{ trans('supplier.addService') }}</button>
+                                <a href="{{route('supplier-service-create' , $AuthUser->id)}}" class="btn-custom"
+                                >{{ trans('supplier.addService') }}</a>
                             </div>
                         </div>
                     </div>
@@ -159,21 +159,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-        {{-- supplier photos album --}}
-        <!-- Modal -->
-        <div class="modal fade" id="supplierAlbum" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header mb-5">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">{{ trans('supplier.addService') }}</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    @livewire('supplier.add-service-form')
-                </div>
-            </div>
-        </div>
+        </div>       
     </div>
 </div>
 </div>

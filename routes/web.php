@@ -210,6 +210,10 @@ Route::middleware('lang')->group(function(){
         Route::get("supplier-areaCenters" , [SupplierController::class , 'areaCenters'])->name('supplier-area-Centers');
         Route::get("supplier-areaKgs" , [SupplierController::class , 'areaKgs'])->name('supplier-area-Kgs');
         Route::get("supplier-areaTeachers" , [SupplierController::class , 'areaTeachers'])->name('supplier-area-Teachers');
+        Route::get('supplieres-service-create/{id}' , [ServiceController::class , 'ServiceCreateView'])->name('supplier-service-create');
+        Route::get('supplieres-service-create/{serviceId}/{supplierId}' , [ServiceController::class , 'ServiceUpdateView'])->name('supplier-service-edit');
+
+        Route::post('supplier-service-store' , [ServiceController::class , 'CreateService'])->name('supplier-service-store');        
         Route::post('supplier-service-update' , [ServiceController::class , 'UpdateService'])->name('supplier-service-update');
 
         Route::delete('supplier-service-delete/{serviceId}' , [ServiceController::class , 'deleteService'])->name('supplier-service-delete');
