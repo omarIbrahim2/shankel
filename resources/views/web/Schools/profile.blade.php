@@ -140,13 +140,13 @@
                                 <div class="col-md-4 col-12">
                                     <div class="counter-item text-center">
                                         <h4>{{ trans('school.parents') }}</h4>
-                                        <p>0</p>
+                                        <p>{{ count($studentsParents) }}</p>
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-12">
                                     <div class="counter-item text-center">
                                         <h4>{{ trans('school.students') }}</h4>
-                                        <p>0</p>
+                                        <p>{{ count($students) }}</p>
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-12">

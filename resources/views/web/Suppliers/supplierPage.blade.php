@@ -34,7 +34,7 @@
                                             </div>
                                             <div class="avatar-data">
                                                 <h4>
-                                                    <a href="#">{{ $Supplier->name }}</a>
+                                                    <a href="#">{{ $Supplier->name() }}</a>
                                                 </h4>
                                             </div>
                                         </div>
@@ -51,14 +51,14 @@
                                         <div class="sub-title sec-sub-title teach-title">
                                             <h3>{{ trans('supplier.type') }}</h3>
                                         </div>
-                                        <p >{{ $Supplier->type }}</p>
+                                        <p >{{ $Supplier->type() }}</p>
                                     </div>
 
                                     <div class="add-video">
                                         <div class="sub-title sec-sub-title teach-title">
                                             <h3>{{ trans('supplier.orgName') }}</h3>
                                         </div>
-                                        <a >{{ $Supplier->orgName }}</a>
+                                        <a >{{ $Supplier->orgName() }}</a>
                                     </div>
 
                                 </div>
@@ -71,7 +71,7 @@
                                             <div class="teacher-service card supplier_service_card">
                                                 <img class="card-img-top" src="{{ asset($service->image) }}" alt="service">
                                                 <div class="card-body">
-                                                <p class="card-text">{{ $service->name }}</p>
+                                                <p class="card-text">{{ $service->name() }}</p>
                                                 <p class="card-title fw-bold">{{ $service->price }} JOD</p>
                                                 </div>
                                                 <div class="avatar-btns">

@@ -11,6 +11,7 @@ use Shankl\Services\SchoolService;
 use Illuminate\Support\Facades\Config;
 use Shankl\Interfaces\GradeRepoInterface;
 use App\Http\Requests\CommentUpdateRequest;
+use PHPUnit\Framework\Constraint\Count;
 use Shankl\Interfaces\LocationRepoInterface;
 use Shankl\Interfaces\EduSystemRepoInterface;
 use Shankl\Services\AdminService;
@@ -56,6 +57,8 @@ class SchoolController extends Controller
     } else {
       $data['slider'] = $sliders->random();
     }
+    $data['students'] = $this->schoolService->AllStudents(5);
+    $data['studentsParents'] =$this->schoolService->studentsParents();
     return view("web.Schools.profile")->with($data);
   }
 

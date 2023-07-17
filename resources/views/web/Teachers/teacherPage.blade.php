@@ -34,9 +34,9 @@
                                             </div>
                                             <div class="avatar-data">
                                                 <h4>
-                                                    <a href="#">{{ $teacher->name }}</a>
+                                                    <a href="#">{{ $teacher->name() }}</a>
                                                 </h4>
-                                                <p>{{ $teacher->field }}</p>
+                                                <p>{{ $teacher->field() }}</p>
                                             </div>
                                         </div>
                                         <div class="avatar-btns">
@@ -104,7 +104,7 @@
                                         <div class=" col-md-6 col-12">
                                             <div class="teacher-service">
                                                 <img src="{{ asset($lesson->image) }}" alt="service">
-                                                <h4>{{ $lesson->title }}</h4>
+                                                <h4>{{ $lesson->title() }}</h4>
                                                 <p>{{ $lesson->type }}</p>
                                                 @if ($lesson->type == 'Public')
                                                     <a href="{{ $lesson->url }}" target="_blank" class="btn-custom">{{ trans('teacher.watchNow') }}</a>

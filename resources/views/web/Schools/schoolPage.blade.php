@@ -25,7 +25,7 @@
                   <a class="btn btn-primary" href="{{route('register-form-school' , $School->id)}}">{{ trans('school.bookSeat') }}</a>
                 @endauth
                 <div class="section-title">
-                    <h2 class="image-content">{{$School->name}}</h2>
+                    <h2 class="image-content">{{$School->name()}}</h2>
                 </div>
                 <div class="section-content">
                     <div class="row">
@@ -72,11 +72,11 @@
                         </div>
                         <div class="col-lg-5 col-md-6 col-12">
                             <div class="detials-title">
-                                <h3>{{$School->name}}</h3>
+                                <h3>{{$School->name()}}</h3>
                             </div>
                             <div class="detials-descriton">
                                 <p>
-                                    {{$School->desc}}
+                                    {{$School->desc()}}
                                 </p>
                             </div>
                             <div class="detials-items">
@@ -136,13 +136,13 @@
                     <div class="mission-vision">
                         <h3>{{ trans('school.mission') }}:</h3>
                         <p>
-                            {{$School->mission == null ? "" : $School->mission}}
+                            {{$School->mission == null ? "" : $School->mission()}}
                         </p>
                     </div>
                     <div class="mission-vision">
                         <h3>{{ trans('school.vision') }}:</h3>
                         <p>
-                            {{$School->vision == null ? "" : $School->vision}}
+                            {{$School->vision == null ? "" : $School->vision()}}
                         </p>
                     </div>
                 </div>
