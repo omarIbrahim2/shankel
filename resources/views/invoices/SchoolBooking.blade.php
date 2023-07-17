@@ -6,7 +6,7 @@
 <section class="container">
 <header class="top-bar align-center">
   <div class="top-bar-title">
-    <h4>   <small>{{ $school->name }}</small> تم حجز مقعد في مدرسة</h4>
+    <h4>   <small>......</small> تم حجز مقعد في مدرسة</h4>
   </div>
 </header>
 <div class="row expanded">
@@ -28,12 +28,12 @@
           </tr>
           <tr class="intro">
             <td class="">
-               {{ $parent->name }} مرحبا<br>
-                {{ $school->name }} نود ابلاغك بان تم حجز مقعد لطفلك بنجاح في مدرسة
+              ....مرحبا<br>
+                .....نود ابلاغك بان تم حجز مقعد لطفلك بنجاح في مدرسة
             </td>
             <td class="text-right">
-              <span class="num"> {{ $order->order_code }} كود الحجز :</span><br>
-              {{ $order->created_at }}
+              <span class="num"> ...... كود الحجز :</span><br>
+              ......
             </td>
           </tr>
 

@@ -44,6 +44,17 @@ Route::middleware('lang')->group(function(){
     // Areas Api
     Route::get('api/cities/{cityid}' , [LocationCcontroller::class , "Areas"])->name("areas");
 
+
+
+    Route::get('school-invoice-test' , function ()  {
+        return view("invoices.SchoolBooking");
+    });
+
+
+    Route::get('service-invoice-test' , function(){
+
+        return view('invoices.Ordering');
+    });
     //Forget Password
 
     //parent Forget Password

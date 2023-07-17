@@ -27,12 +27,12 @@
           </tr>
           <tr class="intro">
             <td class="">
-               {{ $user->name }} اهلا <br>
+               .... اهلا <br>
               شكرا لطلبك من شنكل
             </td>
             <td class="text-right">
-              <span class="num">{{ $order->barcode }} كود الطلب</span><br>
-              {{ $order->created_at }}
+              <span class="num">..... كود الطلب</span><br>
+            ........
             </td>
           </tr>
           <tr class="details">
@@ -48,15 +48,15 @@
                 </thead>
                 <tbody>
 
-                  @foreach ($services as $service)
+                  {{-- @foreach ($services as $service) --}}
 
                   <tr class="item">
-                    <td class="desc">{{ $service->name }}</td>
-                    <td class="desc">{{ $service->desc }}</td>
-                    <td class="qty">{{ $service->pivot->quantity }}</td>
-                    <td class="amt">{{ $service->price }} JOD</td>
+                    <td class="desc">.....</td>
+                    <td class="desc">......</td>
+                    <td class="qty">.......</td>
+                    <td class="amt">4394 JOD</td>
                   </tr>
-                  @endforeach
+                  {{-- @endforeach --}}
                 </tbody>
               </table>
             </td>
@@ -68,7 +68,7 @@
 
                 <tr class="total">
                   <td>Total</td>
-                  <td>{{ $order->total_price }} JOD</td>
+                  <td>...... JOD</td>
                 </tr>
               </table>
             </td>

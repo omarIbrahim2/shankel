@@ -4,13 +4,15 @@ namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
 
-use App\Models\comment;
 use App\Models\User;
+use App\Models\comment;
+use App\Models\Service;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Blade;
-use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Blade;
+use Shankl\Factories\AuthUserFactory;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -98,6 +100,35 @@ class AuthServiceProvider extends ServiceProvider
 
              return false; 
         });
+
+
+        Gate::define('update-service' , function($user , Service $service){
+            if (AuthUserFactory::geGuard() == 'web') {
+                 return true;
+            }
+            if ($user->id == $service->supplier_id) {
+                return true;
+            }
+
+            return false;
+        });
+
+
+        Gate::define('delete-service' , function($user , Service $service){
+               
+            if (AuthUserFactory::geGuard() == 'web') {
+                return true;
+           }
+           if ($user->id == $service->supplier_id) {
+               return true;
+           }
+
+           return false;
+
+        });
+
+
+       
 
 
      
