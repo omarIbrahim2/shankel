@@ -12,3 +12,23 @@
 
 @endsection
 
+@section('scripts')
+<script>
+       
+   ClassicEditor
+   .create(document.querySelector( '#addvert-desc-ar' ) , {
+       language: 'ar'
+   })
+    
+   .catch(error=>{
+      console.error( error );
+   })
+</script> 
+
+<script>
+   ClassicEditor
+   .create(document.querySelector( '#addvert-desc-en' ))
+   .catch(error2=>{
+      console.error( error );
+   })
+@endsection

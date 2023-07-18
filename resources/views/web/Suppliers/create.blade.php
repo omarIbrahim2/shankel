@@ -184,7 +184,7 @@
     ClassicEditor
     .create(document.querySelector( '#event-desc-en' ))
     .catch(error2=>{
-      
+        console.error( error );
     })
 </script>
 

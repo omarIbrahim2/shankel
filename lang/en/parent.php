@@ -1,4 +1,4 @@
-<?php
+    <?php
 return[
     "name" => "Name",
     "email" => "Email",
@@ -29,5 +29,5 @@ return[
     "grade" => "Grade",
     "eSystems" => "Education System",
     'addChild' => 'Add Child',
-    
+
 ];

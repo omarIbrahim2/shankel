@@ -39,8 +39,8 @@
     </div>
 
     <div class="form-group mb-4">
-        <label for="event-desc">{{ trans('service.desc_en') }}</label>
-        <textarea name="desc_en" id="event-desc" cols="30" placeholder="{{ trans('service.desc_en') }}" rows="10"
+        <label for="service.desc_en">{{ trans('service.desc_en') }}</label>
+        <textarea name="desc_en" id="service.desc_en" cols="30" placeholder="{{ trans('service.desc_en') }}" rows="10"
             class="form-control ">{{ $Service == null ? '' : $Service->desc('en') }}</textarea>
         @error('desc')
             <p class="text-danger">{{ $message }}</p>
@@ -48,8 +48,8 @@
     </div>
 
     <div class="form-group mb-4">
-        <label for="event-desc">{{ trans('service.desc_ar') }}</label>
-        <textarea name="desc_ar" id="event-desc" cols="30" placeholder="{{ trans('service.desc_ar') }}" rows="10"
+        <label for="service.desc_ar">{{ trans('service.desc_ar') }}</label>
+        <textarea name="desc_ar" id="service.desc_ar" cols="30" placeholder="{{ trans('service.desc_ar') }}" rows="10"
             class="form-control ">{{ $Service == null ? '' : $Service->desc('ar') }}</textarea>
         @error('desc')
             <p class="text-danger">{{ $message }}</p>

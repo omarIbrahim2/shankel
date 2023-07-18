@@ -67,7 +67,7 @@
 
     <div class="form-group mb-4">
         <label for="event-title">العنوان</label>
-        <input name="address_en" id="event-title" value="{{$Social == null ? old('address_en'):$Social->address('en')}}" type="text" class="form-control"  placeholder="العنوان">
+        <input name="address_ar" id="event-title" value="{{$Social == null ? old('address_ar'):$Social->address('ar')}}" type="text" class="form-control"  placeholder="العنوان">
         @error('address')
             <p class="text-danger">{{$message}}</p>
         @enderror
