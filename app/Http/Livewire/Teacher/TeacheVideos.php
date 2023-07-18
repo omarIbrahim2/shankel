@@ -12,7 +12,7 @@ class TeacheVideos extends Component
 
     use WithFileUploads;
     
-    protected $rules = ['url' => 'required|url' , 'title' => 'required|string|min:3' , 'image' => 'required|image|mimes:png,jpg,webp,jpeg|max:2048'];
+    protected $rules = ['url' => 'required|url' , 'title_en' => 'required|string|min:3','title_ar' => 'required|string|min:3' , 'image' => 'required|image|mimes:png,jpg,webp,jpeg|max:2048'];
 
     public $url , $title_en, $title_ar , $image;
          
@@ -42,10 +42,10 @@ class TeacheVideos extends Component
         $this->attributes = [
             "url" => $this->url,
             "teacher_id" => $this->AuthUserId,
-            'title' => [
+            'title' => json_encode([
                 'en' => $this->title_en,
                 'ar' => $this->title_ar
-            ],
+            ]),
         ];
 
         
@@ -78,18 +78,5 @@ class TeacheVideos extends Component
 
     }
 
-    private function evaluateData($request)
-    {
-        $data = array();
-        if (array_key_exists('id', $request)) {
-
-            $data['id'] = $request['id'];
-        }
-        $data['title'] = json_encode([
-            'en' => $request['title_en'],
-            'ar' => $request['title_ar'],
-        ]);
-        return $data;
-    }
 
 }

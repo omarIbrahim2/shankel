@@ -36,7 +36,7 @@ a<section class="section">
                                             </form>
                                         </div>
                                         <button type="button" class="get btn btn-warning" data-id="{{ $lesson->id }}"
-                                            data-title="{{ $lesson->title }}" data-url="{{ $lesson->url }}"
+                                           data-title-ar="{{$lesson->title('ar')}}"  data-title-en="{{ $lesson->title('en')}}" data-url="{{ $lesson->url }}"
                                             data-bs-toggle="modal"
                                             data-bs-target="#teacherVideos">{{ trans('teacher.update') }}</button>
                                     </div>
@@ -104,14 +104,16 @@ a<section class="section">
                                     </div>
 
                                     <div class="upload-avatar text-start" data-upload-id="myFirstImage">
-                                        <label for="eventImage" class="btn-custom">{{ trans('teacher.uploadNew') }}
+                                        <label for="lessonImage" class="btn-custom">{{ trans('teacher.uploadNew') }}
                                         </label>
-                                        <input name="image" class="form-control py-2" id="eventImage" type="file"
+                                        <p id="imgName"></p>
+                                        <input name="image" class="form-control py-2" id="lessonImage" type="file"
                                             accept="image/*">
 
                                         @error('image')
                                             <p class="text-danger">{{ $message }}</p>
                                         @enderror
+                                         <img src="{{asset($lesson->image)}}" style="width: 50px" alt="lesson pic">
                                     </div>
                                     <div class="input-item me-auto ms-0">
                                         <button type="submit" class="custom-out-btn">

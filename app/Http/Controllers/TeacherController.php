@@ -151,6 +151,8 @@ class TeacherController extends Controller
       'en' => $request['title_en'],
       'ar' => $request['title_ar'],
     ]);
+
+    $data['url'] = $request['url'];
     return $data;
   }
 
@@ -158,17 +160,9 @@ class TeacherController extends Controller
   {
 
     $validatedReq = $request->validated();
-    $data = $this->evaluateData($validatedReq);
-
-    $lesson = Lesson::findOrFail($data['id']);
-
-    $lessonImagePath = $this->handleUpload($request, $fileService, $lesson, 'lessons');
-
-    if ($lessonImagePath != null) {
-      $data['image'] = $lessonImagePath;
-    }
-
-    $this->teacherService->updateLesson($lesson, $data);
+    $data = $this->evaluateLessonData($validatedReq);
+    
+    $this->teacherService->updateLesson($data , $request->file('image'));
 
     toastr("lesson updated successfully", 'success');
 

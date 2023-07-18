@@ -7,7 +7,7 @@
             <span>
                 <i class="fa-solid fa-person-chalkboard"></i>
             </span>
-            @error('title')
+            @error('title_en')
             <p class="text-danger">{{$message}}</p>
             @enderror
         </div>
@@ -17,7 +17,7 @@
             <span>
                 <i class="fa-solid fa-person-chalkboard"></i>
             </span>
-            @error('title')
+            @error('title_ar')
             <p class="text-danger">{{$message}}</p>
             @enderror
         </div>
@@ -33,6 +33,10 @@
         </div>
      
             <div class="upload-avatar text-start" data-upload-id="myFirstImage">
+
+                @if ($image)
+                <p>{{$image->getClientOriginalName()}}</p>  
+                @endif
                 <label for="eventImage" class="btn-custom">{{ trans('teacher.uploadNew') }} </label>
                 <input wire:model.defer="image" class="form-control py-2" id="eventImage" type="file"  accept="image/*">
     

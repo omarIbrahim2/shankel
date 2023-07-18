@@ -36,5 +36,14 @@
      })
 
 </script>
+
+<script>
+
+$('#lessonImage').change(function() {
+
+var file = $('#lessonImage')[0].files[0].name;
+$("#imgName").text(file);
+ });
+</script>
     
 @endsection

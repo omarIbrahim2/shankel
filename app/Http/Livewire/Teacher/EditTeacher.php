@@ -50,12 +50,12 @@ class EditTeacher extends Component
 
     public function intialize(){
         $this->teacherid = $this->authUser->id;
-        $this->name_en = $this->authUser->name_en;
-        $this->name_ar = $this->authUser->name_ar;
+        $this->name_en = $this->authUser->name('en');
+        $this->name_ar = $this->authUser->name('ar');
         $this->email = $this->authUser->email;
         $this->phone = $this->authUser->phone;
-        $this->field_en = $this->authUser->field_en;
-        $this->field_ar = $this->authUser->field_ar;
+        $this->field_en = $this->authUser->field('en');
+        $this->field_ar = $this->authUser->field('ar');
         $this->profilePic = $this->authUser->image;
         $this->facebook = $this->authUser->facebook;
         $this->twitter = $this->authUser->twitter;

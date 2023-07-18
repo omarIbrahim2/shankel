@@ -15,6 +15,7 @@ class TeacherService extends Service{
     private $fileservice;
 
     private static $defaultProfilePath = "assets/images/logo/user.png";
+    private static $defaultLessonPathPic = "assets/images/teachers/5.webp";
 
     private $EventRepo;
 
@@ -80,7 +81,7 @@ class TeacherService extends Service{
             return null;
         }
 
-        if ($UsercurrentFile != null) {
+        if ($UsercurrentFile != self::$defaultLessonPathPic) {
             $deletedFile = substr($UsercurrentFile , 8);
 
             $this->fileservice->DeleteFile($deletedFile);
@@ -147,8 +148,15 @@ class TeacherService extends Service{
 
     }
 
-    public function updateLesson($lesson , $data){
+    public function updateLesson($data , $file){
 
+
+            
+        $lesson = $this->teacherRebo->getLesson($data['id']);
+
+        
+
+        $data['image'] = $this->handleUploadLessonPic($file , $lesson->image);
         return  $this->teacherRebo->updateLesson($lesson , $data);
          
         

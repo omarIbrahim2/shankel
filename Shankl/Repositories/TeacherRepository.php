@@ -29,6 +29,12 @@ class TeacherRepository extends AbstractUserRepo implements UserReboInterface , 
         return $teacher;
     }
 
+
+    public function getLesson($lessonId){
+
+        return Lesson::findOrFail($lessonId);
+    }
+
    public function AddLesson($data){
 
       return Lesson::create($data);
@@ -50,7 +56,7 @@ class TeacherRepository extends AbstractUserRepo implements UserReboInterface , 
    public function updateLesson($lesson , $data){
       
 
-    return   $lesson->update($data);
+    return  $lesson->update($data);
 
       
    }

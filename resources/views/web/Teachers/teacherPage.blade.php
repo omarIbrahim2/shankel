@@ -42,8 +42,8 @@
                                         <div class="avatar-btns">
 
                                             <div>
-                                                <a href="{{ $teacher->cv }}"
-                                                    class="btn-custom">{{ trans('teacher.theCv') }}</a>
+                                                <a href="{{asset('uploads/'.json_decode($teacher->cv)->cv)}}"
+                                                  download="Cv.pdf"  class="btn-custom">{{ trans('teacher.theCv') }}</a>
                                             </div>
                                         </div>
                                     </div>
