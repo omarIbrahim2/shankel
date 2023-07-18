@@ -87,8 +87,13 @@ class SliderController extends Controller
 
     }
 
+    private function deleteSliderPic($image)
+    {
+        $deletedFile = substr($image, 8);
+        $this->fileService->DeleteFile($deletedFile);
+    }
+
     public function delete($sliderId){
-           
          $action = $this->adminService->deleteSlider($sliderId);
 
          if ($action) {

@@ -13,6 +13,13 @@ use Yoeunes\Toastr\Facades\Toastr;
 class InfoController extends Controller
 {
     use HandleUpload;
+
+    private $fileService;
+
+    public function __construct(FileService $fileService)
+    {
+        $this->fileService = $fileService;
+    }
     public function index()
     {
 
@@ -86,12 +93,20 @@ class InfoController extends Controller
         toastr('error in updating', 'error');
     }
 
+    private function deletePic($image)
+    {
+        $deletedFile = substr($image, 8);
+        $this->fileService->DeleteFile($deletedFile);
+    }
+
     public function delete($infoId)
     {
 
         $Info = Information::findOrFail($infoId);
 
         if ($Info) {
+            $this->deletePic($Info->image);
+
             $action = $Info->delete();
 
             if ($action) {

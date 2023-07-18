@@ -2,6 +2,7 @@
 
 namespace Shankl\Services;
 
+use App\Models\Supplier;
 use Shankl\Factories\AuthUserFactory;
 use Shankl\Repositories\CommentRepo;
 use Shankl\Interfaces\ServiceRepoInterface;
@@ -48,8 +49,16 @@ class SupplierService extends Service{
         return $this->supplierRebo->update($data);
     }
 
-    public function deleteSupplier($supplierId){
+    private function deleteSupplierPic($SupplierImagePath){
+        $deletedFile = substr($SupplierImagePath , 8);
 
+        $this->fileService->DeleteFile($deletedFile);
+         
+    }
+
+    public function deleteSupplier($supplierId){
+        $supplier = Supplier::findOrFail($supplierId);
+        $this->deleteSupplierPic($supplier->image);
        return $this->supplierRebo->delete($supplierId);
     }
 

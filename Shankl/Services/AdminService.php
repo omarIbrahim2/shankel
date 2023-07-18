@@ -19,13 +19,15 @@ class AdminService
   private $socialRebo;
   private $galleryRebo;
   private $addvertRebo;
-  public function __construct(EventRepoInterface $eventRebo, AddvertRepository $addvertRebo, GalleryRepository $galleryRebo, SocialsRepository $socialRebo, SliderRepo $sliderRebo)
+  private $fileService;
+  public function __construct(EventRepoInterface $eventRebo, FileService $fileService, AddvertRepository $addvertRebo, GalleryRepository $galleryRebo, SocialsRepository $socialRebo, SliderRepo $sliderRebo)
   {
     $this->eventRebo = $eventRebo;
     $this->socialRebo = $socialRebo;
     $this->sliderRebo = $sliderRebo;
     $this->galleryRebo = $galleryRebo;
     $this->addvertRebo = $addvertRebo;
+    $this->fileService = $fileService;
   }
 
   public function updateProfile($data)
@@ -114,9 +116,15 @@ class AdminService
     return $this->sliderRebo->updateSlider($data, $sliderId);
   }
 
+  private function deleteSliderPic($image)
+  {
+    $deletedFile = substr($image, 8);
+    $this->fileService->DeleteFile($deletedFile);
+  }
   public function deleteSlider($sliderId)
   {
-
+    $slider = $this->getSlider($sliderId);
+    $this->deleteSliderPic($slider->image);
     return $this->sliderRebo->deleteSlider($sliderId);
   }
 

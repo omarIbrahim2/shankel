@@ -23,16 +23,16 @@
         @enderror
     </div>
     <div class="form-group mb-4">
-        <label for="addvert-desc">{{ trans('addvert.desc_en') }}</label>
-        <textarea name="desc_en" id="addvert-desc" cols="30" placeholder="{{ trans('addvert.desc_en') }}" rows="10"
+        <label for="addvert-desc-en">{{ trans('addvert.desc_en') }}</label>
+        <textarea name="desc_en" id="addvert-desc-en" cols="30" placeholder="{{ trans('addvert.desc_en') }}" rows="10"
             class="form-control ">{{ $addvert == null ? '' : $addvert->desc('en') }}</textarea>
         @error('desc')
             <p class="text-danger">{{ $message }}</p>
         @enderror
     </div>
     <div class="form-group mb-4">
-        <label for="addvert-desc">{{ trans('addvert.desc_ar') }}</label>
-        <textarea name="desc_ar" id="addvert-desc" cols="30" placeholder="{{ trans('addvert.desc_ar') }}" rows="10"
+        <label for="addvert-desc-ar">{{ trans('addvert.desc_ar') }}</label>
+        <textarea name="desc_ar" id="addvert-desc-ar" cols="30" placeholder="{{ trans('addvert.desc_ar') }}" rows="10"
             class="form-control ">{{ $addvert == null ? '' : $addvert->desc('ar') }}</textarea>
         @error('desc')
             <p class="text-danger">{{ $message }}</p>

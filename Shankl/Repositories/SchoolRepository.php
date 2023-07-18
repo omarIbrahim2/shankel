@@ -120,7 +120,7 @@ class SchoolRepository extends AbstractUserRepo implements UserReboInterface , C
 
      public function getStudentsParents(){
         $SchoolUserId =  Auth::guard('school')->user()->id;
-        $studentsParentsId = Child::with(['parentt','grade'])->where("school_id" , $SchoolUserId )->pluck('parentt_id')->toArray();
+        $studentsParentsId = Child::with(['parentt'])->where("school_id" , $SchoolUserId )->pluck('parentt_id')->toArray();
         $Parents = Parentt::select('id')->whereIn('id',$studentsParentsId)->get();
         return $Parents;
      }
