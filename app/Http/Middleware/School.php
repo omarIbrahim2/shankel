@@ -16,6 +16,7 @@ class School
      */
     public function handle(Request $request, Closure $next)
     {
+
         if (! auth()->guard('school')->check()) {
             return redirect()->route("school-login");
         }

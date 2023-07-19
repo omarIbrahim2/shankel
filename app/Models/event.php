@@ -124,30 +124,30 @@ class Event extends Model
     }
 
 
-    public function status():Attribute
-    {
+    // public function status():Attribute
+    // {
 
-       return new Attribute(
-           get:function(){
-            if ($this->diffD() <= 0 && $this->attributes['status'] != 'Cancelled') {
-                $currentTime =  Carbon::now()->format('H:i:s');
+    //    return new Attribute(
+    //        get:function(){
+    //         if ($this->diffD() <= 0 && $this->attributes['status'] != 'Cancelled') {
+    //             $currentTime =  Carbon::now()->format('H:i:s');
                      
-
                 
-                $endTime = Carbon::createFromFormat("H:i:s" , $this->attributes['end_time']);
+                
+    //             $endTime = Carbon::createFromFormat("H:i:s" , $this->attributes['end_time']);
                  
-                if ($currentTime > $endTime) {
-                   return 'Finished';
-                }
+    //             if ($currentTime > $endTime) {
+    //                return 'Finished';
+    //             }
 
                 
-            }
+    //         }
 
-            return "In Progress";
+    //         return "In Progress";
 
-           }
-       );
-    }
+    //        }
+    //    );
+    // }
    
 
     public function image(): Attribute

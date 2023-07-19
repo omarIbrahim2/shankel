@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Config;
 use Shankl\Interfaces\GradeRepoInterface;
 use App\Http\Requests\CommentUpdateRequest;
 use PHPUnit\Framework\Constraint\Count;
+use Shankl\Factories\AuthUserFactory;
+use Shankl\Helpers\Event;
 use Shankl\Interfaces\LocationRepoInterface;
 use Shankl\Interfaces\EduSystemRepoInterface;
 use Shankl\Services\AdminService;
@@ -144,8 +146,17 @@ class SchoolController extends Controller
   return view("web.schools.reservedEvents");
 }
 
-public function schoolEvents(){
-  return view("web.schools.schoolEvents");
+public function schoolEvents(Event $EventObj){
+
+
+
+ $AuthUser =  AuthUserFactory::getAuthUser();
+
+   $Events = $AuthUser->events()->with('area.city')->paginate(10);
+
+  
+  
+  return view("web.schools.schoolEvents")->with(['Events' => $Events]);
 }
 
 public function areaSuppliers() {

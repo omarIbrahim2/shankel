@@ -13,9 +13,11 @@ use Shankl\Interfaces\EventRepoInterface;
 class EventRepository implements EventRepoInterface
 {
 
-   public function getEvents($pages)
+   public function getEventsAdmin( $guard ,$pages)
    {
-      return Event::with('area.city')->orderBy('start_date', 'ASC')->paginate($pages);
+      return Event::select('id' , 'title' , 'start_date' , 'end_date' , 'image' , 'start_time' , 'end_time' , 'status')->with('area.city')
+      ->where('eventable_type' , $guard)
+      ->orderBy('start_date', 'ASC')->paginate($pages);
    }
 
    public function getEventsguest($pages)

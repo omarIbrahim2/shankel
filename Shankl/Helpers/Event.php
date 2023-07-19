@@ -75,7 +75,11 @@ class Event{
              
     }
 
+    
+    public function getEvents($guard , $pages){
 
+        return $this->eventReboInterface->getEventsAdmin($guard , $pages);
+    }
 
 
     public function getEvent($eventId){
@@ -133,12 +137,14 @@ class Event{
         
         
         $event = $this->eventReboInterface->find($eventId);
+
+    
            
-         $this->eventReboInterface->updateEvent(['status' => 'Cancelled'] , $event);
+        $this->eventReboInterface->updateEvent(['status' => 'Cancelled'] , $event);
 
-         $subscribers = $this->getSubscribers($eventId);
+        //  $subscribers = $this->getSubscribers($eventId);
 
-         $this->notifySubscibers($subscribers);
+        //  $this->notifySubscibers($subscribers);
 
     }
 

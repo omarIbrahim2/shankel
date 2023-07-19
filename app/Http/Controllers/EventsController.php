@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Shankl\Helpers\Event;
+use App\Models\Event as EventModel;
 use App\Traits\HandleUpload;
 use Illuminate\Http\Request;
 use App\Jobs\CancelSubscribtion;
@@ -12,6 +13,8 @@ use Shankl\Interfaces\EventRepoInterface;
 use Shankl\Interfaces\LocationRepoInterface;
 use App\Http\Requests\EventValidationRequest;
 use App\Http\Requests\EventValidationUpdateReq;
+use App\Models\School;
+use App\Models\User;
 use Shankl\Factories\AuthUserFactory;
 
 class EventsController extends Controller
@@ -35,7 +38,7 @@ class EventsController extends Controller
         if ($FilteredEvents == null) {
             $Events = $this->eventRepo->getEventsguest(2);
         } else {
-            $Events = Event::paginate($FilteredEvents, 2);
+            $Events = EventModel::paginate($FilteredEvents, 2);
         }
 
         return view("web.events.events")->with(['Events' => $Events ]);
@@ -84,6 +87,19 @@ class EventsController extends Controller
       return  $this->Eventobj->Add($data);
     }
 
+    public function Events($guard){
+
+        $guards = [
+            'web' => User::class,
+            'school' => School::class,
+        ];
+
+        if (! array_key_exists($guard , $guards)) {
+            return back();
+        }
+
+        return view('admin.events.events')->with(['guard' => $guards[$guard]]);
+    }
 
     private function evaluateData($request){
         
@@ -151,7 +167,7 @@ class EventsController extends Controller
             'status' => 'required'
       ]);
 
-    
+        
         $this->Eventobj->cancelEvent($validatedData['id']);
 
         

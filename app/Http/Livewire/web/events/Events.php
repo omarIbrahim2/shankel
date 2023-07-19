@@ -79,4 +79,6 @@ class Events extends Component
             $this->emit('fresh');
         }
     }
+
+   
 }

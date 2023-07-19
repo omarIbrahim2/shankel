@@ -111,10 +111,7 @@ class AdminController extends Controller
         return view("admin.index");
     }
 
-    public function Events(){
-
-        return view('admin.events.events');
-    }
+   
 
     public function Parentts($status){
         

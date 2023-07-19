@@ -39,13 +39,7 @@ class AdminService
   }
 
   //Events 
-  public function getEvents($pages)
-  {
-
-    $events = $this->eventRebo->getEvents($pages);
-
-    return $events;
-  }
+ 
 
 
 

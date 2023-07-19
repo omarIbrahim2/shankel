@@ -25,6 +25,7 @@ return new class extends Migration
             $table->date('end_date');
             $table->time('start_time');
             $table->time('end_time');
+            $table->index('eventable_type' , 'eventable_id');
             $table->timestamps();
         });
     }

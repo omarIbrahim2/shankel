@@ -240,7 +240,7 @@ Route::middleware('lang')->group(function(){
         Route::get('/' , [AdminController::class , 'dashboard'])->name('dashboard');
 
         //events
-        Route::get('events' , [AdminController::class , 'Events'])->name('admin-events');
+        Route::get('events/{guard}' , [EventsController::class , 'Events'])->name('admin-events');
         Route::get('event/create' , [EventsController::class , "createEventView"])->name('create-events-view');
         Route::get('event/update/{eventid}' , [EventsController::class , "updateEventView"])->name("update-events-view");
         Route::post("event/store" , [EventsController::class , "storeEvent"])->name("create-events");

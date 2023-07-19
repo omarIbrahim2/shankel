@@ -7,7 +7,7 @@
         <div class="col-12 filtered-list-search mx-auto">
 
 
-            @livewire('admin.events')
+            @livewire('admin.events' , ['guard' => $guard])
         </div>
     </div>
 @endsection

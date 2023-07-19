@@ -1,16 +1,14 @@
 <div>
 
     <div class="events-section">
-        <form id="cancelEvent" action="{{route('school-cancel-event') }}" method="POST">
-            @csrf
-        </form>
+       
         @foreach ($Events as $event)
             <div class="event">
                 <div class="row">
                     <div class="col-lg-7 col-md-6 col-12">
                         <div class="event-left-side">
                             <div class="event-title">
-                                <h3>{{  $event->title() }}</h3>
+                                <h3>{{   $event->title() }}</h3>
                             </div>
                             <div class="event-meta-data">
                                 <div class="event-meta">
@@ -57,16 +55,30 @@
                                         <p>{{ trans('event.mins') }}</p>
                                     </div>
                                 </div>
-                                
-                                    <div class="text-center mt-2">
-                                        <input form="cancelEvent" type="hidden" name="id" value="{{ $event->id }}">
-                                     <button form="cancelEvent" type="submit" class="btn btn-danger" >{{ trans('event.cls') }}</button>
-                                    </div>
-
-                                    <div class="text-center mt-2">
+                                 
+                                @if ($event->status == 'Cancelled' || $event->status == 'Finished')
+                                   <div class="text-center mt-2">
                                            
-                                        <a href="{{route("school-edit-view-event" , $event->id)}}" class="btn btn-info">{{trans('event.update')}}</a>
-                                    </div>
+                                      <a href="{{route("school-edit-view-event" , $event->id)}}" class="btn btn-info">{{trans('event.update')}}</a>
+                                   </div>
+                                @else
+                                <div class="text-center mt-2">
+                                           
+                                    <a href="{{route("school-edit-view-event" , $event->id)}}" class="btn btn-info">{{trans('event.update')}}</a>
+                                 </div>
+                                
+                                <div class="text-center mt-2">
+                                    <form wire:submit.prevent="cancelEvent({{$event}})" >
+                                        <button type="submit" class="btn btn-danger" >{{ trans('event.cls') }}</button>
+                                    </form>
+                                </div>
+
+                                @endif
+                              
+
+
+                                
+                                  
                                 
                                 {{-- end comment --}}
                             </div>
@@ -116,7 +128,7 @@
                                     </div>
                                     <div class="event-data-text">
                                         <h5>{{ trans('event.address') }}</h5>
-                                        <span>{{ $event->area->city->name() }},{{ $event->area->name() }}</span>
+                                        <span>{{ $event->area->city->name()}},{{ $event->area->city->name() }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -126,11 +138,7 @@
             </div>
         @endforeach
 
-        <div class="pagination">
-            @if ($Events->links('livewire.web-pagination'))
-                {{ $Events->links('livewire.web-pagination') }}
-            @endif
-        </div>
+   
     </div>
 
 

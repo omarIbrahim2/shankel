@@ -6,6 +6,7 @@ use App\Http\Livewire\Traits\SearchTrait;
 use App\Models\Event;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Shankl\Helpers\Event as HelpersEvent;
 use Shankl\Services\AdminService;
 
 class Events extends Component
@@ -17,15 +18,21 @@ class Events extends Component
     protected $adminService;
     public $searchEvent;
 
+    public $guard;
+
+    
+    protected $listener = [
+        'fresh' => '$refresh',
+    ];
     use SearchTrait;
-    public function render(AdminService $adminService)
+    public function render(HelpersEvent $EventObj)
     {
 
          $eventQuery = (new Event)->query();
         if ($this->searchEvent) {
              $Events = $this->TitleSearch($this->searchEvent , 'title' , $eventQuery);
         }else{
-            $Events =  $adminService->getEvents(10);
+            $Events =  $EventObj->getEvents($this->guard , 10);
         }
        
         
@@ -34,17 +41,16 @@ class Events extends Component
         return view('livewire.admin.events')->with(['events' => $Events]);
     }
 
-    public function mount(AdminService $adminService){
-         
-        $this->adminService = $adminService;
+  
+    public function cancelEvent($event , HelpersEvent $EventObj){
         
-    }
 
-    public function getEvents(){
-           
-       return  $this->adminService->getEvents(10);
+        $EventObj->cancelEvent($event['id']);
+        toastr("Event cancelled successfully", "success");
+        $this->emit('fresh');
 
-    }
+
+   }
 
     public function paginationView()
     {
