@@ -15,7 +15,12 @@
     <section class="section edit-teacher-profile">
         <div class="inner">
             <div class="container">
-                @livewire('web.schools.school-events' , ['EventsPagin' => $Events])
+                <div class="events-section"   data-lang="{{trans('event.notifyEventStart')}}">
+
+                @foreach ($Events as $event)    
+                   <livewire:web.schools.school-events :event="$event" :wire:key="$event->id">
+                @endforeach
+                </div>
             </div>
 
 
@@ -25,3 +30,5 @@
         </div>
     </section>
 @endsection
+
+

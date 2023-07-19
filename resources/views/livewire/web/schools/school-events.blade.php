@@ -1,8 +1,4 @@
 <div>
-
-    <div class="events-section">
-       
-        @foreach ($Events as $event)
             <div class="event">
                 <div class="row">
                     <div class="col-lg-7 col-md-6 col-12">
@@ -41,22 +37,22 @@
                     <div class="col-lg-5 col-md-6 col-12">
                         <div class="event-right-side">
                             <div class="counter">
-                                <div class="counter-body">
+                                <div class="counter-body"  data-date="{{$event->formatedToCounter()}}">
                                     <div class="counter-item">
-                                        <span>{{ $event->diffD() }}</span>
+                                        <span></span>
                                         <p>{{ trans('event.days') }}</p>
                                     </div>
                                     <div class="counter-item">
-                                        <span>{{ $event->diffHours() }}</span>
+                                        <span></span>
                                         <p>{{ trans('event.hours') }}</p>
                                     </div>
                                     <div class="counter-item">
-                                        <span>{{ $event->diffMinutes() }}</span>
+                                        <span></span>
                                         <p>{{ trans('event.mins') }}</p>
                                     </div>
                                 </div>
                                  
-                                @if ($event->status == 'Cancelled' || $event->status == 'Finished')
+                                @if ($status == 'Cancelled' || $status == 'Finished')
                                    <div class="text-center mt-2">
                                            
                                       <a href="{{route("school-edit-view-event" , $event->id)}}" class="btn btn-info">{{trans('event.update')}}</a>
@@ -136,10 +132,4 @@
                     </div>
                 </div>
             </div>
-        @endforeach
-
-   
-    </div>
-
-
 </div>

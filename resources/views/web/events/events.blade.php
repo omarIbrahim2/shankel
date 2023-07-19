@@ -23,7 +23,16 @@
                 <h2>{{ trans('nav.Events') }}</h2>
             </div>
 
-            @livewire('web.events.events')
+            <div class="events-section" data-lang="{{trans('event.notifyEventStart')}}">
+            @foreach ($Events as $event)
+                
+              {{-- @livewire('web.events.events') --}}
+
+              <livewire:web.events.events :event="$event" :wire:key="$event->id">
+            @endforeach
+
+
+          </div>
 
             <div class="pagination">
                 {{ $Events->links('web.inc.pagination') }}

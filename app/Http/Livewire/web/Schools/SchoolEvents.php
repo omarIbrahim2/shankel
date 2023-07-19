@@ -2,11 +2,10 @@
 
 namespace App\Http\Livewire\Web\Schools;
 
-
+use App\Models\Event;
 use Livewire\Component;
 use Shankl\Helpers\Event AS HelpersEvent;
 use Livewire\WithPagination;
-use Shankl\Factories\AuthUserFactory;
 
 class SchoolEvents extends Component
 {
@@ -14,16 +13,21 @@ class SchoolEvents extends Component
    
     use WithPagination;
 
-    public $EventsPagin;
+    public $event;
+
+    public $status;
     public function render()
     {
-       
-        if ( ! is_array($this->EventsPagin)) {
-            $this->EventsPagin = $this->EventsPagin->items();  
-        }
-           
+        
+        return view('livewire.web.schools.school-events')->with(['event' => $this->event]);
+    }
 
-        return view('livewire.web.schools.school-events')->with(['Events' => $this->EventsPagin]);
+
+    public function mount (){
+       
+        $this->status = $this->event->status;
+        
+        
     }
 
 
@@ -32,9 +36,11 @@ class SchoolEvents extends Component
         
 
         $EventObj->cancelEvent($event['id']);
-        toastr("Event cancelled successfully", "success");
+       
     
-
+     toastr("Event cancelled successfully", "success");
+      $this->status = 'Cancelled';
+     $this->emit('fresh');
 
    }
     

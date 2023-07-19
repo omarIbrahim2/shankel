@@ -36,9 +36,9 @@ class EventsController extends Controller
         $FilteredEvents = $this->eventRepo->getEventsWeb($userid, $guard);
 
         if ($FilteredEvents == null) {
-            $Events = $this->eventRepo->getEventsguest(2);
+            $Events = $this->eventRepo->getEventsguest(10);
         } else {
-            $Events = EventModel::paginate($FilteredEvents, 2);
+            $Events = EventModel::paginate($FilteredEvents, 10);
         }
 
         return view("web.events.events")->with(['Events' => $Events ]);

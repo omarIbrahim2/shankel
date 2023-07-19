@@ -1,8 +1,5 @@
 <div>
 
-    <div class="events-section" data-lang="{{trans('event.notifyEventStart')}}">
-
-        @foreach ($Events as $event)
             <div class="event">
                 <div class="row">
                     <div class="col-lg-7 col-md-6 col-12">
@@ -27,7 +24,7 @@
                                 </div>
                             </div>
                             <div class="event-img">
-                                <img src="{{ asset( $event->image ? 'assets/images/events/event1.webp' : 'uploads/' . $event->image) }}" style="width: 500px" alt="event">
+                                <img src="{{ asset( $event->image) }}" style="width: 500px" alt="event">
                             </div>
                             <div class="event-description">
                                 <p>
@@ -59,7 +56,7 @@
                                     </div>
                                 </div>
                                 @custom_auth
-                                    @if ($event->booked == true)
+                                    @if ($booked == true)
                                         <div>
                                             <button class="btn btn-success" disabled>{{ trans('event.booked') }}</button>
                                             <button wire:click="cancelBooking({{ $event }})"
@@ -127,14 +124,8 @@
                     </div>
                 </div>
             </div>
-        @endforeach
-
-        {{-- <div class="pagination">
-            @if ($Events->links('livewire.web-pagination'))
-                {{ $Events->links('livewire.web-pagination') }}
-            @endif
-        </div> --}}
-    </div>
+        
+  
 
 
 </div>
