@@ -26,7 +26,7 @@
     </div>
     <div class="form-group mb-4">
         <label for="event-desc-en">{{ trans('event.desc_en') }}</label>
-        <textarea name="desc_en" id="event-desc-en" cols="30" 
+        <textarea name="desc_en" id="event-desc-en" cols="30"
         placeholder="{{ trans('event.desc_en') }}" rows="10" class="form-control ">
         {{ $Event == null ? old('desc_en') : $Event->desc('en') }}</textarea>
         @error('desc')
@@ -36,7 +36,7 @@
 
     <div class="form-group mb-4">
         <label for="event-desc-ar">{{ trans('event.desc_ar') }}</label>
-        <textarea name="desc_ar" id="event-desc-ar" cols="30" 
+        <textarea name="desc_ar" id="event-desc-ar" cols="30"
         placeholder="{{ trans('event.desc_ar') }}" rows="10" class="form-control ">
         {{ $Event == null ? old('desc_ar') : $Event->desc('ar') }}</textarea>
         @error('desc')

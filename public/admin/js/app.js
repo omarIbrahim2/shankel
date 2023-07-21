@@ -398,8 +398,9 @@ $(".eventTimePicker").flatpickr({
 });
 
 $(".eventDayPicker").flatpickr({
-    enableTime: true,
-    dateFormat: "Y-m-d H:i",
+    enableTime: false,
+    dateFormat: "Y-m-d ",
+    defaultDate: Date.now()
 });
 if($(".elpsis").lenght>0){
     $(".elpsis").html($(".elpsis").html().substring(0,50) + "...")

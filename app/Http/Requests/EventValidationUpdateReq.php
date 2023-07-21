@@ -30,10 +30,10 @@ class EventValidationUpdateReq extends FormRequest
             'title_ar' => 'required|string|min:3',
             "desc_en" => 'required|string',
             "desc_ar" => 'required|string',
-            'start_date' => 'required|date|after:today',
-            'end_date' => 'required|date|after:start_date',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|afterOrEqual:start_date',
             "start_time" => 'required|regex:/(\d+\:\d+)/',
-            'end_time' => ["required","regex:/(\d+\:\d+)/", new StartEndTimeRule($this->start_date , $this->end_date , $this->start_time , $this->end_time)],  
+            'end_time' => ["required","regex:/(\d+\:\d+)/", new StartEndTimeRule($this->start_date , $this->end_date , $this->start_time , $this->end_time)],
             'image' => 'image|mimes:jpeg,jpg,png,webp|max:1024|nullable',
             'area_id' => 'required|exists:areas,id',
         ];

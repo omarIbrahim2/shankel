@@ -1498,7 +1498,9 @@ main {
   text-align: center;
 }
 .area-school-img img{
-  width: 342px;
+  max-width: 342px;
+  object-fit: cover;
+  object-position: center;
 }
 .school-card {
   margin-bottom: 64px;
@@ -2406,6 +2408,11 @@ main {
 }
 .supplier_service_card{
     margin-bottom: 8px;
+}
+.supplier_service_card img{
+    max-width:382px;
+    object-fit: cover;
+    object-position: center;
 }
 .event_desc{
   width: 100%;

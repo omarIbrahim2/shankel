@@ -26,13 +26,14 @@ return[
 
     "booked" => "Booked",
     "clsBook" => "cancel Booking",
-    
+
     "city" => "City",
     "area" => "Area",
 
     "cls" => "Cancel Event",
     "reEvent" => "Re-event",
     "notifyEventStart" => "The Event Is Started",
+    "notifyEventEnd" => "The Event Is Ended",
     "reservedEvents" => "Reserved Events",
     "eventEndDate" => "Event End Date",
 ];

@@ -2155,3 +2155,26 @@ table .badge-success, table .badge-primary, table .badge-warning, table .badge-d
 .event-times>div:first-of-type{
     margin-inline-end: 10px;
 }
+.header-icons{
+    display: flex;
+    justify-content: space-between;
+    width: calc(100% - 255px);
+    align-items: center;
+    padding: 0 8px;
+}
+.notification-badge{
+    position: relative;
+}
+.notification-badge .badge{
+    position: absolute;
+    top: 20%;
+    left: 90%;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+.theme-brand{
+    width: 255px;
+}
