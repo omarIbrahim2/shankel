@@ -13,19 +13,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Slider extends Model
 {
-    use HasFactory, HasTranslations;
+    use HasFactory;
     
       protected $guarded = ['id', 'created_at','updated_at'];
 
-      public $translatable = ['title' , 'info'];
+     
       public function image(): Attribute
       {
   
           return new Attribute(
               get: function($value){
-                if ($value == null) {
-                    return "assets/images/banner/sup-banner.png";
-                }
                  return "uploads/".$value;
               }
           );

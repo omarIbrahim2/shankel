@@ -34,7 +34,7 @@
 
     <div class="form-group mb-4">
         <label for="event-desc">Info</label>
-            <textarea name="info_en"  id="event-desc" cols="30" placeholder="info" rows="10" class="form-control ">{{$Slider == null ? old('info_en'):$Slider->info('en')}}</textarea>
+            <textarea name="info_en"  id="info-en" cols="30" placeholder="info" rows="10" class="form-control ">{!!$Slider == null ? old('info_en'):$Slider->info('en')!!}</textarea>
             @error('info_en')
             <p class="text-danger">{{$message}}</p>
             @enderror
@@ -43,7 +43,7 @@
 
         <div class="form-group mb-4">
             <label for="event-desc">المحتوي</label>
-                <textarea name="info_ar"  id="event-desc" cols="30" placeholder="المحتوي" rows="10" class="form-control ">{{$Slider == null ? old('info_ar'):$Slider->info('ar')}}</textarea>
+                <textarea name="info_ar"  id="info-ar" cols="30" placeholder="المحتوي" rows="10" class="form-control ">{!!$Slider == null ? old('info_ar'):$Slider->info('ar')!!}</textarea>
                 @error('info_ar')
                 <p class="text-danger">{{$message}}</p>
                 @enderror
@@ -56,6 +56,10 @@
             @error('image')
             <p class="text-danger">{{$message}}</p>
             @enderror
+
+            @if ($update==true)
+                <img src="{{asset($Slider->image)}}" style="width: 60px" alt="slider image">
+            @endif
         </div>
     </div>
 

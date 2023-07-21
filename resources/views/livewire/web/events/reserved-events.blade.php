@@ -1,12 +1,7 @@
-    <section class="section">
-        <div class="inner">
-            <div class="container">
-                <div class="section-title">
-                    <h2>{{ trans('event.reservedEvents') }}</h2>
-                </div>
-                <div class="events-section">
-
-                    @foreach ($Events as $event)
+<div>
+                 @if ($booked == true)
+                     
+                
                         <div class="event">
                             <div class="row">
                                 <div class="col-lg-7 col-md-6 col-12">
@@ -16,30 +11,27 @@
                                         </div>
                                         <div class="event-meta-data">
                                             <div class="event-meta">
-                                                <span class="meta-icon"><i
-                                                        class="fa-regular fa-calendar-days"></i></span>
-                                                <span
-                                                    class="meta-desc">{{ $event->formatedDate($event->start_date) }}</span>
+                                                <span class="meta-icon"><i class="fa-regular fa-calendar-days"></i></span>
+                                                <span class="meta-desc">{{ $event->formatedDate($event->start_date) }} - {{ $event->startAt() }}</span>
                                             </div>
                                             <div class="event-meta">
-                                                <span class="meta-icon"><i class="fa-regular fa-clock"></i></span>
-                                                <span class="meta-desc">{{ $event->startAt() }} -
-                                                    {{ $event->endAt() }}</span>
+                                                <span class="meta-icon"><i class="fa-regular fa-calendar-days"></i></span>
+                                                <span class="meta-desc">{{ $event->formatedDate($event->end_date) }} - {{ $event->endAt() }}</span>
                                             </div>
                                             <div class="event-meta">
                                                 <span class="meta-icon"><i class="fa-solid fa-location-dot"></i></span>
-
+            
                                                 <span
                                                     class="meta-desc">{{ $event->area->city->name() }},{{ $event->area->name() }}</span>
                                             </div>
                                         </div>
                                         <div class="event-img">
-                                            <img src="{{ asset($event->image ? 'assets/images/events/event1.webp' : 'uploads/' . $event->image) }}"
+                                            <img src="{{ asset($event->image)}}"
                                                 style="width: 500px" alt="event">
                                         </div>
                                         <div class="event-description">
                                             <p>
-                                                {{ $event->desc() }}
+                                                {!! $event->desc()!!}
 
                                             </p>
                                         </div>
@@ -48,17 +40,17 @@
                                 <div class="col-lg-5 col-md-6 col-12">
                                     <div class="event-right-side">
                                         <div class="counter">
-                                            <div class="counter-body">
+                                            <div class="counter-body" data-date="{{$event->formatedToCounter()}}">
                                                 <div class="counter-item">
-                                                    <span>{{ $event->diffD() }}</span>
+                                                    <span></span>
                                                     <p>{{ trans('event.days') }}</p>
                                                 </div>
                                                 <div class="counter-item">
-                                                    <span>{{ $event->diffHours() }}</span>
+                                                    <span></span>
                                                     <p>{{ trans('event.hours') }}</p>
                                                 </div>
                                                 <div class="counter-item">
-                                                    <span>{{ $event->diffMinutes() }}</span>
+                                                    <span></span>
                                                     <p>{{ trans('event.mins') }}</p>
                                                 </div>
                                             </div>
@@ -123,15 +115,13 @@
                                 </div>
                             </div>
                         </div>
-                    @endforeach
 
-                    <div class="pagination">
-                        @if ($Events->links('livewire.web-pagination'))
-                            {{ $Events->links('livewire.web-pagination') }}
-                        @endif
-                    </div>
-                </div>
+                @endif    
+</div>
 
-            </div>
-        </div>
-    </section>
+
+
+
+
+
+                    

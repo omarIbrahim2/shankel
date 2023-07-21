@@ -13,6 +13,7 @@ use Shankl\Services\SchoolService;
 use App\Http\Requests\AddChildRequest;
 use Illuminate\Support\Facades\Config;
 use App\Providers\RouteServiceProvider;
+use Shankl\Helpers\Event;
 use Shankl\Interfaces\ChildRepoInterface;
 use Shankl\Interfaces\GradeRepoInterface;
 use Shankl\Repositories\ParentRepository;
@@ -175,8 +176,9 @@ class ParentController extends Controller
     return view("web.Parents.areaSchools");
   }
 
-  public function reservedEvents(){
-    return view("web.Parents.reservedEvents");
+  public function reservedEvents(Event $EventObj){
+    $Events = $EventObj->UserReservedEvents(5);
+    return view("web.events.ReservedEvents")->with(['Events' => $Events]);
   }
 
   public function reservedSchools(){

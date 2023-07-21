@@ -31,4 +31,5 @@
    .catch(error2=>{
       console.error( error );
    })
+   </script>
 @endsection

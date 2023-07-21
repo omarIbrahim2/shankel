@@ -15,7 +15,7 @@
                                 </div>
                                 <div class="teacher-item-data">
                                         <h3>{{ $teacher->name() }}</h3>
-                                        <h4>{{ $teacher->field()}} {{ trans('teacher.teacher') }}</h4>
+                                        <h4>{{ $teacher->field()}}</h4>
                                         <p><i class="fa-solid fa-location-dot"></i> {{ $teacher->area->name() }}</p>
                                         
                                         <a href="{{ route('teacher-by-id', $teacher->id) }}"

@@ -11,3 +11,26 @@
 
 
 @endsection
+
+
+@section('scripts')
+<script>
+       
+   ClassicEditor
+   .create(document.querySelector('#info-ar') , {
+       language: 'ar'
+   })
+    
+   .catch(error=>{
+      console.error( error );
+   })
+</script> 
+
+<script>
+   ClassicEditor
+   .create(document.querySelector('#info-en'))
+   .catch(error2=>{
+      console.error( error );
+   })
+   </script>
+@endsection

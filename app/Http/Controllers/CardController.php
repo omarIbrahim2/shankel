@@ -63,7 +63,7 @@ class CardController extends Controller
 
       return back();
     } catch (\Exception $th) {
-      dd($th->getMessage());
+    
       toastr('error happened', 'error');
 
       return back();

@@ -25,11 +25,11 @@
            </div>
 
             <div class="mt-4">
-                Description En:  <p>{{$Addvert->desc('en')}}</p>
+                Description En:  <p>{!!$Addvert->desc('en')!!}</p>
              </div>
 
              <div class="mt-4">
-              Description Ar:  <p>{{$Addvert->desc('ar')}}</p>
+              Description Ar:  <p>{!!$Addvert->desc('ar')!!}</p>
            </div>
         </div>
 

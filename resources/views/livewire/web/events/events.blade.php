@@ -28,7 +28,7 @@
                             </div>
                             <div class="event-description">
                                 <p>
-                                    {{ $event->desc() }}
+                                    {!! $event->desc()!!}
 
                                 </p>
                             </div>

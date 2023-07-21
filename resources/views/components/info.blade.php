@@ -34,7 +34,7 @@
     
     <div class="form-group mb-4">
         <label for="info_aboutUs_en">About Us</label>
-            <textarea name="aboutUs_en"  id="info_aboutUs_en" cols="30" placeholder="About Us" rows="10" class="form-control ">{{$Info == null ? old('aboutUs_en'):$Info->aboutUs('en')}}</textarea>
+            <textarea name="aboutUs_en"  id="info_aboutUs_en" cols="30" placeholder="About Us" rows="10" class="form-control ">{!! $Info == null ? old('aboutUs_en'):$Info->aboutUs('en') !!}</textarea>
             @error('aboutUs_en')
             <p class="text-danger">{{$message}}</p>
             @enderror
@@ -43,7 +43,7 @@
         
         <div class="form-group mb-4">
             <label for="info_aboutUs_ar">ماذا عنا</label>
-                <textarea name="aboutUs_ar"  id="info_aboutUs_ar" cols="30" placeholder="ماذا عنا" rows="10" class="form-control ">{{$Info == null ? old('aboutUs_ar'):$Info->aboutUs('ar')}}</textarea>
+                <textarea name="aboutUs_ar"  id="info_aboutUs_ar" cols="30" placeholder="ماذا عنا" rows="10" class="form-control ">{!! $Info == null ? old('aboutUs_ar'):$Info->aboutUs('ar') !!}</textarea>
                 @error("aboutUs_ar")
                 <p class="text-danger">{{$message}}</p>
                 @enderror
@@ -51,7 +51,7 @@
 
             <div class="form-group mb-4">
                 <label for="info_mission_en">Mission</label>
-                    <textarea name="mission_en"  id="info_mission_en" cols="30" placeholder="Mission" rows="10" class="form-control ">{{$Info == null ? old('mission_en'):$Info->mission('en')}}</textarea>
+                    <textarea name="mission_en"  id="info_mission_en" cols="30" placeholder="Mission" rows="10" class="form-control ">{!! $Info == null ? old('mission_en'):$Info->mission('en') !!}</textarea>
                     @error('mission_en')
                     <p class="text-danger">{{$message}}</p>
                     @enderror
@@ -59,7 +59,7 @@
           
           <div class="form-group mb-4">
             <label for="info_mission_ar">المهمة</label>
-                <textarea name="mission_ar"  id="info_mission_ar" cols="30" placeholder="المهمة" rows="10" class="form-control ">{{$Info == null ? old('mission_ar'):$Info->mission('ar')}}</textarea>
+                <textarea name="mission_ar"  id="info_mission_ar" cols="30" placeholder="المهمة" rows="10" class="form-control ">{!!$Info == null ? old('mission_ar'):$Info->mission('ar')!!}</textarea>
                 @error('mission_ar')
                 <p class="text-danger">{{$message}}</p>
                 @enderror
@@ -68,7 +68,7 @@
 
             <div class="form-group mb-4">
                 <label for="info_vision_en">Vision</label>
-                    <textarea name="vision_en"  id="info_vision_en" cols="30" placeholder="Vision" rows="10" class="form-control ">{{$Info == null ? old('vision_en'):$Info->vision('en')}}</textarea>
+                    <textarea name="vision_en"  id="info_vision_en" cols="30" placeholder="Vision" rows="10" class="form-control ">{!!$Info == null ? old('vision_en'):$Info->vision('en')!!}</textarea>
                     @error('vision_en')
                     <p class="text-danger">{{$message}}</p>
                     @enderror
@@ -77,7 +77,7 @@
 
           <div class="form-group mb-4">
             <label for="info_vision_ar">الرؤية</label>
-                <textarea name="vision_ar"  id="info_vision_ar" cols="30" placeholder="الرؤية" rows="10" class="form-control ">{{$Info == null ? old('vision_ar'):$Info->vision('ar')}}</textarea>
+                <textarea name="vision_ar"  id="info_vision_ar" cols="30" placeholder="الرؤية" rows="10" class="form-control ">{!!$Info == null ? old('vision_ar'):$Info->vision('ar')!!}</textarea>
                 @error('vision_ar')
                 <p class="text-danger">{{$message}}</p>
                 @enderror
@@ -86,7 +86,7 @@
 
          <div class="form-group mb-4">
             <label for="info_choose_en">Why choose us</label>
-                <textarea name="choose_en"  id="info_choose_en" cols="30" placeholder="Why choose us" rows="10" class="form-control ">{{$Info == null ? old('choose_en'):$Info->choose('en')}}</textarea>
+                <textarea name="choose_en"  id="info_choose_en" cols="30" placeholder="Why choose us" rows="10" class="form-control ">{!!$Info == null ? old('choose_en'):$Info->choose('en')!!}</textarea>
                 @error('choose_en')
                 <p class="text-danger">{{$message}}</p>
                 @enderror
@@ -94,7 +94,7 @@
                  
        <div class="form-group mb-4">
         <label for="info_choose_ar">لماذا تختارنا</label>
-            <textarea name="choose_ar"  id="info_choose_ar" cols="30" placeholder="لماذا تختارنا" rows="10" class="form-control ">{{$Info == null ? old('choose_ar'):$Info->choose('ar')}}</textarea>
+            <textarea name="choose_ar"  id="info_choose_ar" cols="30" placeholder="لماذا تختارنا" rows="10" class="form-control ">{!!$Info == null ? old('choose_ar'):$Info->choose('ar')!!}</textarea>
             @error('choose_ar')
             <p class="text-danger">{{$message}}</p>
             @enderror
@@ -108,6 +108,12 @@
             @error('image')
             <p class="text-danger">{{$message}}</p>
             @enderror
+
+            @if ($update == true)
+
+              <img src="{{asset($Info->image)}}" style="width: 60px" alt="Information">
+                
+            @endif
         </div>
     </div> 
        

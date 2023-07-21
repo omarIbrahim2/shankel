@@ -8,7 +8,6 @@ use App\Models\Information;
 use App\Traits\HandleUpload;
 use Illuminate\Http\Request;
 use Shankl\Services\FileService;
-use Yoeunes\Toastr\Facades\Toastr;
 
 class InfoController extends Controller
 {
@@ -104,7 +103,7 @@ class InfoController extends Controller
 
         $Info = Information::findOrFail($infoId);
 
-        if ($Info) {
+        
             $this->deletePic($Info->image);
 
             $action = $Info->delete();
@@ -119,10 +118,7 @@ class InfoController extends Controller
 
                 return back();
             }
-        } else {
-
-            return back();
-        }
+        
     }
 
 

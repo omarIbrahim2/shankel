@@ -142,11 +142,13 @@ class SchoolController extends Controller
 
  
 
- public function reservedEvents(){
-  return view("web.schools.reservedEvents");
+ public function reservedEvents(Event $EventObj){
+
+   $Events = $EventObj->UserReservedEvents(5);
+  return view("web.events.ReservedEvents")->with(['Events' => $Events]);
 }
 
-public function schoolEvents(Event $EventObj){
+public function schoolEvents(){
 
 
 

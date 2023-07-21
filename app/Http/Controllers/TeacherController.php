@@ -11,6 +11,7 @@ use Shankl\Helpers\ChangePassword;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Shankl\Factories\AuthUserFactory;
+use Shankl\Helpers\Event;
 use Shankl\Interfaces\LocationRepoInterface;
 use Shankl\Services\AdminService;
 use Shankl\Services\FileService;
@@ -121,9 +122,10 @@ class TeacherController extends Controller
     return view("web.Suppliers.filteredSuppliers")->with(['Suppliers' => $Suppliers]);
   }
 
-  public function reservedEvents()
+  public function reservedEvents(Event $EventObj)
   {
-    return view("web.Teachers.reservedEvents");
+    $Events = $EventObj->UserReservedEvents(5);
+    return view("web.events.ReservedEvents")->with(['Events' => $Events]);
   }
 
   public function publicLessons()

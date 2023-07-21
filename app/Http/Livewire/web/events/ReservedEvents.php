@@ -14,20 +14,28 @@ class ReservedEvents extends Component
     use WithPagination;
     protected $listener = ['fresh' => '$refresh',];
 
-    public function render(EventRepoInterface $eventRepo)
+    public $event;
+
+    public $booked;
+
+    public function render()
     {
-        $userId  = AuthUserFactory::getAuthUserId();
-        $guard = AuthUserFactory::geGuard();
-        $FilteredEvents = $eventRepo->getReservedEvents($userId, $guard);
-        $Events = Event::paginate($FilteredEvents, 5);
-        
-        return view('livewire.web.events.reserved-events')->with(['Events' => $Events]);
+        return view('livewire.web.events.reserved-events')->with(['event' => $this->event]);
     }
 
-    public function paginationView()
-    {
-        return 'livewire.web-pagination';
+
+    
+    public function mount(){
+
+        $this->booked =  $this->event->booked;
     }
+
+    
+
+
+
+
+  
 
     public function cancelBooking($event, HelpersEvent $Event)
     {
@@ -36,7 +44,9 @@ class ReservedEvents extends Component
         if ($Event->cancelBooking($event['id'])) {
 
             toastr("Booking cancelled successfully", "success");
-
+            
+            $this->booked = false;
+           
             $this->emit('fresh');
         } else {
 

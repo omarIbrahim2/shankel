@@ -45,5 +45,6 @@ return[
     'addLesson' => 'Add Lesson',
     'update' => 'update',
     'editLesson' => 'Update Lesson',
+    'noCv' => 'No Cv provided Yet ..'
     
 ];

@@ -74,7 +74,7 @@
                         
                 
                     <div class="input-item me-auto ms-0">
-                         <input type="text" value="{{ $Event == null ? old('start_date') : $Event->start_date }}" name="start_date"  placeholder="{{ trans('event.select') }}"  class="textbox-n eventDayPicker"/>
+                         <input type="text" value="{{ $Event == null ? old('start_date') : $Event->start_date }}" name="start_date"  placeholder="{{ trans('event.start') }}"  class="textbox-n eventDayPicker"/>
                          <span>
                             <i class="fa-regular fa-calendar-days"></i>
                         </span>
@@ -84,7 +84,7 @@
                      </div>
                 
                      <div class="input-item me-auto ms-0">
-                         <input type="text" value="{{ $Event == null ? old('end_date') : $Event->end_date }}"  name="end_date" id="basicFlatpickr" placeholder="{{ trans('event.select') }}"  class="textbox-n eventDayPicker"/>
+                         <input type="text" value="{{ $Event->end_date }}"  name="end_date"  placeholder="{{ trans('event.eventEndDate') }}"  class="textbox-n eventDayPicker"/>
                          <span>
                             <i class="fa-regular fa-calendar-days"></i>
                         </span>

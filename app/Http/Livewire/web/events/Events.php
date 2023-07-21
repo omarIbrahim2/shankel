@@ -23,8 +23,9 @@ class Events extends Component
         return view('livewire.web.events.events')->with(['event' => $this->event]);
     }
 
-    public function mount()
-    {
+    public function mount(){
+    
+         $this->booked =  $this->event->booked;
    
     }
 

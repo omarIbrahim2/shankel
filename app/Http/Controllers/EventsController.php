@@ -58,6 +58,9 @@ class EventsController extends Controller
     }
 
 
+   
+
+
     public function updateEventView(LocationRepoInterface $locationRepo ,$Eventid){
         $cities= $locationRepo->getCities();
         $event = $this->Eventobj->getEvent($Eventid);
@@ -156,25 +159,6 @@ class EventsController extends Controller
 
 
    
-
-    
-
-
-    public function cancelEvent(Request $request){
-          
-      $validatedData =  $request->validate([
-            'id' => 'required|exists:events,id',
-            'status' => 'required'
-      ]);
-
-        
-        $this->Eventobj->cancelEvent($validatedData['id']);
-
-        
-      toastr("event cancelled successfully" , "success");
-      return back();
-      
-    }
 
    
 }

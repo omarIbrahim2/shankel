@@ -25,7 +25,7 @@
     <div class="form-group mb-4">
         <label for="addvert-desc-en">{{ trans('addvert.desc_en') }}</label>
         <textarea name="desc_en" id="addvert-desc-en" cols="30" placeholder="{{ trans('addvert.desc_en') }}" rows="10"
-            class="form-control ">{{ $addvert == null ? '' : $addvert->desc('en') }}</textarea>
+            class="form-control ">{!! $addvert == null ? '' : $addvert->desc('en') !!}</textarea>
         @error('desc')
             <p class="text-danger">{{ $message }}</p>
         @enderror
@@ -33,7 +33,7 @@
     <div class="form-group mb-4">
         <label for="addvert-desc-ar">{{ trans('addvert.desc_ar') }}</label>
         <textarea name="desc_ar" id="addvert-desc-ar" cols="30" placeholder="{{ trans('addvert.desc_ar') }}" rows="10"
-            class="form-control ">{{ $addvert == null ? '' : $addvert->desc('ar') }}</textarea>
+            class="form-control ">{!! $addvert == null ? '' : $addvert->desc('ar') !!}</textarea>
         @error('desc')
             <p class="text-danger">{{ $message }}</p>
         @enderror
@@ -46,6 +46,9 @@
             @error('image')
                 <p class="text-danger">{{ $message }}</p>
             @enderror
+            @if ($update == true)
+                <img src="{{asset($addvert->image)}}" style="width: 60px" alt="addvert">
+            @endif
         </div>
 
 

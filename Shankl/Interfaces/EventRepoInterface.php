@@ -14,5 +14,5 @@ interface EventRepoInterface
     public function cancelSubscribeUser($eventId, $User);
     public function eventSubscribers($eventId);
     public function  getEventsWeb($userId = null, $guard);
-    public function getReservedEvents($userId = null, $guard);
+    public function getReservedEvents($AuthUser, $pages);
 }

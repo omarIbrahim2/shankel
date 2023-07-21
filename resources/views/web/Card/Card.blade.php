@@ -38,14 +38,14 @@
                             <div class="service-item-data">
                                 <div class="service-text">
                                     <div class="tags">
-                                        <a href="#" class="tag rounded-pill btn-custom">{{ $service->name}}</a>
+                                        <a href="#" class="tag rounded-pill btn-custom">{{ $service->name()}}</a>
                                         <a href="#" class="price">{{ $service->price }} JOD</a>
                                     </div>
                                     <div class="service-item-title">
-                                        <h3>{{ $service->name }}</h3>
+                                        <h3>{{ $service->name() }}</h3>
                                     </div>
                                     <div class="service-item-description">
-                                        {{ $service->desc }}
+                                        {!! $service->desc() !!}
                                     </div>
                                 </div>
                                 <div class="service-booking">

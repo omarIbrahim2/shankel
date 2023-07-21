@@ -7,3 +7,26 @@
      <x-slider-form actionRoute="slider-create"></x-slider-form>
  </div>
 @endsection
+
+
+@section('scripts')
+<script>
+       
+   ClassicEditor
+   .create(document.querySelector('#info-en') , {
+       language: 'ar'
+   })
+    
+   .catch(error=>{
+      console.error( error );
+   })
+</script> 
+
+<script>
+   ClassicEditor
+   .create(document.querySelector('#info-ar'))
+   .catch(error2=>{
+      console.error( error );
+   })
+   </script>
+@endsection

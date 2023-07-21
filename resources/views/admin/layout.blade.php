@@ -620,6 +620,10 @@
             App.init();
         });
     </script>
+
+       <script src="{{asset('assets')}}/vendor/ckeditor5-build-classic/ckeditor.js"></script>
+         <script src="{{asset('assets')}}/vendor/ckeditor5-build-classic/ckeditor.js.map"></script>
+       <script src="{{asset('assets')}}/vendor/ckeditor5-build-classic/translations/ar.js"></script>
     <script src="{{ asset('admin') }}/js/custom.js"></script>
     @livewireScripts
     @yield('scripts')

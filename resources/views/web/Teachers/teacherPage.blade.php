@@ -42,8 +42,14 @@
                                         <div class="avatar-btns">
 
                                             <div>
+                                                @if ($teacher->cv != null)
                                                 <a href="{{asset('uploads/'.json_decode($teacher->cv)->cv)}}"
-                                                  download="Cv.pdf"  class="btn-custom">{{ trans('teacher.theCv') }}</a>
+                                                    download="Cv.pdf"  class="btn-custom">{{ trans('teacher.theCv') }}</a>
+                                                @else
+                                                      <p>{{trans('teacher.noCv')}}</p>
+                                                     <button class="btn-custom" disabled>{{ trans('teacher.theCv') }}</button>
+                                                @endif
+                                               
                                             </div>
                                         </div>
                                     </div>

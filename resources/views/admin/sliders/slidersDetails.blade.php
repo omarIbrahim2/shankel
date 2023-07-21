@@ -24,11 +24,11 @@
                 </div>
 
                 <div class="mt-4">
-                    Info En: <p>{{ $Slider->info('en') }}</p>
+                    Info En: <p>{!! $Slider->info('en') !!}</p>
                 </div>
 
                 <div class="mt-4">
-                    Info Ar: <p>{{ $Slider->info('ar') }}</p>
+                    Info Ar: <p>{!! $Slider->info('ar') !!}</p>
                 </div>
             </div>
 

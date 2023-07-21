@@ -24,35 +24,35 @@
                 </div>
 
                 <div class="mt-4">
-                    About Us En: <p>{{ $Info->aboutUs('en') }}</p>
+                    About Us En: <p>{!! $Info->aboutUs('en') !!}</p>
                 </div>
 
                 <div class="mt-4">
-                    About Us Ar: <p>{{ $Info->aboutUs('ar') }}</p>
+                    About Us Ar: <p>{!! $Info->aboutUs('ar') !!}</p>
                 </div>
 
                 <div class="mt-4">
-                    Mission En: <p>{{ $Info->mission('en') }}</p>
+                    Mission En: <p>{!! $Info->mission('en') !!}</p>
                 </div>
 
                 <div class="mt-4">
-                    Mission Ar: <p>{{ $Info->mission('ar') }}</p>
+                    Mission Ar: <p>{!! $Info->mission('ar') !!}</p>
                 </div>
 
                 <div class="mt-4">
-                    Vision En: <p>{{ $Info->vision('en') }}</p>
+                    Vision En: <p>{!! $Info->vision('en') !!}</p>
                 </div>
 
                 <div class="mt-4">
-                    Vision Ar: <p>{{ $Info->vision('ar') }}</p>
+                    Vision Ar: <p>{!! $Info->vision('ar') !!}</p>
                 </div>
 
                 <div class="mt-4">
-                    Why Choose us En: <p>{{ $Info->choose('en') }}</p>
+                    Why Choose us En: <p>{!! $Info->choose('en') !!}</p>
                 </div>
 
                 <div class="mt-4">
-                    Why Choose us Ar: <p>{{ $Info->choose('ar') }}</p>
+                    Why Choose us Ar: <p>{!! $Info->choose('ar') !!}</p>
                 </div>
             </div>
         </div>

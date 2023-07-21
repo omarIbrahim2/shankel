@@ -1,6 +1,10 @@
 <div class="table-responsive">
     <div class="d-flex align-items-center justify-content-between flex-wrap">
+
+        @if ($Infos == null)
         <a href="{{ route('infos-create-form') }}" class="btn btn-success mb-sm-3  margin_res">Add Information</a>
+        @endif
+       
 
     </div>
     <table class="table table-bordered table-hover table-striped mb-4 admin_table">

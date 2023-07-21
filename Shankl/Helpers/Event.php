@@ -89,7 +89,15 @@ class Event{
 
     }
     
-    
+    public function UserReservedEvents($pages){
+         
+       $AuthUser =  AuthUserFactory::getAuthUser();
+
+
+       return $this->eventReboInterface->getReservedEvents($AuthUser , $pages);
+
+
+    }
 
 
 

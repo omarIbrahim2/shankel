@@ -111,32 +111,6 @@ Shankal | Home
                                 <p class="card-title fw-bold">{{$service->price}} JOD</p>
                             </div>
                             <div class="avatar-btns">
-
-                                <div>
-                                    <div class="service-booking">
-                                        <form action="{{ route('add-to-card') }}" method="post">
-                                            @csrf
-                                            <input type="hidden" name="service_id" value="{{ $service->id }}">
-
-                                            <div class="srv-cont">
-                                            <button type="submit"
-                                                    class="btn-custom">{{ trans('service.book') }}</button>
-                                                <div class="service-booking">
-
-                                                    <input  name="quantity" class="num_cart_item form-control"
-                                                        placeholder="0" type="number"
-                                                        >
-                                                </div>
-
-
-                                            </div>
-                                        </form>
-                                        @error('quantity')
-                                        <p class="text-danger">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-
-                                </div>
                             </div>
                         </div>
                     </div>
