@@ -13,7 +13,7 @@
                             <h3>{{ $Infos->title(App::getLocale()) }}</h3>
                         </div>
                         <p>
-                            {{ $Infos->aboutUs(App::getLocale()) }}
+                            {!! $Infos->aboutUs(App::getLocale()) !!}
                         </p>
                     </div>
                     <div class="col-lg-6 order-lg-0 order-first">
@@ -32,7 +32,7 @@
                                {{ trans("home.WhyChooseUs") }}
                             </h4>
                             <p>
-                                {{ $Infos->choose(App::getLocale()) }}
+                                {!! $Infos->choose(App::getLocale()) !!}
                             </p>
                         </div>
                     </div>
@@ -42,7 +42,7 @@
                                 {{ trans("home.OurMission") }}
                             </h4>
                             <p>
-                                {{ $Infos->mission(App::getLocale()) }}
+                                {!! $Infos->mission(App::getLocale()) !!}
                             </p>
                         </div>
                     </div>
@@ -52,7 +52,7 @@
                                 {{ trans("home.OurVision") }}
                             </h4>
                             <p>
-                                {{ $Infos->vision(App::getLocale()) }}
+                                {!! $Infos->vision(App::getLocale()) !!}
                             </p>
                         </div>
                     </div>

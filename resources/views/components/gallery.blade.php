@@ -44,6 +44,12 @@
             @error('image')
                 <p class="text-danger">{{ $message }}</p>
             @enderror
+
+            @if ($update == true)
+              
+            <img src="{{asset($gallery->image)}}" style="width: 50px" alt="gallery">
+                
+            @endif
         </div>
     </div>
 

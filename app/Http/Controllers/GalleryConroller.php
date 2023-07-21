@@ -86,7 +86,9 @@ class GalleryConroller extends Controller
     }
 
     public function delete($galleryId){
-           
+          $gallery = $this->adminService->getImage($galleryId);
+
+          $this->fileService->DeleteFile(substr($gallery->image , 8));
          $action = $this->adminService->deleteImage($galleryId);
 
          if ($action) {

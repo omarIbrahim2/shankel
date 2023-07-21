@@ -331,6 +331,12 @@ class AdminController extends Controller
             'en' => $request['address_en'],
             'ar' => $request['address_ar'],
         ]);
+
+        $data['facebook'] = $request['facebook'];
+        $data['phone'] = $request['phone'];
+        $data['instagram'] = $request['instagram'];
+        $data['Linkedin'] = $request['Linkedin'];
+        $data['email'] = $request['email'];
         return $data;
     }
 

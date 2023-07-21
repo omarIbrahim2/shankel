@@ -11,7 +11,7 @@
                             <div class="contact-item">
                                 <i class="fa-solid fa-location-dot"></i>
                                 <a href="https://goo.gl/maps/629oZPALLVBQkjya7" target="_blank">
-                                    {{$Social->address}}
+                                    {{$Social->address()}}
                                 </a>
                             </div>
                             @endif

@@ -193,6 +193,9 @@ class Event{
    
      private function responseRoute($route){
             
+        if ($this->getGuard() == 'web') {
+            return redirect()->route($route , 'web');
+        }
          return redirect()->route($route);
      }
     

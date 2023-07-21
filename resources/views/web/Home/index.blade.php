@@ -32,7 +32,7 @@ Shankal | Home
                         <div class="col-lg-6 col-md-8 col-12">
                             <div class="slider-content">
                                 <h1>{{ $slider->title(App::getLocale()) }}</h1>
-                                <P>{{ $slider->info(App::getLocale()) }}</P>
+                                <P>{!! $slider->info(App::getLocale()) !!}</P>
                             </div>
                         </div>
                     </div>
