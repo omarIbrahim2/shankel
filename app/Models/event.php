@@ -26,7 +26,7 @@ class Event extends Model
     {
         return $this->morphTo();
     }
-    
+
     public function area()
     {
         return $this->belongsTo(Area::class);
@@ -51,7 +51,7 @@ class Event extends Model
         return $this->morphedByMany(Supplier::class, 'eventable');
     }
 
-  
+
 
     public function startAt(){
 
@@ -64,7 +64,7 @@ class Event extends Model
     }
 
     public function formatedDate($attribute){
-        
+
         return Carbon::createFromFormat('Y-m-d' , $attribute)->format("d F Y");
 
     }
@@ -76,6 +76,13 @@ class Event extends Model
         $date =  Carbon::createFromFormat('Y-m-d' , $this->attributes['start_date'])->format("d F Y");
         $time = Carbon::createFromFormat('H:i:s' , $this->attributes['start_time'])->format('H:i:s');
         return  $date . ' '. $time;
+    }
+    public function endFormatedToCounter(){
+
+
+        $endDate =  Carbon::createFromFormat('Y-m-d' , $this->attributes['end_date'])->format("d F Y");
+        $endTime = Carbon::createFromFormat('H:i:s' , $this->attributes['end_time'])->format('H:i:s');
+        return  $endDate . ' '. $endTime;
     }
 
     public function diffD(){
@@ -97,27 +104,27 @@ class Event extends Model
 
     public function diffHours(){
 
- 
-        $start_time = Carbon::createFromFormat('H:i:s' , $this->attributes['start_time']);
-        $end_time = Carbon::createFromFormat('H:i:s' ,$this->attributes['end_time'] ); 
 
-        
+        $start_time = Carbon::createFromFormat('H:i:s' , $this->attributes['start_time']);
+        $end_time = Carbon::createFromFormat('H:i:s' ,$this->attributes['end_time'] );
+
+
 
         $hours = $start_time->diffInHours($end_time);
-      
+
         return $hours;
 
     }
 
     public function diffMinutes(){
-         
-        $start_time = Carbon::createFromFormat('H:i:s' , $this->attributes['start_time']);
-        $end_time = Carbon::createFromFormat('H:i:s' ,$this->attributes['end_time'] ); 
-        $minutes= $start_time->diffInMinutes($end_time);
-        
 
-        
-      
+        $start_time = Carbon::createFromFormat('H:i:s' , $this->attributes['start_time']);
+        $end_time = Carbon::createFromFormat('H:i:s' ,$this->attributes['end_time'] );
+        $minutes= $start_time->diffInMinutes($end_time);
+
+
+
+
         return $minutes < 60 ? $minutes : $minutes % 60;
 
 
@@ -131,16 +138,16 @@ class Event extends Model
     //        get:function(){
     //         if ($this->diffD() <= 0 && $this->attributes['status'] != 'Cancelled') {
     //             $currentTime =  Carbon::now()->format('H:i:s');
-                     
-                
-                
+
+
+
     //             $endTime = Carbon::createFromFormat("H:i:s" , $this->attributes['end_time']);
-                 
+
     //             if ($currentTime > $endTime) {
     //                return 'Finished';
     //             }
 
-                
+
     //         }
 
     //         return "In Progress";
@@ -148,7 +155,7 @@ class Event extends Model
     //        }
     //    );
     // }
-   
+
 
     public function image(): Attribute
     {
@@ -170,7 +177,7 @@ class Event extends Model
         $lang = $lang ?? App::getLocale();
         return json_decode($this->title)->$lang ;
     }
-    
+
     public function desc($lang = null){
         $lang = $lang ?? App::getLocale();
         return json_decode($this->desc)->$lang ;

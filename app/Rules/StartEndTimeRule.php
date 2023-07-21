@@ -24,7 +24,7 @@ class StartEndTimeRule implements Rule
         $this->starTime = $starTime;
 
         $this->endTime = $endTime;
-        
+
     }
 
     /**
@@ -36,14 +36,14 @@ class StartEndTimeRule implements Rule
      */
     public function passes($attribute, $value)
     {
-       
-        $date1 = Carbon::createFromFormat('Y-m-d H:i', $this->startDate);
-        $date2 = Carbon::createFromFormat('Y-m-d H:i', $this->endDate);
+
+        $date1 = Carbon::createFromFormat('Y-m-d', $this->startDate);
+        $date2 = Carbon::createFromFormat('Y-m-d', $this->endDate);
         $timeStart = Carbon::createFromFormat('H:i:s', $this->starTime);
         $timeEnd =   Carbon::createFromFormat('H:i:s', $this->endTime);
 
         if ($date1->eq($date2) && $timeEnd < $timeStart ) {
-             
+
             return false;
         }
 

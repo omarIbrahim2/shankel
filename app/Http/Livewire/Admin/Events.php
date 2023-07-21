@@ -11,7 +11,7 @@ use Shankl\Services\AdminService;
 
 class Events extends Component
 {
-    
+
     // public $Events;
     // public $PaginEvents;
     use WithPagination;
@@ -20,7 +20,7 @@ class Events extends Component
 
     public $guard;
 
-    
+
     protected $listener = [
         'fresh' => '$refresh',
     ];
@@ -30,20 +30,20 @@ class Events extends Component
 
          $eventQuery = (new Event)->query();
         if ($this->searchEvent) {
-             $Events = $this->TitleSearch($this->searchEvent , 'title' , $eventQuery);
+             $Events = $this->TitleSearch($this->searchEvent , 'title->ar' , $eventQuery);
         }else{
             $Events =  $EventObj->getEvents($this->guard , 10);
         }
-       
-        
-        
+
+
+
 
         return view('livewire.admin.events')->with(['events' => $Events]);
     }
 
-  
+
     public function cancelEvent($event , HelpersEvent $EventObj){
-        
+
 
         $EventObj->cancelEvent($event['id']);
         toastr("Event cancelled successfully", "success");

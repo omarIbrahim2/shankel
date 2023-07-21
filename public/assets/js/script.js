@@ -250,20 +250,24 @@ $(".print-inv").click(function(){
 });
 
 $(".eventTimePicker").flatpickr({
-  enableTime: true,
-  noCalendar: true,
-  dateFormat: "H:i:S",
+    enableTime: true,
+    noCalendar: true,
+    dateFormat: "H:i:S",
 });
+
 $(".eventDayPicker").flatpickr({
-  enableTime: true,
-  dateFormat: "Y-m-d H:i",
+    enableTime: false,
+    dateFormat: "Y-m-d ",
+    defaultDate: Date.now()
 });
 $(".paginate-top").on("click",()=>{
     offset().top=0
 })
 function count(sel){
     var startDate=$(sel).find(".counter-body").data("date")
+    var endDate=$(sel).find(".counter-body").data("end")
 var countDownDate = new Date(startDate).getTime();
+var endCountDownDate= new Date(endDate).getTime()
 // Update the count down every 1 second
 var x = setInterval(function() {
 
@@ -272,6 +276,8 @@ var x = setInterval(function() {
 
   // Find the distance between now and the count down date
   var distance = countDownDate - now;
+  var endDistance= endCountDownDate - now
+  console.log(endDistance)
 
   // Time calculations for days, hours, minutes and seconds
   var days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -289,7 +295,11 @@ var x = setInterval(function() {
     $(sel).find(".counter-seconds span").html(seconds)
 
   // If the count down is over, write some text
-  if (distance < 0) {
+  if (endDistance <= 0) {
+    clearInterval(x);
+    $(sel).find(".counter-body").html($(".events-section").data("endlang"))
+
+  }else if (distance <= 0) {
     clearInterval(x);
     $(sel).find(".counter-body").html($(".events-section").data("lang"))
   }

@@ -32,6 +32,7 @@ return[
     "cls" => "إلغاء الحدث",
     "reEvent" => "اعادة الحدث",
     "notifyEventStart" => "الحدث قد بدا",
+    "notifyEventEnd" => "تم انتهاء الحدث",
     "reservedEvents" => "الفاعليات المحجوزة",
     "eventEndDate" => "يوم نهاية الحدث",
 

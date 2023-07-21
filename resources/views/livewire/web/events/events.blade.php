@@ -37,7 +37,7 @@
                     <div class="col-lg-5 col-md-6 col-12">
                         <div class="event-right-side">
                             <div class="counter">
-                                <div class="counter-body" data-date="{{$event->formatedToCounter()}}">
+                                <div class="counter-body" data-date="{{$event->formatedToCounter()}}" data-end="{{$event->endFormatedToCounter()}}">
                                     <div class="counter-item counter-days" >
                                         <span></span>
                                         <p>{{ trans('event.days') }}</p>
@@ -124,8 +124,8 @@
                     </div>
                 </div>
             </div>
-        
-  
+
+
 
 
 </div>
