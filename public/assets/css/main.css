@@ -2602,3 +2602,15 @@ main {
 .service-images-btns .btn-custom{
     width: auto;
 }
+.cart-edit-quantity{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+.cart-edit-quantity .btn-custom{
+    width: auto;
+}
+.cart-edit-quantity input{
+    width: 75%;
+}
