@@ -22,6 +22,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\LocationCcontroller;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PartnersController;
 use App\Http\Controllers\ServiceOrderController;
 use App\Http\Controllers\TransactionController;
@@ -373,6 +374,12 @@ Route::middleware('lang')->group(function(){
         Route::get('gallery/delete/{galleryId}' , [GalleryConroller::class , 'delete'])->name('gallery-delete');
         Route::post('gallery/store' , [GalleryConroller::class , 'store'])->name('gallery-create');
         Route::post('gallery/update' , [GalleryConroller::class , 'edit'])->name('gallery-update');
+
+        //Notifications
+
+        Route::get('Notificatiions' , [NotificationController::class , "index"])->name('Notifications');
+
+
 
         //partners
 

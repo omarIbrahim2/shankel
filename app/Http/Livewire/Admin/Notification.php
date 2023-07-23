@@ -16,12 +16,7 @@ class Notification extends Component
     }
 
 
-    public function getListeners(){
-          return ['echo:RegisterUser,UserRegisterEvent'=>'increment'];
-    }
+  
 
-    public function increment(){
-
-        dd('ok');
-    }
+ 
 }

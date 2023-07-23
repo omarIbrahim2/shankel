@@ -69,7 +69,12 @@
                 </li>
             </ul>
             <div class="header-icons">
-                @livewire('admin.notification')
+
+                <a href="{{route('Notifications')}}">
+
+                    @livewire('admin.notification')
+                </a>
+               
 
                 <ul class="navbar-item flex-row navbar-dropdown ml-auto">
 
