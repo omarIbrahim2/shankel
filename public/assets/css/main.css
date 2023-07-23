@@ -2572,3 +2572,33 @@ main {
     z-index: 10000;
     background-color: var(--section-color);
 }
+.services-slider-image .card{
+    position: relative;
+}
+.services-slider-image .card .card-body{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.services-slider-image-title{
+    text-align: center;
+    color: var(--main-color);
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+.services-slider-image .upload-avatar{
+    margin-bottom: 0;
+    margin-inline-end: 16px;
+}
+.services-slider-image .upload-avatar .uploadedPhotoName{
+    justify-content: center;
+}
+.service-images-btns{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 32px;
+}
+.service-images-btns .btn-custom{
+    width: auto;
+}
