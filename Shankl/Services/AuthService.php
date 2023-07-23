@@ -27,7 +27,7 @@ class AuthService{
 
     public function logoutUser(Request $request ,  $guard){
        
-        Auth::guard($guard)->logout();
+       Auth::guard($guard)->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         

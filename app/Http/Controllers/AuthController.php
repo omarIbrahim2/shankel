@@ -92,6 +92,7 @@ class AuthController extends Controller
     public function logout(Request $request , $guard)
     {
         
+        
         $this->authService->logoutUser( $request, $guard);
 
         
@@ -127,7 +128,7 @@ class AuthController extends Controller
      
 
         $request->session()->regenerate();
-
+          toastr("compelete your profile" , 'success');
         return redirect()->intended(RouteServiceProvider::TEACHER);
     }
 

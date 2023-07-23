@@ -33,6 +33,9 @@ class Logout
              
             return $next($request);
  
+         }elseif(Auth::guard("supplier")->check()){
+
+            return $next($request);
          }
         return redirect()->route("home");
     }

@@ -10,23 +10,34 @@ use Shankl\Repositories\ServiceImagesRepo;
 class CreateImages extends Component
 {
     use WithFileUploads;
-    protected $rules =["photos.*" => 'image|mimes:jpg,png,jpeg,webp|max:2048|nullable'];
+    protected $rules =["image.*" => 'image|mimes:jpg,png,jpeg,webp|max:2048|nullable'];
 
     public $image = [];
 
-    public $service;
+    public $Service;
+
+    public $service_id;
     public function render()
     {
         return view('livewire.web.services.create-images');
     }
 
+    public function mount(){
+       
+        $this->service_id = $this->Service->id;
+
+    }
+
     public function save(ServiceImagesRepo $serviceImagesRepo) {
+      
+        
 
+       if($serviceImagesRepo->create($this->image , $this->Service->id)){
 
-       if($serviceImagesRepo->create($this->image , $this->service->id)){
+        
                      
           toastr('images created successfully' , 'success');
-          return redirect()->to('web-services');
+          return redirect()->route('web-services');
        } 
 
        toastr("error in creating image" , 'error');
