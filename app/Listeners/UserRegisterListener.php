@@ -2,9 +2,9 @@
 
 namespace App\Listeners;
 
+use App\Events\UserRegisterEvent;
 use App\Models\User;
 use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class UserRegisterListener
 {
@@ -24,7 +24,7 @@ class UserRegisterListener
      * @param  object  $event
      * @return void
      */
-    public function handle($event)
+    public function handle(UserRegisterEvent $event)
     {
        $Admins = User::select('notifications','id')->get();
 
@@ -35,7 +35,7 @@ class UserRegisterListener
         $admin->save();
         $admin->notifications()->create([
             "user_id" => $admin->id,
-            'info' => $event->user->name."has been registered to the shankel",
+            'info' => $event->user->name()."has been registered to the shankel",
         ]);
 
        }

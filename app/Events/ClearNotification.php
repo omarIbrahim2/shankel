@@ -10,20 +10,19 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class UserRegisterEvent
+class ClearNotification
 {
-
     use Dispatchable, InteractsWithSockets, SerializesModels;
-      
-    public $user;
+
+    public $User;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct($User)
     {
-        $this->user = $user;
+        $this->User = $User;
     }
 
     /**
@@ -31,11 +30,8 @@ class UserRegisterEvent
      *
      * @return \Illuminate\Broadcasting\Channel|array
      */
-
-
-    
-
-  
-
-  
+    public function broadcastOn()
+    {
+        return new PrivateChannel('channel-name');
+    }
 }

@@ -4,12 +4,14 @@ namespace App\Providers;
 
 use App\Events\SchoolViews;
 use App\Events\AddToCardEvent;
+use App\Events\ClearNotification;
 use App\Listeners\increaseViews;
 
 use App\Events\UserRegisterEvent;
 use App\Events\RemoveFromCardEvent;
 use Illuminate\Auth\Events\Lockout;
 use App\Listeners\AddToCardListener;
+use App\Listeners\ClearNotificationListener;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
 use App\Listeners\UserRegisterListener;
@@ -39,6 +41,14 @@ class EventServiceProvider extends ServiceProvider
 
         RemoveFromCardEvent::class => [
              RemoveFromCardListener::class,
+        ],
+
+        UserRegisterEvent::class =>[
+             UserRegisterListener::class,
+        ],
+
+        ClearNotification::class => [
+            ClearNotificationListener::class,
         ],
 
        

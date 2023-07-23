@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId("transaction_id")->constrained();
             $table->foreignId("service_id")->constrained();
             $table->integer('service_order_quantity' , false , true);
+            $table->index(['transaction_id' , 'service_id']);
             $table->timestamps();
         });
     }
