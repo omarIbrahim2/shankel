@@ -35,7 +35,7 @@ return new class extends Migration
             $table->unsignedInteger("free_seats" , false);
             $table->rememberToken();
             $table->unsignedInteger("notifications")->default(0);
-            $table->index([ 'email' , 'status']);
+            $table->index([ 'email' , 'status' , 'edu_systems_id' , 'area_id' , 'type']);
             $table->timestamps();
         });
     }

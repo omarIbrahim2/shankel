@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
-            $table->json("name" , 255);
+            $table->json("name");
             $table->string("email" , 100);
             $table->string("password" , 255);
             $table->foreignId("area_id")->constrained();
-            $table->json("field" , 255);
+            $table->json("field");
             $table->string("image" , 255)->nullable();
             $table->json('cv')->nullable();
             $table->string("phone" , 50);
@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('linkedin' , 255)->nullable();
             $table->unsignedInteger("views" , false)->nullable()->default(0);
             $table->rememberToken();
-            $table->index([ 'email' , 'status']);
+            $table->index([ 'email' , 'status' , 'area_id']);
             $table->unsignedInteger("notifications")->default(0);
             $table->boolean("status")->default(false);
             $table->timestamps();

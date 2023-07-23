@@ -2,6 +2,7 @@
 
 namespace Shankl\Helpers;
 
+use Shankl\Factories\AuthUserFactory;
 use Shankl\Interfaces\PaymentInterface;
 
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
@@ -61,11 +62,11 @@ class SmkLivePaypal implements PaymentInterface{
                     return redirect()->away($links['href']);
                 }
             }
-
-            return redirect()->route("register-form-school")->with(['error' => "something wrong happened"]);
+            toastr(trans('payment.error') , 'error');
+            return redirect()->route("home");
         }else{
             
-            toastr(trans('payment.amount') , 'error');
+            toastr(trans('payment.error') , 'error');
             return redirect()->route("home");
         }
 
@@ -75,7 +76,8 @@ class SmkLivePaypal implements PaymentInterface{
 
     public function successPayment($request)
     {
-
+       
+        $guard = AuthUserFactory::geGuard();
         $provider =  new PayPalClient;
 
         $provider->setApiCredentials(config('paypal'));
@@ -85,16 +87,17 @@ class SmkLivePaypal implements PaymentInterface{
         $response = $provider->capturePaymentOrder($request['token']);
 
         if (isset($response["status"]) && $response["status"] == "COMPLETED") {
-            return redirect()->route("parent")->with(['success' => "You have booked successfully"]);
+            return redirect()->route($guard)->with(['success' => "You have booked successfully"]);
         }else{
-
-            return redirect()->route("parent")->with(['error' => $response['message'] ?? "something wrong happened"]);
+              
+            toastr(trans('payment.error') , 'error');
+            return redirect()->route($guard);
 
         }
     }
 
     public function cancelPayment()
     {
-        return redirect()->route("parent")->with(['error' => $response['message'] ?? "cancelled"]);
+        return redirect()->route("home")->with(['error' => "cancelled"]);
     }
 }

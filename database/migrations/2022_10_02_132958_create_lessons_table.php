@@ -16,11 +16,12 @@ return new class extends Migration
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
             $table->foreignId("teacher_id")->constrained();
-            $table->json("title" , 255);
+            $table->json("title");
             $table->string('image')->nullable();
             $table->string("url" , 255);
             $table->enum('type',['Private','Public'])->default('Public');
             $table->boolean("status")->default(false);
+            $table->index('type');
             $table->timestamps();
         });
     }

@@ -13,15 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('services', function (Blueprint $table) {
+        Schema::create('shankl_prices', function (Blueprint $table) {
             $table->id();
-            $table->json("name");
-            $table->unsignedFloat("price" );
-            $table->unsignedInteger("quantity");
-            $table->json("desc");
-            $table->string("image" , 100)->nullable();
-            $table->foreignId("supplier_id")->constrained();
-            $table->index('supplier_id');
+            $table->unsignedFloat('seat_price');
             $table->timestamps();
         });
     }
@@ -33,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('services');
+        Schema::dropIfExists('shankl_prices');
     }
 };

@@ -50,9 +50,14 @@ class ServiceOrderRepo{
     }
 
     public function createServices($transaction ,  $services){
+         
 
+      foreach($services as $service){
+          
+        $transaction->services()->attach($service->id , ["service_order_quantity" => $service->pivot->quantity]);
+      }
     
-      $transaction->services()->attach($services);
+      
     }
 
 
@@ -88,6 +93,13 @@ class ServiceOrderRepo{
       }
 
       public function transactionService($transactionId){
-        return Transaction::with(['services:name,desc,price'])->findOrFail($transactionId);
+        return Transaction::with(['services:id,name,desc,price' , "transactionable" => function(MorphTo $morphTo){
+             
+          $morphTo->morphWith([
+            Parentt::class,
+            School::class,
+            Teacher::class,
+          ]);
+        }])->findOrFail($transactionId);
       }
 }

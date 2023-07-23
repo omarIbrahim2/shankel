@@ -58,7 +58,7 @@ class ServiceOrder extends AbstractOrder
           DB::transaction(function () use($card , $transaction , $services) {
                $servicesIds = $services->pluck("id")->toArray();
      
-               $this->serviceOrderRepo->createServices($transaction, $servicesIds);
+               $this->serviceOrderRepo->createServices($transaction, $services);
      
                $this->serviceOrderRepo->clearCard($card, $servicesIds);
      
@@ -66,7 +66,7 @@ class ServiceOrder extends AbstractOrder
                $this->serviceOrderRepo->updateQuatityInservice($services);
           });
          
-          Notification::send($AuthUser , new OrderNotification($transaction ,$services , $AuthUser ));
+          //Notification::send($AuthUser , new OrderNotification($transaction ,$services , $AuthUser ));
      }
 
      public function __destruct()
