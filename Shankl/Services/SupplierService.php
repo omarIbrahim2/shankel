@@ -99,11 +99,13 @@ class SupplierService extends Service{
          return $this->supplierRebo->SupplierServices($supplierId , $pages);
     }
 
+  
+
     public function createService($data , $file){
           
         $data['image'] = $this->uploadServiceImage($file , null);
         
-         $this->ServiceRebo->create($data);
+         $Service = $this->ServiceRebo->create($data);
           if (AuthUserFactory::geGuard() == 'web') {
                
             toastr("service created successfully", "success");
@@ -112,8 +114,8 @@ class SupplierService extends Service{
           }
           
           toastr("service created successfully", "success");
-
-          return redirect()->route("supplier-services");
+     
+          return view('web.Services.createImages')->with(['Service' => $Service]);
 
     }
 

@@ -42,7 +42,7 @@
                                         @foreach ($School->images as $image)
                                         <div class="swiper-slide">
                                             <img
-                                                src="{{asset('uploads/'.$image->name)}}"
+                                                src="{{asset($image->name)}}"
                                                 alt="School Photo"
                                             />
                                         </div>
@@ -54,7 +54,7 @@
                                         @foreach ($School->images as $image)
                                         <div class="swiper-slide">
                                             <img
-                                                src="{{asset('uploads/'.$image->name)}}"
+                                                src="{{asset($image->name)}}"
                                                 alt="School Photo"
                                             />
                                         </div>
@@ -76,7 +76,7 @@
                             </div>
                             <div class="detials-descriton">
                                 <p>
-                                    {{$School->desc()}}
+                                    {!!$School->desc()!!}
                                 </p>
                             </div>
                             <div class="detials-items">

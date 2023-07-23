@@ -334,6 +334,7 @@ class AdminController extends Controller
 
         $data['facebook'] = $request['facebook'];
         $data['phone'] = $request['phone'];
+        
         $data['instagram'] = $request['instagram'];
         $data['twitter'] = $request['twitter'];
         $data['Linkedin'] = $request['Linkedin'];

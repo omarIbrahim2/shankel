@@ -11,4 +11,5 @@ return[
     "book" => "Add to cart",
     'remove' => 'remove from cart',
     'quantity' => 'Quantity',
+    "addImage" => 'Add service Images',
 ];

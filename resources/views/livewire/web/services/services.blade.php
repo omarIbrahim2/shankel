@@ -15,16 +15,13 @@
                                 <div class="service-item-data">
                                     <div class="service-text">
                                         <div class="tags">
-                                            <p class="tag rounded-pill btn-custom">{{$service->name()}}</p>
+                                            <p class="tag rounded-pill btn-custom"><a href="{{route('web-service' , $service->id)}}">{{$service->name()}}</a></p>
                                             <p class="price">{{$service->price}} JOD</p>
                                         </div>
                                         <div class="service-item-title">
 
                                             <h3>{{$service->supplier->name()}}</h3>
                                         </div>
-                                        <div class="service-item-description">
-                                            {{$service->desc()}}
-                                         </div>
                                     </div>
                                     @custom_auth
 

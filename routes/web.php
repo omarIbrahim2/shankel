@@ -99,6 +99,7 @@ Route::middleware('lang')->group(function(){
    Route::get("supplier/{id}" , [SupplierController::class , "getSupplier"])->name('supplier-by-id');
 
    Route::get('/services' , [ServiceController::class , 'index'])->name('web-services');
+   Route::get('/service/{serviceId}' , [ServiceController::class , 'singleService'])->name('web-service');
 
    Route::get('/teachers' , [TeacherController::class , 'getAllTeachers'])->name('web-teachers');
    Route::get('/teacher/{id}' , [TeacherController::class , 'getOneTeacher'])->name('teacher-by-id');
@@ -378,7 +379,7 @@ Route::middleware('lang')->group(function(){
         //Notifications
 
         Route::get('Notificatiions' , [NotificationController::class , "index"])->name('Notifications');
-
+        Route::get('notifictaion/delete/{notificationId}' , [NotificationController::class , 'delete']);
 
 
         //partners

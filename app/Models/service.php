@@ -49,6 +49,13 @@ class Service extends Model
         );
     }
 
+
+    public function images(){
+
+         return $this->hasMany(ServiceImage::class);
+
+    }
+
     public static function  paginate($items, $perPage , $page = null, $options = []){
         $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
         $items = $items instanceof Collection ? $items : Collection::make($items);

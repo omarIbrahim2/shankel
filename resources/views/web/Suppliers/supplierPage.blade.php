@@ -73,10 +73,8 @@
                                             <img class="card-img-top" src="{{ asset($service->image) }}" alt="service">
                                             <div class="card-body">
                                                 <p class="card-title fw-bold supplier-service-name">
-                                                    {{ $service->name() }}</p>
-                                                <p class="card-text supplier-service-desc">unleash e-business models
-                                                    unleash e-business models unleash e-business models unleash
-                                                    e-business models</p>
+                                                   <a href="{{route('web-service' , $service->id)}}"> {{ $service->name() }}</a></p>
+                
                                                 <p class="card-title fw-bold">{{ $service->price }} JOD</p>
                                             </div>
                                             <div class="avatar-btns">

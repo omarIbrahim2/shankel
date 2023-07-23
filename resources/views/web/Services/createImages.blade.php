@@ -10,9 +10,9 @@
     <div class="inner">
         <div class="container">
               <div class="m-auto">
-                  <h2>{{ trans('supplier.addService') }}</h2>
+                  <h2>{{ trans('service.addImage') }}</h2>
               </div>
-            <div class="contact-form black-contact-form">
+            {{-- <div class="contact-form black-contact-form">
                 <form action="{{route('supplier-service-store')}}"  method="POST"  enctype="multipart/form-data">
                      @csrf
                     <input type="hidden" name="supplier_id" value="{{$supplierId}}" type="text">
@@ -102,89 +102,12 @@
             
             
                 </form>
-             </div>
+             </div> --}}
+
+             @livewire('web.services.create-images', ['Service' => $Service])
         </div>
     </div>
 </section>
 @endsection
 
-@section('scripts')
-<script>
-    $("#selectCity").on('change', function() {
-        let cityId = this.value;
-        var url = '{{ route('areas', ':id') }}';
-        url = url.replace(':id', cityId);
 
-        $.ajax({
-            type: 'GET',
-
-            url: url,
-
-            processData: false,
-
-            contentType: 'application/json',
-
-            cache: false,
-
-            success: function(data) {
-                var your_html = "";
-                $("#areaSelect").empty();
-                $("#areaSelect").append("<option selected disabled>Area</option>");
-
-                var lang = $('#startInn').data('langshankl')
-
-
-
-                for (const key in data.areas) {
-
-                    var name = JSON.parse(data.areas[key].name);
-                    if (lang == 'ar') {
-                        your_html += `<option id='ar' value =`+ data.areas[key].id + `>` + name
-                            .ar + `</option>`;
-                    } else {
-                        your_html += `<option id='ar' value = `+ data.areas[key].id + `>` + name
-                            .en + `</option>`;
-                    }
-
-                }
-                $("#areaSelect").append(your_html);
-                  
-            }
-
-        })
-    })
-</script>
-
-
-<script>
-    $('#eventImage').change(function() {
-
-  var file = $('#eventImage')[0].files[0].name;
-  $("#imgName").text(file);
-   });
- </script>
-
-
-
-
-<script>
-       
-    ClassicEditor
-    .create(document.querySelector( '#event-desc-ar' ) , {
-        language: 'ar'
-    })
-     
-    .catch(error=>{
-       console.error( error );
-    })
-</script> 
-
- <script>
-    ClassicEditor
-    .create(document.querySelector( '#event-desc-en' ))
-    .catch(error2=>{
-        console.error( error );
-    })
-</script>
-
-@endsection
