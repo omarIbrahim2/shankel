@@ -46,7 +46,7 @@ class ServiceRepository implements ServiceRepoInterface{
 
      public function find($serviceId){
 
-        return  Service::findOrFail($serviceId);
+        return  Service::with(['images'])->findOrFail($serviceId);
      }
 
 

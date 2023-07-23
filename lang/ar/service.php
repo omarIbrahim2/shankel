@@ -14,5 +14,6 @@ return[
     "name_ar" => "الإسم",
     "desc_en" => "Description",
     "desc_ar" => "الوصف",
+    "addImage" => 'اضف صور لخدمتك',
 
 ];

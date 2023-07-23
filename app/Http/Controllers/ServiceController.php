@@ -23,6 +23,15 @@ class ServiceController extends Controller
         return view('web.Services.sevices');
     }
 
+    
+
+    public function singleService($serviceId){
+
+        $Service = $this->supplierService->getService($serviceId);
+
+        return view('web.Services.singleService')->with(['Service' => $Service]);
+    }
+
     public function deleteService($serviceId)
     {
 

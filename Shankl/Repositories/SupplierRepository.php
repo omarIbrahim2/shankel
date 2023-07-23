@@ -13,16 +13,16 @@ class SupplierRepository implements UserReboInterface{
 
     public function getActiveUsers($pages)
     {
-        return Supplier::where("status" , true)->orderBy('id','DESC')->paginate($pages);
+        return Supplier::with(['area:id,name'])->where("status" , true)->orderBy('id','DESC')->paginate($pages);
     }
 
     public function getUnActiveUsers($pages)
     {
-        return Supplier::where("status" , false)->orderBy('id','DESC')->paginate($pages);
+        return Supplier::with(['area:id,name'])->where("status" , false)->orderBy('id','DESC')->paginate($pages);
     }
     public function find($userId)
     {
-        return Supplier::findOrFail($userId);
+        return Supplier::with(['area:id,name'])->findOrFail($userId);
     }
 
 
