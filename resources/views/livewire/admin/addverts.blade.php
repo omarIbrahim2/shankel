@@ -18,7 +18,6 @@
             <th>image</th>
             <th>title En</th>
             <th>title Ar</th>
-            <th class="text-center">Desciription</th>
             <th class="text-center">Actions</th>
 
         </tr>
@@ -31,7 +30,6 @@
             <td><img src="{{asset($addvert->image)}}" alt="" style="width: 50px"></td>
             <td class="elpsis">{{$addvert->title('en')}}</td>
             <td class="elpsis">{{$addvert->title('ar')}}</td>
-            <td class="text-center elpsis"><span class="text-secondary">Desciription</span></td>
              <td class="text-center elpsis_controls">
             <div class="d-flex justify-content-center align-items-center flex-wrap">
                 <div><a href="{{route('update-addverts-view' , $addvert->id)}}" class="btn btn-success mb-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg></a></div>

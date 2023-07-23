@@ -19,27 +19,27 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav m-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('home')}}">{{trans("nav.Home")}}</a>
+                    <a class="nav-link" id="home-nav" href="{{route('home')}}">{{trans("nav.Home")}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('web-schools')}}">{{trans("nav.Schools")}}</a>
+                    <a class="nav-link" id="schools-nav" href="{{route('web-schools')}}">{{trans("nav.Schools")}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('web-teachers') }}">{{trans("nav.Teachers")}}</a>
+                    <a class="nav-link" id="teachers-nav" href="{{ route('web-teachers') }}">{{trans("nav.Teachers")}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('web-suppliers') }}">{{ trans('nav.Suppliers') }}</a>
+                    <a class="nav-link" id="suppliers-nav" href="{{ route('web-suppliers') }}">{{ trans('nav.Suppliers') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('web-services')}}">{{trans("nav.Services")}}</a>
+                    <a class="nav-link" id="services-nav" href="{{route('web-services')}}">{{trans("nav.Services")}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('web-events')}}">{{trans("nav.Events")}}</a>
+                    <a class="nav-link" id="events-nav" href="{{route('web-events')}}">{{trans("nav.Events")}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('web-addverts')}}">{{trans("nav.Addverts")}}</a>
+                    <a class="nav-link" id="addverts-nav" href="{{route('web-addverts')}}">{{trans("nav.Addverts")}}</a>
                 </li>
-                
+
             </ul>
         </div>
 

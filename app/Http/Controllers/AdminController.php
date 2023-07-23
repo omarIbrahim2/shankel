@@ -34,7 +34,7 @@ class AdminController extends Controller
         $this->AdminService = $AdminService;
         $this->supplierService = $supplierService;
         $this->changePassObj = $changePass;
-        
+
     }
     public function showLogin(){
 
@@ -42,35 +42,35 @@ class AdminController extends Controller
     }
 
     public function Profile(){
-           
+
         if (Gate::allows("superAdminProfile")) {
             $AuthUser = AuthUserFactory::getAuthUser();
 
-       
+
             return view('admin.profile.profile')->with(['AuthUser' => $AuthUser]);
         }else{
 
             toastr("you are not allowed to access" , 'error' , 'permission');
             return back();
         }
-        
-    
+
+
     }
 
     public function updateProfile(Request $request){
-        
+
         if (Gate::allows("superAdminProfile")) {
             $validatedData = $request->validate([
                 'id' => 'required|exists:users,id',
                'email' => ["required","email" , Rule::unique("users")->ignore($request->id) ],
            ]);
-     
-            
-   
+
+
+
            $action= $this->AdminService->updateProfile($validatedData);
-   
+
            if ($action) {
-           
+
                toastr("data updated successfully" , "success");
                return back();
            };
@@ -81,7 +81,7 @@ class AdminController extends Controller
             toastr("you are not allowed to access" , 'error' , 'permission');
             return back();
         }
-    
+
 
 
     }
@@ -101,7 +101,7 @@ class AdminController extends Controller
        $url =  Config::get('auth.custom.' . $guard . ".url");
 
        toastr("password changed sucessfully" , "success");
-      
+
         return redirect()->route($url);
     }
 
@@ -111,14 +111,14 @@ class AdminController extends Controller
         return view("admin.index");
     }
 
-   
+
 
     public function Parentts($status){
-        
+
         $possibleStates = ['active'=> 'active' , 'unactive' => 'unactive'];
 
         if (! array_key_exists($status , $possibleStates)) {
-             
+
             return back();
         }
 
@@ -136,7 +136,7 @@ class AdminController extends Controller
         $possibleStates = ['active'=> 'active' , 'unactive' => 'unactive'];
 
         if (! array_key_exists($status , $possibleStates)) {
-             
+
             return back();
         }
 
@@ -152,7 +152,7 @@ class AdminController extends Controller
         $possibleStates = ['active'=> 'active' , 'unactive' => 'unactive'];
 
         if (! array_key_exists($status , $possibleStates)) {
-             
+
             return back();
         }
 
@@ -168,7 +168,7 @@ class AdminController extends Controller
         $possibleStates = ['active'=> 'active' , 'unactive' => 'unactive'];
 
         if (! array_key_exists($status , $possibleStates)) {
-             
+
             return back();
         }
 
@@ -183,7 +183,7 @@ class AdminController extends Controller
         $possibleStates = ['active'=> 'active' , 'unactive' => 'unactive'];
 
         if (! array_key_exists($status , $possibleStates)) {
-             
+
             return back();
         }
 
@@ -199,7 +199,7 @@ class AdminController extends Controller
         $possibleStates = ['active'=> 'active' , 'unactive' => 'unactive'];
 
         if (! array_key_exists($status , $possibleStates)) {
-             
+
             return back();
         }
 
@@ -211,7 +211,7 @@ class AdminController extends Controller
 
     }
 
-   
+
 
     public function createSupplierView(LocationRepoInterface $locationRepo){
 
@@ -221,7 +221,7 @@ class AdminController extends Controller
     }
 
     public function updateSupplierView(LocationRepoInterface $locationRepo ,$Supplier_id){
-          
+
         $cities= $locationRepo->getCities();
 
         $supplier = $this->supplierService->getSupplier($Supplier_id);
@@ -241,14 +241,14 @@ class AdminController extends Controller
 
 
          $validatedreq = $request->validated();
-         
+
          $data = Arr::except($validatedreq , ['image']);
- 
+
          $supplierCurrentImage = $supplierService->getSupplier($data['id'])->image;
-         
-           
+
+
         $image = $supplierService->handleUploadProfilepic($request->image , $supplierCurrentImage);
-        
+
         if ($image != null) {
             $data['image'] = $image;
         }
@@ -259,39 +259,39 @@ class AdminController extends Controller
         if ($action) {
             toastr("data updated successfully" , "info" , "update");
 
-            
+
         }else{
             toastr("problem in updating" , "error");
         }
 
-        
+
 
         return redirect()->route("admin-suppliers" , "unactive");
-        
+
     }
 
     public function deleteSupplier($Supplier_id , SupplierService $supplierService){
-        
+
         try {
             $supplierService->deleteSupplier($Supplier_id);
-             
+
             toastr("data deleted successfully" , "error" , "Delete");
             return back();
 
         } catch (\Throwable $th) {
-             
+
             toastr("error in deletion , supplier might have services" , "error" , "Delete");
             return back();
         }
 
-         
+
     }
 
-    
+
 
     public function Services($supplierId){
-         
-        return view("admin.services.services")->with(["supplierId" => $supplierId]);     
+
+        return view("admin.services.services")->with(["supplierId" => $supplierId]);
     }
 
     public function Orders(){
@@ -299,7 +299,7 @@ class AdminController extends Controller
         return view("admin.orders.orders");
     }
 
-    
+
 
     public function Socials(){
         return view("admin.socials.socials");
@@ -311,15 +311,15 @@ class AdminController extends Controller
     }
 
     public function socialUpdateView($socialId){
-         
-       
-       $social = $this->AdminService->getSocial($socialId);     
+
+
+       $social = $this->AdminService->getSocial($socialId);
         return view('admin.socials.update')->with([
             'Social' => $social,
         ]);
     }
 
-    
+
     private function evaluateSocialData($request)
     {
         $data = array();
@@ -335,6 +335,7 @@ class AdminController extends Controller
         $data['facebook'] = $request['facebook'];
         $data['phone'] = $request['phone'];
         $data['instagram'] = $request['instagram'];
+        $data['twitter'] = $request['twitter'];
         $data['Linkedin'] = $request['Linkedin'];
         $data['email'] = $request['email'];
         return $data;
@@ -356,14 +357,14 @@ class AdminController extends Controller
     }
 
     public function SocialUpdate(SocialUpdateReq $request){
-          
+
        $validatedData =  $request->validated();
        $data = $this->evaluateSocialData($validatedData);
 
        $action = $this->AdminService->UpdateSocial($data , $data['id']);
-         
+
        if ($action) {
-          
+
            toastr("social updated successfully" , "success" ,"update socials");
            return redirect()->route("Socials");
        }
@@ -384,7 +385,7 @@ class AdminController extends Controller
     }
 
     public function Messages(){
-         
+
           return view("admin.messages.messages");
     }
 
@@ -411,19 +412,19 @@ class AdminController extends Controller
 
     public function showMessage($messageId){
         $message =  Message::findOrFail($messageId);
- 
+
         if ($message) {
             return view('admin.messages.messageDetail')->with(['Message' => $message]);
         }
 
         return back();
-       
+
 
     }
 
 
 
-    
+
 
 
 }

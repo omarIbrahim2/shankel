@@ -116,7 +116,9 @@ input[type="file"] {
 }
 
 /* 4-helper classes */
-
+.main{
+    min-height: 100vh;
+}
 .nav-link {
   margin: 0 8px;
   color: var(--main-color) !important;

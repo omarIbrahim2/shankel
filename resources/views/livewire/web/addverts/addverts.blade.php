@@ -9,7 +9,7 @@
         <div class="col-md-6 col-12 m-0 p-0">
             <div class="ads-item">
                 <div class="ads-image">
-                    <img src="{{ $addvert->image }}"  alt="provider">
+                    <img src="{{ asset($addvert->image) }}"  alt="provider">
                 </div>
             </div>
         </div>
@@ -17,7 +17,7 @@
             <div class="ads-item ads-item-info">
                 <div class="ads-info">
                     <h4>{{ $addvert->title() }}</h4>
-                    <p>{{ $addvert->desc() }}</p>
+                    <p>{!!$addvert->desc()!!}</p>
                 </div>
             </div>
         </div>

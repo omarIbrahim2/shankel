@@ -60,7 +60,6 @@ class AdvertController extends Controller
 
 
         $addvert = $this->AdminService->addAddvert($data);
-
         if ($addvert) {
             toastr("add Addvertisment created successfully", "success");
             return redirect()->route("admin-addverts");

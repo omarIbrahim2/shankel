@@ -22,7 +22,7 @@
                         <div class="slider-content">
                             @if ($slider)
                             <P>{{ $slider->title(App::getLocale()) }}</P>
-                            <p>{{ $slider->info(App::getLocale())  }}</p>
+                            <p>{!!$slider->info(App::getLocale())!!}</p>
                             @endif
 
                         </div>
@@ -88,7 +88,7 @@
                                     <div class="service-name">
                                         <h3>{{ trans('parent.schArea') }}</h3>
                                     </div>
-                                    
+
                                     <a href="{{ route('area-schools') }}" class="custom-out-btn">
                                         {{ trans('parent.more') }}
                                     </a>

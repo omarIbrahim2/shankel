@@ -313,4 +313,22 @@ for(var i=0;i<Array.from($(".event")).length;i++){
 $( document ).ready(function() {
     $(".loader").css("display","none")
     $("body").css("overflow","auto")
+
+    $("nav .nav-item").on("click",function(){
+        console.log("ss")
+        localStorage.setItem("active",$(this).find(".nav-link").attr("id"))
+        var id=localStorage.getItem("active")
+        activeNav(id)
+    })
+
   });
+ function activeNav(id){
+
+    if(id==null){
+        $("#home-nav").addClass("active")
+    }else{
+        $("nav .nav-link").removeClass("active")
+        $("#"+id).addClass("active")
+    }
+ }
+

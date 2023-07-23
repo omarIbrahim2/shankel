@@ -1986,10 +1986,11 @@ code {
     background: transparent;
     font-weight: 600;
     font-size: 12px;
-    width: 100%;
+    width: calc(100% - 255px);
     border-top-left-radius: 6px;
     display: flex;
     justify-content: space-between;
+    margin-left: auto;
 }
 
 .main-container.sidebar-closed .footer-wrapper {
