@@ -14,7 +14,7 @@
                          @endforeach
                         @endif
                         <label for="School-profile-photos" class="btn-custom">{{ trans('teacher.uploadNew') }} </label>
-                        <input wire:model="image" class="form-control py-2" id="School-profile-photos" type="file" multiple>
+                        <input  wire:model.defer="image" class="form-control py-2" id="School-profile-photos" type="file" multiple>
             
                         @error('image')
                             <p class="text-danger">{{ $message }}</p>

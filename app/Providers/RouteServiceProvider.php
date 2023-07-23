@@ -19,9 +19,9 @@ class RouteServiceProvider extends ServiceProvider
      */
     public const PARENT = 'parent';
     public const ADMIN = 'dashboard';
-    public const TEACHER = 'teacher';
-    public const SCHOOL = 'school';
-    public const Supplier = 'supplier';
+    public const TEACHER = 'teacher-profile';
+    public const SCHOOL = 'school-profile';
+    public const Supplier = 'supplier-profile';
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
