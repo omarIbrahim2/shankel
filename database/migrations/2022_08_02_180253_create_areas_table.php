@@ -19,6 +19,7 @@ return new class extends Migration
             $table->collation = "utf8_unicode_ci";
             $table->json('name' );
             $table->foreignId("city_id")->constrained();
+            $table->index('city_id');
             $table->timestamps();
 
         });

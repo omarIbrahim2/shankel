@@ -14,6 +14,6 @@ class Social extends Model
     public function address($lang = null){
         $lang = $lang ?? App::getLocale();
         
-         json_decode($this->address)->$lang ;
+        return json_decode($this->address)->$lang ;
     }
 }

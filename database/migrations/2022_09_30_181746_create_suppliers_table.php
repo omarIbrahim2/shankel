@@ -15,14 +15,14 @@ return new class extends Migration
     {
         Schema::create('suppliers', function (Blueprint $table) {
             $table->id();
-            $table->json("name" , 255 );
+            $table->json("name" );
             $table->string("email" , 100 );
             $table->string("password" , 255);
             $table->string("image" , 255)->nullable();
             $table->boolean("status")->default(false);
             $table->foreignId("area_id")->constrained();
-            $table->json("type" , 255);
-            $table->json("orgName" , 255);
+            $table->json("type");
+            $table->json("orgName");
             $table->unsignedInteger("notifications")->default(0);
             $table->rememberToken();
             $table->timestamps();

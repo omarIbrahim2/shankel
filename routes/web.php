@@ -296,7 +296,7 @@ Route::middleware('lang')->group(function(){
 
         //service orders
         Route::get('orders/services' , [ServiceOrderController::class , "OrdersServ"])->name("service-orders");
-        Route::get('orders/details/{id}' , [ServiceOrderController::class , "orderDetails"])->name("orders-details");
+        Route::get('orders/details/{id}' , [TransactionController::class , "singleServiceOrder"])->name("orders-details");
 
         //socials
         Route::get("socials" , [AdminController::class , "Socials"])->name("Socials");

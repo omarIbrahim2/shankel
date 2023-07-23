@@ -27,7 +27,8 @@ class Service extends Model
 
     public function transactions()
     {
-        return $this->belongsToMany(Transaction::class  , 'transactions_services')->withTimestamps();
+        return $this->belongsToMany(Transaction::class  , 'transactions_services')->withPivot('service_order_quantity')
+        ->withTimestamps();
     }
 
     public function image(): Attribute

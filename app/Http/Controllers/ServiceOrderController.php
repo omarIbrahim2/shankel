@@ -32,14 +32,19 @@ class ServiceOrderController extends Controller
 
     public function success(Request $request)
     {
-        try {
-            $this->serviceOrder->handleOrder();
-            return $this->paypal->success($request);
-        } catch (\Throwable $th) {
-            toastr(trans('payment.error') , 'error');
-            Log::error($th->getMessage());
-            return redirect()->route('home');
-        }
+        // try {
+        //     $this->serviceOrder->handleOrder();
+        //     return $this->paypal->success($request);
+        // } catch (\Throwable $th) {
+        //     dd($th->getMessage());
+        //     toastr(trans('payment.error') , 'error');
+        //     Log::error($th->getMessage());
+        //     return redirect()->route('home');
+        // }
+
+
+        $this->serviceOrder->handleOrder();
+         return $this->paypal->success($request);
      
     }
 
