@@ -24,7 +24,7 @@
                                 </div>
                             </div>
                             <div class="event-img">
-                                <img src="{{ asset( $event->image) }}" style="width: 500px" alt="event">
+                                <img src="{{ asset( $event->image) }}"  alt="event">
                             </div>
                             <div class="event-description">
                                 <p>

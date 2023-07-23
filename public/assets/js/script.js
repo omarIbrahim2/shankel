@@ -309,3 +309,8 @@ var x = setInterval(function() {
 for(var i=0;i<Array.from($(".event")).length;i++){
     count(Array.from($(".event"))[i])
 }
+
+$( document ).ready(function() {
+    $(".loader").css("display","none")
+    $("body").css("overflow","auto")
+  });

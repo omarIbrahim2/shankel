@@ -87,7 +87,7 @@
                                         <p class="text-danger">{{$message}}</p>
                                         @enderror
                                     </div>
-                                    <div class="input-item me-auto ms-0">
+                                    <div class="input-item me-auto ms-0 radio-label">
                                         <label>{{ trans('parent.gender') }}</label>
                                         <div class="d-flex align-items-center justify-content-start" >
                                             <div class="d-flex align-items-center justify-content-start">
@@ -117,10 +117,13 @@
                                         <p class="text-danger">{{$message}}</p>
                                         @enderror
                                     </div>
-                                    <p id="imgName"></p>
+
                                     <div class="upload-avatar text-start">
-                                        <input type="file" name="image" id="teacher-avatar" multiple/>
+                                        <input type="file" name="image" id="teacher-avatar" />
+                                        <div class="uploadedPhotoName">
                                         <label class="btn-custom" for="teacher-avatar">{{trans('auth.Upload New Photo')}}</label>
+                                        <p id="imgName"></p>
+                                        </div>
                                         <div class="files-names"></div>
                                         @error('image')
                                                 <p class="text-danger">{{$message}}</p>

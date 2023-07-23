@@ -52,6 +52,11 @@
         </div>
     </div>
 <!-- ************* -->
+<!-- loader -->
+<div class="loader">
+<div class="lds-ripple"><div></div><div></div></div>
+</div>
+<!-- ************ -->
     <!-- header -->
     <header>
 
@@ -85,7 +90,7 @@
     <script src="{{asset('assets')}}/vendor/ckeditor5-build-classic/ckeditor.js"></script>
     <script src="{{asset('assets')}}/vendor/ckeditor5-build-classic/ckeditor.js.map"></script>
     <script src="{{asset('assets')}}/vendor/ckeditor5-build-classic/translations/ar.js"></script>
-   
+
 
     <!-- custom js -->
     <script src="{{asset('assets')}}/js/script.js"></script>

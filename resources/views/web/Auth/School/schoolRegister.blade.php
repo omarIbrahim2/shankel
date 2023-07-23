@@ -134,10 +134,10 @@
                                                 <p class="text-danger">{{ $message }}</p>
                                             @enderror
                                         </div>
-                                        <div class="input-item me-auto ms-0 ">
-                                            <h4>
+                                        <div class="input-item me-auto ms-0 radio-label">
+                                            <label>
                                                 {{ trans('school.schoolGrades') }}
-                                            </h4>
+                                            </label>
                                             <div class="select-cont">
                                                 @foreach ($grades as $grade)
                                                     <div class="checkbox">
@@ -158,10 +158,14 @@
 
 
                                         <div class="upload-avatar text-start">
-                                            <p id="imgName"></p>
+
                                             <input type="file" name="image" id="teacher-avatar" multiple>
+
+                                            <div class="uploadedPhotoName">
                                             <label class="btn-custom"
                                                 for="teacher-avatar">{{ trans('school.uploadNew') }}</label>
+                                                <p id="imgName"></p>
+                                            </div>
                                             <div class="files-names">
 
                                             </div>

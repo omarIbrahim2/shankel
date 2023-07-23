@@ -57,31 +57,30 @@ Shankal | Home
     <div class="inner">
         <div class="container">
             <div class="section-title">
-                <h2>Features</h2>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic eum laborum dignissimos accusantium
-                    quaerat odio commodi quos quisquam! Ad, dicta.</p>
+                <h2>{{ trans("home.features") }}</h2>
+                <p>{{ trans("home.featureTitle") }}</p>
             </div>
             <div class="section-content">
                 <div class="row">
                     <div class="col-md-4 col-12">
                         <div class="feature-item">
                             <span><i class="fa-regular fa-credit-card"></i></span>
-                            <h3>Secure payment</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, tempora.</p>
+                            <h3>{{ trans("home.SecurePayment") }}</h3>
+                            <p>{{ trans("home.SecurePaymentContent") }}</p>
                         </div>
                     </div>
                     <div class="col-md-4 col-12">
                         <div class="feature-item">
                             <span><i class="fa-solid fa-laptop"></i></span>
-                            <h3>Easy Usage</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, tempora.</p>
+                            <h3>{{ trans("home.EasyUsage") }}</h3>
+                            <p>{{ trans("home.EasyUsageContent") }}</p>
                         </div>
                     </div>
                     <div class="col-md-4 col-12">
                         <div class="feature-item">
                             <span><i class="fa-solid fa-book-medical"></i></span>
-                            <h3>Easy Booking</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, tempora.</p>
+                            <h3>{{ trans("home.EasyBooking") }}</h3>
+                            <p>{{ trans("home.EasyBookingContent") }}</p>
                         </div>
                     </div>
                 </div>
@@ -107,7 +106,10 @@ Shankal | Home
                         <div class="teacher-service card supplier_service_card">
                             <img class="card-img-top" src="{{asset($service->image)}}" alt="service">
                             <div class="card-body">
-                                <p class="card-text">{{$service->name()}}</p>
+                                <p class="card-title fw-bold">{{$service->name()}}</p>
+                                <p class="card-text supplier-service-desc">unleash e-business models
+                                                    unleash e-business models unleash e-business models unleash
+                                                    e-business models</p>
                                 <p class="card-title fw-bold">{{$service->price}} JOD</p>
                             </div>
                             <div class="avatar-btns">
@@ -171,11 +173,11 @@ Shankal | Home
     <div class="inner">
         <div class="container">
             <div class="section-title">
-                <h2>FAQ</h2>
+                <h2>{{ trans("home.faq") }}</h2>
             </div>
             <div class="subtitle">
                 <h3>
-                    Frequently Asked Questions
+                {{ trans("home.faqs") }}
                 </h3>
             </div>
             <div class="q-slider">
@@ -184,60 +186,50 @@ Shankal | Home
                         <div class="swiper-slide">
                             <div class="question">
                                 <h4>
-                                    General
+                                {{ trans("home.faq1Title") }}
                                 </h4>
                                 <p>
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod a nulla, eaque ab
-                                    dignissimos ut voluptatibus! Beatae perferendis, voluptatem exercitationem
-                                    tenetur inventore neque officia odit?
+                                {{ trans("home.faq1Content") }}
                                 </p>
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="question">
                                 <h4>
-                                    How I USe?
+                                {{ trans("home.faq2Title") }}
                                 </h4>
                                 <p>
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod a nulla, eaque ab
-                                    dignissimos ut voluptatibus! Beatae perferendis, voluptatem exercitationem
-                                    tenetur inventore neque officia odit?
+                                {{ trans("home.faq2Content") }}
                                 </p>
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="question">
                                 <h4>
-                                    How Contact?
+                                {{ trans("home.faq1Title") }}
                                 </h4>
                                 <p>
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod a nulla, eaque ab
-                                    dignissimos ut voluptatibus! Beatae perferendis, voluptatem exercitationem
-                                    tenetur inventore neque officia odit?
+                                {{ trans("home.faq1Content") }}
                                 </p>
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="question">
                                 <h4>
-                                    Book Teacher Section
+                                {{ trans("home.faq2Title") }}
                                 </h4>
                                 <p>
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod a nulla, eaque ab
-                                    dignissimos ut voluptatibus! Beatae perferendis, voluptatem exercitationem
-                                    tenetur inventore neque officia odit?
+                                {{ trans("home.faq2Content") }}
                                 </p>
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="question">
                                 <h4>
-                                    Payment Method
+                                {{ trans("home.faq1Title") }}
                                 </h4>
                                 <p>
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod a nulla, eaque ab
-                                    dignissimos ut voluptatibus! Beatae perferendis, voluptatem exercitationem
-                                    tenetur inventore neque officia odit?
+                                {{ trans("home.faq1Content") }}
                                 </p>
                             </div>
                         </div>
@@ -245,12 +237,10 @@ Shankal | Home
                         <div class="swiper-slide">
                             <div class="question">
                                 <h4>
-                                    Add My Children
+                                {{ trans("home.faq2Title") }}
                                 </h4>
                                 <p>
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod a nulla, eaque ab
-                                    dignissimos ut voluptatibus! Beatae perferendis, voluptatem exercitationem
-                                    tenetur inventore neque officia odit?
+                                {{ trans("home.faq2Content") }}
                                 </p>
                             </div>
                         </div>
@@ -258,12 +248,10 @@ Shankal | Home
                         <div class="swiper-slide">
                             <div class="question">
                                 <h4>
-                                    General
+                                {{ trans("home.faq1Title") }}
                                 </h4>
                                 <p>
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod a nulla, eaque ab
-                                    dignissimos ut voluptatibus! Beatae perferendis, voluptatem exercitationem
-                                    tenetur inventore neque officia odit?
+                                {{ trans("home.faq1Content") }}
                                 </p>
                             </div>
                         </div>
