@@ -18,7 +18,8 @@ class Services extends Component
     {
         $query = (new Service)->query();
         if ($this->searchName) {
-           $Services= $this->TitleSearch($this->searchName , "name" ,$query );
+            $keys = ['name->ar' , 'name->en'];
+           $Services= $this->TitleSearch($this->searchName , $keys ,$query );
         }else{
             $Services = $supplierService->getServices($this->supplierId , 10);
         }

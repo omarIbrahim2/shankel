@@ -16,7 +16,8 @@ class Cities extends Component
     {
         $CitiesQuery = (new City)->query();
         if ($this->searchCities) {
-            $Cities = $this->TitleSearch($this->searchCities, 'name', $CitiesQuery);
+            $keys = ['name->ar' , 'name->en'];
+            $Cities = $this->TitleSearch($this->searchCities, $keys, $CitiesQuery);
         } else {
             $Cities = $locationRepo->cities();
         }

@@ -22,18 +22,21 @@
                 @endforeach
             </div>
         </div>
-        <form>
+        <form action="{{route('upload-service-images')}}" method="POST">
+            @csrf
         <div class="service-images-btns">
             <div class="upload-avatar text-start">
-
-                <input type="file" name="image" id="teacher-avatar" multiple>
+           
+          
+                <input type="file" name="images[]" id="teacher-avatar" multiple>
 
                 <div class="uploadedPhotoName">
                     <label class="btn-custom" for="teacher-avatar">Upload More Photos</label>
                 </div>
-                @error('image')
-                <p class="text-danger">{{ $message }}</p>
-                @enderror
+              
+                @error('images')
+                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+            @enderror
             </div>
             <button type="submit" class="btn-custom">Save</button>
         </div>

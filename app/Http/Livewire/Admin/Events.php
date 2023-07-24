@@ -30,7 +30,8 @@ class Events extends Component
 
          $eventQuery = (new Event)->query();
         if ($this->searchEvent) {
-             $Events = $this->TitleSearch($this->searchEvent , 'title->ar' , $eventQuery);
+             $keys = ['title->ar' , 'title->en'];
+             $Events = $this->TitleSearch($this->searchEvent , $keys , $eventQuery);
         }else{
             $Events =  $EventObj->getEvents($this->guard , 10);
         }

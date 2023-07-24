@@ -16,7 +16,8 @@ class Areas extends Component
     {
         $AreasQuery = (new Area)->query();
         if ($this->searchAreas) {
-            $Areas = $this->TitleSearch($this->searchAreas, 'name', $AreasQuery);
+            $keys = ['name->ar' , 'name->en'];
+            $Areas = $this->TitleSearch($this->searchAreas, $keys, $AreasQuery);
         } else {
             $City = $locationRepo->cityAreas($this->cityId);
              $Areas= Area::paginate($City->areas , 10);  

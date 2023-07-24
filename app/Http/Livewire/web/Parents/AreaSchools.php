@@ -20,7 +20,7 @@ class AreaSchools extends Component
 
         
         if ($this->searchSchool) {
-            $Schools =  $this->NameOrEmailSearch($this->searchSchool , ['name' => 'name' , 'email'=> 'email'],true, $query);
+            $Schools =  $this->NameOrEmailSearch($this->searchSchool ,  ['name_en' => 'name->en' , 'name_ar' => 'name->ar' , 'email'=> 'email'],true, $query);
         }else{
             $Schools = $parentService->areaSchools(5);
         } 

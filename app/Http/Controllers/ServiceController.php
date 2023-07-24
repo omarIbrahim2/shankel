@@ -36,12 +36,22 @@ class ServiceController extends Controller
 
 
     public function DeleteServiceImage($imageId , ServiceImagesRepo $serviceImagesRepo){
+        $serviceImagesRepo->Delete($imageId);
+    }
+
  
 
-        $serviceImagesRepo->Delete($imageId);
-         toastr('deleted successfully' , 'success'); 
-        return back();
-         
+    public function uploadServiceImages(Request $request){
+     
+        $validateImageData = $request->validate([
+            'images' => 'required',
+                'images.*' => 'mimes:jpg,png,jpeg,gif,svg'
+            ]);
+
+
+     dd("dsd");
+ 
+    
 
     }
 

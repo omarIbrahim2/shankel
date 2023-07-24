@@ -85,9 +85,18 @@ class CardController extends Controller
     $guard = AuthUserFactory::geGuard();
     $AuthUser = AuthUserFactory::getAuthUser();
     $UserRepo =  RepositoryFactory::getUserRebo($guard);
-   $this->cardService->UpdateCard($UserRepo , $AuthUser , $request['quantity'] , $request['service_id']);
-   toastr("Card updated successfully", 'success');
-   return back();
+
+    try {
+      $this->cardService->UpdateCard($UserRepo , $AuthUser , $request['quantity'] , $request['service_id']);
+      toastr("Card updated successfully", 'success');
+      return back();
+    } catch (\Throwable $th) {
+      toastr('error happened', 'error');
+
+      return back();
+    }
+   
+  
 
   }
 }
