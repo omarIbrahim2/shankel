@@ -9,18 +9,50 @@ use App\Http\Requests\ServiceAddReq;
 use Shankl\Services\SupplierService;
 use App\Http\Requests\ServiceUpdateReq;
 use Shankl\Factories\AuthUserFactory;
+use Shankl\Repositories\ServiceImagesRepo;
+use Shankl\Repositories\ServiceRepository;
 
 class ServiceController extends Controller
 {
     private $supplierService;
-    public function __construct(SupplierService $supplierService)
+    private $serviceRepo;
+    public function __construct(SupplierService $supplierService , ServiceRepository $ServiceRepo)
     {
         $this->supplierService = $supplierService;
+        $this->serviceRepo = $ServiceRepo;
     }
     public function index()
     {
 
         return view('web.Services.sevices');
+    }
+
+
+    public function serviceImagesUpdateView($serviceId){
+        
+         $Service = $this->serviceRepo->serviceImages($serviceId);
+        return view('web.Services.servicesImages')->with(['Service' => $Service]);
+    }
+
+
+    public function DeleteServiceImage($imageId , ServiceImagesRepo $serviceImagesRepo){
+        $serviceImagesRepo->Delete($imageId);
+    }
+
+ 
+
+    public function uploadServiceImages(Request $request){
+     
+        $validateImageData = $request->validate([
+            'images' => 'required',
+                'images.*' => 'mimes:jpg,png,jpeg,gif,svg'
+            ]);
+
+
+     dd("dsd");
+ 
+    
+
     }
 
     
@@ -102,6 +134,8 @@ class ServiceController extends Controller
 
         return Arr::except($validatedReq, $vals);
     }
+
+    
 
 
     private function evaluateData($request)

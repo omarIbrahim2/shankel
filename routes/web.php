@@ -226,11 +226,15 @@ Route::middleware('lang')->group(function(){
         Route::get("supplier-areaTeachers" , [SupplierController::class , 'areaTeachers'])->name('supplier-area-Teachers');
         Route::get('supplieres-service-create/{id}' , [ServiceController::class , 'ServiceCreateView'])->name('supplier-service-create');
         Route::get('supplieres-service-create/{serviceId}/{supplierId}' , [ServiceController::class , 'ServiceUpdateView'])->name('supplier-service-edit');
-
         Route::post('supplier-service-store' , [ServiceController::class , 'CreateService'])->name('supplier-service-store');
         Route::post('supplier-service-update' , [ServiceController::class , 'UpdateService'])->name('supplier-service-update');
-
         Route::delete('supplier-service-delete/{serviceId}' , [ServiceController::class , 'deleteService'])->name('supplier-service-delete');
+        
+        
+        
+        Route::get('service-images/{serviceId}' , [ServiceController::class , "serviceImagesUpdateView"] )->name('service-images-edit');
+        Route::get('service-images/delete/{serviceId}' , [ServiceController::class , "DeleteServiceImage"] )->name('service-images-delete');
+         Route::post('service-images/store' , [ServiceController::class , 'uploadServiceImages'])->name('upload-service-images');
 
     });
 

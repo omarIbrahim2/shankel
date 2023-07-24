@@ -12,4 +12,5 @@ return[
     'remove' => 'remove from cart',
     'quantity' => 'Quantity',
     "addImage" => 'Add service Images',
+    'updateImages' => 'Update Service Images',
 ];

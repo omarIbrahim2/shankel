@@ -3,6 +3,7 @@
 namespace Shankl\Repositories;
 
 use App\Models\ServiceImage;
+use Shankl\Factories\AuthUserFactory;
 use Shankl\Services\FileService;
 
 class ServiceImagesRepo{
@@ -11,6 +12,26 @@ class ServiceImagesRepo{
     public function __construct(FileService $fileService){
         $this->fileService = $fileService;
 
+    }
+
+    public function Delete($ImageId){
+
+        $ServiceImage =  $this->getImage($ImageId);
+        
+        $deletedImage = substr($ServiceImage->img , 8);
+
+        $this->fileService->DeleteFile($deletedImage);
+
+        $ServiceImage->delete();
+
+        toastr('deleted successfully' , 'success'); 
+        return back();
+
+    }
+
+    public function getImage($imageId){
+
+       return  ServiceImage::findOrFail($imageId);
     }
       
      public function getImages($service){
@@ -36,6 +57,20 @@ class ServiceImagesRepo{
            return true;
      }
    
+    
+     public function ResponseRedirectRoute(){
 
+          $guard =  AuthUserFactory::geGuard();
+
+          if ($guard == 'supplier') {
+              
+            return redirect()->route('web-services');
+             
+          }
+
+          return back();
+     }
 
 }
+
+

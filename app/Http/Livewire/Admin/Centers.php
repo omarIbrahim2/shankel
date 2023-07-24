@@ -26,7 +26,7 @@ class Centers extends Component
         }
 
         if ($this->NameOrEmail) {
-            $Users = $this->NameOrEmailSearch($this->NameOrEmail , ['name' => 'name' , 'email'=> 'email'] ,$this->active , $query );
+            $Users = $this->NameOrEmailSearch($this->NameOrEmail , ['name_en' => 'name->en' , 'name_ar' => 'name->ar' , 'email'=> 'email'] ,$this->active , $query );
          }
         return view('livewire.admin.centers')->with(['Users' => $Users]);
     }

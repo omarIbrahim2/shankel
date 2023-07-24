@@ -41,7 +41,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="provider-description">
+
+                    <x-editoren id="desc_en" property="desc_en"/>
+                    {{-- <div class="provider-description">
                         <h4>
                             <span><i class="fa-solid fa-file-pen"></i></span>
                             <span>{{ trans('school.desc_en') }}</span>
@@ -49,9 +51,9 @@
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </h4>
-                        <textarea id="desc_en" class="form-control" wire:model.defer="desc_en"> {{ $desc_en ? $desc_en : null }}</textarea>
-                    </div>
-
+                        <textarea id="desc_en" class="form-control" wire:model.defer="desc_en"> {{ $desc_en }}</textarea>
+                    </div> --}}
+{{-- 
                     <div class="provider-description">
                         <h4>
                             <span><i class="fa-solid fa-file-pen"></i></span>
@@ -60,10 +62,12 @@
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </h4>
-                        <textarea id="desc_ar" class="form-control" wire:model.defer="desc_ar"> {{ $desc_ar }}</textarea>
-                    </div>
+                        <textarea id="desc_ar" class="form-control" wire:model.defer="desc_ar"> {{ $desc_ar  }}</textarea>
+                    </div> --}}
 
-                    <div class="provider-description">
+                    <x-editor id="desc_ar"   property="desc_ar"/>
+
+                    {{-- <div class="provider-description">
                         <h4>
                             <span><i class="fa-solid fa-file-pen"></i></span>
                             <span>{{ trans('school.mission_en') }}</span>
@@ -71,10 +75,12 @@
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </h4>
-                        <textarea id="mission_en" class="form-control" wire:model.defer="mission_en">{{$mission_en}}</textarea>
-                    </div>
+                        <textarea id="mission_en" class="form-control" wire:model.defer="mission_en">{{$mission_en }}</textarea>
+                    </div> --}}
 
-                    <div class="provider-description">
+                    <x-editoren id="mission_en" property="mission_en"/>
+
+                    {{-- <div class="provider-description">
                         <h4>
                             <span><i class="fa-solid fa-file-pen"></i></span>
                             <span>{{ trans('school.mission_ar') }}</span>
@@ -83,9 +89,11 @@
                             @enderror
                         </h4>
                         <textarea id="mission_ar" class="form-control" wire:model.defer="mission_ar">{{$mission_ar}}</textarea>
-                    </div>
+                    </div> --}}
 
-                    <div class="provider-description">
+                    <x-editor id="mission_ar"   property="mission_ar"/>
+
+                    {{-- <div class="provider-description">
                         <h4>
                             <span><i class="fa-solid fa-file-pen"></i></span>
                             <span>{{ trans('school.vision_en') }}</span>
@@ -94,18 +102,21 @@
                             @enderror
                         </h4>
                         <textarea id="vision_en" class="form-control" wire:model.defer="vision_en"> {{ $vision_en }}</textarea>
-                    </div>
+                    </div> --}}
 
-                    <div class="provider-description">
+                    <x-editoren id="vision_en" property="vision_en"/>
+                    {{-- <div class="provider-description">
                         <h4>
                             <span><i class="fa-solid fa-file-pen"></i></span>
-                            <span>{{ trans('school.vision_en') }}</span>
+                            <span>{{ trans('school.vision_ar') }}</span>
                             @error('vision_Ar')
                                 <p class="text-danger">{{ $message }}</p>
                             @enderror
                         </h4>
                         <textarea id="vision_ar" class="form-control" wire:model.defer="vision_ar"> {{ $vision_ar }}</textarea>
-                    </div>
+                    </div> --}}
+
+                    <x-editor id="vision_ar"   property="vision_ar"/>
                 </div>
             </div>
             <div class="col-lg-9 col-md-7  col-12">

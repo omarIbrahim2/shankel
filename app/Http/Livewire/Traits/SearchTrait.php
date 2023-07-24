@@ -12,7 +12,9 @@ trait SearchTrait
 
   public function TitleSearch($value, $key, Builder $query)
   {
-    return $query->where($key, 'LIKE', '%' . $value . '%')->paginate(10);
+    return $query->where($key[0], 'LIKE', '%' . $value . '%')
+    ->orWhere($key[1] , 'LIKE', '%' . $value . '%')
+    ->paginate(10);
   }
 
   public function NameOrEmailSearch($value, $keys, $active, Builder $query)

@@ -44,6 +44,14 @@ class updateCardListener
 
             $event->card->save();
 
+        }elseif($event->oldQuantity == $event->newQuantity){
+              
+              $subtractedValue = $event->oldQuantity * $event->service->price;
+
+              $event->card->totalPrice = abs($event->card->totalPrice -  $subtractedValue);
+
+              $event->card->save();
+
         }
     }
 }

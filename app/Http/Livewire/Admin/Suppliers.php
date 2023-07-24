@@ -25,7 +25,7 @@ class Suppliers extends Component
             $Users = $supplierService->getUnActiveSuppliers(10);
         }
         if ($this->NameOrEmail) {
-            $Users = $this->NameOrEmailSearch($this->NameOrEmail , ['name' => 'name' , 'email'=> 'email'] ,true , $query );
+            $Users = $this->NameOrEmailSearch($this->NameOrEmail ,  ['name_en' => 'name->en' , 'name_ar' => 'name->ar' , 'email'=> 'email'] ,true , $query );
          }
 
         return view('livewire.admin.suppliers')->with(['Users' => $Users]);

@@ -92,8 +92,9 @@ class SupplierController extends Controller
   {
 
     $userRepo = RepositoryFactory::getUserRebo(AuthUserFactory::geGuard()); 
-  
+    
     $supplier  = $this->supplierService->getSupplier($supplierId);
+    
    if ($userRepo != null) {
        $card =  $CardSer->getCardWithServices($userRepo);
 
@@ -117,21 +118,20 @@ class SupplierController extends Controller
 
           });
 
+        
           return view('web.Suppliers.supplierPage')->with(['Services' => $AllServices , 'Supplier' => $supplier]);
         }
+           
 
 
-        return view('web.Suppliers.supplierPage')->with(['Supplier' => $supplier]);
+        return view('web.Suppliers.supplierPage')->with(['Supplier' => $supplier , 'Services' => $supplier->services]);
 
 
    }
 
-     
     
 
-
-
-    return view("web.Suppliers.supplierPage")->with(['Supplier' => $supplier]);
+    return view("web.Suppliers.supplierPage")->with(['Supplier' => $supplier , 'Services' => $supplier->services]);
   }
 
   public function updateComment(CommentUpdateRequest $request)

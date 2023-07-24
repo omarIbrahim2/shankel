@@ -18,7 +18,7 @@ class Students extends Component
         $query = (new Child())->query();
 
         if ($this->searchStudent) {
-            $Students =  $this->NameOrEmailSearch($this->searchStudent , ['name' => 'name' , 'email'=> 'email'],true, $query);
+            $Students =  $this->NameOrEmailSearch($this->searchStudent ,  ['name_en' => 'name->en' , 'name_ar' => 'name->ar' , 'email'=> 'email'],true, $query);
         }else{
             $Students = $schoolService->AllStudents(10);
         } 

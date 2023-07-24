@@ -71,7 +71,7 @@
                     </div>
             
                     <div class="upload-avatar text-start">
-                         <p id="imgName"></p>
+                         <p class="text-bold" id="imgName"></p>
                         <label for="serviceImage" class="btn-custom">{{ trans('teacher.uploadNew') }} </label>
                         <input name="image" class="form-control py-2" id="serviceImage" type="file" accept="image/*">
             
@@ -157,9 +157,9 @@
 
 
 <script>
-    $('#eventImage').change(function() {
+    $('#serviceImage').change(function() {
 
-  var file = $('#eventImage')[0].files[0].name;
+  var file = $('#serviceImage')[0].files[0].name;
   $("#imgName").text(file);
    });
  </script>
@@ -185,6 +185,14 @@
     .catch(error2=>{
         console.error( error );
     })
+
+
+
+    $('#seviceImage').change(function() {
+
+var file = $('#serviceImage')[0].files[0].name;
+$("#imgName").text(file);
+ });
 </script>
 
 @endsection

@@ -2,6 +2,7 @@
 namespace Shankl\Repositories;
 
 use App\Models\Service;
+use App\Models\ServiceImage;
 use Shankl\Interfaces\ServiceRepoInterface;
 
 class ServiceRepository implements ServiceRepoInterface{
@@ -42,6 +43,12 @@ class ServiceRepository implements ServiceRepoInterface{
         $query->select('name')->first();
        })->get();
 
+     }
+
+
+     public function serviceImages($serviceId){
+
+       return Service::select('id')->with(['images:id,service_id,image'])->findOrFail($serviceId);
      }
 
      public function find($serviceId){
