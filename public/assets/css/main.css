@@ -2622,3 +2622,6 @@ main {
 .empty{
     min-height: 70vh;
 }
+.single-images-school{
+    aspect-ratio:7/3
+}
