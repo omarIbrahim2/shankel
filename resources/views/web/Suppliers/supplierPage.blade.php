@@ -71,7 +71,7 @@
                                         
                                   
                                     @foreach ($Services as $service)
-                                    <div class=" col-md-6 col-12">
+                                    <div class="col-md-6 col-12">
                                         <div class="teacher-service card supplier_service_card">
                                             <img class="card-img-top" src="{{ asset($service->image) }}" alt="service">
                                             <div class="card-body">
@@ -98,28 +98,23 @@
                                                              <button type="submit"  class="btn-custom-danger">{{ trans('service.remove') }}</button>
                                                             </form>
                                                         </div>
-
-
-                                                         @else
-                                                              
+                                                         @else    
                                                          <div>
                                                             <form action="{{ route('add-to-card') }}" method="POST">
                                                                  @csrf
                                                                 <input type="hidden" name="service_id" value="{{ $service->id }}">
                                                                 <div class="service-booking">
-                                                                    <label for="">{{ trans('service.quantity') }}</label>
+                                                                    <label>{{ trans('service.quantity') }}</label>
                                                                     @error('quantity')
                                                                         <p class="text-danger">{{ $message }}</p>
                                                                     @enderror
-                                                                    <input id="" name="quantity" class="num_cart_item form-control mb-3" placeholder="0" type="number" min="0">
+                                                                    <input name="quantity" class="num_cart_item form-control mb-3" placeholder="0" type="number" min="0">
                                                                 </div>
                     
                                                                 <button type="submit" class="btn-custom">{{ trans('service.book') }}</button>
                                                             </form>
                     
                                                         </div>
-
-
                                                          @endif
                                                      
                                                         @endcustom_auth
