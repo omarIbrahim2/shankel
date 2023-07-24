@@ -51,24 +51,25 @@
                                 <div class="service-booking">
                                     <label for="">Quantity</label>
 
-                                        <div class="cart-edit-quantity">
+                                    <div class="cart-edit-quantity">
 
-                                    <form action="{{route('update-card')}}" method="POST">
-                                        @csrf
-                                        <input type="hidden" value="{{ $service->id }}" name="service_id">                                        <input name="quantity" class="num_cart_item form-control" placeholder="0"
-                                            type="number" value="{{ $service->pivot->quantity }}">
+                                        <form action="{{route('update-card')}}" method="POST">
+                                            @csrf
+                                            <input type="hidden" value="{{ $service->id }}" name="service_id">
+                                            <input name="quantity" class="num_cart_item form-control" placeholder="0"
+                                                type="number" value="{{ $service->pivot->quantity }}">
                                             <button type="submit" class="btn-custom">save</button>
-                                        </div>
+                                    </div>
 
                                     </form>
 
-                                        <form action="{{ route('remove-from-card') }}" method="POST">
+                                    <form action="{{ route('remove-from-card') }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <input type="hidden" value="{{ $service->id }}" name="service_id">
                                         <button type="submit"
                                             class="btn-custom-danger">{{ trans('service.remove') }}</button>
-                                       </form>
+                                    </form>
                                 </div>
                             </div>
 
