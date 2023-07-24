@@ -12,6 +12,23 @@ class ServiceImagesRepo{
         $this->fileService = $fileService;
 
     }
+
+    public function Delete($ImageId){
+
+        $ServiceImage =  $this->getImage($ImageId);
+        
+        $deletedImage = substr($ServiceImage->img , 8);
+
+        $this->fileService->DeleteFile($deletedImage);
+
+        $ServiceImage->delete();
+
+    }
+
+    public function getImage($imageId){
+
+       return  ServiceImage::findOrFail($imageId);
+    }
       
      public function getImages($service){
          return $service->images;

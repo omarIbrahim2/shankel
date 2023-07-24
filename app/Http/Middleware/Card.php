@@ -18,7 +18,7 @@ class Card
     public function handle(Request $request, Closure $next)
     {
         if (Auth::guard('parent')->check() ||Auth::guard('school')->check() || Auth::guard('teacher')->check()  ) {
-            
+    
             return $next($request);
         }
 

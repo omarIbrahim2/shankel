@@ -11,12 +11,15 @@
         <h1 class="services-slider-image-title">Upload Some Images About Service</h1>
         <div class="row">
             <div class="col-md-4 col-sm-6 col-12">
+                @foreach ($Service->images as $img )
+                    
                 <div class="card">
-                    <img src="{{asset('assets/images/school/1.webp')}}" class="card-img-top" alt="">
+                    <img src="{{asset($img->image)}}" class="card-img-top" alt="service Image">
                     <div class="card-body">
-                        <a href="#" class="btn btn-primary">Delete</a>
+                        <a href="{{route('service-images-delete' , $img->id)}}" class="btn btn-primary">Delete</a>
                     </div>
                 </div>
+                @endforeach
             </div>
         </div>
         <form>

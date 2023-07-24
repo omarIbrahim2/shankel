@@ -20,9 +20,13 @@
 
 @section('scripts')
 
-<script>
-       
-    ClassicEditor
+{{-- <script>
+
+    
+window.addEventListener('profile-updated' , event=>{
+       console.log('sdsd');
+        
+        ClassicEditor
     .create(document.querySelector( '#desc_ar' ) , {
         language: 'ar'
     })
@@ -30,18 +34,71 @@
     .catch(error=>{
        console.error( error );
     })
-</script> 
 
- <script>
+
     ClassicEditor
     .create(document.querySelector( '#desc_en' ))
     .catch(error2=>{
       
     })
-</script>
+
+    ClassicEditor
+    .create(document.querySelector( '#mission_ar' ) , {
+        language: 'ar'
+    })
+     
+    .catch(error=>{
+       console.error( error );
+    })
 
 
-<script>
+    ClassicEditor
+    .create(document.querySelector( '#mission_en' ))
+    .catch(error2=>{
+      
+    })
+
+
+    ClassicEditor
+    .create(document.querySelector( '#vision_ar' ) , {
+        language: 'ar'
+    })
+     
+    .catch(error=>{
+       console.error( error );
+    })
+
+
+    ClassicEditor
+    .create(document.querySelector( '#vision_en' ))
+    .catch(error2=>{
+      
+    })
+
+    })
+       
+  
+</script> 
+
+ <script>
+       ClassicEditor
+    .create(document.querySelector( '#desc_ar' ) , {
+        language: 'ar'
+    })
+     
+    .catch(error=>{
+       console.error( error );
+    })
+
+    ClassicEditor
+    .create(document.querySelector( '#desc_en' ))
+    .catch(error2=>{
+      
+    })
+</script> 
+
+
+ <script>
        
     ClassicEditor
     .create(document.querySelector( '#mission_ar' ) , {
@@ -59,7 +116,7 @@
     .catch(error2=>{
       
     })
-</script>
+</script> 
 
 <script>
        
@@ -79,7 +136,7 @@
     .catch(error2=>{
       
     })
-</script>
+</script> --}}
     
 @endsection
 

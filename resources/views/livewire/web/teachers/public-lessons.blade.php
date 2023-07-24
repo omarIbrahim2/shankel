@@ -1,13 +1,13 @@
-a<section class="section">
+<section class="section">
     <div class="inner">
         <div class="container">
             <div class="services-container">
                 <div class="service-item">
                     <div class="row">
-                        @foreach ($lessons as $lesson)
+                        @foreach ($lessons as $less)
                             <div class="col-md-2 col-12 mb-2">
                                 <div class="service-item-img">
-                                    <img src="{{ asset($lesson->image) }}" alt="lesson">
+                                    <img src="{{asset($less->image)}}" alt="lesson">
                                 </div>
 
                             </div>
@@ -16,27 +16,27 @@ a<section class="section">
                                     <div class="service-text">
                                         <div class="tags">
                                             <a href="#"
-                                                class="tag rounded-pill btn-custom">{{ $lesson->teacher->field() }}</a>
+                                                class="tag rounded-pill btn-custom">{{ $less->teacher->field() }}</a>
 
                                         </div>
                                         <div class="service-item-title free-title">
-                                            <h3>{{ $lesson->title() }}</h3>
+                                            <h3>{{ $less->title() }}</h3>
                                         </div>
 
                                     </div>
                                     <div class="service-booking">
-                                        <a href="{{ $lesson->url }}" target="_blank"
+                                        <a href="{{ $less->url }}" target="_blank"
                                             class="btn-custom">{{ trans('teacher.watchNow') }}</a>
                                         <div class="m-2">
-                                            <form action="{{ route('delete-lesson', $lesson->id) }}" method="post">
+                                            <form action="{{ route('delete-lesson', $less->id) }}" method="post">
                                                 @method('DELETE')
                                                 @csrf
                                                 <button type="submit"
                                                     class=" px-4 btn btn-danger">{{ trans('teacher.delete') }}</button>
                                             </form>
                                         </div>
-                                        <button type="button" class="get btn btn-warning" data-id="{{ $lesson->id }}"
-                                           data-title-ar="{{$lesson->title('ar')}}"  data-title-en="{{ $lesson->title('en')}}" data-url="{{ $lesson->url }}"
+                                        <button type="button" class="get btn btn-warning" data-id="{{ $less->id }}"
+                                           data-title-ar="{{$less->title('ar')}}"  data-title-en="{{ $less->title('en')}}" data-url="{{ $less->url }}"
                                             data-bs-toggle="modal"
                                             data-bs-target="#teacherVideos">{{ trans('teacher.update') }}</button>
                                     </div>
@@ -113,7 +113,7 @@ a<section class="section">
                                         @error('image')
                                             <p class="text-danger">{{ $message }}</p>
                                         @enderror
-                                         <img src="{{asset($lesson->image)}}" style="width: 50px" alt="lesson pic">
+                                         <img src="" style="width: 50px" alt="lesson pic">
                                     </div>
                                     <div class="input-item me-auto ms-0">
                                         <button type="submit" class="custom-out-btn">

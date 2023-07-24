@@ -51,6 +51,8 @@ class EditSchoolProfile extends Component
     public $attributes = array();
     protected $listeners = [
         "fresh" => '$refresh',
+        
+        
     ];
    
 
@@ -83,21 +85,44 @@ class EditSchoolProfile extends Component
 
  
     public function mount(){
-       
+        $this->emit('profileAdded');
         $this->intialize();
         $this->assignGrades();        
     }
 
     public function intialize(){
+
+        
         $this->AuthUser = AuthUserFactory::getAuthUser();
-        $this->mission_en = $this->AuthUser->mission('en');
-        $this->mission_ar = $this->AuthUser->mission('ar');
 
-        $this->vision_en = $this->AuthUser->vision('en');
-        $this->vision_ar = $this->AuthUser->vision("ar");
 
-        $this->desc_en = $this->AuthUser->desc('en');
-        $this->desc_ar = $this->AuthUser->desc('ar');
+    
+        if ($this->AuthUser->mission == null) {
+            $this->mission_ar = null;
+            $this->mission_en = null;
+       }else{
+
+              $this->mission_ar = $this->AuthUser->mission('ar');
+            $this->mission_en = $this->AuthUser->mission('en');
+       }
+
+        if ($this->AuthUser->vision == null) {
+            $this->vision_ar = null;
+            $this->vision_en = null;
+       }else{
+
+              $this->vision_ar = $this->AuthUser->vision('ar');
+            $this->vision_en = $this->AuthUser->vision('en');
+       }
+        
+        if ($this->AuthUser->desc == null) {
+             $this->desc_ar = null;
+             $this->desc_en = null;
+        }else{
+
+               $this->desc_ar = $this->AuthUser->desc('ar');
+             $this->desc_en = $this->AuthUser->desc('en');
+        }
 
         $this->name_en = $this->AuthUser->name('en');
         $this->name_ar = $this->AuthUser->name('ar');
@@ -238,7 +263,9 @@ class EditSchoolProfile extends Component
           $schoolService->updateProfile($this->attributes);
           $this->emit("fresh");
           $this->image=null;
-          toastr("data updated successfully" , "success");                  
-
+          toastr("data updated successfully" , "success");  
+          
+          $this->dispatchBrowserEvent('profile-updated');
+          
     }
 }

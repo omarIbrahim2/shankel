@@ -67,6 +67,9 @@
                         <div class="col-lg-7 col-12">
                             <div class="right-side">
                                 <div class="row">
+                    
+                                        
+                                  
                                     @foreach ($Services as $service)
                                     <div class=" col-md-6 col-12">
                                         <div class="teacher-service card supplier_service_card">
@@ -88,7 +91,7 @@
                                                          @if ($service->added == true)
                                                              
                                                          <div class="service-booking">
-                                                            <form action="{{ route('remove-from-card') }}" method="POST">
+                                                            <form action="{{route('remove-from-card')}}" method="POST">
                                                                 @csrf
                                                                 @method('DELETE')
                                                              <input type="hidden" value="{{ $service->id }}" name="service_id">
@@ -99,32 +102,21 @@
 
                                                          @else
                                                               
-                                                         <div class="service-booking">
-                                                            <form action="{{ route('add-to-card') }}" method="post">
-                                                                @csrf
-                                                                <input type="hidden" name="service_id"
-                                                                    value="{{ $service->id }}">
-
-                                                                    @error('service_id')
-                                                                    <p class="text-danger">{{ $message }}</p>
-
+                                                         <div>
+                                                            <form action="{{ route('add-to-card') }}" method="POST">
+                                                                 @csrf
+                                                                <input type="hidden" name="service_id" value="{{ $service->id }}">
+                                                                <div class="service-booking">
+                                                                    <label for="">{{ trans('service.quantity') }}</label>
+                                                                    @error('quantity')
+                                                                        <p class="text-danger">{{ $message }}</p>
                                                                     @enderror
-                                                                   
-                                                                <div class="srv-cont">
-                                                                <button type="submit" class="btn-custom text-center ">{{ trans('supplier.addToCart') }}</button>
-                                                                    <div class="service-booking">
-
-                                                                        <input name="quantity"
-                                                                            class="num_cart_item form-control"
-                                                                            placeholder="0" type="number">
-                                                                    </div>
-
-
+                                                                    <input id="" name="quantity" class="num_cart_item form-control mb-3" placeholder="0" type="number" min="0">
                                                                 </div>
+                    
+                                                                <button type="submit" class="btn-custom">{{ trans('service.book') }}</button>
                                                             </form>
-                                                            @error('quantity')
-                                                            <p class="text-danger">{{ $message }}</p>
-                                                            @enderror
+                    
                                                         </div>
 
 
@@ -138,6 +130,8 @@
                                         </div>
                                     </div>
                                     @endforeach
+
+                            
                                     <div class="avatar-btns">
 
                                         <div class="services-watch">

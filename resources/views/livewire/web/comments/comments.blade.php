@@ -33,7 +33,7 @@
     
     <div class="reviews-item">
         <div class="review-head">
-            <h5>{{$comment->commentable->name}}</h5>
+            <h5>{{$comment->commentable->name()}}</h5>
         </div>
         <div class="review-body">
             {{$comment->comment}}

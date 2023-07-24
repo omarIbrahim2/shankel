@@ -15,5 +15,6 @@ return[
     "desc_en" => "Description",
     "desc_ar" => "الوصف",
     "addImage" => 'اضف صور لخدمتك',
+    'updateImages' => 'تحديث صور الخدمة',
 
 ];

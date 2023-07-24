@@ -105,7 +105,7 @@
             
             
                     <button type="submit" class="btn-custom">{{ trans('service.update') }}</button>
-            
+                      <a class="btn-custom" href="{{route('service-images-edit' , $Service->id)}}">{{trans('service.updateImages')}}</a>
             
                 </form>
              </div>

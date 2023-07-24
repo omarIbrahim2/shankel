@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\AddToCardEvent;
+
 use App\Http\Requests\CardAddReq;
 use App\Http\Requests\RemoveCardReq;
 use App\Http\Requests\UpdateCardReq;
-use Illuminate\Http\Request;
+
 use Shankl\Factories\AuthUserFactory;
 use Shankl\Factories\RepositoryFactory;
 use Shankl\Services\CardService;
 
-use function Symfony\Component\String\b;
 
 class CardController extends Controller
 {
@@ -30,8 +29,8 @@ class CardController extends Controller
     $guard = AuthUserFactory::geGuard();
     $AuthUser = AuthUserFactory::getAuthUser();
     $UserRepo =  RepositoryFactory::getUserRebo($guard);
+    
 
- 
    
     try {
       $this->cardService->AddToCard($UserRepo, $AuthUser, $validatedReq['service_id'], $validatedReq['quantity']);
