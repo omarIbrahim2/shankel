@@ -16,14 +16,14 @@
 
 @section('main')
 
-<section class="section colored-section">
+<section class="section colored-section empty">
     <div class="inner">
         <div class="container">
             <div class="section-title">
                 <h2>{{ trans('addvert.addverts') }}</h2>
             </div>
             @livewire('web.addverts.addverts')
-          
+
         </div>
     </div>
 </div>

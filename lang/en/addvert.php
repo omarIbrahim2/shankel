@@ -10,5 +10,5 @@ return[
     "upload" => "Upload Image",
     "update" => "Update",
     "add" => "Add",
-    "addverts" => "Addvertsments",
+    "addverts" => "Addvertisments",
 ];

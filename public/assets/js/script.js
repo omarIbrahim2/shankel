@@ -309,17 +309,18 @@ var x = setInterval(function() {
 for(var i=0;i<Array.from($(".event")).length;i++){
     count(Array.from($(".event"))[i])
 }
+var id=localStorage.getItem("active")
+
+$("nav .nav-item").on("click",function(){
+    localStorage.setItem("active",$(this).find(".nav-link").attr("id"))
+    activeNav(id)
+})
+
 
 $( document ).ready(function() {
     $(".loader").css("display","none")
     $("body").css("overflow","auto")
-
-    $("nav .nav-item").on("click",function(){
-        console.log("ss")
-        localStorage.setItem("active",$(this).find(".nav-link").attr("id"))
-        var id=localStorage.getItem("active")
-        activeNav(id)
-    })
+    activeNav(id)
 
   });
  function activeNav(id){

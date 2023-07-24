@@ -1,5 +1,5 @@
-<div>
-    <section class="section edit-teacher-profile">
+
+    <section class="section edit-teacher-profile empty">
         <div class="inner">
             <div class="container">
                 <div class="section-title">
@@ -17,10 +17,10 @@
                                         <h3>{{ $teacher->name() }}</h3>
                                         <h4>{{ $teacher->field()}}</h4>
                                         <p><i class="fa-solid fa-location-dot"></i> {{ $teacher->area->name() }}</p>
-                                        
+
                                         <a href="{{ route('teacher-by-id', $teacher->id) }}"
                                             class="btn-custom">{{ trans('teacher.seeMore') }}</a>
-                                        
+
                                         </div>
                                     <div class="teacher-item-social">
                                         @if ($teacher->facebook)
@@ -55,4 +55,4 @@
             </div>
         </div>
     </section>
-</div>
+

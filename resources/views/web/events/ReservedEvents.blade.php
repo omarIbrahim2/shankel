@@ -13,16 +13,16 @@
 
 @section('main')
 
-<section class="section">
+<section class="section empty">
     <div class="inner">
         <div class="container">
             <div class="section-title">
                 <h2>{{ trans('event.reservedEvents') }}</h2>
             </div>
             <div class="events-section"  data-lang="{{trans('event.notifyEventStart')}}">
-               
+
                 @foreach ($Events as $event)
-                    
+
                    <livewire:web.events.reserved-events :event="$event" :wire:key="$event->id">
                 @endforeach
 
@@ -36,5 +36,5 @@
     </div>
 </section>
 
-     
+
 @endsection

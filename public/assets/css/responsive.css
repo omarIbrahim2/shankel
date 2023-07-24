@@ -89,6 +89,19 @@
   .modal-dialog{
     max-width: 90%;
   }
+  .service-item-data{
+    justify-content: center;
+  }
+  .service-item-data .service-text{
+    width: 100%;
+
+  }
+  .service-item-data .service-text p{
+    font-size: 14px;
+  }
+  .service-item-data .service-booking{
+    width: 100%;
+  }
 }
 @media screen and (max-width: 576px) {
   .home-slider .slider-content h1 {

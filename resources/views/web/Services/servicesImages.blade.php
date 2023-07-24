@@ -6,7 +6,7 @@
 
 
 @section('main')
-<section class="section">
+<section class="section empty">
     <div class="services-slider-image px-5">
         <h1 class="services-slider-image-title">Upload Some Images About Service</h1>
         <div class="row">

@@ -1,5 +1,5 @@
-()<div>
-    <section class="section edit-teacher-profile">
+
+    <section class="section edit-teacher-profile empty">
         <div class="inner">
             <div class="service-banner school-banner">
                 <div class="page-search">
@@ -25,10 +25,10 @@
                                         <h3>{{ $teacher->name() }}</h3>
                                         <h4>{{ $teacher->field() }} {{ trans('teacher.teacher') }}</h4>
                                         <p><i class="fa-solid fa-location-dot"></i> {{ $teacher->area->name() }}</p>
-                                        
+
                                         <a href="{{ route('teacher-by-id', $teacher->id) }}"
                                             class="btn-custom">{{ trans('teacher.seeMore') }}</a>
-                                        
+
                                         </div>
                                     <div class="teacher-item-social">
                                         @if ($teacher->facebook)
@@ -63,4 +63,4 @@
             </div>
         </div>
     </section>
-</div>
+

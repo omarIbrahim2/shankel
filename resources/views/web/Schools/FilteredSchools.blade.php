@@ -1,7 +1,7 @@
 @extends('web.layout')
 
 @section('nav')
-    
+
  @custom_auth
    <x-nav-auth></x-nav-auth>
  @endcustom_auth
@@ -15,19 +15,19 @@
 
 
 @section('main')
-<section class="section">
+<section class="section empty">
     <div class="inner">
         <div class="section-title">
             <h2>Schools</h2>
         </div>
-       
-          @livewire('web.schools.filtered-schools', ['Schools' => $Schools])
-       
-     
-    </div>
-</section>    
 
- 
+          @livewire('web.schools.filtered-schools', ['Schools' => $Schools])
+
+
+    </div>
+</section>
+
+
 
 
 @endsection

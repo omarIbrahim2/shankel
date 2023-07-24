@@ -1,5 +1,4 @@
-<div>
-    <section class="section edit-teacher-profile">
+    <section class="section edit-teacher-profile empty">
         <div class="inner">
             <div class="container">
                 <div class="section-title">
@@ -18,10 +17,10 @@
                                         <h5>{{ $supplier->type() }}</h5>
                                         <h4>{{ $supplier->orgName() }}</h4>
                                         <p><i class="fa-solid fa-location-dot"></i> {{ $supplier->area->name() }}</p>
-                                        
+
                                         <a href="{{ route('supplier-by-id', $supplier->id) }}"
                                             class="btn-custom">{{ trans('teacher.seeMore') }}</a>
-                                        
+
                                         </div>
                                 </div>
                             </div>
@@ -36,4 +35,3 @@
             </div>
         </div>
     </section>
-</div>

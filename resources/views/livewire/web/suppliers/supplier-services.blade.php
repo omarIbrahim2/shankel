@@ -1,5 +1,5 @@
-<div>
-    <section class="section">
+
+    <section class="section empty">
         <div class="inner">
             <div class="container">
                 <div class="services-container">
@@ -58,4 +58,3 @@
             </div>
         </div>
     </section>
-</div>

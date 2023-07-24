@@ -10,9 +10,9 @@
 
 @section('main')
 
-<section class="section">
+<section class="section empty">
     <div class="inner">
-        <div class="container">
+        <div class="container-fluid">
             <div class="services-container">
 
                 <form action="{{ route('paypal-service-payment') }}" method="POST">
@@ -35,27 +35,20 @@
                 @foreach ($card->services as $service)
                 <div class="service-item">
                     <div class="row">
-                        <div class="col-md-2 col-12">
+                        <div class="col-2 ">
                             <div class="service-item-img">
                                 <img src="{{ asset($service->image) }}" alt="service">
                             </div>
                         </div>
-                        <div class="col-md-10 col-12">
+                        <div class="col-10 ">
                             <div class="service-item-data">
                                 <div class="service-text">
                                     <div class="tags">
                                         <p href="#" class="tag rounded-pill btn-custom">{{ $service->name()}}</p>
                                         <p href="#" class="price">{{ $service->price }} JOD</p>
                                     </div>
-                                    <div class="service-item-title">
-                                        <h3>{{ $service->name() }}</h3>
-                                    </div>
-                                    <div class="service-item-description">
-                                        {!! $service->desc() !!}
-                                    </div>
                                 </div>
                                 <div class="service-booking">
-                                    <label for="">Quantity</label>
                                     <form action="{{ route('remove-from-card') }}" method="POST">
                                         <div class="cart-edit-quantity">
                                         <input name="quantity" class="num_cart_item form-control" placeholder="0"

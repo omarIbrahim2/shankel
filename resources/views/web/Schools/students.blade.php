@@ -10,7 +10,7 @@
 @endsection
 
 @section('main')
-<section class="section edit-teacher-profile">
+<section class="section edit-teacher-profile empty">
     <div class="inner">
         <div class="container">
            @livewire('web.schools.students')

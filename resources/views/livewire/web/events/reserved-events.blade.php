@@ -1,7 +1,7 @@
 <div>
                  @if ($booked == true)
-                     
-                
+
+
                         <div class="event">
                             <div class="row">
                                 <div class="col-lg-7 col-md-6 col-12">
@@ -20,7 +20,7 @@
                                             </div>
                                             <div class="event-meta">
                                                 <span class="meta-icon"><i class="fa-solid fa-location-dot"></i></span>
-            
+
                                                 <span
                                                     class="meta-desc">{{ $event->area->city->name() }},{{ $event->area->name() }}</span>
                                             </div>
@@ -116,7 +116,7 @@
                             </div>
                         </div>
 
-                @endif    
+                @endif
 </div>
 
 
@@ -124,4 +124,4 @@
 
 
 
-                    
+

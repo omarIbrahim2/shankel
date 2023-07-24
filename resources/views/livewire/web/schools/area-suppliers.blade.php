@@ -18,10 +18,10 @@
                                         <h5>{{ $supplier->type() }}</h5>
                                         <h4>{{ $supplier->orgName() }}</h4>
                                         <p><i class="fa-solid fa-location-dot"></i> {{ $supplier->area->name() }}</p>
-                                        
+
                                         <a href="{{ route('supplier-by-id', $supplier->id) }}"
                                             class="btn-custom">{{ trans('teacher.seeMore') }}</a>
-                                        
+
                                         </div>
                                 </div>
                             </div>

@@ -1,6 +1,6 @@
-<section class="section">
+<section class="section empty">
     <div class="inner">
-        
+
         <div>
             <div class="service-banner school-banner">
                 <div class="page-search">
@@ -9,8 +9,8 @@
                     <span><i class="fa-solid fa-magnifying-glass"></i></span>
                 </div>
             </div>
-            
-    
+
+
             <div class="section-content section">
                 <div class="container">
                     <div class="section-title">

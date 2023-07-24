@@ -116,9 +116,9 @@ input[type="file"] {
 }
 
 /* 4-helper classes */
-.main{
+/* .main{
     min-height: 100vh;
-}
+} */
 .nav-link {
   margin: 0 8px;
   color: var(--main-color) !important;
@@ -2005,7 +2005,12 @@ main {
 .tags .price:hover {
   color: var(--active-color);
 }
-
+.tag a{
+    color: #fff;
+}
+.tag:hover a{
+    color: var(--main-color);
+}
 .service-item-title h3 {
   font-size: 22px;
   color: var(--main-color);
@@ -2613,4 +2618,7 @@ main {
 }
 .cart-edit-quantity input{
     width: 75%;
+}
+.empty{
+    min-height: 70vh;
 }

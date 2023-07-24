@@ -1,7 +1,8 @@
+<div class="empty">
 <div class="container">
      <h4>{{trans('teacher.addLesson')}} </h4>
-    <form  wire:submit.prevent="save">   
-        @csrf 
+    <form  wire:submit.prevent="save">
+        @csrf
         <div class="input-item me-auto ms-0">
             <input wire:model.defer="title_en" id="event-title"  type="text"  value="{{old('title_en')}}" placeholder="{{trans('teacher.title_en')}}">
             <span>
@@ -31,15 +32,15 @@
             <p class="text-danger">{{$message}}</p>
             @enderror
         </div>
-     
+
             <div class="upload-avatar text-start" data-upload-id="myFirstImage">
 
                 @if ($image)
-                <p>{{$image->getClientOriginalName()}}</p>  
+                <p>{{$image->getClientOriginalName()}}</p>
                 @endif
                 <label for="eventImage" class="btn-custom">{{ trans('teacher.uploadNew') }} </label>
                 <input wire:model.defer="image" class="form-control py-2" id="eventImage" type="file"  accept="image/*">
-    
+
                 @error('image')
                 <p class="text-danger">{{$message}}</p>
                 @enderror
@@ -50,4 +51,5 @@
             </button>
         </div>
     </form>
-</div> 
+</div>
+</div>

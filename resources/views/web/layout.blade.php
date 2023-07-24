@@ -42,7 +42,6 @@
 </head>
 
 <body>
-    <main class="main">
        <!-- img light box -->
    <div class="lightbox">
         <div class="inner">
@@ -72,7 +71,6 @@
     <!-- footer -->
  <x-footer></x-footer>
 
- </main>
 
     <!-- jquery 3.6 -->
     <script src="{{asset('assets')}}/js/jquery-3.6.0.min.js"></script>

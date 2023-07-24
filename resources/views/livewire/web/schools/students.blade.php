@@ -17,12 +17,12 @@
                                         <h3>{{ $student->name }}</h3>
                                         <h5>{{ $student->gender }}</h5>
                                         <h4>{{ $student->grade->name() }}</h4>
-                                        
+
                                         <p><i class="fa-solid fa-location-dot"></i> {{ $student->parentt->area->name() }}</p>
 
                                 </div>
                             </div>
-                        </div>  
+                        </div>
                         @endforeach
                         <div class="pagination">
                             @if ($Students->links('livewire.web-pagination'))
