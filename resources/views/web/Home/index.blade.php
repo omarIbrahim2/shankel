@@ -106,7 +106,7 @@ Shankal | Home
                         <div class="teacher-service card supplier_service_card">
                             <img class="card-img-top" src="{{asset($service->image)}}" alt="service">
                             <div class="card-body">
-                                <p class="card-title fw-bold">{{$service->name()}}</p>
+                                <p class="card-title fw-bold"><a href="{{route('web-service' , $service->id)}}">{{$service->name()}}</a></p>
                                 <p class="card-text supplier-service-desc">unleash e-business models
                                                     unleash e-business models unleash e-business models unleash
                                                     e-business models</p>

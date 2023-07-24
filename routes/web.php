@@ -140,6 +140,7 @@ Route::middleware('lang')->group(function(){
     Route::middleware('card')->group(function(){
         Route::post("add/card" , [CardController::class , 'AddToCard'])->name('add-to-card');
         Route::get('card/services' , [CardController::class , "Card"])->name('Card');
+        Route::post('update/card' , [CardController::class , 'updatedCard'])->name('update-card');
         Route::delete('remove/card/' , [CardController::class , "remove"])->name('remove-from-card');
            //service Payment
         Route::post("paypal/service/payment" , [ServiceOrderController::class , "payment"])->name("paypal-service-payment");;
@@ -390,6 +391,14 @@ Route::middleware('lang')->group(function(){
         Route::get('partner/delete/{partnerId}' , [PartnersController::class , "delete"])->name('partner-delete');
         Route::post("partners/store" , [PartnersController::class, 'store'])->name("partner-create");
         Route::post('partner/update' , [PartnersController::class , "update"])->name('partner-update');
+
+        //seat price
+
+        Route::get('seatPrice' , [AdminController::class , 'ShowseatPrice'])->name('seat-price');
+        Route::post('update/schoolSeat' , [AdminController::class , 'updateSeatPrice'])->name('school-seat-update');
+
+        Route::get('shanklPrice/{id}' , [AdminController::class , 'ShowSeatPriceEdit'])->name('school-seat-edit');
+
 
     });
 

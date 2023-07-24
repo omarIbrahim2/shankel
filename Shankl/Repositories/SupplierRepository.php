@@ -22,7 +22,7 @@ class SupplierRepository implements UserReboInterface{
     }
     public function find($userId)
     {
-        return Supplier::with(['area:id,name'])->findOrFail($userId);
+        return Supplier::with(['area:id,name' , 'services:id,supplier_id,name,price,image'])->findOrFail($userId);
     }
 
 

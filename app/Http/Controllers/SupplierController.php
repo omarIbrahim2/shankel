@@ -7,9 +7,12 @@ use PhpParser\Node\Expr\FuncCall;
 use Shankl\Services\AdminService;
 use Shankl\Helpers\ChangePassword;
 use Shankl\Services\SupplierService;
+use Shankl\Factories\AuthUserFactory;
 use Illuminate\Support\Facades\Config;
+use Shankl\Factories\RepositoryFactory;
 use App\Http\Requests\CommentUpdateRequest;
 use Shankl\Interfaces\LocationRepoInterface;
+use Shankl\Services\CardService;
 
 class SupplierController extends Controller
 {
@@ -85,16 +88,48 @@ class SupplierController extends Controller
     return redirect()->route($url);
   }
 
-  public function getSupplier($supplierId)
+  public function getSupplier(CardService $CardSer  , $supplierId)
   {
 
-
+    $userRepo = RepositoryFactory::getUserRebo(AuthUserFactory::geGuard()); 
+  
     $supplier  = $this->supplierService->getSupplier($supplierId);
+   if ($userRepo != null) {
+       $card =  $CardSer->getCardWithServices($userRepo);
+
+       $cardServices = $card->services;
+
+        if ($supplier->services) {
+            
+         $AllServices =  $supplier->services->map(function($service) use ($cardServices){
+                     
+            if ($cardServices->contains($service->id)) {
+                    
+              $service->setAttribute('added' , true);
+      
+              return $service;
+             
+          }
+          $service->setAttribute('added' , false);
+          return $service;      
+                       
+                
+
+          });
+
+          return view('web.Suppliers.supplierPage')->with(['Services' => $AllServices , 'Supplier' => $supplier]);
+        }
 
 
-    if (!$supplier) {
-      return back();
-    }
+        return view('web.Suppliers.supplierPage')->with(['Supplier' => $supplier]);
+
+
+   }
+
+     
+    
+
+
 
     return view("web.Suppliers.supplierPage")->with(['Supplier' => $supplier]);
   }

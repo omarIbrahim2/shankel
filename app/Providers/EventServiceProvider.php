@@ -9,6 +9,7 @@ use App\Listeners\increaseViews;
 
 use App\Events\UserRegisterEvent;
 use App\Events\RemoveFromCardEvent;
+use App\Events\UpdateCard;
 use Illuminate\Auth\Events\Lockout;
 use App\Listeners\AddToCardListener;
 use App\Listeners\ClearNotificationListener;
@@ -16,6 +17,7 @@ use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
 use App\Listeners\UserRegisterListener;
 use App\Listeners\RemoveFromCardListener;
+use App\Listeners\updateCardListener;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -49,6 +51,10 @@ class EventServiceProvider extends ServiceProvider
 
         ClearNotification::class => [
             ClearNotificationListener::class,
+        ],
+
+        UpdateCard::class => [
+           updateCardListener::class,
         ],
 
        

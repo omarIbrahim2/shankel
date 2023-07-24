@@ -42,6 +42,14 @@ public function AddToCard(CardInterface $userRebo , $User , $serviceId , $quanti
     return $sum;
   }
 
+  public function UpdateCard(CardInterface $UserRepo , $User , $quantity , $serviceId){
+
+       
+       $UserRepo->updateCard($User , $serviceId , $quantity);
+
+
+  }
+
   
  
 
