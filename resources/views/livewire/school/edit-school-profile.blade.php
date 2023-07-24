@@ -32,7 +32,7 @@
                                 {{ $message }}
                             @enderror
                             <div class="upload-avatar">
-                                <button type="button" class="btn-custom" data-bs-toggle="modal"
+                                <button title="images aspect-ratio must be 3/7 (for example 300px * 700px)" type="button" class="btn-custom" data-bs-toggle="modal"
                                     data-bs-target="#schoolAlbum">{{ trans('school.uploadSchoolPhoto') }}</button>
                             </div>
 
@@ -43,79 +43,10 @@
                     </div>
 
                     <x-editoren id="desc_en" property="desc_en"/>
-                    {{-- <div class="provider-description">
-                        <h4>
-                            <span><i class="fa-solid fa-file-pen"></i></span>
-                            <span>{{ trans('school.desc_en') }}</span>
-                            @error('desc_en')
-                                <p class="text-danger">{{ $message }}</p>
-                            @enderror
-                        </h4>
-                        <textarea id="desc_en" class="form-control" wire:model.defer="desc_en"> {{ $desc_en }}</textarea>
-                    </div> --}}
-{{-- 
-                    <div class="provider-description">
-                        <h4>
-                            <span><i class="fa-solid fa-file-pen"></i></span>
-                            <span>{{ trans('school.desc_ar') }}</span>
-                            @error('desc_ar')
-                                <p class="text-danger">{{ $message }}</p>
-                            @enderror
-                        </h4>
-                        <textarea id="desc_ar" class="form-control" wire:model.defer="desc_ar"> {{ $desc_ar  }}</textarea>
-                    </div> --}}
-
                     <x-editor id="desc_ar"   property="desc_ar"/>
-
-                    {{-- <div class="provider-description">
-                        <h4>
-                            <span><i class="fa-solid fa-file-pen"></i></span>
-                            <span>{{ trans('school.mission_en') }}</span>
-                            @error('mission_en')
-                                <p class="text-danger">{{ $message }}</p>
-                            @enderror
-                        </h4>
-                        <textarea id="mission_en" class="form-control" wire:model.defer="mission_en">{{$mission_en }}</textarea>
-                    </div> --}}
-
                     <x-editoren id="mission_en" property="mission_en"/>
-
-                    {{-- <div class="provider-description">
-                        <h4>
-                            <span><i class="fa-solid fa-file-pen"></i></span>
-                            <span>{{ trans('school.mission_ar') }}</span>
-                            @error('mission_ar')
-                                <p class="text-danger">{{ $message }}</p>
-                            @enderror
-                        </h4>
-                        <textarea id="mission_ar" class="form-control" wire:model.defer="mission_ar">{{$mission_ar}}</textarea>
-                    </div> --}}
-
                     <x-editor id="mission_ar"   property="mission_ar"/>
-
-                    {{-- <div class="provider-description">
-                        <h4>
-                            <span><i class="fa-solid fa-file-pen"></i></span>
-                            <span>{{ trans('school.vision_en') }}</span>
-                            @error('vision_en')
-                                <p class="text-danger">{{ $message }}</p>
-                            @enderror
-                        </h4>
-                        <textarea id="vision_en" class="form-control" wire:model.defer="vision_en"> {{ $vision_en }}</textarea>
-                    </div> --}}
-
                     <x-editoren id="vision_en" property="vision_en"/>
-                    {{-- <div class="provider-description">
-                        <h4>
-                            <span><i class="fa-solid fa-file-pen"></i></span>
-                            <span>{{ trans('school.vision_ar') }}</span>
-                            @error('vision_Ar')
-                                <p class="text-danger">{{ $message }}</p>
-                            @enderror
-                        </h4>
-                        <textarea id="vision_ar" class="form-control" wire:model.defer="vision_ar"> {{ $vision_ar }}</textarea>
-                    </div> --}}
-
                     <x-editor id="vision_ar"   property="vision_ar"/>
                 </div>
             </div>

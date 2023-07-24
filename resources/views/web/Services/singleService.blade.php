@@ -41,13 +41,13 @@
                                     <div class="swiper-slide">
                                         <img
                                             src="{{asset($image->image)}}"
-                                            alt="Service Photo"
+                                            alt="Service Photo" class="single-images-school"
                                         />
                                     </div>
                                     @endforeach
                                 </div>
                                    @endif
-                               
+
                                 </div>
 
                                 @if ($Service->images)
@@ -57,14 +57,14 @@
                                         <div class="swiper-slide">
                                             <img
                                                 src="{{asset($image->image)}}"
-                                                alt="Service Photo"
+                                                alt="Service Photo" class="single-images-school"
                                             />
                                         </div>
                                         @endforeach
                                     </div>
                                 </div>
                                 @endif
-                               
+
                             </div>
                         </div>
                         <div class="col-lg-5 col-md-6 col-12">
@@ -82,8 +82,8 @@
             </div>
         </div>
     </section>
-    
-  
+
+
 
 </main>
 

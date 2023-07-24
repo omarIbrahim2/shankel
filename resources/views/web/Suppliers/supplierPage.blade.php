@@ -67,71 +67,75 @@
                         <div class="col-lg-7 col-12">
                             <div class="right-side">
                                 <div class="row">
-                    
-                                        
-                                  
+
+
+
                                     @foreach ($Services as $service)
                                     <div class=" col-md-6 col-12">
                                         <div class="teacher-service card supplier_service_card">
                                             <img class="card-img-top" src="{{ asset($service->image) }}" alt="service">
                                             <div class="card-body">
                                                 <p class="card-title fw-bold supplier-service-name">
-                                                   <a href="{{route('web-service' , $service->id)}}"> {{ $service->name() }}</a></p>
-                
+                                                    <a href="{{route('web-service' , $service->id)}}">
+                                                        {{ $service->name() }}</a>
+                                                </p>
+
                                                 <p class="card-title fw-bold">{{ $service->price }} JOD</p>
                                             </div>
                                             <div class="avatar-btns">
 
-                                                <div>
-                                                    {{-- <!-- <a href="{{ route('web-services') }}"
-                                                        class="btn-custom text-center ">{{ trans('supplier.addToCart') }}</a> --> --}}
-                                                    <div>
+
                                                         @custom_auth
 
-                                                         @if ($service->added == true)
-                                                             
-                                                         <div class="service-booking">
+                                                        @if ($service->added == true)
+
+                                                        <div class="service-booking">
                                                             <form action="{{route('remove-from-card')}}" method="POST">
                                                                 @csrf
                                                                 @method('DELETE')
-                                                             <input type="hidden" value="{{ $service->id }}" name="service_id">
-                                                             <button type="submit"  class="btn-custom-danger">{{ trans('service.remove') }}</button>
+                                                                <input type="hidden" value="{{ $service->id }}"
+                                                                    name="service_id">
+                                                                <button type="submit"
+                                                                    class="btn-custom-danger">{{ trans('service.remove') }}</button>
                                                             </form>
                                                         </div>
 
 
-                                                         @else
-                                                              
-                                                         <div>
+                                                        @else
+
+                                                        <div>
                                                             <form action="{{ route('add-to-card') }}" method="POST">
-                                                                 @csrf
-                                                                <input type="hidden" name="service_id" value="{{ $service->id }}">
+                                                                @csrf
+                                                                <input type="hidden" name="service_id"
+                                                                    value="{{ $service->id }}">
                                                                 <div class="service-booking">
-                                                                    <label for="">{{ trans('service.quantity') }}</label>
+                                                                    <label>{{ trans('service.quantity') }}</label>
                                                                     @error('quantity')
-                                                                        <p class="text-danger">{{ $message }}</p>
+                                                                    <p class="text-danger">{{ $message }}</p>
                                                                     @enderror
-                                                                    <input id="" name="quantity" class="num_cart_item form-control mb-3" placeholder="0" type="number" min="0">
+                                                                    <input name="quantity"
+                                                                        class="num_cart_item form-control mb-3"
+                                                                        placeholder="0" type="number" min="0">
                                                                 </div>
-                    
-                                                                <button type="submit" class="btn-custom">{{ trans('service.book') }}</button>
+
+                                                                <button type="submit"
+                                                                    class="btn-custom">{{ trans('service.book') }}</button>
                                                             </form>
-                    
+
                                                         </div>
 
 
-                                                         @endif
-                                                     
+                                                        @endif
+
                                                         @endcustom_auth
 
-                                                    </div>
-                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
                                     @endforeach
 
-                            
+
                                     <div class="avatar-btns">
 
                                         <div class="services-watch">

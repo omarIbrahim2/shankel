@@ -42,8 +42,8 @@
                                         @foreach ($School->images as $image)
                                         <div class="swiper-slide">
                                             <img
-                                                src="{{asset($image->name)}}"
-                                                alt="School Photo"
+                                                src="{{asset('uploads/'.$image->name)}}"
+                                                alt="School Photo" class="single-images-school"
                                             />
                                         </div>
                                         @endforeach
@@ -54,8 +54,8 @@
                                         @foreach ($School->images as $image)
                                         <div class="swiper-slide">
                                             <img
-                                                src="{{asset($image->name)}}"
-                                                alt="School Photo"
+                                                src="{{asset('uploads/'.$image->name)}}"
+                                                alt="School Photo" class="single-images-school"
                                             />
                                         </div>
                                         @endforeach
