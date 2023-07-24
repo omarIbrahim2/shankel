@@ -12,6 +12,8 @@ interface CardInterface{
     public function getCardWithServices();
 
     public function RemoveFromCard($user,$serviceId);
+     
 
+    public function updateCard($user , $serviceId , $quantity);
     
 }

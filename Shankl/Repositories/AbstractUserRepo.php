@@ -2,6 +2,7 @@
 
 namespace Shankl\Repositories;
 
+use App\Events\UpdateCard;
 use App\Models\Card;
 use App\Models\Service;
 use App\Events\AddToCardEvent;
@@ -25,6 +26,7 @@ abstract class AbstractUserRepo implements CardInterface
       "user_id" => $AuthUser->id,
     ]);
     return Card::with(['services'])->where('id', $createdCard->id)->first();
+   
   }
 
 
@@ -35,6 +37,27 @@ abstract class AbstractUserRepo implements CardInterface
     event(new AddToCardEvent($user->card, $totalPrice));
     $createdCard =   $user->card()->updateOrCreate(["user_id" => $user->id,]);
     return $createdCard->services()->attach([$serviceId], ['quantity' => $quantity]);
+  }
+
+
+  public function updateCard($user, $serviceId, $quantity){
+
+    $card = $user->card;
+    $service = Service::select('price' , 'id')->with(['cards' => function($query) use ($user , $card){
+
+      $query->where('id' , $card->id)->first();
+    }])->findOrFail($serviceId);
+    
+      $oldQuantity =  $service->cards->first()->pivot->quantity;
+
+       
+      event(new UpdateCard($card , $oldQuantity , $quantity , $service));
+  
+      $card->services()->updateExistingPivot( $serviceId ,['quantity' => $quantity]);
+
+    
+        
+        
   }
 
   public function RemoveFromCard($User, $serviceId)

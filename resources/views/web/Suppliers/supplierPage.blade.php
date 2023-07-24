@@ -67,7 +67,7 @@
                         <div class="col-lg-7 col-12">
                             <div class="right-side">
                                 <div class="row">
-                                    @foreach ($Supplier->services as $service)
+                                    @foreach ($Services as $service)
                                     <div class=" col-md-6 col-12">
                                         <div class="teacher-service card supplier_service_card">
                                             <img class="card-img-top" src="{{ asset($service->image) }}" alt="service">
@@ -80,18 +80,38 @@
                                             <div class="avatar-btns">
 
                                                 <div>
-                                                    <!-- <a href="{{ route('web-services') }}"
-                                                        class="btn-custom text-center ">{{ trans('supplier.addToCart') }}</a> -->
+                                                    {{-- <!-- <a href="{{ route('web-services') }}"
+                                                        class="btn-custom text-center ">{{ trans('supplier.addToCart') }}</a> --> --}}
                                                     <div>
-                                                        <div class="service-booking">
+                                                        @custom_auth
+
+                                                         @if ($service->added == true)
+                                                             
+                                                         <div class="service-booking">
+                                                            <form action="{{ route('remove-from-card') }}" method="POST">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                             <input type="hidden" value="{{ $service->id }}" name="service_id">
+                                                             <button type="submit"  class="btn-custom-danger">{{ trans('service.remove') }}</button>
+                                                            </form>
+                                                        </div>
+
+
+                                                         @else
+                                                              
+                                                         <div class="service-booking">
                                                             <form action="{{ route('add-to-card') }}" method="post">
                                                                 @csrf
                                                                 <input type="hidden" name="service_id"
                                                                     value="{{ $service->id }}">
 
+                                                                    @error('service_id')
+                                                                    <p class="text-danger">{{ $message }}</p>
+
+                                                                    @enderror
+                                                                   
                                                                 <div class="srv-cont">
-                                                                <a href="{{ route('web-services') }}"
-                                                        class="btn-custom text-center ">{{ trans('supplier.addToCart') }}</a>
+                                                                <button type="submit" class="btn-custom text-center ">{{ trans('supplier.addToCart') }}</button>
                                                                     <div class="service-booking">
 
                                                                         <input name="quantity"
@@ -106,6 +126,11 @@
                                                             <p class="text-danger">{{ $message }}</p>
                                                             @enderror
                                                         </div>
+
+
+                                                         @endif
+                                                     
+                                                        @endcustom_auth
 
                                                     </div>
                                                 </div>

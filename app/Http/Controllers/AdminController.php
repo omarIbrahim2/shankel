@@ -22,6 +22,7 @@ use App\Http\Requests\SupplierUpdateReq;
 use Shankl\Interfaces\LocationRepoInterface;
 use App\Http\Requests\EventValidationRequest;
 use App\Http\Requests\EventValidationUpdateReq;
+use App\Models\shanklPrice;
 use Illuminate\Support\Facades\Gate;
 
 class AdminController extends Controller
@@ -401,11 +402,13 @@ class AdminController extends Controller
             toastr("message deleted successfully" , "error" ,"delete messages");
 
             return back();
-            toastr("error in deleting" , "error");
+           
         }
 
 
       }else{
+
+        toastr("error in deleting" , "error");
 
         return back();
       }
@@ -422,6 +425,42 @@ class AdminController extends Controller
 
 
     }
+
+    public function ShowseatPrice(){
+
+         $schoolSeat = shanklPrice::first();
+
+
+         return view('admin.schoolSeatPrice.schoolSeatPrice')->with(['schoolSeat' => $schoolSeat]);
+
+    }
+
+
+     public function  ShowSeatPriceEdit($seatPriceId){
+           
+          $price = shanklPrice::findOrFail($seatPriceId);
+
+          return view('admin.schoolSeatPrice.update')->with(['price' => $price]);
+
+     }
+
+     public function updateSeatPrice(Request $request){
+
+
+       $validData=   $request->validate([
+             'id' => 'required|exists:shankl_prices,id',
+            'seat_price' => 'required|min:0',
+        ]);
+
+
+        $price = shanklPrice::findOrFail($validData['id']);
+
+        $price->update($validData);
+
+        toastr('updated successfully' , 'success');
+
+        return redirect()->route('seat-price');
+     }
 
 
 

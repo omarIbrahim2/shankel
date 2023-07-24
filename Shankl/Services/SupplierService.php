@@ -28,7 +28,8 @@ class SupplierService extends Service{
     }
      
     public function getSupplier($supplierId){
-
+            
+        
         return $this->supplierRebo->find($supplierId);
     }
 
