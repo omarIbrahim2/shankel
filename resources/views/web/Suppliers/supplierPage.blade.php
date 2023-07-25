@@ -20,7 +20,6 @@
 <section class="section edit-teacher-profile">
     <div class="inner">
         <div class="container">
-            <form>
                 <div class="section-content">
                     <div class="row">
                         <div class=" col-lg-5 col-12">
@@ -85,49 +84,49 @@
                                             <div class="avatar-btns">
 
 
-                                                        @custom_auth
+                                                @custom_auth
 
-                                                        @if ($service->added == true)
+                                                @if ($service->added == true)
 
+                                                <div class="service-booking">
+                                                    <form action="{{route('remove-from-card')}}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <input type="hidden" value="{{ $service->id }}"
+                                                            name="service_id">
+                                                        <button type="submit"
+                                                            class="btn-custom-danger">{{ trans('service.remove') }}</button>
+                                                    </form>
+                                                </div>
+
+
+                                                @else
+
+                                                <div>
+                                                    <form action="{{ route('add-to-card') }}" method="POST">
+                                                        @csrf
+                                                        <input type="hidden" name="service_id"
+                                                            value="{{ $service->id }}">
                                                         <div class="service-booking">
-                                                            <form action="{{route('remove-from-card')}}" method="POST">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <input type="hidden" value="{{ $service->id }}"
-                                                                    name="service_id">
-                                                                <button type="submit"
-                                                                    class="btn-custom-danger">{{ trans('service.remove') }}</button>
-                                                            </form>
+                                                            <label>{{ trans('service.quantity') }}</label>
+                                                            @error('quantity')
+                                                            <p class="text-danger">{{ $message }}</p>
+                                                            @enderror
+                                                            <input name="quantity"
+                                                                class="num_cart_item form-control mb-3" placeholder="0"
+                                                                type="number" min="0">
                                                         </div>
 
+                                                        <button type="submit"
+                                                            class="btn-custom">{{ trans('service.book') }}</button>
+                                                    </form>
 
-                                                        @else
-
-                                                        <div>
-                                                            <form action="{{ route('add-to-card') }}" method="POST">
-                                                                @csrf
-                                                                <input type="hidden" name="service_id"
-                                                                    value="{{ $service->id }}">
-                                                                <div class="service-booking">
-                                                                    <label>{{ trans('service.quantity') }}</label>
-                                                                    @error('quantity')
-                                                                    <p class="text-danger">{{ $message }}</p>
-                                                                    @enderror
-                                                                    <input name="quantity"
-                                                                        class="num_cart_item form-control mb-3"
-                                                                        placeholder="0" type="number" min="0">
-                                                                </div>
-
-                                                                <button type="submit"
-                                                                    class="btn-custom">{{ trans('service.book') }}</button>
-                                                            </form>
-
-                                                        </div>
+                                                </div>
 
 
-                                                        @endif
+                                                @endif
 
-                                                        @endcustom_auth
+                                                @endcustom_auth
 
 
                                             </div>
@@ -149,7 +148,7 @@
                         </div>
                     </div>
                 </div>
-            </form>
+
         </div>
     </div>
 </section>

@@ -59,9 +59,10 @@
                                             <input name="quantity" class="num_cart_item form-control" placeholder="0"
                                                 type="number" value="{{ $service->pivot->quantity }}">
                                             <button type="submit" class="btn-custom">save</button>
+                                        </form>
                                     </div>
 
-                                    </form>
+
 
                                     <form action="{{ route('remove-from-card') }}" method="POST">
                                         @csrf
