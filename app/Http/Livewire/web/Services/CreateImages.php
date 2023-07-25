@@ -17,6 +17,8 @@ class CreateImages extends Component
     public $Service;
 
     public $service_id;
+
+    
     public function render()
     {
         return view('livewire.web.services.create-images');

@@ -9,11 +9,11 @@
                             <div class="event-meta-data">
                                 <div class="event-meta">
                                     <span class="meta-icon"><i class="fa-regular fa-calendar-days"></i></span>
-                                    <span class="meta-desc">{{ $event->formatedDate($event->start_date) }}</span>
+                                    <span class="meta-desc">{{ $event->formatedDate($event->start_date) }} - {{ $event->startAt() }}</span>
                                 </div>
                                 <div class="event-meta">
-                                    <span class="meta-icon"><i class="fa-regular fa-clock"></i></span>
-                                    <span class="meta-desc">{{ $event->startAt() }} - {{ $event->endAt() }}</span>
+                                    <span class="meta-icon"><i class="fa-regular fa-calendar-days"></i></span>
+                                    <span class="meta-desc">{{ $event->formatedDate($event->end_date) }} - {{ $event->endAt() }}</span>
                                 </div>
                                 <div class="event-meta">
                                     <span class="meta-icon"><i class="fa-solid fa-location-dot"></i></span>
@@ -37,18 +37,22 @@
                     <div class="col-lg-5 col-md-6 col-12">
                         <div class="event-right-side">
                             <div class="counter">
-                                <div class="counter-body"  data-date="{{$event->formatedToCounter()}}">
-                                    <div class="counter-item">
+                                <div class="counter-body"  data-date="{{$event->formatedToCounter()}}" data-end="{{$event->endFormatedToCounter()}}">
+                                    <div class="counter-item counter-days" >
                                         <span></span>
                                         <p>{{ trans('event.days') }}</p>
                                     </div>
-                                    <div class="counter-item">
+                                    <div class="counter-item counter-hours">
                                         <span></span>
                                         <p>{{ trans('event.hours') }}</p>
                                     </div>
-                                    <div class="counter-item">
+                                    <div class="counter-item counter-minutes">
                                         <span></span>
                                         <p>{{ trans('event.mins') }}</p>
+                                    </div>
+                                    <div class="counter-item counter-seconds">
+                                        <span></span>
+                                        <p>{{ trans('event.secs') }}</p>
                                     </div>
                                 </div>
 
