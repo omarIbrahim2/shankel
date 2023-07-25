@@ -258,7 +258,6 @@ $(".eventTimePicker").flatpickr({
 $(".eventDayPicker").flatpickr({
     enableTime: false,
     dateFormat: "Y-m-d ",
-    defaultDate: Date.now()
 });
 $(".paginate-top").on("click",()=>{
     offset().top=0

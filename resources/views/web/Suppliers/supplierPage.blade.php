@@ -84,11 +84,11 @@
                                             <div class="avatar-btns">
 
                                               @if (!Auth::guard('supplier')->check())
-                                                  
+
                                               @custom_auth
-                                              
+
                                               @if ($service->added == true)
-                                              
+
                                               <div class="service-booking">
                                                     <form action="{{route('remove-from-card')}}" method="POST">
                                                         @csrf
@@ -99,34 +99,35 @@
                                                         class="btn-custom-danger">{{ trans('service.remove') }}</button>
                                                     </form>
                                                 </div>
-                                                
-                                                
+
+
                                                 @else
-                                                
-                                                <div>
+
+                                                <div class="service-card-parent">
                                                     <form action="{{ route('add-to-card') }}" method="POST">
                                                         @csrf
                                                         <input type="hidden" name="service_id"
                                                         value="{{ $service->id }}">
                                                         <div class="service-booking">
-                                                            <label>{{ trans('service.quantity') }}</label>
-                                                            @error('quantity')
-                                                            <p class="text-danger">{{ $message }}</p>
-                                                            @enderror
+
+                                                            <button type="submit"
+                                                        class="btn-custom">{{ trans('service.book') }}</button>
                                                             <input name="quantity"
                                                             class="num_cart_item form-control mb-3" placeholder="0"
                                                             type="number" min="0">
-                                                        </div>
 
-                                                        <button type="submit"
-                                                        class="btn-custom">{{ trans('service.book') }}</button>
+                                                        </div>
+                                                        @error('quantity')
+                                                            <p class="text-danger">{{ $message }}</p>
+                                                            @enderror
+
                                                     </form>
-                                                    
+
                                                 </div>
-                                                
-                                                
+
+
                                                 @endif
-                                                
+
                                                 @endcustom_auth
                                                 @endif
 
