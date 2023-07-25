@@ -7,7 +7,7 @@
 
 @section('main')
 <section class="section empty">
-    <div class="services-slider-image px-5">
+    {{-- <div class="services-slider-image px-5">
         <h1 class="services-slider-image-title">Upload Some Images About Service</h1>
         <div class="row">
             <div class="col-md-4 col-sm-6 col-12">
@@ -41,6 +41,8 @@
             <button type="submit" class="btn-custom">Save</button>
         </div>
         </form>
-    </div>
+    </div> --}}
+
+    @livewire('web.services.update-images'  , ['Service' => $Service])
 </section>
 @endsection

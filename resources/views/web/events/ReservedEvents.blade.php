@@ -19,7 +19,7 @@
             <div class="section-title">
                 <h2>{{ trans('event.reservedEvents') }}</h2>
             </div>
-            <div class="events-section"  data-lang="{{trans('event.notifyEventStart')}}">
+            <div class="events-section"  data-lang="{{trans('event.notifyEventStart')}}" data-endLang="{{trans('event.notifyEventEnd')}}">
 
                 @foreach ($Events as $event)
 

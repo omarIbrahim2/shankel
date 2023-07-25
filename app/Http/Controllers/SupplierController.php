@@ -90,7 +90,7 @@ class SupplierController extends Controller
 
   public function getSupplier(CardService $CardSer  , $supplierId)
   {
-
+    
     $userRepo = RepositoryFactory::getUserRebo(AuthUserFactory::geGuard()); 
     
     $supplier  = $this->supplierService->getSupplier($supplierId);
