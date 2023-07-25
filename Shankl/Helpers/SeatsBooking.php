@@ -47,9 +47,7 @@ class SeatsBooking extends AbstractOrder{
        session()->put("order" , $order);
 
        $data = [
-        'child_name'=> $child->name,
-        'school_name' => $school->name,
-        'price' => $price,
+        'price' => $price->seat_price,
        ];
 
        return $data;

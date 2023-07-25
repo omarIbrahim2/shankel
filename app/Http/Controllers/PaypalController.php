@@ -38,8 +38,9 @@ class PaypalController extends Controller
 
        $vaidatedReq['parentt_id'] =  Auth::guard("parent")->user()->id;
 
+       
        try {
-        $data = $this->seatBooking->PrepareBooking($vaidatedReq);
+       
        } catch (\App\Exceptions\SeatBookingException $e) {
            
            $e->render();
