@@ -85,7 +85,7 @@ class School extends Authenticatable
 
     public function transactions()
     {
-        return $this->morphMany(Transaction::class , 'transactionable');
+        return $this->morphMany(Transaction::class , 'user');
     }
 
     public function comments(){

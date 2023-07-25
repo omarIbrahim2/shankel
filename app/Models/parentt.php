@@ -33,7 +33,7 @@ class Parentt extends Authenticatable
 
     public function area()
     {
-        return $this->belongsTo(Area::class , 'area_id');
+        return $this->belongsTo(Area::class);
     }
 
     public function bookOrders(){

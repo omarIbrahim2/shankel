@@ -3,6 +3,8 @@
 namespace Shankl\Helpers;
 
 use App\Exceptions\ServiceOrderException;
+use App\Models\shanklPrice;
+use App\Models\Social;
 use Illuminate\Support\Facades\DB;
 use Shankl\Interfaces\AbstractOrder;
 use Shankl\Factories\AuthUserFactory;
@@ -33,6 +35,7 @@ class ServiceOrder extends AbstractOrder
           $AuthUser = AuthUserFactory::getAuthUser();
           $totalPrice = $AuthUser->card->totalPrice;
           if ($totalPrice <= 0) {
+               toastr('Please choose services you want to order' , 'error');
                return back();
           }
           $transaction = $this->serviceOrderRepo->create($AuthUser, $orderCode , $totalPrice);
@@ -48,7 +51,7 @@ class ServiceOrder extends AbstractOrder
           $card = $AuthUser->card;
           $transaction = session()->get('transaction');
           $services = $this->serviceOrderRepo->getCardServices($card);
-
+          $Shankel = Social::select('phone' , 'address', 'email', 'id')->first();
           if (count($services) == 0) {
      
                throw new ServiceOrderException();
@@ -64,9 +67,10 @@ class ServiceOrder extends AbstractOrder
      
                $this->serviceOrderRepo->update(['id' => $transaction->id, 'status' => 'Completed']);
                $this->serviceOrderRepo->updateQuatityInservice($services);
+
           });
          
-          //Notification::send($AuthUser , new OrderNotification($transaction ,$services , $AuthUser ));
+          Notification::send($AuthUser , new OrderNotification($transaction ,$services , $AuthUser , $Shankel ));
      }
 
      public function __destruct()

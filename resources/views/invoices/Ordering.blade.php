@@ -42,20 +42,20 @@
                             <div class="col invoice-details">
                                     <h1 class="invoice-id">فاتورة رقم : {{$order->id}}</h1>
                                     <div class="date">تاريخ الفاتورة : {{$order->created_at}}</div>
-                                    <div class="date">كود الفاتورة : {{$order->order_code}}</div>
+                                    <div class="date">كود الفاتورة : {{$order->barcode}}</div>
                                 </div>
                                 <div class="col invoice-to">
                                     <div class="text-gray-light"> الفاتورة الي </div>
-                                    <h2 class="to"> الاستاذ {{}}</h2>
-                                    <div class="address">{{}}</div>
+                                    <h2 class="to"> الاستاذ {{$user->name('ar')}}</h2>
+                                    <div class="address">{{$user->area->name('ar')}}</div>
                                     <div class="email"><a
-                                            href="">{{}}</a>
+                                            href="">{{$user->email}}</a>
                                     </div>
                                 </div>
 
                             </div>
                             <div class="notices mb-3 alert-success">
-                                <div class="notice">تم دفع المبلغ بنجاج و شراء الخدمات من  {{}}</div>
+                                <div class="notice">تم دفع المبلغ بنجاج و شراء الخدمات من  شنكل</div>
                             </div>
                             <table>
                                 <thead>
@@ -68,29 +68,29 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                   @foreach ($collection as $item)
+                                   @foreach ($services as $service)
                                        
                                    
                                     <tr>
                                         <td class="text-left">
                                             <h3>
                                                 <a target="_blank" href="javascript:;">
-                                                          الخدمة : {{$order->school->name('ar')}}
+                                                          الخدمة : {{$service->name('ar')}}
                                                 </a>
                                             </h3>
                                             <a target="_blank" href="javascript:;">
-                                               {{}}
+                                               {!! $service->desc('ar') !!}
                                             </a> 
                                         </td>
-                                        <td class="unit">{{}}</td>
-                                        <td class="qty">{{}}</td>
-                                        <td class="total">{{}}</td>
+                                        
+                                        <td class="qty">{{$service->pivot->quantity}}</td>
+                                        <td class="total">{{$service->price * $service->pivot->quantity}}</td>
                                     </tr>
                                     @endforeach 
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td colspan="2">الاجمالي: </td>
+                                        <td colspan="2">الاجمالي:{{$order->totalPrice}} </td>
                                     </tr>
                                 </tfoot>
                             </table>

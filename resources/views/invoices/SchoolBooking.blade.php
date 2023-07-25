@@ -46,7 +46,7 @@
                                 </div>
                                 <div class="col invoice-to">
                                     <div class="text-gray-light"> الفاتورة الي </div>
-                                    <h2 class="to"> الاستاذ {{$parent->name()}}</h2>
+                                    <h2 class="to"> الاستاذ {{$parent->name('ar')}}</h2>
                                     <div class="address">{{$parent->area->name('ar')}}</div>
                                     <div class="email"><a
                                             href="">{{$parent->email}}</a>

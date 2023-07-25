@@ -56,14 +56,14 @@ class SeatsBooking extends AbstractOrder{
 
     public function handleBooking(){
         $AuthParent = AuthUserFactory::getAuthUser();
-        $parent = Parentt::select('name' , 'id')->with(['area'])->where('id' , $AuthParent->id)->first();
+        $parent = Parentt::select('name', 'email' , 'id' , 'area_id')->with(['area:id,name'])->where('id' , $AuthParent->id)->first();
          $Shankel = Social::select("email" , 'phone' , 'address')->first();
          $price = shanklPrice::first();
         $school = session()->get("school");
         $child = session()->get("child");
         $order = session()->get("order");
         
-
+       
 
 
         $seats = $school->free_seats;
