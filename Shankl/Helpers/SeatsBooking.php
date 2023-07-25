@@ -62,7 +62,8 @@ class SeatsBooking extends AbstractOrder{
         $school = session()->get("school");
         $child = session()->get("child");
         $order = session()->get("order");
-     
+        
+
 
 
         $seats = $school->free_seats;
