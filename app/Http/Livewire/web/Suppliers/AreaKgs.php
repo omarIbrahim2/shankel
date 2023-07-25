@@ -18,7 +18,7 @@ class AreaKgs extends Component
 
         
         if ($this->searchKgs) {
-            $Kgs =  $this->NameOrEmailSearch($this->searchKgs , ['name' => 'name' , 'email'=> 'email'],true, $query);
+            $Kgs =  $this->NameOrEmailSearch($this->searchKgs ,  ['name_en' => 'name->en' , 'name_ar' => 'name->ar'  ,'email'=> 'email'],true, $query);
         }else{
             $Kgs = $supplierService->areaKgs(5);
         } 

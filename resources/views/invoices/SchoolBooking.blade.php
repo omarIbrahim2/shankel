@@ -46,16 +46,16 @@
                                 </div>
                                 <div class="col invoice-to">
                                     <div class="text-gray-light"> الفاتورة الي </div>
-                                    <h2 class="to"> الاستاذ {{$order->parentt->name()}}</h2>
-                                    <div class="address">{{$order->parentt->area->name('ar')}}</div>
+                                    <h2 class="to"> الاستاذ {{$parent->name()}}</h2>
+                                    <div class="address">{{$parent->area->name('ar')}}</div>
                                     <div class="email"><a
-                                            href="">{{$order->parentt->email}}</a>
+                                            href="">{{$parent->email}}</a>
                                     </div>
                                 </div>
 
                             </div>
                             <div class="notices mb-3 alert-success">
-                                <div class="notice">تم دفع المبلغ بنجاج و حجز مقعد في مدرسة {{$order->school->name('ar')}}</div>
+                                <div class="notice">تم دفع المبلغ بنجاج و حجز مقعد في مدرسة {{$school->name('ar')}}</div>
                             </div>
                             <table>
                                 <thead>
@@ -72,21 +72,21 @@
                                         <td class="text-left">
                                             <h3>
                                                 <a target="_blank" href="javascript:;">
-                                                          مدرسة {{$order->school->name('ar')}}
+                                                          مدرسة {{$school->name('ar')}}
                                                 </a>
                                             </h3>
                                             <a target="_blank" href="javascript:;">
-                                                حجز مقعد للطالب {{$Child->name}}
+                                                حجز مقعد للطالب {{$child->name}}
                                             </a> 
                                         </td>
                                         <td class="unit">1</td>
-                                        <td class="qty">200</td>
-                                        <td class="total">200</td>
+                                        <td class="qty">1</td>
+                                        <td class="total">{{$Total}}</td>
                                     </tr>
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td colspan="2">الاجمالي: 200</td>
+                                        <td colspan="2">الاجمالي: {{$Total}}</td>
                                     </tr>
                                 </tfoot>
                             </table>

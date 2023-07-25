@@ -18,7 +18,7 @@ class AreaSuppliers extends Component
         $query = (new Supplier())->query();
 
         if ($this->searchSupplier) {
-            $Suppliers =  $this->NameOrEmailSearch($this->searchSupplier , ['name' => 'name' , 'email'=> 'email'],true, $query);
+            $Suppliers =  $this->NameOrEmailSearch($this->searchSupplier , ['name_en' => 'name->en' , 'name_ar' => 'name->ar'  ,'email'=> 'email'],true, $query);
         }else{
             $Suppliers = $supplierService->areaSuppliers(10);
         } 

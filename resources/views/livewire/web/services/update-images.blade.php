@@ -1,8 +1,8 @@
 <div class="services-slider-image px-5">
     <h1 class="services-slider-image-title">Upload Some Images About Service</h1>
     <div class="row">
+        @foreach ($Service->images as $img )
         <div class="col-md-4 col-sm-6 col-12">
-            @foreach ($Service->images as $img )
                 
             <div class="card">
                 <img src="{{asset($img->image)}}" class="card-img-top" alt="service Image">
@@ -10,18 +10,18 @@
                     <a href="{{route('service-images-delete' , $img->id)}}" class="btn btn-primary">Delete</a>
                 </div>
             </div>
-            @endforeach
         </div>
+        @endforeach
     </div>
     <form wire:submit.prevent="upload">
-        
-    <div class="service-images-btns">
-
         @if ($images)
         @foreach ($images as $image)
         <p>{{$image->getClientOriginalName()}}</p>
          @endforeach
-        @endif
+        @endif   
+    <div class="service-images-btns">
+
+     
         <div class="upload-avatar text-start">
        
       

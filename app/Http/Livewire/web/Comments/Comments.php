@@ -55,6 +55,11 @@ class Comments extends Component
     
     }
 
+    public function to($comment){
+        
+        $this->dispatchBrowserEvent('comment-added', ['commentInfo' => $comment['comment'] , 'commentId' => $comment['id']]);
+    }
+
     public function createComment(SchoolService $schoolService){
          
        $this->validate(); 
@@ -62,9 +67,11 @@ class Comments extends Component
       
      
     
-        $schoolService->addComment($user , $this->comment, $this->school_id);
+       $comment = $schoolService->addComment($user , $this->comment, $this->school_id);
 
         $this->emit("fresh");
+
+       
 
         $this->comment = null;
 

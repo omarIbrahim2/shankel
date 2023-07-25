@@ -22,7 +22,7 @@
                             <a href="{{route('supplier-by-id' , $supplier->id)}}">
                                 <div class="area-supplier supplier-card">
                                     <div class="area-supplier-img">
-                                        <img src="{{$supplier->image == null ? asset('assets/images/supplier/1.webp') : asset($supplier->image)}}" @style('width:150px') alt="supplier">
+                                        <img src="{{asset($supplier->image)}}" @style('width:150px') alt="supplier">
                                     </div>
                                     <div class="area-supplier-name search-label">
                                         <h4>{{$supplier->name()}}</h4>

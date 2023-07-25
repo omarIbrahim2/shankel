@@ -83,50 +83,52 @@
                                             </div>
                                             <div class="avatar-btns">
 
-
-                                                @custom_auth
-
-                                                @if ($service->added == true)
-
-                                                <div class="service-booking">
+                                              @if (!Auth::guard('supplier')->check())
+                                                  
+                                              @custom_auth
+                                              
+                                              @if ($service->added == true)
+                                              
+                                              <div class="service-booking">
                                                     <form action="{{route('remove-from-card')}}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
                                                         <input type="hidden" value="{{ $service->id }}"
-                                                            name="service_id">
+                                                        name="service_id">
                                                         <button type="submit"
-                                                            class="btn-custom-danger">{{ trans('service.remove') }}</button>
+                                                        class="btn-custom-danger">{{ trans('service.remove') }}</button>
                                                     </form>
                                                 </div>
-
-
+                                                
+                                                
                                                 @else
-
+                                                
                                                 <div>
                                                     <form action="{{ route('add-to-card') }}" method="POST">
                                                         @csrf
                                                         <input type="hidden" name="service_id"
-                                                            value="{{ $service->id }}">
+                                                        value="{{ $service->id }}">
                                                         <div class="service-booking">
                                                             <label>{{ trans('service.quantity') }}</label>
                                                             @error('quantity')
                                                             <p class="text-danger">{{ $message }}</p>
                                                             @enderror
                                                             <input name="quantity"
-                                                                class="num_cart_item form-control mb-3" placeholder="0"
-                                                                type="number" min="0">
+                                                            class="num_cart_item form-control mb-3" placeholder="0"
+                                                            type="number" min="0">
                                                         </div>
 
                                                         <button type="submit"
-                                                            class="btn-custom">{{ trans('service.book') }}</button>
+                                                        class="btn-custom">{{ trans('service.book') }}</button>
                                                     </form>
-
+                                                    
                                                 </div>
-
-
+                                                
+                                                
                                                 @endif
-
+                                                
                                                 @endcustom_auth
+                                                @endif
 
 
                                             </div>

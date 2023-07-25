@@ -5,7 +5,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-use Illuminate\Database\Eloquent\Model;
+
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\App;
 use Illuminate\Notifications\Notifiable;
@@ -44,6 +44,11 @@ class Supplier extends  Authenticatable
     public function eventSubscribers()
     {
         return $this->morphToMany(Event::class, 'eventable');
+    }
+
+    public function comments(){
+
+        return $this->morphMany(comment::class, 'commentable');
     }
 
 

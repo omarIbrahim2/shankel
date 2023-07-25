@@ -19,7 +19,7 @@ class AreaCenters extends Component
 
         
         if ($this->searchCenters) {
-            $Centers =  $this->NameOrEmailSearch($this->searchCenters , ['name' => 'name' , 'email'=> 'email'],true, $query);
+            $Centers =  $this->NameOrEmailSearch($this->searchCenters , ['name_en' => 'name->en' , 'name_ar' => 'name->ar'  ,'email'=> 'email'],true, $query);
         }else{
             $Centers = $supplierService->areaCenters(5);
         } 

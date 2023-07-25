@@ -155,7 +155,19 @@
 @endsection
 
 @section('scripts')
-    <script>
+
+    {{-- <script>
+
+// window.addEventListener('comment-added', event => {
+       
+    
+//     $("#editcomment").val(event.detail.commentInfo)
+//     $("#editcommentId").val(event.detail.commentId)
+// })
+
+
+    </script> --}}
+    {{-- <script>
         $(".comment").on("click",function(){
 
             let comment = $(this).attr("data-comment");
@@ -167,5 +179,5 @@
 
              $("#editcommentId").val(commentId)
         })
-    </script>
+    </script> --}}
 @endsection

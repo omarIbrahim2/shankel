@@ -46,7 +46,7 @@ class SmkLivePaypal implements PaymentInterface{
                 0=>[
                     "amount" => [
                         "currency_code" => "USD",
-                        "value" => $this->data['amount'],
+                        "value" => $this->data['price'],
                     ],
                 ],
             ],

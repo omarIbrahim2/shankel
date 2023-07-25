@@ -16,31 +16,6 @@
 
 
 @section('scripts')
-    
-<script>
-    $(".get ").on("click",function(){
-         
-        let id = $(this).attr("data-service-id");
-        let price = $(this).attr("data-price");
-        let nameEn = $(this).attr("data-ser-nameen");
-        let nameAr = $(this).attr("data-ser-namear");
-        let descEn = $(this).attr("data-ser-descen");
-        let descAr = $(this).attr("data-ser-descar");
-        let quantity = $(this).attr("data-quatntity");
-        
-
-          $('#serId').val(id)
-         $("#serNameEn").val(nameEn)
-         $("#serNameAr").val(nameAr)
-         $("#serPrice").val(price)
-         $("#serQuantity").val(quantity)
-         $("[role=textbox]").val(descEn)
-         $("#event-desc-ar").val(descAr)
-         
-
-        
-    })
-</script>
 <script>
        
     ClassicEditor

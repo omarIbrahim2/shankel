@@ -19,7 +19,7 @@ class AreaTeachers extends Component
 
         
         if ($this->searchTeacher) {
-            $teachers =  $this->NameOrEmailSearch($this->searchTeacher , ['name' => 'name' , 'email'=> 'email'],true, $query);
+            $teachers =  $this->NameOrEmailSearch($this->searchTeacher ,  ['name_en' => 'name->en' , 'name_ar' => 'name->ar'  ,'email'=> 'email'],true, $query);
         }else{
             $teachers = $supplierService->areaTeachers(5);
         } 

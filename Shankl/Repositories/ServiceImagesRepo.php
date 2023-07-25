@@ -18,7 +18,7 @@ class ServiceImagesRepo{
 
         $ServiceImage =  $this->getImage($ImageId);
         
-        $deletedImage = substr($ServiceImage->img , 8);
+        $deletedImage = substr($ServiceImage->image , 8);
 
         $this->fileService->DeleteFile($deletedImage);
 
