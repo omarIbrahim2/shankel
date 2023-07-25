@@ -43,7 +43,7 @@ class SeatsBooking extends AbstractOrder{
        $order = $this->schoolRegOrdersRepo->create($request);
 
        session()->put("school" , $school);
-       session()->put("child_id" , $child);
+       session()->put("child" , $child);
        session()->put("order" , $order);
 
        $data = [
