@@ -49,7 +49,7 @@
                 <div class="input-item me-auto ms-0">
 
                     <select   wire:model="city" id="selectCity" class="form-select" aria-label="Default select example">
-                        <option selected>{{$authCity->name}}</option>
+                        <option selected>{{$authCity->name()}}</option>
                         @foreach ($cities as $city)
                            <option   value="{{$city->id}}">{{$city->name()}}</option>
                         @endforeach

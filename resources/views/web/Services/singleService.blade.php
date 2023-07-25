@@ -69,7 +69,7 @@
                         </div>
                         <div class="col-lg-5 col-md-6 col-12">
                             <div class="detials-title">
-                                <h3>{{$Service->name()}}</h3>
+                                <h3></h3>
                             </div>
                             <div class="detials-descriton">
                                 <p>

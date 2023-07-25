@@ -44,8 +44,8 @@
                             <div class="service-item-data">
                                 <div class="service-text">
                                     <div class="tags">
-                                        <p href="#" class="tag rounded-pill btn-custom">{{ $service->name()}}</p>
-                                        <p href="#" class="price">{{ $service->price }} JOD</p>
+                                        <a href="{{route("web-service" , $service->id)}}" class="tag rounded-pill btn-custom">{{ $service->name()}}</a>
+                                        <p  class="price">{{ $service->price }} JOD</p>
                                     </div>
                                 </div>
                                 <div class="service-booking">

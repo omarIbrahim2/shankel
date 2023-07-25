@@ -51,17 +51,23 @@ abstract class AbstractUserRepo implements CardInterface
       $oldQuantity =  $service->cards->first()->pivot->quantity;
 
        
+     
       event(new UpdateCard($card , $oldQuantity , $quantity , $service));
+     
 
      
-  
+      
       $card->services()->updateExistingPivot( $serviceId ,['quantity' => $quantity]);
+  
+        
+      
+    
+    if ($quantity == 0 || $card->totalPrice == 0) {
+      $card->services()->detach([$serviceId]);
+    }
+       
 
-
-      if($card->totalPrice == 0){
-
-         $card->services()->detach([$serviceId]);
-      }
+     
 
     
         

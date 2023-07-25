@@ -77,11 +77,7 @@ class EditSchoolProfile extends Component
     }
 
 
-    public function getAuthArea(){
-        
-        return  Area::select('id' , 'name' , "city_id")->with(['city:id,name'])->where('id' , $this->AuthUser->area_id)->first();
-          
-    }
+ 
 
  
     public function mount(){

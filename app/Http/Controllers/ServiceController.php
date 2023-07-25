@@ -9,8 +9,10 @@ use App\Http\Requests\ServiceAddReq;
 use Shankl\Services\SupplierService;
 use App\Http\Requests\ServiceUpdateReq;
 use Shankl\Factories\AuthUserFactory;
+use Shankl\Factories\RepositoryFactory;
 use Shankl\Repositories\ServiceImagesRepo;
 use Shankl\Repositories\ServiceRepository;
+use Shankl\Services\CardService;
 
 class ServiceController extends Controller
 {
@@ -43,11 +45,34 @@ class ServiceController extends Controller
 
     
 
-    public function singleService($serviceId){
+    public function singleService($serviceId , CardService $cardService){
 
-        $Service = $this->supplierService->getService($serviceId);
+        $SingleService = $this->supplierService->getService($serviceId);
 
-        return view('web.Services.singleService')->with(['Service' => $Service]);
+        $UserRepo = RepositoryFactory::getUserRebo(AuthUserFactory::geGuard());
+
+        if ($UserRepo != null) {
+        
+            $CardServices = $cardService->getCardWithServices($UserRepo);
+             if (count($CardServices->services) > 0) {
+                 
+
+                   if ($CardServices->services->contains($SingleService->id)) {
+                           
+                       $SingleService->setAttribute('added' , true);
+                   }else{
+
+                    $SingleService->setAttribute('added' , false);
+                   }
+                  
+
+             }
+           
+        }
+         
+     
+         
+        return view('web.Services.singleService')->with(['Service' =>  $SingleService]);
     }
 
     public function deleteService($serviceId)

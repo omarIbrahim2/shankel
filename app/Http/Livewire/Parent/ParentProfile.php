@@ -38,18 +38,13 @@ class ParentProfile extends Component
     
     public function render()
     {
-        $cities = City::select("id" , "name")->get();
-
-        
-         
-         $authArea =  Area::findOrFail(Auth::guard('parent')->user()->area_id);
-
-         $authCity =  $authArea->city;
-        
-        $this->Areas =  Area::where('city_id' , $this->city)->get();
+        $Cities = City::select('id' , 'name' )->get();
+        $authArea =  Area::select('name' , 'id' , 'city_id')->with(['city:name,id'])->findOrFail(Auth::guard('parent')->user()->area_id);
+        $authCity =  $authArea->city;
+       $this->Areas =  Area::select('name' , 'id')->where('city_id' , $this->city)->get();
         
         return view('livewire.parent.parent-profile' , [
-        'cities' => $cities , 
+        'cities' => $Cities , 
         "Areas" => $this->Areas,
         "authArea" => $authArea,
         "authCity" => $authCity,
