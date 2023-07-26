@@ -69,6 +69,8 @@ class SeatsBooking extends AbstractOrder{
         $seats = $school->free_seats;
         $seats--;
 
+        dd($Shankel);
+
         $this->schoolService->updateProfile(['free_seats' => $seats , 'id' => $order->id]);
         
         $child->update(['school_id' => $school->id]);

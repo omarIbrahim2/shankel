@@ -15,7 +15,7 @@ class Notifications extends Component
          $AuthUser = AuthUserFactory::getAuthUser();
 
 
-        $Notifications = $AuthUser->notifications()->paginate(10);
+        $Notifications = $AuthUser->notifications()->orderBy('created_at' , 'DESC')->paginate(10);
         return view('livewire.admin.notifications')->with(['Notifications' => $Notifications]);
     }
 

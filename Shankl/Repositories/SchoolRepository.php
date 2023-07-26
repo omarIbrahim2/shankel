@@ -14,12 +14,12 @@ class SchoolRepository extends AbstractUserRepo implements UserReboInterface , C
 {
     public function getActiveUsers($pages)
     {
-        return  School::where('status' , true)->orderBy('id' , 'DESC')->paginate($pages);
+        return  School::where('status' , true)->orderBy('created_at' , 'DESC')->paginate($pages);
     }
 
     public function getUnActiveUsers($pages)
     {
-        return  School::where('status' , false)->orderBy('id' , 'DESC')->paginate($pages);
+        return  School::where('status' , false)->orderBy('created_at' , 'DESC')->paginate($pages);
     }
 
     public function getActiveSchools($pages)

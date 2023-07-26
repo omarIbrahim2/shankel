@@ -56,24 +56,23 @@
                                     </div>
                                 </div>
 
-                                @if ($status == 'Cancelled' || $status == 'Finished')
+                            
                                    <div class="text-center mt-2">
 
                                       <a href="{{route("school-edit-view-event" , $event->id)}}" class="btn btn-info">{{trans('event.update')}}</a>
                                    </div>
-                                @else
-                                <div class="text-center mt-2">
+                                
+                           
+                              @if ($event->getStatus() == 'Finished' &&  $event->getStatus() == 'Cancelled'  )
+                                  
+                              <div class="text-center mt-2">
+                                  <form wire:submit.prevent="cancelEvent({{$event}})" >
+                                    <button type="submit" class="btn btn-danger" >{{ trans('event.cls') }}</button>
+                                </form>
+                            </div>
+                            @endif
 
-                                    <a href="{{route("school-edit-view-event" , $event->id)}}" class="btn btn-info">{{trans('event.update')}}</a>
-                                 </div>
-
-                                <div class="text-center mt-2">
-                                    <form wire:submit.prevent="cancelEvent({{$event}})" >
-                                        <button type="submit" class="btn btn-danger" >{{ trans('event.cls') }}</button>
-                                    </form>
-                                </div>
-
-                                @endif
+                        
 
 
 

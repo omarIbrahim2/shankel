@@ -13,7 +13,7 @@ class SupplierRepository implements UserReboInterface{
 
     public function getActiveUsers($pages)
     {
-        return Supplier::with(['area:id,name'])->where("status" , true)->orderBy('id','DESC')->paginate($pages);
+        return Supplier::with(['area:id,name'])->where("status" , true)->orderBy('created_at','DESC')->paginate($pages);
     }
 
     public function getUnActiveUsers($pages)

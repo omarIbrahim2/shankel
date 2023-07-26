@@ -69,7 +69,7 @@ class EventSeatBooked extends Notification implements ShouldQueue
     {
 
         return [
-          "mail" => "EventMailingQueue"
+          "mail" => "Mailing"
         ];
     }
 

@@ -10,12 +10,12 @@ class TeacherRepository extends AbstractUserRepo implements UserReboInterface , 
 
     public function getActiveUsers($pages)
     {
-       return Teacher::with('area')->where('status' , true)->paginate($pages); 
+       return Teacher::with('area')->where('status' , true)->orderBy('created_at' , 'DESC')->paginate($pages); 
     }
 
     public function getUnActiveUsers($pages)
     {
-       return Teacher::where('status' , false)->paginate($pages); 
+       return Teacher::where('status' , false)->orderBy('created_at' , 'DESC')->paginate($pages); 
     }
     public function create($data)
     {

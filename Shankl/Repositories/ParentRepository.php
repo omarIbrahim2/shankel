@@ -17,13 +17,13 @@ class ParentRepository extends AbstractUserRepo implements UserReboInterface, Ca
    public function getActiveUsers($pages)
    {
 
-      return Parentt::where('status', true)->paginate($pages);
+      return Parentt::where('status', true)->orderBy('created_at' , 'DESC')->paginate($pages);
    }
 
    public function getUnActiveUsers($pages)
    {
 
-      return Parentt::where('status', false)->paginate($pages);
+      return Parentt::where('status', false)->orderBy('created_at' , 'DESC')->paginate($pages);
    }
 
    public function create($data)

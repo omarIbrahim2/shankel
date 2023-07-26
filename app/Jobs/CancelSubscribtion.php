@@ -36,8 +36,8 @@ class CancelSubscribtion implements ShouldQueue
     { 
     
         foreach($this->Users as $user){
-            
-            Mail::send(new cancelSubscriptionMail($user));
+               
+            Mail::later(now()->addSeconds(20) ,new cancelSubscriptionMail($user));
         }
          
  

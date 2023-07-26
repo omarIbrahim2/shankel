@@ -41,7 +41,7 @@ class ServiceRepository implements ServiceRepoInterface{
       return  Service::with(['supplier'] , function($query){
 
         $query->select('name')->first();
-       })->get();
+       })->orderby('created_at' , 'DESC')->get();
 
      }
 

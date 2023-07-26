@@ -64,7 +64,7 @@ class OrderNotification extends Notification implements ShouldQueue
     {
 
         return [
-          "mail" => "EventMailingQueue"
+          "mail" => "Mailing"
         ];
     }
 }

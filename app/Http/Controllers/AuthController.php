@@ -182,7 +182,8 @@ class AuthController extends Controller
           
           
             $supplierObj->UploadImage($this->fileser , $request);
-    
+            
+            $supplierObj->changeStatus();
              $supplier = $this->authService->RegisterUser($supplierRepo , $supplierObj);
     
             if (Route::currentRouteName() == 'supplier-register') {

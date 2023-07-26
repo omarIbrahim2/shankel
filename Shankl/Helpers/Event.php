@@ -150,9 +150,9 @@ class Event{
 
         $this->eventReboInterface->updateEvent(['status' => 'Cancelled'] , $event);
 
-        //  $subscribers = $this->getSubscribers($eventId);
+         $subscribers = $this->getSubscribers($eventId);
 
-        //  $this->notifySubscibers($subscribers);
+         $this->notifySubscibers($subscribers);
 
     }
 
@@ -179,7 +179,7 @@ class Event{
     private function  notifySubscibers($subscribers){
 
         if (count($subscribers) > 0) {
-            CancelSubscribtion::dispatch($subscribers)->onQueue('EventMailingQueue');
+            CancelSubscribtion::dispatch($subscribers)->onQueue('CancelEvent');
          }
 
 
