@@ -234,7 +234,6 @@ Route::middleware('lang')->group(function(){
         
         Route::get('service-images/{serviceId}' , [ServiceController::class , "serviceImagesUpdateView"] )->name('service-images-edit');
         Route::get('service-images/delete/{serviceId}' , [ServiceController::class , "DeleteServiceImage"] )->name('service-images-delete');
-         Route::post('service-images/store' , [ServiceController::class , 'uploadServiceImages'])->name('upload-service-images');
 
     });
 
