@@ -5,45 +5,54 @@
                 <div class="service-item">
                     <div class="row">
                         @foreach ($lessons as $less)
-                            <div class="col-md-2 col-12 mb-2">
-                                <div class="service-item-img">
-                                    <img src="{{asset($less->image)}}" alt="lesson">
+                        <div class=" col-md-4 col-12">
+                            <div class="teacher-item-wrapper">
+                            <div class="teacher-service card supplier_service_card">
+                                <img class="card-img-top" src="{{asset($less->image)}}" alt="lesson">
+                                <div class="card-title">
+                                    <h3 class="card-title fw-bold supplier-service-name mt-3">
+                                        {{ $less->title() }}
+                                    </h3>
                                 </div>
+                                <div class="card-body lesson-card-body">
 
-                            </div>
-                            <div class="col-md-10 col-12 mb-2">
-                                <div class="service-item-data">
-                                    <div class="service-text">
-                                        <div class="tags">
-                                            <a href="#"
-                                                class="tag rounded-pill btn-custom">{{ $less->teacher->field() }}</a>
+                                    <p class=" fw-bold supplier-service-name">
+                                        {{ $less->teacher->field() }}
+                                    </p>
 
-                                        </div>
-                                        <div class="service-item-title free-title">
-                                            <h3>{{ $less->title() }}</h3>
-                                        </div>
+                                </div>
+                                <div class="avatar-btns avatar-lesson-btns">
+
+
+
+                                    <div class="service-booking lesson-btns">
+                                        <form action="{{ route('delete-lesson', $less->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit"
+                                                class="btn-custom-danger">{{ trans('teacher.delete') }}</button>
+                                        </form>
 
                                     </div>
-                                    <div class="service-booking">
-                                        <a href="{{ $less->url }}" target="_blank"
+                                    <button type="button" class="get btn  btn-custom btn-success" data-id="{{ $less->id }}"
+                                        data-title-ar="{{$less->title('ar')}}"  data-title-en="{{ $less->title('en')}}" data-url="{{ $less->url }}"
+                                         data-bs-toggle="modal"
+                                         data-bs-target="#teacherVideos">{{ trans('teacher.update') }}</button>
+
+
+<a href="{{ $less->url }}" target="_blank"
                                             class="btn-custom">{{ trans('teacher.watchNow') }}</a>
-                                        <div class="m-2">
-                                            <form action="{{ route('delete-lesson', $less->id) }}" method="post">
-                                                @method('DELETE')
-                                                @csrf
-                                                <button type="submit"
-                                                    class=" px-4 btn btn-danger">{{ trans('teacher.delete') }}</button>
-                                            </form>
-                                        </div>
-                                        <button type="button" class="get btn btn-warning" data-id="{{ $less->id }}"
-                                           data-title-ar="{{$less->title('ar')}}"  data-title-en="{{ $less->title('en')}}" data-url="{{ $less->url }}"
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#teacherVideos">{{ trans('teacher.update') }}</button>
-                                    </div>
+
+
+
+
+
 
                                 </div>
 
                             </div>
+                            </div>
+                        </div>
                         @endforeach
 
                         <div class="pagination">
