@@ -55,20 +55,26 @@
                                         <p>{{ trans('event.secs') }}</p>
                                     </div>
                                 </div>
-                                @custom_auth
-                                    @if ($booked == true)
-                                        <div>
-                                            <button class="btn btn-success" disabled>{{ trans('event.booked') }}</button>
-                                            <button wire:click="cancelBooking({{ $event }})"
-                                                class="btn btn-danger">{{ trans('event.clsBook') }}</button>
-                                        </div>
-                                    @else
-                                        <div>
-                                            <button wire:click="BookAseat({{ $event }})"
-                                                class="white-btn">{{ trans('event.book') }}</button>
-                                        </div>
-                                    @endif
+
+                                @if (! Auth::guard('web')->check())
+                                   @if ($event->getStatus() != 'Finished' && $event->getStatus() != 'Cancelled')
+                                       
+                                   @custom_auth
+                                   @if ($booked == true)
+                                   <div>
+                                       <button class="btn btn-success" disabled>{{ trans('event.booked') }}</button>
+                                       <button wire:click="cancelBooking({{ $event }})"
+                                       class="btn btn-danger">{{ trans('event.clsBook') }}</button>
+                                </div>
+                                @else
+                                <div>
+                                    <button wire:click="BookAseat({{ $event }})"
+                                    class="white-btn">{{ trans('event.book') }}</button>
+                                </div>
+                                @endif
                                 @endcustom_auth
+                                @endif  
+                                @endif
                             </div>
                             <div class="loc-data">
                                 <div class="event-data-item">

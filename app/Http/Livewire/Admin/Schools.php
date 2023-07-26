@@ -21,10 +21,16 @@ class Schools extends Component
         $query = (new School)->query();
 
         if ($this->active == true) {
-             $Users =$schoolService->getActiveSchoolsOnly(10);
+           
+                $Users =$schoolService->getActiveSchoolsOnly(10);
+          
+            
         }else{
-
+              
+          
             $Users =$schoolService->getUnActSchoolsOnly(10);
+          
+           
         }
 
         if ($this->NameOrEmail) {

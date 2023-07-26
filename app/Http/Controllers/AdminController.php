@@ -343,6 +343,12 @@ class AdminController extends Controller
         return $data;
     }
 
+
+    public function NotFound(){
+
+        return view('admin.errors.NotFound');
+    }
+
     public function socialCreate(SocialsAddReq $request){
 
        $validatedData =  $request->validated();

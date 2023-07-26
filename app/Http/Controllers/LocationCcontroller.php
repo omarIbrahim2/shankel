@@ -89,25 +89,6 @@ class LocationCcontroller extends Controller
         toastr('error in updating', 'error');
     }
 
-    public function deleteCity($cityId)
-    {
-
-        $City = City::findOrFail($cityId);
-
-        try {
-            $action = $City->delete();
-
-            toastr("City deleted successfully", 'success', "delete City");
-
-            return back();
-        } catch (\Throwable $th) {
-            toastr("error in deleting You must delete areas first", 'error');
-
-            return back();
-        }
-    }
-
-
     public function showCityAreas($cityId)
     {
 
@@ -178,22 +159,6 @@ class LocationCcontroller extends Controller
         toastr('error in updating', 'error');
     }
 
-    public function deleteArea($areaId)
-    {
-
-        $Area = Area::findOrFail($areaId);
-
-        try {
-            $action = $Area->delete();
-            toastr("Area deleted successfully", 'success', "delete Area");
-
-            return back();
-        } catch (\Throwable $th) {
-            toastr("error in deleting this area related to another data", 'error');
-
-            return back();
-        }
-    }
 
     public function Areas($cityId)
     {

@@ -19,8 +19,14 @@ class Areas extends Component
             $keys = ['name->ar' , 'name->en'];
             $Areas = $this->TitleSearch($this->searchAreas, $keys, $AreasQuery);
         } else {
+           try {
             $City = $locationRepo->cityAreas($this->cityId);
-             $Areas= Area::paginate($City->areas , 10);  
+            $Areas= Area::paginate($City->areas , 10);
+           } catch (\Throwable $th) {
+           
+              return view('admin.errors.NotFound');
+           }   
+             
         }
         return view('livewire.admin.areas')->with(['Areas' => $Areas , 'City' => $City]);
     }

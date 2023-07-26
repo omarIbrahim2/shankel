@@ -25,8 +25,8 @@ class AddvertValidationUpdateReq extends FormRequest
     {
         return [
             'id' => 'required|exists:addverts,id',
-            'title_en' => 'required|string|min:5|max:255',
-            'title_ar' => 'required|string|min:5|max:255',
+            'title_en' => 'required|string|min:3|max:255',
+            'title_ar' => 'required|string|min:3|max:255',
             "desc_en" => 'required|string',
             "desc_ar" => 'required|string',
             'image' => 'image|mimes:jpeg,jpg,png,webp|max:1024',

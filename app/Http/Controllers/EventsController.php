@@ -15,6 +15,7 @@ use App\Http\Requests\EventValidationRequest;
 use App\Http\Requests\EventValidationUpdateReq;
 use App\Models\School;
 use App\Models\User;
+use Carbon\Carbon;
 use Shankl\Factories\AuthUserFactory;
 
 class EventsController extends Controller
@@ -53,7 +54,6 @@ class EventsController extends Controller
     {
 
         $data['cities'] = $locationRepo->getCities();
-
         return view("admin.events.createEvent")->with($data);
     }
 
@@ -100,6 +100,8 @@ class EventsController extends Controller
         if (! array_key_exists($guard , $guards)) {
             return back();
         }
+
+
 
         return view('admin.events.events')->with(['guard' => $guards[$guard]]);
     }

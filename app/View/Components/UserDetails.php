@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\View\View;
 use Illuminate\View\Component;
 use Shankl\Factories\AuthUserFactory;
@@ -23,7 +24,13 @@ class UserDetails extends Component
         $UserModel = config("auth.custom" . "." . $guard . ".model");
         
         if ($this->guard == 'school') {
-            $user = $UserModel::with(['area' , "eduSystem"])->findOrFail($id);
+            try {
+                $user = $UserModel::with(['area' , "eduSystem"])->findOrFail($id);
+            } catch (\Throwable $th) {
+                $user = null;
+                $this->render();
+            }
+           
         
         }else{
             
@@ -43,10 +50,10 @@ class UserDetails extends Component
             return [
                 'parent' => [
                    'image' => $user->image,
-                   'name' => $user->name,
+                   'name' => $user->name(),
                     "email" => $user->email,
                      'phone' => $user->phone,
-                   'address'=> $user->area->name,
+                   'address'=> $user->area->name(),
                 ]
                 ];
           }elseif($this->guard == 'school'){
@@ -54,13 +61,13 @@ class UserDetails extends Component
               return [
                 'school'=> [
                     'image' => $user->image,
-                    'name' => $user->name,
+                    'name' => $user->name(),
                     'email' => $user->email,
                     'phone' => $user->phone,
-                    'address'=> $user->area->name,
-                    "mission" => $user->mission,
-                    'vision' => $user->vision,
-                    'description' => $user->desc,
+                    'address'=> $user->area->name(),
+                    "mission" => $user->mission(),
+                    'vision' => $user->vision(),
+                    'description' => $user->desc(),
                     "Establish date" => $user->establish_date,
                     'facebook' => $user->facebook,
                     'twiter' => $user->twitter,
@@ -77,10 +84,10 @@ class UserDetails extends Component
            return [
                'teacher' => [
                'image' => $user->image,
-               'name' => $user->name,
+               'name' => $user->name(),
                'email' => $user->email,
                'phone' => $user->phone,
-               'address'=> $user->area->name,
+               'address'=> $user->area->name(),
                'facebook' => $user->facebook,
                'twiter' => $user->twitter,
                'linkedin' => $user->linkedin,
@@ -92,12 +99,12 @@ class UserDetails extends Component
             return [
                 'supplier' => [
                     'image' => $user->image,
-                    'name' => $user->name,
+                    'name' => $user->name(),
                     'email' => $user->email,
                     'phone' => $user->phone,
-                    'address'=> $user->area->name,
+                    'address'=> $user->area->name(),
                     'type' => $user->type,
-                    "Organization Name" => $user->orgName,
+                    "Organization Name" => $user->orgName(),
                 ]
                 ];
         }
@@ -112,6 +119,9 @@ class UserDetails extends Component
      */
     public function render()
     {
+      if (! $this->User) {
+          return view('admin.errors.NotFound');
+      }
           
        $attributes = $this->setAttributes($this->User);
            $attrs = collect($attributes);

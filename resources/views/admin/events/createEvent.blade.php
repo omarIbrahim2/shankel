@@ -34,11 +34,12 @@
 
                     var lang = $('#startInn').data('langshankl')
 
-
+            
 
                     for (const key in data.areas) {
-
+        
                         var name = JSON.parse(data.areas[key].name);
+                        
                         if (lang == 'ar') {
                             your_html += "<option id='ar' value = " + data.areas[key].id + ">" + name
                                 .ar + "</option>";

@@ -246,6 +246,8 @@ Route::middleware('lang')->group(function(){
     Route::prefix('dashboard')->middleware('auth')->group(function(){
         Route::get('/' , [AdminController::class , 'dashboard'])->name('dashboard');
 
+        Route::get('notFound' , [AdminController::class , 'NotFound'])->name('notFound');
+
         //events
         Route::get('events/{guard}' , [EventsController::class , 'Events'])->name('admin-events');
         Route::get('event/create' , [EventsController::class , "createEventView"])->name('create-events-view');

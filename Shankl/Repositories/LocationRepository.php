@@ -44,4 +44,4 @@ class LocationRepository implements LocationRepoInterface{
     return $city;
   }
 
-};
+}
