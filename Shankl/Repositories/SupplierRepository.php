@@ -48,11 +48,13 @@ class SupplierRepository implements UserReboInterface{
 
     public function SupplierServices($supplierId , $pages){
 
-      
-        $supplier =Supplier::with("services")->findOrFail($supplierId);
+
+        $supplier =Supplier::with(["services"=>function($query){
+            $query->orderBy("created_at" , "desc")->get();
+        }])->findOrFail($supplierId);
           $services = $supplier->services;
 
-    
+
           return Service::paginate($services , $pages);
 
     }

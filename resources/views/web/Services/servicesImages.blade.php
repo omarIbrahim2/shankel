@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-md-4 col-sm-6 col-12">
                 @foreach ($Service->images as $img )
-                    
+
                 <div class="card">
                     <img src="{{asset($img->image)}}" class="card-img-top" alt="service Image">
                     <div class="card-body">
@@ -26,14 +26,14 @@
             @csrf
         <div class="service-images-btns">
             <div class="upload-avatar text-start">
-           
-          
+
+
                 <input type="file" name="images[]" id="teacher-avatar" multiple>
 
                 <div class="uploadedPhotoName">
                     <label class="btn-custom" for="teacher-avatar">Upload More Photos</label>
                 </div>
-              
+
                 @error('images')
                 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
             @enderror

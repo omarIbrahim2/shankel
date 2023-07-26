@@ -76,7 +76,9 @@
                             </div>
                             <div class="detials-descriton">
                                 <p>
+                                    @if($School->desc)
                                     {!!$School->desc()!!}
+                                    @endif
                                 </p>
                             </div>
                             <div class="detials-items">
@@ -159,8 +161,8 @@
     {{-- <script>
 
 // window.addEventListener('comment-added', event => {
-       
-    
+
+
 //     $("#editcomment").val(event.detail.commentInfo)
 //     $("#editcommentId").val(event.detail.commentId)
 // })

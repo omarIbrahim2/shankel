@@ -2,7 +2,7 @@
 <div>
     <div>
         <form>
-            @csrf 
+            @csrf
             <div class="section-content">
                 <div class="row">
                     <div class="col-lg-3 col-md-5 col-12">
@@ -11,7 +11,7 @@
                                 <h3>{{ trans('teacher.profile') }}</h3>
                             </div>
                             <div class="teacher-avatar">
-                                <img src="{{asset($authUser->image)}}" alt="avatar">
+                                <img src="{{asset($authUser->image)}}" alt="avatar" class="teacher-avatar-img">
                                 <h4>
                                     <a href="#">{{$authUser->name()}}</a>
                                 </h4>
@@ -24,9 +24,9 @@
                                         <input type="file" wire:model.defer="image" id="teacher-avatar">
                                         <label class="btn-custom" for="teacher-avatar">{{ trans('teacher.uploadNew') }}</label>
                                     </div>
-                                 
+
                                 </div>
-    
+
                             </div>
                             <div class="add-video">
                                 <div class="sub-title sec-sub-title">
@@ -35,7 +35,7 @@
                                 <div class="avatar-btns">
                                     <div class="upload-avatar">
                                         <button type="button" class="btn-custom" name="teacher-avatar"  data-bs-toggle="modal" data-bs-target="#teacherVideos">{{ trans('teacher.addNewL') }}</button>
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -49,7 +49,7 @@
                                     <div class="sub-btns">
                                         <button type="button" wire:click="update" class="btn-custom">{{ trans('teacher.save') }}</button>
                                     </div>
-                        
+
                                     <a href="{{route('change_pass_teacher')}}"  class="btn-custom" >
                                         {{ trans('teacher.reset') }}
                                     </a>
@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="contact-form ">
                                     <form>
-                                        @csrf 
+                                        @csrf
                                         <div class="input-item">
                                             <input type="text" wire:model.defer="name_en" placeholder="{{ trans('teacher.name_en') }}">
                                             <span>
@@ -72,7 +72,7 @@
                                             </span>
                                             @error('name') <p class="text-danger">{{$message}}</p>  @enderror
                                         </div>
-                                        
+
                                         <div class="input-item">
                                             <input type="email" wire:model.defer="email" placeholder="{{ trans('teacher.email') }}">
                                             <span>
@@ -101,17 +101,17 @@
                                             </span>
                                             @error('phone') <p class="text-danger">{{$message}}</p>  @enderror
                                         </div>
-                                        
+
                                     </form>
                                 </div>
                             </div>
                             <div class="right-side-item">
                                 <div class="sub-title main-sub-title">
                                     <h3>{{ trans('teacher.about') }}</h3>
-                                    
+
                                 </div>
                                 <div class="contact-form ">
-                                    
+
                                         <div class="input-item ">
                                             <input type="file" wire:model.defer="cv" id="teacher">
                                             @if ($cv)
@@ -119,30 +119,30 @@
                                             @endif
                                             {{trans("teacher.cv")}}
                                             <label class="file-input" for="teacher">
-                                                
+
                                                 <span>
                                                     <svg class="svg-inline--fa fa-file-pen" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="file-pen" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M0 64C0 28.65 28.65 0 64 0H224V128C224 145.7 238.3 160 256 160H384V299.6L289.3 394.3C281.1 402.5 275.3 412.8 272.5 424.1L257.4 484.2C255.1 493.6 255.7 503.2 258.8 512H64C28.65 512 0 483.3 0 448V64zM256 128V0L384 128H256zM564.1 250.1C579.8 265.7 579.8 291 564.1 306.7L534.7 336.1L463.8 265.1L493.2 235.7C508.8 220.1 534.1 220.1 549.8 235.7L564.1 250.1zM311.9 416.1L441.1 287.8L512.1 358.7L382.9 487.9C378.8 492 373.6 494.9 368 496.3L307.9 511.4C302.4 512.7 296.7 511.1 292.7 507.2C288.7 503.2 287.1 497.4 288.5 491.1L303.5 431.8C304.9 426.2 307.8 421.1 311.9 416.1V416.1z"></path></svg><!-- <i class="fa-solid fa-file-pen"></i> Font Awesome fontawesome.com -->
                                                 </span>
                                                    @if ($cvName == null)
                                                    <p class="upload-text">{{trans("teacher.cv")}}</p>
                                                    @else
-                                                   <p class="upload-text">{{$cvName}}</p> 
+                                                   <p class="upload-text">{{$cvName}}</p>
                                                    @endif
-                                                
+
                                             </label>
                                             @error('cv') <p class="text-danger">{{$message}}</p>  @enderror
                                         </div>
-                                        
-                                   
+
+
                                 </div>
                             </div>
                             <div class="right-side-item">
                                 <div class="sub-title main-sub-title">
                                     <h3>{{ trans('teacher.externalLink') }}</h3>
-                                    
+
                                 </div>
                                 <div class="contact-form ">
-                                   
+
                                         <div class="input-item">
                                             <input type="url" wire:model.defer="facebook" placeholder="{{ trans('teacher.facebook') }}">
                                             <span>
@@ -150,7 +150,7 @@
                                             </span>
                                             @error('facebook') <p class="text-danger">{{$message}}</p>  @enderror
                                         </div>
-                                        
+
                                         <div class="input-item">
                                             <input type="url" wire:model.defer="twitter" placeholder="{{ trans('teacher.twitter') }}">
                                             <span>
@@ -158,7 +158,7 @@
                                             </span>
                                             @error('twitter') <p class="text-danger">{{$message}}</p>  @enderror
                                         </div>
-                                        
+
                                         <div class="input-item ">
                                             <input type="url" wire:model.defer="linkedin" placeholder="{{ trans('teacher.linked') }}">
                                             <span>

@@ -8,9 +8,10 @@
                     <div class="row">
                         @foreach ($suppliers as $supplier)
                         <div class="col-md-4 col-12">
+                            <div class="teacher-item-wrapper">
                             <div class="teacher-item">
                                 <div class="teacher-item-img">
-                                    <img width="250px" src="{{ asset($supplier->image) }}" alt="teacher">
+                                    <img src="{{ asset($supplier->image) }}" alt="teacher">
                                 </div>
                                 <div class="teacher-item-data">
                                         <h3>{{ $supplier->name() }}</h3>
@@ -23,6 +24,7 @@
 
                                         </div>
                                 </div>
+                            </div>
                             </div>
                         @endforeach
                         <div class="pagination">

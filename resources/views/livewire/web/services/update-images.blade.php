@@ -1,9 +1,9 @@
-<div class="services-slider-image px-5">
+<div class="services-slider-image px-5 ">
     <h1 class="services-slider-image-title">Upload Some Images About Service</h1>
     <div class="row">
         @foreach ($Service->images as $img )
         <div class="col-md-4 col-sm-6 col-12">
-                
+
             <div class="card">
                 <img src="{{asset($img->image)}}" class="card-img-top" alt="service Image">
                 <div class="card-body">
@@ -18,19 +18,19 @@
         @foreach ($images as $image)
         <p>{{$image->getClientOriginalName()}}</p>
          @endforeach
-        @endif   
+        @endif
     <div class="service-images-btns">
 
-     
+
         <div class="upload-avatar text-start">
-       
-      
+
+
             <input type="file" wire:model="images" id="teacher-avatar" multiple>
 
             <div class="uploadedPhotoName">
                 <label class="btn-custom" for="teacher-avatar">Upload More Photos</label>
             </div>
-          
+
             @error('images')
             <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
            @enderror
