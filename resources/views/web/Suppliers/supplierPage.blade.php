@@ -13,7 +13,7 @@
 @endsection
 
 @section('main')
-<section class="teacher-banner">
+<section class="teacher-banner" style="background-image: url({{asset($slider->image)}})">
 
 </section>
 <!-- profie -->
@@ -29,12 +29,18 @@
                                     <div class="avatar-container">
                                         <div class="avatar-img">
                                             <img width="100px" src="{{ asset($Supplier->image) }}" alt="avatar">
+                                            @if ($Supplier->area)
+                                                
                                             <p><i class="fa-solid fa-location-dot"></i> {{ $Supplier->area->name() }}
+                                                @endif
                                             </p>
                                         </div>
                                         <div class="avatar-data">
                                             <h4>
+                                                @if ($Supplier->name)
+                                                    
                                                 <a href="#">{{ $Supplier->name() }}</a>
+                                                @endif
                                             </h4>
                                         </div>
                                     </div>

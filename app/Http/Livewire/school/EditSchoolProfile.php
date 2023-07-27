@@ -59,11 +59,21 @@ class EditSchoolProfile extends Component
     public function render()
     {
 
-       
-        $Cities = $this->Cities;
+
+       try {
+            $Cities = $this->Cities;
         $authArea =  Area::select('name' , 'id' , 'city_id')->with(['city:name,id'])->findOrFail($this->AuthUser->area_id);
         $authCity =  $authArea->city;
        $this->Areas =  Area::select('name' , 'id')->where('city_id' , $this->city)->get();
+       } catch (\Throwable $th) {
+          
+         return view('livewire.school.edit-school-profile' , [ 'cities' => null , 
+        "Areas" => null,
+        "authArea" => null,
+        "authCity" => null,
+    ]);
+       }
+    
         return view('livewire.school.edit-school-profile'
         , [ 'cities' => $Cities , 
         "Areas" => $this->Areas,
@@ -259,7 +269,7 @@ class EditSchoolProfile extends Component
           $schoolService->updateProfile($this->attributes);
           $this->emit("fresh");
           $this->image=null;
-          toastr("data updated successfully" , "success");  
+          toastr(trans('school.succMsg') , "success");  
           
           $this->dispatchBrowserEvent('profile-updated');
           

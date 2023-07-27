@@ -131,14 +131,14 @@ class EditTeacher extends Component
       
 
         if ($action) {
-             toastr("data updated successfully" , "success");
+             toastr(trans('school.succMsg') , "success");
              $this->emit('fresh');
              $this->image = null;
              $this->cv = null;
              return;
         }
 
-        toastr("error happened in system ..!!" , 'error' , "Error");
+        toastr(trans('error.errorMsg') , 'error' , "Error");
         $this->emit('fresh');
         $this->image = null;
 

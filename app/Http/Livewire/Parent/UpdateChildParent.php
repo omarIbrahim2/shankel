@@ -101,7 +101,7 @@ class UpdateChildParent extends Component
        $this->parentService->updateChild($this->attributes ,  $this->child_id );      
        $this->emit("fresh");
        $this->image = null;
-       session()->flash("success" , "data updated successfully");
+       session()->flash("success" , trans('school.succMsg'));
 
     }
 
@@ -112,7 +112,7 @@ class UpdateChildParent extends Component
 
         $this->emit("fresh");
 
-        toastr("child deleted successfully" , "error" , "Deleted");
+        toastr(trans('parent.childDelete') , "error" , "Deleted");
    
     }
 

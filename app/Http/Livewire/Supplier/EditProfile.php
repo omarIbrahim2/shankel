@@ -131,7 +131,7 @@ class EditProfile extends Component
         $supplierService->updateProfile($this->attributes);
         $this->emit("fresh");
         $this->image = null;
-        toastr("data updated successfully", "success");
+        toastr(trans('school.succMsg'), "success");
 
     }
 }

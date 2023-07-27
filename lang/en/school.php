@@ -51,5 +51,6 @@ return[
     "mission_ar" => "المهمة",
     "vision_en" => "Vision",
     "vision_ar" => "الرؤية",
+    'succMsg' => 'تم تحديث البيانات بنجاح',
     
 ];

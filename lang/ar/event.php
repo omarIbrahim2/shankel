@@ -35,5 +35,7 @@ return[
     "notifyEventEnd" => "تم انتهاء الحدث",
     "reservedEvents" => "الفاعليات المحجوزة",
     "eventEndDate" => "يوم نهاية الحدث",
+    "BookedSucc" => 'تم الحجز في الفاعلية بنجاح',
+    'BookCancel' => 'تم الغاء الحجز بنجاح',
 
 ];

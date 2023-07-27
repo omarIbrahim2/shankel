@@ -92,8 +92,17 @@ class SupplierController extends Controller
   {
     
     $userRepo = RepositoryFactory::getUserRebo(AuthUserFactory::geGuard()); 
+
     
     $supplier  = $this->supplierService->getSupplier($supplierId);
+
+    $sliders = $this->adminService->getSliders();
+    if (count($sliders) == 0) {
+      $slider = collect()->pop();
+    } else {
+      $slider = $sliders->random();
+    }
+
     
    if ($userRepo != null) {
        $card =  $CardSer->getCardWithServices($userRepo);
@@ -119,7 +128,7 @@ class SupplierController extends Controller
           });
 
         
-          return view('web.Suppliers.supplierPage')->with(['Services' => $AllServices , 'Supplier' => $supplier]);
+          return view('web.Suppliers.supplierPage')->with(['Services' => $AllServices , 'Supplier' => $supplier , 'slider' => $slider]);
         }
            
 

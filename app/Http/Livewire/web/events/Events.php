@@ -39,14 +39,14 @@ class Events extends Component
 
         if ($Event->bookSeat($event['id'])) {
 
-            toastr("Booked successfully", "success");
+            toastr(trans('event.BookedSucc'), "success");
 
             $this->booked = true; 
 
             $this->emit('fresh');
         } else {
 
-            toastr("Error happened ..!", "error");
+            toastr(trans('error.errorMsg'), "error");
             $this->emit('fresh');
         }
     }
@@ -57,12 +57,12 @@ class Events extends Component
  
         if ($Event->cancelBooking($event['id'])) {
 
-            toastr("Booking cancelled successfully", "success");
+            toastr(trans('event.BookCancel'), "success");
              $this->booked = false;
             $this->emit('fresh');
         } else {
 
-            toastr("Error happened ..!", "error");
+            toastr(trans('error.errorMsg'), "error");
             $this->emit('fresh');
         }
     }

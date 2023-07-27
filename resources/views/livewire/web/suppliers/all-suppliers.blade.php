@@ -14,10 +14,21 @@
                                     <img src="{{ asset($supplier->image) }}" alt="teacher">
                                 </div>
                                 <div class="teacher-item-data">
-                                        <h3>{{ $supplier->name() }}</h3>
-                                        <h5>{{ $supplier->type() }}</h5>
-                                        <h4>{{ $supplier->orgName()}}</h4>
-                                        <p><i class="fa-solid fa-location-dot"></i> {{ $supplier->area->name() }}</p>
+                                    @if ($supplier->name)
+                                        
+                                    <h3>{{ $supplier->name() }}</h3>
+                                    @endif
+                                    @if ($supplier->type)
+                                        
+                                    <h5>{{ $supplier->type() }}</h5>
+                                    @endif
+                                       @if ($supplier->orgName)    
+                                       <h4>{{ $supplier->orgName()}}</h4>
+                                       @endif
+                                       @if ($supplier->area)
+                                           
+                                       <p><i class="fa-solid fa-location-dot"></i> {{ $supplier->area->name() }}</p>
+                                       @endif
 
                                         <a href="{{ route('supplier-by-id', $supplier->id) }}"
                                             class="btn-custom">{{ trans('teacher.seeMore') }}</a>

@@ -117,10 +117,16 @@
                             </div>
                             <div class="input-item ">
                                 <select wire:model="city" class="form-select" aria-label="Default select example">
-                                    <option value="{{$authCity}}" selected>{{$authCity->name()}}</option>
+                                    @if ($authCity != null)
+                                    <option value="{{$authCity}}" selected>{{$authCity->name()}}</option>    
+                                    @endif
+
+                                    @if ($cities != null)
                                     @foreach ($cities as $city)
-                                        <option value="{{ $city->id }}">{{ $city->name() }}</option>
-                                    @endforeach
+                                    <option value="{{ $city->id }}">{{ $city->name() }}</option>
+                                    @endforeach 
+                                    @endif
+                                   
                                 </select>
                                 <span>
                                     <i class="fa-solid fa-location-dot"></i>
@@ -129,7 +135,10 @@
                             <div class="input-item ">
                                 <select wire:model="area_id" id="areaSelect" class="form-select"
                                     aria-label="Default select example">
-                                    <option value="{{$authArea->id}}" selected>{{$authArea->name()}}</option>
+                                     @if ($authArea != null)
+                                     <option value="{{$authArea->id}}" selected>{{$authArea->name()}}</option>
+                                     @endif
+                                   
                                     @if ($Areas)
 
                                         @foreach ($Areas as $Area)
@@ -151,17 +160,20 @@
 
                                 <div class="select-cont">
 
-
+                                      
+                                    @if ($grades)
+                                        
                                     @foreach ($grades as $grade)
-                                        <div class="checkbox">
-
-                                            <input type="checkbox" wire:model="Ugrades.{{ $grade->id }}"
-                                                id="nursery">
-                                            <label for="nursery">
-                                                {{ $grade->name() }}
-                                            </label>
-                                        </div>
+                                    <div class="checkbox">
+                                        
+                                        <input type="checkbox" wire:model="Ugrades.{{ $grade->id }}"
+                                        id="nursery">
+                                        <label for="nursery">
+                                            {{ $grade->name() }}
+                                        </label>
+                                    </div>
                                     @endforeach
+                                    @endif
 
 
 

@@ -89,29 +89,16 @@ class Comments extends Component
         $action = $comment->delete();
 
          if ($action) {
-             toastr("deleted successfully" ,"warning" , "Delete comment");
+             toastr(trans('comment.deleteMsg') ,"warning" , "Delete comment");
              return;
          }
 
          
-         toastr("Error happened .. !" ,"error" );
+         toastr(trans('error.errorMsg') ,"error" );
             
     }
 
  
 
-    public function updateComment($commentId){
-        $comment = comment::findOrFail($commentId);
-
-        if (!  Gate::forUser($this->AuthUser)->allows("update-comment" , [$comment , $this->type]) ) 
-        {            
-             abort(403);    
-        }
-       
-        
-
-        
-
-         
-    }
+  
 }

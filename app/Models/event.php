@@ -61,7 +61,7 @@ class Event extends Model
         if (Carbon::now()->format('Y-m-d') >  ($this->attributes['end_date']) ) {
            
              if ($this->attributes['status'] != 'Finished' && $this->attributes['status'] != 'Cancelled' ) {
-                $this->update(['status' => 'Finished']);
+                $this->attributes['status'] = 'Finished';
              }
         } 
 

@@ -15,10 +15,13 @@
                                         <img width="250px" src="{{ asset($teacher->image) }}" alt="teacher">
                                     </div>
                                     <div class="teacher-item-data">
-                                            <h3>{{ $teacher->name() }}</h3>
-                                            <h4>{{ $teacher->field()}}</h4>
-                                            <p><i class="fa-solid fa-location-dot"></i> {{ $teacher->area->name() }}</p>
-
+                                        
+                                        <h3>{{ $teacher->name() }}</h3>
+                                        <h4>{{ $teacher->field()}}</h4>
+                                        @if ($teacher->area)
+                                        <p><i class="fa-solid fa-location-dot"></i> {{ $teacher->area->name() }}</p>
+                                        
+                                        @endif
                                             <a href="{{ route('teacher-by-id', $teacher->id) }}"
                                                 class="btn-custom">{{ trans('teacher.seeMore') }}</a>
 

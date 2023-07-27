@@ -121,7 +121,7 @@ class ParentProfile extends Component
          $this->parentService->upadateProfile($this->attributes);
    
       
-         session()->flash("success" , "data updated successfully");
+         session()->flash("success" , trans('school.succMsg'));
       
 
     }
