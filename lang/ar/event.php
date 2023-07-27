@@ -37,5 +37,9 @@ return[
     "eventEndDate" => "يوم نهاية الحدث",
     "BookedSucc" => 'تم الحجز في الفاعلية بنجاح',
     'BookCancel' => 'تم الغاء الحجز بنجاح',
+    'eventAddMsg' => 'تم اضافة فعالية بنجاح',
+    'cancelEvenMsg' => 'تم الغاء الفاعلية بنجاح',
+    'eventSeatBookingMsg'=> 'تم حجز مقعد بنجاح',
+    'eventCancelSeatBooking'=> 'تم الغاء حجز المقعد بنجاح',
 
 ];

@@ -52,5 +52,7 @@ return[
     "vision_en" => "Vision",
     "vision_ar" => "الرؤية",
     'succMsg' => 'تم تحديث البيانات بنجاح',
+    'schoolImgsMsg' => 'Images uploaded successfully',
+    'succMsg' => 'data updated successfully',
     
 ];

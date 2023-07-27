@@ -104,11 +104,11 @@ class TeacherController extends Controller
     $result = $this->changePassObj->changePass($request, $guard);
 
     if ($result == false) {
-      return back()->with('error', "old password doesn't match");
+      return back()->with('error', trans('auth.oldPassMsg'));
     }
 
     $url =  Config::get('auth.custom.' . $guard . ".url");
-    toastr("paswword changed successfully", 'success');
+    toastr(trans('auth.passwordChange'), 'success');
     return redirect()->route($url);
   }
 
@@ -137,7 +137,7 @@ class TeacherController extends Controller
   {
 
     $this->teacherService->deleteLesson($lessonId);
-    toastr("Lesson Video Deleted Successfully", 'warning');
+    toastr(trans('teacher.deleteLesson'), 'warning');
 
     return back();
   }
@@ -166,7 +166,7 @@ class TeacherController extends Controller
     
     $this->teacherService->updateLesson($data , $request->file('image'));
 
-    toastr("lesson updated successfully", 'success');
+    toastr(trans('generalMessages.updateMsg'), 'success');
 
 
     return back();

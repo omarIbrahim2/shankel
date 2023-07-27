@@ -27,14 +27,14 @@ class UpdateImages extends Component
         $this->validate();
 
         if (  $serviceImagesRepo->create($this->images , $this->Service->id)) {
-            toastr("images uploaded successfully" , 'success');
+            toastr(trans('school.schoolImgsMsg') , 'success');
 
             $this->emit('fresh');
 
             $this->images = [];
         }else{
 
-            toastr("error in creating image" , 'error');
+            toastr(trans('error.errorMsg') , 'error');
 
             $this->images = [];
         }

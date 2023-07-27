@@ -36,7 +36,7 @@ return[
     "notifyEventEnd" => "The Event Is Ended",
     "reservedEvents" => "Reserved Events",
     "eventEndDate" => "Event End Date",
-
+    'eventAddMsg' => 'Event created successfully',
     "BookedSucc" => 'Event booked successfully',
     'BookCancel' => 'Booking cancelled successfully',
 ];

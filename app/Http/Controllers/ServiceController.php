@@ -80,12 +80,19 @@ class ServiceController extends Controller
        
        try {
          $this->supplierService->deleteService($serviceId);
-         toastr("Deleted successfully", "error", "Deleting");
+
+          if (AuthUserFactory::geGuard() == 'web') {
+            toastr("Deleted successfully", "error", "Deleting");
+          }else{
+
+              toastr(trans('serviceDeleteMsg') , 'error');
+          }
+        
 
          return back();
        } catch (\Throwable $th) {
         
-        toastr("error in deleting , this service has images ", "error");
+        toastr(trans('error.errorMsg'), "error");
 
         return back();
           

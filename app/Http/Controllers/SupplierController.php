@@ -81,7 +81,7 @@ class SupplierController extends Controller
     $result = $this->changePassObj->changePass($request, $guard);
 
     if ($result == false) {
-      return back()->with('error', "old password doesn't match");
+      return back()->with('error', trans('auth.oldPassMsg'));
     }
     $url =  Config::get('auth.custom.' . $guard . ".url");
     toastr(trans("register.changepass"), "success");

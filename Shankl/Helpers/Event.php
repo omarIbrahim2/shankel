@@ -46,7 +46,7 @@ class Event{
 
        }
 
-          toastr('event created successfully' , 'success');
+          toastr(trans('event.eventAddMsg') , 'success');
           return $this->responseRoute("school-my-events");
     }
 
@@ -69,7 +69,7 @@ class Event{
 
         }
 
-        toastr("event updated successfully" , "info" , "Event update");
+        toastr(trans('generalMessages.updateMsg') , "info" , "Event update");
         return $this->responseRoute('school-my-events');
 
 

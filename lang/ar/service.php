@@ -16,5 +16,7 @@ return[
     "desc_ar" => "الوصف",
     "addImage" => 'اضف صور لخدمتك',
     'updateImages' => 'تحديث صور الخدمة',
+    'serviceDeleteMsg' => 'تم حذف الخدمة بنجاح',
+    'AddServMsg' => 'تم اضافة الخدمة بنجاح',
 
 ];

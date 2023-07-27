@@ -38,11 +38,11 @@ class CreateImages extends Component
 
         
                      
-          toastr('images created successfully' , 'success');
+          toastr(trans('school.schoolImgsMsg') , 'success');
           return redirect()->route('web-services');
        } 
 
-       toastr("error in creating image" , 'error');
+       toastr(trans('error.errorMsg') , 'error');
 
        $this->image = [];
 

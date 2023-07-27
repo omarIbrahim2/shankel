@@ -31,4 +31,5 @@ return[
     'addChild' => 'Add Child',
     'Esystem' => "Education System",
     'childDelete'=> 'child deleted successfully',
+    "addChildMsg" => 'child added successfully',
 ];

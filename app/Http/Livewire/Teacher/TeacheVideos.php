@@ -65,9 +65,9 @@ class TeacheVideos extends Component
 
         if ($lesson) {
             
-            toastr("Lesson Add Successfully" , "success");
+            toastr(trans('teacher.lessonAddMsg') , "success");
         }else {
-            toastr("Lesson Add Faild" , 'success');
+            toastr(trans('error.errorMsg') , 'error');
         }
 
         

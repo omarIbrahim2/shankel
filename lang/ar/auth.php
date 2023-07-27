@@ -23,6 +23,8 @@ return [
     "LoginToYourAccount" => "سجل دخول بحسابك الشخصي",
     "DoYouHaveAnAccount" => "هل لديك حساب شخصي",
     "ForgotPassword" => "نسيت كلمة السر",
+    'passwordChange' => 'تم تحديث كلمة السر بنجاح',
+    'oldPassMsg' => 'كلمة السر القديمة لا تطابق كلمة السر الحالية',
     "Login" => "سجل دخول",
     "RememberMe" => 'تذكرني',
     "Upload New Photo" => "ارفع صورة جديدة",
@@ -33,6 +35,7 @@ return [
     "newPass" => "كلمة السر الجديدة",
     "passConfirm" => "تأكيد كلمة السر",
     "pass" => "كلمة السر",
+    'loginMsg'=> 'برجاء تكملة بيانات حسابك ,ان لم تكن مكتملة',
 
 
 ];

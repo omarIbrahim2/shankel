@@ -114,7 +114,7 @@ class SupplierService extends Service{
             return redirect()->route("Services", $data['supplier_id']);
           }
           
-          toastr("service created successfully", "success");
+          toastr(trans('service.AddServMsg'), "success");
      
           return view('web.Services.createImages')->with(['Service' => $Service]);
 
@@ -135,7 +135,7 @@ class SupplierService extends Service{
             return redirect()->route('dashboard');
          }
 
-         toastr("service updated successfully", "info", "Service update");
+         toastr(trans('generalMessages.updateMsg'), "info", "Service update");
 
          return redirect()->route('supplier-services');
     }

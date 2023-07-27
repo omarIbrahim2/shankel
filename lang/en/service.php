@@ -13,4 +13,7 @@ return[
     'quantity' => 'Quantity',
     "addImage" => 'Add service Images',
     'updateImages' => 'Update Service Images',
+    'serviceDeleteMsg' => 'service deleted successfully',
+
+    'AddServMsg' => 'service created successfully',
 ];

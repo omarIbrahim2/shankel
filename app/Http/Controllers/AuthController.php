@@ -128,7 +128,7 @@ class AuthController extends Controller
      
 
         $request->session()->regenerate();
-          toastr("compelete your profile" , 'success');
+          toastr(trans('auth.loginMsg') , 'success');
         return redirect()->intended(RouteServiceProvider::TEACHER);
     }
 
@@ -165,6 +165,8 @@ class AuthController extends Controller
         $this->authService->LoginUser('school', $request , $cred);
 
         $request->session()->regenerate();
+
+        toastr(trans('auth.loginMsg') , 'success');
 
         return redirect()->intended(RouteServiceProvider::SCHOOL);
     }
@@ -208,7 +210,7 @@ class AuthController extends Controller
             $this->authService->LoginUser('supplier', $request , $cred);
     
             $request->session()->regenerate();
-    
+            toastr(trans('auth.loginMsg') , 'success');
             return redirect()->intended(RouteServiceProvider::Supplier);
         }
 

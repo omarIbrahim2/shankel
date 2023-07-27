@@ -51,6 +51,7 @@ return[
     "name_en" => "Name",
     "name_ar" => "الإسم",
     "seats" => "المقاعد",
-    'succMsg' => 'data updated successfully',
+    'succMsg' => 'تم تحديث البيانات بنجاح',
+    'schoolImgsMsg' => 'تم رفع الصور بنجاح',
 
 ];

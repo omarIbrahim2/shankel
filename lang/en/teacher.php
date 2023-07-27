@@ -45,6 +45,8 @@ return[
     'addLesson' => 'Add Lesson',
     'update' => 'update',
     'editLesson' => 'Update Lesson',
-    'noCv' => 'No Cv provided Yet ..'
+    'noCv' => 'No Cv provided Yet ..',
+    'lessonAddMsg' => 'Lesson added successfully',
+    'deleteLesson'=> 'video lesson deleted successfully',
     
 ];
