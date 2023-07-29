@@ -1,5 +1,5 @@
 <div class="services-slider-image px-5 ">
-    <h1 class="services-slider-image-title">Upload Some Images About Service</h1>
+    <h1 class="services-slider-image-title">{{trans('service.addImage')}}</h1>
     <div class="row">
         @foreach ($Service->images as $img )
         <div class="col-md-4 col-sm-6 col-12">
@@ -7,7 +7,7 @@
             <div class="card">
                 <img src="{{asset($img->image)}}" class="card-img-top" alt="service Image">
                 <div class="card-body">
-                    <a href="{{route('service-images-delete' , $img->id)}}" class="btn btn-primary">Delete</a>
+                    <a href="{{route('service-images-delete' , $img->id)}}" class="btn btn-primary">{{trans('service.remove')}}</a>
                 </div>
             </div>
         </div>

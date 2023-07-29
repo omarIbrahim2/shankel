@@ -18,5 +18,6 @@ return[
     'updateImages' => 'تحديث صور الخدمة',
     'serviceDeleteMsg' => 'تم حذف الخدمة بنجاح',
     'AddServMsg' => 'تم اضافة الخدمة بنجاح',
+    'Delete' => 'حذف',
 
 ];

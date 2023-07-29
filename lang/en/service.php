@@ -14,6 +14,6 @@ return[
     "addImage" => 'Add service Images',
     'updateImages' => 'Update Service Images',
     'serviceDeleteMsg' => 'service deleted successfully',
-
+    'Delete' => 'Delete',
     'AddServMsg' => 'service created successfully',
 ];
