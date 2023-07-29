@@ -2,8 +2,11 @@
 
 namespace App\Exceptions;
 
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Database\QueryException;
 use Throwable;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Log;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -44,7 +47,23 @@ class Handler extends ExceptionHandler
     public function register()
     {
         $this->reportable(function (Throwable $e) {
-            //
+             
         });
+    }
+
+    public function render($request , Throwable $e){
+
+        if($e instanceof MethodNotAllowedHttpException){
+
+            return response()->view('errors.404');
+        }
+
+        if ($e instanceof QueryException) {
+             
+            toastr(trans('error.errorMsg') , 'error');
+
+            Log::info($e->getMessage());
+            return response()->redirect()->back();
+        }
     }
 }

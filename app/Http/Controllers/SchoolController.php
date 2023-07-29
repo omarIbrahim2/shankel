@@ -95,9 +95,9 @@ class SchoolController extends Controller
       
      $school  = $this->schoolService->getSchool($shoolId);
 
-     if (! $school) {
-        return back();
-     }
+    
+
+    
 
      event(new SchoolViews($school));
       $EduId = $school->edu_systems_id;

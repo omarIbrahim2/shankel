@@ -41,19 +41,6 @@
                 <div class="section-content">
                     <div class="parent-services">
                         <div class="row justify-content-center">
-                            {{-- <div class="col-lg-4 col-md-6 col-12">
-                                <div class="service" style="--clr:#00A0DC">
-                                    <div class="service-icon">
-                                        <i class="fa-solid fa-lock"></i>
-                                    </div>
-                                    <div class="service-name">
-                                        <h3>{{ trans('teacher.privateLec') }}</h3>
-                                    </div>
-                                    <a href="#" class="custom-out-btn">
-                                        {{ trans('teacher.more') }}
-                                    </a>
-                                </div>
-                            </div> --}}
                             <div class="col-lg-4 col-md-6 col-12">
                                 <div class="service" style="--clr:#00A0DC">
                                     <div class="service-icon">

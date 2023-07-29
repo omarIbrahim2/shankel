@@ -11,6 +11,7 @@ use Shankl\Helpers\ChangePassword;
 use Shankl\Services\ParentService;
 use Shankl\Services\SchoolService;
 use App\Http\Requests\AddChildRequest;
+use App\Models\ShanklPrice;
 use Illuminate\Support\Facades\Config;
 use App\Providers\RouteServiceProvider;
 use Shankl\Helpers\Event;
@@ -142,17 +143,15 @@ class ParentController extends Controller
   {
     $School = $schoolService->getSchoolGrades($schoolid);
 
-    if (!$School) {
-      return back();
-    }
+  
 
     $Parent = $parentService->Children();
 
-    if (!$Parent) {
-      return back();
-    }
+    $price = ShanklPrice::first();
 
-    return view('web.Schools.schoolRegister')->with(['School' => $School, 'Parent' => $Parent]);
+  
+
+    return view('web.Schools.schoolRegister')->with(['School' => $School, 'Parent' => $Parent , 'Price'=> $price->seat_price]);
   }
 
   public function FilterSchools(Request $request)
