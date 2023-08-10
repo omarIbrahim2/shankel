@@ -24,7 +24,7 @@ class ServiceImagesRepo{
 
         $ServiceImage->delete();
 
-        toastr('deleted successfully' , 'success'); 
+        toastr(trans('service.DeleteImageMsg') , 'success'); 
         return back();
 
     }

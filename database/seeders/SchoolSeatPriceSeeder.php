@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\shanklPrice;
+use App\Models\ShanklPrice;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -15,7 +15,7 @@ class SchoolSeatPriceSeeder extends Seeder
      */
     public function run()
     {
-       shanklPrice::create([
+       ShanklPrice::create([
         'seat_price' => 200,
        ]); 
     }

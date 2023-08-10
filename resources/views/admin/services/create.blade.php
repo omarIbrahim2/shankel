@@ -15,7 +15,7 @@
 <script>
        
    ClassicEditor
-   .create(document.querySelector( '#service.desc_ar' ) , {
+   .create(document.querySelector( '#service_desc_ar' ) , {
        language: 'ar'
    })
     
@@ -26,7 +26,7 @@
 
 <script>
    ClassicEditor
-   .create(document.querySelector( '#service.desc_en' ))
+   .create(document.querySelector( '#service_desc_en' ))
    .catch(error2=>{
       console.error( error );
    })

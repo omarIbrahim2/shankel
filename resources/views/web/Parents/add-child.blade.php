@@ -20,7 +20,7 @@
                         <div class="left-side">
                             <div class="section-title">
                             
-                                <h2 class="text-start">{{ trans('parent.kids') }}</h2>
+                                <h2 class="text-start">{{ trans('parent.addkids') }}</h2>
                                 <p class="text-start p-0">{{ trans('parent.mustAddC') }}</p>
                             </div>
                             <div class="contact-form black-contact-form">

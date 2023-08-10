@@ -35,7 +35,7 @@ class UserRegisterListener
         $admin->save();
         $admin->notifications()->create([
             "user_id" => $admin->id,
-            'info' => $event->user->name()."has been registered to the shankel",
+            'info' => $event->user->name(). " has been registered to the shankel",
         ]);
 
        }

@@ -60,7 +60,16 @@ class User extends Authenticatable
     {
         return $this->morphMany(Event::class , 'eventable');
     }
+    
+   public function comments(){
 
+        return $this->morphMany(Comment::class, 'commentable');
+    }
+     
+    public function name(){
+        
+        return $this->attributes['name'];
+    } 
     
 
     public function addverts()

@@ -28,7 +28,7 @@
         <label for="event-desc-en">{{ trans('event.desc_en') }}</label>
         <textarea name="desc_en" id="event-desc-en" cols="30"
         placeholder="{{ trans('event.desc_en') }}" rows="10" class="form-control ">
-        {{ $Event == null ? old('desc_en') : $Event->desc('en') }}</textarea>
+        {{ $Event == null ? old('desc_en') :  $Event->desc('en') }}</textarea>
         @error('desc')
             <p class="text-danger">{{ $message }}</p>
         @enderror
@@ -38,7 +38,7 @@
         <label for="event-desc-ar">{{ trans('event.desc_ar') }}</label>
         <textarea name="desc_ar" id="event-desc-ar" cols="30"
         placeholder="{{ trans('event.desc_ar') }}" rows="10" class="form-control ">
-        {{ $Event == null ? old('desc_ar') : $Event->desc('ar') }}</textarea>
+        {{ $Event == null ? old('desc_ar') :  $Event->desc('ar') }}</textarea>
         @error('desc')
             <p class="text-danger">{{ $message }}</p>
         @enderror
@@ -100,9 +100,12 @@
                 <div class="w-md-100 w-50">
                     <select name="city_id" id="selectCity" class="form-select form-control"
                         aria-label="Default select example">
-                        <option selected disabled>{{ $Event == null ? 'city' : $Event->area->city->name() }}</option>
+                        <option  selected disabled>{{$Event == null ? 'City' : $Event->area->city->name()}}</option>
                         @foreach ($cities as $city)
-                            <option value="{{ $city->id }}">{{ $city->name() }}</option>
+                             @if ($city->name)
+                             <option value="{{ $city->id }}">{{ $city->name() }}</option
+                             @endif
+                           >
                         @endforeach
                     </select>
                     @error('area_id')
@@ -112,8 +115,8 @@
                 <div class="w-md-100 w-50">
                     <select name="area_id" id="areaSelect" class="form-select form-control"
                         aria-label="Default select example">
-                        <option value="{{ $Event == null ? 'Area' : $Event->area_id }}" selected>
-                            {{ $Event == null ? 'Area' : $Event->area->name() }}</option>
+                        <option value="{{$Event == null ? '' : $Event->area->id }}"  selected>
+                            {{$Event == null ? 'Area' : $Event->area->name()}}</option>
                     </select>
 
                     @error('area_id')
@@ -125,8 +128,16 @@
 
         @if ($update == true)
             <button type="submit" class="btn btn-primary mt-4">{{ trans('event.update') }}</button>
+            
+              <a href="{{route('admin-events' , 'web')}}" class="btn btn-primary mt-4">Back Shankl Events</a>
+              
+                    <a href="{{route('admin-events' , 'school')}}" class="btn btn-primary mt-4">Back School Events</a>
         @else
             <button type="submit" class="btn btn-primary mt-4">{{ trans('event.add') }}</button>
+            
+                    <a href="{{route('admin-events' , 'web')}}" class="btn btn-primary mt-4">Back</a>
+
         @endif
+        
 
 </form>

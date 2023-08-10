@@ -6,6 +6,7 @@ use App\Models\Service;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Http\FormRequest;
+use Shankl\Factories\AuthUserFactory;
 
 class ServiceUpdateReq extends FormRequest
 {
@@ -16,6 +17,9 @@ class ServiceUpdateReq extends FormRequest
      */
     public function authorize()
     {
+        if (AuthUserFactory::geGuard() == 'web') {
+            return true;
+        }
          $supplier = Auth::guard('supplier')->user();
          $service = Service::findOrFail($this->id);
         return Gate::forUser($supplier)->allows('update-service' , [$service]);

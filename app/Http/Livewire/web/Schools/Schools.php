@@ -29,7 +29,7 @@ class Schools extends Component
             
         } 
         
-        return view('livewire.Web.schools.schools')->with(['Schools' => $Schools]);
+        return view('livewire.web.schools.schools')->with(['Schools' => $Schools]);
     }
 
 

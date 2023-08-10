@@ -89,7 +89,8 @@ class SmkLivePaypal implements PaymentInterface{
         $response = $provider->capturePaymentOrder($request['token']);
 
         if (isset($response["status"]) && $response["status"] == "COMPLETED") {
-            return redirect()->route($guard)->with(['success' => "You have booked successfully"]);
+            toastr(trans('payment.success') , 'success');
+            return redirect()->route($guard);
         }else{
               
             toastr(trans('payment.error') , 'error');

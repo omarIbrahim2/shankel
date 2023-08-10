@@ -24,7 +24,7 @@ class AdvertController extends Controller
     public function indexWeb()
     {
 
-        return view("web.addverts.addverts");
+        return view("web.Addverts.addverts");
     }
     public function index()
     {

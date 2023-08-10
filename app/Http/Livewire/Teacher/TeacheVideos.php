@@ -75,6 +75,7 @@ class TeacheVideos extends Component
         $this->url = "";
         $this->title_en = "";
         $this->title_ar = "";
+        $this->image = "";
 
     }
 

@@ -24,6 +24,15 @@ class Service extends Model
     {
         return $this->belongsToMany(Card::class)->withPivot('quantity');
     }
+    
+       public function delete()
+    {
+        // delete all related photos 
+        $this->images()->delete();
+         $this->transactions()->detach();
+     
+        return parent::delete();
+    }
 
     public function transactions()
     {
@@ -59,7 +68,9 @@ class Service extends Model
     public static function  paginate($items, $perPage , $page = null, $options = []){
         $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
         $items = $items instanceof Collection ? $items : Collection::make($items);
-        return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
+        return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, [
+            'path' => Paginator::resolveCurrentPath()
+        ]);
     }
 
     public function name($lang = null){

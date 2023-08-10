@@ -24,11 +24,11 @@
                                             شنكل
                                         </a>
                                     </h2>
-                                    {{-- <div>  العنوان: {{$Shankel->address('ar')}}</div>
+                                    <div>  العنوان: {{$Shankel->address('ar')}}</div>
                                     <div>رقم الهاتف: {{$Shankel->phone}}</div>
                                     <div class="email"><a
                                             href="mailto:shankal@info.com">{{$Shankel->email}}</a>
-                                    </div> --}}
+                                    </div>
                                 </div>
                                 <div class="col text-start">
                                     <a href="javascript:;">
@@ -45,30 +45,30 @@
                                     <div class="date">كود الفاتورة : {{$order->barcode}}</div>
                                 </div>
                                 <div class="col invoice-to">
-                                    <div class="text-gray-light">  الفاتورة الي </div>
-                                    <h2 class="to"> الاستاذ {{$order->user->name("ar")}}</h2>
-                                    <div class="address">{{$order->user->area->name('ar')}}</div>
-                                    <div>  
-                                        <a  href="email">{{$order->user->email}}</a>
+                                    <div class="text-gray-light"> الفاتورة الي </div>
+                                    <h2 class="to"> الاستاذ {{$user->name('ar')}}</h2>
+                                    <div class="address">{{$user->area->name('ar')}}</div>
+                                    <div class="email"><a
+                                            href="">{{$user->email}}</a>
                                     </div>
                                 </div>
 
                             </div>
                             <div class="notices mb-3 alert-success">
-                                <div class="notice">تم دفع المبلغ بنجاج و شراء الخدمات من  موردين شنكل</div>
+                                <div class="notice">تم دفع المبلغ بنجاج و شراء الخدمات من  شنكل</div>
                             </div>
                             <table>
                                 <thead>
                                     <tr>
                                         
                                         <th class="text-left">الوصف</th>
-                                        <th class="text-left">الكمية</th>
                                         <th class="text-right">  السعر الخدمة</th>
+                                        <th class="text-left">الكمية</th>
                                         <th class="text-right">الاجمالي</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                   @foreach ($order->services as $service)
+                                   @foreach ($services as $service)
                                        
                                    
                                     <tr>
@@ -79,12 +79,12 @@
                                                 </a>
                                             </h3>
                                             <a target="_blank" href="javascript:;">
-                                               {{$service->desc('ar')}}
+                                               {!! $service->name('ar') !!}
                                             </a> 
                                         </td>
-                                        <td class="unit">{{$service->price}}</td>
-                                        <td class="qty">{{$service->pivot->service_order_quantity}}</td>
-                                        <td class="total">{{$service->price * $service->pivot->service_order_quantity}}</td>
+                                        <td>{{$service->price}}</td>
+                                        <td class="qty">{{$service->pivot->quantity}}</td>
+                                        <td class="total">{{$service->price * $service->pivot->quantity}}</td>
                                     </tr>
                                     @endforeach 
                                 </tbody>

@@ -40,6 +40,7 @@ class PaypalController extends Controller
 
        try {
         $data = $this->seatBooking->PrepareBooking($vaidatedReq);
+        
        } catch (\App\Exceptions\SeatBookingException $e) {
            
            $e->render();

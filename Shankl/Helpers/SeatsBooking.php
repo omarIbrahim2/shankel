@@ -9,7 +9,7 @@ use App\Notifications\SchoolSeatBooked;
 use App\Exceptions\SeatBookingException;
 use App\Models\Parentt;
 use App\Models\SchoolRegOrder;
-use App\Models\shanklPrice;
+use App\Models\ShanklPrice;
 use App\Models\Social;
 use Illuminate\Support\Facades\Notification;
 use Shankl\Repositories\SchoolRegOrdersRepo;
@@ -33,7 +33,7 @@ class SeatsBooking extends AbstractOrder{
 
         $school = $this->schoolService->getSchool($request['school_id']);
         $child =  Child::findOrFail($request['child_id']);
-        $price = shanklPrice::first();
+        $price = ShanklPrice::first();
 
         if ($school->free_seats <= 0) {
 
@@ -58,25 +58,25 @@ class SeatsBooking extends AbstractOrder{
         $AuthParent = AuthUserFactory::getAuthUser();
         $parent = Parentt::select('name', 'email' , 'id' , 'area_id')->with(['area:id,name'])->where('id' , $AuthParent->id)->first();
          $Shankel = Social::select("email" , 'phone' , 'address')->first();
-         $price = shanklPrice::first();
+         $price = ShanklPrice::first();
         $school = session()->get("school");
         $child = session()->get("child");
         $order = session()->get("order");
         
        
 
-
+     
         $seats = $school->free_seats;
         $seats--;
 
-        dd($Shankel);
+        
 
-        $this->schoolService->updateProfile(['free_seats' => $seats , 'id' => $order->id]);
+        $this->schoolService->updateProfile(['free_seats' => $seats , 'id' => $school->id]);
         
         $child->update(['school_id' => $school->id]);
 
         $order->update(['status' => true]);
-
+      
         Notification::send($parent , new SchoolSeatBooked($school , $order , $child ,$parent , $Shankel , $price));
 
         session()->pull('school');

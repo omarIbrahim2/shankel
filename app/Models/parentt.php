@@ -4,7 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-use App\Models\comment;
+use App\Models\Comment;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use App\Notifications\ResetPasswordNotification;
@@ -41,10 +41,7 @@ class Parentt extends Authenticatable
         return $this->hasMany(SchoolRegOrder::class);
     }
 
-    public function notifications()
-    {
-        return $this->morphMany(Notification::class , 'user');
-    }
+   
 
     public function card()
     {
@@ -70,7 +67,7 @@ class Parentt extends Authenticatable
 
     public function comments(){
 
-        return $this->morphMany(comment::class, 'commentable');
+        return $this->morphMany(Comment::class, 'commentable');
     }
 
     public function image(): Attribute

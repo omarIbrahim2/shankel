@@ -7,9 +7,9 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class SchoolSeatBooked extends Notification implements ShouldQueue
+class SchoolSeatBooked extends Notification 
 {
-    use Queueable;
+   
 
     public $school , $order , $child , $parent , $Shankel , $price;
 
@@ -66,11 +66,4 @@ class SchoolSeatBooked extends Notification implements ShouldQueue
     }
 
 
-    public function viaQueues() : array
-    {
-
-        return [
-          "mail" => "Mailing"
-        ];
-    }
 }

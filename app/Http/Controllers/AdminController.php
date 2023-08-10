@@ -2,28 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+
 use App\Models\Message;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use Shankl\Services\FileService;
 use Shankl\Services\AdminService;
 use Shankl\Helpers\ChangePassword;
-use App\Http\Requests\ServiceAddReq;
 use App\Http\Requests\SocialsAddReq;
 use Shankl\Services\SupplierService;
 use Shankl\Factories\AuthUserFactory;
 use App\Http\Requests\SocialUpdateReq;
 use Illuminate\Support\Facades\Config;
-use App\Http\Requests\ServiceUpdateReq;
-
 use App\Http\Requests\SupplierUpdateReq;
 use Shankl\Interfaces\LocationRepoInterface;
-use App\Http\Requests\EventValidationRequest;
-use App\Http\Requests\EventValidationUpdateReq;
-use App\Models\shanklPrice;
+use App\Models\ShanklPrice;
 use Illuminate\Support\Facades\Gate;
+use Shankl\Factories\EntitiesFactory;
 
 class AdminController extends Controller
 {
@@ -220,12 +215,11 @@ class AdminController extends Controller
 
         return view('admin.suppliers.create')->with($data);
     }
-
     public function updateSupplierView(LocationRepoInterface $locationRepo ,$Supplier_id){
 
         $cities= $locationRepo->getCities();
 
-        $supplier = $this->supplierService->getSupplier($Supplier_id);
+        $supplier = $this->supplierService->getSupplierDashboard($Supplier_id);
 
         if(! $supplier){
 
@@ -242,19 +236,23 @@ class AdminController extends Controller
 
 
          $validatedreq = $request->validated();
-
-         $data = Arr::except($validatedreq , ['image']);
-
-         $supplierCurrentImage = $supplierService->getSupplier($data['id'])->image;
-
+         $data = Arr::except($validatedreq , ['image' , 'password']);
+         $supplierObj = EntitiesFactory::createEntity($data , 'supplier');
+         $supplierCurrentImage = $supplierService->getSupplierDashboard($data['id'])->image;
+       
+       
 
         $image = $supplierService->handleUploadProfilepic($request->image , $supplierCurrentImage);
-
+        
         if ($image != null) {
-            $data['image'] = $image;
+            $supplierObj->setImage($image);
         }
+         
+        
 
-        $action = $supplierService->updateProfile($data);
+        
+
+        $action = $supplierService->updateProfile($supplierObj->getAttributes());
 
 
         if ($action) {
@@ -267,7 +265,7 @@ class AdminController extends Controller
 
 
 
-        return redirect()->route("admin-suppliers" , "unactive");
+        return redirect()->route("admin-suppliers" , "active");
 
     }
 
@@ -434,7 +432,7 @@ class AdminController extends Controller
 
     public function ShowseatPrice(){
 
-         $schoolSeat = shanklPrice::first();
+         $schoolSeat = ShanklPrice::first();
 
 
          return view('admin.schoolSeatPrice.schoolSeatPrice')->with(['schoolSeat' => $schoolSeat]);
@@ -444,7 +442,7 @@ class AdminController extends Controller
 
      public function  ShowSeatPriceEdit($seatPriceId){
            
-          $price = shanklPrice::findOrFail($seatPriceId);
+          $price = ShanklPrice::findOrFail($seatPriceId);
 
           return view('admin.schoolSeatPrice.update')->with(['price' => $price]);
 
@@ -459,13 +457,19 @@ class AdminController extends Controller
         ]);
 
 
-        $price = shanklPrice::findOrFail($validData['id']);
+        $price = ShanklPrice::findOrFail($validData['id']);
 
         $price->update($validData);
 
         toastr('updated successfully' , 'success');
 
         return redirect()->route('seat-price');
+     }
+     
+     
+     public function back(){
+         
+         return redirect()->back();
      }
 
 

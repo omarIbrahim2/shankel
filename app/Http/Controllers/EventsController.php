@@ -69,7 +69,7 @@ class EventsController extends Controller
             return view('admin.events.updateEvent')->with(['Event' => $event , 'cities' => $cities]);
         }
         
-        return view("web.Schools.editEvent")->with(['Event' => $event , 'cities' => $cities]);
+        return view("web.schools.editEvent")->with(['Event' => $event , 'cities' => $cities]);
         
        
         

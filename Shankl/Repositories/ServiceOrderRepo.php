@@ -16,7 +16,7 @@ class ServiceOrderRepo{
    public function create($AuthUser , $orderCode , $totalPrice){
         return $AuthUser->transactions()->create([
           'barcode' => $orderCode,
-          'status' => 'Pending',
+          'status' => 'Cancelled',
           'total_price' => $totalPrice,
      ]);
     }

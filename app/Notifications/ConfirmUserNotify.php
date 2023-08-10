@@ -42,11 +42,10 @@ class ConfirmUserNotify extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->greeting("Hello". $this->data['userName'] . "from Shankel")
-                    ->line('We are pleasure to join shankel , thank you for registration , your account has been activated ,
-                      you can login from the link below.')
-                    ->action('Login Ling', route($this->data['route']))
-                    ->line('Thank you ');
+                    ->greeting("مرحبا استاذ  ". $this->data['userName'])
+                    ->line('من دواعي سرورنا ان تسجل في موقعنا شنكل التعليمي و اهلا و سهلا بحضراتكم يمكنك تسجيل الدخول من الرابط ادني')
+                    ->action('تسجيل الدخول من هنا', route($this->data['route']))
+                    ->line('شكرا جزيلا ');
     }
 
     /**

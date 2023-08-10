@@ -90,7 +90,7 @@ class School extends Authenticatable
 
     public function comments(){
 
-        return $this->morphMany(comment::class, 'commentable');
+        return $this->morphMany(Comment::class, 'commentable');
     }
 
 
@@ -125,16 +125,16 @@ class School extends Authenticatable
 
     public function desc($lang = null){
         $lang = $lang ?? App::getLocale();
-        return json_decode($this->desc)->$lang ;
+        return $this->attributes['desc']  == null ? '' : json_decode($this->desc)->$lang ; ;
     }
 
     public function mission($lang = null){
         $lang = $lang ?? App::getLocale();
-        return json_decode($this->mission)->$lang ;
+      return  $this->attributes['mission']  == null ? '' : json_decode($this->mission)->$lang ;
     }
 
     public function vision($lang = null){
         $lang = $lang ?? App::getLocale();
-        return json_decode($this->vision)->$lang ;
+        return  $this->attributes['vision']   == null ? '' : json_decode($this->vision)->$lang ; ;
     }
 }

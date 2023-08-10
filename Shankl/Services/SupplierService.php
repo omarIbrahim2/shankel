@@ -32,6 +32,13 @@ class SupplierService extends Service{
         
         return $this->supplierRebo->find($supplierId);
     }
+    
+    
+     public function getSupplierDashboard($supplierId){
+            
+        
+        return $this->supplierRebo->findSupplierDashboard($supplierId);
+    }
 
     public function getActiveSubbliers($pages){
 
@@ -132,7 +139,7 @@ class SupplierService extends Service{
               
             toastr("service updated successfully", "info", "Service update");
 
-            return redirect()->route('dashboard');
+              return redirect()->route('Services' , $data['supplier_id']);
          }
 
          toastr(trans('generalMessages.updateMsg'), "info", "Service update");
@@ -142,6 +149,10 @@ class SupplierService extends Service{
 
     public function uploadServiceImage($uploadedImage , $currentImage){
         if ($uploadedImage == null) {
+             if ($currentImage != self::$defaultServicImage) {
+                 return substr($currentImage , 8);
+;
+             }
             return null;
         }
 

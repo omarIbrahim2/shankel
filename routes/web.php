@@ -26,6 +26,7 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PartnersController;
 use App\Http\Controllers\ServiceOrderController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\CommentController;
 
 
 //Lang Route
@@ -133,6 +134,11 @@ Route::middleware('lang')->group(function(){
     Route::post('supplier/register' , [AuthController::class , 'SupplierRegister'])->name('supplier-registeration');
     Route::post('supplier/login' , [AuthController::class , 'supplierLogin'])->name('login-supplier');
 
+
+       //comments
+       
+          Route::post('update/comment' , [CommentController::class , "updateComment"])->name('update-comment');
+       
     // Admin Auth
     Route::get('/login' , [AdminController::class , 'showLogin'])->middleware('guest')->name('admin-login');
     Route::post('admin/login' , [AuthController::class , 'AdminLogin'])->name('login-admin');
@@ -210,7 +216,7 @@ Route::middleware('lang')->group(function(){
 
     });
 
-    Route::post('update/comment' , [SchoolController::class , "updateComment"])->name('update-comment');
+ 
 
     //supplier Group
     Route::middleware('supplier')->group(function(){
@@ -237,7 +243,6 @@ Route::middleware('lang')->group(function(){
 
     });
 
-    Route::post('update/comment' , [SupplierController::class , "updateComment"])->name('update-comment');
 
 
      //admin group
@@ -300,7 +305,7 @@ Route::middleware('lang')->group(function(){
 
         //School booking orders
         Route::get('orders' , [AdminController::class , "Orders"])->name("Orders");
-        Route::get('single-order/{orderId}' , [TransactionController::class , 'singleOrder'])->name('order');
+        Route::get('single-order/{orderId}' , [TransactionController::class , 'singleBookingOrder'])->name('order');
 
         //service orders
         Route::get('orders/services' , [ServiceOrderController::class , "OrdersServ"])->name("service-orders");
@@ -404,6 +409,7 @@ Route::middleware('lang')->group(function(){
 
         Route::get('shanklPrice/{id}' , [AdminController::class , 'ShowSeatPriceEdit'])->name('school-seat-edit');
 
+       Route::get('back' , [AdminController::class , 'back'])->name('back');
 
     });
 

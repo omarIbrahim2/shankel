@@ -14,14 +14,16 @@ class cancelSubscriptionMail extends Mailable
     use Queueable, SerializesModels;
 
     public $User;
+    public $event;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($User)
+    public function __construct($User , $event)
     {
         $this->User = $User;
+        $this->event = $event;
     }
 
     /**

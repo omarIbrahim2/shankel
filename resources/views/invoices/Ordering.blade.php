@@ -62,8 +62,8 @@
                                     <tr>
                                         
                                         <th class="text-left">الوصف</th>
-                                        <th class="text-left">الكمية</th>
                                         <th class="text-right">  السعر الخدمة</th>
+                                        <th class="text-left">الكمية</th>
                                         <th class="text-right">الاجمالي</th>
                                     </tr>
                                 </thead>
@@ -79,10 +79,10 @@
                                                 </a>
                                             </h3>
                                             <a target="_blank" href="javascript:;">
-                                               {!! $service->desc('ar') !!}
+                                               {!! $service->name('ar') !!}
                                             </a> 
                                         </td>
-                                        
+                                        <td>{{$service->price}}</td>
                                         <td class="qty">{{$service->pivot->quantity}}</td>
                                         <td class="total">{{$service->price * $service->pivot->quantity}}</td>
                                     </tr>
@@ -90,7 +90,7 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td colspan="2">الاجمالي:{{$order->totalPrice}} </td>
+                                        <td colspan="2">الاجمالي:{{$order->total_price}} </td>
                                     </tr>
                                 </tfoot>
                             </table>

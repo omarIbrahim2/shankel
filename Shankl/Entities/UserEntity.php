@@ -19,6 +19,10 @@ use Shankl\Services\FileService;
    public function __construct($attributes)
    {
 
+    if (isset($attributes['id'])) {
+         $this->schema['id'] = $attributes['id'];
+    }
+
     if (isset($attributes['name_en']) && $attributes['name_ar']) {
         
         $this->schema['name'] = json_encode([
@@ -36,7 +40,10 @@ use Shankl\Services\FileService;
     }
     
      $this->schema['email'] = $attributes['email'];
-     $this->setPassword($attributes['password']);
+     if (isset($attributes['password'])) {
+        $this->setPassword($attributes['password']);
+     }
+    
      $this->schema['area_id'] = $attributes['area_id'];
    }
 
@@ -72,6 +79,12 @@ public function changeStatus(){
 public function setPassword($password){
     $hashedPassword = Hash::make($password);
     $this->schema['password'] = $hashedPassword;
+}
+
+
+public function setImage($ImageName){
+
+     $this->schema['image'] = $ImageName;
 }
 
 public function UploadImage( FileService $fileService ,$request){

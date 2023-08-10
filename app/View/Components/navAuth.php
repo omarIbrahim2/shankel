@@ -5,7 +5,7 @@ namespace App\View\Components;
 use Illuminate\View\Component;
 use Illuminate\Support\Facades\Auth;
 
-class navAuth extends Component
+class NavAuth extends Component
 {
     public $guard;
     /**
@@ -49,6 +49,6 @@ class navAuth extends Component
      */
     public function render()
     {
-        return view('components.nav-auth')->with(["guard" => $this->guard]);
+        return view('components.nav-auth')->with(['guard' => $this->guard]);
     }
 }

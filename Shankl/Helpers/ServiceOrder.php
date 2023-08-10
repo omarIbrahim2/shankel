@@ -35,7 +35,7 @@ class ServiceOrder extends AbstractOrder
           $AuthUser = AuthUserFactory::getAuthUser();
           $totalPrice = $AuthUser->card->totalPrice;
           if ($totalPrice <= 0) {
-               toastr('Please choose services you want to order' , 'error');
+               toastr(trans('service.orderErr') , 'error');
                return back();
           }
           $transaction = $this->serviceOrderRepo->create($AuthUser, $orderCode , $totalPrice);
@@ -69,8 +69,10 @@ class ServiceOrder extends AbstractOrder
                $this->serviceOrderRepo->updateQuatityInservice($services);
 
           });
+          
          
-          Notification::send($AuthUser , new OrderNotification($transaction ,$services , $AuthUser , $Shankel ));
+           $AuthUser->notify(new OrderNotification($transaction ,$services , $AuthUser , $Shankel ));
+        //   Notification::send($AuthUser , new OrderNotification($transaction ,$services , $AuthUser , $Shankel ));
      }
 
      public function __destruct()

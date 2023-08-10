@@ -261,6 +261,8 @@ class AuthController extends Controller
         $forgot = new ForgotPassword();
 
         $response = $forgot->sendResetLinkEmail($request , $broker);
+        
+    
 
         if ($response == Password::RESET_LINK_SENT) {
             return back()->with("status" , trans($response));

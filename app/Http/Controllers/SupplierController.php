@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use PhpParser\Node\Expr\FuncCall;
 use Shankl\Services\AdminService;
+use App\Models\Service;
 use Shankl\Helpers\ChangePassword;
 use Shankl\Services\SupplierService;
 use Shankl\Factories\AuthUserFactory;
@@ -88,6 +89,7 @@ class SupplierController extends Controller
     return redirect()->route($url);
   }
 
+
   public function getSupplier(CardService $CardSer  , $supplierId)
   {
     
@@ -127,20 +129,22 @@ class SupplierController extends Controller
 
           });
 
+
+          $AllSupplierServices = Service::paginate($AllServices , 5);
+
         
-          return view('web.Suppliers.supplierPage')->with(['Services' => $AllServices , 'Supplier' => $supplier , 'slider' => $slider]);
+          return view('web.Suppliers.supplierPage')->with(['Services' => $AllSupplierServices , 'Supplier' => $supplier , 'slider' => $slider]);
         }
            
 
 
-        return view('web.Suppliers.supplierPage')->with(['Supplier' => $supplier , 'Services' => $supplier->services]);
-
+       
 
    }
 
-    
+    $AllSupplierServices = Service::paginate($supplier->services , 5);
 
-    return view("web.Suppliers.supplierPage")->with(['Supplier' => $supplier , 'Services' => $supplier->services]);
+    return view("web.Suppliers.supplierPage")->with(['Supplier' => $supplier , 'Services' => $AllSupplierServices  , 'slider' => $slider]);
   }
 
   public function updateComment(CommentUpdateRequest $request)

@@ -17,7 +17,9 @@
 
                             <div class="text-center card">
                                 <h5>{{ $attr }}</h5>
+                                @if($val != null)
                                 <p class=" text-primary">{{ $val }}</p>
+                                @endif
                             </div>
                         </div>
                     @endif

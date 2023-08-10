@@ -16,15 +16,22 @@ class CancelSubscribtion implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     public $Users;
+    
+    public $event;
+    
+     public $tries = 3;
     /**
      * Create a new job instance.
      *
      * @return void
+     * 
+     * 
      */
-    public function __construct($Users)
+    public function __construct($Users , $event)
     {
         
         $this->Users = $Users;
+        $this->event = $event;
     }
 
     /**
@@ -37,7 +44,7 @@ class CancelSubscribtion implements ShouldQueue
     
         foreach($this->Users as $user){
                
-            Mail::later(now()->addSeconds(20) ,new cancelSubscriptionMail($user));
+            Mail::later(now()->addSeconds(20) ,new cancelSubscriptionMail($user,  $event));
         }
          
  

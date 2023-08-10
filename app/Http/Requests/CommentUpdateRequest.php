@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Models\comment;
+use App\Models\Comment;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Gate;
 use Shankl\Factories\AuthUserFactory;
@@ -16,7 +16,7 @@ class CommentUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-         $comment = comment::findOrFail($this->id);
+         $comment = Comment::findOrFail($this->id);
          $AuthUser =  AuthUserFactory::getAuthUser();
          $type =  AuthUserFactory::geGuard();
          $guard = ucfirst(AuthUserFactory::geGuard()) ;

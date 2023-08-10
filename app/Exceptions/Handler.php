@@ -51,19 +51,19 @@ class Handler extends ExceptionHandler
         });
     }
 
-    public function render($request , Throwable $e){
+    // public function render($request , Throwable $e){
 
-        if($e instanceof MethodNotAllowedHttpException){
+    //     if($e instanceof MethodNotAllowedHttpException){
 
-            return response()->view('errors.404');
-        }
+    //         return response()->view('errors.404');
+    //     }
 
-        if ($e instanceof QueryException) {
+    //     if ($e instanceof QueryException) {
              
-            toastr(trans('error.errorMsg') , 'error');
+    //         toastr(trans('error.errorMsg') , 'error');
 
-            Log::info($e->getMessage());
-            return response()->redirect()->back();
-        }
-    }
+    //         Log::info($e->getMessage());
+    //         return response()->redirect()->back();
+    //     }
+    // }
 }

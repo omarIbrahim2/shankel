@@ -41,6 +41,9 @@
             @error('image')
                 <p class="text-danger">{{ $message }}</p>
             @enderror
+            @if ($Supplier != null)
+                <img src="{{asset($Supplier->image)}}" style="width: 60px" alt="Suppplier Image">
+            @endif
         </div>
         <div class="form-group mb-4">
             <label for="event-title">{{ trans('supplier.type_en') }}</label>
@@ -83,9 +86,9 @@
             <label for="">{{ trans('supplier.address') }}</label>
             <div class="d-flex justify-content-between align-items-center event-times">
                 <div class="w-md-100 w-50">
-                    <select name="city_id" id="selectCity" class="form-select form-control"
+                    <select  id="selectCity" class="form-select form-control"
                         aria-label="Default select example">
-                        <option selected disabled>{{ $Supplier == null ? 'city' : $Supplier->area->city->name() }}
+                        <option value=" {{$Supplier == null ? 'City' : $Supplier->area->city->id}}" selected disabled> {{$Supplier == null ? 'City' : $Supplier->area->city->name()}}
                         </option>
                         @foreach ($cities as $city)
                             <option value="{{ $city->id }}">{{ $city->name() }}</option>
@@ -98,7 +101,7 @@
                 <div class="w-md-100 w-50">
                     <select name="area_id" id="areaSelect" class="form-select form-control"
                         aria-label="Default select example">
-                        <option value="" selected>{{ $Supplier == null ? 'Area' : $Supplier->area->name() }}
+                        <option value="{{$Supplier == null ? '' : $Supplier->area_id}}" selected>{{$Supplier == null ? 'Area' : $Supplier->area->name()}}
                         </option>
                     </select>
 

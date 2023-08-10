@@ -151,7 +151,7 @@ class ParentController extends Controller
 
   
 
-    return view('web.Schools.schoolRegister')->with(['School' => $School, 'Parent' => $Parent , 'Price'=> $price->seat_price]);
+    return view('web.schools.schoolRegister')->with(['School' => $School, 'Parent' => $Parent , 'Price'=> $price->seat_price]);
   }
 
   public function FilterSchools(Request $request)
@@ -159,7 +159,7 @@ class ParentController extends Controller
     $query = School::query();
     $Schools =  $this->search($request->query(), $query);
 
-    return view("web.Schools.filteredSchools")->with(['Schools' => $Schools]);
+    return view("web.schools.FilteredSchools")->with(['Schools' => $Schools]);
   }
 
 

@@ -74,7 +74,7 @@ class UserDetails extends Component
                     'linkedin' => $user->linkedin,
                     "free seats" => $user->free_seats,
                     'type' => $user->type,
-                    'Education system' => $user->eduSystem->name,
+                    'Education system' => $user->eduSystem->name(),
                     
 
                 ]
@@ -91,7 +91,7 @@ class UserDetails extends Component
                'facebook' => $user->facebook,
                'twiter' => $user->twitter,
                'linkedin' => $user->linkedin,
-               'field' => $user->field,
+               'field' => $user->field(),
                ] 
           ];
 
@@ -103,7 +103,7 @@ class UserDetails extends Component
                     'email' => $user->email,
                     'phone' => $user->phone,
                     'address'=> $user->area->name(),
-                    'type' => $user->type,
+                    'type' => $user->type(),
                     "Organization Name" => $user->orgName(),
                 ]
                 ];

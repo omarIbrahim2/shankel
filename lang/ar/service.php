@@ -19,5 +19,6 @@ return[
     'serviceDeleteMsg' => 'تم حذف الخدمة بنجاح',
     'AddServMsg' => 'تم اضافة الخدمة بنجاح',
     'Delete' => 'حذف',
+    'DeleteImageMsg' => 'تم حذف الصورة بنجاح',
 
 ];

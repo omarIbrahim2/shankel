@@ -24,6 +24,9 @@ use Shankl\Interfaces\ServiceRepoInterface;
 use Shankl\Repositories\AddvertRepository;
 use Shankl\Repositories\PartnerRepo;
 use Shankl\Repositories\ServiceRepository;
+use  App\View\Component\AboutUsSection;
+use  App\View\Component\NavAuth;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -52,6 +55,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
+             
+        Blade::component('component-about-us-section', AboutUsSection::class);
+         Blade::component('component-nav-auth', NavAuth::class); 
     }
 }

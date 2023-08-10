@@ -14,8 +14,8 @@ class SupplierEntity extends UserEntity{
         ]);
 
         $this->schema['type'] = json_encode([
-            'en' => $attributes['orgName_en'],
-            'ar' => $attributes['orgName_ar'],
+            'en' => $attributes['type_en'],
+            'ar' => $attributes['type_ar'],
         ]);
 
         $this->path= 'suppliers';

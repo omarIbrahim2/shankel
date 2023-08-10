@@ -77,11 +77,14 @@ class ServiceController extends Controller
 
     public function deleteService($serviceId)
     {
+        
+        
        
-       try {
+      try {
          $this->supplierService->deleteService($serviceId);
 
           if (AuthUserFactory::geGuard() == 'web') {
+             
             toastr("Deleted successfully", "error", "Deleting");
           }else{
 
@@ -90,13 +93,13 @@ class ServiceController extends Controller
         
 
          return back();
-       } catch (\Throwable $th) {
+      } catch (\Throwable $th) {
         
         toastr(trans('error.errorMsg'), "error");
 
         return back();
           
-       } 
+      } 
       
 
      

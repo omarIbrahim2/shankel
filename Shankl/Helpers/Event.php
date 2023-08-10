@@ -107,13 +107,14 @@ class Event{
     }
 
     public function bookSeat($eventId){
-
-        $User = AuthUserFactory::getAuthUser();
+          
+           $User = AuthUserFactory::getAuthUser();
+         
 
          try {
             $this->eventReboInterface->subscribeUser($eventId , $User);
             $event = $this->eventReboInterface->find($eventId);
-          //  Notification::send($User, new EventSeatBooked($User, $event));
+          Notification::send($User, new EventSeatBooked($User, $event));
             return true;
          } catch (\Exception $e) {
 
@@ -152,7 +153,7 @@ class Event{
 
          $subscribers = $this->getSubscribers($eventId);
 
-         $this->notifySubscibers($subscribers);
+         $this->notifySubscibers($subscribers , $event);
 
     }
 
@@ -176,10 +177,13 @@ class Event{
     }
 
 
-    private function  notifySubscibers($subscribers){
-
+    private function  notifySubscibers($subscribers , $event){
+        
+         $subscribersCollection = collect($subscribers);
+         
+        
         if (count($subscribers) > 0) {
-            CancelSubscribtion::dispatch($subscribers)->onQueue('CancelEvent');
+            CancelSubscribtion::dispatch($subscribersCollection , $event)->onQueue('CancelEvent');
          }
 
 

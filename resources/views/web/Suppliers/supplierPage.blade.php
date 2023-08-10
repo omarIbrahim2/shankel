@@ -89,7 +89,7 @@
                                             </div>
                                             <div class="avatar-btns">
 
-                                              @if (!Auth::guard('supplier')->check())
+                                              @if (!Auth::guard('supplier')->check() && !Auth::guard('web')->check())
 
                                               @custom_auth
 
@@ -151,6 +151,10 @@
                                                 class="btn-custom text-center ">{{ trans('supplier.watchNow') }}</a>
 
                                         </div>
+                                    </div>
+                                    
+                                     <div class="pagination">
+                                        {{ $Services->links('web.inc.pagination') }}
                                     </div>
                                 </div>
                             </div>

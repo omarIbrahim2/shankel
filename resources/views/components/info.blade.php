@@ -123,5 +123,5 @@
             @else
             <button type="submit" class="btn btn-primary mt-4">Update</button>
             @endif
-            
+            <a href="{{route('Infos')}}" class="btn btn-primary mt-4">Back</a>
 </form>

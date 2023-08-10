@@ -85,7 +85,7 @@
                      </div>
                             <!-- this div to but two inputs -->
                                 <div class="input-item me-auto ms-0">
-                                <input type="text" name="start_time"  value="{{old('start_time')}}" placeholder="{{ trans('event.start') }}"  class="textbox-n-time eventTimePicker ">
+                                <input type="text" name="start_time"  value="{{old('start_time')}}" placeholder="{{ trans('event.startT') }}"  class="textbox-n-time eventTimePicker ">
                                 <span>
                                     <i class="fa-regular fa-clock"></i>
                                 </span>
@@ -94,7 +94,7 @@
                                 @enderror
                                 </div>
                                 <div class="input-item me-auto ms-0">
-                                <input type="text" value="{{old('end_time')}}"  name="end_time"  placeholder="{{ trans('event.end') }}" class="textbox-n-time eventTimePicker ">
+                                <input type="text" value="{{old('end_time')}}"  name="end_time"  placeholder="{{ trans('event.finT') }}" class="textbox-n-time eventTimePicker ">
                                 <span>
                                     <i class="fa-regular fa-clock"></i>
                                 </span>

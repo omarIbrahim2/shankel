@@ -40,7 +40,7 @@
 
     <div class="form-group mb-4">
         <label for="service.desc_en">{{ trans('service.desc_en') }}</label>
-        <textarea name="desc_en" id="service.desc_en" cols="30" placeholder="{{ trans('service.desc_en') }}" rows="10"
+        <textarea name="desc_en" id="service_desc_en" cols="30" placeholder="{{ trans('service.desc_en') }}" rows="10"
             class="form-control ">{{ $Service == null ? '' : $Service->desc('en') }}</textarea>
         @error('desc')
             <p class="text-danger">{{ $message }}</p>
@@ -49,7 +49,7 @@
 
     <div class="form-group mb-4">
         <label for="service.desc_ar">{{ trans('service.desc_ar') }}</label>
-        <textarea name="desc_ar" id="service.desc_ar" cols="30" placeholder="{{ trans('service.desc_ar') }}" rows="10"
+        <textarea name="desc_ar" id="service_desc_ar" cols="30" placeholder="{{ trans('service.desc_ar') }}" rows="10"
             class="form-control ">{{ $Service == null ? '' : $Service->desc('ar') }}</textarea>
         @error('desc')
             <p class="text-danger">{{ $message }}</p>
@@ -87,9 +87,9 @@
     </div>
 
     @if ($update == false)
-        <button type="submit" class="btn btn-primary mt-4">{{ trans('service.update') }}</button>
+    <button type="submit" class="btn btn-primary mt-4">{{ trans('service.add') }}</button>
     @else
-        <button type="submit" class="btn btn-primary mt-4">{{ trans('service.add') }}</button>
+    <button type="submit" class="btn btn-primary mt-4">{{ trans('service.update') }}</button>
     @endif
 
 </form>

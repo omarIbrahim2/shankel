@@ -12,7 +12,10 @@
         </form>
        </div>
 
-       <a href="{{route('create-events-view')}}" class="btn btn-success margin_res">Add Event</a>
+       @if ($guard == 'App\Models\User')
+            
+        <a href="{{route('create-events-view')}}" class="btn btn-success margin_res">Add Event</a>
+        @endif
     </div>
   
    

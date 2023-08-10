@@ -7,9 +7,9 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class OrderNotification extends Notification implements ShouldQueue
+class OrderNotification extends Notification
 {
-    use Queueable;
+    
     public $order , $services , $user , $Shankel;
     /**
      * Create a new notification instance.
@@ -22,6 +22,8 @@ class OrderNotification extends Notification implements ShouldQueue
         $this->services = $services;
         $this->user = $user;
         $this->Shankel = $Shankel;
+        
+    
     }
 
     /**
@@ -43,6 +45,7 @@ class OrderNotification extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
+        
         return (new MailMessage)
         ->view('invoices.Ordering' , ['order' => $this->order , 'services' =>$this->services , 'user' => $this->user , 'Shankel' => $this->Shankel]);
     }
@@ -60,11 +63,5 @@ class OrderNotification extends Notification implements ShouldQueue
         ];
     }
 
-    public function viaQueues() : array
-    {
-
-        return [
-          "mail" => "Mailing"
-        ];
-    }
+   
 }

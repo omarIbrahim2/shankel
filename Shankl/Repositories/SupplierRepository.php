@@ -22,7 +22,14 @@ class SupplierRepository implements UserReboInterface{
     }
     public function find($userId)
     {
-        return Supplier::with(['area:id,name' , 'services:id,supplier_id,name,price,image'])->findOrFail($userId);
+      return Supplier::with(['area.city:id,name' , 'services:id,supplier_id,name,price,image'])->findOrFail($userId);
+
+    }
+    
+    
+      public function findSupplierDashboard($userId){
+
+        return Supplier::with(['area.city:id,name'])->findOrFail($userId);
     }
 
 
@@ -30,10 +37,12 @@ class SupplierRepository implements UserReboInterface{
     {
         return Supplier::create($data);
     }
-
-    public function update($data)
+    
+  public function update($data)
     {
-       $supplier = $this->find($data['id']);
+       $supplier = $this->findSupplierDashboard($data['id']);
+
+       
 
        return $supplier->update($data);
 

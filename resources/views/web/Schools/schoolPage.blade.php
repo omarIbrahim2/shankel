@@ -116,7 +116,7 @@
                                 @endif
                                @if ($School->linkedin)
                                <div>
-                                <a href="{{$school->linkedin}}"><i class="fa-brands fa-linkedin-in"></i></a>
+                                <a href="{{$School->linkedin}}"><i class="fa-brands fa-linkedin-in"></i></a>
                                </div>
                                @endif
                             </div>
@@ -138,13 +138,13 @@
                     <div class="mission-vision">
                         <h3>{{ trans('school.mission') }}:</h3>
                         <p>
-                            {{$School->mission == null ? "" : $School->mission()}}
+                            {!!$School->mission == null ? "" : $School->mission()!!}
                         </p>
                     </div>
                     <div class="mission-vision">
                         <h3>{{ trans('school.vision') }}:</h3>
                         <p>
-                            {{$School->vision == null ? "" : $School->vision()}}
+                            {!!$School->vision == null ? "" : $School->vision()!!}
                         </p>
                     </div>
                 </div>

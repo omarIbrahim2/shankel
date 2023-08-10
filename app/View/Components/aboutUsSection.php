@@ -5,8 +5,9 @@ namespace App\View\Components;
 use App\Models\Information;
 use Illuminate\View\Component;
 
-class aboutUsSection extends Component
+class AboutUsSection extends Component
 {
+    public $Infos;
     /**
      * Create a new component instance.
      *
@@ -15,7 +16,7 @@ class aboutUsSection extends Component
 
     public function __construct()
     {
-    
+         $this->Infos = Information::select('image', 'mission', 'vision', 'title', 'aboutUs', 'choose')->first();
     }
 
     /**
@@ -25,7 +26,8 @@ class aboutUsSection extends Component
      */
     public function render()
     {
-        $Infos = Information::select('image', 'mission', 'vision', 'title', 'aboutUs', 'choose')->first();
-        return view('components.about-us-section')->with(['Infos' => $Infos]);
+      
+    
+        return view('components.about-us-section');
     }
 }

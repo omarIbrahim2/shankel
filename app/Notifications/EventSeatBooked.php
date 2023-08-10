@@ -47,9 +47,9 @@ class EventSeatBooked extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Hello From Shankel Mr '. $this->user['name'])
-                    ->line("You have booked a Seat in ". $this->event['title'])
-                    ->line('Thank you for joining the Event');
+                    ->line('اهلا و سهلا بك استاذ : '. $this->user->name('ar'))
+                    ->line("لقد حجزت في فاعلية ". $this->event->title('ar'))
+                    ->line('شكرا لمشاركتك في الحدث');
     }
 
     /**

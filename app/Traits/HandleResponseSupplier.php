@@ -27,7 +27,7 @@ trait HandleResponseSupplier{
          }
 
 
-         return redirect()->route($route , "unactive");
+         return redirect()->route($route , "active");
 
     }
 }

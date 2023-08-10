@@ -35,6 +35,7 @@ class SupplierUpdateReq extends FormRequest
             'type_ar' => 'required|string|max:255',
             'orgName_en' => 'required|string|max:255',
             'orgName_ar' => 'required|string|max:255',
+            'area_id' => "required|exists:areas,id",
         ];
     }
 }

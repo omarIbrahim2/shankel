@@ -53,6 +53,7 @@ return[
     "vision_ar" => "الرؤية",
     'succMsg' => 'تم تحديث البيانات بنجاح',
     'schoolImgsMsg' => 'Images uploaded successfully',
+    'imgsDeleteMsg' => "Image Deleted Successfully",
     'succMsg' => 'data updated successfully',
     
 ];

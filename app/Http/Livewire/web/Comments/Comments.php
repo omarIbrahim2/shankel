@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Web\Comments;
 
-use App\Models\comment;
+use App\Models\Comment;
 use Livewire\Component;
 use Shankl\Services\SchoolService;
 use Illuminate\Support\Facades\Gate;
@@ -79,7 +79,7 @@ class Comments extends Component
 
     public function deletecomment($commentId){
 
-        $comment = comment::findOrFail($commentId);
+        $comment = Comment::findOrFail($commentId);
         if (!  Gate::forUser($this->AuthUser)->allows("delete-comment" , [$comment , $this->type]) ) 
         {            
              abort(403);    

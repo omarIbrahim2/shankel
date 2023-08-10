@@ -10,7 +10,6 @@ use Shankl\Helpers\ChangePassword;
 use Shankl\Services\SchoolService;
 use Illuminate\Support\Facades\Config;
 use Shankl\Interfaces\GradeRepoInterface;
-use App\Http\Requests\CommentUpdateRequest;
 use PHPUnit\Framework\Constraint\Count;
 use Shankl\Factories\AuthUserFactory;
 use Shankl\Helpers\Event;
@@ -31,7 +30,7 @@ class SchoolController extends Controller
 
   public function index(){
    
-     return view('web.Schools.schools');    
+     return view('web.schools.schools');    
   }
   public function showRegister(LocationRepoInterface $locationRepo, GradeRepoInterface $gradeRepo , EduSystemRepoInterface $eduRepo )
   {
@@ -61,7 +60,7 @@ class SchoolController extends Controller
     }
     $data['students'] = $this->schoolService->AllStudents(5);
     $data['studentsParents'] =$this->schoolService->studentsParents();
-    return view("web.Schools.profile")->with($data);
+    return view("web.schools.profile")->with($data);
   }
 
   public function schoolProfile( LocationRepoInterface $locationRepo , EduSystemRepoInterface $eduRepo){
@@ -69,7 +68,7 @@ class SchoolController extends Controller
     $data['eSystems'] = $eduRepo->getEduSystems(); 
 
     $data['Cities'] = $locationRepo->getCities();
-    return view("web.Schools.editProfile")->with($data);
+    return view("web.schools.editProfile")->with($data);
   }
 
    public function changePassView(){
@@ -102,7 +101,7 @@ class SchoolController extends Controller
      event(new SchoolViews($school));
       $EduId = $school->edu_systems_id;
       $Es =  EduSystem::findOrfail($EduId);    
-     return view("web.Schools.schoolPage")->with(['School' => $school , "Es" => $Es]);
+     return view("web.schools.schoolPage")->with(['School' => $school , "Es" => $Es]);
 
   }
 
@@ -113,21 +112,6 @@ class SchoolController extends Controller
   }
 
 
-  public function updateComment(CommentUpdateRequest $request){
-       
-   $validatedReq =  $request->validated();
-       
-    $action = $this->schoolService->updateComment($validatedReq['comment'] , $validatedReq['id']);
-    
-    if ($action) {
-        toastr("updated successfully" , "success" , "update comment");
-
-        return back();
-    }
-    
-    toastr("error happened in updating" , "error" , "update comment");
-    return back();
-  }
 
 
 

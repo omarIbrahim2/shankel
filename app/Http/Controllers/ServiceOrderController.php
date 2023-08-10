@@ -32,6 +32,9 @@ class ServiceOrderController extends Controller
 
     public function success(Request $request)
     {
+        
+        
+      
         try {
             $this->serviceOrder->handleOrder();
             return $this->paypal->success($request);

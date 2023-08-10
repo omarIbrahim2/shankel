@@ -18,7 +18,7 @@
                     <div class="slider-content">
                         @if ($slider)
                         <P>{{ $slider->title(App::getLocale()) }}</P>
-                        <p>{{ $slider->info(App::getLocale())  }}</p>       
+                        <p>{!! $slider->info(App::getLocale())  !!}</p>       
                         @endif
                      
                     </div>

@@ -16,4 +16,5 @@ return[
     'serviceDeleteMsg' => 'service deleted successfully',
     'Delete' => 'Delete',
     'AddServMsg' => 'service created successfully',
+    'DeleteImageMsg' => 'Service Image Deleted Successfully',
 ];

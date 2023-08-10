@@ -21,8 +21,9 @@
             <h2>{{ trans('nav.Schools') }}</h2>
         </div>
 
-
+       
         @livewire('web.schools.schools')
+       
 
     </div>
 </section>

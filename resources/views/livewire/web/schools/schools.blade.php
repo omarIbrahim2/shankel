@@ -1,4 +1,6 @@
 <div>
+
+<div>
     <div class="service-banner school-banner">
         <div class="page-search">
             <input wire:model="searchSchool" type="text" class="search-input" placeholder="{{ trans('school.search') }}">
@@ -51,4 +53,5 @@
         @endif
         @endif
     </div>
+</div>
 </div>

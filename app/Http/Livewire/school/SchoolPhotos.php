@@ -61,7 +61,7 @@ class SchoolPhotos extends Component
         $this->photos = [];
         $this->emit("imageUpload");
           
-        toastr("images saved successfully" , "success");
+        toastr(trans('school.schoolImgsMsg') , "success");
 
         
     }
@@ -71,10 +71,10 @@ class SchoolPhotos extends Component
        $image = Image::findOrFail($imageid);
         
     
-       $fileService->DeleteFile($image->name);
+       $fileService->DeleteFile(substr($image->name , 8));
 
        $image->delete();
        $this->emit("imageUpload");
-       toastr("images deleted successfully" , "error" , "Delete");
+       toastr(trans('school.imgsDeleteMsg') , "error" , "Delete");
     }
 }

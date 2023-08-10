@@ -18,13 +18,13 @@ abstract class Service{
         $action = $user->update(['status' => true]);
 
          $data = [
-            "userName" => $user->name,
+            "userName" => $user->name('ar'),
              "route" => $loginRoute,
 
          ];
           
 
-        if($action == true){
+        if($action){
             Notification::send($user , new ConfirmUserNotify($data));
         }else{
 
