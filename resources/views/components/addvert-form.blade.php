@@ -57,11 +57,5 @@
         @else
             <button type="submit" class="btn btn-primary mt-4">{{ trans('addvert.add') }}</button>
         @endif
-        
-          <a href="{{route('admin-addverts')}}" class="btn btn-primary mt-4">Back</a>
-        
-        
-     
-        
 
 </form>

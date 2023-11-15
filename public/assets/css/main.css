@@ -241,6 +241,12 @@ input[type="file"] {
   background-color: var(--main-color);
 }
 
+.bg-black{
+    width:200px;
+   background-color:black;
+   height:100px;
+}
+
 .white-btn {
   background-color: #fff;
   color: var(--main-color);
@@ -2174,7 +2180,8 @@ main {
 .teacher-item-social {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
+  margin-top: 16px;
 }
 
 .teacher-item-social img {

@@ -43,8 +43,9 @@ class SupplierResetPasswordNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-          ->line("hello from shankel")
-           ->action("Reset Password" , route("password.reset.supplier" ,$this->token))
+          ->line("مرحبا فى شنكل")
+                    ->line("لقد طلبت مؤخرًا إعادة تعيين كلمة المرور لحسابك. انقر فوق الزر أدناه للمتابعة")
+           ->action("اعادة تعيين كلمة السر" , route("password.reset.supplier" ,$this->token))
           ->line("thanks");
     }
 

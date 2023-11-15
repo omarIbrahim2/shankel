@@ -35,6 +35,7 @@ class EventRepository implements EventRepoInterface
       }
 
       if ($guard == 'parent') {
+          
          return Event::with(['ParenttsinEvent', 'area.city'], function ($query) use ($userId) {
 
             $query->where('id', $userId);
@@ -42,18 +43,50 @@ class EventRepository implements EventRepoInterface
 
 
 
-         ->orderBy('start_date', 'DESC')->get()->map(function ($event) {
-
-            return   $event->setAttribute("booked", $event->ParenttsinEvent->isNotEmpty());
+         ->orderBy('start_date', 'DESC')->get()->map(function ($event) use($userId) {
+             
+              
+             if($event->ParenttsinEvent->isNotEmpty()){
+                
+                 $event->ParenttsinEvent->map(function($parent) use ($userId , $event){
+                       
+                       if($parent->id == $userId){
+                           
+                          $event->setAttribute("booked", true); 
+                       }
+                        
+                      
+                 }); 
+                     
+             }else{
+                      $event->setAttribute("booked", false); 
+                 
+             }
+             
+             return $event;
+            
          });
       } else if ($guard == 'school') {
          return Event::with(['schoolsinEvent', 'area.city'], function ($query) use ($userId) {
 
 
             $query->where('id', $userId);
-         })->where('status', 'in Progress')->orderBy('start_date', 'DESC')->get()->map(function ($event) {
-
-            return   $event->setAttribute("booked", $event->schoolsinEvent->isNotEmpty());
+         })->where('status', 'in Progress')->orderBy('start_date', 'DESC')->get()->map(function ($event) use ($userId) {
+                
+                 if($event->schoolsinEvent->isNotEmpty()){
+                     
+                    $event->schoolsinEvent->map(function($school) use($userId){
+                          if($school->id == $userId){
+                                 $event->setAttribute("booked", true);   
+                          }       
+                      } );
+                 }else{
+                       
+                         $event->setAttribute("booked", false);
+                     
+                 }
+              
+            return   $event;
          });
       } elseif ($guard == 'teacher') {
 
@@ -62,17 +95,27 @@ class EventRepository implements EventRepoInterface
 
             $query->where('id', $userId);
          })->where('status', 'in Progress')->orderBy('start_date', 'DESC')->get()->map(function ($event) {
-
-            return   $event->setAttribute("booked", $event->teachersinEvent->isNotEmpty());
+             
+                           if($event->teachersinEvent->isNotEmpty()){
+                     
+                    $event->teachersinEvent->map(function($teacher) use($userId){
+                          if($teacher->id == $userId){
+                                 $event->setAttribute("booked", true);   
+                          }       
+                      } );
+                 }else{
+                       
+                         $event->setAttribute("booked", false);
+                     
+                 }
+              
+            return   $event;
+             
          });
       }
    }
 
-   // public function getReservedEvents($userId = null, $guard){
-   //    $allEvents = $this->getEventsWeb($userId,$guard)->where('eventable_id' , $userId);
-   //    $resrvedEvents = $allEvents->where('booked' , true);
-   //    return $resrvedEvents;
-   // }
+   
 
 
    public function getReservedEvents($AuthUser , $pages){

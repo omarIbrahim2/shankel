@@ -27,6 +27,7 @@ use App\Http\Controllers\PartnersController;
 use App\Http\Controllers\ServiceOrderController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\CommentController;
+use Illuminate\Support\Facades\Artisan;
 
 
 //Lang Route
@@ -35,7 +36,11 @@ Route::get('set/lang/{lang}' , [LangController::class , 'set'])->name("lang");
 Route::get('/excel' , [reader::class , 'index']);
 Route::middleware('lang')->group(function(){
 
-
+     Route::get('cron' , function(){
+         
+         Artisan::call('schedule:run');
+         
+     });
     // Home
     Route::get('/', [HomeController::class , "index"])->name('home');
 

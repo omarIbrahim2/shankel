@@ -28,14 +28,14 @@
             <input type="file" wire:model="images" id="teacher-avatar" multiple>
 
             <div class="uploadedPhotoName">
-                <label class="btn-custom" for="teacher-avatar">{{trans('service.updateImages')}}</label>
+                <label class="btn-custom" for="teacher-avatar">Upload More Photos</label>
             </div>
 
             @error('images')
             <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
            @enderror
         </div>
-        <button type="submit" class="btn-custom">{{trans('service.update')}}</button>
+        <button type="submit" class="btn-custom">Save</button>
     </div>
     </form>
 </div>

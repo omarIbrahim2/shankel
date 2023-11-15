@@ -24,6 +24,8 @@ class Events extends Component
     }
 
     public function mount(){
+        
+         
     
          $this->booked =  $this->event->booked;
    

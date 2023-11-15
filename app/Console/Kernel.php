@@ -17,7 +17,9 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         
-        $schedule->command('queue:work --timeout=60 --tries=1 --once')
+        $schedule->command('queue:restart')->everyFiveMinutes();
+         
+       $schedule->command('queue:work --stop-when-empty')
              ->everyMinute()
              ->withoutOverlapping()
              ->sendOutputTo(storage_path() . '/logs/queue-jobs.log');

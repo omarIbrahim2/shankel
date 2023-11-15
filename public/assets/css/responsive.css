@@ -7,7 +7,7 @@
 @media screen and (max-width: 1200px){
     .auth-btn .custom-out-btn{
         font-size: 16px;
-        padding: 8px 8px;
+        padding: 8px 4px;
     }
     header .nav-link{
         font-size: 16px;
@@ -17,11 +17,7 @@
     }
 }
 @media screen and (max-width: 992px) {
-  .navbar .auth-btn {
-    order: unset;
-    margin-inline-start: auto;
-    margin-inline-end: 8px;
-  }
+ 
   header .navbar .nav-item{
     text-align: center;
   }
@@ -104,6 +100,13 @@
   }
 }
 @media screen and (max-width: 576px) {
+    .navbar .auth-btn{
+    margin-inline-start: 0!important;
+    margin-inline-end: auto!important;
+  }
+    .navbar-brand{
+        margin-right:0!important;
+    }
   .home-slider .slider-content h1 {
     font-size: 36px;
   }
@@ -162,6 +165,10 @@
   .auth-logo{
     display: none;
   }
+  .lang-btn{
+      padding:0;
+  }
+  
 }
 @media screen and (max-width: 320px){
     .navbar-brand{

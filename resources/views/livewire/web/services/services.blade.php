@@ -19,7 +19,7 @@
                             </div>
                             <div class="avatar-btns">
 
-                                @if (!Auth::guard('supplier')->check() && !Auth::guard('web')->check())
+                                @if (!Auth::guard('supplier')->check())
 
                                 @custom_auth
 

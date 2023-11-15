@@ -116,7 +116,7 @@
                                 @endif
                                @if ($School->linkedin)
                                <div>
-                                <a href="{{$School->linkedin}}"><i class="fa-brands fa-linkedin-in"></i></a>
+                                <a href="{{$school->linkedin}}"><i class="fa-brands fa-linkedin-in"></i></a>
                                </div>
                                @endif
                             </div>

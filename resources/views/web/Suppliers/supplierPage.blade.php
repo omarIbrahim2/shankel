@@ -89,7 +89,7 @@
                                             </div>
                                             <div class="avatar-btns">
 
-                                              @if (!Auth::guard('supplier')->check() && !Auth::guard('web')->check())
+                                              @if (!Auth::guard('supplier')->check())
 
                                               @custom_auth
 
@@ -142,7 +142,9 @@
                                         </div>
                                     </div>
                                     @endforeach
+                                     
 
+                                   
 
                                     <div class="avatar-btns">
 
@@ -152,8 +154,9 @@
 
                                         </div>
                                     </div>
-                                    
-                                     <div class="pagination">
+
+
+                                    <div class="pagination">
                                         {{ $Services->links('web.inc.pagination') }}
                                     </div>
                                 </div>

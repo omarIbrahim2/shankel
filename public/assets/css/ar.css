@@ -93,5 +93,13 @@ input{
 @media screen and (max-width: 991px){
 .auth-btn .custom-out-btn {
     font-size: 12px;
-    padding: 8px 8px;
+    padding: 8px 4px;
+    margin:0 4px;
+    
 }}
+
+@media screen and (max-width: 567px){
+    .navbar-brand{
+        margin-left:0;
+    }
+}

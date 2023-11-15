@@ -22,7 +22,8 @@
                             @if ($page == $paginator->currentPage())
                                 <li style="cursor: pointer" class="active">{{ $page }}</li>
                             @else
-                                <li style="cursor: pointer"><a href="{{ $url }}">{{ $page }}</a></li>
+                              
+                                <li style="cursor: pointer"><a href="{{$url}}">{{ $page }}</a></li>
                             @endif
                         @endforeach
                     @endif

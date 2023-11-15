@@ -114,7 +114,8 @@ class Event{
          try {
             $this->eventReboInterface->subscribeUser($eventId , $User);
             $event = $this->eventReboInterface->find($eventId);
-          Notification::send($User, new EventSeatBooked($User, $event));
+        //   Notification::send($User, new EventSeatBooked($User, $event));
+            $User->notify( new EventSeatBooked($User, $event));
             return true;
          } catch (\Exception $e) {
 
@@ -183,7 +184,7 @@ class Event{
          
         
         if (count($subscribers) > 0) {
-            CancelSubscribtion::dispatch($subscribersCollection , $event)->onQueue('CancelEvent');
+            CancelSubscribtion::dispatch($subscribersCollection , $event);
          }
 
 
