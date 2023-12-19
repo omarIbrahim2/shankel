@@ -1,0 +1,34 @@
+class Solution {
+public:
+int count=1;
+    void swapingNums(int& a,int& b){
+        int temp;
+        temp=a;
+        a=b;
+        b=temp;
+        temp=0;
+    }
+    void sorting(vector<int>& unsorted){
+        if(count>=1){
+            for(int i=0;i<unsorted.size()-1;i++){
+                if(unsorted[i]>unsorted[i+1]){
+                    swapingNums(unsorted[i],unsorted[i+1]);
+                    count++;
+                    sorting(unsorted);
+                }
+                if(i==unsorted.size()-1 && count>1){
+                    count=0;
+                }
+            }
+        }
+        
+    }
+    int maxProductDifference(vector<int>& nums) {
+        sorting(nums);
+        int def=(nums[nums.size()-1] * nums[nums.size()-2]) - (nums[0]*nums[1]);
+        for(int j=0;j<nums.size();j++){
+            cout<<nums[j];
+        }
+        return def;
+        }
+};
